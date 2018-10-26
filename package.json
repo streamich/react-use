@@ -1,0 +1,17 @@
+{
+  "name": "react-use",
+  "version": "0.0.1",
+  "description": "Collection of React Hooks",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@streamich",
+  "license": "Unlicense",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "react": "16.7.0-alpha.0",
+    "react-dom": "16.7.0-alpha.0"
+  }
+}
