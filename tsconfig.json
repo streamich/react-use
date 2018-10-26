@@ -14,6 +14,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "outDir": "lib",
+    "noEmitHelpers": true,
     "lib": ["es2018", "dom"]
   }
 }

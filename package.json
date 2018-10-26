@@ -4,14 +4,17 @@
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "author": "@streamich",
   "license": "Unlicense",
   "dependencies": {
+    "tslib": "^1.9.3"
   },
   "devDependencies": {
     "react": "16.7.0-alpha.0",
-    "react-dom": "16.7.0-alpha.0"
+    "react-dom": "16.7.0-alpha.0",
+    "typescript": "^3.1.3"
   }
 }
