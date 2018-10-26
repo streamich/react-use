@@ -6,6 +6,8 @@
    - [`useToggle`](./docs/useToggle.md)
 - Sensors
    - [`useWindowSize`](./docs/useWindowSize.md)
+- Side effects
+   - [`useTitle`](./docs/useTitle.md)
 
 ## License
 
