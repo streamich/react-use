@@ -66,3 +66,6 @@ lib/
 .DS_Store
 
 src/parser.ts
+
+.cache/
+.puppet-master/
