@@ -1,5 +1,7 @@
 # react-use
 
+![](https://img.shields.io/badge/React-%F0%9F%8E%A3%20hooks-orange.svg?longCache=true&style=flat)
+
 Collection of essential React Hooks.
 This is port of [`libreact`](https://github.com/streamich/libreact) to React Hooks.
 
@@ -15,6 +17,7 @@ This is port of [`libreact`](https://github.com/streamich/libreact) to React Hoo
    - [`useBattery`](./docs/useBattery.md)
    - [`useGeolocation`](./docs/useGeolocation.md)
    - [`useHover`](./docs/useHover.md)
+   - [`useIdle`](./docs/useIdle.md)
    - [`useLocation`](./docs/useLocation.md)
    - [`useMedia`](./docs/useMedia.md)
    - [`useMediaDevices`](./docs/useMediaDevices.md)

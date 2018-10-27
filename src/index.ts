@@ -2,6 +2,7 @@ import useBattery from './useBattery';
 import useCounter from './useCounter';
 import useGeolocation from './useGeolocation';
 import useHover from './useHover';
+import useIdle from './useIdle';
 import useList from './useList';
 import useLocation from './useLocation';
 import useMap from './useMap';
@@ -19,6 +20,7 @@ export {
   useCounter,
   useGeolocation,
   useHover,
+  useIdle,
   useList,
   useLocation,
   useMap,
