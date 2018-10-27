@@ -10,6 +10,7 @@ import useLifecycles from './useLifecycles';
 import useList from './useList';
 import useLocalStorage from './useLocalStorage';
 import useLocation from './useLocation';
+import useLogger from './useLogger';
 import useMap from './useMap';
 import useMedia from './useMedia';
 import useMediaDevices from './useMediaDevices';
@@ -40,6 +41,7 @@ export {
   useList,
   useLocalStorage,
   useLocation,
+  useLogger,
   useMap,
   useMedia,
   useMediaDevices,

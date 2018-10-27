@@ -61,6 +61,7 @@
      <br/>
 - [__Lifecycles__](./docs/Lifecycles.md)
    - [`useLifecycles`](./docs/useLifecycles.md) &mdash; calls `mount` and `unmount` callbacks.
+   - [`useLogger`](./docs/useLogger.md) &mdash; logs in console as component goes though life-cycles.
    - [`useMount`](./docs/useMount.md) &mdash; calls `mount` callbacks.
    - [`useUnmount`](./docs/useUnmount.md) &mdash; calls `unmount` callbacks.
      <br/>
