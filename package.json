@@ -4,6 +4,7 @@
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "scripts": {
+    "start": "yarn storybook",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "test:story:build": "build-storybook",
@@ -23,5 +24,9 @@
     "ts-node": "^7.0.1",
     "ts-loader": "3",
     "babel-core": "^6.26.3"
+  },
+  "peerDependencies": {
+    "react": "16.7.0-alpha.0",
+    "react-dom": "16.7.0-alpha.0"
   }
 }
