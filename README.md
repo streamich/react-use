@@ -17,7 +17,7 @@
     Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
     <br />
     <em>This is mostly port of <a href="https://github.com/streamich/libreact"><code>libreact</code></a> to React Hooks.</em>
-  </sub>
+  </sup>
   <br />
   <br />
   <br />
