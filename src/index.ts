@@ -7,6 +7,7 @@ import useGeolocation from './useGeolocation';
 import useHover from './useHover';
 import useIdle from './useIdle';
 import useList from './useList';
+import useLocalStorage from './useLocalStorage';
 import useLocation from './useLocation';
 import useMap from './useMap';
 import useMedia from './useMedia';
@@ -33,6 +34,7 @@ export {
   useHover,
   useIdle,
   useList,
+  useLocalStorage,
   useLocation,
   useMap,
   useMedia,
