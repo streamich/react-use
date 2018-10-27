@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "files": [
@@ -17,6 +17,14 @@
   },
   "author": "@streamich",
   "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/streamich/react-use.git"
+  },
+  "bugs": {
+    "url": "https://github.com/streamich/react-use/issues"
+  },
+  "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
