@@ -29,3 +29,10 @@ const Demo = () => {
   );
 };
 ```
+
+
+## Reference
+
+```ts
+useAsync(fn, args?: any[]);
+```
