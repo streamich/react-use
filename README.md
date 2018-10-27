@@ -13,6 +13,7 @@
   <sup>
     <br />
     <br />
+    <br />
     Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
     <br />
     <em>This is mostly port of <a href="https://github.com/streamich/libreact"><code>libreact</code></a> to React Hooks.</em>
@@ -20,14 +21,13 @@
   <br />
   <br />
   <br />
-</div>
-
-
-## Install
-
-<pre>
+  <br />
+  <pre>
 npm i <a href="https://www.npmjs.com/package/react-use">react-use</a>
-</pre>
+  </pre>
+  <br />
+  <br />
+</div>
 
 
 ## Reference
