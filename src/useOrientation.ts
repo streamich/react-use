@@ -1,17 +1,17 @@
 import {useState, useEffect} from './react';
 import {on, off} from './util';
 
-export interface State {
+export interface OrientationState {
   angle: number;
   type: string;
 }
 
-const defaultState: State = {
+const defaultState: OrientationState = {
   angle: 0,
   type: 'landscape-primary'
 };
 
-const useOrientation = (initialState: State = defaultState) => {
+const useOrientation = (initialState: OrientationState = defaultState) => {
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
