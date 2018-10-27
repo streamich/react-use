@@ -16,7 +16,7 @@
     <br />
     Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
     <br />
-    <em>This is mostly port of <a href="https://github.com/streamich/libreact"><code>libreact</code></a> to React Hooks.</em>
+    <em>This is mostly port of</em> <a href="https://github.com/streamich/libreact"><code>libreact</code></a> <em>to React Hooks.</em>
   </sup>
   <br />
   <br />
@@ -46,7 +46,8 @@
      <br/>
      <br/>
 - [__Animations__](./docs/Animations.md)
-   - [`useSpring`](./docs/useSpring.md) &mdash; updates number value over time according to spring dynamics.
+   - [`useSpring`](./docs/useSpring.md) &mdash; interpolates number over time according to spring dynamics.
+   - [`useTimeout`](./docs/useTimeout.md) &mdash; returns true after a timeout.
      <br/>
      <br/>
 - [__Side-effects__](./docs/Side-effects.md)

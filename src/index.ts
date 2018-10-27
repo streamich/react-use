@@ -15,6 +15,7 @@ import useNetwork from './useNetwork';
 import useOrientation from './useOrientation';
 import useSize from './useSize';
 import useSpring from './useSpring';
+import useTimeout from './useTimeout';
 import useTitle from './useTitle';
 import useToggle from './useToggle';
 import useWindowSize from './useWindowSize';
@@ -37,6 +38,7 @@ export {
   useOrientation,
   useSize,
   useSpring,
+  useTimeout,
   useTitle,
   useToggle,
   useWindowSize,
