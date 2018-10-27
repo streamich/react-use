@@ -1,3 +1,4 @@
+import useBattery from './useBattery';
 import useCounter from './useCounter';
 import useList from './useList';
 import useMap from './useMap';
@@ -7,6 +8,7 @@ import useToggle from './useToggle';
 import useWindowSize from './useWindowSize';
 
 export {
+  useBattery,
   useCounter,
   useList,
   useMap,
