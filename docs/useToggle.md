@@ -1,6 +1,6 @@
 # `useToggle`
 
-React state-hook that tracks value of a boolean.
+React state hook that tracks value of a boolean.
 
 
 ## Usage
@@ -8,13 +8,15 @@ React state-hook that tracks value of a boolean.
 ```jsx
 import {useToggle} from 'react-use';
 
-const MyComponent = () => {
+const Demo = () => {
   const [on, toggle, set] = useToggle(true);
 
   return (
     <div>
       <div>{on ? 'ON' : 'OFF'}</div>
       <button onClick={toggle}>Toggle</button>
+      <button onClick={() => set(true)}>set ON</button>
+      <button onClick={() => set(false)}>set OFF</button>
     </div>
   );
 };
