@@ -13,6 +13,7 @@ import useMediaDevices from './useMediaDevices';
 import useMotion from './useMotion';
 import useNetwork from './useNetwork';
 import useOrientation from './useOrientation';
+import useRaf from './useRaf';
 import useSize from './useSize';
 import useSpring from './useSpring';
 import useTimeout from './useTimeout';
@@ -36,6 +37,7 @@ export {
   useMotion,
   useNetwork,
   useOrientation,
+  useRaf,
   useSize,
   useSpring,
   useTimeout,

@@ -46,6 +46,7 @@
      <br/>
      <br/>
 - [__Animations__](./docs/Animations.md)
+   - [`useRaf`](./docs/useRaf.md) &mdash; re-renders component on each `reaquestAnimationFrame`.
    - [`useSpring`](./docs/useSpring.md) &mdash; interpolates number over time according to spring dynamics.
    - [`useTimeout`](./docs/useTimeout.md) &mdash; returns true after a timeout.
      <br/>
