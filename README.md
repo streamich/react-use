@@ -4,17 +4,16 @@
     <br/>
     🎣
     <br />
-    <br />
     react-use
     <br />
     <br />
     <br />
-  </h1>
-  <br />
-  <sup>
-    <em>Collection of essential React Hooks.</em>
     <br />
-    This is mostly port of <a href="https://github.com/streamich/libreact"><code>libreact</code></a> to React Hooks.
+  </h1>
+  <sup>
+    Collection of essential React Hooks.</em>
+    <br />
+    <em>This is mostly port of <a href="https://github.com/streamich/libreact"><code>libreact</code></a> to React Hooks.</em>
   </sub>
   <br />
   <br />
