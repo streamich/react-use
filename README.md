@@ -1,32 +1,56 @@
-# react-use
+<div align="center">
+  <h1>
+    <br/>
+    <br/>
+    🎣
+    <br />
+    react-use
+    <br />
+    <br />
+    <br />
+    <br />
+  </h1>
+  <sup>
+    <br />
+    <br />
+    Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
+    <br />
+    <em>This is mostly port of <a href="https://github.com/streamich/libreact"><code>libreact</code></a> to React Hooks.</em>
+  </sub>
+  <br />
+  <br />
+  <br />
+</div>
 
-![](https://img.shields.io/badge/React-%F0%9F%8E%A3%20hooks-orange.svg?longCache=true&style=flat)
-
-Collection of essential React Hooks.
-This is port of [`libreact`](https://github.com/streamich/libreact) to React Hooks.
 
 
 ## Reference
 
 - State
-   - [`useToggle`](./docs/useToggle.md)
-   - [`useCounter`](./docs/useCounter.md)
-   - [`useList`](./docs/useList.md)
-   - [`useMap`](./docs/useMap.md)
+   - [`useToggle`](./docs/useToggle.md) &mdash; tracks state of a boolean.
+   - [`useCounter`](./docs/useCounter.md) &mdash; tracks state of a number.
+   - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
+   - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
+     <br/>
+     <br/>
 - Sensors
-   - [`useBattery`](./docs/useBattery.md)
-   - [`useGeolocation`](./docs/useGeolocation.md)
-   - [`useHover`](./docs/useHover.md)
-   - [`useIdle`](./docs/useIdle.md)
-   - [`useLocation`](./docs/useLocation.md)
-   - [`useMedia`](./docs/useMedia.md)
-   - [`useMediaDevices`](./docs/useMediaDevices.md)
-   - [`useNetwork`](./docs/useNetwork.md)
-   - [`useOrientation`](./docs/useOrientation.md)
-   - [`useSize`](./docs/useSize.md)
-   - [`useWindowSize`](./docs/useWindowSize.md)
+   - [`useBattery`](./docs/useBattery.md) &mdash; tracks device batter state.
+   - [`useGeolocation`](./docs/useGeolocation.md) &mdash; tracks geo location state of user's device.
+   - [`useHover`](./docs/useHover.md) &mdash; tracks mouse hover state of some element.
+   - [`useIdle`](./docs/useIdle.md) &mdash; tracks whether user is being inactive.
+   - [`useLocation`](./docs/useLocation.md) &mdash; tracks page navigation bar location state.
+   - [`useMedia`](./docs/useMedia.md) &mdash; tracks state of a CSS media query.
+   - [`useMediaDevices`](./docs/useMediaDevices.md) &mdash; tracks state of connected hardware devices.
+   - [`useNetwork`](./docs/useNetwork.md) &mdash; tracks state of user's internet connection.
+   - [`useOrientation`](./docs/useOrientation.md) &mdash; tracks state of device's screen orientation.
+   - [`useSize`](./docs/useSize.md) &mdash; tracks some HTML element's dimensions.
+   - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions.
+     <br/>
+     <br/>
 - Side effects
-   - [`useTitle`](./docs/useTitle.md)
+   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
+     <br/>
+     <br/>
 
 
 ## License
