@@ -1,5 +1,6 @@
 import useBattery from './useBattery';
 import useCounter from './useCounter';
+import useCss from './useCss';
 import useFavicon from './useFavicon';
 import useGeolocation from './useGeolocation';
 import useHover from './useHover';
@@ -20,6 +21,7 @@ import useWindowSize from './useWindowSize';
 export {
   useBattery,
   useCounter,
+  useCss,
   useFavicon,
   useGeolocation,
   useHover,
