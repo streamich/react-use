@@ -8,6 +8,7 @@
 - State
    - [`useToggle`](./docs/useToggle.md)
    - [`useCounter`](./docs/useCounter.md)
+   - [`useList`](./docs/useList.md)
 - Sensors
    - [`useSize`](./docs/useSize.md)
    - [`useWindowSize`](./docs/useWindowSize.md)
