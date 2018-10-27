@@ -1,6 +1,7 @@
 # react-use
 
-[`libreact`](https://github.com/streamich/libreact) port to React Hooks.
+Collection of essential React Hooks.
+This is port of [`libreact`](https://github.com/streamich/libreact) to React Hooks.
 
 
 ## Reference
@@ -16,6 +17,7 @@
    - [`useHover`](./docs/useHover.md)
    - [`useLocation`](./docs/useLocation.md)
    - [`useMedia`](./docs/useMedia.md)
+   - [`useMediaDevices`](./docs/useMediaDevices.md)
    - [`useSize`](./docs/useSize.md)
    - [`useWindowSize`](./docs/useWindowSize.md)
 - Side effects
