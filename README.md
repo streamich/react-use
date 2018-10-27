@@ -1,9 +1,18 @@
-# react-use
-
-![](https://img.shields.io/badge/React-%F0%9F%8E%A3%20hooks-orange.svg?longCache=true&style=flat)
+<div align="center">
+  <h1>
+    <br/>
+    <br/>
+    🎣
+    <br />
+    react-use
+    <br />
+    <br />
+    <br />
+  </h1>
+</div>
 
 Collection of essential React Hooks.
-This is port of [`libreact`](https://github.com/streamich/libreact) to React Hooks.
+This is mostly port of [`libreact`](https://github.com/streamich/libreact) to React Hooks.
 
 
 ## Reference
