@@ -4,17 +4,28 @@ import {useState, useEffect, useRef} from './react';
 const isClient = typeof window === 'object';
 const DRAF = (callback: () => void) => setTimeout(callback, 35);
 
+export type Element = ((state: State) => React.ReactElement<any>) | React.ReactElement<any>;
 export interface State {
   width: number;
   height: number;
 }
 
-const useSize = (element: React.ReactElement<any>, {width = Infinity, height = Infinity}: Partial<State> = {}): [React.ReactElement<any>, State] => {
+const useSize = (element: Element, {width = Infinity, height = Infinity}: Partial<State> = {}): [React.ReactElement<any>, State] => {
   if (!isClient) {
-    return [element, {width, height}];
+    return [
+      typeof element === 'function'
+        ? element({width, height})
+        : element,
+      {width, height}
+    ];
   }
 
   const [state, setState] = useState<State>({width, height});
+
+  if (typeof element === 'function') {
+    element = element(state);
+  }
+  
   const style = element.props.style || {};
   const ref = useRef<HTMLIFrameElement | null>(null);
   let window: Window | null = null;

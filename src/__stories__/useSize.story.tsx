@@ -4,7 +4,7 @@ import {useSize} from '..';
 
 const Demo = () => {
   const [sized, {width, height}] = useSize(
-    <div style={{border: '1px solid red'}}>Size me up!</div>
+    ({width}) => <div style={{border: '1px solid red'}}>Size me up! ({width}px)</div>
   );
 
   return (
