@@ -6,6 +6,7 @@ import useFavicon from './useFavicon';
 import useGeolocation from './useGeolocation';
 import useHover from './useHover';
 import useIdle from './useIdle';
+import useLifecycles from './useLifecycles';
 import useList from './useList';
 import useLocalStorage from './useLocalStorage';
 import useLocation from './useLocation';
@@ -33,6 +34,7 @@ export {
   useGeolocation,
   useHover,
   useIdle,
+  useLifecycles,
   useList,
   useLocalStorage,
   useLocation,

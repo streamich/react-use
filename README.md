@@ -59,6 +59,10 @@
    - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
      <br/>
      <br/>
+- [__Lifecycles__](./docs/Lifecycles.md)
+   - [`useLifecycles`](./docs/useLifecycles.md) &mdash; calls `mount` and `unmount` callbacks.
+     <br/>
+     <br/>
 - [__State__](./docs/State.md)
    - [`useToggle`](./docs/useToggle.md) &mdash; tracks state of a boolean.
    - [`useCounter`](./docs/useCounter.md) &mdash; tracks state of a number.
