@@ -1,8 +1,13 @@
 {
   "name": "react-use",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
+  "files": [
+    "lib/"
+  ],
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "start": "yarn storybook",
     "test": "echo \"Error: no test specified\" && exit 1",
