@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "files": [
