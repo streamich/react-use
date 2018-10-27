@@ -11,10 +11,13 @@
     <br />
   </h1>
   <sup>
+    <br />
+    <br />
     Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
     <br />
     <em>This is mostly port of <a href="https://github.com/streamich/libreact"><code>libreact</code></a> to React Hooks.</em>
   </sub>
+  <br />
   <br />
   <br />
 </div>
@@ -28,6 +31,8 @@
    - [`useCounter`](./docs/useCounter.md) &mdash; tracks state of a number.
    - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
    - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
+     <br/>
+     <br/>
 - Sensors
    - [`useBattery`](./docs/useBattery.md) &mdash; tracks device batter state.
    - [`useGeolocation`](./docs/useGeolocation.md) &mdash; tracks geo location state of user's device.
@@ -40,8 +45,12 @@
    - [`useOrientation`](./docs/useOrientation.md) &mdash; tracks state of device's screen orientation.
    - [`useSize`](./docs/useSize.md) &mdash; tracks some HTML element's dimensions.
    - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions.
+     <br/>
+     <br/>
 - Side effects
    - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
+     <br/>
+     <br/>
 
 
 ## License
