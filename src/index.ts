@@ -7,6 +7,7 @@ import useLocation from './useLocation';
 import useMap from './useMap';
 import useMedia from './useMedia';
 import useMediaDevices from './useMediaDevices';
+import useOrientation from './useOrientation';
 import useSize from './useSize';
 import useTitle from './useTitle';
 import useToggle from './useToggle';
@@ -22,6 +23,7 @@ export {
   useMap,
   useMedia,
   useMediaDevices,
+  useOrientation,
   useSize,
   useTitle,
   useToggle,

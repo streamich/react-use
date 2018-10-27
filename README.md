@@ -18,6 +18,7 @@ This is port of [`libreact`](https://github.com/streamich/libreact) to React Hoo
    - [`useLocation`](./docs/useLocation.md)
    - [`useMedia`](./docs/useMedia.md)
    - [`useMediaDevices`](./docs/useMediaDevices.md)
+   - [`useOrientation`](./docs/useOrientation.md)
    - [`useSize`](./docs/useSize.md)
    - [`useWindowSize`](./docs/useWindowSize.md)
 - Side effects
