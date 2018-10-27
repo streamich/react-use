@@ -37,7 +37,7 @@
    - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
      <br/>
      <br/>
-- Sensors
+- [__Sensors__](./docs/Sensors.md)
    - [`useBattery`](./docs/useBattery.md) &mdash; tracks device batter state.
    - [`useGeolocation`](./docs/useGeolocation.md) &mdash; tracks geo location state of user's device.
    - [`useHover`](./docs/useHover.md) &mdash; tracks mouse hover state of some element.
@@ -52,7 +52,7 @@
    - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions.
      <br/>
      <br/>
-- Side effects
+- [__Side-effects__](./docs/Side-effects.md)
    - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
      <br/>
      <br/>
