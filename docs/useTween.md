@@ -28,6 +28,6 @@ useTween(easing?: string, ms?: number, delay?: number): number
 
 Returns a number that begins with 0 and ends with 1 when animation ends.
 
-`easing` &mdash; one of the valid [easing names](https://github.com/streamich/ts-easing/blob/master/src/index.ts), defaults to `inCirc`.
-`ms` &mdash; milliseconds for how long to keep re-rendering component, defaults to `200`.
-`delay` &mdash; delay in milliseconds after which to start re-rendering component, defaults to `0`.
+- `easing` &mdash; one of the valid [easing names](https://github.com/streamich/ts-easing/blob/master/src/index.ts), defaults to `inCirc`.
+- `ms` &mdash; milliseconds for how long to keep re-rendering component, defaults to `200`.
+- `delay` &mdash; delay in milliseconds after which to start re-rendering component, defaults to `0`.
