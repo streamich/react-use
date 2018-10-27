@@ -3,6 +3,7 @@ import useCounter from './useCounter';
 import useGeolocation from './useGeolocation';
 import useHover from './useHover';
 import useList from './useList';
+import useLocation from './useLocation';
 import useMap from './useMap';
 import useSize from './useSize';
 import useTitle from './useTitle';
@@ -15,6 +16,7 @@ export {
   useGeolocation,
   useHover,
   useList,
+  useLocation,
   useMap,
   useSize,
   useTitle,

@@ -14,10 +14,12 @@
    - [`useBattery`](./docs/useBattery.md)
    - [`useGeolocation`](./docs/useGeolocation.md)
    - [`useHover`](./docs/useHover.md)
+   - [`useLocation`](./docs/useLocation.md)
    - [`useSize`](./docs/useSize.md)
    - [`useWindowSize`](./docs/useWindowSize.md)
 - Side effects
    - [`useTitle`](./docs/useTitle.md)
+
 
 ## License
 
