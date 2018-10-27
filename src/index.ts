@@ -5,6 +5,7 @@ import useHover from './useHover';
 import useList from './useList';
 import useLocation from './useLocation';
 import useMap from './useMap';
+import useMedia from './useMedia';
 import useSize from './useSize';
 import useTitle from './useTitle';
 import useToggle from './useToggle';
@@ -18,6 +19,7 @@ export {
   useList,
   useLocation,
   useMap,
+  useMedia,
   useSize,
   useTitle,
   useToggle,

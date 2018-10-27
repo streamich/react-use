@@ -15,6 +15,7 @@
    - [`useGeolocation`](./docs/useGeolocation.md)
    - [`useHover`](./docs/useHover.md)
    - [`useLocation`](./docs/useLocation.md)
+   - [`useMedia`](./docs/useMedia.md)
    - [`useSize`](./docs/useSize.md)
    - [`useWindowSize`](./docs/useWindowSize.md)
 - Side effects
