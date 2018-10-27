@@ -14,6 +14,7 @@ import useMap from './useMap';
 import useMedia from './useMedia';
 import useMediaDevices from './useMediaDevices';
 import useMotion from './useMotion';
+import useMount from './useMount';
 import useNetwork from './useNetwork';
 import useOrientation from './useOrientation';
 import useRaf from './useRaf';
@@ -23,6 +24,7 @@ import useTimeout from './useTimeout';
 import useTitle from './useTitle';
 import useToggle from './useToggle';
 import useTween from './useTween';
+import useUnmount from './useUnmount';
 import useWindowSize from './useWindowSize';
 
 export {
@@ -42,6 +44,7 @@ export {
   useMedia,
   useMediaDevices,
   useMotion,
+  useMount,
   useNetwork,
   useOrientation,
   useRaf,
@@ -51,5 +54,6 @@ export {
   useTitle,
   useToggle,
   useTween,
+  useUnmount,
   useWindowSize,
 };

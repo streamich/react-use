@@ -61,6 +61,8 @@
      <br/>
 - [__Lifecycles__](./docs/Lifecycles.md)
    - [`useLifecycles`](./docs/useLifecycles.md) &mdash; calls `mount` and `unmount` callbacks.
+   - [`useMount`](./docs/useMount.md) &mdash; calls `mount` callbacks.
+   - [`useUnmount`](./docs/useUnmount.md) &mdash; calls `unmount` callbacks.
      <br/>
      <br/>
 - [__State__](./docs/State.md)
