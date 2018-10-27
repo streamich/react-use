@@ -19,6 +19,7 @@ import useSpring from './useSpring';
 import useTimeout from './useTimeout';
 import useTitle from './useTitle';
 import useToggle from './useToggle';
+import useTween from './useTween';
 import useWindowSize from './useWindowSize';
 
 export {
@@ -43,5 +44,6 @@ export {
   useTimeout,
   useTitle,
   useToggle,
+  useTween,
   useWindowSize,
 };

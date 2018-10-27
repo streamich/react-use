@@ -1,18 +1,18 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
-import {useRaf} from '..';
+import {useTween} from '..';
 
 const Demo = () => {
-  const frames = useRaf(5000, 1000);
+  const t = useTween();
 
   return (
     <div>
-      Elapsed: {frames}
+      Tween: {t}
     </div>
   );
 };
 
-storiesOf('useRaf', module)
+storiesOf('useTween', module)
   .add('Example', () =>
     <Demo/>
   )

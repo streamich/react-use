@@ -31,7 +31,8 @@
     "@types/react-dom": "^16.0.9",
     "throttle-debounce": "^2.0.1",
     "nano-css": "^3.4.0",
-    "rebound": "^0.1.0"
+    "rebound": "^0.1.0",
+    "ts-easing": "^0.1.0"
   },
   "devDependencies": {
     "@storybook/react": "^3.4.11",

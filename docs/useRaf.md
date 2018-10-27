@@ -1,7 +1,7 @@
 # `useRaf`
 
 React animation hook that forces component to re-render on each `reaquestAnimationFrame`,
-returns number of frames passed.
+returns percentage of time elapsed.
 
 
 ## Usage
@@ -14,7 +14,7 @@ const Demo = () => {
 
   return (
     <div>
-      Frames: {frames}
+      Elapsed: {frames}
     </div>
   );
 };

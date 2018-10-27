@@ -1,13 +1,14 @@
 import {useState, useEffect} from './react';
 
 const useRaf = (ms: number = 1e12, delay: number = 0): number => {
-  const [frames, set] = useState<number>(0);
+  const [elapsed, set] = useState<number>(0);
 
   useEffect(() => {
-    let raf, timerStop, localFrames = frames;
+    let raf, timerStop, start;
 
     const onFrame = () => {
-      set(++localFrames);
+      const time = Math.min(1, (Date.now() - start) / ms);
+      set(time);
       loop();
     };
     const loop = () => {
@@ -16,7 +17,9 @@ const useRaf = (ms: number = 1e12, delay: number = 0): number => {
     const onStart = () => {
       timerStop = setTimeout(() => {
         cancelAnimationFrame(raf);
+        set(1);
       }, ms);
+      start = Date.now();
       loop();
     };
     const timerDelay = setTimeout(onStart, delay);
@@ -28,7 +31,7 @@ const useRaf = (ms: number = 1e12, delay: number = 0): number => {
     };
   }, [ms, delay]);
 
-  return frames;
+  return elapsed;
 };
 
 export default useRaf;

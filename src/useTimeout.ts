@@ -11,7 +11,7 @@ const useTimeout = (ms: number = 0) => {
     return () => {
       clearTimeout(timer);
     };
-  });
+  }, [ms]);
 
   return ready;
 };
