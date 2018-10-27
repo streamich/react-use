@@ -9,11 +9,14 @@ const useIdle = (ms: number = oneMinute, initialState: boolean = false, events: 
   const [state, setState] = useState<boolean>(initialState);
 
   useEffect(() => {
+    let mounted = true;
     let timeout: any;
     let localState: boolean = state;
     const set = (newState: boolean) => {
-      localState = newState;
-      setState(newState);
+      if (mounted) {
+        localState = newState;
+        setState(newState);
+      }
     };
 
     const onEvent = throttle(50, () => {
@@ -36,6 +39,8 @@ const useIdle = (ms: number = oneMinute, initialState: boolean = false, events: 
     timeout = setTimeout(() => set(true), ms);
 
     return () => {
+      mounted = false;
+
       for (let i = 0; i < events.length; i++) {
         off(window, events[i], onEvent);
       }
