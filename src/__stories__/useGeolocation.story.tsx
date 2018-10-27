@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
-import {useBattery} from '..';
+import {useGeolocation} from '..';
 
 const Demo = () => {
-  const state = useBattery();
+  const state = useGeolocation();
 
   return (
     <pre>
@@ -12,7 +12,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useBattery', module)
+storiesOf('useGeolocation', module)
   .add('Example', () =>
     <Demo/>
   )

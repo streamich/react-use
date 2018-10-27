@@ -12,11 +12,9 @@ const Demo = () => {
   const state = useBattery();
 
   return (
-    <div>
-      <pre>
-        {JSON.stringify(state, null, 2)}
-      </pre>
-    </div>
+    <pre>
+      {JSON.stringify(state, null, 2)}
+    </pre>
   );
 };
 ```

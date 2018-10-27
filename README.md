@@ -12,6 +12,7 @@
    - [`useMap`](./docs/useMap.md)
 - Sensors
    - [`useBattery`](./docs/useBattery.md)
+   - [`useGeolocation`](./docs/useGeolocation.md)
    - [`useHover`](./docs/useHover.md)
    - [`useSize`](./docs/useSize.md)
    - [`useWindowSize`](./docs/useWindowSize.md)
