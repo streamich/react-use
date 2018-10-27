@@ -28,7 +28,8 @@
   "dependencies": {
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
-    "throttle-debounce": "^2.0.1"
+    "throttle-debounce": "^2.0.1",
+    "nano-css": "^3.4.0"
   },
   "devDependencies": {
     "@storybook/react": "^3.4.11",

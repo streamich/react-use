@@ -53,6 +53,7 @@
      <br/>
      <br/>
 - [__Side-effects__](./docs/Side-effects.md)
+   - [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS.
    - [`useFavicon`](./docs/useFavicon.md) &mdash; sets favicon of the page.
    - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
      <br/>
