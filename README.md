@@ -30,13 +30,6 @@
 
 ## Reference
 
-- [__State__](./docs/State.md)
-   - [`useToggle`](./docs/useToggle.md) &mdash; tracks state of a boolean.
-   - [`useCounter`](./docs/useCounter.md) &mdash; tracks state of a number.
-   - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
-   - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
-     <br/>
-     <br/>
 - [__Sensors__](./docs/Sensors.md)
    - [`useBattery`](./docs/useBattery.md) &mdash; tracks device batter state.
    - [`useGeolocation`](./docs/useGeolocation.md) &mdash; tracks geo location state of user's device.
@@ -52,10 +45,21 @@
    - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions.
      <br/>
      <br/>
+- [__Animations__](./docs/Animations.md)
+   - [`useSpring`](./docs/useSpring.md) &mdash; updates number value over time according to spring dynamics.
+     <br/>
+     <br/>
 - [__Side-effects__](./docs/Side-effects.md)
    - [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS.
    - [`useFavicon`](./docs/useFavicon.md) &mdash; sets favicon of the page.
    - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
+     <br/>
+     <br/>
+- [__State__](./docs/State.md)
+   - [`useToggle`](./docs/useToggle.md) &mdash; tracks state of a boolean.
+   - [`useCounter`](./docs/useCounter.md) &mdash; tracks state of a number.
+   - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
+   - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
      <br/>
      <br/>
 
