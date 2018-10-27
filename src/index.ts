@@ -19,6 +19,7 @@ import useMount from './useMount';
 import useNetwork from './useNetwork';
 import useOrientation from './useOrientation';
 import useRaf from './useRaf';
+import useSetState from './useSetState';
 import useSize from './useSize';
 import useSpring from './useSpring';
 import useTimeout from './useTimeout';
@@ -50,6 +51,7 @@ export {
   useNetwork,
   useOrientation,
   useRaf,
+  useSetState,
   useSize,
   useSpring,
   useTimeout,

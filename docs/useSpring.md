@@ -10,7 +10,7 @@ to spring dynamics.
 import {useSpring} from 'react-use';
 
 const Demo = () => {
-  const [target, setTarget] = (React as any).useState(50);
+  const [target, setTarget] = useState(50);
   const value = useSpring(target);
 
   return (
