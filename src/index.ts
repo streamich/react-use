@@ -1,3 +1,4 @@
+import useAsync from './useAsync';
 import useBattery from './useBattery';
 import useCounter from './useCounter';
 import useCss from './useCss';
@@ -23,6 +24,7 @@ import useTween from './useTween';
 import useWindowSize from './useWindowSize';
 
 export {
+  useAsync,
   useBattery,
   useCounter,
   useCss,

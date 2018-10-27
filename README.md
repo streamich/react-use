@@ -31,7 +31,7 @@
 ## Reference
 
 - [__Sensors__](./docs/Sensors.md)
-   - [`useBattery`](./docs/useBattery.md) &mdash; tracks device batter state.
+   - [`useBattery`](./docs/useBattery.md) &mdash; tracks device battery state.
    - [`useGeolocation`](./docs/useGeolocation.md) &mdash; tracks geo location state of user's device.
    - [`useHover`](./docs/useHover.md) &mdash; tracks mouse hover state of some element.
    - [`useIdle`](./docs/useIdle.md) &mdash; tracks whether user is being inactive.
@@ -53,6 +53,7 @@
      <br/>
      <br/>
 - [__Side-effects__](./docs/Side-effects.md)
+   - [`useAsync`](./docs/useAsync.md) &mdash; resolves an `async` function.
    - [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS.
    - [`useFavicon`](./docs/useFavicon.md) &mdash; sets favicon of the page.
    - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
