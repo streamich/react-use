@@ -22,9 +22,7 @@
   <br />
   <br />
   <br />
-  <pre>
-npm i <a href="https://www.npmjs.com/package/react-use">react-use</a>
-  </pre>
+  <pre>npm i <a href="https://www.npmjs.com/package/react-use">react-use</a></pre>
   <br />
   <br />
 </div>
@@ -32,7 +30,7 @@ npm i <a href="https://www.npmjs.com/package/react-use">react-use</a>
 
 ## Reference
 
-- State
+- [__State__](./docs/State.md)
    - [`useToggle`](./docs/useToggle.md) &mdash; tracks state of a boolean.
    - [`useCounter`](./docs/useCounter.md) &mdash; tracks state of a number.
    - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
