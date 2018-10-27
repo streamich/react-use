@@ -1,4 +1,4 @@
-# `useToggle`
+# `useTitle`
 
 React side-effect hook that sets title of the page.
 
