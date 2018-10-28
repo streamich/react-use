@@ -2,11 +2,9 @@ import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useAudio} from '..';
 
-const src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3';
-
 const Demo = () => {
-  const [audio, state, controls] = useAudio({
-    src,
+  const [audio, state, controls, ref] = useAudio({
+    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
     autoPlay: true,
   });
 

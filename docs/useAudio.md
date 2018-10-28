@@ -8,11 +8,9 @@ Creates `<audio>` element, tracks its state and exposes playback conrols.
 ```jsx
 import {useAudio} from 'react-use';
 
-const src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3';
-
 const Demo = () => {
   const [audio, state, controls, ref] = useAudio({
-    src,
+    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
     autoPlay: true,
   });
 
