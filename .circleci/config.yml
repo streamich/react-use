@@ -49,6 +49,8 @@ jobs:
       - *Build
       - *Build_Storybook
       - *Test
+      - store_artifacts:
+          path: ~/repo/storybook-static
       - *Commit_Status_Storybook
 
   master:
@@ -60,6 +62,8 @@ jobs:
       - *Build
       - *Build_Storybook
       - *Test
+      - store_artifacts:
+          path: ~/repo/storybook-static
       - *Commit_Status_Storybook
       - *Upload_Storybook
       - *Release

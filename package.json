@@ -56,6 +56,11 @@
     "react": "16.7.0-alpha.0",
     "react-dom": "16.7.0-alpha.0"
   },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
   "release": {
     "verifyConditions": [
       "@semantic-release/changelog",
