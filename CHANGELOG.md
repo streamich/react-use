@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/streamich/react-use.git/compare/v2.0.0...v2.1.0) (2018-10-28)
+
+
+### Features
+
+* 🎸 add useObservable ([711e831](https://github.com/streamich/react-use.git/commit/711e831))
+
 # [2.0.0](https://github.com/streamich/react-use.git/compare/v1.0.0...v2.0.0) (2018-10-28)
 
 
