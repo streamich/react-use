@@ -42,7 +42,7 @@
    - [`useNetwork`](./docs/useNetwork.md) &mdash; tracks state of user's internet connection.
    - [`useOrientation`](./docs/useOrientation.md) &mdash; tracks state of device's screen orientation.
    - [`useSize`](./docs/useSize.md) &mdash; tracks some HTML element's dimensions.
-   - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions.
+   - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions. [![](https://img.shields.io/badge/demo-useWindowSize-green.svg)](https://codesandbox.io/s/m7ln22668)
      <br/>
      <br/>
 - [__UI__](./docs/UI.md)
