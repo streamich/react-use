@@ -1,0 +1,97 @@
+version: 2
+
+refs:
+  container: &container
+    docker:
+      - image: node:8.11
+    working_directory: ~/repo
+  steps:
+    - &Versions
+      run:
+        name: Versions
+        command: node -v && npm -v && yarn -v
+    - &Install
+      run:
+        name: Install Dependencies
+        command: yarn install --pure-lockfile
+    - &Build
+      run:
+        name: Build
+        command: yarn build
+    - &Build_Storybook
+      run:
+        name: Build Storybook
+        command: yarn storybook:build
+    - &Test
+      run:
+        name: Test
+        command: yarn test
+    - &Upload_Storybook
+      run:
+        name: Upload Storybook
+        command: yarn storybook:upload
+    - &Release
+      run:
+        name: Release
+        command: yarn release
+    - &Commit_Status_Storybook
+      run:
+        name: Post commit status for Storybook
+        command: |
+          npx cross-ci :run \
+            npx commit-status success Storybook "'\${BUILD_VERSION}'" "'https://$CIRCLE_BUILD_NUM-154950925-gh.circle-artifacts.com/0/root/repo/storybook-static/index.html'"
+
+jobs:
+  all:
+    <<: *container
+    steps:
+      - checkout
+      - *Versions
+      - *Install
+      - *Build
+      - *Build_Storybook
+      - *Test
+      - store_artifacts:
+          path: ~/repo/storybook-static
+      - *Commit_Status_Storybook
+
+  master:
+    <<: *container
+    steps:
+      - checkout
+      - *Versions
+      - *Install
+      - *Build
+      - *Build_Storybook
+      - *Test
+      - store_artifacts:
+          path: ~/repo/storybook-static
+      - *Commit_Status_Storybook
+      - run:
+          name: Setup GitHub
+          command: |
+            git config --global user.email "streamich@gmail.com"
+            git config --global user.name "streamich"
+            git remote rm origin
+            git remote add origin https://${GITHUB_TOKEN}@github.com/streamich/react-use
+      - *Upload_Storybook
+      - *Release
+
+workflows:
+  version: 2
+  all:
+    jobs:
+      - all:
+          context: common-env-vars
+          filters:
+            branches:
+              ignore:
+                - master
+                - gh-pages
+  master:
+    jobs:
+      - master:
+          context: common-env-vars
+          filters:
+            branches:
+              only: master
