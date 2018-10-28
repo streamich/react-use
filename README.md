@@ -45,6 +45,10 @@
    - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions.
      <br/>
      <br/>
+- [__UI__](./docs/UI.md)
+   - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls.
+     <br/>
+     <br/>
 - [__Animations__](./docs/Animations.md)
    - [`useRaf`](./docs/useRaf.md) &mdash; re-renders component on each `reaquestAnimationFrame`.
    - [`useSpring`](./docs/useSpring.md) &mdash; interpolates number over time according to spring dynamics.
