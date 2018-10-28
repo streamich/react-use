@@ -31,7 +31,7 @@
 ## Reference
 
 - [__Sensors__](./docs/Sensors.md)
-   - [`useBattery`](./docs/useBattery.md) &mdash; tracks device battery state.
+   - [`useBattery`](./docs/useBattery.md) &mdash; tracks device battery state. [![](https://img.shields.io/badge/demo-useBattery-green.svg)](https://codesandbox.io/s/qlvn662zww)
    - [`useGeolocation`](./docs/useGeolocation.md) &mdash; tracks geo location state of user's device.
    - [`useHover`](./docs/useHover.md) &mdash; tracks mouse hover state of some element.
    - [`useIdle`](./docs/useIdle.md) &mdash; tracks whether user is being inactive.
