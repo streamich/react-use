@@ -2,6 +2,8 @@
 
 React animation hook that tweens a number between 0 and 1.
 
+[![](https://img.shields.io/badge/demo-useTween-green.svg)](https://codesandbox.io/s/52990wwzyl)
+
 
 ## Usage
 
