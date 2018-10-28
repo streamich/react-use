@@ -47,6 +47,7 @@
      <br/>
 - [__UI__](./docs/UI.md)
    - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls.
+   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from text string.
      <br/>
      <br/>
 - [__Animations__](./docs/Animations.md)

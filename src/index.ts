@@ -22,6 +22,7 @@ import useOrientation from './useOrientation';
 import useRaf from './useRaf';
 import useSetState from './useSetState';
 import useSize from './useSize';
+import useSpeech from './useSpeech';
 import useSpring from './useSpring';
 import useTimeout from './useTimeout';
 import useTitle from './useTitle';
@@ -55,6 +56,7 @@ export {
   useRaf,
   useSetState,
   useSize,
+  useSpeech,
   useSpring,
   useTimeout,
   useTitle,

@@ -12,3 +12,6 @@ export const useRef: UseRef = (React as any).useRef;
 
 export type UseCallback = <T extends ((...args: any[]) => any)>(callback: T, args: any[]) => T;
 export const useCallback: UseCallback = (React as any).useCallback;
+
+export type UseMemo = <T>(fn: Function, args: any[]) => T;
+export const useMemo: UseMemo = (React as any).useMemo;
