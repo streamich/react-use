@@ -6,7 +6,9 @@ const Demo = () => {
   const state = useSpeech('Hello world!');
 
   return (
-    <pre>{JSON.stringify(state, null, 2)}</pre>  
+    <pre>
+      {JSON.stringify(state, null, 2)}
+    </pre>  
   );
 };
 
