@@ -69,3 +69,5 @@ src/parser.ts
 
 .cache/
 .puppet-master/
+
+storybook-static/
