@@ -47,7 +47,7 @@
      <br/>
 - [__UI__](./docs/UI.md)
    - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls. [![](https://img.shields.io/badge/demo-useAudio-green.svg)](https://codesandbox.io/s/5v7q47knwl)
-   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string.
+   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![](https://img.shields.io/badge/demo-useSpeech-green.svg)](https://codesandbox.io/s/n090mqz69m)
      <br/>
      <br/>
 - [__Animations__](./docs/Animations.md)
