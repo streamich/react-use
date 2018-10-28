@@ -18,6 +18,7 @@ import useMediaDevices from './useMediaDevices';
 import useMotion from './useMotion';
 import useMount from './useMount';
 import useNetwork from './useNetwork';
+import useObservable from './useObservable';
 import useOrientation from './useOrientation';
 import useRaf from './useRaf';
 import useSetState from './useSetState';
@@ -52,6 +53,7 @@ export {
   useMotion,
   useMount,
   useNetwork,
+  useObservable,
   useOrientation,
   useRaf,
   useSetState,
