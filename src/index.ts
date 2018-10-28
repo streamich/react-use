@@ -1,4 +1,5 @@
 import useAsync from './useAsync';
+import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useCounter from './useCounter';
 import useCss from './useCss';
@@ -31,6 +32,7 @@ import useWindowSize from './useWindowSize';
 
 export {
   useAsync,
+  useAudio,
   useBattery,
   useCounter,
   useCss,
