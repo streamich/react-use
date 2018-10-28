@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useHover} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const element = (hovered: boolean) =>
@@ -18,6 +19,7 @@ const Demo = () => {
 };
 
 storiesOf('useHover', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useHover.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

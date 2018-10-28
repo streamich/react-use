@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useWindowSize} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const {width, height} = useWindowSize();
@@ -14,6 +15,7 @@ const Demo = () => {
 };
 
 storiesOf('useWindowSize', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useWindowSize.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useFavicon} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   useFavicon('https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico');
@@ -9,6 +10,7 @@ const Demo = () => {
 };
 
 storiesOf('useFavicon', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useFavicon.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

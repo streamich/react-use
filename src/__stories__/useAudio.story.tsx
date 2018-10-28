@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useAudio} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const [audio, state, controls, ref] = useAudio({
@@ -29,6 +30,7 @@ const Demo = () => {
 };
 
 storiesOf('useAudio', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useAudio.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

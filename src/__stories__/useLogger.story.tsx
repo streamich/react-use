@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useLogger} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = (props) => {
   useLogger('Demo', props);
@@ -8,6 +9,7 @@ const Demo = (props) => {
 };
 
 storiesOf('useLogger', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useLogger.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useOrientation} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const state = useOrientation();
@@ -13,6 +14,7 @@ const Demo = () => {
 };
 
 storiesOf('useOrientation', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useOrientation.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useMotion} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const state = useMotion();
@@ -13,6 +14,7 @@ const Demo = () => {
 };
 
 storiesOf('useMotion', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useMotion.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

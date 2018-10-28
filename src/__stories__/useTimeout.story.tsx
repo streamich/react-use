@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useTimeout} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const ready = useTimeout(2e3);
@@ -13,6 +14,7 @@ const Demo = () => {
 };
 
 storiesOf('useTimeout', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useTimeout.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useList} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const [list, {set, push}] = useList();
@@ -8,13 +9,14 @@ const Demo = () => {
   return (
     <div>
       <div>{list.join(',')}</div>
-      <button onClick={() => set([])}>Rest</button>
+      <button onClick={() => set([])}>Reset</button>
       <button onClick={() => push(Date.now())}>Push</button>
     </div>
   );
 };
 
 storiesOf('useList', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useList.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

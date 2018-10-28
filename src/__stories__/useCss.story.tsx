@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useCss} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const className = useCss({
@@ -19,6 +20,7 @@ const Demo = () => {
 };
 
 storiesOf('useCss', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useCss.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )
