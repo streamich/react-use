@@ -31,7 +31,7 @@
 ## Reference
 
 - [__Sensors__](./docs/Sensors.md)
-   - [`useBattery`](./docs/useBattery.md) &mdash; tracks device battery state. [![](https://img.shields.io/badge/demo-%20🚀-green.svg)](https://codesandbox.io/s/qlvn662zww)
+   - [`useBattery`](./docs/useBattery.md) &mdash; tracks device battery state. [![][img-demo]](https://codesandbox.io/s/qlvn662zww)
    - [`useGeolocation`](./docs/useGeolocation.md) &mdash; tracks geo location state of user's device.
    - [`useHover`](./docs/useHover.md) &mdash; tracks mouse hover state of some element.
    - [`useIdle`](./docs/useIdle.md) &mdash; tracks whether user is being inactive.
@@ -42,12 +42,12 @@
    - [`useNetwork`](./docs/useNetwork.md) &mdash; tracks state of user's internet connection.
    - [`useOrientation`](./docs/useOrientation.md) &mdash; tracks state of device's screen orientation.
    - [`useSize`](./docs/useSize.md) &mdash; tracks some HTML element's dimensions.
-   - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions. [![](https://img.shields.io/badge/demo-%20🚀-green.svg)](https://codesandbox.io/s/m7ln22668)
+   - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions. [![][img-demo]](https://codesandbox.io/s/m7ln22668)
      <br/>
      <br/>
 - [__UI__](./docs/UI.md)
-   - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls. [![](https://img.shields.io/badge/demo-%20🚀-green.svg)](https://codesandbox.io/s/5v7q47knwl)
-   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![](https://img.shields.io/badge/demo-%20🚀-green.svg)](https://codesandbox.io/s/n090mqz69m)
+   - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls. [![][img-demo]](https://codesandbox.io/s/5v7q47knwl)
+   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![][img-demo]](https://codesandbox.io/s/n090mqz69m)
      <br/>
      <br/>
 - [__Animations__](./docs/Animations.md)
@@ -90,3 +90,6 @@
 ## License
 
 [Unlicense](./LICENSE) &mdash; public domain.
+
+
+[img-demo]: https://img.shields.io/badge/demo-%20%20%20%F0%9F%9A%80-green.svg
