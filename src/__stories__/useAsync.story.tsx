@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useAsync} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const fn = () => new Promise((resolve) => {
   setTimeout(() => {
@@ -22,6 +23,7 @@ const Demo = () => {
 };
 
 storiesOf('useAsync', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useAsync.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

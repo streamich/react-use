@@ -12,10 +12,11 @@
     "start": "yarn storybook",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "clean": "rimraf lib",
+    "clean": "rimraf lib storybook-static",
     "storybook": "start-storybook -p 6008",
     "storybook:build": "build-storybook",
-    "storybook:upload": "gh-pages -d storybook-static"
+    "storybook:upload": "gh-pages -d storybook-static",
+    "storybook:clean": "rimraf storybook-static"
   },
   "author": "@streamich",
   "license": "Unlicense",

@@ -14,7 +14,7 @@ const Demo = () => {
   return (
     <div>
       <div>{list.join(',')}</div>
-      <button onClick={() => set([])}>Rest</button>
+      <button onClick={() => set([])}>Reset</button>
       <button onClick={() => push(Date.now())}>Push</button>
     </div>
   );

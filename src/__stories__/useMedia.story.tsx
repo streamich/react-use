@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useMedia} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const isWide = useMedia('(min-width: 480px)');
@@ -13,6 +14,7 @@ const Demo = () => {
 };
 
 storiesOf('useMedia', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useMedia.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useMount} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   useMount(() => console.log('MOUNTED'));
@@ -8,6 +9,7 @@ const Demo = () => {
 };
 
 storiesOf('useMount', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useMount.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

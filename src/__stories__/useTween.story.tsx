@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useTween} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const t = useTween();
@@ -13,6 +14,7 @@ const Demo = () => {
 };
 
 storiesOf('useTween', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useTween.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

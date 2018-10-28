@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useMediaDevices} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const state = useMediaDevices();
@@ -13,6 +14,7 @@ const Demo = () => {
 };
 
 storiesOf('useMediaDevices', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useMediaDevices.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )

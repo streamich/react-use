@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useRaf} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const frames = useRaf(5000, 1000);
@@ -13,6 +14,7 @@ const Demo = () => {
 };
 
 storiesOf('useRaf', module)
-  .add('Example', () =>
+  .add('Docs', () => <ShowDocs md={require('../../docs/useRaf.md')} />)
+  .add('Demo', () =>
     <Demo/>
   )
