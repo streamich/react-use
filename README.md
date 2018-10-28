@@ -46,7 +46,7 @@
      <br/>
      <br/>
 - [__UI__](./docs/UI.md)
-   - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes controls.
+   - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls.
      <br/>
      <br/>
 - [__Animations__](./docs/Animations.md)

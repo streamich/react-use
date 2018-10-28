@@ -45,13 +45,13 @@ const [audio, state, controls, ref] = useAudio(props);
 ```
 
 `audio` is React's `<audio>` element that you have to insert somewhere in your
-render tree, for example
+render tree, for example:
 
 ```jsx
 <div>{audio}</div>
 ```
 
-`state` represents the state of the audio and the the following shape
+`state` tracks the state of the audio and has the following shape:
 
 ```json
 {
@@ -70,7 +70,7 @@ render tree, for example
 ```
 
 `controls` is a list collection of methods that allow you to control the
-playback of the audio, it has the following interface
+playback of the audio, it has the following interface:
 
 ```ts
 interface AudioControls {
@@ -82,5 +82,8 @@ interface AudioControls {
   seek: (time: number) => void;
 }
 ```
+
+`ref` is a React reference to HTML `<audio>` element, you can access the element by
+`ref.current`, note that it may be `null`.
 
 And finally, `props` &mdash; all props that `<audio>` accepts.
