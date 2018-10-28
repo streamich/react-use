@@ -67,6 +67,13 @@ jobs:
       - store_artifacts:
           path: ~/repo/storybook-static
       - *Commit_Status_Storybook
+      - run:
+          name: Setup GitHub
+          command: |
+            git config --global user.email "streamich@gmail.com"
+            git config --global user.name "streamich"
+            git remote rm origin
+            git remote add origin https://${GITHUB_TOKEN}@github.com/streamich/react-use
       - *Upload_Storybook
       - *Release
 
