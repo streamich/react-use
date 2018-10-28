@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/streamich/react-use.git/compare/v1.0.0...v2.0.0) (2018-10-28)
+
+
+### Features
+
+* 🎸 change API for useToggle hook ([#16](https://github.com/streamich/react-use.git/issues/16)) ([5a6da18](https://github.com/streamich/react-use.git/commit/5a6da18))
+
+
+### BREAKING CHANGES
+
+* useToggle interface changed
+
 # 1.0.0 (2018-10-28)
 
 
