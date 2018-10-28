@@ -2,6 +2,8 @@
 
 Creates `<audio>` element, tracks its state and exposes playback conrols.
 
+[![](https://img.shields.io/badge/demo-useAudio-green.svg)](https://codesandbox.io/s/5v7q47knwl)
+
 
 ## Usage
 

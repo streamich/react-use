@@ -2,6 +2,8 @@
 
 React sensor hook that tracks batter status.
 
+[![](https://img.shields.io/badge/demo-useBattery-green.svg)](https://codesandbox.io/s/qlvn662zww)
+
 
 ## Usage
 
