@@ -2,15 +2,22 @@ import {useState} from './react';
 
 export type UseToggle = (state: boolean) => [
   boolean, // state
-  () => void, // toggle
-  (state: boolean) => void // set
+  (nextValue?: boolean) => void // toggle
 ];
 
 const useToggle: UseToggle = state => {
-  const [on, set] = useState<boolean>(state);
-  const toggle = () => set(!on);
+  const [value, setValue] = useState<boolean>(state);
 
-  return [on, toggle, set];
+  const toggle = (nextValue?: boolean) => {
+    if (typeof nextValue === 'boolean') {
+      setValue(nextValue);
+      return;
+    }
+
+    setValue(!value)
+  };
+
+  return [value, toggle];
 };
 
 export default useToggle;
