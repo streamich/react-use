@@ -72,7 +72,7 @@
      <br/>
      <br/>
 - [__State__](./docs/State.md)
-   - [`useSetState`](./docs/useSetState.md) &mdash; creates `setState` method which works like `this.setState`.
+   - [`useSetState`](./docs/useSetState.md) &mdash; creates `setState` method which works like `this.setState`. [![][img-demo]](https://codesandbox.io/s/n75zqn1xp0)
    - [`useToggle`](./docs/useToggle.md) &mdash; tracks state of a boolean.
    - [`useCounter`](./docs/useCounter.md) &mdash; tracks state of a number.
    - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
