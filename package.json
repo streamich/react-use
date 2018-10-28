@@ -10,7 +10,7 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "start": "yarn storybook",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo hmm...",
     "build": "tsc",
     "clean": "rimraf lib storybook-static",
     "storybook": "start-storybook -p 6008",
