@@ -23,7 +23,7 @@
   "license": "Unlicense",
   "repository": {
     "type": "git",
-    "url": "https://github.com/streamich/react-use.git"
+    "url": "https://github.com/streamich/react-use"
   },
   "bugs": {
     "url": "https://github.com/streamich/react-use/issues"
