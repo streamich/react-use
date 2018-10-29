@@ -1,6 +1,7 @@
 # `createMemo`
 
-A factory that returns a React hook, which is memoized for each set of arguments passed to it.
+Hook factory, receives a function to be memoized, returns a memoized React hook,
+which receives the same arguments and returns the same result as the original function.
 
 
 ## Usage
@@ -25,4 +26,11 @@ const Demo = () => {
     </div>
   );
 };
+```
+
+
+## Reference
+
+```js
+const useMemoFn = createMemo(fn);
 ```
