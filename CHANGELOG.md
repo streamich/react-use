@@ -1,3 +1,15 @@
+# [3.1.0](https://github.com/streamich/react-use/compare/v3.0.0...v3.1.0) (2018-10-29)
+
+
+### Features
+
+* 🎸 add useGetSetState ([dcd1013](https://github.com/streamich/react-use/commit/dcd1013))
+
+
+### Performance Improvements
+
+* ⚡️ wrape useGetSetState callbacks in useCallback ([3c1e57d](https://github.com/streamich/react-use/commit/3c1e57d))
+
 # [3.0.0](https://github.com/streamich/react-use/compare/v2.3.0...v3.0.0) (2018-10-29)
 
 
