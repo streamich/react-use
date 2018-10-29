@@ -1,3 +1,5 @@
+> __WARNING:__ Don't use this, works only for functional components.
+
 # `useRenderProp`
 
 Extracts a value from render-prop or FaCC component.
