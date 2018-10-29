@@ -21,6 +21,7 @@ import useMediaDevices from './useMediaDevices';
 import useMotion from './useMotion';
 import useMount from './useMount';
 import useNetwork from './useNetwork';
+import useNumber from './useNumber';
 import useObservable from './useObservable';
 import useOrientation from './useOrientation';
 import useRaf from './useRaf';
@@ -60,6 +61,7 @@ export {
   useMotion,
   useMount,
   useNetwork,
+  useNumber,
   useObservable,
   useOrientation,
   useRaf,

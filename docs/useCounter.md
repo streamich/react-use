@@ -2,6 +2,8 @@
 
 React state hook that tracks a numeric value.
 
+`useNumber` is an alias for `useCounter`.
+
 
 ## Usage
 
