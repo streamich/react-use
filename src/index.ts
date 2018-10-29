@@ -28,6 +28,7 @@ import useObservable from './useObservable';
 import useOrientation from './useOrientation';
 import useOutsideClick from './useOutsideClick';
 import useRaf from './useRaf';
+import useRenderProp from './useRenderProp';
 import useSetState from './useSetState';
 import useSize from './useSize';
 import useSpeech from './useSpeech';
@@ -72,6 +73,7 @@ export {
   useOrientation,
   useOutsideClick,
   useRaf,
+  useRenderProp,
   useSetState,
   useSize,
   useSpeech,
