@@ -1,3 +1,5 @@
+> __WARNING:__ Don't use this, works only for functional components.
+
 # `useAdopt`
 
 Extracts a values from multiple render-prop or FaCC components.
