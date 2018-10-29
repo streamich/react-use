@@ -1,3 +1,11 @@
+# [2.2.0](https://github.com/streamich/react-use/compare/v2.1.0...v2.2.0) (2018-10-29)
+
+
+### Features
+
+* 🎸 add useGetSet hook ([bfc30b9](https://github.com/streamich/react-use/commit/bfc30b9))
+* 🎸 add useUpdate hook ([c00f308](https://github.com/streamich/react-use/commit/c00f308))
+
 # [2.1.0](https://github.com/streamich/react-use.git/compare/v2.0.0...v2.1.0) (2018-10-28)
 
 
