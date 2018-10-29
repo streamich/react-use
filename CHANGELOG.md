@@ -1,3 +1,16 @@
+# [4.0.0](https://github.com/streamich/react-use/compare/v3.1.0...v4.0.0) (2018-10-29)
+
+
+### Features
+
+* 🎸 add useNumber alias ([a58a4a7](https://github.com/streamich/react-use/commit/a58a4a7))
+* 🎸 improve useCounter interface ([395e82b](https://github.com/streamich/react-use/commit/395e82b))
+
+
+### BREAKING CHANGES
+
+* useCounter interface changed
+
 # [3.1.0](https://github.com/streamich/react-use/compare/v3.0.0...v3.1.0) (2018-10-29)
 
 
