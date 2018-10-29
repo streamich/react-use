@@ -9,8 +9,8 @@ const useToggle: UseToggle = state => {
   const [value, setValue] = useState<boolean>(state);
 
   const toggle = (nextValue?: boolean) => {
-    if (typeof nextValue === 'boolean') {
-      setValue(nextValue);
+    if (typeof nextValue !== 'undefined') {
+      setValue(!!nextValue);
       return;
     }
 
