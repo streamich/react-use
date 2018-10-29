@@ -1,4 +1,5 @@
 import createMemo from './createMemo';
+import useAdopt from './useAdopt';
 import useAsync from './useAsync';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
@@ -44,6 +45,7 @@ import useWindowSize from './useWindowSize';
 
 export {
   createMemo,
+  useAdopt,
   useAsync,
   useAudio,
   useBattery,

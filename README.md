@@ -77,6 +77,7 @@
     <br/>
 - [**State**](./docs/State.md)
   - [`createMemo`](./docs/createMemo.md) &mdash; factory of memoized hooks.
+  - [`useAdopt`](./docs/useAdopt.md) &mdash; extract value from multiple render-prop (or FaCC) components.
   - [`useCallbag`](./docs/useCallbag.md) &mdash; tracks latest value of a callbag.
   - [`useGetSet`](./docs/useGetSet.md) &mdash; returns state getter `get()` instead of raw state.
   - [`useGetSetState`](./docs/useGetSetState.md) &mdash; as if [`useGetSet`](./docs/useGetSet.md) and [`useSetState`](./docs/useSetState.md) had a baby.
