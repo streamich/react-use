@@ -16,7 +16,7 @@
     <br />
     Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
     <br />
-    <em>Port of</em> <a href="https://github.com/streamich/libreact"><code>libreact</code></a> <em>to React Hooks. See <a href="http://streamich.github.io/react-use">demos</a>.</em>
+    <em>Port of</em> <a href="https://github.com/streamich/libreact"><code>libreact</code></a>. <em>See <a href="http://streamich.github.io/react-use">demos</a>.</em>
   </sup>
   <br />
   <br />
@@ -47,7 +47,8 @@
     <br/>
     <br/>
 - [**UI**](./docs/UI.md)
-  - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls. [![][img-demo]](https://codesandbox.io/s/5v7q47knwl)
+  - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls. [![][img-demo]](https://codesandbox.io/s/2o4lo6rqy)
+  - [`useOutsideClick`](./docs/useOutsideClick.md) &mdash; triggers callback when user clicks outside target area.
   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![][img-demo]](https://codesandbox.io/s/n090mqz69m)
   - [`useVideo`](./docs/useVideo.md) &mdash; plays video, tracks its state, and exposes playback controls.
     <br/>

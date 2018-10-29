@@ -9512,6 +9512,11 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+use-onclickoutside@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/use-onclickoutside/-/use-onclickoutside-0.1.0.tgz#bc1998fe36728b22a4b9b28c95fbb468b3033e84"
+  integrity sha512-yDtIbzU38VXkwZaCbDm9Yy+j5n5b4roBJw98iauFPJm2VWVa0xRKFYP8fz5OvICFizKAtgICwPVHJ3Or2/tIOA==
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
