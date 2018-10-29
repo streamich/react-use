@@ -25,6 +25,7 @@ import useNetwork from './useNetwork';
 import useNumber from './useNumber';
 import useObservable from './useObservable';
 import useOrientation from './useOrientation';
+import useOutsideClick from './useOutsideClick';
 import useRaf from './useRaf';
 import useSetState from './useSetState';
 import useSize from './useSize';
@@ -67,6 +68,7 @@ export {
   useNumber,
   useObservable,
   useOrientation,
+  useOutsideClick,
   useRaf,
   useSetState,
   useSize,
