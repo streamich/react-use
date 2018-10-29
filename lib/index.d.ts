@@ -1,6 +1,7 @@
 import useAsync from './useAsync';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
+import useBoolean from './useBoolean';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useFavicon from './useFavicon';
@@ -33,4 +34,4 @@ import useTween from './useTween';
 import useUnmount from './useUnmount';
 import useUpdate from './useUpdate';
 import useWindowSize from './useWindowSize';
-export { useAsync, useAudio, useBattery, useCounter, useCss, useFavicon, useGeolocation, useGetSet, useHover, useIdle, useLifecycles, useList, useLocalStorage, useLocation, useLogger, useMap, useMedia, useMediaDevices, useMotion, useMount, useNetwork, useObservable, useOrientation, useRaf, useSetState, useSize, useSpeech, useSpring, useTimeout, useTitle, useToggle, useTween, useUnmount, useUpdate, useWindowSize, };
+export { useAsync, useAudio, useBattery, useBoolean, useCounter, useCss, useFavicon, useGeolocation, useGetSet, useHover, useIdle, useLifecycles, useList, useLocalStorage, useLocation, useLogger, useMap, useMedia, useMediaDevices, useMotion, useMount, useNetwork, useObservable, useOrientation, useRaf, useSetState, useSize, useSpeech, useSpring, useTimeout, useTitle, useToggle, useTween, useUnmount, useUpdate, useWindowSize, };
