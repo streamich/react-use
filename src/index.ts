@@ -1,6 +1,7 @@
 import useAsync from './useAsync';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
+import useBoolean from './useBoolean';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useFavicon from './useFavicon';
@@ -38,6 +39,7 @@ export {
   useAsync,
   useAudio,
   useBattery,
+  useBoolean,
   useCounter,
   useCss,
   useFavicon,
