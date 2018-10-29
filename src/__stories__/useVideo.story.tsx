@@ -4,10 +4,9 @@ import {useVideo} from '..';
 import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
-  const [video, state, controls, ref] = useVideo({
-    src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-    autoPlay: true,
-  });
+  const [video, state, controls, ref] = useVideo(
+    <video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" autoPlay />
+  );
 
   return (
     <div>

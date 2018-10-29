@@ -38,8 +38,9 @@ const Demo = () => {
 
 ## Reference
 
-```ts
+```jsx
 const [audio, state, controls, ref] = useAudio(props);
+const [audio, state, controls, ref] = useAudio(<audio {...props}/>);
 ```
 
 `audio` is React's `<audio>` element that you have to insert somewhere in your

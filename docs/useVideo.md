@@ -9,10 +9,9 @@ Creates `<video>` element, tracks its state and exposes playback controls.
 import {useVideo} from 'react-use';
 
 const Demo = () => {
-  const [video, state, controls, ref] = useVideo({
-    src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-    autoPlay: true,
-  });
+  const [video, state, controls, ref] = useVideo(
+    <video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" autoPlay />
+  );
 
   return (
     <div>
@@ -38,8 +37,9 @@ const Demo = () => {
 
 ## Reference
 
-```ts
-const [video, state, controls, ref] = useAudio(props);
+```jsx
+const [video, state, controls, ref] = useVideo(props);
+const [video, state, controls, ref] = useVideo(<video {...props}/>);
 ```
 
 `video` is React's `<video>` element that you have to insert somewhere in your

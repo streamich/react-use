@@ -26,7 +26,17 @@ export interface HTMLMediaControls {
 }
 
 const createHTMLMediaHook = (tag: 'audio' | 'video') => {
-  const hook = (props: HTMLMediaProps): [React.ReactElement<HTMLMediaProps>, HTMLMediaState, HTMLMediaControls, ReactRef<HTMLAudioElement | null>] => {
+  const hook = (elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>): [React.ReactElement<HTMLMediaProps>, HTMLMediaState, HTMLMediaControls, ReactRef<HTMLAudioElement | null>] => {
+    let element: React.ReactElement<any> | undefined;
+    let props: HTMLMediaProps;
+
+    if (React.isValidElement(elOrProps)) {
+      element = elOrProps;
+      props = element.props;
+    } else {
+      props = elOrProps as HTMLMediaProps;
+    }
+
     const [state, setState] = useSetState<HTMLMediaState>({
       buffered: [],
       time: 0,
@@ -77,17 +87,32 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
       setState({buffered: parseTimeRanges(el.buffered)});
     };
 
-    const element = React.createElement(tag, {
-      controls: false,
-      ...props,
-      ref,
-      onPlay: wrapEvent(props.onPlay, onPlay),
-      onPause: wrapEvent(props.onPause, onPause),
-      onVolumeChange: wrapEvent(props.onVolumeChange, onVolumeChange),
-      onDurationChange: wrapEvent(props.onDurationChange, onDurationChange),
-      onTimeUpdate: wrapEvent(props.onTimeUpdate, onTimeUpdate),
-      onProgress: wrapEvent(props.onProgress, onProgress),
-    });
+    if (element) {
+      element = React.cloneElement(element, {
+        controls: false,
+        ...props,
+        ref,
+        onPlay: wrapEvent(props.onPlay, onPlay),
+        onPause: wrapEvent(props.onPause, onPause),
+        onVolumeChange: wrapEvent(props.onVolumeChange, onVolumeChange),
+        onDurationChange: wrapEvent(props.onDurationChange, onDurationChange),
+        onTimeUpdate: wrapEvent(props.onTimeUpdate, onTimeUpdate),
+        onProgress: wrapEvent(props.onProgress, onProgress),
+      });
+    } else {
+      element = React.createElement(tag, {
+        controls: false,
+        ...props,
+        ref,
+        onPlay: wrapEvent(props.onPlay, onPlay),
+        onPause: wrapEvent(props.onPause, onPause),
+        onVolumeChange: wrapEvent(props.onVolumeChange, onVolumeChange),
+        onDurationChange: wrapEvent(props.onDurationChange, onDurationChange),
+        onTimeUpdate: wrapEvent(props.onTimeUpdate, onTimeUpdate),
+        onProgress: wrapEvent(props.onProgress, onProgress),
+      } as any); // TODO: fix this typing.
+    }
+
 
     // Some browsers return `Promise` on `.play()` and may throw errors
     // if one tries to execute another `.play()` or `.pause()` while that
