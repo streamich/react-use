@@ -71,6 +71,7 @@
     <br/>
     <br/>
 - [**State**](./docs/State.md)
+  - [`useGetSet`](./docs/useGetSet.md) &mdash; returns state getter `get()` instead of raw state.
   - [`useObservable`](./docs/useObservable.md) &mdash; tracks latest value of an `Observable`.
   - [`useSetState`](./docs/useSetState.md) &mdash; creates `setState` method which works like `this.setState`. [![][img-demo]](https://codesandbox.io/s/n75zqn1xp0)
   - [`useToggle`](./docs/useToggle.md) &mdash; tracks state of a boolean.
