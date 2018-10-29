@@ -54,6 +54,7 @@
   - [`useSpring`](./docs/useSpring.md) &mdash; interpolates number over time according to spring dynamics.
   - [`useTimeout`](./docs/useTimeout.md) &mdash; returns true after a timeout.
   - [`useTween`](./docs/useTween.md) &mdash; re-renders component, while tweening a number from 0 to 1. [![][img-demo]](https://codesandbox.io/s/52990wwzyl)
+  - [`useUpdate`](./docs/useUpdate.md) &mdash; returns a callback, which re-renders component when called.
     <br/>
     <br/>
 - [**Side-effects**](./docs/Side-effects.md)
@@ -71,6 +72,7 @@
     <br/>
     <br/>
 - [**State**](./docs/State.md)
+  - [`useGetSet`](./docs/useGetSet.md) &mdash; returns state getter `get()` instead of raw state.
   - [`useObservable`](./docs/useObservable.md) &mdash; tracks latest value of an `Observable`.
   - [`useSetState`](./docs/useSetState.md) &mdash; creates `setState` method which works like `this.setState`. [![][img-demo]](https://codesandbox.io/s/n75zqn1xp0)
   - [`useToggle`](./docs/useToggle.md) &mdash; tracks state of a boolean.

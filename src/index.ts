@@ -5,6 +5,7 @@ import useCounter from './useCounter';
 import useCss from './useCss';
 import useFavicon from './useFavicon';
 import useGeolocation from './useGeolocation';
+import useGetSet from './useGetSet';
 import useHover from './useHover';
 import useIdle from './useIdle';
 import useLifecycles from './useLifecycles';
@@ -30,6 +31,7 @@ import useTitle from './useTitle';
 import useToggle from './useToggle';
 import useTween from './useTween';
 import useUnmount from './useUnmount';
+import useUpdate from './useUpdate';
 import useWindowSize from './useWindowSize';
 
 export {
@@ -40,6 +42,7 @@ export {
   useCss,
   useFavicon,
   useGeolocation,
+  useGetSet,
   useHover,
   useIdle,
   useLifecycles,
@@ -65,5 +68,6 @@ export {
   useToggle,
   useTween,
   useUnmount,
+  useUpdate,
   useWindowSize,
 };
