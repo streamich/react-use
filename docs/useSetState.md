@@ -8,7 +8,7 @@ current state.
 ## Usage
 
 ```jsx
-import {useuseSetStateRaf} from 'react-use';
+import {useSetState} from 'react-use';
 
 const Demo = () => {
   const [state, setState] = useSetState({});
