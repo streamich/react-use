@@ -1,22 +1,22 @@
-# `useAudio`
+# `useVideo`
 
-Creates `<audio>` element, tracks its state and exposes playback controls.
+Creates `<video>` element, tracks its state and exposes playback controls.
 
 
 ## Usage
 
 ```jsx
-import {useAudio} from 'react-use';
+import {useVideo} from 'react-use';
 
 const Demo = () => {
-  const [audio, state, controls, ref] = useAudio({
-    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+  const [video, state, controls, ref] = useVideo({
+    src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
     autoPlay: true,
   });
 
   return (
     <div>
-      {audio}
+      {video}
       <pre>{JSON.stringify(state, null, 2)}</pre>
       <button onClick={controls.pause}>Pause</button>
       <button onClick={controls.play}>Play</button>
@@ -39,17 +39,17 @@ const Demo = () => {
 ## Reference
 
 ```ts
-const [audio, state, controls, ref] = useAudio(props);
+const [video, state, controls, ref] = useAudio(props);
 ```
 
-`audio` is React's `<audio>` element that you have to insert somewhere in your
+`video` is React's `<video>` element that you have to insert somewhere in your
 render tree, for example:
 
 ```jsx
-<div>{audio}</div>
+<div>{video}</div>
 ```
 
-`state` tracks the state of the audio and has the following shape:
+`state` tracks the state of the video and has the following shape:
 
 ```json
 {
@@ -68,7 +68,7 @@ render tree, for example:
 ```
 
 `controls` is a list collection of methods that allow you to control the
-playback of the audio, it has the following interface:
+playback of the video, it has the following interface:
 
 ```ts
 interface AudioControls {
@@ -81,7 +81,7 @@ interface AudioControls {
 }
 ```
 
-`ref` is a React reference to HTML `<audio>` element, you can access the element by
+`ref` is a React reference to HTML `<video>` element, you can access the element by
 `ref.current`, note that it may be `null`.
 
-And finally, `props` &mdash; all props that `<audio>` accepts.
+And finally, `props` &mdash; all props that `<video>` accepts.

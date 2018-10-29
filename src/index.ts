@@ -36,6 +36,7 @@ import useToggle from './useToggle';
 import useTween from './useTween';
 import useUnmount from './useUnmount';
 import useUpdate from './useUpdate';
+import useVideo from './useVideo';
 import useWindowSize from './useWindowSize';
 
 export {
@@ -77,5 +78,6 @@ export {
   useTween,
   useUnmount,
   useUpdate,
+  useVideo,
   useWindowSize,
 };
