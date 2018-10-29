@@ -25,9 +25,11 @@
   <pre>npm i <a href="https://www.npmjs.com/package/react-use">react-use</a></pre>
   <br />
   <br />
+  <br />
+  <br />
+  <br />
 </div>
 
-## Reference
 
 - [**Sensors**](./docs/Sensors.md)
   - [`useBattery`](./docs/useBattery.md) &mdash; tracks device battery state. [![][img-demo]](https://codesandbox.io/s/qlvn662zww)
@@ -81,6 +83,10 @@
   - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
     <br/>
     <br/>
+
+<br />
+<br />
+<br />
 
 ## Usage
 
