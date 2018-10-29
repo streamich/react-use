@@ -74,6 +74,7 @@
     <br/>
     <br/>
 - [**State**](./docs/State.md)
+  - [`createMemo`](./docs/createMemo.md) &mdash; factory of memoized hooks.
   - [`useGetSet`](./docs/useGetSet.md) &mdash; returns state getter `get()` instead of raw state.
   - [`useGetSetState`](./docs/useGetSetState.md) &mdash; as if [`useGetSet`](./docs/useGetSet.md) and [`useSetState`](./docs/useSetState.md) had a baby.
   - [`useObservable`](./docs/useObservable.md) &mdash; tracks latest value of an `Observable`.
