@@ -1,4 +1,4 @@
-import {useRef} from './react';
+import {useRef, useCallback} from './react';
 import useUpdate from './useUpdate';
 
 const useGetSetState = <T extends object>(initialState: T = {} as T): [() => T, (patch: Partial<T>) => void]=> {
@@ -10,8 +10,8 @@ const useGetSetState = <T extends object>(initialState: T = {} as T): [() => T, 
 
   const update = useUpdate();
   const state = useRef<T>({...(initialState as object)} as T);
-  const get = () => state.current;
-  const set = (patch: Partial<T>) => {
+  const get = useCallback(() => state.current, []);
+  const set = useCallback((patch: Partial<T>) => {
     if (!patch) return;
     if (process.env.NODE_ENV !== 'production') {
       if (typeof patch !== 'object') {
@@ -20,7 +20,7 @@ const useGetSetState = <T extends object>(initialState: T = {} as T): [() => T, 
     }
     Object.assign(state.current, patch);
     update();
-  };
+  }, []);
 
   return [get, set];
 };
