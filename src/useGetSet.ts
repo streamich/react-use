@@ -1,13 +1,14 @@
-import {useState, useRef} from './react';
+import {useRef} from './react';
+import useUpdate from './useUpdate';
 
 const useGetSet = <T>(initialValue: T): [() => T, (value: T) => void] => {
-  const [_, update] = useState(undefined);
+  const update = useUpdate();
   let state = useRef(initialValue);
 
   const get = () => state.current;
   const set = (value: T) => {
     state.current = value;
-    update(undefined);
+    update();
   };
 
   return [get, set];
