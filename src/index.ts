@@ -3,6 +3,7 @@ import useAsync from './useAsync';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useBoolean from './useBoolean';
+import useCallbag from './useCallbag';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useFavicon from './useFavicon';
@@ -46,6 +47,7 @@ export {
   useAudio,
   useBattery,
   useBoolean,
+  useCallbag,
   useCounter,
   useCss,
   useFavicon,
