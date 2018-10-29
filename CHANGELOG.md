@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/streamich/react-use/compare/v4.3.0...v4.4.0) (2018-10-29)
+
+
+### Features
+
+* 🎸 add useCallbag hook ([ead142c](https://github.com/streamich/react-use/commit/ead142c))
+
 # [4.3.0](https://github.com/streamich/react-use/compare/v4.2.0...v4.3.0) (2018-10-29)
 
 
