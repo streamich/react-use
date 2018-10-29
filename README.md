@@ -79,7 +79,7 @@
   - [`useObservable`](./docs/useObservable.md) &mdash; tracks latest value of an `Observable`.
   - [`useSetState`](./docs/useSetState.md) &mdash; creates `setState` method which works like `this.setState`. [![][img-demo]](https://codesandbox.io/s/n75zqn1xp0)
   - [`useToggle` and `useBoolean`](./docs/useToggle.md) &mdash; tracks state of a boolean.
-  - [`useCounter` as `useNumber`](./docs/useCounter.md) &mdash; tracks state of a number.
+  - [`useCounter` and `useNumber`](./docs/useCounter.md) &mdash; tracks state of a number.
   - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
   - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
     <br/>
