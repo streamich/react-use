@@ -1,3 +1,16 @@
+# [3.0.0](https://github.com/streamich/react-use/compare/v2.3.0...v3.0.0) (2018-10-29)
+
+
+### Features
+
+* 🎸 accept any value type in useToggle and cast it to bool ([869f767](https://github.com/streamich/react-use/commit/869f767))
+
+
+### BREAKING CHANGES
+
+* now useToggle and useBoolean accept any value type and cast it to
+boolean.
+
 # [2.3.0](https://github.com/streamich/react-use/compare/v2.2.0...v2.3.0) (2018-10-29)
 
 
