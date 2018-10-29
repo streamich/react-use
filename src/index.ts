@@ -31,6 +31,7 @@ import useTitle from './useTitle';
 import useToggle from './useToggle';
 import useTween from './useTween';
 import useUnmount from './useUnmount';
+import useUpdate from './useUpdate';
 import useWindowSize from './useWindowSize';
 
 export {
@@ -67,5 +68,6 @@ export {
   useToggle,
   useTween,
   useUnmount,
+  useUpdate,
   useWindowSize,
 };
