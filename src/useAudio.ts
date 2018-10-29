@@ -48,7 +48,7 @@ const useAudio = (props: AudioProps): [React.ReactElement<AudioProps>, AudioStat
 
   const onPlay = () => setState({isPlaying: true});
   const onPause = () => setState({isPlaying: false});
-  const onVolumeChange = (event) => {
+  const onVolumeChange = () => {
     const el = ref.current;
     if (!el) return;
     setState({
@@ -56,7 +56,7 @@ const useAudio = (props: AudioProps): [React.ReactElement<AudioProps>, AudioStat
       volume: el.volume,
     });
   };
-  const onDurationChange = (event) => {
+  const onDurationChange = () => {
     const el = ref.current;
     if (!el) return;
     const {duration, buffered} = el;
@@ -70,7 +70,7 @@ const useAudio = (props: AudioProps): [React.ReactElement<AudioProps>, AudioStat
     if (!el) return;
     setState({time: el.currentTime});
   };
-  const onProgress = (event) => {
+  const onProgress = () => {
     const el = ref.current;
     if (!el) return;
     setState({buffered: parseTimeRanges(el.buffered)});
@@ -102,7 +102,7 @@ const useAudio = (props: AudioProps): [React.ReactElement<AudioProps>, AudioStat
       if (!lockPlay) {
         const promise = el.play();
         const isPromise = typeof promise === 'object';
-  
+
         if (isPromise) {
           lockPlay = true;
           const resetLock = () => {
@@ -152,14 +152,14 @@ const useAudio = (props: AudioProps): [React.ReactElement<AudioProps>, AudioStat
     if (!el) {
       if (process.env.NODE_ENV !== 'production') {
         console.error(
-          'useAudio() ref to <audio> element is empty at mount. ' + 
+          'useAudio() ref to <audio> element is empty at mount. ' +
           'It seem you have not rendered the audio element, which is ' +
           'returns as the first argument const [audio] = useAudio(...).'
         );
       }
       return;
     }
-    
+
     // Start media, if autoPlay requested.
     if (props.autoPlay && el.paused) {
       controls.play();

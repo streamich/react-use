@@ -7,6 +7,7 @@ import useCss from './useCss';
 import useFavicon from './useFavicon';
 import useGeolocation from './useGeolocation';
 import useGetSet from './useGetSet';
+import useGetSetState from './useGetSetState';
 import useHover from './useHover';
 import useIdle from './useIdle';
 import useLifecycles from './useLifecycles';
@@ -45,6 +46,7 @@ export {
   useFavicon,
   useGeolocation,
   useGetSet,
+  useGetSetState,
   useHover,
   useIdle,
   useLifecycles,
