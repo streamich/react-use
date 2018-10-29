@@ -1,4 +1,5 @@
 import createMemo from './createMemo';
+import useAdopt from './useAdopt';
 import useAsync from './useAsync';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
@@ -28,6 +29,7 @@ import useObservable from './useObservable';
 import useOrientation from './useOrientation';
 import useOutsideClick from './useOutsideClick';
 import useRaf from './useRaf';
+import useRenderProp from './useRenderProp';
 import useSetState from './useSetState';
 import useSize from './useSize';
 import useSpeech from './useSpeech';
@@ -43,6 +45,7 @@ import useWindowSize from './useWindowSize';
 
 export {
   createMemo,
+  useAdopt,
   useAsync,
   useAudio,
   useBattery,
@@ -72,6 +75,7 @@ export {
   useOrientation,
   useOutsideClick,
   useRaf,
+  useRenderProp,
   useSetState,
   useSize,
   useSpeech,
