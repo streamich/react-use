@@ -1,3 +1,11 @@
+# [4.2.0](https://github.com/streamich/react-use/compare/v4.1.0...v4.2.0) (2018-10-29)
+
+
+### Features
+
+* 🎸 add useVideo hook ([ff05419](https://github.com/streamich/react-use/commit/ff05419))
+* 🎸 allow to pass React <video> el in useVideo and useAudio ([8670c74](https://github.com/streamich/react-use/commit/8670c74))
+
 # [4.1.0](https://github.com/streamich/react-use/compare/v4.0.0...v4.1.0) (2018-10-29)
 
 
