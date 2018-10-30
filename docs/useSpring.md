@@ -29,6 +29,6 @@ const Demo = () => {
 
 
 ```js
-const currentValue = useSprgin(targetValue);
-const currentValue = useSprgin(targetValue, tension, friction);
+const currentValue = useSpring(targetValue);
+const currentValue = useSpring(targetValue, tension, friction);
 ```
