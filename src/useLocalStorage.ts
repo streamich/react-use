@@ -1,5 +1,5 @@
 import {useState, useEffect} from './react';
-// import {on, off} from './util';
+import {on, off} from './util';
 
 const isClient = typeof window === 'object';
 
