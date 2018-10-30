@@ -96,13 +96,23 @@
 <br />
 <br />
 
-## <sub>Usage</sub>
 
-- You need to have React `16.7.0-alpha.0` or later installed to use Hooks API.
-- You can import each hook individually `import useToggle from 'react-use/lib/useToggle'`.
+<h2 align="center"><sub>Usage</sub></h2>
 
-## <sub>License</sub>
+<p align="center">
+You need to have React <code>16.7.0-alpha.0</code> or later installed to use Hooks API.
+</p>
 
-[Unlicense](./LICENSE) &mdash; public domain.
+<p align="center">
+You can import each hook individually <code>import useToggle from 'react-use/lib/useToggle'</code>.
+</p>
+
+<br/>
+
+<h2 align="center"><sub>License</sub></h2>
+
+<p align="center">
+  <a href="./LICENSE">Unlicense</a> &mdash; public domain.
+</p>
 
 [img-demo]: https://img.shields.io/badge/demo-%20%20%20%F0%9F%9A%80-green.svg
