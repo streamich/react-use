@@ -13,28 +13,19 @@ const useAsync = <T>(fn: () => Promise<T>, args?) => {
   const memoized = useCallback(fn, args);
 
   useEffect(async () => {
-    let mounted = true;
-    
+   
     try {
       const value = await memoized();
-      if (mounted) {
-        set({
-          loading: false,
-          value,
-        });
-      }
+      set({
+        loading: false,
+        value,
+      });
     } catch (error) {
-      if (mounted) {
-        set({
-          loading: false,
-          error,
-        });
-      }
+      set({
+        loading: false,
+        error,
+      });
     }
-
-    return () => {
-      mounted = false;
-    };
   }, [memoized]);
 
   return state;
