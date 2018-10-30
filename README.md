@@ -96,12 +96,12 @@
 <br />
 <br />
 
-## Usage
+## <sub>Usage</sub>
 
 - You need to have React `16.7.0-alpha.0` or later installed to use Hooks API.
 - You can import each hook individually `import useToggle from 'react-use/lib/useToggle'`.
 
-## License
+## <sub>License</sub>
 
 [Unlicense](./LICENSE) &mdash; public domain.
 
