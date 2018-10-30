@@ -12,6 +12,7 @@ import useGeolocation from './useGeolocation';
 import useGetSet from './useGetSet';
 import useGetSetState from './useGetSetState';
 import useHover from './useHover';
+import useHoverDirty from './useHoverDirty';
 import useIdle from './useIdle';
 import useLifecycles from './useLifecycles';
 import useList from './useList';
@@ -58,6 +59,7 @@ export {
   useGetSet,
   useGetSetState,
   useHover,
+  useHoverDirty,
   useIdle,
   useLifecycles,
   useList,
