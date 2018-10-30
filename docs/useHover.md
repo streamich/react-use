@@ -35,7 +35,7 @@ const Demo = () => {
 ## Reference
 
 ```js
-const isHovering = useHover(reactElement);
-const isHovering = useHover((isHovering) => reactElement);
+const [newReactElement, isHovering] = useHover(reactElement);
+const [newReactElement, isHovering] = useHover((isHovering) => reactElement);
 const isHovering = useHoverDirty(ref);
 ```
