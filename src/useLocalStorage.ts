@@ -3,33 +3,39 @@ import {on, off} from './util';
 
 const isClient = typeof window === 'object';
 
-const useLocalStorage = (key: string): string | undefined => {
+const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, (value: T) => void] => {
   if (!isClient) {
-    return undefined;
+    return [initialValue as T, () => {}];
   }
 
-  const [state, setState] = useState<string | undefined>(undefined);
+  const [state, setState] = useState<T>(() => {
+    try {
+      const localStorageValue = localStorage.getItem(key);
+      if (typeof localStorageValue !== 'string') {
+        localStorage.setItem(key, raw ? String(initialValue) : JSON.stringify(initialValue));
+        return initialValue;
+      } else {
+        return raw ? localStorageValue : JSON.parse(localStorageValue || 'null');
+      }
+    } catch {
+      // If user is in private mode or has storage restriction
+      // localStorage can throw. JSON.parse and JSON.stringify
+      // cat throw, too.
+      return initialValue;
+    }
+  });
 
   useEffect(() => {
     try {
-      setState(localStorage[key]);
-    } catch {}
-
-    const onChange = (event) => {
-      console.log('onChange')
-      if (event.key === key) {
-        setState(event.newValue);
-      }
+      const serializedState = raw ? String(state) : JSON.stringify(state);
+      localStorage.setItem(key, serializedState);
+    } catch {
+      // If user is in private mode or has storage restriction
+      // localStorage can throw. Also JSON.stringify can throw.
     }
+  });
 
-    on(window, 'storage', onChange);
-
-    return () => {
-      off(window, 'storage', onChange);
-    };
-  }, [key]);
-
-  return state;
+  return [state, setState];
 };
 
 export default useLocalStorage;

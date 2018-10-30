@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type UseState = <T>(initialState: T) => [T, (newState: T) => void];
+export type UseState = <T>(initialState: T | (() => T)) => [T, (newState: T) => void];
 export const useState: UseState = (React as any).useState;
 
 export type UseEffect = (didUpdate: () => ((() => void) | void), params?: any[]) => void;
