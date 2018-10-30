@@ -1,3 +1,10 @@
+# [4.6.0](https://github.com/streamich/react-use/compare/v4.5.0...v4.6.0) (2018-10-30)
+
+
+### Features
+
+* 🎸 implement useLocalStorage without events ([d211722](https://github.com/streamich/react-use/commit/d211722))
+
 # [4.5.0](https://github.com/streamich/react-use/compare/v4.4.0...v4.5.0) (2018-10-29)
 
 
