@@ -3,10 +3,9 @@
 React UI sensor hooks that track if some element is being hovered
 by a mouse.
 
-`useHover` accepts a React element or a function that returns one,
+- `useHover` accepts a React element or a function that returns one,
 `useHoverDirty` accepts React ref.
-
-`useHover` sets react `onMouseEnter` and `onMouseLeave` events,
+- `useHover` sets react `onMouseEnter` and `onMouseLeave` events,
 `useHoverDirty` sets DOM `onmouseover` and `onmouseout` events.
 
 
