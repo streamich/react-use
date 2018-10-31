@@ -1,6 +1,6 @@
 # `useBattery`
 
-React sensor hook that tracks batter status.
+React sensor hook that tracks battery status.
 
 
 ## Usage
