@@ -32,4 +32,4 @@ useLocalStorage(key, initialValue, raw);
 
 - `key` &mdash; `localStorage` key to manage.
 - `initialValue` &mdash; initial value to set, if value in `localStorage` is empty.
-- `raq` &mdash; boolean, if set to `true`, hook will not attempt to JSON serialize stored values.
+- `raw` &mdash; boolean, if set to `true`, hook will not attempt to JSON serialize stored values.
