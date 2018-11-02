@@ -18,6 +18,15 @@ const Demo = () => {
       <pre>{JSON.stringify(state, null, 2)}</pre>
       <button onClick={() => setState({hello: 'world'})}>hello</button>
       <button onClick={() => setState({foo: 'bar'})}>foo</button>
+      <button 
+        onClick={() => {
+          setState((prevState) => ({
+            count: prevState.count === undefined ? 0 : prevState.count + 1,
+          }))
+        }}
+      >
+        count
+      </button>
     </div>
   );
 };
