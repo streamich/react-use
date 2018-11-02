@@ -1,3 +1,10 @@
+# [4.8.0](https://github.com/streamich/react-use/compare/v4.7.0...v4.8.0) (2018-11-02)
+
+
+### Features
+
+* allow useSetState setter to accept function ([bfd114a](https://github.com/streamich/react-use/commit/bfd114a))
+
 # [4.7.0](https://github.com/streamich/react-use/compare/v4.6.0...v4.7.0) (2018-10-30)
 
 
