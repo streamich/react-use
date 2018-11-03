@@ -21,7 +21,7 @@ const Demo = () => {
       <button 
         onClick={() => {
           setState((prevState) => ({
-            count: prevState.count === undefined ? 0 : prevState.count + 1,
+            count: (prevState.count || 0) + 1,
           }))
         }}
       >
@@ -30,4 +30,15 @@ const Demo = () => {
     </div>
   );
 };
+```
+
+## Reference
+
+```js
+const [state, setState] = useSetState({cnt: 0});
+
+setState({cnt: state.cnt + 1});
+setState((prevState) => ({
+  cnt: prevState + 1,
+}));
 ```
