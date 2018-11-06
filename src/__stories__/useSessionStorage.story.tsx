@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useSessionStorage} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const [value, setValue] = useSessionStorage('hello-key', 'foo');
