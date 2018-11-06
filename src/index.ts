@@ -43,6 +43,7 @@ import useUnmount from './useUnmount';
 import useUpdate from './useUpdate';
 import useVideo from './useVideo';
 import useWindowSize from './useWindowSize';
+import useWait from './useWait';
 
 export {
   createMemo,
@@ -90,4 +91,5 @@ export {
   useUpdate,
   useVideo,
   useWindowSize,
+  useWait
 };

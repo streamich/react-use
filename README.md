@@ -51,6 +51,7 @@
   - [`useOutsideClick`](./docs/useOutsideClick.md) &mdash; triggers callback when user clicks outside target area.
   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![][img-demo]](https://codesandbox.io/s/n090mqz69m)
   - [`useVideo`](./docs/useVideo.md) &mdash; plays video, tracks its state, and exposes playback controls.
+  - [`useWait`](./docs/useWait.md) &mdash; complex waiting management for UIs.
     <br/>
     <br/>
 - [**Animations**](./docs/Animations.md)
