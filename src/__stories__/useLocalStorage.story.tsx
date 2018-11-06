@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useLocalStorage} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const [value, setValue] = useLocalStorage('hello-key', 'foo');
@@ -15,7 +16,7 @@ const Demo = () => {
 };
 
 storiesOf('useLocalStorage', module)
-  // .add('Docs', () => <ShowDocs md={require('../../docs/useLocalStorage.md')} />)
+  .add('Docs', () => <ShowDocs md={require('../../docs/useLocalStorage.md')} />)
   .add('Demo', () =>
     <Demo/>
   )
