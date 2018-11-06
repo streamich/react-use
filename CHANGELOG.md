@@ -1,3 +1,11 @@
+# [4.9.0](https://github.com/streamich/react-use/compare/v4.8.0...v4.9.0) (2018-11-06)
+
+
+### Features
+
+* add useSessionStorage hook ([eca432a](https://github.com/streamich/react-use/commit/eca432a))
+* add useWait hook ([61c6058](https://github.com/streamich/react-use/commit/61c6058))
+
 # [4.8.0](https://github.com/streamich/react-use/compare/v4.7.0...v4.8.0) (2018-11-02)
 
 
