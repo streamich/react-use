@@ -31,6 +31,7 @@ import useOrientation from './useOrientation';
 import useOutsideClick from './useOutsideClick';
 import useRaf from './useRaf';
 import useRenderProp from './useRenderProp';
+import useSessionStorage from './useSessionStorage';
 import useSetState from './useSetState';
 import useSize from './useSize';
 import useSpeech from './useSpeech';
@@ -78,6 +79,7 @@ export {
   useOutsideClick,
   useRaf,
   useRenderProp,
+  useSessionStorage,
   useSetState,
   useSize,
   useSpeech,
