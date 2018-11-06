@@ -1,14 +1,44 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Storybook</title><style>html, body {
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }</style><script>try {
-    if (window.parent !== window) {
-      window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;
-      window.__VUE_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__VUE_DEVTOOLS_GLOBAL_HOOK__;
-    }
-  } catch (e) {
-    console.warn('unable to connect to parent frame for connecting dev tools');
-  }</script></head><body><div id="root"></div><script src="static/runtime~manager.9ffd8dd7b8642e4235e2.bundle.js"></script><script src="static/manager.b1c6c1f9dbc1f004a222.bundle.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="storybook-version" content="3.4.11">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <title>Storybook</title>
+    <style>
+        /*
+          When resizing panels, the drag event breaks if the cursor
+          moves over the iframe. Add the 'dragging' class to the body
+          at drag start and remove it when the drag ends.
+         */
+        .dragging iframe {
+            pointer-events: none;
+        }
+
+        /* Styling the fuzzy search box placeholders */
+        .searchBox::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #ddd;
+            font-size: 16px;
+        }
+
+        .searchBox::-moz-placeholder { /* Firefox 19+ */
+            color: #ddd;
+            font-size: 16px;
+        }
+
+        .searchBox:focus{
+            border-color: #EEE !important;
+        }
+
+        .btn:hover{
+            background-color: #eee
+        }
+    </style>
+    
+
+</head>
+<body style="margin: 0;">
+    <div id="root"></div>
+<script type="text/javascript" src="static/manager.96037a44289025f739ae.bundle.js"></script></body>
+</html>
