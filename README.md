@@ -66,6 +66,7 @@
   - [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS.
   - [`useFavicon`](./docs/useFavicon.md) &mdash; sets favicon of the page.
   - [`useLocalStorage`](./docs/useLocalStorage.md) &mdash; manages a value in `localStorage`.
+  - [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manages a value in `sessionStorage`.
   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
     <br/>
     <br/>
