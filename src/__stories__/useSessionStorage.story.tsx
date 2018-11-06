@@ -15,7 +15,7 @@ const Demo = () => {
 };
 
 storiesOf('useSessionStorage', module)
-  // .add('Docs', () => <ShowDocs md={require('../../docs/useSessionStorage.md')} />)
+  .add('Docs', () => <ShowDocs md={require('../../docs/useSessionStorage.md')} />)
   .add('Demo', () =>
     <Demo/>
   )
