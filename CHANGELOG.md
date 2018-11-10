@@ -1,3 +1,10 @@
+# [4.10.0](https://github.com/streamich/react-use/compare/v4.9.0...v4.10.0) (2018-11-10)
+
+
+### Features
+
+* bump useWait ([124ef99](https://github.com/streamich/react-use/commit/124ef99))
+
 # [4.9.0](https://github.com/streamich/react-use/compare/v4.8.0...v4.9.0) (2018-11-06)
 
 
