@@ -23,7 +23,7 @@ const Demo = () => {
   return (
     <div>
       <button disabled={isWaiting('creating user')} onClick={createUser}>
-        <Wait message="creating user" waiting={<b>Creating User...</b>}>
+        <Wait on="creating user" fallback={<b>Creating User...</b>}>
           Create User
         </Wait>
       </button>
