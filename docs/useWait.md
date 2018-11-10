@@ -1,6 +1,6 @@
 # `useWait`
 
-React waiting management hook.
+`useWait` is a React Hook helps to manage multiple loading states on the page without any conflict. It's based on a very simple idea that manages an `Array` of multiple loading states. The built-in `Wait` component listens its registered loader and immediately become loading state.
 
 ## Usage
 
@@ -15,7 +15,7 @@ function UserCreateButton() {
       onClick={() => startWaiting("creating user")}
       disabled={isWaiting("creating user")}
     >
-      <Wait message="creating user" waiting={<div>Creating user!</div>}>
+      <Wait on="creating user" fallback={<div>Creating user!</div>}>
         Create User
       </Wait>
     </button>
