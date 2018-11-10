@@ -1,2 +1,2 @@
-import { useWait } from 'use-wait';
+import { useWait } from 'react-wait';
 export default useWait;
