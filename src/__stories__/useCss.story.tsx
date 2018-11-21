@@ -19,7 +19,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useCss', module)
+storiesOf('Side effects/useCss', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useCss.md')} />)
   .add('Demo', () =>
     <Demo/>

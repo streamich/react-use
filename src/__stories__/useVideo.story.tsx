@@ -28,7 +28,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useVideo', module)
+storiesOf('UI/useVideo', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useVideo.md')} />)
   .add('Demo', () =>
     <Demo/>

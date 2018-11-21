@@ -22,7 +22,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useAsync', module)
+storiesOf('Side effects/useAsync', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useAsync.md')} />)
   .add('Demo', () =>
     <Demo/>

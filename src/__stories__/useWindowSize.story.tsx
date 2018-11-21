@@ -14,7 +14,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useWindowSize', module)
+storiesOf('Sensors/useWindowSize', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useWindowSize.md')} />)
   .add('Demo', () =>
     <Demo/>

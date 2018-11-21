@@ -15,7 +15,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useObservable', module)
+storiesOf('State/useObservable', module)
   // .add('Docs', () => <ShowDocs md={require('../../docs/useObservable.md')} />)
   .add('Demo', () =>
     <Demo/>

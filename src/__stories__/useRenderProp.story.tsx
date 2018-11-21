@@ -24,7 +24,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useRenderProp', module)
+storiesOf('State/useRenderProp', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useRenderProp.md')} />)
   .add('Demo', () =>
     <Demo/>

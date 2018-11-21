@@ -9,7 +9,7 @@ const Demo = () => {
   return <span>{`Counter: ${count}`}</span>
 };
 
-storiesOf('useCallbag', module)
+storiesOf('State/useCallbag', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useCallbag.md')} />)
   .add('Demo', () =>
     <Demo/>

@@ -19,7 +19,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useOutsideClick', module)
+storiesOf('UI/useOutsideClick', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useOutsideClick.md')} />)
   .add('Demo', () =>
     <Demo/>
