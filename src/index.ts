@@ -30,6 +30,7 @@ import useObservable from './useObservable';
 import useOrientation from './useOrientation';
 import useOutsideClick from './useOutsideClick';
 import useRaf from './useRaf';
+import useRefMounted from './useRefMounted';
 import useRenderProp from './useRenderProp';
 import useSessionStorage from './useSessionStorage';
 import useSetState from './useSetState';
@@ -79,6 +80,7 @@ export {
   useOrientation,
   useOutsideClick,
   useRaf,
+  useRefMounted,
   useRenderProp,
   useSessionStorage,
   useSetState,
