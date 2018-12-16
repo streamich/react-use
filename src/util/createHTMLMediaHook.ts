@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect, useRef, ReactRef} from '../react';
+import {useEffect, useRef} from 'react';
 import useSetState from '../useSetState';
 import parseTimeRanges from './parseTimeRanges';
 
@@ -26,7 +26,7 @@ export interface HTMLMediaControls {
 }
 
 const createHTMLMediaHook = (tag: 'audio' | 'video') => {
-  const hook = (elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>): [React.ReactElement<HTMLMediaProps>, HTMLMediaState, HTMLMediaControls, ReactRef<HTMLAudioElement | null>] => {
+  const hook = (elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>): [React.ReactElement<HTMLMediaProps>, HTMLMediaState, HTMLMediaControls, {current: HTMLAudioElement | null}] => {
     let element: React.ReactElement<any> | undefined;
     let props: HTMLMediaProps;
 

@@ -1,4 +1,4 @@
-import {useState, useEffect} from './react';
+import {useState, useEffect} from 'react';
 import {on, off} from './util';
 
 export interface MotionSensorState {
@@ -50,7 +50,7 @@ const useMotion = (initialState: MotionSensorState = defaultState) => {
         rotationRate,
         interval
       } = event;
-    
+
       setState({
         acceleration: {
           x: acceleration.x,

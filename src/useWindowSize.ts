@@ -1,4 +1,4 @@
-import {useState, useEffect} from './react';
+import {useState, useEffect} from 'react';
 
 const isClient = typeof window === 'object';
 
@@ -7,7 +7,7 @@ const useWindowSize = (initialWidth = Infinity, initialHeight = Infinity) => {
     width: isClient ? window.innerWidth : initialWidth,
     height: isClient ? window.innerHeight : initialHeight,
   });
-  
+
   useEffect(() => {
     const handler = () => {
       setState({

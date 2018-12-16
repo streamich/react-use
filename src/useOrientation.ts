@@ -1,4 +1,4 @@
-import {useState, useEffect} from './react';
+import {useState, useEffect} from 'react';
 import {on, off} from './util';
 
 export interface OrientationState {
@@ -20,11 +20,11 @@ const useOrientation = (initialState: OrientationState = defaultState) => {
     const onChange = () => {
       if (mounted) {
         const {orientation} = screen as any;
-        
+
         if (!orientation) {
           setState(initialState);
         }
-        
+
         const {angle, type} = orientation;
         setState({angle, type});
       }

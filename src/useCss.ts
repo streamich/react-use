@@ -1,4 +1,4 @@
-import {useState, useEffect} from './react';
+import {useState, useEffect} from 'react';
 const {create} = require('nano-css');
 const {addon: addonCssom} = require('nano-css/addon/cssom');
 const {addon: addonPipe} = require('nano-css/addon/pipe');

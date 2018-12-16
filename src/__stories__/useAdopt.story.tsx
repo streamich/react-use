@@ -1,7 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useAdopt} from '..';
-import {useState, useCallback} from '../react';
+import {useState} from 'react';
 import ShowDocs from '../util/ShowDocs';
 import {Spring} from 'react-spring';
 

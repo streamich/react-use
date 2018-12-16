@@ -1,4 +1,4 @@
-import {useState, useEffect} from './react';
+import {useState, useEffect} from 'react';
 import {isClient, on, off} from './util';
 
 const patchHistoryMethod = (method) => {

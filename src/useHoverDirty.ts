@@ -1,4 +1,4 @@
-import {useEffect, useState} from './react';
+import {useEffect, useState} from 'react';
 
 // kudos: https://usehooks.com/
 const useHoverDirty = (ref) => {

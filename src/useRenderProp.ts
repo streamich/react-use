@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {useState, useCallback} from './react';
 import createMemo from './createMemo';
+
+const {useState, useCallback} = React;
 
 const useRenderProp = (element: React.ReactElement<any>): [React.ReactElement<any>, any[]] => {
   if (process.env.NODE_ENV !== 'production') {

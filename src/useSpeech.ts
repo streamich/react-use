@@ -1,4 +1,4 @@
-import {useRef} from './react';
+import {useRef} from 'react';
 import useSetState from './useSetState';
 import useMount from './useMount';
 

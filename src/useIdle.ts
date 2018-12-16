@@ -1,4 +1,4 @@
-import {useState, useEffect} from './react';
+import {useState, useEffect} from 'react';
 import {on, off} from './util';
 import {throttle} from 'throttle-debounce';
 
@@ -23,7 +23,7 @@ const useIdle = (ms: number = oneMinute, initialState: boolean = false, events: 
       if (localState) {
         set(false);
       }
-  
+
       clearTimeout(timeout);
       timeout = setTimeout(() => set(true), ms);
     });

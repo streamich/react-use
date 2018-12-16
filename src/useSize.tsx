@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {useState, useEffect, useRef} from './react';
+
+const {useState, useEffect, useRef} = React;
 
 const isClient = typeof window === 'object';
 const DRAF = (callback: () => void) => setTimeout(callback, 35);
@@ -25,7 +26,7 @@ const useSize = (element: Element, {width = Infinity, height = Infinity}: Partia
   if (typeof element === 'function') {
     element = element(state);
   }
-  
+
   const style = element.props.style || {};
   const ref = useRef<HTMLIFrameElement | null>(null);
   let window: Window | null = null;

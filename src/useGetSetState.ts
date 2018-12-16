@@ -1,4 +1,4 @@
-import {useRef, useCallback} from './react';
+import {useRef, useCallback} from 'react';
 import useUpdate from './useUpdate';
 
 const useGetSetState = <T extends object>(initialState: T = {} as T): [() => T, (patch: Partial<T>) => void]=> {

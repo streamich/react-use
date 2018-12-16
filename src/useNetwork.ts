@@ -1,4 +1,4 @@
-import {useState, useEffect} from './react';
+import {useState, useEffect} from 'react';
 import {on, off} from './util';
 
 export interface NetworkState {
