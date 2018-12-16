@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ReactRef } from '../react';
 export interface HTMLMediaProps extends React.AudioHTMLAttributes<any>, React.VideoHTMLAttributes<any> {
     src: string;
 }
@@ -19,5 +18,7 @@ export interface HTMLMediaControls {
     volume: (volume: number) => void;
     seek: (time: number) => void;
 }
-declare const createHTMLMediaHook: (tag: "audio" | "video") => (elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>) => [React.ReactElement<HTMLMediaProps>, HTMLMediaState, HTMLMediaControls, ReactRef<HTMLAudioElement | null>];
+declare const createHTMLMediaHook: (tag: "audio" | "video") => (elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>) => [React.ReactElement<HTMLMediaProps>, HTMLMediaState, HTMLMediaControls, {
+    current: HTMLAudioElement | null;
+}];
 export default createHTMLMediaHook;
