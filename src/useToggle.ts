@@ -1,4 +1,4 @@
-import {useState} from './react';
+import {useState} from 'react';
 
 export type UseToggle = (state: boolean) => [
   boolean, // state

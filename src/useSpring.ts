@@ -1,5 +1,5 @@
 import {SpringSystem, Spring} from 'rebound';
-import {useState, useEffect} from './react';
+import {useState, useEffect} from 'react';
 
 const useSpring = (targetValue: number = 0, tension: number = 50, friction: number = 3) => {
   const [spring, setSpring] = useState<Spring | null>(null);
@@ -32,7 +32,7 @@ const useSpring = (targetValue: number = 0, tension: number = 50, friction: numb
       spring.setEndValue(targetValue);
     }
   }, [targetValue]);
-  
+
   return value;
 };
 

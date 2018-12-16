@@ -1,6 +1,6 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
-import {useRef} from '../react';
+import {useRef} from 'react';
 import {useHoverDirty} from '..';
 import ShowDocs from '../util/ShowDocs';
 

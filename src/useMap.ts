@@ -1,4 +1,4 @@
-import {useState} from './react';
+import {useState} from 'react';
 
 export interface Actions<K, V> {
   get: (key: K) => any;

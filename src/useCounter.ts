@@ -1,5 +1,5 @@
 import useGetSet from './useGetSet';
-import {useCallback} from './react';
+import {useCallback} from 'react';
 
 export interface CounterActions {
   inc: (delta?: number) => void;

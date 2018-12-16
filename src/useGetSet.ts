@@ -1,4 +1,4 @@
-import {useRef, useCallback} from './react';
+import {useRef, useCallback} from 'react';
 import useUpdate from './useUpdate';
 
 const useGetSet = <T>(initialValue: T): [() => T, (value: T) => void] => {

@@ -1,4 +1,4 @@
-import {useState} from './react';
+import {useState} from 'react';
 
 const useSetState = <T extends object>(initialState: T = {} as T): [T, (patch: Partial<T> | Function) => void]=> {
   const [state, set] = useState<T>(initialState);

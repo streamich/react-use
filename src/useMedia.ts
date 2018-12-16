@@ -1,4 +1,4 @@
-import {useState, useEffect} from './react';
+import {useState, useEffect} from 'react';
 
 const useMedia = (query: string, defaultState: boolean = false) => {
   const [state, setState] = useState(defaultState);

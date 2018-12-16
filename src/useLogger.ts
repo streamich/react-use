@@ -1,4 +1,4 @@
-import {useEffect} from './react';
+import {useEffect} from 'react';
 import useLifecycles from './useLifecycles';
 
 const useLogger = (name, props) => {

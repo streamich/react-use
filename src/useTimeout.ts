@@ -1,4 +1,4 @@
-import {useState, useEffect} from './react';
+import {useState, useEffect} from 'react';
 
 const useTimeout = (ms: number = 0) => {
   const [ready, setReady] = useState(false);

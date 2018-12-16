@@ -1,4 +1,4 @@
-import {useState, useEffect, useCallback} from './react';
+import {useState, useEffect, useCallback} from 'react';
 
 export interface AsyncState<T> {
   loading: boolean;
