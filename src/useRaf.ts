@@ -1,9 +1,9 @@
-import {useState, useEffect} from './react';
+import {useState, useLayoutEffect} from './react';
 
 const useRaf = (ms: number = 1e12, delay: number = 0): number => {
   const [elapsed, set] = useState<number>(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let raf, timerStop, start;
 
     const onFrame = () => {
