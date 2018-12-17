@@ -32,7 +32,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useWait', module)
+storiesOf('UI/useWait', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useWait.md')} />)
   .add('Demo', () =>
     <useWait.Waiter><Demo/></useWait.Waiter>

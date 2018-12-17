@@ -20,7 +20,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useCounter', module)
+storiesOf('State/useCounter', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useCounter.md')} />)
   .add('Demo', () =>
     <Demo/>

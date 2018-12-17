@@ -17,7 +17,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useSpring', module)
+storiesOf('Animations/useSpring', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useSpring.md')} />)
   .add('Demo', () =>
     <Demo/>
