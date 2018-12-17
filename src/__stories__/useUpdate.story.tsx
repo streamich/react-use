@@ -13,7 +13,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useUpdate', module)
+storiesOf('Animations/useUpdate', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useUpdate.md')} />)
   .add('Demo', () =>
     <Demo/>

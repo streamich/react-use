@@ -17,7 +17,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useSize', module)
+storiesOf('Sensors/useSize', module)
   .add('Example', () =>
     <Demo/>
   )

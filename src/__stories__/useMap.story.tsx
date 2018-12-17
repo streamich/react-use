@@ -17,7 +17,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useMap', module)
+storiesOf('State/useMap', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useMap.md')} />)
   .add('Demo', () =>
     <Demo/>

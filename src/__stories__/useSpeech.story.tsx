@@ -13,7 +13,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useSpeech', module)
+storiesOf('UI/useSpeech', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useSpeech.md')} />)
   .add('Demo', () =>
     <Demo/>
