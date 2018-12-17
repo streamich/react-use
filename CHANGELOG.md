@@ -1,3 +1,17 @@
+# [5.0.0](https://github.com/streamich/react-use/compare/v4.11.1...v5.0.0) (2018-12-17)
+
+
+### Features
+
+* 🎸 list all useAsync state props so that TS dont complain ([7c1b107](https://github.com/streamich/react-use/commit/7c1b107))
+* 🎸 remove experimental hooks ([533e26f](https://github.com/streamich/react-use/commit/533e26f))
+* use discriminated union in useAsync ([966af4a](https://github.com/streamich/react-use/commit/966af4a))
+
+
+### BREAKING CHANGES
+
+* useRenderProp and useAsync are removed
+
 ## [4.11.1](https://github.com/streamich/react-use/compare/v4.11.0...v4.11.1) (2018-12-16)
 
 
