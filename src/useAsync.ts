@@ -1,10 +1,18 @@
 import {useState, useEffect, useCallback} from 'react';
 
-export interface AsyncState<T> {
-  loading: boolean;
-  error?: Error | any;
-  value?: T;
+export type AsyncState<T> =
+| {
+  loading: true;
 }
+| {
+  loading: false;
+  error: Error;
+}
+| {
+  loading: false;
+  error?: undefined;
+  value: T;
+};
 
 const useAsync = <T>(fn: () => Promise<T>, args?) => {
   const [state, set] = useState<AsyncState<T>>({

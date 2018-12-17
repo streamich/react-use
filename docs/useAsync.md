@@ -17,13 +17,15 @@ const fn = () => new Promise((resolve) => {
 });
 
 const Demo = () => {
-  const {loading, value, error} = useAsync(fn);
+  const state = useAsync(fn);
 
   return (
     <div>
-      {loading
-        ? <div>Loading...</div>
-        : <div>Value: {value}</div>
+      {state.loading?
+        <div>Loading...</div>
+        : state.error?
+        <div>Error...</div>
+        : <div>Value: {state.value}</div>
       }
     </div>
   );
