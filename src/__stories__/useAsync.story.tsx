@@ -3,14 +3,14 @@ import {storiesOf} from '@storybook/react';
 import {useAsync} from '..';
 import ShowDocs from '../util/ShowDocs';
 
-const fn = () => new Promise((resolve) => {
+const fn = () => new Promise<string>((resolve) => {
   setTimeout(() => {
     resolve('RESOLVED');
   }, 1000);
 });
 
 const Demo = () => {
-  const {loading, value} = useAsync(fn);
+  const {loading, value} = useAsync<string>(fn);
 
   return (
     <div>
