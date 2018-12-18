@@ -25,7 +25,7 @@ const useAsync = <T>(fn: () => Promise<T>, args?) => {
 
   useEffect(() => {
     let mounted = true;
-    const promise = memoized();
+    const promise = memoized.apply(this, args);
 
     promise
       .then(value => {
