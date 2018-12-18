@@ -6,6 +6,7 @@ import useBoolean from './useBoolean';
 import useCallbag from './useCallbag';
 import useCounter from './useCounter';
 import useCss from './useCss';
+import useDebounce from './useDebounce';
 import useFavicon from './useFavicon';
 import useGeolocation from './useGeolocation';
 import useGetSet from './useGetSet';
@@ -54,6 +55,7 @@ export {
   useCallbag,
   useCounter,
   useCss,
+  useDebounce,
   useFavicon,
   useGeolocation,
   useGetSet,
