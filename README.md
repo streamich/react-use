@@ -30,7 +30,6 @@
   <br />
 </div>
 
-
 - [**Sensors**](./docs/Sensors.md)
   - [`useBattery`](./docs/useBattery.md) &mdash; tracks device battery state. [![][img-demo]](https://codesandbox.io/s/qlvn662zww)
   - [`useGeolocation`](./docs/useGeolocation.md) &mdash; tracks geo location state of user's device.
@@ -69,6 +68,7 @@
   - [`useLocalStorage`](./docs/useLocalStorage.md) &mdash; manages a value in `localStorage`.
   - [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manages a value in `sessionStorage`.
   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
+  - [`useDebounce`](./docs/useDebounce.md) &mdash; delays invoking a function until after time has elapsed since the last time the function was invoked.
     <br/>
     <br/>
 - [**Lifecycles**](./docs/Lifecycles.md)
@@ -96,7 +96,6 @@
 <br />
 <br />
 <br />
-
 
 <h2 align="center"><sub>Usage</sub></h2>
 
