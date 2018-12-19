@@ -68,7 +68,7 @@
   - [`useLocalStorage`](./docs/useLocalStorage.md) &mdash; manages a value in `localStorage`.
   - [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manages a value in `sessionStorage`.
   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
-  - [`useDebounce`](./docs/useDebounce.md) &mdash; delays invoking a function until after time has elapsed since the last time the function was invoked.
+  - [`useDebounce`](./docs/useDebounce.md) &mdash; debounces a function.
     <br/>
     <br/>
 - [**Lifecycles**](./docs/Lifecycles.md)
