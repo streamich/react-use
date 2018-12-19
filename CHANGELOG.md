@@ -1,3 +1,18 @@
+# [5.1.0](https://github.com/streamich/react-use/compare/v5.0.0...v5.1.0) (2018-12-19)
+
+
+### Bug Fixes
+
+* 🐛 just use any for setTimeout because of diff environments ([55673cb](https://github.com/streamich/react-use/commit/55673cb))
+* 🐛 memoized does not receive arguments ([244a533](https://github.com/streamich/react-use/commit/244a533))
+* 🐛 use Timeout type for build to work ([8c66abe](https://github.com/streamich/react-use/commit/8c66abe))
+
+
+### Features
+
+* added useDebounce ([91ff6ba](https://github.com/streamich/react-use/commit/91ff6ba))
+* pass arguments to memoized callback ([#81](https://github.com/streamich/react-use/issues/81)) ([88dd513](https://github.com/streamich/react-use/commit/88dd513))
+
 # [5.0.0](https://github.com/streamich/react-use/compare/v4.11.1...v5.0.0) (2018-12-17)
 
 
