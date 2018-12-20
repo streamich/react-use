@@ -41,8 +41,8 @@
   },
   "devDependencies": {
     "@storybook/react": "^3.4.11",
-    "react": "next",
-    "react-dom": "next",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
     "typescript": "^3.2.2",
     "ts-node": "^7.0.1",
     "ts-loader": "3",
@@ -58,8 +58,8 @@
     "react-spring": "^6.1.4"
   },
   "peerDependencies": {
-    "react": "16.7.0-alpha.0",
-    "react-dom": "16.7.0-alpha.0"
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2"
   },
   "config": {
     "commitizen": {
