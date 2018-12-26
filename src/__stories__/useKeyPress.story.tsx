@@ -10,17 +10,25 @@ const Demo = () => {
   const hasPressedR = useKeyPress("r");
   const hasPressedT = useKeyPress("t");
   const hasPressedY = useKeyPress("y");
+  const hasPressedWord = useKeyPress("q + w + e + r + t + y", {
+    useKeyboardJS: true
+  });
+
   return (
     <div>
-      Try pressing one of these: <code>Q W E R T Y</code>
-      <div>
-        {hasPressedQ && "Q"}
-        {hasPressedW && "W"}
-        {hasPressedE && "E"}
-        {hasPressedR && "R"}
-        {hasPressedT && "T"}
-        {hasPressedY && "Y"}
-      </div>
+      Try pressing each one of these at a time: <code>Q W E R T Y</code>
+      {!hasPressedWord && (
+        <div>
+          {hasPressedQ && "Q"}
+          {hasPressedW && "W"}
+          {hasPressedE && "E"}
+          {hasPressedR && "R"}
+          {hasPressedT && "T"}
+          {hasPressedY && "Y"}
+        </div>
+      )}
+      <div>And now press them all at once!</div>
+      <div>{hasPressedWord && "Q + W + E + R + T + Y"}</div>
     </div>
   );
 };
