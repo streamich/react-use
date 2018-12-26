@@ -1,32 +1,63 @@
-import * as React from 'react';
+import * as React from "react";
+const { useState, useEffect } = React;
 
-const {useState, useEffect} = React;
+interface Options {
+  useKeyboardJS: boolean;
+}
 
-// kudos: https://usehooks.com
-const useKeyPress = (targetKey: string) => {
+const defaults: Options = {
+  useKeyboardJS: false
+};
+
+const useKeyPress = (targetKey: string, config: Options = defaults) => {
   const [state, setState] = useState(false);
+  const { useKeyboardJS } = config;
 
-  const downHandler = ({key}: KeyboardEvent) => {
+  let keyboardjs;
+
+  if (useKeyboardJS) {
+    import("keyboardjs").then(module => {
+      keyboardjs = module;
+    });
+  }
+
+  const regularDownHandler = ({ key }: KeyboardEvent) => {
     if (key === targetKey) {
       setState(true);
     }
-  }
-  const upHandler = ({key}: KeyboardEvent) => {
+  };
+
+  const regularUpHandler = ({ key }: KeyboardEvent) => {
     if (key === targetKey) {
       setState(false);
     }
   };
 
+  const customDownHandler = () => {
+    setState(true);
+  };
+  const customUpHandler = () => {
+    setState(false);
+  };
+
   useEffect(() => {
-    window.addEventListener('keydown', downHandler);
-    window.addEventListener('keyup', upHandler);
+    if (useKeyboardJS) {
+      keyboardjs.bind(targetKey, customDownHandler, customUpHandler);
+    } else {
+      window.addEventListener("keydown", regularDownHandler);
+      window.addEventListener("keyup", regularUpHandler);
+    }
     return () => {
-      window.removeEventListener('keydown', downHandler);
-      window.removeEventListener('keyup', upHandler);
+      if (useKeyboardJS) {
+        keyboardjs.unbind(targetKey, customDownHandler, customUpHandler);
+      } else {
+        window.removeEventListener("keydown", regularDownHandler);
+        window.removeEventListener("keyup", regularUpHandler);
+      }
     };
   }, []);
 
   return state;
-}
+};
 
 export default useKeyPress;
