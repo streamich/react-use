@@ -55,7 +55,7 @@ const useKeyPress = (targetKey: string, config: Options = defaults) => {
         window.removeEventListener("keyup", regularUpHandler);
       }
     };
-  }, []);
+  }, [targetKey, useKeyPress]);
 
   return state;
 };
