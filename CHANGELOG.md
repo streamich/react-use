@@ -1,3 +1,11 @@
+# [5.2.0](https://github.com/streamich/react-use/compare/v5.1.2...v5.2.0) (2019-01-02)
+
+
+### Features
+
+* 🎸 add useKeyPress hook ([01df885](https://github.com/streamich/react-use/commit/01df885))
+* **useKeyPress:** allow complex bindings via key combos ([e53a20f](https://github.com/streamich/react-use/commit/e53a20f))
+
 ## [5.1.2](https://github.com/streamich/react-use/compare/v5.1.1...v5.1.2) (2018-12-29)
 
 
