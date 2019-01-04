@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/streamich/react-use/compare/v5.2.0...v5.2.1) (2019-01-04)
+
+
+### Bug Fixes
+
+* use function to correctly update state in useToggle ([d854d27](https://github.com/streamich/react-use/commit/d854d27))
+
 # [5.2.0](https://github.com/streamich/react-use/compare/v5.1.2...v5.2.0) (2019-01-02)
 
 
