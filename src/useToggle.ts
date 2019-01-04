@@ -14,7 +14,7 @@ const useToggle: UseToggle = state => {
       return;
     }
 
-    setValue(!value)
+    setValue(value => !value)
   };
 
   return [value, toggle];
