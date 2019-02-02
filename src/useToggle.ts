@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useCallback} from 'react';
 
 export type UseToggle = (state: boolean) => [
   boolean, // state
@@ -8,14 +8,14 @@ export type UseToggle = (state: boolean) => [
 const useToggle: UseToggle = state => {
   const [value, setValue] = useState<boolean>(state);
 
-  const toggle = (nextValue?: boolean) => {
+  const toggle = useCallback((nextValue?: boolean) => {
     if (typeof nextValue !== 'undefined') {
       setValue(!!nextValue);
       return;
     }
 
     setValue(value => !value)
-  };
+  }, [setValue]);
 
   return [value, toggle];
 };
