@@ -100,6 +100,8 @@
 
 <h2 align="center"><sub>Usage</sub></h2>
 
+<br/>
+
 <p align="center">
 You need to have React <code>16.7.0-alpha.0</code> or later installed to use Hooks API.
 </p>
