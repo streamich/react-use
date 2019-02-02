@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 const useDebounce = (fn: () => any, ms: number = 0, args: Array<any> = []) => {
-  const [timeout, setTimeoutVar] = useState<any>(null);
-
   useEffect(() => {
-    // if args change then clear timeout
-    clearTimeout(timeout);
-    const t = setTimeout(fn.bind(null, args), ms);
-    setTimeoutVar(t);
+    let handle = setTimeout(fn.bind(null, args), ms);
+
+    return () => {
+      // if args change then clear timeout
+      clearTimeout(handle);
+    }
   }, args);
 };
 
