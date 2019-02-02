@@ -1,3 +1,10 @@
+## [5.2.2](https://github.com/streamich/react-use/compare/v5.2.1...v5.2.2) (2019-02-02)
+
+
+### Bug Fixes
+
+* release useDebounce and useToggle fixes ([12ad880](https://github.com/streamich/react-use/commit/12ad880))
+
 ## [5.2.1](https://github.com/streamich/react-use/compare/v5.2.0...v5.2.1) (2019-01-04)
 
 
