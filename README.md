@@ -103,7 +103,7 @@
 <br/>
 
 <p align="center">
-You need to have React <code>16.7.0-alpha.0</code> or later installed to use Hooks API.
+You need to have React <code>16.8.1</code> or later installed to use Hooks API.
 </p>
 
 <p align="center">
