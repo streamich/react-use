@@ -18,7 +18,7 @@ export interface HTMLMediaControls {
     volume: (volume: number) => void;
     seek: (time: number) => void;
 }
-declare const createHTMLMediaHook: (tag: "audio" | "video") => (elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>) => [React.ReactElement<HTMLMediaProps>, HTMLMediaState, HTMLMediaControls, {
+declare const createHTMLMediaHook: (tag: "audio" | "video") => (elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)> | null) | (new (props: any) => React.Component<any, any, any>)>) => [React.ReactElement<HTMLMediaProps, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)> | null) | (new (props: any) => React.Component<any, any, any>)>, HTMLMediaState, HTMLMediaControls, {
     current: HTMLAudioElement | null;
 }];
 export default createHTMLMediaHook;
