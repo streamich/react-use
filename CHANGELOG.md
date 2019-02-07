@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/streamich/react-use/compare/v5.2.3...v5.3.0) (2019-02-07)
+
+
+### Features
+
+* Add updateAt method for useList ([ad05609](https://github.com/streamich/react-use/commit/ad05609))
+
 ## [5.2.3](https://github.com/streamich/react-use/compare/v5.2.2...v5.2.3) (2019-02-07)
 
 
