@@ -26,7 +26,7 @@ const useOrientation = (initialState: OrientationState = defaultState) => {
           setState({angle, type});
         } else if (window.orientation) {
           setState({
-            angle: window.orientation,
+            angle: typeof window.orientation === 'number' ? window.orientation : 0,
             type: ''
           });
         } else {
