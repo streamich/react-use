@@ -1,3 +1,12 @@
+## [5.3.1](https://github.com/streamich/react-use/compare/v5.3.0...v5.3.1) (2019-02-17)
+
+
+### Bug Fixes
+
+* 🐛 fix typings in useOrientation sensor ([afbacac](https://github.com/streamich/react-use/commit/afbacac))
+* 🐛 fix useSetState after React update ([524abe5](https://github.com/streamich/react-use/commit/524abe5)), closes [#107](https://github.com/streamich/react-use/issues/107) [#107](https://github.com/streamich/react-use/issues/107)
+* useOrientation breaks in some devices ([d89bd54](https://github.com/streamich/react-use/commit/d89bd54))
+
 # [5.3.0](https://github.com/streamich/react-use/compare/v5.2.3...v5.3.0) (2019-02-07)
 
 
