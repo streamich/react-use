@@ -11,14 +11,11 @@ const defaults: Options = {
 
 const useKeyPress = (targetKey: string, config: Options = defaults) => {
   const [state, setState] = useState(false);
-  const { useKeyboardJS } = config;
-
-  let keyboardjs;
+  const [keyboardjs, setKeyboardJs] = useState<any>(null);
+  const {useKeyboardJS} = config;
 
   if (useKeyboardJS) {
-    import("keyboardjs").then(module => {
-      keyboardjs = module;
-    });
+    import("keyboardjs").then(setKeyboardJs);
   }
 
   const regularDownHandler = ({ key }: KeyboardEvent) => {
@@ -42,20 +39,24 @@ const useKeyPress = (targetKey: string, config: Options = defaults) => {
 
   useEffect(() => {
     if (useKeyboardJS) {
-      keyboardjs.bind(targetKey, customDownHandler, customUpHandler);
+      if (keyboardjs) {
+        keyboardjs.bind(targetKey, customDownHandler, customUpHandler);
+      }
     } else {
       window.addEventListener("keydown", regularDownHandler);
       window.addEventListener("keyup", regularUpHandler);
     }
     return () => {
       if (useKeyboardJS) {
-        keyboardjs.unbind(targetKey, customDownHandler, customUpHandler);
+        if (keyboardjs) {
+          keyboardjs.unbind(targetKey, customDownHandler, customUpHandler);
+        }
       } else {
         window.removeEventListener("keydown", regularDownHandler);
         window.removeEventListener("keyup", regularUpHandler);
       }
     };
-  }, [targetKey, useKeyPress]);
+  }, [targetKey, useKeyPress, keyboardjs]);
 
   return state;
 };
