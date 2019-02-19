@@ -1,3 +1,10 @@
+# [5.4.0](https://github.com/streamich/react-use/compare/v5.3.1...v5.4.0) (2019-02-19)
+
+
+### Features
+
+* add error and loading fields to useGeolocation ([6909a69](https://github.com/streamich/react-use/commit/6909a69))
+
 ## [5.3.1](https://github.com/streamich/react-use/compare/v5.3.0...v5.3.1) (2019-02-17)
 
 
