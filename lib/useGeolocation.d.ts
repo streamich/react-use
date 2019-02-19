@@ -1,4 +1,5 @@
 export interface GeoLocationSensorState {
+    loading: boolean;
     accuracy: number;
     altitude: number;
     altitudeAccuracy: number;
@@ -7,8 +8,10 @@ export interface GeoLocationSensorState {
     longitude: number;
     speed: number;
     timestamp: number;
+    error?: Error | PositionError;
 }
 declare const useGeolocation: () => {
+    loading: boolean;
     accuracy: null;
     altitude: null;
     altitudeAccuracy: null;
