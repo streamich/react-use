@@ -1,3 +1,10 @@
+## [5.4.1](https://github.com/streamich/react-use/compare/v5.4.0...v5.4.1) (2019-02-19)
+
+
+### Bug Fixes
+
+* 🐛 better async loading for keyboardjs ([2096bae](https://github.com/streamich/react-use/commit/2096bae)), closes [#103](https://github.com/streamich/react-use/issues/103)
+
 # [5.4.0](https://github.com/streamich/react-use/compare/v5.3.1...v5.4.0) (2019-02-19)
 
 
