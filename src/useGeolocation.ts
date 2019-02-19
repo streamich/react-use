@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 
 export interface GeoLocationSensorState {
+  loading: boolean,
   accuracy: number,
   altitude: number,
   altitudeAccuracy: number,
@@ -8,11 +9,13 @@ export interface GeoLocationSensorState {
   latitude: number,
   longitude: number,
   speed: number,
-  timestamp: number
+  timestamp: number,
+  error?: Error | PositionError
 }
 
 const useGeolocation = () => {
   const [state, setState] = useState({
+    loading: true,
     accuracy: null,
     altitude: null,
     altitudeAccuracy: null,
@@ -28,6 +31,7 @@ const useGeolocation = () => {
   const onEvent = (event: any) => {
     if (mounted) {
       setState({
+        loading: false,
         accuracy: event.coords.accuracy,
         altitude: event.coords.altitude,
         altitudeAccuracy: event.coords.altitudeAccuracy,
@@ -39,10 +43,12 @@ const useGeolocation = () => {
       });
     }
   };
+  const onEventError = (error: any) =>
+    mounted && setState(oldState => ({...oldState, loading: false, error}));
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(onEvent);
-    watchId = navigator.geolocation.watchPosition(onEvent);
+    navigator.geolocation.getCurrentPosition(onEvent, onEventError);
+    watchId = navigator.geolocation.watchPosition(onEvent, onEventError);
 
     return () => {
       mounted = false;
