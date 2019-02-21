@@ -18,6 +18,10 @@ const useList = <T>(initialList: T[] = []): [T[], Actions<T>] => {
       entry,
       ...list.slice(index + 1)
     ]),
+    remove: (index) => set([
+      ...list.slice(0, index),
+      ...list.slice(index + 1)
+    ]),
     push: (entry) => set([...list, entry]),
     filter: (fn) => set(list.filter(fn)),
     sort: (fn?) => set([...list].sort(fn)),
