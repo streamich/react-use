@@ -13,7 +13,7 @@ const Demo = () => {
 
   return (
     <div>
-      <div>Use is idle: {isIdle ? 'Yes' : 'No'}</div>
+      <div>User is idle: {isIdle ? 'Yes 😴' : 'Nope'}</div>
     </div>
   );
 };
