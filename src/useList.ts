@@ -3,6 +3,7 @@ import {useState} from 'react';
 export interface Actions<T> {
   set: (list: T[]) => void;
   updateAt: (index: number, item: T) => void;
+  remove: (index: number) => void;
   push: (item: T) => void;
   filter: (fn: (value: T) => boolean) => void;
   sort: (fn?: (a: T, b: T) => number) => void;
