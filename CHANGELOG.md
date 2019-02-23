@@ -1,3 +1,16 @@
+# [5.5.0](https://github.com/streamich/react-use/compare/v5.4.1...v5.5.0) (2019-02-23)
+
+
+### Bug Fixes
+
+* add type definition for useList() remove() method ([ea2dc43](https://github.com/streamich/react-use/commit/ea2dc43))
+* useSetState bug ([83611a1](https://github.com/streamich/react-use/commit/83611a1))
+
+
+### Features
+
+* Add remove method for useList ([5a295d9](https://github.com/streamich/react-use/commit/5a295d9))
+
 ## [5.4.1](https://github.com/streamich/react-use/compare/v5.4.0...v5.4.1) (2019-02-19)
 
 
