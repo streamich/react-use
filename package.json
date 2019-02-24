@@ -38,7 +38,7 @@
     "throttle-debounce": "^2.0.1",
     "ts-easing": "^0.2.0",
     "use-callbag": "^0.1.2",
-    "use-onclickoutside": "^0.1.0"
+    "use-onclickoutside": "^0.3.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "3.0.2",
