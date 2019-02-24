@@ -1,3 +1,10 @@
+## [5.5.2](https://github.com/streamich/react-use/compare/v5.5.1...v5.5.2) (2019-02-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency use-onclickoutside to ^0.3.0 ([0baae6d](https://github.com/streamich/react-use/commit/0baae6d))
+
 ## [5.5.1](https://github.com/streamich/react-use/compare/v5.5.0...v5.5.1) (2019-02-24)
 
 
