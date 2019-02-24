@@ -52,7 +52,7 @@
     "react-dom": "16.8.1",
     "react-spring": "6.1.4",
     "rimraf": "2.6.3",
-    "rxjs": "6.3.3",
+    "rxjs": "6.4.0",
     "semantic-release": "15.10.6",
     "ts-loader": "3.5.0",
     "ts-node": "7.0.1",
