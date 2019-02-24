@@ -1,3 +1,10 @@
+## [5.5.1](https://github.com/streamich/react-use/compare/v5.5.0...v5.5.1) (2019-02-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ts-easing to ^0.2.0 ([3321e11](https://github.com/streamich/react-use/commit/3321e11))
+
 # [5.5.0](https://github.com/streamich/react-use/compare/v5.4.1...v5.5.0) (2019-02-23)
 
 
