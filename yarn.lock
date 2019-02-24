@@ -574,6 +574,11 @@ archy@~1.0.0:
   resolved "https://registry.yarnpkg.com/archy/-/archy-1.0.0.tgz#f9c8c13757cc1dd7bc379ac77b2c62a5c2868c40"
   integrity sha1-+cjBN1fMHde8N5rHeyxipcKGjEA=
 
+are-passive-events-supported@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/are-passive-events-supported/-/are-passive-events-supported-1.1.0.tgz#c806af550915c1302d881bb87db7f7722689fed7"
+  integrity sha512-psaDNYTXTQ3m6vLCu/XI81bIj+tA6J63+GieZ9leOUr4ykNyny4CLC6sS1u89JkrtuU48ddrlrQaD0NKJilF0g==
+
 are-we-there-yet@~1.1.2:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/are-we-there-yet/-/are-we-there-yet-1.1.5.tgz#4b35c2944f062a8bfcda66410760350fe9ddfc21"
@@ -9805,10 +9810,12 @@ use-callbag@^0.1.2:
   dependencies:
     callbag-subscribe "^1.4.1"
 
-use-onclickoutside@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/use-onclickoutside/-/use-onclickoutside-0.1.0.tgz#bc1998fe36728b22a4b9b28c95fbb468b3033e84"
-  integrity sha512-yDtIbzU38VXkwZaCbDm9Yy+j5n5b4roBJw98iauFPJm2VWVa0xRKFYP8fz5OvICFizKAtgICwPVHJ3Or2/tIOA==
+use-onclickoutside@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/use-onclickoutside/-/use-onclickoutside-0.3.0.tgz#a7c6bb68c8643c9a3437e34840d0cb2b96ae32b1"
+  integrity sha512-q3d3Ara3ditePmhdSiKPZ1l5+O001opo4pHH05Zwd3iqvk78UaqM+RCY/lgyQ4Irb96XjVLVnNQx6hUNcGZsbw==
+  dependencies:
+    are-passive-events-supported "^1.1.0"
 
 use@^3.1.0:
   version "3.1.1"
