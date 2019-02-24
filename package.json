@@ -36,7 +36,7 @@
     "react-wait": "^0.3.0",
     "rebound": "^0.1.0",
     "throttle-debounce": "^2.0.1",
-    "ts-easing": "^0.1.0",
+    "ts-easing": "^0.2.0",
     "use-callbag": "^0.1.2",
     "use-onclickoutside": "^0.1.0"
   },
