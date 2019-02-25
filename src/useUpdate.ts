@@ -1,5 +1,8 @@
 import {useState} from 'react';
 
-const useUpdate = () => useState(0)[1] as (() => void);
+const useUpdate = () => {
+  const [, setState] = useState(0);
+  return () => setState(cnt => cnt + 1);
+};
 
 export default useUpdate;

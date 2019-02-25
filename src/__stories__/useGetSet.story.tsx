@@ -32,9 +32,9 @@ const DemoWrong = () => {
 
 storiesOf('State/useGetSet', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useGetSet.md')} />)
-  .add('Demo', () =>
+  .add('Demo, 1s delay', () =>
     <Demo/>
   )
-  .add('DemoWrong', () =>
+  .add('DemoWrong, 1s delay', () =>
     <DemoWrong/>
   )
