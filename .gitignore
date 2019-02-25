@@ -71,3 +71,4 @@ src/parser.ts
 .puppet-master/
 
 storybook-static/
+package-lock.json
