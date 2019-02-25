@@ -1,3 +1,10 @@
+## [5.5.3](https://github.com/streamich/react-use/compare/v5.5.2...v5.5.3) (2019-02-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency use-callbag to ^0.2.0 ([4d49d0b](https://github.com/streamich/react-use/commit/4d49d0b))
+
 ## [5.5.2](https://github.com/streamich/react-use/compare/v5.5.1...v5.5.2) (2019-02-24)
 
 
