@@ -54,7 +54,7 @@
     "rimraf": "2.6.3",
     "rxjs": "6.4.0",
     "semantic-release": "15.13.3",
-    "ts-loader": "3.5.0",
+    "ts-loader": "5.3.3",
     "ts-node": "7.0.1",
     "typescript": "3.3.3333"
   },
