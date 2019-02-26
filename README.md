@@ -7,9 +7,6 @@
     react-use
     <br />
     <br />
-    <sup>
-      <a href="https://github.com/zenghongtu/react-use-chinese/blob/master/README.md">🇨🇳 汉语</a>
-    </sup>
     <br />
     <br />
   </h1>
@@ -20,6 +17,8 @@
     Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
     <br />
     <em>Port of</em> <a href="https://github.com/streamich/libreact"><code>libreact</code></a>. <em>See <a href="http://streamich.github.io/react-use">demos</a>.</em>
+    <br />
+    Translations: <a href="https://github.com/zenghongtu/react-use-chinese/blob/master/README.md">🇨🇳 汉语</a>
   </sup>
   <br />
   <br />
