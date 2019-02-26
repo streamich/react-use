@@ -6,8 +6,10 @@
     <br />
     react-use
     <br />
-    <a href="https://github.com/zenghongtu/react-use-chinese/blob/master/README.md">🇨🇳 汉语</a>
     <br />
+    <sup>
+      <a href="https://github.com/zenghongtu/react-use-chinese/blob/master/README.md">🇨🇳 汉语</a>
+    </sup>
     <br />
     <br />
   </h1>
