@@ -19,7 +19,7 @@ const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, (
     } catch {
       // If user is in private mode or has storage restriction
       // localStorage can throw. JSON.parse and JSON.stringify
-      // cat throw, too.
+      // can throw, too.
       return initialValue;
     }
   });
