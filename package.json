@@ -44,7 +44,7 @@
     "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
     "@semantic-release/npm": "5.1.4",
-    "@storybook/react": "3.4.11",
+    "@storybook/react": "5.0.1",
     "babel-core": "6.26.3",
     "callbag-interval": "1.1.0",
     "gh-pages": "2.0.1",
