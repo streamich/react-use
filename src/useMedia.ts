@@ -1,3 +1,4 @@
+import 'matchmedia-polyfill';
 import {useState, useEffect} from 'react';
 
 const useMedia = (query: string, defaultState: boolean = false) => {

@@ -32,6 +32,7 @@
   "dependencies": {
     "@types/react": "^16.8.2",
     "keyboardjs": "^2.5.1",
+    "matchmedia-polyfill": "^0.3.1",
     "nano-css": "^3.4.0",
     "react-wait": "^0.3.0",
     "rebound": "^0.1.0",
