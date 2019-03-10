@@ -56,7 +56,7 @@
     "semantic-release": "15.13.3",
     "ts-loader": "3.5.0",
     "ts-node": "7.0.1",
-    "typescript": "3.3.3333"
+    "typescript": "^3.3.3333"
   },
   "peerDependencies": {
     "react": "^16.8.0",
