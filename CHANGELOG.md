@@ -1,3 +1,11 @@
+## [5.5.6](https://github.com/streamich/react-use/compare/v5.5.5...v5.5.6) (2019-03-11)
+
+
+### Bug Fixes
+
+* correct createMemo.md ([4e2d639](https://github.com/streamich/react-use/commit/4e2d639))
+* correct createMemo.story ([9c8e093](https://github.com/streamich/react-use/commit/9c8e093))
+
 ## [5.5.5](https://github.com/streamich/react-use/compare/v5.5.4...v5.5.5) (2019-03-04)
 
 
