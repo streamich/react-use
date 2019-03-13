@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/streamich/react-use/compare/v5.5.6...v5.6.0) (2019-03-13)
+
+
+### Features
+
+* transpile down to ES5 ([61382e3](https://github.com/streamich/react-use/commit/61382e3))
+
 ## [5.5.6](https://github.com/streamich/react-use/compare/v5.5.5...v5.5.6) (2019-03-11)
 
 
