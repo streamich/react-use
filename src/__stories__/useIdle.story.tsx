@@ -8,12 +8,12 @@ const Demo = () => {
 
   return (
     <div>
-      <div>Use is idle: {isIdle ? 'Yes' : 'No'}</div>
+      <div>User is idle: {isIdle ? 'Yes' : 'No'}</div>
     </div>
   );
 };
 
-storiesOf('Sensors/useIdle', module)
+storiesOf('Sensors|useIdle', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useIdle.md')} />)
   .add('Demo', () =>
     <Demo/>

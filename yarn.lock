@@ -1220,22 +1220,6 @@
     react-inspector "^2.3.0"
     uuid "^3.3.2"
 
-"@storybook/addon-backgrounds@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.0.1.tgz#7e112e160942d2baf6659e33bd844cb750ca7c02"
-  integrity sha512-COW69MYajhE8K53aIqNxeZO1OBtmXCuSUE71XF8Z9mjLNJMOQWQqLbx6No9GHALp1uxQx/25ukUROsaX0iT2+Q==
-  dependencies:
-    "@storybook/addons" "5.0.1"
-    "@storybook/client-logger" "5.0.1"
-    "@storybook/components" "5.0.1"
-    "@storybook/core-events" "5.0.1"
-    "@storybook/theming" "5.0.1"
-    core-js "^2.6.5"
-    global "^4.3.2"
-    memoizerific "^1.11.3"
-    react "^16.8.1"
-    util-deprecate "^1.0.2"
-
 "@storybook/addon-knobs@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-5.0.1.tgz#c7a3449691d07485d3e31681db47655749ccaa16"
@@ -1257,19 +1241,6 @@
     react-lifecycles-compat "^3.0.4"
     react-select "^2.3.0"
     util-deprecate "^1.0.2"
-
-"@storybook/addon-links@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-5.0.1.tgz#ab0026d3fbc7e84305f687dc480f7437dd0d3264"
-  integrity sha512-W9EhMSZZuZAKTqYmky0XLEvbQqthgDWNYaR2AF0Pmpq3D1PPp3wycrHjFqNbr8+38gPyxG2vPqhauTvb/Jnvdg==
-  dependencies:
-    "@storybook/addons" "5.0.1"
-    "@storybook/core-events" "5.0.1"
-    common-tags "^1.8.0"
-    core-js "^2.6.5"
-    global "^4.3.2"
-    prop-types "^15.6.2"
-    qs "^6.5.2"
 
 "@storybook/addon-notes@^5.0.1":
   version "5.0.1"
@@ -1293,22 +1264,6 @@
   dependencies:
     "@storybook/addons" "5.0.1"
     core-js "^2.6.5"
-    util-deprecate "^1.0.2"
-
-"@storybook/addon-viewport@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-5.0.1.tgz#ae015ee49e2c3fa9f07b723099c22291fddd7140"
-  integrity sha512-sT035CiOyjr3/RMU2ccstY+c1I5382ThWKTxN97LdTXQoJhpGVZTHBGQDhfIFpChluDd/nmPCi64mObhkrs1Lg==
-  dependencies:
-    "@storybook/addons" "5.0.1"
-    "@storybook/client-logger" "5.0.1"
-    "@storybook/components" "5.0.1"
-    "@storybook/core-events" "5.0.1"
-    "@storybook/theming" "5.0.1"
-    core-js "^2.6.5"
-    global "^4.3.2"
-    memoizerific "^1.11.3"
-    prop-types "^15.6.2"
     util-deprecate "^1.0.2"
 
 "@storybook/addons@5.0.1":
