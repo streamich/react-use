@@ -1,27 +1,61 @@
-<!DOCTYPE html>
-<html>
+<!doctype html><html><head><meta charset="utf-8"><title>Storybook</title><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_parent"><style>:not(.sb-show-main) > .sb-main,
+  :not(.sb-show-nopreview) > .sb-nopreview,
+  :not(.sb-show-errordisplay) > .sb-errordisplay {
+    display: none;
+  }
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <base target="_parent">
-    <script>
-        if (window.parent !== window) {
-            try {
-                window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;
-            } catch (error) {
-                // The above line can throw if we do not have access to the parent frame -- i.e. cross origin
-            }
-        }
-    </script>
-    <title>Storybook</title>
-    
-</head>
+  .sb-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", Roboto, "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
 
-<body>
-    <div id="root"></div>
-    <div id="error-display"></div>
-<script type="text/javascript" src="static/preview.2fe1f785d335c3769fad.bundle.js"></script></body>
+  .sb-heading {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    margin: 10px 0;
+  }
 
-</html>
+  .sb-nopreview {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .sb-nopreview_main {
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.03);
+  }
+
+  .sb-nopreview_heading {
+    text-align: center;
+  }
+
+  .sb-errordisplay {
+    background-color: rgb(187, 49, 49);
+    color: #FFF;
+  }
+
+  .sb-errordisplay_code {
+    font-size: 14px;
+    width: 100vw;
+    overflow: auto;
+  }</style><script>/* globals window */
+  /* eslint-disable no-underscore-dangle */
+  try {
+    if (window.parent !== window) {
+      window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;
+      window.__VUE_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+    }
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('unable to connect to parent frame for connecting dev tools');
+  }</script></head><body><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><div id="error-message" class="sb-heading"></div><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="root"></div><script src="runtime~main.b93b01f7463ed452969d.bundle.js"></script><script src="vendors~main.b93b01f7463ed452969d.bundle.js"></script><script src="main.b93b01f7463ed452969d.bundle.js"></script></body></html>
