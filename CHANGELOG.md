@@ -1,3 +1,15 @@
+# [5.7.0](https://github.com/streamich/react-use/compare/v5.6.0...v5.7.0) (2019-03-15)
+
+
+### Bug Fixes
+
+* 🐛 fix TypeScript typings for usePromise() ([ba0acb6](https://github.com/streamich/react-use/commit/ba0acb6))
+
+
+### Features
+
+* 🎸 add usePromise() hook ([aad368b](https://github.com/streamich/react-use/commit/aad368b))
+
 # [5.6.0](https://github.com/streamich/react-use/compare/v5.5.6...v5.6.0) (2019-03-13)
 
 
