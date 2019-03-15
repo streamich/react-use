@@ -1,7 +1,7 @@
 import {useCallback} from 'react';
 import useRefMounted from './useRefMounted';
 
-export type UsePromise = <T>() => (promise: Promise<T>) => Promise<T>;
+export type UsePromise = () => <T>(promise: Promise<T>) => Promise<T>;
 
 const usePromise: UsePromise = () => {
   const refMounted = useRefMounted();
