@@ -56,7 +56,7 @@
     "markdown-loader": "5.0.0",
     "react": "16.8.4",
     "react-dom": "16.8.4",
-    "react-spring": "6.1.4",
+    "react-spring": "6.1.10",
     "rimraf": "2.6.3",
     "rxjs": "6.4.0",
     "semantic-release": "15.13.3",
