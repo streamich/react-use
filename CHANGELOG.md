@@ -1,3 +1,10 @@
+## [5.7.1](https://github.com/streamich/react-use/compare/v5.7.0...v5.7.1) (2019-03-15)
+
+
+### Bug Fixes
+
+* 🐛 allow every promise in usePromise() hook have own type ([d60fef7](https://github.com/streamich/react-use/commit/d60fef7))
+
 # [5.7.0](https://github.com/streamich/react-use/compare/v5.6.0...v5.7.0) (2019-03-15)
 
 
