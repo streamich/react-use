@@ -21,7 +21,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('State/createMemo', module)
+storiesOf('State|createMemo', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/createMemo.md')} />)
   .add('Demo', () =>
     <Demo/>

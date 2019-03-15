@@ -8,7 +8,7 @@ const Demo = () => {
   return null;
 };
 
-storiesOf('Lifecycles/useUnmount', module)
+storiesOf('Lifecycles|useUnmount', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useUnmount.md')} />)
   .add('Demo', () =>
     <Demo/>

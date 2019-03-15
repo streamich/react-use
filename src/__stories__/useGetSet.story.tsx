@@ -30,7 +30,7 @@ const DemoWrong = () => {
   );
 };
 
-storiesOf('State/useGetSet', module)
+storiesOf('State|useGetSet', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useGetSet.md')} />)
   .add('Demo, 1s delay', () =>
     <Demo/>
