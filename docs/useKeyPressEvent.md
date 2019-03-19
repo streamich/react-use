@@ -23,26 +23,20 @@ import { useKeyPressEvent } from "react-use";
 const Demo = () => {
   const [count, setCount] = useState(0);
 
-  const onKeyup = keys => {
-    console.log(`onKeyup: ${keys}`);
-  };
+  const increment = () => setCount(count => ++count);
+  const decrement = () => setCount(count => --count);
+  const reset = () => setCount(count => 0);
 
-  const onKeydown = keys => {
-    console.log(`onKeydown: ${keys}`);
-    setCount(count => ++count);
-  };
-
-  useKeyPressEvent('h', onKeyup, onKeydown);
-
-  useKeyPressEvent('l', () => {
-    console.log(`onKeydown for 'l'`);
-    setCount(count => ++count);
-  });
+  useKeyPressEvent(']', increment, increment);
+  useKeyPressEvent('[', decrement, decrement);
+  useKeyPressEvent('r', reset);
 
   return (
     <div>
-      <p>Try pressing <code>h</code> or <code>l</code> to see the count increment</p>
-      <p>Count: {countOfPressed}</p>
+      <p>
+        Try pressing <code>[</code>, <code>]</code>, and <code>r</code> to
+        see the count incremented and decremented.</p>
+      <p>Count: {count}</p>
     </div>
   );
 };
@@ -52,6 +46,5 @@ const Demo = () => {
 
 ```js
 useKeyPressEvent('<key>', onKeydown);
-
 useKeyPressEvent('<key>', onKeyup, onKeydown);
 ```
