@@ -2,7 +2,7 @@
 
 React UI sensor hook that detects when the user is pressing a specific
 key on their keyboard and fires a specified keyup and/or keydown effect. If
-you only need to retrieve the state, see [useKeyPress](#).
+you only need to retrieve the state, see [useKeyPress](useKeyPress.md).
 
 Complex bindings like detecting when multiple keys are held down at the same
 time or requiring them to be held down in a specified order are also available
