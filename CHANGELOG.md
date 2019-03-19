@@ -1,3 +1,37 @@
+## [5.7.1](https://github.com/streamich/react-use/compare/v5.7.0...v5.7.1) (2019-03-15)
+
+
+### Bug Fixes
+
+* 🐛 allow every promise in usePromise() hook have own type ([d60fef7](https://github.com/streamich/react-use/commit/d60fef7))
+
+# [5.7.0](https://github.com/streamich/react-use/compare/v5.6.0...v5.7.0) (2019-03-15)
+
+
+### Bug Fixes
+
+* 🐛 fix TypeScript typings for usePromise() ([ba0acb6](https://github.com/streamich/react-use/commit/ba0acb6))
+
+
+### Features
+
+* 🎸 add usePromise() hook ([aad368b](https://github.com/streamich/react-use/commit/aad368b))
+
+# [5.6.0](https://github.com/streamich/react-use/compare/v5.5.6...v5.6.0) (2019-03-13)
+
+
+### Features
+
+* transpile down to ES5 ([61382e3](https://github.com/streamich/react-use/commit/61382e3))
+
+## [5.5.6](https://github.com/streamich/react-use/compare/v5.5.5...v5.5.6) (2019-03-11)
+
+
+### Bug Fixes
+
+* correct createMemo.md ([4e2d639](https://github.com/streamich/react-use/commit/4e2d639))
+* correct createMemo.story ([9c8e093](https://github.com/streamich/react-use/commit/9c8e093))
+
 ## [5.5.5](https://github.com/streamich/react-use/compare/v5.5.4...v5.5.5) (2019-03-04)
 
 

@@ -13,7 +13,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('Sensors/useNetwork', module)
+storiesOf('Sensors|useNetwork', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useNetwork.md')} />)
   .add('Demo', () =>
     <Demo/>

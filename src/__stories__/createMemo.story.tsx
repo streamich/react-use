@@ -4,8 +4,8 @@ import {createMemo} from '..';
 import ShowDocs from '../util/ShowDocs';
 
 const fibonacci = n => {
-  if (n === 0) return 1;
-  if (n === 1) return 2;
+  if (n === 0) return 0;
+  if (n === 1) return 1;
   return fibonacci(n - 1) + fibonacci(n - 2);
 };
 
@@ -21,7 +21,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('State/createMemo', module)
+storiesOf('State|createMemo', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/createMemo.md')} />)
   .add('Demo', () =>
     <Demo/>

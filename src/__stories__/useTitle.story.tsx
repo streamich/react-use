@@ -9,7 +9,7 @@ const Demo = () => {
   return null;
 };
 
-storiesOf('Side effects/useTitle', module)
+storiesOf('Side effects|useTitle', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useTitle.md')} />)
   .add('Demo', () =>
     <Demo/>
