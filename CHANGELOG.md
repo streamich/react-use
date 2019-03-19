@@ -1,3 +1,10 @@
+# [5.8.0](https://github.com/streamich/react-use/compare/v5.7.1...v5.8.0) (2019-03-19)
+
+
+### Features
+
+* release useKeyPressEvent() ([96798e2](https://github.com/streamich/react-use/commit/96798e2))
+
 ## [5.7.1](https://github.com/streamich/react-use/compare/v5.7.0...v5.7.1) (2019-03-15)
 
 
