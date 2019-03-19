@@ -37,6 +37,7 @@
   - [`useHover` and `useHoverDirty`](./docs/useHover.md) &mdash; tracks mouse hover state of some element. [![][img-demo]](https://codesandbox.io/s/zpn583rvx)
   - [`useIdle`](./docs/useIdle.md) &mdash; tracks whether user is being inactive.
   - [`useKeyPress`](./docs/useKeyPress.md) &mdash; tracks whether a keyboard key&mdash;or set of keys&mdash;was pressed.
+  - [`useKeyPressEvent`](./docs/useKeyPressEvent.md) &mdash; call `onKeyDown` and `onKeyUp` callbacks, whe key pressed.
   - [`useLocation`](./docs/useLocation.md) &mdash; tracks page navigation bar location state.
   - [`useMedia`](./docs/useMedia.md) &mdash; tracks state of a CSS media query. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemedia--demo)
   - [`useMediaDevices`](./docs/useMediaDevices.md) &mdash; tracks state of connected hardware devices.
