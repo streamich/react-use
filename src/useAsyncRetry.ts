@@ -8,6 +8,9 @@ const useAsyncRetry = <T>(fn: () => Promise<T>, args: any[] = []) => {
 
   const retry = useCallback(() => {
     if (state.loading) {
+      if (process.env.NODE_ENV !== 'development') {
+        console.log('You are calling useAsyncRetry hook retry() method while loading in progress, this is a no-op.');
+      }
       return;
     }
     setAttempt(attempt + 1);
