@@ -1,5 +1,6 @@
 import createMemo from './createMemo';
 import useAsync from './useAsync';
+import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useBoolean from './useBoolean';
@@ -51,6 +52,7 @@ import useWait from './useWait';
 export {
   createMemo,
   useAsync,
+  useAsyncRetry,
   useAudio,
   useBattery,
   useBoolean,
