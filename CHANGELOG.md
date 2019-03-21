@@ -1,3 +1,10 @@
+# [5.10.0](https://github.com/streamich/react-use/compare/v5.9.0...v5.10.0) (2019-03-21)
+
+
+### Features
+
+* add useUpdateEffect hook ([c2afd23](https://github.com/streamich/react-use/commit/c2afd23))
+
 # [5.9.0](https://github.com/streamich/react-use/compare/v5.8.1...v5.9.0) (2019-03-21)
 
 
