@@ -1,3 +1,15 @@
+# [5.9.0](https://github.com/streamich/react-use/compare/v5.8.1...v5.9.0) (2019-03-21)
+
+
+### Features
+
+* add useAsyncRetry hook ([576cf42](https://github.com/streamich/react-use/commit/576cf42))
+
+
+### Performance Improvements
+
+* remove asyn/await wrapper ([8e3de1c](https://github.com/streamich/react-use/commit/8e3de1c))
+
 ## [5.8.1](https://github.com/streamich/react-use/compare/v5.8.0...v5.8.1) (2019-03-20)
 
 
