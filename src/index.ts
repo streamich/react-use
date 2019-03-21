@@ -49,6 +49,7 @@ import useUpdate from './useUpdate';
 import useVideo from './useVideo';
 import useWindowSize from './useWindowSize';
 import useWait from './useWait';
+import useUpdateEffect from './useUpdateEffect'
 
 export {
   createMemo,
@@ -101,5 +102,6 @@ export {
   useUpdate,
   useVideo,
   useWindowSize,
-  useWait
+  useWait,
+  useUpdateEffect
 };
