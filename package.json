@@ -32,7 +32,7 @@
   "dependencies": {
     "@types/react": "^16.8.2",
     "keyboardjs": "^2.5.1",
-    "nano-css": "^3.4.0",
+    "nano-css": "^4.0.0",
     "react-wait": "^0.3.0",
     "rebound": "^0.1.0",
     "throttle-debounce": "^2.0.1",
