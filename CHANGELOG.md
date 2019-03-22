@@ -1,3 +1,10 @@
+# [5.11.0](https://github.com/streamich/react-use/compare/v5.10.0...v5.11.0) (2019-03-22)
+
+
+### Features
+
+* 🎸 refresh useCss hook ([0116cc9](https://github.com/streamich/react-use/commit/0116cc9))
+
 # [5.10.0](https://github.com/streamich/react-use/compare/v5.9.0...v5.10.0) (2019-03-21)
 
 
