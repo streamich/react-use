@@ -1,48 +1,35 @@
-import {useState, useLayoutEffect} from 'react';
-const {create} = require('nano-css');
-const {addon: addonCssom} = require('nano-css/addon/cssom');
-const {addon: addonPipe} = require('nano-css/addon/pipe');
+import {useLayoutEffect, useMemo} from 'react';
+import {create, NanoRenderer} from 'nano-css';
+import {addon as addonCSSOM, CSSOMAddon} from 'nano-css/addon/cssom';
+import {addon as addonVCSSOM, VCSSOMAddon} from 'nano-css/addon/vcssom';
+import {cssToTree} from 'nano-css/addon/vcssom/cssToTree';
 
-export interface CssPipe {
-  className: string;
-  css: (css: object) => void;
-  remove: () => void;
-}
+type Nano =
+  & NanoRenderer
+  & CSSOMAddon
+  & VCSSOMAddon
+  ;
+const nano = create() as Nano;
+addonCSSOM(nano);
+addonVCSSOM(nano);
 
-const flattenSelectors = (css) => {
-  const flatenned = {};
-  const amp = {};
-  let hasAmp = false;
-
-  for (const key in css) {
-    const value = css[key];
-    if (typeof value === 'object') {
-      flatenned[key] = value;
-    } else {
-      hasAmp = true;
-      amp[key] = value;
-    }
-  }
-  if (hasAmp) {
-    flatenned['&'] = amp;
-  }
-
-  return flatenned;
-};
-
-const nano = create();
-addonCssom(nano);
-addonPipe(nano);
+let counter = 0;
 
 const useCss = (css: object): string => {
-  const [pipe] = useState<CssPipe>(nano.pipe());
+  const className = useMemo(() => 'react-use-css-' + (counter++).toString(36), []);
+  const sheet = useMemo(() => new nano.VSheet(), []);
 
   useLayoutEffect(() => {
-    pipe.css(flattenSelectors(css));
-    return () => pipe.remove();
+    const tree = {};
+    cssToTree(tree, css, '.' + className, '');
+    sheet.diff(tree);
+
+    return () => {
+      sheet.diff({});
+    };
   });
 
-  return pipe.className;
+  return className;
 };
 
 export default useCss;
