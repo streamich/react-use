@@ -47,6 +47,7 @@ import useTween from './useTween';
 import useUnmount from './useUnmount';
 import useUpdate from './useUpdate';
 import useVideo from './useVideo';
+import useWindowScroll from './useWindowScroll';
 import useWindowSize from './useWindowSize';
 import useWait from './useWait';
 import useUpdateEffect from './useUpdateEffect'
@@ -101,6 +102,7 @@ export {
   useUnmount,
   useUpdate,
   useVideo,
+  useWindowScroll,
   useWindowSize,
   useWait,
   useUpdateEffect
