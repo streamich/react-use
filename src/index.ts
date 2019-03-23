@@ -35,6 +35,7 @@ import useOutsideClick from './useOutsideClick';
 import usePromise from './usePromise';
 import useRaf from './useRaf';
 import useRefMounted from './useRefMounted';
+import useScroll from './useScroll';
 import useSessionStorage from './useSessionStorage';
 import useSetState from './useSetState';
 import useSize from './useSize';
@@ -90,6 +91,7 @@ export {
   usePromise,
   useRaf,
   useRefMounted,
+  useScroll,
   useSessionStorage,
   useSetState,
   useSize,
