@@ -2,6 +2,13 @@
 
 React sensor hook that tracks if user on the page is idle.
 
+Requires `throttle-debounce`:
+```bash
+npm add throttle-debounce
+# or
+yarn add throttle-debounce
+```
+
 
 ## Usage
 

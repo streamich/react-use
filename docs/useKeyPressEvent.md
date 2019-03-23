@@ -14,6 +14,13 @@ The first argument is the key(s) to watch. If only a second argument
 if a second and third argument are passed, the second will be used in the keyup
 event and the third in the keydown event. Essentially, keydown takes precedence.
 
+Requires `keyboardjs`:
+```bash
+npm add keyboardjs
+# or
+yarn add keyboardjs
+```
+
 ## Usage
 
 ```jsx

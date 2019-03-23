@@ -3,6 +3,12 @@
 React UI hook that triggers a callback when user
 clicks outside the target element.
 
+Requires `use-onclickoutside`:
+```bash
+npm add use-onclickoutside
+# or
+yarn add use-onclickoutside
+```
 
 ## Usage
 

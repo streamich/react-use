@@ -1,3 +1,17 @@
+# [6.0.0](https://github.com/streamich/react-use/compare/v5.13.0...v6.0.0) (2019-03-23)
+
+### Breaking
+
+* remove optional dependencies, must add the following npm packages for these Hooks:
+  * `useCallbag` now requires `use-callbag`
+  * `useCss` now requires `nano-css`
+  * `useIdle` now requires `throttle-debounce`
+  * `useKeyPress` & `useKeyPressEvent` now requires `keyboardjs`
+  * `useOutsideClick` now requires `use-onclickoutside`
+  * `useSpring` now requires `rebound`
+  * `useTween` now requires `ts-easing`
+  * `useWait` now requires `react-wait`
+
 # [5.13.0](https://github.com/streamich/react-use/compare/v5.12.1...v5.13.0) (2019-03-23)
 
 

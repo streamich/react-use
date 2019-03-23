@@ -2,6 +2,13 @@
 
 `useWait` is a React Hook helps to manage multiple loading states on the page without any conflict. It's based on a very simple idea that manages an `Array` of multiple loading states. The built-in `Wait` component listens its registered loader and immediately become loading state.
 
+Requires `react-wait`:
+```bash
+npm add react-wait
+# or
+yarn add react-wait
+```
+
 ## Usage
 
 ```jsx

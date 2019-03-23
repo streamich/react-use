@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "5.13.0",
+  "version": "6.0.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "files": [
@@ -30,7 +30,9 @@
   },
   "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
-    "@types/react": "^16.8.2",
+    "@types/react": "^16.8.2"
+  },
+  "devDependencies": {
     "keyboardjs": "^2.5.1",
     "nano-css": "^5.0.0",
     "react-wait": "^0.3.0",
@@ -38,9 +40,7 @@
     "throttle-debounce": "^2.0.1",
     "ts-easing": "^0.2.0",
     "use-callbag": "^0.2.0",
-    "use-onclickoutside": "^0.3.0"
-  },
-  "devDependencies": {
+    "use-onclickoutside": "^0.3.0",
     "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
     "@semantic-release/npm": "5.1.4",
