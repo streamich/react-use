@@ -1,3 +1,10 @@
+# [5.12.0](https://github.com/streamich/react-use/compare/v5.11.0...v5.12.0) (2019-03-23)
+
+
+### Features
+
+* add useWindowScroll hook ([076d0de](https://github.com/streamich/react-use/commit/076d0de))
+
 # [5.11.0](https://github.com/streamich/react-use/compare/v5.10.0...v5.11.0) (2019-03-22)
 
 
