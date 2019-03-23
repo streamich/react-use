@@ -8,14 +8,14 @@ const Demo = () => {
 
   return (
     <div style={{
-      width: "200vw",
-      height: "200vh"
+      width: '200vw',
+      height: '200vh'
     }}>
       <div style={{
-        position: "fixed",
+        position: 'fixed',
         left: 0,
-        right: 0}}
-      >
+        right: 0
+      }}>
         <div>x: {x}</div>
         <div>y: {y}</div>
       </div>
