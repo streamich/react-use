@@ -16,7 +16,6 @@ const useWindowScroll = (): State => {
   useEffect(() => {
     const handler = () => {
       cancelAnimationFrame(frame.current)
-
       frame.current = requestAnimationFrame(() => {
         setState({
           x: window.scrollX,
@@ -30,7 +29,10 @@ const useWindowScroll = (): State => {
       passive: true
     })
 
-    return () => window.removeEventListener('scroll', handler)
+    return () => {
+      cancelAnimationFrame(frame.current);
+      window.removeEventListener('scroll', handler);
+    };
   }, [])
 
   return state
