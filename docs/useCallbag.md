@@ -1,4 +1,4 @@
-u# `useCallbag`
+# `useCallbag`
 
 React state hook that tracks the latest value of a callbag.
 
