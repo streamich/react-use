@@ -1,3 +1,11 @@
+# [5.14.0](https://github.com/streamich/react-use/compare/v5.13.0...v5.14.0) (2019-03-24)
+
+
+### Features
+
+* 🎸 keep global state of all useLockBodyScroll hooks ([9bb7047](https://github.com/streamich/react-use/commit/9bb7047))
+* add useLockBodyScroll hook ([d990db4](https://github.com/streamich/react-use/commit/d990db4))
+
 # [5.13.0](https://github.com/streamich/react-use/compare/v5.12.1...v5.13.0) (2019-03-23)
 
 
