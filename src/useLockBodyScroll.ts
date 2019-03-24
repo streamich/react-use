@@ -1,19 +1,30 @@
-import {useRef, useEffect} from 'react';
-import {isClient} from './util';
-import useUnmount from './useUnmount';
+import {useEffect} from 'react';
+
+let counter = 0;
+let originalOverflow: string | null = null;
+
+const lock = () => {
+  originalOverflow = window.getComputedStyle(document.body).overflow;
+  document.body.style.overflow = 'hidden';
+};
+
+const unlock = () => {
+  document.body.style.overflow = originalOverflow;
+  originalOverflow = null;
+};
+
+const increment = () => {
+  counter++;
+  if (counter === 1) lock();
+};
+
+const decrement = () => {
+  counter--;
+  if (counter === 0) unlock();
+};
 
 const useLockBodyScroll = (enabled: boolean = true) => {
-  const originalOverflow = useRef(
-    isClient ? window.getComputedStyle(document.body).overflow : 'visible'
-  );
-
-  useEffect(() => {
-    document.body.style.overflow = enabled ? "hidden" : originalOverflow.current;
-  }, [enabled]);
-
-  useUnmount(() => {
-    document.body.style.overflow = originalOverflow.current
-  });
+  useEffect(() => enabled ? (increment(), decrement) : undefined, [enabled]);
 }
 
 export default useLockBodyScroll;
