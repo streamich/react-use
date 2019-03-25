@@ -1,3 +1,10 @@
+# [5.16.0](https://github.com/streamich/react-use/compare/v5.15.0...v5.16.0) (2019-03-25)
+
+
+### Features
+
+* more precise size for useMouse ([1761031](https://github.com/streamich/react-use/commit/1761031))
+
 # [5.15.0](https://github.com/streamich/react-use/compare/v5.14.0...v5.15.0) (2019-03-25)
 
 
