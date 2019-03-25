@@ -30,7 +30,7 @@ import useNetwork from './useNetwork';
 import useNumber from './useNumber';
 import useObservable from './useObservable';
 import useOrientation from './useOrientation';
-import useOutsideClick from './useOutsideClick';
+import useClickAway from './useClickAway';
 import usePromise from './usePromise';
 import useRaf from './useRaf';
 import useRefMounted from './useRefMounted';
@@ -59,7 +59,7 @@ export {
   useAudio,
   useBattery,
   useBoolean,
-  useCallbag,
+  useClickAway,
   useCounter,
   useCss,
   useDebounce,
@@ -86,7 +86,6 @@ export {
   useNumber,
   useObservable,
   useOrientation,
-  useOutsideClick,
   usePromise,
   useRaf,
   useRefMounted,
