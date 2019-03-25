@@ -9,7 +9,7 @@ import {useMouse} from 'react-use';
 
 const Demo = () => {
   const ref = React.useRef(null);
-  const {docX, docY, posX, posY, elX, elY, elW, elH} = useScroll(ref);
+  const {docX, docY, posX, posY, elX, elY, elW, elH} = useMouse(ref);
 
   return (
     <div ref={element}>
