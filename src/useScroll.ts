@@ -15,7 +15,7 @@ const useScroll = (ref): State => {
 
   useEffect(() => {
     const handler = () => {
-
+      cancelAnimationFrame(frame.current)
       frame.current = requestAnimationFrame(() => {
         setState({
           x: ref.current.scrollLeft,
