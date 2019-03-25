@@ -50,7 +50,6 @@
     "@storybook/addon-options": "5.0.3",
     "@storybook/react": "5.0.3",
     "babel-core": "6.26.3",
-    "callbag-interval": "1.1.0",
     "fork-ts-checker-webpack-plugin": "1.0.0",
     "gh-pages": "2.0.1",
     "markdown-loader": "5.0.0",

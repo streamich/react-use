@@ -4,7 +4,6 @@ import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useBoolean from './useBoolean';
-import useCallbag from './useCallbag';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';

@@ -52,6 +52,7 @@
     <br/>
 - [**UI**](./docs/UI.md)
   - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls. [![][img-demo]](https://codesandbox.io/s/2o4lo6rqy)
+  - [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS.
   - [`useOutsideClick`](./docs/useOutsideClick.md) &mdash; triggers callback when user clicks outside target area.
   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![][img-demo]](https://codesandbox.io/s/n090mqz69m)
   - [`useVideo`](./docs/useVideo.md) &mdash; plays video, tracks its state, and exposes playback controls. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usevideo--demo)
@@ -69,7 +70,6 @@
 - [**Side-effects**](./docs/Side-effects.md)
   - [`useAsync`](./docs/useAsync.md) &mdash; resolves an `async` function.
   - [`useAsyncRetry`](./docs/useAsyncRetry.md) &mdash; `useAsync` with `retry()` method.
-  - [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS.
   - [`useFavicon`](./docs/useFavicon.md) &mdash; sets favicon of the page.
   - [`useLocalStorage`](./docs/useLocalStorage.md) &mdash; manages a value in `localStorage`.
   - [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manages a value in `sessionStorage`.
