@@ -26,6 +26,7 @@ const useMouse = (ref: RefObject<HTMLElement>): State => {
 
   useEffect(() => {
     const handler = (event: MouseEvent) => {
+      cancelAnimationFrame(frame.current)
       frame.current = requestAnimationFrame(() => {
         if (ref && ref.current) {
           const {left, top} = ref.current.getBoundingClientRect()
@@ -49,11 +50,8 @@ const useMouse = (ref: RefObject<HTMLElement>): State => {
     document.addEventListener('mousemove', handler);
 
     return () => {
-      if (frame.current) {
-        cancelAnimationFrame(frame.current);
-      }
-
-      document.addEventListener('mousemove', handler);
+      cancelAnimationFrame(frame.current);
+      document.removeEventListener('mousemove', handler);
     };
   }, []);
 
