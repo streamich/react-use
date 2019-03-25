@@ -4,13 +4,6 @@ React side-effect hook that changes [CSS dynamically][gen-5]. Works like "virtua
 it re-renders only CSS rules that change. It is different from inline styles, because
 you can use media queries and pseudo selectors.
 
-Requires `nano-css`:
-```bash
-npm add nano-css
-# or
-yarn add nano-css
-```
-
 
 ## Usage
 

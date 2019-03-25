@@ -3101,11 +3101,6 @@ callbag-interval@1.1.0:
   dependencies:
     callbag "^1.1.0"
 
-callbag-subscribe@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/callbag-subscribe/-/callbag-subscribe-1.4.1.tgz#f9bd86b713230c9113acf6b7c5c6baf7d5ec772f"
-  integrity sha512-FzvJK3ODP50UhZPhfCFwJZ+YP+Hg/6Fm1+d3m2UZacA1b+jSKARpyNTIpkWlf61rAHEgpwZF1head4URY+EEMw==
-
 callbag@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/callbag/-/callbag-1.1.0.tgz#9cbbc3352832da43e764d588ed43121d4b09c42a"
@@ -11087,13 +11082,6 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
-
-use-callbag@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/use-callbag/-/use-callbag-0.2.0.tgz#bf3bbef918effc5818e0149f44d8b7385a7d03f1"
-  integrity sha512-ml1cDc2ZwieqXv+AtgPZUl6UWmYN/4roZgBg+LgFrU1s8khdTVEaj44utQwughw5qJDxEZ1lIOrdWEJvbO6cMA==
-  dependencies:
-    callbag-subscribe "^1.4.1"
 
 use-onclickoutside@^0.3.0:
   version "0.3.0"

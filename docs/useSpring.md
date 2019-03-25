@@ -4,6 +4,7 @@ React animation hook that updates a single numeric value over time according
 to spring dynamics.
 
 Requires `rebound`:
+
 ```bash
 npm add rebound
 # or

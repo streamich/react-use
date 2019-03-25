@@ -15,6 +15,7 @@ if a second and third argument are passed, the second will be used in the keyup
 event and the third in the keydown event. Essentially, keydown takes precedence.
 
 Requires `keyboardjs`:
+
 ```bash
 npm add keyboardjs
 # or

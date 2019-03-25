@@ -30,16 +30,16 @@
   },
   "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
-    "@types/react": "^16.8.2"
-  },
-  "devDependencies": {
-    "keyboardjs": "^2.5.1",
     "nano-css": "^5.0.0",
     "react-wait": "^0.3.0",
-    "rebound": "^0.1.0",
     "throttle-debounce": "^2.0.1",
     "ts-easing": "^0.2.0",
-    "use-callbag": "^0.2.0",
+    "use-onclickoutside": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.2",
+    "keyboardjs": "^2.5.1",
+    "rebound": "^0.1.0",
     "use-onclickoutside": "^0.3.0",
     "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
