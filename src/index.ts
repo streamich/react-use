@@ -28,6 +28,7 @@ import useMedia from './useMedia';
 import useMediaDevices from './useMediaDevices';
 import useMotion from './useMotion';
 import useMount from './useMount';
+import useMouse from './useMouse';
 import useNetwork from './useNetwork';
 import useNumber from './useNumber';
 import useObservable from './useObservable';
@@ -85,6 +86,7 @@ export {
   useMediaDevices,
   useMotion,
   useMount,
+  useMouse,
   useNetwork,
   useNumber,
   useObservable,
