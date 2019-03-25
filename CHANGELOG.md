@@ -1,3 +1,10 @@
+# [5.15.0](https://github.com/streamich/react-use/compare/v5.14.0...v5.15.0) (2019-03-25)
+
+
+### Features
+
+* add useMouse hook ([17dfa8e](https://github.com/streamich/react-use/commit/17dfa8e))
+
 # [5.14.0](https://github.com/streamich/react-use/compare/v5.13.0...v5.14.0) (2019-03-24)
 
 
