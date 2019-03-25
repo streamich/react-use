@@ -29,7 +29,7 @@ const useMouse = (ref: RefObject<HTMLElement>): State => {
       cancelAnimationFrame(frame.current)
       frame.current = requestAnimationFrame(() => {
         if (ref && ref.current) {
-          const {left, top} = ref.current.getBoundingClientRect()
+          const {left, top, width, height} = ref.current.getBoundingClientRect()
           const posX = left + window.scrollX;
           const posY = top + window.scrollY;
 
@@ -40,8 +40,8 @@ const useMouse = (ref: RefObject<HTMLElement>): State => {
             posY,
             elX: event.pageX - posX,
             elY: event.pageY - posY,
-            elH: ref.current.offsetHeight,
-            elW: ref.current.offsetWidth,
+            elH: height,
+            elW: width,
           });
         }
       });
