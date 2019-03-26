@@ -13,10 +13,12 @@ import { useDebounce } from 'react-use';
 const Demo = () => {
   const [state, setState] = React.useState('Typing stopped');
   const [val, setVal] = React.useState('');
+  const [debouncedValue, setDebouncedValue] = React.useState('');
 
   useDebounce(
     () => {
       setState('Typing stopped');
+      setDebouncedValue(val);
     },
     2000,
     [val]
@@ -34,6 +36,7 @@ const Demo = () => {
         }}
       />
       <div>{state}</div>
+      <div>Debounced value: {debouncedValue}</div>
     </div>
   );
 };
