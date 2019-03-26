@@ -7279,10 +7279,10 @@ nan@^2.9.2:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
   integrity sha512-iji6k87OSXa0CcrLl9z+ZiYSuR2o+c0bGuNmXdrhTQTakxytAFsC56SArGYoiHlJlFoHSnvmhpceZJaXkVuOtA==
 
-nano-css@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/nano-css/-/nano-css-5.0.0.tgz#faad380ef64a307a7fe63145a8d70ebe26cf5331"
-  integrity sha512-pk63UbtYcjndBNeIv8OBfknhDHchc6d/V3ROwFDSS2kxfy6Dp5Ab+6mcDy7q3i6JEmSbNyd2EJcYk9ZdxJj/FQ==
+nano-css@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/nano-css/-/nano-css-5.1.0.tgz#03c2b4ea2edefd445ac0c0e0f2565ea62e2aa81a"
+  integrity sha512-08F1rBmp0JuAteOR/uk/c40q/+UxWr224m/ZCHjjgy8dhkFQptvNwj/408KYQc13PIV9aGvqmtUD49PqBB5Ppg==
   dependencies:
     css-tree "^1.0.0-alpha.28"
     csstype "^2.5.5"
