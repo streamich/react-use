@@ -36,9 +36,9 @@
     "ts-easing": "^0.2.0"
   },
   "devDependencies": {
-    "@types/react": "^16.8.2",
-    "keyboardjs": "^2.5.1",
-    "rebound": "^0.1.0",
+    "@types/react": "16.8.2",
+    "keyboardjs": "2.5.1",
+    "rebound": "0.1.0",
     "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
     "@semantic-release/npm": "5.1.4",
