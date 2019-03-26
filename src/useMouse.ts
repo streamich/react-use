@@ -1,4 +1,5 @@
 import {useState, useEffect, useRef, RefObject} from 'react';
+import useToggle from "./useToggle";
 
 export interface State {
   docX: number;
@@ -11,8 +12,9 @@ export interface State {
   elW: number;
 }
 
-const useMouse = (ref: RefObject<HTMLElement>): State => {
+const useMouse = (ref: RefObject<HTMLElement>, whenHovered: boolean = false): State => {
   const frame = useRef(0);
+  const [active, setActive] = useToggle(false);
   const [state, setState] = useState<State>({
     docX: 0,
     docY: 0,
@@ -25,11 +27,29 @@ const useMouse = (ref: RefObject<HTMLElement>): State => {
   });
 
   useEffect(() => {
-    const handler = (event: MouseEvent) => {
-      cancelAnimationFrame(frame.current)
+    const enterHandler = () => setActive(true)
+    const leaveHandler = () => setActive(false)
+
+    if (whenHovered && ref && ref.current) {
+      ref.current.addEventListener("mouseenter", enterHandler, false);
+      ref.current.addEventListener("mouseleave", leaveHandler, false);
+    }
+
+    return () => {
+      if (whenHovered && ref && ref.current) {
+        ref.current.removeEventListener("mouseenter", enterHandler);
+        ref.current.removeEventListener("mouseleave", leaveHandler);
+      }
+    };
+  }, [whenHovered, ref]);
+
+  useEffect(() => {
+    const moveHandler = (event: MouseEvent) => {
+      cancelAnimationFrame(frame.current);
+
       frame.current = requestAnimationFrame(() => {
         if (ref && ref.current) {
-          const {left, top, width, height} = ref.current.getBoundingClientRect()
+          const {left, top, width, height} = ref.current.getBoundingClientRect();
           const posX = left + window.scrollX;
           const posY = top + window.scrollY;
 
@@ -47,13 +67,17 @@ const useMouse = (ref: RefObject<HTMLElement>): State => {
       });
     }
 
-    document.addEventListener('mousemove', handler);
+    if (active || !whenHovered) {
+      document.addEventListener('mousemove', moveHandler);
+    }
 
     return () => {
-      cancelAnimationFrame(frame.current);
-      document.removeEventListener('mousemove', handler);
+      if (active || !whenHovered) {
+        cancelAnimationFrame(frame.current);
+        document.removeEventListener('mousemove', moveHandler);
+      }
     };
-  }, []);
+  }, [active, whenHovered, ref])
 
   return state;
 }
