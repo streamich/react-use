@@ -1,3 +1,10 @@
+## [5.16.1](https://github.com/streamich/react-use/compare/v5.16.0...v5.16.1) (2019-03-26)
+
+
+### Bug Fixes
+
+* types for useGeolocation ([b72c098](https://github.com/streamich/react-use/commit/b72c098))
+
 # [5.16.0](https://github.com/streamich/react-use/compare/v5.15.0...v5.16.0) (2019-03-25)
 
 
