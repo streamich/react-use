@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/streamich/react-use/compare/v6.0.0...v6.1.0) (2019-03-26)
+
+
+### Features
+
+* add useThrottle hook ([756bc99](https://github.com/streamich/react-use/commit/756bc99))
+
 # [6.0.0](https://github.com/streamich/react-use/compare/v5.16.1...v6.0.0) (2019-03-26)
 
 
