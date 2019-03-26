@@ -2,19 +2,19 @@ import {useState, useEffect} from 'react';
 
 export interface GeoLocationSensorState {
   loading: boolean,
-  accuracy: number,
-  altitude: number,
-  altitudeAccuracy: number,
-  heading: number,
-  latitude: number,
-  longitude: number,
-  speed: number,
-  timestamp: number,
+  accuracy: number | null,
+  altitude: number | null,
+  altitudeAccuracy: number | null,
+  heading: number | null,
+  latitude: number | null,
+  longitude: number | null,
+  speed: number | null,
+  timestamp: number | null,
   error?: Error | PositionError
 }
 
-const useGeolocation = () => {
-  const [state, setState] = useState({
+const useGeolocation = (): GeoLocationSensorState => {
+  const [state, setState] = useState<GeoLocationSensorState>({
     loading: true,
     accuracy: null,
     altitude: null,
@@ -43,7 +43,7 @@ const useGeolocation = () => {
       });
     }
   };
-  const onEventError = (error: any) =>
+  const onEventError = (error: PositionError) =>
     mounted && setState(oldState => ({...oldState, loading: false, error}));
 
   useEffect(() => {
