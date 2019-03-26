@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-const useThrottle = (fn: () => any, ms: number = 0, args: Array<any> = []) => {
+const useThrottle = (fn: () => any, ms: number = 0, args?) => {
   const lastRan = useRef(0);
 
   useEffect(() => {
