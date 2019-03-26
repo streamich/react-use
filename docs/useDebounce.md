@@ -42,5 +42,5 @@ const Demo = () => {
 ## Reference
 
 ```ts
-useDebouce(fn, ms: number, args: any[]);
+useDebounce(fn, ms: number, args: any[]);
 ```
