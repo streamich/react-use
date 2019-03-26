@@ -1,5 +1,5 @@
 import {useState, useEffect, useRef, RefObject} from 'react';
-import useToggle from "./useToggle";
+import useHoverDirty from "./useHoverDirty";
 
 export interface State {
   docX: number;
@@ -13,8 +13,14 @@ export interface State {
 }
 
 const useMouse = (ref: RefObject<HTMLElement>, whenHovered: boolean = false): State => {
+  if (process.env.NODE_ENV === 'development') {
+    if ((typeof ref !== 'object') || (typeof ref.current === 'undefined')) {
+      throw new TypeError('useMouse expects a single ref argument.');
+    }
+  }
+
   const frame = useRef(0);
-  const [active, setActive] = useToggle(false);
+  const isHovered = useHoverDirty(ref, whenHovered);
   const [state, setState] = useState<State>({
     docX: 0,
     docY: 0,
@@ -25,23 +31,6 @@ const useMouse = (ref: RefObject<HTMLElement>, whenHovered: boolean = false): St
     elH: 0,
     elW: 0,
   });
-
-  useEffect(() => {
-    const enterHandler = () => setActive(true)
-    const leaveHandler = () => setActive(false)
-
-    if (whenHovered && ref && ref.current) {
-      ref.current.addEventListener("mouseenter", enterHandler, false);
-      ref.current.addEventListener("mouseleave", leaveHandler, false);
-    }
-
-    return () => {
-      if (whenHovered && ref && ref.current) {
-        ref.current.removeEventListener("mouseenter", enterHandler);
-        ref.current.removeEventListener("mouseleave", leaveHandler);
-      }
-    };
-  }, [whenHovered, ref]);
 
   useEffect(() => {
     const moveHandler = (event: MouseEvent) => {
@@ -67,17 +56,17 @@ const useMouse = (ref: RefObject<HTMLElement>, whenHovered: boolean = false): St
       });
     }
 
-    if (active || !whenHovered) {
+    if (isHovered || !whenHovered) {
       document.addEventListener('mousemove', moveHandler);
     }
 
     return () => {
-      if (active || !whenHovered) {
+      if (isHovered || !whenHovered) {
         cancelAnimationFrame(frame.current);
         document.removeEventListener('mousemove', moveHandler);
       }
     };
-  }, [active, whenHovered, ref])
+  }, [isHovered, whenHovered, ref])
 
   return state;
 }
