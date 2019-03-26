@@ -2066,11 +2066,6 @@ archy@~1.0.0:
   resolved "https://registry.yarnpkg.com/archy/-/archy-1.0.0.tgz#f9c8c13757cc1dd7bc379ac77b2c62a5c2868c40"
   integrity sha1-+cjBN1fMHde8N5rHeyxipcKGjEA=
 
-are-passive-events-supported@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/are-passive-events-supported/-/are-passive-events-supported-1.1.0.tgz#c806af550915c1302d881bb87db7f7722689fed7"
-  integrity sha512-psaDNYTXTQ3m6vLCu/XI81bIj+tA6J63+GieZ9leOUr4ykNyny4CLC6sS1u89JkrtuU48ddrlrQaD0NKJilF0g==
-
 are-we-there-yet@~1.1.2:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/are-we-there-yet/-/are-we-there-yet-1.1.5.tgz#4b35c2944f062a8bfcda66410760350fe9ddfc21"
@@ -3094,23 +3089,6 @@ call-me-maybe@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/call-me-maybe/-/call-me-maybe-1.0.1.tgz#26d208ea89e37b5cbde60250a15f031c16a4d66b"
   integrity sha1-JtII6onje1y95gJQoV8DHBak1ms=
-
-callbag-interval@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/callbag-interval/-/callbag-interval-1.1.0.tgz#161ae4b5bf36b98bd5ef7caa3c3f8161fc032338"
-  integrity sha512-xkYj7t/l9+GaP0kvPi6LadF3ZNSiQAhbEzwnnTrDB/UtkBCrzKPZ9Kiti8P8oHYxL2jGEuRWi86PD3uM7qXLbg==
-  dependencies:
-    callbag "^1.1.0"
-
-callbag-subscribe@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/callbag-subscribe/-/callbag-subscribe-1.4.1.tgz#f9bd86b713230c9113acf6b7c5c6baf7d5ec772f"
-  integrity sha512-FzvJK3ODP50UhZPhfCFwJZ+YP+Hg/6Fm1+d3m2UZacA1b+jSKARpyNTIpkWlf61rAHEgpwZF1head4URY+EEMw==
-
-callbag@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/callbag/-/callbag-1.1.0.tgz#9cbbc3352832da43e764d588ed43121d4b09c42a"
-  integrity sha512-JVZp2vA53+THwOOan8eedGhS7xwzwR1u8HFK02WDMI9pITGoQ42j2sYP742qs7yddtEjIDGgNe1Y6DN90w3oIQ==
 
 caller-callsite@^2.0.0:
   version "2.0.0"
@@ -7302,10 +7280,10 @@ nan@^2.9.2:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.1.tgz#90e22bccb8ca57ea4cd37cc83d3819b52eea6766"
   integrity sha512-iji6k87OSXa0CcrLl9z+ZiYSuR2o+c0bGuNmXdrhTQTakxytAFsC56SArGYoiHlJlFoHSnvmhpceZJaXkVuOtA==
 
-nano-css@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/nano-css/-/nano-css-5.0.0.tgz#faad380ef64a307a7fe63145a8d70ebe26cf5331"
-  integrity sha512-pk63UbtYcjndBNeIv8OBfknhDHchc6d/V3ROwFDSS2kxfy6Dp5Ab+6mcDy7q3i6JEmSbNyd2EJcYk9ZdxJj/FQ==
+nano-css@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/nano-css/-/nano-css-5.1.0.tgz#03c2b4ea2edefd445ac0c0e0f2565ea62e2aa81a"
+  integrity sha512-08F1rBmp0JuAteOR/uk/c40q/+UxWr224m/ZCHjjgy8dhkFQptvNwj/408KYQc13PIV9aGvqmtUD49PqBB5Ppg==
   dependencies:
     css-tree "^1.0.0-alpha.28"
     csstype "^2.5.5"
@@ -11088,20 +11066,6 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
-
-use-callbag@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/use-callbag/-/use-callbag-0.2.0.tgz#bf3bbef918effc5818e0149f44d8b7385a7d03f1"
-  integrity sha512-ml1cDc2ZwieqXv+AtgPZUl6UWmYN/4roZgBg+LgFrU1s8khdTVEaj44utQwughw5qJDxEZ1lIOrdWEJvbO6cMA==
-  dependencies:
-    callbag-subscribe "^1.4.1"
-
-use-onclickoutside@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/use-onclickoutside/-/use-onclickoutside-0.3.0.tgz#a7c6bb68c8643c9a3437e34840d0cb2b96ae32b1"
-  integrity sha512-q3d3Ara3ditePmhdSiKPZ1l5+O001opo4pHH05Zwd3iqvk78UaqM+RCY/lgyQ4Irb96XjVLVnNQx6hUNcGZsbw==
-  dependencies:
-    are-passive-events-supported "^1.1.0"
 
 use@^3.1.0:
   version "3.1.1"

@@ -4,7 +4,6 @@ import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useBoolean from './useBoolean';
-import useCallbag from './useCallbag';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
@@ -29,11 +28,12 @@ import useMediaDevices from './useMediaDevices';
 import useMotion from './useMotion';
 import useMount from './useMount';
 import useMouse from './useMouse';
+import useMouseHovered from './useMouseHovered';
 import useNetwork from './useNetwork';
 import useNumber from './useNumber';
 import useObservable from './useObservable';
 import useOrientation from './useOrientation';
-import useOutsideClick from './useOutsideClick';
+import useClickAway from './useClickAway';
 import usePromise from './usePromise';
 import useRaf from './useRaf';
 import useRefMounted from './useRefMounted';
@@ -62,7 +62,7 @@ export {
   useAudio,
   useBattery,
   useBoolean,
-  useCallbag,
+  useClickAway,
   useCounter,
   useCss,
   useDebounce,
@@ -87,11 +87,11 @@ export {
   useMotion,
   useMount,
   useMouse,
+  useMouseHovered,
   useNetwork,
   useNumber,
   useObservable,
   useOrientation,
-  useOutsideClick,
   usePromise,
   useRaf,
   useRefMounted,

@@ -1,4 +1,4 @@
-# `useOutsideClick`
+# `useClickAway`
 
 React UI hook that triggers a callback when user
 clicks outside the target element.
@@ -7,12 +7,12 @@ clicks outside the target element.
 ## Usage
 
 ```jsx
-import {useOutsideClick} from 'react-use';
+import {useClickAway} from 'react-use';
 
 const Demo = () => {
   const ref = useRef(null);
-  useOutsideClick(ref, () => {
-    console.log('OUTSIDE CLICKED');
+  useClickAway(ref, () => {
+    alert('OUTSIDE CLICKED');
   });
 
   return (

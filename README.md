@@ -42,7 +42,7 @@
   - [`useMedia`](./docs/useMedia.md) &mdash; tracks state of a CSS media query. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemedia--demo)
   - [`useMediaDevices`](./docs/useMediaDevices.md) &mdash; tracks state of connected hardware devices.
   - [`useMotion`](./docs/useMotion.md) &mdash; tracks state of device's motion sensor.
-  - [`useMouse`](./docs/useMouse.md) &mdash; tracks state of mouse position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemouse--docs)
+  - [`useMouse` and `useMouseHovered`](./docs/useMouse.md) &mdash; tracks state of mouse position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemouse--docs)
   - [`useNetwork`](./docs/useNetwork.md) &mdash; tracks state of user's internet connection.
   - [`useOrientation`](./docs/useOrientation.md) &mdash; tracks state of device's screen orientation.
   - [`useScroll`](./docs/useScroll.md) &mdash; tracks some HTML element's scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usescroll--docs)
@@ -53,7 +53,8 @@
     <br/>
 - [**UI**](./docs/UI.md)
   - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls. [![][img-demo]](https://codesandbox.io/s/2o4lo6rqy)
-  - [`useOutsideClick`](./docs/useOutsideClick.md) &mdash; triggers callback when user clicks outside target area.
+  - [`useClickAway`](./docs/useClickAway.md) &mdash; triggers callback when user clicks outside target area.
+  - [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS.
   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![][img-demo]](https://codesandbox.io/s/n090mqz69m)
   - [`useVideo`](./docs/useVideo.md) &mdash; plays video, tracks its state, and exposes playback controls. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usevideo--demo)
   - [`useWait`](./docs/useWait.md) &mdash; complex waiting management for UIs.
@@ -70,7 +71,6 @@
 - [**Side-effects**](./docs/Side-effects.md)
   - [`useAsync`](./docs/useAsync.md) &mdash; resolves an `async` function.
   - [`useAsyncRetry`](./docs/useAsyncRetry.md) &mdash; `useAsync` with `retry()` method.
-  - [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS.
   - [`useFavicon`](./docs/useFavicon.md) &mdash; sets favicon of the page.
   - [`useLocalStorage`](./docs/useLocalStorage.md) &mdash; manages a value in `localStorage`.
   - [`useLockBodyScroll`](./docs/useLockBodyScroll.md) &mdash; lock scrolling of the body element.
@@ -91,7 +91,6 @@
     <br/>
 - [**State**](./docs/State.md)
   - [`createMemo`](./docs/createMemo.md) &mdash; factory of memoized hooks.
-  - [`useCallbag`](./docs/useCallbag.md) &mdash; tracks latest value of a callbag.
   - [`useGetSet`](./docs/useGetSet.md) &mdash; returns state getter `get()` instead of raw state.
   - [`useGetSetState`](./docs/useGetSetState.md) &mdash; as if [`useGetSet`](./docs/useGetSet.md) and [`useSetState`](./docs/useSetState.md) had a baby.
   - [`useObservable`](./docs/useObservable.md) &mdash; tracks latest value of an `Observable`.
