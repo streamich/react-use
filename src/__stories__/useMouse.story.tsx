@@ -6,7 +6,7 @@ import ShowDocs from '../util/ShowDocs';
 const Demo = () => {
   const [whenHovered, toggleWhenHovered] = useToggle(false);
   const ref = React.useRef(null);
-  const state = useMouse(ref, whenHovered)
+  const state = useMouse(ref, {whenHovered, bound: true})
 
   return (
     <>

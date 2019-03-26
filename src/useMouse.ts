@@ -12,7 +12,12 @@ export interface State {
   elW: number;
 }
 
-const useMouse = (ref: RefObject<HTMLElement>, whenHovered: boolean = false): State => {
+export interface UseMouseOptions {
+  whenHovered?: boolean;
+  bound?: boolean;
+}
+
+const useMouse = (ref: RefObject<HTMLElement>, {whenHovered = false, bound = false}: UseMouseOptions = {}): State => {
   if (process.env.NODE_ENV === 'development') {
     if ((typeof ref !== 'object') || (typeof ref.current === 'undefined')) {
       console.error('useMouse expects a single ref argument.');
@@ -38,19 +43,21 @@ const useMouse = (ref: RefObject<HTMLElement>, whenHovered: boolean = false): St
 
       frame.current = requestAnimationFrame(() => {
         if (ref && ref.current) {
-          const {left, top, width, height} = ref.current.getBoundingClientRect();
+          const {left, top, width: elW, height: elH} = ref.current.getBoundingClientRect();
           const posX = left + window.scrollX;
           const posY = top + window.scrollY;
+          const elX = event.pageX - posX;
+          const elY = event.pageY - posY;
 
           setState({
             docX: event.pageX,
             docY: event.pageY,
             posX,
             posY,
-            elX: event.pageX - posX,
-            elY: event.pageY - posY,
-            elH: height,
-            elW: width,
+            elX: bound ? Math.max(0, Math.min(elX, elW)) : elX,
+            elY: bound ? Math.max(0, Math.min(elY, elH)) : elY,
+            elH,
+            elW,
           });
         }
       });
