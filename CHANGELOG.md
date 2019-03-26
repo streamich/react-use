@@ -1,3 +1,33 @@
+# [6.0.0](https://github.com/streamich/react-use/compare/v5.16.1...v6.0.0) (2019-03-26)
+
+
+### Bug Fixes
+
+* 🐛 bump nano-css ([f1f36dc](https://github.com/streamich/react-use/commit/f1f36dc)), closes [#90](https://github.com/streamich/react-use/issues/90)
+* 🐛 don't throw only in development ([f5faba5](https://github.com/streamich/react-use/commit/f5faba5))
+
+
+### chore
+
+* 🤖 don't install only large dependencies ([6170067](https://github.com/streamich/react-use/commit/6170067))
+
+
+### Features
+
+* 🎸 add {bound} option to useMouse ([9bb02a1](https://github.com/streamich/react-use/commit/9bb02a1))
+* 🎸 implement useClickAway, remove useOutsideClick ([a03143a](https://github.com/streamich/react-use/commit/a03143a))
+* 🎸 keep global state of all useLockBodyScroll hooks ([5dd10e9](https://github.com/streamich/react-use/commit/5dd10e9))
+* 🎸 move extra mouse functionality into useMouseHovered ([8b0580e](https://github.com/streamich/react-use/commit/8b0580e))
+* more precise size for useMouse ([b887075](https://github.com/streamich/react-use/commit/b887075))
+
+
+### BREAKING CHANGES
+
+* 🧨 error is logged instead of thrown in development environment
+* 🧨 useOutsideClick is now useClickAway
+* 🧨 useCallbag hook is removed, some hooks KeyboardJS and Rebound installed
+separately
+
 ## [5.16.1](https://github.com/streamich/react-use/compare/v5.16.0...v5.16.1) (2019-03-26)
 
 
