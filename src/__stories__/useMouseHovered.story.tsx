@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
-import {useMouse} from '..';
+import {withKnobs, boolean} from '@storybook/addon-knobs';
+import {useMouseHovered} from '..';
 import ShowDocs from '../util/ShowDocs';
 
-const Demo: React.FC<any> = () => {
+const Demo: React.FC<any> = ({whenHovered, bound}) => {
   const ref = React.useRef(null);
-  const state = useMouse(ref)
+  const state = useMouseHovered(ref, {whenHovered, bound})
 
   return (
     <>
@@ -35,6 +36,11 @@ const Demo: React.FC<any> = () => {
   );
 };
 
-storiesOf('Sensors|useMouse', module)
+storiesOf('Sensors|useMouseHovered', module)
+  .addDecorator(withKnobs)
   .add('Docs', () => <ShowDocs md={require('../../docs/useMouse.md')} />)
-  .add('Demo', () => <Demo />)
+  .add('Demo', () => {
+    const bound = boolean('bound', false);
+    const whenHovered = boolean('whenHovered', false);
+    return <Demo whenHovered={whenHovered} bound={bound} />;
+  })
