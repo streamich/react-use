@@ -1,6 +1,6 @@
 # `useCss`
 
-React side-effect hook that changes [CSS dynamically][gen-5]. Works like "virtual CSS" &mdash;
+React UI hook that changes [CSS dynamically][gen-5]. Works like "virtual CSS" &mdash;
 it re-renders only CSS rules that change. It is different from inline styles, because
 you can use media queries and pseudo selectors.
 

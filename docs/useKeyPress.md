@@ -8,6 +8,14 @@ time or requiring them to be held down in a specified order are also available
 via [KeyboardJS key combos](https://github.com/RobertWHurst/KeyboardJS).
 Check its documentation for further details on how to make combo strings.
 
+Requires `keyboardjs`:
+
+```bash
+npm add keyboardjs
+# or
+yarn add keyboardjs
+```
+
 ## Usage
 
 ```jsx

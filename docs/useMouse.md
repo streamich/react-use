@@ -1,6 +1,11 @@
-# `useMouse`
+# `useMouse` and `useMouseHovered`
 
-React sensor hook that re-renders on mouse position changes.
+React sensor hooks that re-render on mouse position changes. `useMouse` simply tracks
+mouse position; `useMouseHovered` allows you to specify extra options:
+
+- `bound` &mdash; to bind mouse coordinates withing the element.
+- `whenHovered` &mdash; whether to attach `mousemove` event handler only when user hovers over the element.
+
 
 ## Usage
 
@@ -20,4 +25,12 @@ const Demo = () => {
     </div>
   );
 };
+```
+
+
+## Reference
+
+```ts
+useMouse(ref);
+useMouseHovered(ref, {bound: false, whenHovered: false});
 ```
