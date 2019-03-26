@@ -15,7 +15,7 @@ export interface State {
 const useMouse = (ref: RefObject<HTMLElement>, whenHovered: boolean = false): State => {
   if (process.env.NODE_ENV === 'development') {
     if ((typeof ref !== 'object') || (typeof ref.current === 'undefined')) {
-      throw new TypeError('useMouse expects a single ref argument.');
+      console.error('useMouse expects a single ref argument.');
     }
   }
 
