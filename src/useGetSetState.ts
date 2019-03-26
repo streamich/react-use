@@ -4,7 +4,7 @@ import useUpdate from './useUpdate';
 const useGetSetState = <T extends object>(initialState: T = {} as T): [() => T, (patch: Partial<T>) => void]=> {
   if (process.env.NODE_ENV !== 'production') {
     if (typeof initialState !== 'object') {
-      throw new TypeError('useGetSetState initial state must be an object.');
+      console.error('useGetSetState initial state must be an object.');
     }
   }
 
@@ -15,7 +15,7 @@ const useGetSetState = <T extends object>(initialState: T = {} as T): [() => T, 
     if (!patch) return;
     if (process.env.NODE_ENV !== 'production') {
       if (typeof patch !== 'object') {
-        throw new TypeError('useGetSetState setter patch must be an object.');
+        console.error('useGetSetState setter patch must be an object.');
       }
     }
     Object.assign(state.current, patch);

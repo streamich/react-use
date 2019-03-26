@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 const useHoverDirty = (ref, enabled: boolean = true) => {
   if (process.env.NODE_ENV === 'development') {
     if ((typeof ref !== 'object') || (typeof ref.current === 'undefined')) {
-      throw new TypeError('useHoverDirty expects a single ref argument.');
+      console.error('useHoverDirty expects a single ref argument.');
     }
   }
 
