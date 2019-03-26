@@ -1664,7 +1664,7 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
 
-"@types/react@^16.8.2":
+"@types/react@16.8.2":
   version "16.8.2"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.2.tgz#3b7a7f7ea89d1c7d68b00849fb5de839011c077b"
   integrity sha512-6mcKsqlqkN9xADrwiUz2gm9Wg4iGnlVGciwBRYFQSMWG6MQjhOZ/AVnxn+6v8nslFgfYTV8fNdE6XwKu6va5PA==
@@ -6448,7 +6448,7 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-keyboardjs@^2.5.1:
+keyboardjs@2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/keyboardjs/-/keyboardjs-2.5.1.tgz#2eb5d96bd1028e07136cd71919f607579edca716"
   integrity sha512-mRf7MQMiFcudADEpPn3vTtl/rtFELo5MAiKA6yH4ShsFsnwwjMrVfaNt6bpYhBDeODs/T5NXwltz4+ktRQyP7A==
@@ -9249,7 +9249,7 @@ readdirp@^2.0.0, readdirp@^2.2.1:
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
 
-rebound@^0.1.0:
+rebound@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/rebound/-/rebound-0.1.0.tgz#0638c61a93666bb515a58a03e1cfb34021e88b72"
   integrity sha1-BjjGGpNma7UVpYoD4c+zQCHoi3I=
