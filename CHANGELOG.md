@@ -1,3 +1,16 @@
+# [6.2.0](https://github.com/streamich/react-use/compare/v6.1.0...v6.2.0) (2019-03-27)
+
+
+### Bug Fixes
+
+* add esm to 'files' in package.json ([fc1ba07](https://github.com/streamich/react-use/commit/fc1ba07))
+* clean esm folder as well ([0a10a6e](https://github.com/streamich/react-use/commit/0a10a6e))
+
+
+### Features
+
+* emit code in ES Module mode ([464642e](https://github.com/streamich/react-use/commit/464642e))
+
 # [6.1.0](https://github.com/streamich/react-use/compare/v6.0.0...v6.1.0) (2019-03-26)
 
 
