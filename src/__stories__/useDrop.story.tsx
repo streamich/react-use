@@ -2,6 +2,7 @@ import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 import {useDrop} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const state = useDrop({
@@ -44,4 +45,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('UI|useDrop', module).add('Default', () => <Demo />);
+storiesOf('UI|useDrop', module)
+  .add('Docs', () => <ShowDocs md={require('../../docs/useDrop.md')} />)
+  .add('Default', () => <Demo />);

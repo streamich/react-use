@@ -2,6 +2,7 @@ import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 import {usePageLeave} from '..';
+import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   usePageLeave(action('onPageLeave'));
@@ -13,4 +14,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Sensors|usePageLeave', module).add('Default', () => <Demo />);
+storiesOf('Sensors|usePageLeave', module)
+  .add('Docs', () => <ShowDocs md={require('../../docs/usePageLeave.md')} />)
+  .add('Default', () => <Demo />);
