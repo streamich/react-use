@@ -3,16 +3,20 @@
   "version": "6.1.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
+  "module": "lib/es/index.js",
   "files": [
-    "lib/"
+    "lib/",
+    "esm/"
   ],
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
   "scripts": {
     "start": "yarn storybook",
     "test": "echo hmm...",
-    "build": "tsc",
-    "clean": "rimraf lib storybook-static",
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir esm",
+    "build": "yarn build:cjs && yarn build:es",
+    "clean": "rimraf lib storybook-static esm",
     "storybook": "start-storybook -p 6008",
     "storybook:build": "build-storybook",
     "storybook:upload": "gh-pages -d storybook-static",
