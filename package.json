@@ -40,7 +40,7 @@
     "ts-easing": "^0.2.0"
   },
   "devDependencies": {
-    "@types/react": "16.8.8",
+    "@types/react": "16.8.10",
     "keyboardjs": "2.5.1",
     "rebound": "0.1.0",
     "@semantic-release/changelog": "3.0.2",
