@@ -46,6 +46,7 @@ import useSize from './useSize';
 import useSpeech from './useSpeech';
 import useSpring from './useSpring';
 import useThrottle from './useThrottle';
+import useThrottleFn from './useThrottleFn';
 import useTimeout from './useTimeout';
 import useTitle from './useTitle';
 import useToggle from './useToggle';
@@ -107,6 +108,7 @@ export {
   useSpeech,
   useSpring,
   useThrottle,
+  useThrottleFn,
   useTimeout,
   useTitle,
   useToggle,

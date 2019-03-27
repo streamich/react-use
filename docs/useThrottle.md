@@ -1,15 +1,16 @@
-# `useThrottle`
+# `useThrottle` and `useThrottleFn`
 
-React hook that throttles a value.
+React hooks that throttle.
 
 ## Usage
 
 ```jsx
 import React, { useState } from 'react';
-import { useThrottle } from 'react-use';
+import { useThrottle, useThrottleFn } from 'react-use';
 
 const Demo = ({value}) => {
   const throttledValue = useThrottle(value);
+  // const throttledValue = useThrottleFn(value => value, 200, [value]);
 
   return (
     <>
@@ -24,4 +25,5 @@ const Demo = ({value}) => {
 
 ```ts
 useThrottle(value, ms?: number);
+useThrottleFn(fn, ms, args);
 ```
