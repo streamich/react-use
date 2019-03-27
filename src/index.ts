@@ -8,6 +8,7 @@ import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
 import useFavicon from './useFavicon';
+import useFullscreen from './useFullscreen';
 import useGeolocation from './useGeolocation';
 import useGetSet from './useGetSet';
 import useGetSetState from './useGetSetState';
@@ -68,6 +69,7 @@ export {
   useCss,
   useDebounce,
   useFavicon,
+  useFullscreen,
   useGeolocation,
   useGetSet,
   useGetSetState,
