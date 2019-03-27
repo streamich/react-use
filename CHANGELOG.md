@@ -1,3 +1,10 @@
+## [6.2.1](https://github.com/streamich/react-use/compare/v6.2.0...v6.2.1) (2019-03-27)
+
+
+### Bug Fixes
+
+* set 'module' field properly ([35d4fc2](https://github.com/streamich/react-use/commit/35d4fc2))
+
 # [6.2.0](https://github.com/streamich/react-use/compare/v6.1.0...v6.2.0) (2019-03-27)
 
 
