@@ -3,7 +3,7 @@
   "version": "6.2.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
-  "module": "lib/es/index.js",
+  "module": "esm/index.js",
   "files": [
     "lib/",
     "esm/"
