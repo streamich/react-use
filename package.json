@@ -75,6 +75,10 @@
     }
   },
   "release": {
+    "branches": ["master", {
+      "name": "next",
+      "prerelease": "rc"
+    }],
     "verifyConditions": [
       "@semantic-release/changelog",
       "@semantic-release/npm",

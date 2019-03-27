@@ -5,6 +5,7 @@ import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useBoolean from './useBoolean';
 import useDrop from './useDrop';
+import useDropArea from './useDropArea';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
@@ -67,6 +68,7 @@ export {
   useBattery,
   useBoolean,
   useDrop,
+  useDropArea,
   useClickAway,
   useCounter,
   useCss,
