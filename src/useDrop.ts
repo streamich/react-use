@@ -51,7 +51,7 @@ const createProcess = (options: DropAreaOptions, mounted: React.RefObject<boolea
   }
 };
 
-const useDrop = (options: DropAreaOptions = {}): DropAreaState => {
+const useDrop = (options: DropAreaOptions = {}, args = []): DropAreaState => {
   const {onFiles, onText, onUri} = options;
   const mounted = useRefMounted();
   const [over, setOverRaw] = useState<boolean>(false);
@@ -61,6 +61,7 @@ const useDrop = (options: DropAreaOptions = {}): DropAreaState => {
   useEffect(() => {
     const onDragOver = (event) => {
       event.preventDefault();
+      setOver(true);
     };
 
     const onDragEnter = (event) => {
@@ -69,7 +70,7 @@ const useDrop = (options: DropAreaOptions = {}): DropAreaState => {
     };
 
     const onDragLeave = () => {
-      setOver(true);
+      setOver(false);
     };
 
     const onDragExit = () => {
@@ -86,25 +87,23 @@ const useDrop = (options: DropAreaOptions = {}): DropAreaState => {
       process(event.clipboardData, event);
     };
 
-    window.addEventListener('dragover', onDragOver);
-    window.addEventListener('dragenter', onDragEnter);
-    window.addEventListener('dragleave', onDragLeave);
-    window.addEventListener('dragexit', onDragExit);
-    window.addEventListener('drop', onDrop);
-
-    if (onText) {
-      window.addEventListener('paste', onPaste);
-    }
+    document.addEventListener('dragover', onDragOver);
+    document.addEventListener('dragenter', onDragEnter);
+    document.addEventListener('dragleave', onDragLeave);
+    document.addEventListener('dragexit', onDragExit);
+    document.addEventListener('drop', onDrop);
+    if (onText)
+      document.addEventListener('paste', onPaste);
 
     return () => {
-      window.removeEventListener('dragover', onDragOver);
-      window.removeEventListener('dragenter', onDragEnter);
-      window.removeEventListener('dragleave', onDragLeave);
-      window.removeEventListener('dragexit', onDragExit);
-      window.removeEventListener('drop', onDrop);
-      window.removeEventListener('paste', onPaste);
+      document.removeEventListener('dragover', onDragOver);
+      document.removeEventListener('dragenter', onDragEnter);
+      document.removeEventListener('dragleave', onDragLeave);
+      document.removeEventListener('dragexit', onDragExit);
+      document.removeEventListener('drop', onDrop);
+      document.removeEventListener('paste', onPaste);
     };
-  }, [process]);
+  }, [process, ...args]);
 
   return {over};
 };
