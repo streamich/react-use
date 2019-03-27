@@ -3,6 +3,7 @@
   "version": "6.1.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
+  "module": "lib/es/index.js",
   "files": [
     "lib/"
   ],
@@ -11,7 +12,9 @@
   "scripts": {
     "start": "yarn storybook",
     "test": "echo hmm...",
-    "build": "tsc",
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir lib/es",
+    "build": "yarn build:cjs && yarn build:es",
     "clean": "rimraf lib storybook-static",
     "storybook": "start-storybook -p 6008",
     "storybook:build": "build-storybook",
