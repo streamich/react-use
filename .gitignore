@@ -66,6 +66,7 @@ typings/
 
 # build output
 lib/
+esm
 
 .DS_Store
 

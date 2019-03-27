@@ -13,7 +13,7 @@
     "start": "yarn storybook",
     "test": "echo hmm...",
     "build:cjs": "tsc",
-    "build:es": "tsc -m esNext --outDir lib/es",
+    "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn build:cjs && yarn build:es",
     "clean": "rimraf lib storybook-static",
     "storybook": "start-storybook -p 6008",
