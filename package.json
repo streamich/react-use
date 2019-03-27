@@ -15,7 +15,7 @@
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn build:cjs && yarn build:es",
-    "clean": "rimraf lib storybook-static",
+    "clean": "rimraf lib storybook-static esm",
     "storybook": "start-storybook -p 6008",
     "storybook:build": "build-storybook",
     "storybook:upload": "gh-pages -d storybook-static",
