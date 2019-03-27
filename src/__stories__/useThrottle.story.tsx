@@ -1,35 +1,36 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { useThrottle } from '..';
+import { useThrottle, useCounter } from '..';
 import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
-  const [status, setStatus] = React.useState('Updating stopped');
   const [value, setValue] = React.useState('');
-  const [throttledValue, setThrottledValue] = React.useState('');
+  const throttledValue = useThrottle(value, 2000);
+  const [lastThrottledValue, setLastThrottledValue] = React.useState(throttledValue);
+  const [count, {inc}] = useCounter();
 
-  useThrottle(
-    () => {
-      setStatus('Waiting for input...');
-      setThrottledValue(value);
-    },
-    2000,
-    [value]
-  );
+  React.useEffect(() => {
+    if (lastThrottledValue !== throttledValue) {
+      setLastThrottledValue(throttledValue);
+      inc();
+    }
+  });
 
   return (
-    <div>
+    <div style={{width: 300, margin: '40px auto'}}>
       <input
         type="text"
         value={value}
         placeholder="Throttled input"
+        style={{width: '100%'}}
         onChange={({ currentTarget }) => {
-          setStatus('Updating stopped');
           setValue(currentTarget.value);
         }}
       />
-      <div>{status}</div>
+      <br />
+      <br />
       <div>Throttled value: {throttledValue}</div>
+      <div>Times updated: {count}</div>
     </div>
   );
 };
