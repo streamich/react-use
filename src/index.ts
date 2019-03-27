@@ -4,6 +4,7 @@ import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useBoolean from './useBoolean';
+import useDrop from './useDrop';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
@@ -64,6 +65,7 @@ export {
   useAudio,
   useBattery,
   useBoolean,
+  useDrop,
   useClickAway,
   useCounter,
   useCss,
