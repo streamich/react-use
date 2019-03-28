@@ -17,6 +17,7 @@ import useGetSetState from './useGetSetState';
 import useHover from './useHover';
 import useHoverDirty from './useHoverDirty';
 import useIdle from './useIdle';
+import useKey from './useKey';
 import useKeyPress from './useKeyPress';
 import useKeyPressEvent from './useKeyPressEvent';
 import useLifecycles from './useLifecycles';
@@ -82,6 +83,7 @@ export {
   useHover,
   useHoverDirty,
   useIdle,
+  useKey,
   useKeyPress,
   useKeyPressEvent,
   useLifecycles,

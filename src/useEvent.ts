@@ -16,7 +16,6 @@ const defaultTarget = typeof window === 'object' ? window : null;
 
 const useEvent = (name: string, handler?: null | undefined | ((event?: any) => void), target: null | UseEventTarget = defaultTarget, options?: any) => {
   useEffect(() => {
-    console.log('adding event...');
     if (!handler) return;
     if (!target) return;
     ((target as ListenerType1).addEventListener || (target as ListenerType2).on).call(target, name, handler, options);
