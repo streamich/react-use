@@ -1,33 +1,18 @@
-import * as React from 'react';
-const { useEffect } = React;
-import useKeyPress from './useKeyPress';
-
-type KeyPressCallback = ((targetKey: string) => void) | undefined | null;
+import {KeyFilter, Handler} from './useKey';
+import useKeyPressDefault from './useKeyPress';
+import useUpdateEffect from './useUpdateEffect';
 
 const useKeyPressEvent = (
-  targetKey: string,
-  onKeyup: KeyPressCallback = undefined,
-  onKeydown: KeyPressCallback = undefined
+  key: string | KeyFilter,
+  keydown?: Handler | null | undefined,
+  keyup?: Handler | null | undefined,
+  useKeyPress = useKeyPressDefault,
 ) => {
-  const useKeyboardJS: boolean = targetKey.length > 1;
-  const pressedKeys: boolean = useKeyPress(targetKey);
-
-  if (onKeydown === undefined) {
-    onKeydown = onKeyup;
-    onKeyup = null;
-  }
-
-  useEffect(
-    () => {
-      if (!pressedKeys) {
-        if (onKeyup) onKeyup(targetKey);
-        return;
-      }
-
-      if (onKeydown) onKeydown(targetKey);
-    },
-    [pressedKeys]
-  );
+  const [pressed, event] = useKeyPress(key);
+  useUpdateEffect(() => {
+    if (!pressed && keyup) keyup(event!);
+    else if (keydown) keydown(event!);
+  }, [pressed]);
 };
 
 export default useKeyPressEvent;
