@@ -1,35 +1,23 @@
-import { storiesOf } from "@storybook/react";
-import * as React from "react";
-import { useKeyPress } from "..";
-import ShowDocs from "../util/ShowDocs";
+import {storiesOf} from '@storybook/react';
+import * as React from 'react';
+import {useKeyPress} from '..';
+import ShowDocs from '../util/ShowDocs';
+import {CenterStory} from './util/CenterStory';
+
+const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
 const Demo = () => {
-  const hasPressedQ = useKeyPress("q");
-  const hasPressedW = useKeyPress("w");
-  const hasPressedE = useKeyPress("e");
-  const hasPressedR = useKeyPress("r");
-  const hasPressedT = useKeyPress("t");
-  const hasPressedY = useKeyPress("y");
-  const hasPressedWord = useKeyPress("q + w + e + r + t + y", {
-    useKeyboardJS: true
-  });
+  const states = [];
+  for (const key of keys) states.push(useKeyPress(key)[0]);
 
   return (
-    <div>
-      Try pressing each one of these at a time: <code>Q W E R T Y</code>
-      {!hasPressedWord && (
-        <div>
-          {hasPressedQ && "Q"}
-          {hasPressedW && "W"}
-          {hasPressedE && "E"}
-          {hasPressedR && "R"}
-          {hasPressedT && "T"}
-          {hasPressedY && "Y"}
-        </div>
-      )}
-      <div>And now press them all at once!</div>
-      <div>{hasPressedWord && "Q + W + E + R + T + Y"}</div>
-    </div>
+    <CenterStory>
+      <div style={{textAlign: 'center'}}>
+        Try pressing numbers
+        <br />
+        {states.reduce((s, pressed, index) => s + (pressed ? (s ? ' + ' : '') + keys[index] : ''), '')}
+      </div>
+    </CenterStory>
   );
 };
 

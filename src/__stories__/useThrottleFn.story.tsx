@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { useThrottle, useCounter } from '..';
+import { useThrottleFn, useCounter } from '..';
 import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
-  const throttledValue = useThrottle(value, 2000);
+  const throttledValue = useThrottleFn(value => value, 2000, [value]);
   const [lastThrottledValue, setLastThrottledValue] = React.useState(throttledValue);
   const [count, {inc}] = useCounter();
 
@@ -35,6 +35,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side effects|useThrottle', module)
+storiesOf('Side effects|useThrottleFn', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useThrottle.md')} />)
   .add('Demo', () => <Demo />);

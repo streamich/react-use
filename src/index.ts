@@ -4,18 +4,24 @@ import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useBoolean from './useBoolean';
+import useDrop from './useDrop';
+import useDropArea from './useDropArea';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
+import useEvent from './useEvent';
 import useFavicon from './useFavicon';
+import useFullscreen from './useFullscreen';
 import useGeolocation from './useGeolocation';
 import useGetSet from './useGetSet';
 import useGetSetState from './useGetSetState';
 import useHover from './useHover';
 import useHoverDirty from './useHoverDirty';
 import useIdle from './useIdle';
+import useKey from './useKey';
 import useKeyPress from './useKeyPress';
 import useKeyPressEvent from './useKeyPressEvent';
+import useKeyboardJs from './useKeyboardJs';
 import useLifecycles from './useLifecycles';
 import useList from './useList';
 import useLocalStorage from './useLocalStorage';
@@ -34,6 +40,7 @@ import useNumber from './useNumber';
 import useObservable from './useObservable';
 import useOrientation from './useOrientation';
 import useClickAway from './useClickAway';
+import usePageLeave from './usePageLeave';
 import usePromise from './usePromise';
 import useRaf from './useRaf';
 import useRefMounted from './useRefMounted';
@@ -44,6 +51,7 @@ import useSize from './useSize';
 import useSpeech from './useSpeech';
 import useSpring from './useSpring';
 import useThrottle from './useThrottle';
+import useThrottleFn from './useThrottleFn';
 import useTimeout from './useTimeout';
 import useTitle from './useTitle';
 import useToggle from './useToggle';
@@ -63,19 +71,25 @@ export {
   useAudio,
   useBattery,
   useBoolean,
+  useDrop,
+  useDropArea,
   useClickAway,
   useCounter,
   useCss,
   useDebounce,
+  useEvent,
   useFavicon,
+  useFullscreen,
   useGeolocation,
   useGetSet,
   useGetSetState,
   useHover,
   useHoverDirty,
   useIdle,
+  useKey,
   useKeyPress,
   useKeyPressEvent,
+  useKeyboardJs,
   useLifecycles,
   useList,
   useLocalStorage,
@@ -93,6 +107,7 @@ export {
   useNumber,
   useObservable,
   useOrientation,
+  usePageLeave,
   usePromise,
   useRaf,
   useRefMounted,
@@ -103,6 +118,7 @@ export {
   useSpeech,
   useSpring,
   useThrottle,
+  useThrottleFn,
   useTimeout,
   useTitle,
   useToggle,
