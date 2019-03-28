@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "6.2.1",
+  "version": "6.2.2",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -56,7 +56,7 @@
     "@storybook/addon-options": "5.0.5",
     "@storybook/react": "5.0.5",
     "babel-core": "6.26.3",
-    "fork-ts-checker-webpack-plugin": "1.0.0",
+    "fork-ts-checker-webpack-plugin": "1.0.1",
     "gh-pages": "2.0.1",
     "markdown-loader": "5.0.0",
     "react": "16.8.4",

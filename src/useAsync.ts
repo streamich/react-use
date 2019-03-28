@@ -1,16 +1,24 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, DependencyList } from 'react';
 
-export interface AsyncState<T> {
-  loading: boolean;
-  error?: Error;
-  value?: T;
+export type AsyncState<T> =
+| {
+  loading: true;
+}
+| {
+  loading: false;
+  error: Error;
+}
+| {
+  loading: false;
+  error?: undefined;
+  value: T;
 };
 
-const useAsync = <T>(fn: () => Promise<T>, args?) => {
+const useAsync = <T>(fn: () => Promise<T>, deps: DependencyList) => {
   const [state, set] = useState<AsyncState<T>>({
     loading: true
   });
-  const memoized = useCallback(fn, args);
+  const memoized = useCallback(fn, deps);
 
   useEffect(() => {
     let mounted = true;

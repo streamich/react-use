@@ -1,3 +1,10 @@
+## [6.2.2](https://github.com/streamich/react-use/compare/v6.2.1...v6.2.2) (2019-03-28)
+
+
+### Bug Fixes
+
+* fix deps arg and union type in useAsync and useAsyncRetry ([929e726](https://github.com/streamich/react-use/commit/929e726))
+
 ## [6.2.1](https://github.com/streamich/react-use/compare/v6.2.0...v6.2.1) (2019-03-27)
 
 
