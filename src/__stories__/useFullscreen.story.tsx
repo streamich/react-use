@@ -19,6 +19,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side effects|useFullscreen', module)
+storiesOf('UI|useFullscreen', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useFullscreen.md')} />)
   .add('Demo', () => <Demo />)

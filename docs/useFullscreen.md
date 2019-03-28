@@ -28,5 +28,8 @@ const Demo = () => {
 ## Reference
 
 ```ts
-useFullscreen(ref: RefObject<Element>, videoRef?: RefObject<HTMLVideoElement>);
+useFullscreen(
+  ref: RefObject<Element>,
+  videoRef?: RefObject<HTMLVideoElement>
+): [boolean, (value?: boolean) => void];
 ```

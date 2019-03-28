@@ -55,6 +55,7 @@
   - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls. [![][img-demo]](https://codesandbox.io/s/2o4lo6rqy)
   - [`useClickAway`](./docs/useClickAway.md) &mdash; triggers callback when user clicks outside target area.
   - [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS.
+  - [`useFullscreen`](./docs/useFullscreen.md) &mdash; display an element or video full-screen. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usefullscreen--demo)
   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![][img-demo]](https://codesandbox.io/s/n090mqz69m)
   - [`useVideo`](./docs/useVideo.md) &mdash; plays video, tracks its state, and exposes playback controls. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usevideo--demo)
   - [`useWait`](./docs/useWait.md) &mdash; complex waiting management for UIs.
