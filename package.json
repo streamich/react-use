@@ -39,6 +39,10 @@
     "throttle-debounce": "^2.0.1",
     "ts-easing": "^0.2.0"
   },
+  "peerDependencies": {
+    "keyboardjs": "*",
+    "rebound": "*"
+  },
   "devDependencies": {
     "@types/react": "16.8.10",
     "keyboardjs": "2.5.1",
