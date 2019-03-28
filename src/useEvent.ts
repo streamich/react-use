@@ -18,10 +18,10 @@ const useEvent = (name: string, handler?: null | undefined | ((event?: any) => v
   useEffect(() => {
     if (!handler) return;
     if (!target) return;
-    const fn = ((target as ListenerType1).addEventListener || (target as ListenerType2).on);
+    const fn: any = ((target as ListenerType1).addEventListener || (target as ListenerType2).on);
     fn.call(target, name, handler, options);
     return () => {
-      const fn = ((target as ListenerType1).removeEventListener || (target as ListenerType2).off);
+      const fn: any = ((target as ListenerType1).removeEventListener || (target as ListenerType2).off);
       fn.call(target, name, handler, options);
     };
   }, [name, handler, target, JSON.stringify(options)]);

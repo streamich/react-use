@@ -10,9 +10,7 @@ const useKeyPressEvent = (
   onKeydown: KeyPressCallback = undefined
 ) => {
   const useKeyboardJS: boolean = targetKey.length > 1;
-  const pressedKeys: boolean = useKeyPress(targetKey, {
-    useKeyboardJS,
-  });
+  const pressedKeys: boolean = useKeyPress(targetKey);
 
   if (onKeydown === undefined) {
     onKeydown = onKeyup;
