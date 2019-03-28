@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import useMount from './useMount';
 
 const useKeyboardJs = (combination: string) => {
-  const [state, set] = useState(false);
+  const [state, set] = useState<[boolean, null | KeyboardEvent]>([false, null]);
   const [keyboardJs, setKeyboardJs] = useState<any>(null);
 
   useMount(() => {
@@ -12,8 +12,8 @@ const useKeyboardJs = (combination: string) => {
   useEffect(() => {
     if (!keyboardJs) return;
 
-    const down = () => set(true);
-    const up = () => set(false);
+    const down = event => set([true, event]);
+    const up = event => set([false, event]);
     keyboardJs.bind(combination, down, up);
 
     return () => {

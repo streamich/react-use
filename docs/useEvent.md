@@ -34,5 +34,5 @@ const Demo = () => {
 
 ```js
 useEvent('keydown', handler)
-useEvent('scroll', handler, window, {useCapture: true})
+useEvent('scroll', handler, window, {capture: true})
 ```
