@@ -1,26 +1,26 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 
 const useThrottle = (fn: () => any, ms: number = 0, args?) => {
   const lastRan = useRef(0);
+  const timeout = useRef(0);
+
+  const run = useCallback(() => {
+    fn.apply(null, args);
+    lastRan.current = Date.now();
+  }, [fn, args]);
 
   useEffect(() => {
-    let timeout
-    const diff = Date.now() - lastRan.current
+    clearTimeout(timeout.current);
+    const diff = Date.now() - lastRan.current;
 
     if (diff >= ms) {
-      fn.apply(null, args);
-      lastRan.current = Date.now();
+      run();
     } else {
-      timeout = setTimeout(() => {
-        fn.apply(null, args);
-        lastRan.current = Date.now();
-      }, ms - diff)
+      timeout.current = window.setTimeout(run, ms - diff);
     }
 
     return () => {
-      if (timeout) {
-        clearTimeout(timeout);
-      }
+      clearTimeout(timeout.current);
     }
   }, args);
 };

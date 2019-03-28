@@ -1,9 +1,9 @@
 {
   "name": "react-use",
-  "version": "6.2.0",
+  "version": "6.2.1",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
-  "module": "lib/es/index.js",
+  "module": "esm/index.js",
   "files": [
     "lib/",
     "esm/"
@@ -49,9 +49,9 @@
     "@storybook/addon-notes": "5.0.5",
     "@storybook/addon-options": "5.0.5",
     "@storybook/react": "5.0.5",
-    "@types/react": "16.8.8",
+    "@types/react": "16.8.10",
     "babel-core": "6.26.3",
-    "fork-ts-checker-webpack-plugin": "1.0.0",
+    "fork-ts-checker-webpack-plugin": "1.0.1",
     "gh-pages": "2.0.1",
     "keyboardjs": "2.5.1",
     "markdown-loader": "5.0.0",
