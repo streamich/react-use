@@ -55,6 +55,27 @@ jobs:
           path: ~/repo/storybook-static
       - *Commit_Status_Storybook
 
+  next:
+    <<: *container
+    steps:
+      - checkout
+      - *Versions
+      - *Install
+      - *Build
+      - *Build_Storybook
+      - *Test
+      - store_artifacts:
+          path: ~/repo/storybook-static
+      - *Commit_Status_Storybook
+      - run:
+          name: Setup GitHub
+          command: |
+            git config --global user.email "streamich@gmail.com"
+            git config --global user.name "streamich"
+            git remote rm origin
+            git remote add origin https://${GITHUB_TOKEN}@github.com/streamich/react-use
+      - *Release
+
   master:
     <<: *container
     steps:
@@ -87,7 +108,15 @@ workflows:
             branches:
               ignore:
                 - master
+                - next
                 - gh-pages
+  next:
+    jobs:
+      - next:
+          context: common-env-vars
+          filters:
+            branches:
+              only: next
   master:
     jobs:
       - master:
