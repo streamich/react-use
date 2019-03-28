@@ -20,6 +20,14 @@ const Demo = () => {
 };
 ```
 
+Or as render-prop:
+
+```jsx
+import UseKey from 'react-use/lib/comps/UseKey';
+
+<UseKey filter='a' fn={() => alert('"a" key pressed!')} />
+```
+
 
 ## Reference
 
