@@ -9,6 +9,7 @@ import useDropArea from './useDropArea';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
+import useEvent from './useEvent';
 import useFavicon from './useFavicon';
 import useGeolocation from './useGeolocation';
 import useGetSet from './useGetSet';
@@ -73,6 +74,7 @@ export {
   useCounter,
   useCss,
   useDebounce,
+  useEvent,
   useFavicon,
   useGeolocation,
   useGetSet,

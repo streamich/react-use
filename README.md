@@ -83,6 +83,7 @@
     <br/>
     <br/>
 - [**Lifecycles**](./docs/Lifecycles.md)
+  - [`useEvent`](./docs/useEvent.md) &mdash; subscribe to events.
   - [`useLifecycles`](./docs/useLifecycles.md) &mdash; calls `mount` and `unmount` callbacks.
   - [`useRefMounted`](./docs/useRefMounted.md) &mdash; tracks if component is mounted.
   - [`usePromise`](./docs/usePromise.md) &mdash; resolves promise only while component is mounted.
