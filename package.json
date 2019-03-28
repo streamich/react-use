@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "6.2.2",
+  "version": "7.0.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -41,8 +41,8 @@
     "ts-easing": "^0.2.0"
   },
   "peerDependencies": {
-    "keyboardjs": "*",
-    "rebound": "*"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "3.0.2",
@@ -70,20 +70,19 @@
     "ts-node": "8.0.3",
     "typescript": "3.3.4000"
   },
-  "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
-  },
   "config": {
     "commitizen": {
       "path": "git-cz"
     }
   },
   "release": {
-    "branches": ["master", {
-      "name": "next",
-      "prerelease": "rc"
-    }],
+    "branches": [
+      "master",
+      {
+        "name": "next",
+        "prerelease": "rc"
+      }
+    ],
     "verifyConditions": [
       "@semantic-release/changelog",
       "@semantic-release/npm",
