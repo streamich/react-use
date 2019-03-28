@@ -20,6 +20,7 @@ import useIdle from './useIdle';
 import useKey from './useKey';
 import useKeyPress from './useKeyPress';
 import useKeyPressEvent from './useKeyPressEvent';
+import useKeyboardJs from './useKeyboardJs';
 import useLifecycles from './useLifecycles';
 import useList from './useList';
 import useLocalStorage from './useLocalStorage';
@@ -86,6 +87,7 @@ export {
   useKey,
   useKeyPress,
   useKeyPressEvent,
+  useKeyboardJs,
   useLifecycles,
   useList,
   useLocalStorage,

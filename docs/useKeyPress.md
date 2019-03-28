@@ -3,11 +3,6 @@
 React UI sensor hook that detects when the user is pressing a specific
 key on their keyboard.
 
-Complex bindings like detecting when multiple keys are held down at the same
-time or requiring them to be held down in a specified order are also available
-via [KeyboardJS key combos](https://github.com/RobertWHurst/KeyboardJS).
-Check its documentation for further details on how to make combo strings.
-
 
 ## Usage
 
