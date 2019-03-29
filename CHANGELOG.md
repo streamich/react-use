@@ -1,3 +1,15 @@
+# [7.1.0](https://github.com/streamich/react-use/compare/v7.0.2...v7.1.0) (2019-03-29)
+
+
+### Bug Fixes
+
+* useClickAway TypeScript typings ([4b20083](https://github.com/streamich/react-use/commit/4b20083))
+
+
+### Features
+
+* pass click event in useClickAway to user ([01e38bc](https://github.com/streamich/react-use/commit/01e38bc))
+
 ## [7.0.2](https://github.com/streamich/react-use/compare/v7.0.1...v7.0.2) (2019-03-29)
 
 
