@@ -1,7 +1,7 @@
 import {RefObject, useEffect} from 'react';
 import {on, off} from './util';
 
-const useClickAway = (ref: RefObject<HTMLElement | null>, onClickAway: () => void) => {
+const useClickAway = (ref: RefObject<HTMLElement | null>, onClickAway: (event: KeyboardEvent) => void) => {
   useEffect(() => {
     const handler = (event) => {
       const {current: el} = ref;
