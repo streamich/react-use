@@ -42,7 +42,9 @@
   },
   "peerDependencies": {
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react-dom": "^16.8.0",
+    "keyboardjs": "*",
+    "rebound": "*"
   },
   "devDependencies": {
     "@semantic-release/changelog": "3.0.2",
