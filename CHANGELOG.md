@@ -1,3 +1,10 @@
+## [7.0.1](https://github.com/streamich/react-use/compare/v7.0.0...v7.0.1) (2019-03-29)
+
+
+### Bug Fixes
+
+* add optional attributes in AsyncState ([b0c9770](https://github.com/streamich/react-use/commit/b0c9770))
+
 # [7.0.0](https://github.com/streamich/react-use/compare/v6.2.2...v7.0.0) (2019-03-28)
 
 
