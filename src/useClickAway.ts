@@ -5,7 +5,7 @@ const useClickAway = (ref: RefObject<HTMLElement | null>, onClickAway: () => voi
   useEffect(() => {
     const handler = (event) => {
       const {current: el} = ref;
-      el && !el.contains(event.target) && onClickAway();
+      el && !el.contains(event.target) && onClickAway(event);
     };
     on(document, 'click', handler);
     return () => {
