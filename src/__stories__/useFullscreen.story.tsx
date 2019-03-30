@@ -7,7 +7,10 @@ const Demo = () => {
   const [show, toggle] = useToggle(false);
   const ref = React.useRef(null)
   const videoRef = React.useRef(null)
-  const isFullScreen = useFullscreen(ref, show, {onClose: () => toggle(false)});
+  const isFullScreen = useFullscreen(ref, show, {
+    onClose: () => toggle(false),
+    video: videoRef
+  });
 
   const controls = (
     <div style={{background: 'white', padding: '20px'}}>

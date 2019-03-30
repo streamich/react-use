@@ -2,7 +2,7 @@ import {useLayoutEffect, RefObject, useState} from 'react';
 import screenfull from 'screenfull';
 
 export interface FullScreenOptions {
-  video?: HTMLVideoElement;
+  video?: RefObject<HTMLVideoElement>;
   onClose?: (error?: Error) => void;
 }
 
@@ -17,7 +17,7 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
     if (!ref.current) return;
 
     const onWebkitEndFullscreen = () => {
-      video!.removeEventListener('webkitendfullscreen', onWebkitEndFullscreen);
+      video!.current!.removeEventListener('webkitendfullscreen', onWebkitEndFullscreen);
       onClose();
     };
 
@@ -40,15 +40,13 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
         setIsFullscreen(false);
       }
       screenfull.on('change', onChange);
+    } else if (video && video.current && video.current.webkitEnterFullscreen) {
+      video.current.webkitEnterFullscreen();
+      video.current.addEventListener('webkitendfullscreen', onWebkitEndFullscreen);
+      setIsFullscreen(true);
     } else {
-      if (video && video.webkitEnterFullscreen) {
-        video.webkitEnterFullscreen();
-        video.addEventListener('webkitendfullscreen', onWebkitEndFullscreen);
-        setIsFullscreen(true);
-      } else {
-        onClose();
-        setIsFullscreen(false);
-      }
+      onClose();
+      setIsFullscreen(false);
     }
 
     return () => {
@@ -58,9 +56,9 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
           screenfull.off('change', onChange);
           screenfull.exit();
         } catch {}
-      } else if (video && video.webkitExitFullscreen) {
-        video.removeEventListener('webkitendfullscreen', onWebkitEndFullscreen);
-        video.webkitExitFullscreen();
+      } else if (video && video.current && video.current.webkitExitFullscreen) {
+        video.current.removeEventListener('webkitendfullscreen', onWebkitEndFullscreen);
+        video.current.webkitExitFullscreen();
       }
     }
   }, [ref.current, video, on]);
