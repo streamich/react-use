@@ -9,7 +9,7 @@ const Demo = () => {
   const videoRef = React.useRef(null)
   const isFullScreen = useFullscreen(ref, show, {
     onClose: () => toggle(false),
-    video: videoRef.current
+    video: videoRef
   });
 
   const controls = (
