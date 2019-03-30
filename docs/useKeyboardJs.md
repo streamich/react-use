@@ -6,14 +6,13 @@ multiple keys are held down at the same time or requiring them to be held down i
 Via [KeyboardJS key combos](https://github.com/RobertWHurst/KeyboardJS).
 Check its documentation for further details on how to make combo strings.
 
-
 ## Usage
 
 ```jsx
 import useKeyboardJs from 'react-use/lib/useKeyboardJs';
 
 const Demo = () => {
-  const isPressed = useKeyboardJs('a + b');
+  const [isPressed] = useKeyboardJs('a + b');
 
   return (
     <div>
@@ -23,9 +22,18 @@ const Demo = () => {
 };
 ```
 
+## Requirements
 
-## Examples
+Install [`keyboardjs`](https://github.com/RobertWHurst/KeyboardJS) peer dependency:
+
+```bash
+npm add keyboardjs
+# or
+yarn add keyboardjs
+```
+
+## Reference
 
 ```js
-const isPressed = useKeyboardJs('a + b');
+useKeyboardJs(combination: string): [isPressed: boolean, event?: KeyboardEvent]
 ```

@@ -3,14 +3,6 @@
 React animation hook that updates a single numeric value over time according
 to spring dynamics.
 
-Requires `rebound`:
-
-```bash
-npm add rebound
-# or
-yarn add rebound
-```
-
 ## Usage
 
 ```jsx
@@ -31,9 +23,17 @@ const Demo = () => {
 };
 ```
 
+## Requirements
 
-# Reference
+Install [`rebound`](https://github.com/facebook/rebound-js) peer dependency:
 
+```bash
+npm add rebound
+# or
+yarn add rebound
+```
+
+## Reference
 
 ```js
 const currentValue = useSpring(targetValue);

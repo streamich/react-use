@@ -6,7 +6,7 @@ import ShowDocs from '../util/ShowDocs';
 import {CenterStory} from './util/CenterStory';
 
 const Demo = ({combo}) => {
-  const pressed = useKeyboardJs(combo)
+  const [pressed] = useKeyboardJs(combo)
 
   return (
     <CenterStory>
@@ -24,7 +24,7 @@ const Demo = ({combo}) => {
 
 storiesOf("Sensors|useKeyboardJs", module)
   .addDecorator(withKnobs)
-  .add("Docs", () => <ShowDocs md={require("../../docs/useKeyPress.md")} />)
+  .add("Docs", () => <ShowDocs md={require("../../docs/useKeyboardJs.md")} />)
   .add("Demo", () => {
     const combo = text('Combo', 'i + l + u');
     return <Demo combo={combo} />;
