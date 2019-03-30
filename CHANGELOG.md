@@ -1,3 +1,10 @@
+## [7.1.1](https://github.com/streamich/react-use/compare/v7.1.0...v7.1.1) (2019-03-30)
+
+
+### Bug Fixes
+
+* consistent refs in useFullscreen hook ([dc85499](https://github.com/streamich/react-use/commit/dc85499))
+
 # [7.1.0](https://github.com/streamich/react-use/compare/v7.0.2...v7.1.0) (2019-03-29)
 
 
