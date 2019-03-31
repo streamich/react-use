@@ -17,7 +17,7 @@ export type AsyncState<T> =
   value: T;
 };
 
-const useAsync = <T>(fn: () => Promise<T>, deps: DependencyList) => {
+const useAsync = <T>(fn: () => Promise<T>, deps: DependencyList = []) => {
   const [state, set] = useState<AsyncState<T>>({
     loading: true
   });
