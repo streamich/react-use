@@ -83,6 +83,7 @@
     <br/>
     <br/>
 - [**Lifecycles**](./docs/Lifecycles.md)
+  - [`useEffectOnce`](./docs/useEffectOnce.md) &mdash; a modified [`useEffect`](https://reactjs.org/docs/hooks-reference.html#useeffect) hook that only runs once.
   - [`useEvent`](./docs/useEvent.md) &mdash; subscribe to events.
   - [`useLifecycles`](./docs/useLifecycles.md) &mdash; calls `mount` and `unmount` callbacks.
   - [`useRefMounted`](./docs/useRefMounted.md) &mdash; tracks if component is mounted.
