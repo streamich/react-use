@@ -1,3 +1,10 @@
+# [7.3.0](https://github.com/streamich/react-use/compare/v7.2.0...v7.3.0) (2019-03-31)
+
+
+### Features
+
+* add useEffectOnce hook ([06c12d4](https://github.com/streamich/react-use/commit/06c12d4))
+
 # [7.2.0](https://github.com/streamich/react-use/compare/v7.1.1...v7.2.0) (2019-03-31)
 
 
