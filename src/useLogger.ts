@@ -1,10 +1,14 @@
-import {useEffect} from 'react';
-import useLifecycles from './useLifecycles';
+import useEffectOnce from './useEffectOnce';
+import useUpdateEffect from './useUpdateEffect';
 
-const useLogger = (name, props) => {
-  useLifecycles(() => console.log(`${name} mounted`), () => console.log(`${name} un-mounted`));
-  useEffect(() => {
-    console.log(`${name} props updated`, props);
+const useLogger = (componentName: string, ...rest) => {
+  useEffectOnce(() => {
+    console.log(`${componentName} mounted`, ...rest)
+    return () => console.log(`${componentName} unmounted`)
+  });
+
+  useUpdateEffect(() => {
+    console.log(`${componentName} updated`, ...rest);
   });
 };
 
