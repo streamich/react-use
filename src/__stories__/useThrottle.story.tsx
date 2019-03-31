@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { useThrottle, useCounter } from '..';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');

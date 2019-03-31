@@ -2,7 +2,7 @@ import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useGetSet} from '..';
 import {useState} from 'react';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [get, set] = useGetSet(0);

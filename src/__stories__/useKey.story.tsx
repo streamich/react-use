@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import {useKey} from "..";
-import ShowDocs from "../util/ShowDocs";
+import ShowDocs from "./util/ShowDocs";
 import {CenterStory} from "./util/CenterStory";
 
 const Demo = () => {

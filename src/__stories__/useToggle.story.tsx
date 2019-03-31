@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useToggle} from '..';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [on, toggle] = useToggle(true);

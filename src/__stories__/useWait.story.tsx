@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {useWait} from '..';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const AnotherComponent = () => {
   const { isWaiting } = useWait();

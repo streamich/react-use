@@ -1,6 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useUpdateEffect} from '..';
+import ShowDocs from "./util/ShowDocs"
 
 const Demo = () => {
   const [count, setCount] = React.useState(0)

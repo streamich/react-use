@@ -1,7 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useSpring} from '..';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [target, setTarget] = (React as any).useState(50);

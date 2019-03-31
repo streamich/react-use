@@ -1,7 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useLockBodyScroll, useToggle} from '..';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [locked, toggleLocked] = useToggle(false)

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {storiesOf} from '@storybook/react';
 import {withKnobs, boolean} from '@storybook/addon-knobs';
 import {useMouseHovered} from '..';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const Demo: React.FC<any> = ({whenHovered, bound}) => {
   const ref = React.useRef(null);

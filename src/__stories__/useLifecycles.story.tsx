@@ -1,7 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useLifecycles} from '..';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   useLifecycles(() => console.log('MOUNTED'), () => console.log('UNMOUNTED'));

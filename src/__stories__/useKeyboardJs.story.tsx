@@ -2,7 +2,7 @@ import {storiesOf} from '@storybook/react';
 import {withKnobs, text} from '@storybook/addon-knobs';
 import * as React from 'react';
 import {useKeyboardJs} from '..';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 import {CenterStory} from './util/CenterStory';
 
 const Demo = ({combo}) => {

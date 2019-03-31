@@ -2,7 +2,7 @@ import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useFavicon} from '..';
 import NewTabStory from './util/NewTabStory';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   useFavicon('https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico');

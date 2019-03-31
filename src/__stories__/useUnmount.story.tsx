@@ -1,7 +1,7 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useUnmount} from '..';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 import ConsoleStory from './util/ConsoleStory'
 
 const Demo = () => {

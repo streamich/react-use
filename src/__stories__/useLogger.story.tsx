@@ -3,7 +3,7 @@ import {withKnobs, text, boolean} from '@storybook/addon-knobs';
 import * as React from 'react';
 import {useCounter} from '..';
 import {useLogger} from '..';
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = (props) => {
   const [state, {inc}] = useCounter(0);

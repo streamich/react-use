@@ -2,7 +2,7 @@ import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useEffectOnce} from '..';
 import ConsoleStory from './util/ConsoleStory'
-import ShowDocs from '../util/ShowDocs';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   useEffectOnce(() => {
