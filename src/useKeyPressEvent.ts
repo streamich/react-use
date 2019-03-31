@@ -11,7 +11,7 @@ const useKeyPressEvent = (
   const [pressed, event] = useKeyPress(key);
   useUpdateEffect(() => {
     if (!pressed && keyup) keyup(event!);
-    else if (keydown) keydown(event!);
+    else if (pressed && keydown) keydown(event!);
   }, [pressed]);
 };
 
