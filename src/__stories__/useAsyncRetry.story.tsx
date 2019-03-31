@@ -19,13 +19,13 @@ const DemoRetry = () => {
 
   return (
     <div>
-      {loading?
-        <div>Loading...</div>
-        : error?
-        <div>Error: {error.message}</div>
-        : <div>Value: {value}</div>
+      {loading
+        ? <div>Loading...</div>
+        : error
+          ? <div>Error: {error.message}</div>
+          : <div>Value: {value}</div>
       }
-      <a href='javascript:void 0' onClick={() => retry()}>Retry</a>
+      <button onClick={() => retry()}>Retry</button>
     </div>
   );
 };
