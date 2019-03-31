@@ -1,7 +1,6 @@
 # `useSize`
 
-React sensor hook that tracks size of some HTML element.
-
+React sensor hook that tracks size of an HTML element.
 
 ## Usage
 

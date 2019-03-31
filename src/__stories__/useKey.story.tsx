@@ -26,7 +26,7 @@ const Demo = () => {
   );
 };
 
-const Demo2 = () => {
+const CounterDemo = () => {
   const [count, setCount] = React.useState(0);
   const increment = () => setCount(count => ++count);
   useKey('ArrowUp', increment);
@@ -39,6 +39,6 @@ const Demo2 = () => {
 };
 
 storiesOf("Sensors/useKey", module)
-  .add("Docs", () => <ShowDocs md={require("../../docs/useKeyPressEvent.md")} />)
+  .add("Docs", () => <ShowDocs md={require("../../docs/useKey.md")} />)
   .add("Demo", () => <Demo />)
-  .add("Simple counter", () => <Demo2 />);
+  .add("Simple counter", () => <CounterDemo />);

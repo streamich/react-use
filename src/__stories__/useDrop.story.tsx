@@ -47,4 +47,4 @@ const Demo = () => {
 
 storiesOf('UI|useDrop', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useDrop.md')} />)
-  .add('Default', () => <Demo />);
+  .add('Demo', () => <Demo />);

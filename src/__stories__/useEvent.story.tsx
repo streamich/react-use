@@ -9,10 +9,12 @@ const {useCallback} = React;
 const Demo = () => {
   const [list, {push, clear}] = useList();
 
-  useEvent('keydown', useCallback(({key}) => {
+  const onKeyDown = useCallback(({key}) => {
     if (key === 'r') clear();
     push(key);
-  }, []));
+  }, [])
+
+  useEvent('keydown', onKeyDown);
 
   return (
     <CenterStory>
@@ -27,7 +29,5 @@ const Demo = () => {
 };
 
 storiesOf('Sensors|useEvent', module)
-  .add('Docs', () => <ShowDocs md={require('../../docs/useFavicon.md')} />)
-  .add('Demo', () =>
-    <Demo />
-  )
+  .add('Docs', () => <ShowDocs md={require('../../docs/useEvent.md')} />)
+  .add('Demo', () => <Demo />)
