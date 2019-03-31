@@ -20,7 +20,7 @@ const fn = () => new Promise((resolve, reject) => {
 });
 
 const Demo = () => {
-  const state = useAsync(fn);
+  const state = useAsyncRetry(fn);
 
   return (
     <div>
