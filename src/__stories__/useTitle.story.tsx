@@ -1,16 +1,19 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
 import {useTitle} from '..';
+import NewTabStory from './util/NewTabStory';
 import ShowDocs from '../util/ShowDocs';
 
 const Demo = () => {
   useTitle('Hello world!');
 
-  return null;
+  return (
+    <NewTabStory>
+      Title should be "Hello world!"
+    </NewTabStory>
+  );
 };
 
 storiesOf('Side effects|useTitle', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useTitle.md')} />)
-  .add('Demo', () =>
-    <Demo/>
-  )
+  .add('Demo', () => <Demo/>)
