@@ -1,3 +1,10 @@
+# [7.2.0](https://github.com/streamich/react-use/compare/v7.1.1...v7.2.0) (2019-03-31)
+
+
+### Features
+
+* default dependency array for useAsync and useAsyncRetry ([cb140a0](https://github.com/streamich/react-use/commit/cb140a0))
+
 ## [7.1.1](https://github.com/streamich/react-use/compare/v7.1.0...v7.1.1) (2019-03-30)
 
 
