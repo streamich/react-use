@@ -1,13 +1,16 @@
-import {useRef, useEffect} from 'react';
+import {useRef, useEffect, RefObject} from 'react';
 
-const useRefMounted = () => {
-  const refMounted = useRef(false);
+const useRefMounted = (): RefObject<boolean> => {
+  const refMounted = useRef<boolean>(false);
+
   useEffect(() => {
     refMounted.current = true;
+
     return () => {
       refMounted.current = false;
     };
   });
+
   return refMounted;
 };
 
