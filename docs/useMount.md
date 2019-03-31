@@ -1,8 +1,6 @@
 # `useMount`
 
-React lifecycle hook that call `mount` callback, when
-component is mounted.
-
+React lifecycle hook that calls a function after the component is mounted.
 
 ## Usage
 
@@ -15,9 +13,8 @@ const Demo = () => {
 };
 ```
 
-
 ## Reference
 
 ```js
-useMount(mount);
+useMount(fn: () => void);
 ```
