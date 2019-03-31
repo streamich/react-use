@@ -10,13 +10,15 @@ const fn = () => new Promise<string>((resolve) => {
 });
 
 const Demo = () => {
-  const {loading, value} = useAsync<string>(fn);
+  const {loading, error, value} = useAsync<string>(fn);
 
   return (
     <div>
       {loading
         ? <div>Loading...</div>
-        : <div>Value: {value}</div>
+        : error
+          ? <div>Error: {error.message}</div>
+          : <div>Value: {value}</div>
       }
     </div>
   );
