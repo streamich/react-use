@@ -42,7 +42,7 @@ const useOrientation = (initialState: OrientationState = defaultState) => {
       mounted = false;
       off(window, 'orientationchange', onChange);
     };
-  }, [0]);
+  }, []);
 
   return state;
 };

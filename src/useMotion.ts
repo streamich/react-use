@@ -76,7 +76,7 @@ const useMotion = (initialState: MotionSensorState = defaultState) => {
     return () => {
       off(window, 'devicemotion', handler);
     };
-  }, [0]);
+  }, []);
 
   return state;
 };

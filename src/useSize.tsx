@@ -66,7 +66,7 @@ const useSize = (element: Element, {width = Infinity, height = Infinity}: Partia
         window.removeEventListener('resize', setSize);
       }
     };
-  }, [0]);
+  }, []);
 
   style.position = 'relative';
 

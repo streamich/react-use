@@ -54,7 +54,7 @@ const useGeolocation = (): GeoLocationSensorState => {
       mounted = false;
       navigator.geolocation.clearWatch(watchId);
     };
-  }, [0]);
+  }, []);
 
   return state;
 };

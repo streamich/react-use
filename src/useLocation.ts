@@ -96,7 +96,7 @@ const useLocation = (): LocationSensorState => {
       off(window, 'pushstate', onPushstate);
       off(window, 'replacestate', onReplacestate);
     };
-  }, [0]);
+  }, []);
 
   return state;
 };

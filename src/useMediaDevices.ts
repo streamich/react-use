@@ -30,7 +30,7 @@ const useMediaDevices = () => {
       mounted = false;
       off(navigator.mediaDevices, 'devicechange', onChange);
     };
-  }, [0]);
+  }, []);
 
   return state;
 };

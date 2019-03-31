@@ -80,7 +80,7 @@ const useNetwork = (initialState: NetworkState = {}) => {
         off(connection, 'change', onConnectionChange);
       }
     };
-  }, [0]);
+  }, []);
 
   return state;
 };

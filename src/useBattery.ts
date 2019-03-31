@@ -48,7 +48,7 @@ const useBattery = () => {
         off(battery, 'dischargingtimechange', onChange);
       }
     };
-  }, [0]);
+  }, []);
 
   return state;
 };
