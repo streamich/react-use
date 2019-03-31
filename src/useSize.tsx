@@ -1,8 +1,8 @@
 import * as React from 'react';
+import {isClient} from './util';
 
 const {useState, useEffect, useRef} = React;
 
-const isClient = typeof window === 'object';
 const DRAF = (callback: () => void) => setTimeout(callback, 35);
 
 export type Element = ((state: State) => React.ReactElement<any>) | React.ReactElement<any>;

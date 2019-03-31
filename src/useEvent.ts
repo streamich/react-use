@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import {isClient} from './util';
 
 export interface ListenerType1 {
   addEventListener (name: string, handler: (event?: any) => void, ...args: any[]);
@@ -12,7 +13,7 @@ export interface ListenerType2 {
 
 export type UseEventTarget = ListenerType1 | ListenerType2;
 
-const defaultTarget = typeof window === 'object' ? window : null;
+const defaultTarget = isClient ? window : null;
 
 const useEvent = (name: string, handler?: null | undefined | ((event?: any) => void), target: null | UseEventTarget = defaultTarget, options?: any) => {
   useEffect(() => {

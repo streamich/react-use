@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react';
-
-const isClient = typeof window === 'object';
+import {isClient} from './util';
 
 const useWindowSize = (initialWidth = Infinity, initialHeight = Infinity) => {
   const [state, setState] = useState<{width: number, height: number}>({

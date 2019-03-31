@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react';
-
-const isClient = typeof window === 'object';
+import {isClient} from './util';
 
 const useSessionStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, (value: T) => void] => {
   if (!isClient) {
