@@ -1,8 +1,6 @@
 # `useUnmount`
 
-React lifecycle hook that call `unmount` callback, when
-component is un-mounted.
-
+React lifecycle hook that calls a function when the component will unmount.
 
 ## Usage
 
@@ -15,9 +13,8 @@ const Demo = () => {
 };
 ```
 
-
 ## Reference
 
-```js
-useUnmount(mount);
+```ts
+useUnmount(fn: () => void | undefined);
 ```
