@@ -35,7 +35,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('Lifecycles|usePromise', module)
+storiesOf('Lifecycle|usePromise', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/usePromise.md')} />)
   .add('Demo', () =>
     <Demo/>

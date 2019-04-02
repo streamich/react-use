@@ -10,7 +10,7 @@ const Demo = () => {
   return <ConsoleStory />;
 };
 
-storiesOf('Lifecycles|useUnmount', module)
+storiesOf('Lifecycle|useUnmount', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useUnmount.md')} />)
   .add('Demo', () => <Demo/>)
 
