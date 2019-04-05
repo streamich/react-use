@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
+    "clipboard-polyfill": "^2.7.0",
     "nano-css": "^5.1.0",
     "react-wait": "^0.3.0",
     "screenfull": "^4.1.0",
@@ -41,9 +42,9 @@
     "ts-easing": "^0.2.0"
   },
   "peerDependencies": {
+    "keyboardjs": "*",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "keyboardjs": "*",
     "rebound": "*"
   },
   "devDependencies": {
