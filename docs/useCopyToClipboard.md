@@ -42,7 +42,7 @@ import {useCopyToClipboard} from 'react-use';
 import * as clipboard from "clipboard-polyfill"
 
 const myComp = (props) => {
-  const [success, copyToClipboard] = useCopyToClipboard(null, clipboard.writeText);
+  const [success, copyToClipboard] = useCopyToClipboard(undefined, clipboard.writeText);
   const myText = 'text to be copied';
   return (
     <div>

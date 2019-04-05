@@ -12,7 +12,7 @@ const copyDefault = (text) => {
 };
 
 
-const useCopyToClipboard = (timeout = null, copy = copyDefault) => {
+const useCopyToClipboard = (timeout = undefined, copy = copyDefault) => {
 
   const [success, setSuccess] = useState(false);
 
