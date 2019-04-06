@@ -1,30 +1,38 @@
-import {useState, useEffect, useRef} from 'react';
-import {isClient} from './util';
+import {useState, useEffect, useRef, RefObject} from 'react';
 
 export interface State {
   x: number;
   y: number;
 }
 
-const useScroll = (ref): State => {
+const useScroll = (ref: RefObject<HTMLElement>): State => {
+  if (process.env.NODE_ENV === 'development') {
+    if ((typeof ref !== 'object') || (typeof ref.current === 'undefined')) {
+      console.error('`useScroll` expects a single ref argument.');
+    }
+  }
+
   const frame = useRef(0);
   const [state, setState] = useState<State>({
-    x: isClient ? window.scrollX : 0,
-    y: isClient ? window.scrollY : 0
+    x: 0,
+    y: 0
   });
 
   useEffect(() => {
     const handler = () => {
       cancelAnimationFrame(frame.current)
+
       frame.current = requestAnimationFrame(() => {
-        setState({
-          x: ref.current.scrollLeft,
-          y: ref.current.scrollTop
-        });
+        if (ref.current) {
+          setState({
+            x: ref.current.scrollLeft,
+            y: ref.current.scrollTop
+          })
+        }
       });
     }
 
-    if (ref && ref.current) {
+    if (ref.current) {
       ref.current.addEventListener('scroll', handler, {
         capture: false,
         passive: true
@@ -36,11 +44,11 @@ const useScroll = (ref): State => {
         cancelAnimationFrame(frame.current);
       }
 
-      if (ref && ref.current) {
+      if (ref.current) {
         ref.current.removeEventListener('scroll', handler);
       }
     };
-  }, [ref]);
+  }, [ref.current]);
 
   return state;
 }
