@@ -4,6 +4,7 @@ import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useBoolean from './useBoolean';
+import useCopyToClipboard from './useCopyToClipboard';
 import useDrop from './useDrop';
 import useDropArea from './useDropArea';
 import useCounter from './useCounter';
@@ -73,6 +74,7 @@ export {
   useAudio,
   useBattery,
   useBoolean,
+  useCopyToClipboard,
   useDrop,
   useDropArea,
   useClickAway,
