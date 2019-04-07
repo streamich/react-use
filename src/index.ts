@@ -51,6 +51,7 @@ import useSetState from './useSetState';
 import useSize from './useSize';
 import useSpeech from './useSpeech';
 import useSpring from './useSpring';
+import useStartTyping from './useStartTyping';
 import useThrottle from './useThrottle';
 import useThrottleFn from './useThrottleFn';
 import useTimeout from './useTimeout';
@@ -119,6 +120,7 @@ export {
   useSize,
   useSpeech,
   useSpring,
+  useStartTyping,
   useThrottle,
   useThrottleFn,
   useTimeout,
