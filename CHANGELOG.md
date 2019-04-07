@@ -1,3 +1,10 @@
+# [7.4.0](https://github.com/streamich/react-use/compare/v7.3.1...v7.4.0) (2019-04-07)
+
+
+### Features
+
+* add useDeepCompareEffect hook ([77e015b](https://github.com/streamich/react-use/commit/77e015b))
+
 ## [7.3.1](https://github.com/streamich/react-use/compare/v7.3.0...v7.3.1) (2019-03-31)
 
 
