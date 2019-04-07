@@ -1,54 +1,35 @@
 # `useCopyToClipboard`
 
-copy text to a users clipboard.
+Copy text to a user's clipboard.
+
 
 ## Usage
 
-### basic usage:
+Basic usage
 
 ```jsx
-import {useCopyToClipboard} from 'react-use';
+const Demo = () => {
+  const [text, setText] = React.useState('');
+  const [copied, copyToClipboard] = useCopyToClipboard(text);
 
-const myComp = (props) => {
-  const [success, copyToClipboard] = useCopyToClipboard();
-  const myText = 'text to be copied';
-  return (
-    <span onClick={ () => copyToClipboard(myText) }>{myText}</span>
-    )
-}
-```
-
-### with timeout:
-
-```jsx
-import {useCopyToClipboard} from 'react-use';
-
-const myComp = (props) => {
-  const [success, copyToClipboard] = useCopyToClipboard(2000);
-  const myText = 'text to be copied';
   return (
     <div>
-      <span onClick={ () => copyToClipboard(myText) }>{myText}</span>
-      { success && <span>copied to clipboard</span>}
+      <input value={text} onChange={e => setText(e.target.value)} />
+      <button type="button" onClick={copyToClipboard}>copy text</button>
+      <div>Copied: {copied ? 'Yes' : 'No'}</div>
     </div>
-    )
+  )
 }
 ```
 
-### with custom polyfill:
+## Reference
 
-```jsx
-import {useCopyToClipboard} from 'react-use';
-import * as clipboard from "clipboard-polyfill"
-
-const myComp = (props) => {
-  const [success, copyToClipboard] = useCopyToClipboard(undefined, clipboard.writeText);
-  const myText = 'text to be copied';
-  return (
-    <div>
-      <span onClick={ () => copyToClipboard(myText) }>{myText}</span>
-      { success && <span>copied to clipboard</span>}
-    </div>
-    )
-}
+```js
+const [copied, copyToClipboard] = useCopyToClipboard(text);
+const [copied, copyToClipboard] = useCopyToClipboard(text, copyFunction);
 ```
+
+, where
+
+- `copyFunction` &mdash; function that receives a single string argument, which
+  it copies to user's clipboard.

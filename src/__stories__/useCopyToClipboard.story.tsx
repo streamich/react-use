@@ -4,13 +4,14 @@ import ShowDocs from './util/ShowDocs';
 import {useCopyToClipboard} from '..';
 
 const Demo = () => {
-  const [success, copyToClipboard] = useCopyToClipboard(2000);
-  const textToCopy = "text to be copied"
+  const [text, setText] = React.useState('');
+  const [copied, copyToClipboard] = useCopyToClipboard(text);
+
   return (
     <div>
-      <span style={{margin: 10}}>{textToCopy}</span>
-      <button type="button" onClick={ () => copyToClipboard(textToCopy)}>copy text</button>
-      { success && <span> text copied!</span>}
+      <input value={text} onChange={e => setText(e.target.value)} />
+      <button type="button" onClick={copyToClipboard}>copy text</button>
+      <div>Copied: {copied ? 'Yes' : 'No'}</div>
       <div style={{margin: 10}}>
         <input type="text" placeholder="now paste it in here"/>
       </div>
@@ -18,6 +19,6 @@ const Demo = () => {
   )
 }
 
-storiesOf('UI|useCopyToClipboard', module)
+storiesOf('Side-effects|useCopyToClipboard', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useCopyToClipboard.md')} />)
   .add('Demo', () => <Demo/>)
