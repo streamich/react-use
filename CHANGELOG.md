@@ -1,3 +1,15 @@
+# [7.6.0](https://github.com/streamich/react-use/compare/v7.5.0...v7.6.0) (2019-04-07)
+
+
+### Bug Fixes
+
+* 🐛 handle case when activeElement is empty ([3d83705](https://github.com/streamich/react-use/commit/3d83705))
+
+
+### Features
+
+* 🎸 add useStartTypings hook ([5fda2e0](https://github.com/streamich/react-use/commit/5fda2e0))
+
 # [7.5.0](https://github.com/streamich/react-use/compare/v7.4.0...v7.5.0) (2019-04-07)
 
 
