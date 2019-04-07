@@ -3,6 +3,8 @@ import {useLayoutEffect} from 'react';
 const isFocusedElementEditable = () => {
   const {activeElement, body} = document;
 
+  if (!activeElement) return false;
+
   // If not element has focus, we assume it is not editable, too.
   if (activeElement === body) return false;
 
