@@ -26,10 +26,10 @@ const Demo = () => {
 
 ```js
 const [copied, copyToClipboard] = useCopyToClipboard(text);
-const [copied, copyToClipboard] = useCopyToClipboard(text, copyFunction);
+const [copied, copyToClipboard] = useCopyToClipboard(text, writeText);
 ```
 
 , where
 
-- `copyFunction` &mdash; function that receives a single string argument, which
+- `writeText` &mdash; function that receives a single string argument, which
   it copies to user's clipboard.
