@@ -9,6 +9,7 @@ import useDropArea from './useDropArea';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
+import useDeepCompareEffect from './useDeepCompareEffect';
 import useEffectOnce from './useEffectOnce';
 import useEvent from './useEvent';
 import useFavicon from './useFavicon';
@@ -78,6 +79,7 @@ export {
   useCounter,
   useCss,
   useDebounce,
+  useDeepCompareEffect,
   useEffectOnce,
   useEvent,
   useFavicon,
