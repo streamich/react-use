@@ -5,7 +5,10 @@ import {useCopyToClipboard} from '..';
 
 const Demo = () => {
   const [text, setText] = React.useState('');
-  const [copied, copyToClipboard] = useCopyToClipboard(text);
+  const [copied, copyToClipboard] = useCopyToClipboard(text, {
+    onCopy: txt => alert('success: ' + txt),
+    onError: err => alert(err),
+  });
 
   return (
     <div>

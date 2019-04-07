@@ -1,23 +1,19 @@
+import {useState, useCallback, useRef} from 'react';
 import useUpdateEffect from './useUpdateEffect';
 import useRefMounted from './useRefMounted';
-import {useState, useCallback, useRef} from 'react';
+const writeTextDefault = require('copy-to-clipboard');
 
 export type WriteText = (text: string) => Promise<void>; // https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
-export type UseCopyToClipboard = (text?: string, writeText?: WriteText) => [boolean, () => void];
+export interface UseCopyToClipboardOptions {
+  writeText?: WriteText;
+  onCopy?: (text: string) => void;
+  onError?: (error: any, text: string) => void;
+}
+export type UseCopyToClipboard = (text?: string, options?: UseCopyToClipboardOptions) => [boolean, () => void];
 
-const writeTextDefault = async (text) => {
-  const element = document.createElement('textarea');
-  element.value = text;
-  document.body.appendChild(element);
-  try {
-    element.select();
-    document.execCommand('copy');
-  } finally {
-    document.body.removeChild(element);
-  }
-};
+const useCopyToClipboard: UseCopyToClipboard = (text = '', options) => {
+  const {writeText = writeTextDefault, onCopy, onError} = (options || {}) as UseCopyToClipboardOptions;
 
-const useCopyToClipboard: UseCopyToClipboard = (text = '', writeText = writeTextDefault) => {
   if (process.env.NODE_ENV !== 'production') {
     if (typeof text !== 'string') {
       console.warn('useCopyToClipboard hook expects first argument to be string.');
@@ -39,10 +35,12 @@ const useCopyToClipboard: UseCopyToClipboard = (text = '', writeText = writeText
       await writeText(text);
       if (!mounted.current) return;
       setCopied(true);
+      onCopy && onCopy(text);
     } catch (error) {
       if (!mounted.current) return;
       console.error(error);
       setCopied(false);
+      onError && onError(error, text);
     }
   }, [text]);
 
