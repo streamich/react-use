@@ -5,19 +5,21 @@ import {useCopyToClipboard} from '..';
 
 const Demo = () => {
   const [text, setText] = React.useState('');
-  const [copied, copyToClipboard] = useCopyToClipboard(text, {
-    onCopy: txt => alert('success: ' + txt),
-    onError: err => alert(err),
-  });
+  const [state, copyToClipboard] = useCopyToClipboard();
 
   return (
     <div>
       <input value={text} onChange={e => setText(e.target.value)} />
-      <button type="button" onClick={copyToClipboard}>copy text</button>
-      <div>Copied: {copied ? 'Yes' : 'No'}</div>
-      <div style={{margin: 10}}>
-        <input type="text" placeholder="now paste it in here"/>
-      </div>
+      <button type="button" onClick={() => copyToClipboard(text)}>copy text</button>
+      {state.error
+        ? <p>Unable to copy value: {state.error.message}</p>
+        : state.value && (
+          <>
+            <p>Copied {state.value} {state.noUserInteraction ? 'without' : 'with'} user interaction</p>
+            <input type="text" placeholder="Paste it in here to check"/>
+          </>
+        )}
+      
     </div>
   )
 }

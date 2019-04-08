@@ -1,55 +1,49 @@
-import {useState, useCallback, useRef} from 'react';
-import useUpdateEffect from './useUpdateEffect';
+import {useCallback} from 'react';
+import useSetState from './useSetState'
 import useRefMounted from './useRefMounted';
-const writeTextDefault = require('copy-to-clipboard');
+import * as writeText from 'copy-to-clipboard';
 
-export type WriteText = (text: string) => Promise<void>; // https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
-export interface UseCopyToClipboardOptions {
-  writeText?: WriteText;
-  onCopy?: (text: string) => void;
-  onError?: (error: any, text: string) => void;
+export interface CopyToClipboardState {
+  value?: string,
+  noUserInteraction: boolean,
+  error?: Error,
 }
-export type UseCopyToClipboard = (text?: string, options?: UseCopyToClipboardOptions) => [boolean, () => void];
 
-const useCopyToClipboard: UseCopyToClipboard = (text = '', options) => {
-  const {writeText = writeTextDefault, onCopy, onError} = (options || {}) as UseCopyToClipboardOptions;
-
-  if (process.env.NODE_ENV !== 'production') {
-    if (typeof text !== 'string') {
-      console.warn('useCopyToClipboard hook expects first argument to be string.');
-    }
-  }
-
+const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] => {
   const mounted = useRefMounted();
-  const latestText = useRef(text);
-  const [copied, setCopied] = useState(false);
-  const copyToClipboard = useCallback(async () => {
-    if (latestText.current !== text) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn('Trying to copy stale text.');
-      }
-      return;
-    }
+  const [state, setState] = useSetState<CopyToClipboardState>({
+    value: undefined,
+    error: undefined,
+    noUserInteraction: true
+  });
 
+  const copyToClipboard = useCallback((value) => {
     try {
-      await writeText(text);
+      if (process.env.NODE_ENV === 'development') {
+        if (typeof value !== "string") {
+          console.error(`Cannot copy typeof ${typeof value} to clipboard, must be a string`);
+        }
+      }
+
+      const noUserInteraction = writeText(value);
+
       if (!mounted.current) return;
-      setCopied(true);
-      onCopy && onCopy(text);
+      setState({
+        value,
+        error: undefined,
+        noUserInteraction
+      });
     } catch (error) {
       if (!mounted.current) return;
-      console.error(error);
-      setCopied(false);
-      onError && onError(error, text);
+      setState({
+        value: undefined,
+        error,
+        noUserInteraction: true
+      });
     }
-  }, [text]);
+  }, []);
 
-  useUpdateEffect(() => {
-    setCopied(false);
-    latestText.current = text;
-  }, [text]);
-
-  return [copied, copyToClipboard];
+  return [state, copyToClipboard];
 }
 
 export default useCopyToClipboard;
