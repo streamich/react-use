@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, DependencyList } from 'react';
-import useAsyncCallback from "./useAsyncCallback"
+import { useEffect, DependencyList } from 'react';
+import useAsyncFn from "./useAsyncFn"
 
 export type AsyncState<T> =
 | {
@@ -19,7 +19,7 @@ export type AsyncState<T> =
 };
 
 const useAsync = <T>(fn: () => Promise<T>, deps: DependencyList = []) => {
-  const [state, callback] = useAsyncCallback(fn, deps);
+  const [state, callback] = useAsyncFn(fn, deps);
 
   useEffect(() => {
     callback();

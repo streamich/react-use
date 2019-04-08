@@ -82,7 +82,7 @@
     <br/>
 - [**Side-effects**](./docs/Side-effects.md)
   - [`useAsync`](./docs/useAsync.md) &mdash; resolves an `async` function.
-  - [`useAsyncCallback`](./docs/useAsyncCallback.md) &mdash; state management for async callback
+  - [`useAsyncFn`](./docs/useAsyncFn.md) &mdash; state management for an async function
   - [`useAsyncRetry`](./docs/useAsyncRetry.md) &mdash; `useAsync` with `retry()` method.
   - [`useCopyToClipboard`](./docs/useCopyToClipboard.md) &mdash; copies text to clipboard.
   - [`useDebounce`](./docs/useDebounce.md) &mdash; debounces a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usedebounce--demo)

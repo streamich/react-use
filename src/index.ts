@@ -1,6 +1,6 @@
 import createMemo from './createMemo';
 import useAsync from './useAsync';
-import useAsyncCallback from './useAsyncCallback';
+import useAsyncFn from './useAsyncFn';
 import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
@@ -72,7 +72,7 @@ import useUpdateEffect from './useUpdateEffect'
 export {
   createMemo,
   useAsync,
-  useAsyncCallback,
+  useAsyncFn,
   useAsyncRetry,
   useAudio,
   useBattery,

@@ -1,4 +1,4 @@
-# `useAsyncCallback`
+# `useAsyncFn`
 
 React hook that returns state and a callback for an `async` function or a
 function that returns a promise. The state is of the same shape as `useAsync`.
@@ -6,10 +6,10 @@ function that returns a promise. The state is of the same shape as `useAsync`.
 ## Usage
 
 ```jsx
-import {useAsyncCallback} from 'react-use';
+import {useAsyncFn} from 'react-use';
 
 const Demo = (url) => {
-  const [state, fetch] = useAsyncCallback(async () => {
+  const [state, fetch] = useAsyncFn(async () => {
     const response = await fetch(url);
     const result = await response.text();
     return result
@@ -32,5 +32,5 @@ const Demo = (url) => {
 ## Reference
 
 ```ts
-useAsyncCallback(fn, deps?: any[]);
+useAsyncFn(fn, deps?: any[]);
 ```

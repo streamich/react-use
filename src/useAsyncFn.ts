@@ -18,7 +18,7 @@ export type AsyncState<T> =
   value: T;
 };
 
-const useAsyncCallback = <T>(fn: () => Promise<T>, deps: DependencyList = []): [AsyncState<T>, () => void] => {
+const useAsyncFn = <T>(fn: () => Promise<T>, deps: DependencyList = []): [AsyncState<T>, () => void] => {
   const [state, set] = useState<AsyncState<T>>({
     loading: false
   });
@@ -45,4 +45,4 @@ const useAsyncCallback = <T>(fn: () => Promise<T>, deps: DependencyList = []): [
   return [state, callback]
 };
 
-export default useAsyncCallback;
+export default useAsyncFn;

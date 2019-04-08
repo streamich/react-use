@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
-import {useAsyncCallback} from '..';
+import {useAsyncFn} from '..';
 import ShowDocs from './util/ShowDocs';
 
 const fn = () =>
@@ -15,7 +15,7 @@ const fn = () =>
   });
 
 const Demo = () => {
-  const [{loading, error, value}, callback] = useAsyncCallback<string>(fn);
+  const [{loading, error, value}, callback] = useAsyncFn<string>(fn);
 
   return (
     <div>
@@ -30,6 +30,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side effects|useAsyncCallback', module)
-  .add('Docs', () => <ShowDocs md={require('../../docs/useAsyncCallback.md')} />)
+storiesOf('Side effects|useAsyncFn', module)
+  .add('Docs', () => <ShowDocs md={require('../../docs/useAsyncFn.md')} />)
   .add('Demo', () => <Demo/>)
