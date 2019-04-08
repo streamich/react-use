@@ -11,7 +11,7 @@ import {useAsyncCallback} from 'react-use';
 const Demo = (url) => {
   const [state, fetch] = useAsyncCallback(async () => {
     const response = await fetch(url);
-    const result = response.text();
+    const result = await response.text();
     return result
   }), [url];
 
