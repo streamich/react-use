@@ -19,17 +19,15 @@ const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] =
 
   const copyToClipboard = useCallback((value) => {
     try {
-      if (!value) {
-        throw new Error('No value to copy to clipboard')
-      }
-
-      if (typeof value !== "string") {
-        throw new Error(`Cannot copy typeof ${typeof value} to clipboard, must be a string`);
+      if (process.env.NODE_ENV === 'development') {
+        if (typeof value !== "string") {
+          console.error(`Cannot copy typeof ${typeof value} to clipboard, must be a string`);
+        }
       }
 
       const noUserInteraction = writeText(value);
-      if (!mounted.current) return;
 
+      if (!mounted.current) return;
       setState({
         value,
         error: undefined,
@@ -37,7 +35,6 @@ const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] =
       });
     } catch (error) {
       if (!mounted.current) return;
-
       setState({
         value: undefined,
         error,
