@@ -161,3 +161,6 @@ Depending on your bundler you might run into a missing dependency error with ES6
 <p align="center">
   <a href="./LICENSE">Unlicense</a> &mdash; public domain.
 </p>
+
+
+[img-demo]: https://img.shields.io/badge/demo-%20%20%20%F0%9F%9A%80-green.svg
