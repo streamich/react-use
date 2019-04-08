@@ -4,11 +4,13 @@ import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useBoolean from './useBoolean';
+import useCopyToClipboard from './useCopyToClipboard';
 import useDrop from './useDrop';
 import useDropArea from './useDropArea';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
+import useDeepCompareEffect from './useDeepCompareEffect';
 import useEffectOnce from './useEffectOnce';
 import useEvent from './useEvent';
 import useFavicon from './useFavicon';
@@ -51,6 +53,7 @@ import useSetState from './useSetState';
 import useSize from './useSize';
 import useSpeech from './useSpeech';
 import useSpring from './useSpring';
+import useStartTyping from './useStartTyping';
 import useThrottle from './useThrottle';
 import useThrottleFn from './useThrottleFn';
 import useTimeout from './useTimeout';
@@ -72,12 +75,14 @@ export {
   useAudio,
   useBattery,
   useBoolean,
+  useCopyToClipboard,
   useDrop,
   useDropArea,
   useClickAway,
   useCounter,
   useCss,
   useDebounce,
+  useDeepCompareEffect,
   useEffectOnce,
   useEvent,
   useFavicon,
@@ -119,6 +124,7 @@ export {
   useSize,
   useSpeech,
   useSpring,
+  useStartTyping,
   useThrottle,
   useThrottleFn,
   useTimeout,

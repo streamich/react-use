@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "7.3.1",
+  "version": "7.6.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -34,28 +34,30 @@
   },
   "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
+    "copy-to-clipboard": "^3.1.0",
     "nano-css": "^5.1.0",
+    "react-fast-compare": "^2.0.4",
     "react-wait": "^0.3.0",
     "screenfull": "^4.1.0",
     "throttle-debounce": "^2.0.1",
     "ts-easing": "^0.2.0"
   },
   "peerDependencies": {
+    "keyboardjs": "*",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "keyboardjs": "*",
     "rebound": "*"
   },
   "devDependencies": {
     "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
     "@semantic-release/npm": "5.1.4",
-    "@storybook/addon-actions": "5.0.5",
-    "@storybook/addon-knobs": "5.0.5",
-    "@storybook/addon-notes": "5.0.5",
-    "@storybook/addon-options": "5.0.5",
-    "@storybook/react": "5.0.5",
-    "@types/react": "16.8.10",
+    "@storybook/addon-actions": "5.0.6",
+    "@storybook/addon-knobs": "5.0.6",
+    "@storybook/addon-notes": "5.0.6",
+    "@storybook/addon-options": "5.0.6",
+    "@storybook/react": "5.0.6",
+    "@types/react": "16.8.12",
     "babel-core": "6.26.3",
     "fork-ts-checker-webpack-plugin": "1.0.1",
     "gh-pages": "2.0.1",
@@ -70,7 +72,7 @@
     "semantic-release": "15.13.3",
     "ts-loader": "5.3.3",
     "ts-node": "8.0.3",
-    "typescript": "3.4.1"
+    "typescript": "3.4.2"
   },
   "config": {
     "commitizen": {

@@ -1,109 +1,143 @@
-# 👍 react-use
+<div align="center">
+  <h1>
+    <br/>
+    <br/>
+    👍
+    <br />
+    react-use
+    <br />
+    <br />
+    <br />
+    <br />
+  </h1>
+  <sup>
+    <br />
+    <br />
+    <a href="https://www.npmjs.com/package/react-use">
+      <img src="https://img.shields.io/npm/v/react-use.svg" alt="npm package" />
+    </a>
+    <a href="https://www.npmjs.com/package/react-use">
+      <img src="https://img.shields.io/npm/dm/react-use.svg" alt="npm downloads" />
+    </a>
+    <a href="http://streamich.github.io/react-use">
+      <img src="https://img.shields.io/badge/demos-🚀-yellow.svg" alt="demos" />
+    </a>
+    <br />
+    Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
+    <em>Port of</em> <a href="https://github.com/streamich/libreact"><code>libreact</code></a>.
+    <br />
+    Translations: <a href="https://github.com/zenghongtu/react-use-chinese/blob/master/README.md">🇨🇳 汉语</a>
+  </sup>
+  <br />
+  <br />
+  <br />
+  <br />
+  <pre>npm i <a href="https://www.npmjs.com/package/react-use">react-use</a></pre>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+</div>
 
-[![npm package](https://img.shields.io/npm/v/react-use.svg)](https://www.npmjs.com/package/react-use)
-[![npm downloads](https://img.shields.io/npm/dm/react-use.svg)](https://www.npmjs.com/package/react-use)
-[![demos](https://img.shields.io/badge/demos-🚀-yellow.svg)](http://streamich.github.io/react-use)
+- [**Sensors**](./docs/Sensors.md)
+  - [`useBattery`](./docs/useBattery.md) &mdash; tracks device battery state. [![][img-demo]](https://codesandbox.io/s/qlvn662zww)
+  - [`useGeolocation`](./docs/useGeolocation.md) &mdash; tracks geo location state of user's device. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usegeolocation--demo)
+  - [`useHover` and `useHoverDirty`](./docs/useHover.md) &mdash; tracks mouse hover state of some element. [![][img-demo]](https://codesandbox.io/s/zpn583rvx)
+  - [`useIdle`](./docs/useIdle.md) &mdash; tracks whether user is being inactive.
+  - [`useKey`](./docs/useKey.md), [`useKeyPress`](./docs/useKeyPress.md), [`useKeyboardJs`](./docs/useKeyboardJs.md), and [`useKeyPressEvent`](./docs/useKeyPressEvent.md) &mdash; track keys. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usekeypressevent--demo)
+  - [`useLocation`](./docs/useLocation.md) &mdash; tracks page navigation bar location state.
+  - [`useMedia`](./docs/useMedia.md) &mdash; tracks state of a CSS media query. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemedia--demo)
+  - [`useMediaDevices`](./docs/useMediaDevices.md) &mdash; tracks state of connected hardware devices.
+  - [`useMotion`](./docs/useMotion.md) &mdash; tracks state of device's motion sensor.
+  - [`useMouse` and `useMouseHovered`](./docs/useMouse.md) &mdash; tracks state of mouse position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemouse--docs)
+  - [`useNetwork`](./docs/useNetwork.md) &mdash; tracks state of user's internet connection.
+  - [`useOrientation`](./docs/useOrientation.md) &mdash; tracks state of device's screen orientation.
+  - [`usePageLeave`](./docs/usePageLeave.md) &mdash; triggers when mouse leaves page boundaries.
+  - [`useScroll`](./docs/useScroll.md) &mdash; tracks an HTML element's scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usescroll--docs)
+  - [`useSize`](./docs/useSize.md) &mdash; tracks an HTML element's dimensions.
+  - [`useStartTyping`](./docs/useStartTyping.md) &mdash; detects when user starts typing.
+  - [`useWindowScroll`](./docs/useWindowScroll.md) &mdash; tracks `Window` scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usewindowscroll--docs)
+  - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions. [![][img-demo]](https://codesandbox.io/s/m7ln22668)
+    <br/>
+    <br/>
+- [**UI**](./docs/UI.md)
+  - [`useAudio`](./docs/useAudio.md) &mdash; plays audio and exposes its controls. [![][img-demo]](https://codesandbox.io/s/2o4lo6rqy)
+  - [`useClickAway`](./docs/useClickAway.md) &mdash; triggers callback when user clicks outside target area.
+  - [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS.
+  - [`useDrop` and `useDropArea`](./docs/useDrop.md) &mdash; tracks file, link and copy-paste drops.
+  - [`useFullscreen`](./docs/useFullscreen.md) &mdash; display an element or video full-screen. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usefullscreen--demo)
+  - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![][img-demo]](https://codesandbox.io/s/n090mqz69m)
+  - [`useVideo`](./docs/useVideo.md) &mdash; plays video, tracks its state, and exposes playback controls. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usevideo--demo)
+  - [`useWait`](./docs/useWait.md) &mdash; complex waiting management for UIs.
+    <br/>
+    <br/>
+- [**Animations**](./docs/Animations.md)
+  - [`useRaf`](./docs/useRaf.md) &mdash; re-renders component on each `requestAnimationFrame`.
+  - [`useSpring`](./docs/useSpring.md) &mdash; interpolates number over time according to spring dynamics.
+  - [`useTimeout`](./docs/useTimeout.md) &mdash; returns true after a timeout.
+  - [`useTween`](./docs/useTween.md) &mdash; re-renders component, while tweening a number from 0 to 1. [![][img-demo]](https://codesandbox.io/s/52990wwzyl)
+  - [`useUpdate`](./docs/useUpdate.md) &mdash; returns a callback, which re-renders component when called.
+    <br/>
+    <br/>
+- [**Side-effects**](./docs/Side-effects.md)
+  - [`useAsync`](./docs/useAsync.md) &mdash; resolves an `async` function.
+  - [`useAsyncRetry`](./docs/useAsyncRetry.md) &mdash; `useAsync` with `retry()` method.
+  - [`useCopyToClipboard`](./docs/useCopyToClipboard.md) &mdash; copies text to clipboard.
+  - [`useDebounce`](./docs/useDebounce.md) &mdash; debounces a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usedebounce--demo)
+  - [`useFavicon`](./docs/useFavicon.md) &mdash; sets favicon of the page.
+  - [`useLocalStorage`](./docs/useLocalStorage.md) &mdash; manages a value in `localStorage`.
+  - [`useLockBodyScroll`](./docs/useLockBodyScroll.md) &mdash; lock scrolling of the body element.
+  - [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manages a value in `sessionStorage`.
+  - [`useThrottle` and `useThrottleFn`](./docs/useThrottle.md) &mdash; throttles a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usethrottle--demo)
+  - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
+    <br/>
+    <br/>
+- [**Lifecycles**](./docs/Lifecycles.md)
+  - [`useEffectOnce`](./docs/useEffectOnce.md) &mdash; a modified [`useEffect`](https://reactjs.org/docs/hooks-reference.html#useeffect) hook that only runs once.
+  - [`useEvent`](./docs/useEvent.md) &mdash; subscribe to events.
+  - [`useLifecycles`](./docs/useLifecycles.md) &mdash; calls `mount` and `unmount` callbacks.
+  - [`useRefMounted`](./docs/useRefMounted.md) &mdash; tracks if component is mounted.
+  - [`usePromise`](./docs/usePromise.md) &mdash; resolves promise only while component is mounted.
+  - [`useLogger`](./docs/useLogger.md) &mdash; logs in console as component goes through life-cycles.
+  - [`useMount`](./docs/useMount.md) &mdash; calls `mount` callbacks.
+  - [`useUnmount`](./docs/useUnmount.md) &mdash; calls `unmount` callbacks.
+  - [`useUpdateEffect`](./docs/useUpdateEffect.md) &mdash; run an `effect` only on updates.
+  - [`useDeepCompareEffect`](./docs/useUpdateEffect.md) &mdash; run an `effect` depending on deep comparison of its dependencies
+    <br/>
+    <br/>
+- [**State**](./docs/State.md)
+  - [`createMemo`](./docs/createMemo.md) &mdash; factory of memoized hooks.
+  - [`useGetSet`](./docs/useGetSet.md) &mdash; returns state getter `get()` instead of raw state.
+  - [`useGetSetState`](./docs/useGetSetState.md) &mdash; as if [`useGetSet`](./docs/useGetSet.md) and [`useSetState`](./docs/useSetState.md) had a baby.
+  - [`useObservable`](./docs/useObservable.md) &mdash; tracks latest value of an `Observable`.
+  - [`useSetState`](./docs/useSetState.md) &mdash; creates `setState` method which works like `this.setState`. [![][img-demo]](https://codesandbox.io/s/n75zqn1xp0)
+  - [`useToggle` and `useBoolean`](./docs/useToggle.md) &mdash; tracks state of a boolean.
+  - [`useCounter` and `useNumber`](./docs/useCounter.md) &mdash; tracks state of a number.
+  - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
+  - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
+    <br/>
+    <br/>
 
-A collection of essential [React Hooks](https://reactjs.org/docs/hooks-intro.html).
+<br />
+<br />
+<br />
 
-## Setup
+<h2 align="center"><sub>Usage</sub></h2>
 
-You need to have [React `16.8.0`](https://reactjs.org/blog/2019/02/06/react-v16.8.0.html) or later installed to use the Hooks API.
+<br/>
 
-```bash
-npm i react-use
-```
+<p align="center">
+You need to have React <code>16.8.1</code> or later installed to use Hooks API.
+</p>
 
-## [Sensors](./docs/Sensors.md)
+<p align="center">
+You can import each hook individually <code>import useToggle from 'react-use/lib/useToggle'</code>.
+</p>
 
-- [`useBattery`](./docs/useBattery.md) &mdash; track device battery state
-- [`useGeolocation`](./docs/useGeolocation.md) &mdash; track geo location state of user's device
-- [`useHover` and `useHoverDirty`](./docs/useHover.md) &mdash; track mouse hover state of some element
-- [`useIdle`](./docs/useIdle.md) &mdash; track whether user is being inactive
-- [`useKey`](./docs/useKey.md), [`useKeyPress`](./docs/useKeyPress.md), [`useKeyboardJs`](./docs/useKeyboardJs.md), and [`useKeyPressEvent`](./docs/useKeyPressEvent.md) &mdash; track keyboard input
-- [`useLocation`](./docs/useLocation.md) &mdash; track window location state
-- [`useMedia`](./docs/useMedia.md) &mdash; track a CSS media query
-- [`useMediaDevices`](./docs/useMediaDevices.md) &mdash; track state of connected hardware devices
-- [`useMotion`](./docs/useMotion.md) &mdash; track state of device's motion sensor
-- [`useMouse` and `useMouseHovered`](./docs/useMouse.md) &mdash; track state of mouse position
-- [`useNetwork`](./docs/useNetwork.md) &mdash; track state of user's internet connection
-- [`useOrientation`](./docs/useOrientation.md) &mdash; track state of device's screen orientation
-- [`usePageLeave`](./docs/usePageLeave.md) &mdash; trigger callback when mouse leaves page boundaries
-- [`useScroll`](./docs/useScroll.md) &mdash; track an HTML element's scroll position
-- [`useSize`](./docs/useSize.md) &mdash; track an HTML element's dimensions
-- [`useWindowScroll`](./docs/useWindowScroll.md) &mdash; track `Window` scroll position
-- [`useWindowSize`](./docs/useWindowSize.md) &mdash; track `Window` dimensions
-
-## [UI](./docs/UI.md)
-
-- [`useAudio`](./docs/useAudio.md) &mdash; play audio, track its state and hook up controls
-- [`useClickAway`](./docs/useClickAway.md) &mdash; trigger callback when user clicks outside target area
-- [`useCss`](./docs/useCss.md) &mdash; dynamically adjusts CSS
-- [`useDrop` and `useDropArea`](./docs/useDrop.md) &mdash; track file, link and copy-paste drops
-- [`useFullscreen`](./docs/useFullscreen.md) &mdash; display an element or video full-screen
-- [`useSpeech`](./docs/useSpeech.md) &mdash; synthesize speech audio from a text string
-- [`useVideo`](./docs/useVideo.md) &mdash; play video, track its state and hook up playback controls
-- [`useWait`](./docs/useWait.md) &mdash; complex waiting management for UIs
-
-## [Animation](./docs/Animation.md)
-
-- [`useRaf`](./docs/useRaf.md) &mdash; re-render component on each `requestAnimationFrame`
-- [`useSpring`](./docs/useSpring.md) &mdash; interpolate number over time according to spring dynamics
-- [`useTimeout`](./docs/useTimeout.md) &mdash; returns true after a timeout
-- [`useTween`](./docs/useTween.md) &mdash; re-renders component, while tweening a number from 0 to 1
-- [`useUpdate`](./docs/useUpdate.md) &mdash; returns a callback, which re-renders component when called
-
-## [Side-effects](./docs/Side-effects.md)
-
-- [`useAsync`](./docs/useAsync.md) &mdash; resolve an `async` function
-- [`useAsyncRetry`](./docs/useAsyncRetry.md) &mdash; `useAsync` with a `retry()` callback
-- [`useDebounce`](./docs/useDebounce.md) &mdash; debounce a function
-- [`useFavicon`](./docs/useFavicon.md) &mdash; set favicon of the page
-- [`useLocalStorage`](./docs/useLocalStorage.md) &mdash; manage a value in `localStorage`
-- [`useLockBodyScroll`](./docs/useLockBodyScroll.md) &mdash; lock scrolling of the body element
-- [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manage a value in `sessionStorage`
-- [`useThrottle` and `useThrottleFn`](./docs/useThrottle.md) &mdash; throttle a function
-- [`useTitle`](./docs/useTitle.md) &mdash; set title of the page
-
-## [Lifecycle](./docs/Lifecycle.md)
-
-- [`useEffectOnce`](./docs/useEffectOnce.md) &mdash; a modified [`useEffect`](https://reactjs.org/docs/hooks-reference.html#useeffect) hook that runs an `effect` only once
-- [`useEvent`](./docs/useEvent.md) &mdash; subscribe to events
-- [`useLifecycles`](./docs/useLifecycles.md) &mdash; call `mount` and `unmount` callbacks
-- [`useRefMounted`](./docs/useRefMounted.md) &mdash; track if component is mounted
-- [`usePromise`](./docs/usePromise.md) &mdash; resolve promise only while component is mounted
-- [`useLogger`](./docs/useLogger.md) &mdash; `console.log` as component goes through lifecycles
-- [`useMount`](./docs/useMount.md) &mdash; run an `effect` on mount
-- [`useUnmount`](./docs/useUnmount.md) &mdash; run an `effect` on unmount
-- [`useUpdateEffect`](./docs/useUpdateEffect.md) &mdash; run an `effect` only on updates
-
-## [State](./docs/State.md)
-
-- [`createMemo`](./docs/createMemo.md) &mdash; factory of memoized hooks
-- [`useGetSet`](./docs/useGetSet.md) &mdash; returns state getter `get()` instead of raw state
-- [`useGetSetState`](./docs/useGetSetState.md) &mdash; as if [`useGetSet`](./docs/useGetSet.md) and [`useSetState`](./docs/useSetState.md) had a baby
-- [`useObservable`](./docs/useObservable.md) &mdash; track latest value of an `Observable`.
-- [`useSetState`](./docs/useSetState.md) &mdash; creates `setState` method which works like `this.setState`
-- [`useToggle` and `useBoolean`](./docs/useToggle.md) &mdash; track state of a boolean
-- [`useCounter` and `useNumber`](./docs/useCounter.md) &mdash; track state of a number
-- [`useList`](./docs/useList.md) &mdash; track state of an array
-- [`useMap`](./docs/useMap.md) &mdash; track state of an object
-
-## Usage
-
-You can import each hook individually
-
-```js
-import useToggle from 'react-use/lib/useToggle'
-```
-
-or use ES6 named import
-
-```js
-import {useToggle} from 'react-use'
-```
-
-Depending on your bundler you might run into a missing dependency error. Some hooks require you to install peer dependencies so we recommend using individual imports. If you want the best of both worlds you can transform the named import statements to individual import statements with [`babel-plugin-import`](https://github.com/ant-design/babel-plugin-import) by adding the following config to your `.babelrc` file
+<p align="center">
+Depending on your bundler you might run into a missing dependency error. Some hooks require you to install peer dependencies so we recommend using individual imports. If you want the best of both worlds you can transform the named import statements to individual import statements with <a href="https://github.com/ant-design/babel-plugin-import">babel-plugin-import</a> by adding the following config to your `.babelrc` file:
+</p>
 
 ```json
 [
@@ -115,10 +149,10 @@ Depending on your bundler you might run into a missing dependency error. Some ho
 ]
 ```
 
-## Translations
+<br/>
 
-[🇨🇳_汉语](https://github.com/zenghongtu/react-use-chinese/blob/master/README.md)
+<h2 align="center"><sub>License</sub></h2>
 
-## License
-
-[Unlicense](./LICENSE) &mdash; public domain.
+<p align="center">
+  <a href="./LICENSE">Unlicense</a> &mdash; public domain.
+</p>

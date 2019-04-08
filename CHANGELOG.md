@@ -1,3 +1,32 @@
+# [7.6.0](https://github.com/streamich/react-use/compare/v7.5.0...v7.6.0) (2019-04-07)
+
+
+### Bug Fixes
+
+* 🐛 handle case when activeElement is empty ([3d83705](https://github.com/streamich/react-use/commit/3d83705))
+
+
+### Features
+
+* 🎸 add useStartTypings hook ([5fda2e0](https://github.com/streamich/react-use/commit/5fda2e0))
+
+# [7.5.0](https://github.com/streamich/react-use/compare/v7.4.0...v7.5.0) (2019-04-07)
+
+
+### Features
+
+* 🎸 add onCopy and onError events and use NPM copy library ([2553225](https://github.com/streamich/react-use/commit/2553225))
+* 🎸 improve useCopyToClipboard() hook ([f185044](https://github.com/streamich/react-use/commit/f185044))
+* 🎸 make useCopyToClipboard hook interface more idiomatic ([0a6d773](https://github.com/streamich/react-use/commit/0a6d773))
+* add useCopyToClipboard() hook ([4d8e276](https://github.com/streamich/react-use/commit/4d8e276))
+
+# [7.4.0](https://github.com/streamich/react-use/compare/v7.3.1...v7.4.0) (2019-04-07)
+
+
+### Features
+
+* add useDeepCompareEffect hook ([77e015b](https://github.com/streamich/react-use/commit/77e015b))
+
 ## [7.3.1](https://github.com/streamich/react-use/compare/v7.3.0...v7.3.1) (2019-03-31)
 
 
