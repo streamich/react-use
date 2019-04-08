@@ -13,9 +13,18 @@
   <sup>
     <br />
     <br />
+    <a href="https://www.npmjs.com/package/react-use">
+      <img src="https://img.shields.io/npm/v/react-use.svg" alt="npm package" />
+    </a>
+    <a href="https://www.npmjs.com/package/react-use">
+      <img src="https://img.shields.io/npm/dm/react-use.svg" alt="npm downloads" />
+    </a>
+    <a href="http://streamich.github.io/react-use">
+      <img src="https://img.shields.io/badge/demos-🚀-yellow.svg" alt="demos" />
+    </a>
     <br />
     Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
-    <em>Port of</em> <a href="https://github.com/streamich/libreact"><code>libreact</code></a>. <em>See <a href="http://streamich.github.io/react-use">demos</a>.</em>
+    <em>Port of</em> <a href="https://github.com/streamich/libreact"><code>libreact</code></a>.
     <br />
     Translations: <a href="https://github.com/zenghongtu/react-use-chinese/blob/master/README.md">🇨🇳 汉语</a>
   </sup>
@@ -127,6 +136,24 @@ You need to have React <code>16.8.1</code> or later installed to use Hooks API.
 You can import each hook individually <code>import useToggle from 'react-use/lib/useToggle'</code>.
 </p>
 
+<p align="center">
+or use ES6 named imports <code>import {useToggle} from 'react-use'</code>.
+</p>
+
+<p align="center">
+Depending on your bundler you might run into a missing dependency error with ES6 named import statements. Some hooks require you to install peer dependencies so we recommend using individual imports. If you want the best of both worlds you can transform the named import statements to individual import statements with <a href="https://github.com/ant-design/babel-plugin-import">babel-plugin-import</a> by adding the following config to your `.babelrc` file:
+</p>
+
+```json
+[
+  "import", {
+    "libraryName": "react-use",
+    "libraryDirectory": "lib",
+    "camel2DashComponentName": false
+  }
+]
+```
+
 <br/>
 
 <h2 align="center"><sub>License</sub></h2>
@@ -134,5 +161,3 @@ You can import each hook individually <code>import useToggle from 'react-use/lib
 <p align="center">
   <a href="./LICENSE">Unlicense</a> &mdash; public domain.
 </p>
-
-[img-demo]: https://img.shields.io/badge/demo-%20%20%20%F0%9F%9A%80-green.svg

@@ -13,7 +13,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('Animations|useRaf', module)
+storiesOf('Animation|useRaf', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useRaf.md')} />)
   .add('Demo', () =>
     <Demo/>

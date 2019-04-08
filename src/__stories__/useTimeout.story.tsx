@@ -13,7 +13,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('Animations|useTimeout', module)
+storiesOf('Animation|useTimeout', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useTimeout.md')} />)
   .add('Demo', () =>
     <Demo/>

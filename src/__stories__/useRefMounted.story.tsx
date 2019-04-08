@@ -13,7 +13,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('Lifecycles|useRefMounted', module)
+storiesOf('Lifecycle|useRefMounted', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useRefMounted.md')} />)
   .add('Demo', () =>
     <Demo/>

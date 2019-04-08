@@ -19,7 +19,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('useUpdateEffect', module)
+storiesOf('Lifecycle|useUpdateEffect', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useUpdateEffect.md')} />)
   .add('Demo', () =>
     <Demo/>
