@@ -35,7 +35,5 @@ const Demo = () => {
 };
 
 storiesOf('Sensors|useStartTyping', module)
-  // .add('Docs', () => <ShowDocs md={require('../../docs/useStartTyping.md')} />)
-  .add('Demo', () =>
-    <Demo/>
-  )
+  .add('Docs', () => <ShowDocs md={require('../../docs/useStartTyping.md')} />)
+  .add('Demo', () => <Demo/>)
