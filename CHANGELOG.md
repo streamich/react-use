@@ -1,3 +1,10 @@
+## [8.1.1](https://github.com/streamich/react-use/compare/v8.1.0...v8.1.1) (2019-04-09)
+
+
+### Bug Fixes
+
+* 🐛 make useLocation work on server, improve hook ([6f6030a](https://github.com/streamich/react-use/commit/6f6030a))
+
 # [8.1.0](https://github.com/streamich/react-use/compare/v8.0.0...v8.1.0) (2019-04-08)
 
 
