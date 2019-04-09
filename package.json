@@ -72,7 +72,7 @@
     "semantic-release": "15.13.3",
     "ts-loader": "5.3.3",
     "ts-node": "8.0.3",
-    "typescript": "3.4.2"
+    "typescript": "3.4.3"
   },
   "config": {
     "commitizen": {
