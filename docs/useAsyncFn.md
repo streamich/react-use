@@ -13,7 +13,7 @@ const Demo = (url) => {
     const response = await fetch(url);
     const result = await response.text();
     return result
-  }), [url];
+  }, [url]);
 
   return (
     <div>
