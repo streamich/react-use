@@ -36,57 +36,53 @@ export interface LocationSensorState {
   search?: string;
 }
 
-const useLocation = (): LocationSensorState => {
-  const buildState = (trigger: string) => {
-    const {
-      state,
-      length
-    } = history;
+const useLocationServer = (): LocationSensorState => ({
+  trigger: 'load',
+  length: 1,
+});
 
-    const {
-      hash,
-      host,
-      hostname,
-      href,
-      origin,
-      pathname,
-      port,
-      protocol,
-      search
-    } = location;
+const buildState = (trigger: string) => {
+  const {
+    state,
+    length
+  } = history;
 
-    return {
-      trigger,
-      state,
-      length,
-      hash,
-      host,
-      hostname,
-      href,
-      origin,
-      pathname,
-      port,
-      protocol,
-      search
-    };
+  const {
+    hash,
+    host,
+    hostname,
+    href,
+    origin,
+    pathname,
+    port,
+    protocol,
+    search
+  } = location;
+
+  return {
+    trigger,
+    state,
+    length,
+    hash,
+    host,
+    hostname,
+    href,
+    origin,
+    pathname,
+    port,
+    protocol,
+    search
   };
+};
 
-  const [state, setState] = useState(isClient
-    ? buildState('load')
-    : {
-      trigger: 'load',
-      length: 1
-    }
-  );
-
-  const onChange = (trigger: string) =>
-    setState(buildState(trigger));
-
-  const onPopstate = () => onChange('popstate');
-  const onPushstate = () => onChange('pushstate');
-  const onReplacestate = () => onChange('replacestate');
+const useLocationBrowser = (): LocationSensorState => {
+  const [state, setState] = useState(buildState('load'));;
 
   useEffect(() => {
+    const onPopstate = () => setState(buildState('popstate'));
+    const onPushstate = () => setState(buildState('pushstate'));
+    const onReplacestate = () => setState(buildState('replacestate'));
+
     on(window, 'popstate', onPopstate);
     on(window, 'pushstate', onPushstate);
     on(window, 'replacestate', onReplacestate);
@@ -101,4 +97,4 @@ const useLocation = (): LocationSensorState => {
   return state;
 };
 
-export default useLocation;
+export default isClient ? useLocationBrowser : useLocationServer;
