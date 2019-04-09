@@ -25,7 +25,7 @@ const Demo = () => {
 ## Reference
 
 ```ts
-useToggle(enabled?: boolean = true);
+useLockBodyScroll(enabled?: boolean = true);
 ```
 
 - `enabled` &mdash; Hook will lock scrolling on the body element if `true`, defaults to `true`
