@@ -1,11 +1,10 @@
 import * as React from "react";
-import useWindowSize from "../../useWindowSize"
-import WindowComponent from './container'
-import { render, getByTestId } from 'react-testing-library'
-import { act } from 'react-dom/test-utils'; 
+import useWindowSize from "../useWindowSize"
+import { renderHook, cleanup, act } from 'react-hooks-testing-library'
 
 // simulate window resize 
 function fireResize(type, value) {
+  
   switch (type) {
     case 'width':
       (window.innerWidth as number) = value // assert type of window.innerWidth as it is typed as readonly.
@@ -16,41 +15,43 @@ function fireResize(type, value) {
     default:
       break;
   }
+
   window.dispatchEvent(new Event('resize'))
+
 }
 
 describe("useWindowSize", () => {
+
   it("should be defined", () => {
     expect(useWindowSize).toBeDefined();
   });
 
-  const { container, rerender } = render(<WindowComponent />)
-  const width = getByTestId(container, "width");
-  const height = getByTestId(container, "height");
+  const hook = renderHook(() => useWindowSize())
 
   it("should update width", () => {
-    act(() => {
+    act(()=>{
       fireResize('width', 320)
-      rerender(<WindowComponent />) 
+      hook.rerender()
     })
-    expect(width.textContent).toBe('320')
-    act(() => {
+    expect(hook.result.current.width).toBe(320)
+    act(()=>{
       fireResize('width', 640)
-      rerender(<WindowComponent />) 
+      hook.rerender()
     })
-    expect(width.textContent).toBe('640')
+    expect(hook.result.current.width).toBe(640)
   });
 
   it("should update height", () => {
-    act(() => {
+    act(()=>{
       fireResize('height', 500)
-      rerender(<WindowComponent />) 
+      hook.rerender()
     })
-    expect(height.textContent).toBe('500')
-    act(() => {
+    expect(hook.result.current.height).toBe(500)
+    act(()=>{
       fireResize('height', 1000)
-      rerender(<WindowComponent />) 
+      hook.rerender()
     })
-    expect(height.textContent).toBe('1000')
+    expect(hook.result.current.height).toBe(1000)
   });
+
 });
