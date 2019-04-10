@@ -2,15 +2,14 @@ import {useEffect} from "react";
 
 const useBeforeUnload = (message?: string) => {
   useEffect(() => {
-    window.onbeforeunload = e => {
-      e.returnValue = message;
-      return message;
+    const beforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = message || "";
     };
 
-    return () => {
-      window.onbeforeunload = null;
-      return;
-    }
+    window.addEventListener("beforeunload", beforeUnload);
+
+    return () => window.removeEventListener("beforeunload", beforeUnload);
   }, [message]);
 };
 

@@ -4,7 +4,7 @@ import {useBeforeUnload} from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-    useBeforeUnload('Are you sure?');
+  useBeforeUnload();
 
   return (
     <div>
