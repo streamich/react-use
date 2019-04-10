@@ -4,6 +4,7 @@ import useAsyncFn from './useAsyncFn';
 import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
+import useBeforeUnload from './useBeforeUnload'
 import useBoolean from './useBoolean';
 import useCopyToClipboard from './useCopyToClipboard';
 import useDrop from './useDrop';
@@ -76,6 +77,7 @@ export {
   useAsyncRetry,
   useAudio,
   useBattery,
+  useBeforeUnload,
   useBoolean,
   useCopyToClipboard,
   useDrop,

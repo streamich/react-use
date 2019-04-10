@@ -84,6 +84,7 @@
   - [`useAsync`](./docs/useAsync.md) &mdash; resolves an `async` function.
   - [`useAsyncFn`](./docs/useAsyncFn.md) &mdash; state management for an async function
   - [`useAsyncRetry`](./docs/useAsyncRetry.md) &mdash; `useAsync` with `retry()` method.
+  - [`useBeforeUnload`](./docs/useBeforeUnload.md) &mdash; shows browser alert when user try to reload or close the page.
   - [`useCopyToClipboard`](./docs/useCopyToClipboard.md) &mdash; copies text to clipboard.
   - [`useDebounce`](./docs/useDebounce.md) &mdash; debounces a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usedebounce--demo)
   - [`useFavicon`](./docs/useFavicon.md) &mdash; sets favicon of the page.
