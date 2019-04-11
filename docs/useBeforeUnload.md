@@ -14,7 +14,7 @@ const Demo = () => {
 
   return (
     <div>
-      {dirty && 'Try to reload or close tab'}
+      {dirty && <p>Try to reload or close tab</p>}
       <button onClick={() => toggleDirty()}>{dirty ? 'Disable' : 'Enable'}</button>
     </div>
   );
