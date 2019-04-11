@@ -1,14 +1,16 @@
 import {storiesOf} from '@storybook/react';
 import * as React from 'react';
-import {useBeforeUnload} from '..';
+import {useToggle, useBeforeUnload} from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  useBeforeUnload();
+  const [dirty, toggleDirty] = useToggle(false);
+  useBeforeUnload(dirty, 'You have unsaved changes, are you sure?');
 
   return (
     <div>
-      Try to reload or close tab
+      {dirty && 'Try to reload or close tab'}
+      <button onClick={() => toggleDirty()}>{dirty ? 'Disable' : 'Enable'}</button>
     </div>
   );
 };
