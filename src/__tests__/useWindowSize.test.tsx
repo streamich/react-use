@@ -1,10 +1,9 @@
-import * as React from "react";
 import useWindowSize from "../useWindowSize"
 import { renderHook, cleanup, act } from 'react-hooks-testing-library'
 
 // simulate window resize 
 function fireResize(type, value) {
-  
+
   switch (type) {
     case 'width':
       (window.innerWidth as number) = value // assert type of window.innerWidth as it is typed as readonly.
@@ -19,6 +18,8 @@ function fireResize(type, value) {
   window.dispatchEvent(new Event('resize'))
 
 }
+
+afterEach(cleanup)
 
 describe("useWindowSize", () => {
 

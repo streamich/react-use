@@ -72,7 +72,6 @@
     "react-dom": "16.8.4",
     "react-hooks-testing-library": "^0.4.0",
     "react-spring": "6.1.10",
-    "react-testing-library": "^6.1.2",
     "rebound": "0.1.0",
     "rimraf": "2.6.3",
     "rxjs": "6.4.0",
