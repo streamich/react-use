@@ -118,32 +118,22 @@
   - [`useCounter` and `useNumber`](./docs/useCounter.md) &mdash; tracks state of a number.
   - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
   - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
-    <br/>
-    <br/>
 
-<br />
-<br />
-<br />
+## Usage
 
-<h2 align="center"><sub>Usage</sub></h2>
+You need to have React [`16.8.0`](https://reactjs.org/blog/2019/02/06/react-v16.8.0.html) or later installed to use the Hooks API. You can import each hook individually
 
-<br/>
+```js
+import useToggle from 'react-use/lib/useToggle'
+```
 
-<p align="center">
-You need to have React <code>16.8.1</code> or later installed to use Hooks API.
-</p>
+or use ES6 named imports
 
-<p align="center">
-You can import each hook individually <code>import useToggle from 'react-use/lib/useToggle'</code>.
-</p>
+```js
+import {useToggle} from 'react-use'
+```
 
-<p align="center">
-or use ES6 named imports <code>import {useToggle} from 'react-use'</code>.
-</p>
-
-<p align="center">
-Depending on your bundler you might run into a missing dependency error with ES6 named import statements. Some hooks require you to install peer dependencies so we recommend using individual imports. If you want the best of both worlds you can transform the named import statements to individual import statements with <a href="https://github.com/ant-design/babel-plugin-import">babel-plugin-import</a> by adding the following config to your `.babelrc` file:
-</p>
+Depending on your bundler you might run into a missing dependency error with ES6 named import statements. Some hooks require you to install peer dependencies so we recommend using individual imports. If you want the best of both worlds you can transform the named import statements to individual import statements with [`babel-plugin-import`](https://github.com/ant-design/babel-plugin-import) by adding the following config to your `.babelrc` file:
 
 ```json
 [
@@ -155,13 +145,10 @@ Depending on your bundler you might run into a missing dependency error with ES6
 ]
 ```
 
-<br/>
-
 <h2 align="center"><sub>License</sub></h2>
 
 <p align="center">
   <a href="./LICENSE">Unlicense</a> &mdash; public domain.
 </p>
-
 
 [img-demo]: https://img.shields.io/badge/demo-%20%20%20%F0%9F%9A%80-green.svg
