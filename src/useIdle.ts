@@ -46,7 +46,7 @@ const useIdle = (ms: number = oneMinute, initialState: boolean = false, events: 
       }
       off(document, 'visibilitychange', onVisibility);
     };
-  }, events);
+  }, [ms, events]);
 
   return state;
 };
