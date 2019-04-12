@@ -39,7 +39,7 @@ const isTypedCharGood = ({ keyCode }: KeyboardEvent) => {
 const useStartTyping = (onStartTyping: (event: KeyboardEvent) => void) => {
   useLayoutEffect(() => {
     const keydown = event => {
-      // !isFocusedElementEditable() && isTypedCharGood(event) && onStartTyping(event);  // no-unused-expression
+      !isFocusedElementEditable() && isTypedCharGood(event) && onStartTyping(event);
     };
 
     document.addEventListener('keydown', keydown);

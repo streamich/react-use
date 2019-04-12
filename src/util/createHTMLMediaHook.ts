@@ -52,9 +52,9 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
     const wrapEvent = (userEvent, proxyEvent?) => {
       return event => {
         try {
-          // proxyEvent && proxyEvent(event);  // no-unused-expression
+          proxyEvent && proxyEvent(event);
         } finally {
-          // userEvent && userEvent(event);  // no-unused-expression
+          userEvent && userEvent(event);
         }
       };
     };

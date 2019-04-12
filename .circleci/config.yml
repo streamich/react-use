@@ -22,6 +22,10 @@ refs:
       run:
         name: Build Storybook
         command: yarn storybook:build
+    - &Lint
+      run:
+        name: Lint
+        command: yarn lint
     - &Test
       run:
         name: Test
@@ -51,6 +55,7 @@ jobs:
       - *Build
       - *Build_Storybook
       - *Test
+      - *Lint
       - store_artifacts:
           path: ~/repo/storybook-static
       - *Commit_Status_Storybook
@@ -64,6 +69,7 @@ jobs:
       - *Build
       - *Build_Storybook
       - *Test
+      - *Lint
       - store_artifacts:
           path: ~/repo/storybook-static
       - *Commit_Status_Storybook
@@ -85,6 +91,7 @@ jobs:
       - *Build
       - *Build_Storybook
       - *Test
+      - *Lint
       - store_artifacts:
           path: ~/repo/storybook-static
       - *Commit_Status_Storybook

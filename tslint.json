@@ -13,24 +13,25 @@
     },
     "jsRules": {},
     "rules": {
-      "interface-name": [true, "never-prefix"],
-      "no-console": false,
-      "max-classes-per-file": false,
-      "no-any": false,
-      "no-empty": false,
-      "prefer-for-of": false,
-      "jsx-no-lambda": [false],
-      "no-empty-interface": [false],
-      "object-literal-sort-keys": false,
-      "prettier": [
-        true,
-        {
-          "trailingComma": "es5",
-          "singleQuote": true,
-          "printWidth": 120,
-          "tabWidth": 2
-        }
-      ]
+    "interface-name": [true, "never-prefix"],
+    "no-console": false,
+    "max-classes-per-file": false,
+    "no-any": false,
+    "no-empty": false,
+    "prefer-for-of": false,
+    "jsx-no-lambda": [false],
+    "no-empty-interface": [false],
+    "object-literal-sort-keys": false,
+    "no-unused-expression": false,
+    "prettier": [
+      true,
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 120,
+        "tabWidth": 2
+      }
+    ]
     },
     "rulesDirectory": ["tslint-plugin-prettier"]
   }
