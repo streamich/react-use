@@ -26,6 +26,11 @@
     "storybook:clean": "rimraf storybook-static",
     "release": "semantic-release"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:fix && yarn lint"
+    }
+  },
   "author": "@streamich",
   "license": "Unlicense",
   "repository": {
@@ -70,6 +75,7 @@
     "babel-loader": "8.0.5",
     "fork-ts-checker-webpack-plugin": "1.0.2",
     "gh-pages": "2.0.1",
+    "husky": "^1.3.1",
     "jest": "24.7.1",
     "keyboardjs": "2.5.1",
     "markdown-loader": "5.0.0",
