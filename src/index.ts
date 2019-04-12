@@ -6,13 +6,14 @@ import useAudio from './useAudio';
 import useBattery from './useBattery';
 import useBeforeUnload from './useBeforeUnload'
 import useBoolean from './useBoolean';
+import useClickAway from './useClickAway';
 import useCopyToClipboard from './useCopyToClipboard';
-import useDrop from './useDrop';
-import useDropArea from './useDropArea';
 import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
 import useDeepCompareEffect from './useDeepCompareEffect';
+import useDrop from './useDrop';
+import useDropArea from './useDropArea';
 import useEffectOnce from './useEffectOnce';
 import useEvent from './useEvent';
 import useFavicon from './useFavicon';
@@ -24,9 +25,9 @@ import useHover from './useHover';
 import useHoverDirty from './useHoverDirty';
 import useIdle from './useIdle';
 import useKey from './useKey';
+import useKeyboardJs from './useKeyboardJs';
 import useKeyPress from './useKeyPress';
 import useKeyPressEvent from './useKeyPressEvent';
-import useKeyboardJs from './useKeyboardJs';
 import useLifecycles from './useLifecycles';
 import useList from './useList';
 import useLocalStorage from './useLocalStorage';
@@ -44,7 +45,6 @@ import useNetwork from './useNetwork';
 import useNumber from './useNumber';
 import useObservable from './useObservable';
 import useOrientation from './useOrientation';
-import useClickAway from './useClickAway';
 import usePageLeave from './usePageLeave';
 import usePromise from './usePromise';
 import useRaf from './useRaf';
@@ -64,11 +64,11 @@ import useToggle from './useToggle';
 import useTween from './useTween';
 import useUnmount from './useUnmount';
 import useUpdate from './useUpdate';
+import useUpdateEffect from './useUpdateEffect'
 import useVideo from './useVideo';
+import useWait from './useWait';
 import useWindowScroll from './useWindowScroll';
 import useWindowSize from './useWindowSize';
-import useWait from './useWait';
-import useUpdateEffect from './useUpdateEffect'
 
 export {
   createMemo,
@@ -79,14 +79,14 @@ export {
   useBattery,
   useBeforeUnload,
   useBoolean,
-  useCopyToClipboard,
-  useDrop,
-  useDropArea,
   useClickAway,
+  useCopyToClipboard,
   useCounter,
   useCss,
   useDebounce,
   useDeepCompareEffect,
+  useDrop,
+  useDropArea,
   useEffectOnce,
   useEvent,
   useFavicon,
@@ -98,9 +98,9 @@ export {
   useHoverDirty,
   useIdle,
   useKey,
+  useKeyboardJs,
   useKeyPress,
   useKeyPressEvent,
-  useKeyboardJs,
   useLifecycles,
   useList,
   useLocalStorage,
@@ -137,9 +137,9 @@ export {
   useTween,
   useUnmount,
   useUpdate,
+  useUpdateEffect,
   useVideo,
-  useWindowScroll,
-  useWindowSize,
   useWait,
-  useUpdateEffect
+  useWindowScroll,
+  useWindowSize
 };
