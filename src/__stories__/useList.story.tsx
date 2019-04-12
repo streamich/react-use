@@ -1,10 +1,10 @@
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {useList} from '..';
+import { useList } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [list, {set, push}] = useList();
+  const [list, { set, push }] = useList();
 
   return (
     <div>
@@ -17,6 +17,4 @@ const Demo = () => {
 
 storiesOf('State|useList', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useList.md')} />)
-  .add('Demo', () =>
-    <Demo/>
-  )
+  .add('Demo', () => <Demo />);

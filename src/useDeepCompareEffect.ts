@@ -1,14 +1,12 @@
-import { useRef, useEffect, EffectCallback, DependencyList } from 'react';
+import { DependencyList, EffectCallback, useEffect, useRef } from 'react';
 import * as isEqual from 'react-fast-compare';
 
-const isPrimitive = (val: any) => val !== Object(val)
+const isPrimitive = (val: any) => val !== Object(val);
 
 const useDeepCompareEffect = (effect: EffectCallback, deps: any[]) => {
   if (process.env.NODE_ENV !== 'production') {
     if (!deps || !deps.length) {
-      console.warn(
-        '`useDeepCompareEffect` should not be used with no dependencies. Use React.useEffect instead.'
-      );
+      console.warn('`useDeepCompareEffect` should not be used with no dependencies. Use React.useEffect instead.');
     }
 
     if (deps.every(isPrimitive)) {
@@ -21,10 +19,10 @@ const useDeepCompareEffect = (effect: EffectCallback, deps: any[]) => {
   const ref = useRef<DependencyList | undefined>(undefined);
 
   if (!isEqual(deps, ref.current)) {
-    ref.current = deps
+    ref.current = deps;
   }
 
-  useEffect(effect, ref.current)
-}
+  useEffect(effect, ref.current);
+};
 
-export default useDeepCompareEffect
+export default useDeepCompareEffect;

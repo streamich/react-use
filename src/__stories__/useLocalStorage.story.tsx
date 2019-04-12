@@ -1,6 +1,6 @@
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {useLocalStorage} from '..';
+import { useLocalStorage } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
@@ -17,6 +17,4 @@ const Demo = () => {
 
 storiesOf('Side effects|useLocalStorage', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useLocalStorage.md')} />)
-  .add('Demo', () =>
-    <Demo/>
-  )
+  .add('Demo', () => <Demo />);

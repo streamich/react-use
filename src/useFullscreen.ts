@@ -1,4 +1,4 @@
-import {useLayoutEffect, RefObject, useState} from 'react';
+import { RefObject, useLayoutEffect, useState } from 'react';
 import screenfull from 'screenfull';
 
 export interface FullScreenOptions {
@@ -9,12 +9,16 @@ export interface FullScreenOptions {
 const noop = () => {};
 
 const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreenOptions = {}): boolean => {
-  const {video, onClose = noop} = options;
+  const { video, onClose = noop } = options;
   const [isFullscreen, setIsFullscreen] = useState(on);
 
   useLayoutEffect(() => {
-    if (!on) return;
-    if (!ref.current) return;
+    if (!on) {
+      return;
+    }
+    if (!ref.current) {
+      return;
+    }
 
     const onWebkitEndFullscreen = () => {
       video!.current!.removeEventListener('webkitendfullscreen', onWebkitEndFullscreen);
@@ -23,9 +27,9 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
 
     const onChange = () => {
       if (screenfull) {
-        const isFullscreen = screenfull.isFullscreen;
-        setIsFullscreen(isFullscreen);
-        if (!isFullscreen) {
+        const isScreenfullFullscreen = screenfull.isFullscreen;
+        setIsFullscreen(isScreenfullFullscreen);
+        if (!isScreenfullFullscreen) {
           onClose();
         }
       }
@@ -60,7 +64,7 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
         video.current.removeEventListener('webkitendfullscreen', onWebkitEndFullscreen);
         video.current.webkitExitFullscreen();
       }
-    }
+    };
   }, [ref.current, video, on]);
 
   return isFullscreen;

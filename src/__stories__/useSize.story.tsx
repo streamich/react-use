@@ -1,12 +1,12 @@
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {useSize} from '..';
+import { useSize } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [sized, {width, height}] = useSize(
-    ({width}) => <div style={{border: '1px solid red'}}>Size me up! ({width}px)</div>
-  );
+  const [sized, { width, height }] = useSize(({ width: currentWidth }) => (
+    <div style={{ border: '1px solid red' }}>Size me up! ({currentWidth}px)</div>
+  ));
 
   return (
     <div>
@@ -19,4 +19,4 @@ const Demo = () => {
 
 storiesOf('Sensors|useSize', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useSize.md')} />)
-  .add('Demo', () => <Demo/>)
+  .add('Demo', () => <Demo />);

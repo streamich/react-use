@@ -1,6 +1,6 @@
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {useIdle} from '..';
+import { useIdle } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
@@ -17,6 +17,4 @@ const Demo = () => {
 
 storiesOf('Sensors|useIdle', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useIdle.md')} />)
-  .add('Demo', () =>
-    <Demo />
-  )
+  .add('Demo', () => <Demo />);

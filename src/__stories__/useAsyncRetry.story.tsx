@@ -1,6 +1,6 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
-import {useAsyncRetry} from '..';
+import { useAsyncRetry } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const fnRetry = () =>
@@ -19,12 +19,7 @@ const DemoRetry = () => {
 
   return (
     <div>
-      {loading
-        ? <div>Loading...</div>
-        : error
-          ? <div>Error: {error.message}</div>
-          : <div>Value: {value}</div>
-      }
+      {loading ? <div>Loading...</div> : error ? <div>Error: {error.message}</div> : <div>Value: {value}</div>}
       <button onClick={() => retry()}>Retry</button>
     </div>
   );

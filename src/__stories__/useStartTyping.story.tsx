@@ -1,6 +1,6 @@
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {useStartTyping} from '..';
+import { useStartTyping } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
@@ -29,11 +29,11 @@ const Demo = () => {
       <textarea>Editable textarea</textarea>
       <br />
       <br />
-      <div contentEditable>Editable DIV</div>
+      <div contentEditable={true}>Editable DIV</div>
     </div>
   );
 };
 
 storiesOf('Sensors|useStartTyping', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useStartTyping.md')} />)
-  .add('Demo', () => <Demo/>)
+  .add('Demo', () => <Demo />);

@@ -1,11 +1,11 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
-import {useScroll} from '..';
+import { useScroll } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const scrollRef = React.useRef(null);
-  const {x, y} = useScroll(scrollRef);
+  const { x, y } = useScroll(scrollRef);
 
   return (
     <>
@@ -17,12 +17,10 @@ const Demo = () => {
           width: '400px',
           height: '400px',
           backgroundColor: 'whitesmoke',
-          overflow: 'scroll'
-        }}>
-        
-        <div style={{width: '2000px', height: '2000px'}}>
-          Scroll me
-        </div>
+          overflow: 'scroll',
+        }}
+      >
+        <div style={{ width: '2000px', height: '2000px' }}>Scroll me</div>
       </div>
     </>
   );
@@ -30,4 +28,4 @@ const Demo = () => {
 
 storiesOf('Sensors/useScroll', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useScroll.md')} />)
-  .add('Demo', () => <Demo/>)
+  .add('Demo', () => <Demo />);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const {useState} = React;
+const { useState } = React;
 
 const noop = () => {};
 
@@ -24,7 +24,7 @@ const useHover = (element: Element): [React.ReactElement<any>, boolean] => {
 
   const el = React.cloneElement(element, {
     onMouseEnter: onMouseEnter(element.props.onMouseEnter),
-    onMouseLeave: onMouseLeave(element.props.onMouseLeave)
+    onMouseLeave: onMouseLeave(element.props.onMouseLeave),
   });
 
   return [el, state];

@@ -1,4 +1,4 @@
-import {useMemo} from 'react';
+import { useMemo } from 'react';
 
 const createMemo = fn => (...args) => useMemo(() => fn(...args), args);
 

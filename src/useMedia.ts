@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useEffect, useState } from 'react';
 
 const useMedia = (query: string, defaultState: boolean = false) => {
   const [state, setState] = useState(defaultState);
@@ -7,7 +7,9 @@ const useMedia = (query: string, defaultState: boolean = false) => {
     let mounted = true;
     const mql = window.matchMedia(query);
     const onChange = () => {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
       setState(!!mql.matches);
     };
 

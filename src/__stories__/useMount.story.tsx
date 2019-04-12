@@ -1,8 +1,8 @@
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {useMount} from '..';
+import { useMount } from '..';
+import ConsoleStory from './util/ConsoleStory';
 import ShowDocs from './util/ShowDocs';
-import ConsoleStory from './util/ConsoleStory'
 
 const Demo = () => {
   useMount(() => console.log('MOUNTED'));
@@ -12,4 +12,4 @@ const Demo = () => {
 
 storiesOf('Lifecycle|useMount', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useMount.md')} />)
-  .add('Demo', () => <Demo/>)
+  .add('Demo', () => <Demo />);

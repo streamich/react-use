@@ -1,4 +1,4 @@
-import {useMemo, useState} from 'react';
+import { useMemo, useState } from 'react';
 import useRefMounted from './useRefMounted';
 
 export interface DropAreaState {
@@ -26,7 +26,7 @@ const defaultState: DropAreaState = {
 
 const createProcess = (options: DropAreaOptions, mounted: React.RefObject<boolean>) => (
   dataTransfer: DataTransfer,
-  event,
+  event
 ) => {
   const uri = dataTransfer.getData('text/uri-list');
 
@@ -41,7 +41,7 @@ const createProcess = (options: DropAreaOptions, mounted: React.RefObject<boolea
   }
 
   if (dataTransfer.items && dataTransfer.items.length) {
-    dataTransfer.items[0].getAsString((text) => {
+    dataTransfer.items[0].getAsString(text => {
       if (mounted.current) {
         (options.onText || noop)(text, event);
       }
@@ -50,36 +50,36 @@ const createProcess = (options: DropAreaOptions, mounted: React.RefObject<boolea
 };
 
 const createBond = (process, setOver): DropAreaBond => ({
-  onDragOver: (event) => {
+  onDragOver: event => {
     event.preventDefault();
   },
-  onDragEnter: (event) => {
+  onDragEnter: event => {
     event.preventDefault();
     setOver(true);
   },
   onDragLeave: () => {
     setOver(false);
   },
-  onDrop: (event) => {
+  onDrop: event => {
     event.preventDefault();
     event.persist();
     setOver(false);
     process(event.dataTransfer, event);
   },
-  onPaste: (event) => {
+  onPaste: event => {
     event.persist();
     process(event.clipboardData, event);
   },
 });
 
 const useDropArea = (options: DropAreaOptions = {}): [DropAreaBond, DropAreaState] => {
-  const {onFiles, onText, onUri} = options;
+  const { onFiles, onText, onUri } = options;
   const mounted = useRefMounted();
   const [over, setOver] = useState<boolean>(false);
   const process = useMemo(() => createProcess(options, mounted), [onFiles, onText, onUri]);
   const bond: DropAreaBond = useMemo(() => createBond(process, setOver), [process, setOver]);
 
-  return [bond, {over}];
+  return [bond, { over }];
 };
 
 export default useDropArea;

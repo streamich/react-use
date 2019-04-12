@@ -1,13 +1,13 @@
-import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { useThrottleFn, useCounter } from '..';
+import * as React from 'react';
+import { useCounter, useThrottleFn } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
-  const throttledValue = useThrottleFn(value => value, 2000, [value]);
+  const throttledValue = useThrottleFn(defaultValue => defaultValue, 2000, [value]);
   const [lastThrottledValue, setLastThrottledValue] = React.useState(throttledValue);
-  const [count, {inc}] = useCounter();
+  const [count, { inc }] = useCounter();
 
   React.useEffect(() => {
     if (lastThrottledValue !== throttledValue) {
@@ -17,12 +17,12 @@ const Demo = () => {
   });
 
   return (
-    <div style={{width: 300, margin: '40px auto'}}>
+    <div style={{ width: 300, margin: '40px auto' }}>
       <input
         type="text"
         value={value}
         placeholder="Throttled input"
-        style={{width: '100%'}}
+        style={{ width: '100%' }}
         onChange={({ currentTarget }) => {
           setValue(currentTarget.value);
         }}

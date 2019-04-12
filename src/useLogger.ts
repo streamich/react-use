@@ -3,8 +3,8 @@ import useUpdateEffect from './useUpdateEffect';
 
 const useLogger = (componentName: string, ...rest) => {
   useEffectOnce(() => {
-    console.log(`${componentName} mounted`, ...rest)
-    return () => console.log(`${componentName} unmounted`)
+    console.log(`${componentName} mounted`, ...rest);
+    return () => console.log(`${componentName} unmounted`);
   });
 
   useUpdateEffect(() => {

@@ -1,10 +1,10 @@
-import {useState, useEffect} from 'react';
+import { useEffect, useState } from 'react';
 
 const useTimeout = (ms: number = 0) => {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    let timer = setTimeout(() => {
+    const timer = setTimeout(() => {
       setReady(true);
     }, ms);
 

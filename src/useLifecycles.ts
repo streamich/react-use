@@ -1,10 +1,14 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 
 const useLifecycles = (mount, unmount?) => {
   useEffect(() => {
-    if (mount) mount();
+    if (mount) {
+      mount();
+    }
     return () => {
-      if (unmount) unmount();
+      if (unmount) {
+        unmount();
+      }
     };
   }, []);
 };

@@ -1,18 +1,18 @@
-import { storiesOf } from "@storybook/react";
-import * as React from "react";
-import { useKeyPressEvent, useKeyboardJs } from "..";
-import ShowDocs from "./util/ShowDocs";
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
+import { useKeyboardJs, useKeyPressEvent } from '..';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [count, setCount] = React.useState(0);
 
   const increment = () => {
     console.log('INCREMENT');
-    setCount(count => ++count);
+    setCount(currentCount => ++currentCount);
   };
   const decrement = () => {
     console.log('DECREMENT');
-    setCount(count => --count);
+    setCount(currentCount => --currentCount);
   };
   const reset = () => setCount(() => 0);
 
@@ -22,10 +22,10 @@ const Demo = () => {
 
   return (
     <div>
-      <style dangerouslySetInnerHTML={{__html: `code {color: red}`}} />
+      <style dangerouslySetInnerHTML={{ __html: `code {color: red}` }} />
       <p>
-        Try pressing <code>[</code>, <code>]</code>, and <code>r</code> to
-        see the count incremented and decremented.</p>
+        Try pressing <code>[</code>, <code>]</code>, and <code>r</code> to see the count incremented and decremented.
+      </p>
       <p>Count: {count}</p>
     </div>
   );
@@ -36,11 +36,11 @@ const DemoKeyboardJs = () => {
 
   const increment = () => {
     console.log('INCREMENT');
-    setCount(count => ++count);
+    setCount(currentCount => ++currentCount);
   };
   const decrement = () => {
     console.log('DECREMENT');
-    setCount(count => --count);
+    setCount(currentCount => --currentCount);
   };
   const reset = () => setCount(() => 0);
 
@@ -50,16 +50,17 @@ const DemoKeyboardJs = () => {
 
   return (
     <div>
-      <style dangerouslySetInnerHTML={{__html: `code {color: red}`}} />
+      <style dangerouslySetInnerHTML={{ __html: `code {color: red}` }} />
       <p>
-        Try pressing <code>q + [</code>, <code>q + ]</code>, and <code>q + r</code> to
-        see the count incremented and decremented.</p>
+        Try pressing <code>q + [</code>, <code>q + ]</code>, and <code>q + r</code> to see the count incremented and
+        decremented.
+      </p>
       <p>Count: {count}</p>
     </div>
   );
 };
 
-storiesOf("Sensors/useKeyPressEvent", module)
-  .add("Docs", () => <ShowDocs md={require("../../docs/useKeyPressEvent.md")} />)
-  .add("Demo", () => <Demo />)
-  .add("KeyboardJs", () => <DemoKeyboardJs />);
+storiesOf('Sensors/useKeyPressEvent', module)
+  .add('Docs', () => <ShowDocs md={require('../../docs/useKeyPressEvent.md')} />)
+  .add('Demo', () => <Demo />)
+  .add('KeyboardJs', () => <DemoKeyboardJs />);

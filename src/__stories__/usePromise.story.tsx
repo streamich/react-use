@@ -1,27 +1,23 @@
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {usePromise, useBoolean, useNumber} from '..';
+import { useBoolean, useNumber, usePromise } from '..';
 import ShowDocs from './util/ShowDocs';
 
-const {useState, useEffect} = React;
+const { useState, useEffect } = React;
 
-const DemoInner = ({promise}) => {
+const DemoInner = ({ promise }) => {
   const safePromise = usePromise();
   const [value, setValue] = useState<number>(-1);
   useEffect(() => {
     safePromise(promise).then(setValue);
   }, [promise]);
 
-  return (
-    <div>
-      {value === -1 ? 'Resolving value...' : 'Value: ' + value}
-    </div>
-  );
+  return <div>{value === -1 ? 'Resolving value...' : 'Value: ' + value}</div>;
 };
 
 const Demo = () => {
   const [mounted, toggleMounted] = useBoolean(true);
-  const [num, {inc}] = useNumber();
+  const [num, { inc }] = useNumber();
   const promise = new Promise(r => setTimeout(() => r(num), 1_000));
 
   return (
@@ -37,6 +33,4 @@ const Demo = () => {
 
 storiesOf('Lifecycle|usePromise', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/usePromise.md')} />)
-  .add('Demo', () =>
-    <Demo/>
-  )
+  .add('Demo', () => <Demo />);

@@ -1,9 +1,9 @@
-import { useCallback, useState, DependencyList } from 'react';
+import { DependencyList, useCallback, useState } from 'react';
 import useAsync, { AsyncState } from './useAsync';
 
 export type AsyncStateRetry<T> = AsyncState<T> & {
-  retry():void
-}
+  retry(): void;
+};
 
 const useAsyncRetry = <T>(fn: () => Promise<T>, deps: DependencyList = []) => {
   const [attempt, setAttempt] = useState<number>(0);
@@ -19,7 +19,7 @@ const useAsyncRetry = <T>(fn: () => Promise<T>, deps: DependencyList = []) => {
       return;
     }
 
-    setAttempt(attempt => attempt + 1);
+    setAttempt(currentAttempt => currentAttempt + 1);
   }, [...deps, stateLoading, attempt]);
 
   return { ...state, retry };

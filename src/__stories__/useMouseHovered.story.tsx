@@ -1,18 +1,16 @@
+import { boolean, withKnobs } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
-import {withKnobs, boolean} from '@storybook/addon-knobs';
-import {useMouseHovered} from '..';
+import { useMouseHovered } from '..';
 import ShowDocs from './util/ShowDocs';
 
-const Demo: React.FC<any> = ({whenHovered, bound}) => {
+const Demo: React.FC<any> = ({ whenHovered, bound }) => {
   const ref = React.useRef(null);
-  const state = useMouseHovered(ref, {whenHovered, bound})
+  const state = useMouseHovered(ref, { whenHovered, bound });
 
   return (
     <>
-      <pre>
-        {JSON.stringify(state, null, 2)}
-      </pre>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
       <br />
       <br />
       <div
@@ -22,13 +20,17 @@ const Demo: React.FC<any> = ({whenHovered, bound}) => {
           width: '400px',
           height: '400px',
           backgroundColor: 'whitesmoke',
-        }}>
-        <span style={{
-          position: 'absolute',
-          left: `${state.elX}px`,
-          top: `${state.elY}px`,
-          pointerEvents: 'none',
-          transform: 'scale(4)'}}>
+        }}
+      >
+        <span
+          style={{
+            position: 'absolute',
+            left: `${state.elX}px`,
+            top: `${state.elY}px`,
+            pointerEvents: 'none',
+            transform: 'scale(4)',
+          }}
+        >
           🐭
         </span>
       </div>
@@ -43,4 +45,4 @@ storiesOf('Sensors|useMouseHovered', module)
     const bound = boolean('bound', false);
     const whenHovered = boolean('whenHovered', false);
     return <Demo whenHovered={whenHovered} bound={bound} />;
-  })
+  });

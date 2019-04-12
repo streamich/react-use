@@ -1,6 +1,8 @@
-import {useState, useCallback} from 'react';
+import { useCallback, useState } from 'react';
 
-export type UseToggle = (state: boolean) => [
+export type UseToggle = (
+  state: boolean
+) => [
   boolean, // state
   (nextValue?: boolean) => void // toggle
 ];
@@ -8,14 +10,17 @@ export type UseToggle = (state: boolean) => [
 const useToggle: UseToggle = state => {
   const [value, setValue] = useState<boolean>(state);
 
-  const toggle = useCallback((nextValue?: boolean) => {
-    if (typeof nextValue !== 'undefined') {
-      setValue(!!nextValue);
-      return;
-    }
+  const toggle = useCallback(
+    (nextValue?: boolean) => {
+      if (typeof nextValue !== 'undefined') {
+        setValue(!!nextValue);
+        return;
+      }
 
-    setValue(value => !value)
-  }, [setValue]);
+      setValue(newValue => !newValue);
+    },
+    [setValue]
+  );
 
   return [value, toggle];
 };

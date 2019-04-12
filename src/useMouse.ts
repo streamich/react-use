@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef, RefObject} from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 
 export interface State {
   docX: number;
@@ -13,7 +13,7 @@ export interface State {
 
 const useMouse = (ref: RefObject<HTMLElement>): State => {
   if (process.env.NODE_ENV === 'development') {
-    if ((typeof ref !== 'object') || (typeof ref.current === 'undefined')) {
+    if (typeof ref !== 'object' || typeof ref.current === 'undefined') {
       console.error('useMouse expects a single ref argument.');
     }
   }
@@ -36,7 +36,7 @@ const useMouse = (ref: RefObject<HTMLElement>): State => {
 
       frame.current = requestAnimationFrame(() => {
         if (ref && ref.current) {
-          const {left, top, width: elW, height: elH} = ref.current.getBoundingClientRect();
+          const { left, top, width: elW, height: elH } = ref.current.getBoundingClientRect();
           const posX = left + window.scrollX;
           const posY = top + window.scrollY;
           const elX = event.pageX - posX;
@@ -54,7 +54,7 @@ const useMouse = (ref: RefObject<HTMLElement>): State => {
           });
         }
       });
-    }
+    };
 
     document.addEventListener('mousemove', moveHandler);
 
@@ -62,9 +62,9 @@ const useMouse = (ref: RefObject<HTMLElement>): State => {
       cancelAnimationFrame(frame.current);
       document.removeEventListener('mousemove', moveHandler);
     };
-  }, [ref.current])
+  }, [ref.current]);
 
   return state;
-}
+};
 
-export default useMouse
+export default useMouse;

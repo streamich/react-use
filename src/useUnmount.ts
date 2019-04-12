@@ -1,4 +1,4 @@
-import useEffectOnce from './useEffectOnce'
+import useEffectOnce from './useEffectOnce';
 
 const useUnmount = (fn: () => void | undefined) => {
   useEffectOnce(() => fn);
