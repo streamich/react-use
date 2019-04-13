@@ -1,4 +1,4 @@
-import { DependencyList, useCallback, useEffect, useState } from 'react';
+import { DependencyList, useCallback, useState } from 'react';
 import useRefMounted from './useRefMounted';
 
 export type AsyncState<T> =

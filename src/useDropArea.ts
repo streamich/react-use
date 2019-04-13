@@ -20,9 +20,11 @@ export interface DropAreaOptions {
 }
 
 const noop = () => {};
+/* 
 const defaultState: DropAreaState = {
   over: false,
-};
+}; 
+*/
 
 const createProcess = (options: DropAreaOptions, mounted: React.RefObject<boolean>) => (
   dataTransfer: DataTransfer,
