@@ -14,9 +14,9 @@
     "start": "yarn storybook",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "tslint src/**/*.{ts,tsx} -t verbose",
-    "lint:fix": "tslint --fix src/**/*.{ts,tsx} -t verbose",
-    "ts:type-check": "tsc --noEmit -p tsconfig.json",
+    "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
+    "lint:fix": "yarn lint --fix",
+    "lint:types": "tsc --noEmit",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn build:cjs && yarn build:es",
@@ -29,7 +29,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn ts:type-check && lint-staged"
+      "pre-commit": "yarn lint:types && lint-staged"
     }
   },
   "author": "@streamich",
@@ -125,7 +125,7 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "yarn lint:fix",
+      "tslint --fix -t verbose",
       "git add"
     ]
   }
