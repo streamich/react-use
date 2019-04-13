@@ -1,6 +1,6 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
-import {useAsyncFn} from '..';
+import { useAsyncFn } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const fn = () =>
@@ -15,16 +15,11 @@ const fn = () =>
   });
 
 const Demo = () => {
-  const [{loading, error, value}, callback] = useAsyncFn<string>(fn);
+  const [{ loading, error, value }, callback] = useAsyncFn<string>(fn);
 
   return (
     <div>
-      {loading
-        ? <div>Loading...</div>
-        : error
-          ? <div>Error: {error.message}</div>
-          : value && <div>Value: {value}</div>
-      }
+      {loading ? <div>Loading...</div> : error ? <div>Error: {error.message}</div> : value && <div>Value: {value}</div>}
       <button onClick={() => callback()}>Start</button>
     </div>
   );
@@ -32,4 +27,4 @@ const Demo = () => {
 
 storiesOf('Side effects|useAsyncFn', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useAsyncFn.md')} />)
-  .add('Demo', () => <Demo/>)
+  .add('Demo', () => <Demo />);

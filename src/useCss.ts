@@ -1,14 +1,10 @@
-import {useLayoutEffect, useMemo} from 'react';
-import {create, NanoRenderer} from 'nano-css';
-import {addon as addonCSSOM, CSSOMAddon} from 'nano-css/addon/cssom';
-import {addon as addonVCSSOM, VCSSOMAddon} from 'nano-css/addon/vcssom';
-import {cssToTree} from 'nano-css/addon/vcssom/cssToTree';
+import { create, NanoRenderer } from 'nano-css';
+import { addon as addonCSSOM, CSSOMAddon } from 'nano-css/addon/cssom';
+import { addon as addonVCSSOM, VCSSOMAddon } from 'nano-css/addon/vcssom';
+import { cssToTree } from 'nano-css/addon/vcssom/cssToTree';
+import { useLayoutEffect, useMemo } from 'react';
 
-type Nano =
-  & NanoRenderer
-  & CSSOMAddon
-  & VCSSOMAddon
-  ;
+type Nano = NanoRenderer & CSSOMAddon & VCSSOMAddon;
 const nano = create() as Nano;
 addonCSSOM(nano);
 addonVCSSOM(nano);

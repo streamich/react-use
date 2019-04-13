@@ -1,23 +1,19 @@
-import {storiesOf} from '@storybook/react';
-import {withKnobs, text, boolean} from '@storybook/addon-knobs';
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {useCounter} from '..';
-import {useLogger} from '..';
+import { useCounter } from '..';
+import { useLogger } from '..';
 import ShowDocs from './util/ShowDocs';
 
-const Demo = (props) => {
-  const [state, {inc}] = useCounter(0);
+const Demo = props => {
+  const [state, { inc }] = useCounter(0);
 
   useLogger('Demo', props, state);
 
   return (
     <>
-      <p style={{fontWeight: props.bold ? 'bold' : 'normal'}}>
-        {props.title}
-      </p>
-      <button onClick={() => inc()}>
-        Update state ({state})
-      </button>
+      <p style={{ fontWeight: props.bold ? 'bold' : 'normal' }}>{props.title}</p>
+      <button onClick={() => inc()}>Update state ({state})</button>
     </>
   );
 };
@@ -29,7 +25,7 @@ storiesOf('Lifecycle|useLogger', module)
     const props = {
       title: text('title', 'Open the developer console to see logs'),
       bold: boolean('bold', false),
-    }
+    };
 
-    return <Demo {...props} />
-  })
+    return <Demo {...props} />;
+  });

@@ -1,4 +1,4 @@
-import {Waiter, useWait} from 'react-wait';
+import { useWait, Waiter } from 'react-wait';
 
 useWait.Waiter = Waiter;
 

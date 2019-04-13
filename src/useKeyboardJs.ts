@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useEffect, useState } from 'react';
 import useMount from './useMount';
 
 const useKeyboardJs = (combination: string) => {
@@ -10,7 +10,9 @@ const useKeyboardJs = (combination: string) => {
   });
 
   useEffect(() => {
-    if (!keyboardJs) return;
+    if (!keyboardJs) {
+      return;
+    }
 
     const down = event => set([true, event]);
     const up = event => set([false, event]);

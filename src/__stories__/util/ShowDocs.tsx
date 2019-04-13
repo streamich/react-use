@@ -2,15 +2,17 @@ import * as React from 'react';
 
 const h = React.createElement;
 
-const ShowDocs = (props) => {
-  return h('div', {},
+const ShowDocs = props => {
+  return h(
+    'div',
+    {},
     h('div', {
       style: {
-        padding: '0 20px'
+        padding: '0 20px',
       },
       dangerouslySetInnerHTML: {
-        __html: props.md
-      }
+        __html: props.md,
+      },
     }),
     h('style', {
       dangerouslySetInnerHTML: {
@@ -93,8 +95,8 @@ a:focus,
 a:active {
   color: #2980b9;
 }
-        `
-      }
+        `,
+      },
     })
   );
 };

@@ -1,19 +1,19 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
-import {useFullscreen, useToggle} from '..';
+import { useFullscreen, useToggle } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [show, toggle] = useToggle(false);
-  const ref = React.useRef(null)
-  const videoRef = React.useRef(null)
+  const ref = React.useRef(null);
+  const videoRef = React.useRef(null);
   const isFullScreen = useFullscreen(ref, show, {
     onClose: () => toggle(false),
-    video: videoRef
+    video: videoRef,
   });
 
   const controls = (
-    <div style={{background: 'white', padding: '20px'}}>
+    <div style={{ background: 'white', padding: '20px' }}>
       <div>{isFullScreen ? 'is full screen' : 'not full screen'}</div>
       <button onClick={() => toggle()}>Toggle</button>
       <button onClick={() => toggle(true)}>set ON</button>
@@ -23,8 +23,23 @@ const Demo = () => {
 
   return (
     <div>
-      <div ref={ref} style={{backgroundColor: isFullScreen ? 'black' : 'grey', width: 400, height: 300, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        <video ref={videoRef} style={{width: '70%'}} src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" autoPlay />
+      <div
+        ref={ref}
+        style={{
+          backgroundColor: isFullScreen ? 'black' : 'grey',
+          width: 400,
+          height: 300,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <video
+          ref={videoRef}
+          style={{ width: '70%' }}
+          src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+          autoPlay={true}
+        />
         {isFullScreen && controls}
       </div>
 
@@ -38,4 +53,4 @@ const Demo = () => {
 
 storiesOf('UI|useFullscreen', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useFullscreen.md')} />)
-  .add('Demo', () => <Demo />)
+  .add('Demo', () => <Demo />);

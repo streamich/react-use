@@ -1,6 +1,6 @@
-import {useState, useEffect} from 'react';
-import {on, off} from './util';
-import {throttle} from 'throttle-debounce';
+import { useEffect, useState } from 'react';
+import { throttle } from 'throttle-debounce';
+import { off, on } from './util';
 
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
 const oneMinute = 60e3;
@@ -28,7 +28,9 @@ const useIdle = (ms: number = oneMinute, initialState: boolean = false, events: 
       timeout = setTimeout(() => set(true), ms);
     });
     const onVisibility = () => {
-      if (!document.hidden) onEvent();
+      if (!document.hidden) {
+        onEvent();
+      }
     };
 
     for (let i = 0; i < events.length; i++) {

@@ -1,9 +1,9 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 // kudos: https://usehooks.com/
 const useHoverDirty = (ref, enabled: boolean = true) => {
   if (process.env.NODE_ENV === 'development') {
-    if ((typeof ref !== 'object') || (typeof ref.current === 'undefined')) {
+    if (typeof ref !== 'object' || typeof ref.current === 'undefined') {
       console.error('useHoverDirty expects a single ref argument.');
     }
   }
@@ -28,6 +28,6 @@ const useHoverDirty = (ref, enabled: boolean = true) => {
   }, [enabled, ref]);
 
   return value;
-}
+};
 
 export default useHoverDirty;

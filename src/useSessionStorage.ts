@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import {isClient} from './util';
+import { useEffect, useState } from 'react';
+import { isClient } from './util';
 
 const useSessionStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, (value: T) => void] => {
   if (!isClient) {

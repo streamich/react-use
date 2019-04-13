@@ -1,16 +1,16 @@
-import {useState, useEffect} from 'react';
+import { useEffect, useState } from 'react';
 
 export interface GeoLocationSensorState {
-  loading: boolean,
-  accuracy: number | null,
-  altitude: number | null,
-  altitudeAccuracy: number | null,
-  heading: number | null,
-  latitude: number | null,
-  longitude: number | null,
-  speed: number | null,
-  timestamp: number | null,
-  error?: Error | PositionError
+  loading: boolean;
+  accuracy: number | null;
+  altitude: number | null;
+  altitudeAccuracy: number | null;
+  heading: number | null;
+  latitude: number | null;
+  longitude: number | null;
+  speed: number | null;
+  timestamp: number | null;
+  error?: Error | PositionError;
 }
 
 const useGeolocation = (): GeoLocationSensorState => {
@@ -44,7 +44,7 @@ const useGeolocation = (): GeoLocationSensorState => {
     }
   };
   const onEventError = (error: PositionError) =>
-    mounted && setState(oldState => ({...oldState, loading: false, error}));
+    mounted && setState(oldState => ({ ...oldState, loading: false, error }));
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(onEvent, onEventError);

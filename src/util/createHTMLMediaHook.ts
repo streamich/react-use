@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect, useRef} from 'react';
+import { useEffect, useRef } from 'react';
 import useSetState from '../useSetState';
 import parseTimeRanges from './parseTimeRanges';
 
@@ -26,7 +26,9 @@ export interface HTMLMediaControls {
 }
 
 const createHTMLMediaHook = (tag: 'audio' | 'video') => {
-  const hook = (elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>): [React.ReactElement<HTMLMediaProps>, HTMLMediaState, HTMLMediaControls, {current: HTMLAudioElement | null}] => {
+  const hook = (
+    elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>
+  ): [React.ReactElement<HTMLMediaProps>, HTMLMediaState, HTMLMediaControls, { current: HTMLAudioElement | null }] => {
     let element: React.ReactElement<any> | undefined;
     let props: HTMLMediaProps;
 
@@ -48,7 +50,7 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
     const ref = useRef<HTMLAudioElement | null>(null);
 
     const wrapEvent = (userEvent, proxyEvent?) => {
-      return (event) => {
+      return event => {
         try {
           proxyEvent && proxyEvent(event);
         } finally {
@@ -57,11 +59,13 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
       };
     };
 
-    const onPlay = () => setState({isPlaying: true});
-    const onPause = () => setState({isPlaying: false});
+    const onPlay = () => setState({ isPlaying: true });
+    const onPause = () => setState({ isPlaying: false });
     const onVolumeChange = () => {
       const el = ref.current;
-      if (!el) return;
+      if (!el) {
+        return;
+      }
       setState({
         muted: el.muted,
         volume: el.volume,
@@ -69,8 +73,10 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
     };
     const onDurationChange = () => {
       const el = ref.current;
-      if (!el) return;
-      const {duration, buffered} = el;
+      if (!el) {
+        return;
+      }
+      const { duration, buffered } = el;
       setState({
         duration,
         buffered: parseTimeRanges(buffered),
@@ -78,13 +84,17 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
     };
     const onTimeUpdate = () => {
       const el = ref.current;
-      if (!el) return;
-      setState({time: el.currentTime});
+      if (!el) {
+        return;
+      }
+      setState({ time: el.currentTime });
     };
     const onProgress = () => {
       const el = ref.current;
-      if (!el) return;
-      setState({buffered: parseTimeRanges(el.buffered)});
+      if (!el) {
+        return;
+      }
+      setState({ buffered: parseTimeRanges(el.buffered) });
     };
 
     if (element) {
@@ -113,7 +123,6 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
       } as any); // TODO: fix this typing.
     }
 
-
     // Some browsers return `Promise` on `.play()` and may throw errors
     // if one tries to execute another `.play()` or `.pause()` while that
     // promise is resolving. So we prevent that with this lock.
@@ -123,7 +132,9 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
     const controls = {
       play: () => {
         const el = ref.current;
-        if (!el) return undefined;
+        if (!el) {
+          return undefined;
+        }
 
         if (!lockPlay) {
           const promise = el.play();
@@ -149,25 +160,33 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
       },
       seek: (time: number) => {
         const el = ref.current;
-        if (!el || (state.duration === undefined)) return;
+        if (!el || state.duration === undefined) {
+          return;
+        }
         time = Math.min(state.duration, Math.max(0, time));
         el.currentTime = time;
       },
       volume: (volume: number) => {
         const el = ref.current;
-        if (!el) return;
+        if (!el) {
+          return;
+        }
         volume = Math.min(1, Math.max(0, volume));
         el.volume = volume;
-        setState({volume});
+        setState({ volume });
       },
       mute: () => {
         const el = ref.current;
-        if (!el) return;
+        if (!el) {
+          return;
+        }
         el.muted = true;
       },
       unmute: () => {
         const el = ref.current;
-        if (!el) return;
+        if (!el) {
+          return;
+        }
         el.muted = false;
       },
     };
@@ -179,8 +198,8 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
         if (process.env.NODE_ENV !== 'production') {
           console.error(
             'useAudio() ref to <audio> element is empty at mount. ' +
-            'It seem you have not rendered the audio element, which is ' +
-            'returns as the first argument const [audio] = useAudio(...).'
+              'It seem you have not rendered the audio element, which is ' +
+              'returns as the first argument const [audio] = useAudio(...).'
           );
         }
         return;
@@ -202,6 +221,5 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
 
   return hook;
 };
-
 
 export default createHTMLMediaHook;

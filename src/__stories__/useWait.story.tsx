@@ -1,14 +1,12 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
-import {useWait} from '..';
+import { useWait } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const AnotherComponent = () => {
   const { isWaiting } = useWait();
-  return <p>
-    { isWaiting('creating user') ? "Now creating user..." : "" }
-  </p>
-}
+  return <p>{isWaiting('creating user') ? 'Now creating user...' : ''}</p>;
+};
 
 const Demo = () => {
   const { Wait, isWaiting, startWaiting, endWaiting } = useWait();
@@ -17,7 +15,7 @@ const Demo = () => {
     startWaiting('creating user');
     setTimeout(() => {
       endWaiting('creating user');
-    }, 1000)
+    }, 1000);
   }
 
   return (
@@ -34,6 +32,8 @@ const Demo = () => {
 
 storiesOf('UI|useWait', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useWait.md')} />)
-  .add('Demo', () =>
-    <useWait.Waiter><Demo/></useWait.Waiter>
-  )
+  .add('Demo', () => (
+    <useWait.Waiter>
+      <Demo />
+    </useWait.Waiter>
+  ));

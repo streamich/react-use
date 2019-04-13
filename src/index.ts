@@ -4,7 +4,7 @@ import useAsyncFn from './useAsyncFn';
 import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
 import useBattery from './useBattery';
-import useBeforeUnload from './useBeforeUnload'
+import useBeforeUnload from './useBeforeUnload';
 import useBoolean from './useBoolean';
 import useClickAway from './useClickAway';
 import useCopyToClipboard from './useCopyToClipboard';
@@ -64,7 +64,7 @@ import useToggle from './useToggle';
 import useTween from './useTween';
 import useUnmount from './useUnmount';
 import useUpdate from './useUpdate';
-import useUpdateEffect from './useUpdateEffect'
+import useUpdateEffect from './useUpdateEffect';
 import useVideo from './useVideo';
 import useWait from './useWait';
 import useWindowScroll from './useWindowScroll';
@@ -141,5 +141,5 @@ export {
   useVideo,
   useWait,
   useWindowScroll,
-  useWindowSize
+  useWindowSize,
 };

@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import { useEffect } from 'react';
 
 const useBeforeUnload = (enabled: boolean = true, message?: string) => {
   useEffect(() => {
@@ -16,9 +16,9 @@ const useBeforeUnload = (enabled: boolean = true, message?: string) => {
       return message;
     };
 
-    window.addEventListener("beforeunload", handler);
+    window.addEventListener('beforeunload', handler);
 
-    return () => window.removeEventListener("beforeunload", handler);
+    return () => window.removeEventListener('beforeunload', handler);
   }, [message, enabled]);
 };
 

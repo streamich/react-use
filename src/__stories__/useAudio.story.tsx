@@ -1,6 +1,6 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
-import {useAudio} from '..';
+import { useAudio } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
@@ -15,14 +15,14 @@ const Demo = () => {
       <pre>{JSON.stringify(state, null, 2)}</pre>
       <button onClick={controls.pause}>Pause</button>
       <button onClick={controls.play}>Play</button>
-      <br/>
+      <br />
       <button onClick={controls.mute}>Mute</button>
       <button onClick={controls.unmute}>Un-mute</button>
-      <br/>
-      <button onClick={() => controls.volume(.1)}>Volume: 10%</button>
-      <button onClick={() => controls.volume(.5)}>Volume: 50%</button>
+      <br />
+      <button onClick={() => controls.volume(0.1)}>Volume: 10%</button>
+      <button onClick={() => controls.volume(0.5)}>Volume: 50%</button>
       <button onClick={() => controls.volume(1)}>Volume: 100%</button>
-      <br/>
+      <br />
       <button onClick={() => controls.seek(state.time - 5)}>-5 sec</button>
       <button onClick={() => controls.seek(state.time + 5)}>+5 sec</button>
     </div>
@@ -31,6 +31,4 @@ const Demo = () => {
 
 storiesOf('UI|useAudio', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useAudio.md')} />)
-  .add('Demo', () =>
-    <Demo/>
-  )
+  .add('Demo', () => <Demo />);

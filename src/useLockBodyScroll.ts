@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 
 let counter = 0;
 let originalOverflow: string | null = null;
@@ -15,16 +15,20 @@ const unlock = () => {
 
 const increment = () => {
   counter++;
-  if (counter === 1) lock();
+  if (counter === 1) {
+    lock();
+  }
 };
 
 const decrement = () => {
   counter--;
-  if (counter === 0) unlock();
+  if (counter === 0) {
+    unlock();
+  }
 };
 
 const useLockBodyScroll = (enabled: boolean = true) => {
-  useEffect(() => enabled ? (increment(), decrement) : undefined, [enabled]);
-}
+  useEffect(() => (enabled ? (increment(), decrement) : undefined), [enabled]);
+};
 
 export default useLockBodyScroll;

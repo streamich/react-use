@@ -1,6 +1,6 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
-import {useBoolean} from '..';
+import { useBoolean } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
@@ -18,6 +18,4 @@ const Demo = () => {
 
 storiesOf('State|useBoolean', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useToggle.md')} />)
-  .add('Demo', () =>
-    <Demo/>
-  )
+  .add('Demo', () => <Demo />);

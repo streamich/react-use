@@ -1,13 +1,13 @@
-import {RefObject} from 'react';
+import { RefObject } from 'react';
 import useHoverDirty from './useHoverDirty';
-import useMouse, {State} from './useMouse';
+import useMouse, { State } from './useMouse';
 
 export interface UseMouseHoveredOptions {
   whenHovered?: boolean;
   bound?: boolean;
 }
 
-const nullRef = {current: null};
+const nullRef = { current: null };
 
 const useMouseHovered = (ref: RefObject<HTMLElement>, options: UseMouseHoveredOptions = {}): State => {
   const whenHovered = !!options.whenHovered;
@@ -22,6 +22,6 @@ const useMouseHovered = (ref: RefObject<HTMLElement>, options: UseMouseHoveredOp
   }
 
   return state;
-}
+};
 
 export default useMouseHovered;

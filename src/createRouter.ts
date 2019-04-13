@@ -11,8 +11,10 @@ const createRouter = () => {
     route: '',
   });
 
-  const Router: React.SFC<RouterProviderProps> = (props) => {
-    const {route, fullRoute, parent, children} = props;
+  // not sure if this supposed to be unused, ignoring ts error for now
+  // @ts-ignore
+  const Router: React.SFC<RouterProviderProps> = props => {
+    const { route, fullRoute, parent, children } = props;
 
     if (process.env.NODE_ENV !== 'production') {
       if (typeof route !== 'string') {
@@ -28,7 +30,7 @@ const createRouter = () => {
       },
       children,
     });
-  }
+  };
 };
 
 export default createRouter;

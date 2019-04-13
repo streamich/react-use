@@ -1,6 +1,6 @@
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {useSpring} from '..';
+import { useSpring } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
@@ -19,6 +19,4 @@ const Demo = () => {
 
 storiesOf('Animation|useSpring', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useSpring.md')} />)
-  .add('Demo', () =>
-    <Demo/>
-  )
+  .add('Demo', () => <Demo />);

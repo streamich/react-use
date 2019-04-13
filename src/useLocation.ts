@@ -1,10 +1,10 @@
-import {useState, useEffect} from 'react';
-import {isClient, on, off} from './util';
+import { useEffect, useState } from 'react';
+import { isClient, off, on } from './util';
 
-const patchHistoryMethod = (method) => {
+const patchHistoryMethod = method => {
   const original = history[method];
 
-  history[method] = function (state) {
+  history[method] = function(state) {
     const result = original.apply(this, arguments);
     const event = new Event(method.toLowerCase());
 
@@ -42,22 +42,9 @@ const useLocationServer = (): LocationSensorState => ({
 });
 
 const buildState = (trigger: string) => {
-  const {
-    state,
-    length
-  } = history;
+  const { state, length } = history;
 
-  const {
-    hash,
-    host,
-    hostname,
-    href,
-    origin,
-    pathname,
-    port,
-    protocol,
-    search
-  } = location;
+  const { hash, host, hostname, href, origin, pathname, port, protocol, search } = location;
 
   return {
     trigger,
@@ -71,12 +58,12 @@ const buildState = (trigger: string) => {
     pathname,
     port,
     protocol,
-    search
+    search,
   };
 };
 
 const useLocationBrowser = (): LocationSensorState => {
-  const [state, setState] = useState(buildState('load'));;
+  const [state, setState] = useState(buildState('load'));
 
   useEffect(() => {
     const onPopstate = () => setState(buildState('popstate'));
@@ -97,4 +84,4 @@ const useLocationBrowser = (): LocationSensorState => {
   return state;
 };
 
-export default isClient ? useLocationBrowser : useLocationServer;
+export default (isClient ? useLocationBrowser : useLocationServer);

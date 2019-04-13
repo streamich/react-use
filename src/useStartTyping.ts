@@ -1,12 +1,16 @@
-import {useLayoutEffect} from 'react';
+import { useLayoutEffect } from 'react';
 
 const isFocusedElementEditable = () => {
-  const {activeElement, body} = document;
+  const { activeElement, body } = document;
 
-  if (!activeElement) return false;
+  if (!activeElement) {
+    return false;
+  }
 
   // If not element has focus, we assume it is not editable, too.
-  if (activeElement === body) return false;
+  if (activeElement === body) {
+    return false;
+  }
 
   // Assume <input> and <textarea> elements are editable.
   switch (activeElement.tagName) {
@@ -19,18 +23,22 @@ const isFocusedElementEditable = () => {
   return activeElement.hasAttribute('contenteditable');
 };
 
-const isTypedCharGood = ({keyCode}: KeyboardEvent) => {
+const isTypedCharGood = ({ keyCode }: KeyboardEvent) => {
   // 0...9
-  if ((keyCode >= 48) && (keyCode <= 57)) return true;
+  if (keyCode >= 48 && keyCode <= 57) {
+    return true;
+  }
   // a...z
-  if ((keyCode >= 65) && (keyCode <= 90)) return true;
+  if (keyCode >= 65 && keyCode <= 90) {
+    return true;
+  }
   // All other keys.
   return false;
 };
 
 const useStartTyping = (onStartTyping: (event: KeyboardEvent) => void) => {
   useLayoutEffect(() => {
-    const keydown = (event) => {
+    const keydown = event => {
       !isFocusedElementEditable() && isTypedCharGood(event) && onStartTyping(event);
     };
 

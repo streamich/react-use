@@ -1,14 +1,16 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
-import {useCounter} from '..';
+import { useCounter } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [value, {inc, dec, get, set, reset}] = useCounter(5);
+  const [value, { inc, dec, get, set, reset }] = useCounter(5);
 
   return (
     <div>
-      <div>{value} is {get()}</div>
+      <div>
+        {value} is {get()}
+      </div>
       <button onClick={() => inc()}>Increment</button>
       <button onClick={() => dec()}>Decrement</button>
       <button onClick={() => inc(5)}>Increment (+5)</button>
@@ -22,6 +24,4 @@ const Demo = () => {
 
 storiesOf('State|useCounter', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useCounter.md')} />)
-  .add('Demo', () =>
-    <Demo/>
-  )
+  .add('Demo', () => <Demo />);

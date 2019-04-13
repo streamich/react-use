@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef, RefObject} from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 
 export interface State {
   x: number;
@@ -7,7 +7,7 @@ export interface State {
 
 const useScroll = (ref: RefObject<HTMLElement>): State => {
   if (process.env.NODE_ENV === 'development') {
-    if ((typeof ref !== 'object') || (typeof ref.current === 'undefined')) {
+    if (typeof ref !== 'object' || typeof ref.current === 'undefined') {
       console.error('`useScroll` expects a single ref argument.');
     }
   }
@@ -15,27 +15,27 @@ const useScroll = (ref: RefObject<HTMLElement>): State => {
   const frame = useRef(0);
   const [state, setState] = useState<State>({
     x: 0,
-    y: 0
+    y: 0,
   });
 
   useEffect(() => {
     const handler = () => {
-      cancelAnimationFrame(frame.current)
+      cancelAnimationFrame(frame.current);
 
       frame.current = requestAnimationFrame(() => {
         if (ref.current) {
           setState({
             x: ref.current.scrollLeft,
-            y: ref.current.scrollTop
-          })
+            y: ref.current.scrollTop,
+          });
         }
       });
-    }
+    };
 
     if (ref.current) {
       ref.current.addEventListener('scroll', handler, {
         capture: false,
-        passive: true
+        passive: true,
       });
     }
 
@@ -51,6 +51,6 @@ const useScroll = (ref: RefObject<HTMLElement>): State => {
   }, [ref.current]);
 
   return state;
-}
+};
 
-export default useScroll
+export default useScroll;

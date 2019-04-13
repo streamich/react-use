@@ -1,6 +1,6 @@
-import {useRef} from 'react';
-import useSetState from './useSetState';
+import { useRef } from 'react';
 import useMount from './useMount';
+import useSetState from './useSetState';
 
 export interface SpeechState {
   isPlaying: boolean;
@@ -26,10 +26,10 @@ const useSpeech = (text: string, opts: SpeechOptions = {}): SpeechState => {
   useMount(() => {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.volume = opts.volume || 1;
-    utterance.onstart = () => setState({isPlaying: true});
-    utterance.onresume = () => setState({isPlaying: true});
-    utterance.onend = () => setState({isPlaying: false});
-    utterance.onpause = () => setState({isPlaying: false});
+    utterance.onstart = () => setState({ isPlaying: true });
+    utterance.onresume = () => setState({ isPlaying: true });
+    utterance.onend = () => setState({ isPlaying: false });
+    utterance.onpause = () => setState({ isPlaying: false });
     uterranceRef.current = utterance;
     window.speechSynthesis.speak(uterranceRef.current);
   });

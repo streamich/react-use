@@ -1,9 +1,9 @@
-import {useState, useRef, useEffect} from 'react';
-import useUnmount from './useUnmount'
+import { useEffect, useRef, useState } from 'react';
+import useUnmount from './useUnmount';
 
 const useThrottleFn = <T>(fn: (...args: any[]) => T, ms: number = 200, args: any[]) => {
   const [state, setState] = useState<T>(null as any);
-  let timeout = useRef<any>(null);
+  const timeout = useRef<any>(null);
   const nextArgs = useRef(null) as any;
   const hasNextArgs = useRef(false) as any;
 

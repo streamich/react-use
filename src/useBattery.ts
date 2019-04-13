@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import {on, off} from './util';
+import { useEffect, useState } from 'react';
+import { off, on } from './util';
 
 export interface BatterySensorState {
   charging: boolean;
@@ -14,12 +14,12 @@ const useBattery = () => {
   let battery: any = null;
 
   const onChange = () => {
-    const {charging, level, chargingTime, dischargingTime} = battery;
+    const { charging, level, chargingTime, dischargingTime } = battery;
     setState({
       charging,
       level,
       chargingTime,
-      dischargingTime
+      dischargingTime,
     });
   };
 
