@@ -16,6 +16,9 @@
     <a href="https://www.npmjs.com/package/react-use">
       <img src="https://img.shields.io/npm/v/react-use.svg" alt="npm package" />
     </a>
+    <a href="https://circleci.com/gh/streamich/react-use">
+      <img src="https://img.shields.io/circleci/project/github/streamich/react-use/master.svg" alt="CircleCI master" />
+    </a>
     <a href="https://www.npmjs.com/package/react-use">
       <img src="https://img.shields.io/npm/dm/react-use.svg" alt="npm downloads" />
     </a>
