@@ -58,7 +58,7 @@
   - [`useOrientation`](./docs/useOrientation.md) &mdash; tracks state of device's screen orientation.
   - [`usePageLeave`](./docs/usePageLeave.md) &mdash; triggers when mouse leaves page boundaries.
   - [`useScroll`](./docs/useScroll.md) &mdash; tracks an HTML element's scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usescroll--docs)
-  - [`useSize`](./docs/useSize.md) &mdash; tracks an HTML element's dimensions.
+  - [`useResizeObserver`](./docs/useResizeObserver.md) &mdash; tracks an HTML element's dimensions.
   - [`useStartTyping`](./docs/useStartTyping.md) &mdash; detects when user starts typing.
   - [`useWindowScroll`](./docs/useWindowScroll.md) &mdash; tracks `Window` scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usewindowscroll--docs)
   - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions. [![][img-demo]](https://codesandbox.io/s/m7ln22668)
@@ -87,6 +87,7 @@
   - [`useAsync`](./docs/useAsync.md) &mdash; resolves an `async` function.
   - [`useAsyncFn`](./docs/useAsyncFn.md) &mdash; state management for an async function
   - [`useAsyncRetry`](./docs/useAsyncRetry.md) &mdash; `useAsync` with `retry()` method.
+  - [`useForceUpdate`](./docs/useAsyncRetry.md) &mdash; manually trigger a re-render of a component.
   - [`useBeforeUnload`](./docs/useBeforeUnload.md) &mdash; shows browser alert when user try to reload or close the page.
   - [`useCopyToClipboard`](./docs/useCopyToClipboard.md) &mdash; copies text to clipboard.
   - [`useDebounce`](./docs/useDebounce.md) &mdash; debounces a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usedebounce--demo)
@@ -133,14 +134,15 @@ import useToggle from 'react-use/lib/useToggle'
 or use ES6 named imports
 
 ```js
-import {useToggle} from 'react-use'
+import { useToggle } from 'react-use'
 ```
 
 Depending on your bundler you might run into a missing dependency error with ES6 named import statements. Some hooks require you to install peer dependencies so we recommend using individual imports. If you want the best of both worlds you can transform the named import statements to individual import statements with [`babel-plugin-import`](https://github.com/ant-design/babel-plugin-import) by adding the following config to your `.babelrc` file:
 
 ```json
 [
-  "import", {
+  "import",
+  {
     "libraryName": "react-use",
     "libraryDirectory": "lib",
     "camel2DashComponentName": false
