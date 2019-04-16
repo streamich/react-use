@@ -1,4 +1,5 @@
 import createMemo from './createMemo';
+import createReducer from './createReducer';
 import useAsync from './useAsync';
 import useAsyncFn from './useAsyncFn';
 import useAsyncRetry from './useAsyncRetry';
@@ -72,6 +73,7 @@ import useWindowSize from './useWindowSize';
 
 export {
   createMemo,
+  createReducer,
   useAsync,
   useAsyncFn,
   useAsyncRetry,
