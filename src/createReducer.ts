@@ -1,33 +1,20 @@
-import { useReducer } from 'react';
+import { useCallback, useMemo, useReducer } from 'react';
 
-function compose(...funcs) {
-  if (funcs.length === 0) {
-    return arg => arg;
-  }
-
-  if (funcs.length === 1) {
-    return funcs[0];
-  }
-
-  return funcs.reduce((a, b) => (...args) => a(b(...args)));
+function applyMiddleware(chain) {
+  return store => {
+    return chain.reduceRight((res, middleware) => {
+      return middleware(store)(res);
+    }, store.dispatch);
+  };
 }
 
-const createReducer = (...middlewares) => (...args) => {
-  const [state, dispatch] = useReducer(...args);
-
-  let middlewareDispatch = () => {
-    throw new Error(
-      'Dispatching while constructing your middleware is not allowed. ' +
-        'Other middleware would not be applied to this dispatch.'
-    );
-  };
-
-  const middlewareAPI = {
-    getState: () => state,
-    dispatch: (...args) => middlewareDispatch(...args),
-  };
-  const chain = middlewares.map(middleware => middleware(middlewareAPI));
-  middlewareDispatch = compose(...chain)(dispatch);
+const createReducer = (...middlewares) => (reducer, initialState, initializer) => {
+  const [state, dispatch] = useReducer(reducer, initialState, initializer);
+  const getState = useCallback(() => state, [state])
+  const middlewareDispatch = useMemo(() => {
+    const store = { dispatch, getState }
+    return applyMiddleware(middlewares)(store);
+  }, middlewares)
 
   return [state, middlewareDispatch];
 };
