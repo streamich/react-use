@@ -1,7 +1,7 @@
-import { useCallback, useMemo, useReducer } from 'react';
+import { useMemo, useReducer } from 'react';
 
-function applyMiddleware(chain, store) {
-  return dispatch => {
+function applyMiddleware(chain, dispatch) {
+  return store => {
     return chain.reduceRight((res, middleware) => {
       return middleware(store)(res);
     }, dispatch);
@@ -10,21 +10,22 @@ function applyMiddleware(chain, store) {
 
 const createReducer = (...middlewares) => (reducer, initialState, initializer) => {
   const [state, dispatch] = useReducer(reducer, initialState, initializer);
-  const getState = useCallback(() => state, [state])
   let middlewareDispatch = () => {
     throw new Error(
       'Dispatching while constructing your middleware is not allowed. ' +
         'Other middleware would not be applied to this dispatch.'
     );
   };
-  middlewareDispatch = useMemo(() => {
-    const store = {
-      getState,
+  const composedMiddleware = useMemo(() => {
+    return applyMiddleware(middlewares, dispatch);
+  }, middlewares);
+  const middlewareAPI = useMemo(() => {
+    return {
+      getState: () => state,
       dispatch: (...args) => middlewareDispatch(...args),
     };
-    return applyMiddleware(middlewares, store)(dispatch);
-  }, middlewares)
-
+  }, [state]);
+  middlewareDispatch = composedMiddleware(middlewareAPI);
   return [state, middlewareDispatch];
 };
 
