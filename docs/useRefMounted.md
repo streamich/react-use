@@ -14,7 +14,7 @@ const Demo = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (refMounted.currrent) {
+      if (refMounted.current) {
         // ...
       } else {
         // ...
