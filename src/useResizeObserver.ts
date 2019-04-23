@@ -1,7 +1,7 @@
-import { RefObject, useMemo, useEffect, useRef } from 'react';
-import useForceUpdate from './useForceUpdate';
+import { RefObject, useEffect, useMemo, useRef } from 'react';
+import useUpdate from './useUpdate';
 
-type ContentRect = {
+interface ContentRect {
   height: number;
   width: number;
 
@@ -12,56 +12,50 @@ type ContentRect = {
 
   x: number;
   y: number;
-};
+}
 
 declare const ResizeObserver: any;
 
 const useResizeObserver = (ref: RefObject<Element>) => {
   const accessedProperties = useMemo(() => new Set(), []);
   const contentRectRef = useRef<ContentRect>(null);
-  const forceUpdate = useForceUpdate();
+  const update = useUpdate();
 
-  useEffect(
-    () => {
-      const element = ref.current;
-      if (!element) return;
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) {
+      return;
+    }
 
-      const observer = new ResizeObserver(([{ contentRect }]) => {
-        const prevContentRect = contentRectRef.current;
-        (contentRectRef as any).current = contentRect;
+    const observer = new ResizeObserver(([{ contentRect }]) => {
+      const prevContentRect = contentRectRef.current;
+      (contentRectRef as any).current = contentRect;
 
-        if (
-          // If we haven't given the contentRect yet
-          !prevContentRect ||
-          // Or an accessed property has changed between rects
-          Array.from(accessedProperties).find(
-            prop => contentRect[prop] !== prevContentRect[prop]
-          )
-        ) {
-          forceUpdate();
-        }
-      });
+      if (
+        // If we haven't given the contentRect yet
+        !prevContentRect ||
+        // Or an accessed property has changed between rects
+        Array.from(accessedProperties).find(prop => contentRect[prop] !== prevContentRect[prop])
+      ) {
+        update();
+      }
+    });
 
-      observer.observe(element);
-      return () => observer.disconnect();
-    },
-    [ref.current]
-  );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [ref.current]);
 
   // Only force update the component when accessed properties on the rect
   // change (instead of each time any property changes)
-  return useMemo(
-    () => {
-      return new Proxy((contentRectRef.current || {}) as ContentRect, {
-        get(_, prop) {
-          accessedProperties.add(prop);
-          const rect = contentRectRef.current;
-          return rect && prop in rect ? rect[prop] : null;
-        },
-      });
-    },
-    [contentRectRef.current]
-  );
+  return useMemo(() => {
+    return new Proxy((contentRectRef.current || {}) as ContentRect, {
+      get(_, prop) {
+        accessedProperties.add(prop);
+        const rect = contentRectRef.current;
+        return rect && prop in rect ? rect[prop] : null;
+      },
+    });
+  }, [contentRectRef.current]);
 };
 
 export default useResizeObserver;
