@@ -1,3 +1,15 @@
+# [8.2.0](https://github.com/streamich/react-use/compare/v8.1.4...v8.2.0) (2019-04-23)
+
+
+### Bug Fixes
+
+* make options useGeolocation optional ([01959a1](https://github.com/streamich/react-use/commit/01959a1))
+
+
+### Features
+
+* support options for useGeolocation ([7d4c59e](https://github.com/streamich/react-use/commit/7d4c59e))
+
 ## [8.1.4](https://github.com/streamich/react-use/compare/v8.1.3...v8.1.4) (2019-04-23)
 
 
