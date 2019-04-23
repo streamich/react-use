@@ -3,14 +3,12 @@ import useAsync from './useAsync';
 import useAsyncFn from './useAsyncFn';
 import useAsyncRetry from './useAsyncRetry';
 import useAudio from './useAudio';
-import useForceUpdate from './useForceUpdate';
 import useBattery from './useBattery';
 import useBeforeUnload from './useBeforeUnload';
 import useBoolean from './useBoolean';
 import useClickAway from './useClickAway';
 import useCopyToClipboard from './useCopyToClipboard';
 import useCounter from './useCounter';
-import useResizeObserver from './useResizeObserver';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
 import useDeepCompareEffect from './useDeepCompareEffect';
@@ -51,6 +49,7 @@ import usePageLeave from './usePageLeave';
 import usePromise from './usePromise';
 import useRaf from './useRaf';
 import useRefMounted from './useRefMounted';
+import useResizeObserver from './useResizeObserver';
 import useScroll from './useScroll';
 import useSessionStorage from './useSessionStorage';
 import useSetState from './useSetState';
@@ -86,7 +85,6 @@ export {
   useCounter,
   useCss,
   useResizeObserver,
-  useForceUpdate,
   useDebounce,
   useDeepCompareEffect,
   useDrop,
