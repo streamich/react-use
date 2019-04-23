@@ -1,0 +1,25 @@
+language: node_js
+os:
+  - linux
+cache:
+  yarn: true
+  directories:
+    - ~/.npm
+notifications:
+  email: false
+node_js:
+  - '10'
+script:
+  - yarn lint
+  - yarn test
+  - yarn build
+  - yarn storybook:build
+matrix:
+  allow_failures: []
+  fast_finish: true
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+    - master
+    - next
+    - gh-pages
