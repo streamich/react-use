@@ -24,3 +24,11 @@ const Demo = () => {
   );
 };
 ```
+
+## Reference
+
+```js
+useClickAway(ref, onMouseEvent)
+useClickAway(ref, onMouseEvent, ['click'])
+useClickAway(ref, onMouseEvent, ['mousedown', 'touchstart'])
+```
