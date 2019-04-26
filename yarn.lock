@@ -12987,10 +12987,10 @@ ts-easing@^0.2.0:
   resolved "https://registry.yarnpkg.com/ts-easing/-/ts-easing-0.2.0.tgz#c8a8a35025105566588d87dbda05dd7fbfa5a4ec"
   integrity sha512-Z86EW+fFFh/IFB1fqQ3/+7Zpf9t2ebOAxNI/V6Wo7r5gqiqtxmgTlQ1qbqQcjLKYeSHPTsEmvlJUDg/EuL0uHQ==
 
-ts-loader@5.4.3:
-  version "5.4.3"
-  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-5.4.3.tgz#837f7f397799a665fc1774303c9fd0930d1c5947"
-  integrity sha512-pHwZFkZioL7Yi2su0bhW2/djxZ+0iGat1cxlAif4Eg9j5znVYuWGtW0YYY/5w8W+IzLcAlD5KwJDrs5unUKIRA==
+ts-loader@5.4.4:
+  version "5.4.4"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-5.4.4.tgz#2b2c11e0bc917db27b2de7011ad1a9d6413c5ab1"
+  integrity sha512-haLwWMts/tCruBFbLUWOR9hZezZ89TMW3EntrAEtYARDnPZSQt6dPA5tN3fvlsmUIYXVWDHO5SUhw8ndAomVlw==
   dependencies:
     chalk "^2.3.0"
     enhanced-resolve "^4.0.0"
