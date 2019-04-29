@@ -1,3 +1,10 @@
+## [8.3.1](https://github.com/streamich/react-use/compare/v8.3.0...v8.3.1) (2019-04-29)
+
+
+### Bug Fixes
+
+* **useRefMounted:** only run and cleanup once ([6a651be](https://github.com/streamich/react-use/commit/6a651be))
+
 # [8.3.0](https://github.com/streamich/react-use/compare/v8.2.0...v8.3.0) (2019-04-29)
 
 
