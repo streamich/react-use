@@ -9,7 +9,7 @@ const useRefMounted = (): RefObject<boolean> => {
     return () => {
       refMounted.current = false;
     };
-  });
+  }, []);
 
   return refMounted;
 };
