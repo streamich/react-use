@@ -205,15 +205,16 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
         return;
       }
 
+      setState({
+        volume: el.volume,
+        muted: el.muted,
+        isPlaying: !el.paused,
+      });
+
       // Start media, if autoPlay requested.
       if (props.autoPlay && el.paused) {
         controls.play();
       }
-
-      setState({
-        volume: el.volume,
-        muted: el.muted,
-      });
     }, [props.src]);
 
     return [element, state, controls, ref];
