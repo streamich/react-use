@@ -19,5 +19,5 @@ const Demo = () => {
 };
 
 storiesOf('State|usePrevious', module)
-  // .add('Docs', () => <ShowDocs md={require('../../docs/usePrevious.md')} />)
+  .add('Docs', () => <ShowDocs md={require('../../docs/usePrevious.md')} />)
   .add('Demo', () => <Demo />);
