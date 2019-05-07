@@ -1,3 +1,10 @@
+# [8.4.0](https://github.com/streamich/react-use/compare/v8.3.1...v8.4.0) (2019-05-07)
+
+
+### Features
+
+* add usePrevious hook ([4861a39](https://github.com/streamich/react-use/commit/4861a39))
+
 ## [8.3.1](https://github.com/streamich/react-use/compare/v8.3.0...v8.3.1) (2019-04-29)
 
 
