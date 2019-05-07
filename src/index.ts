@@ -46,6 +46,7 @@ import useNumber from './useNumber';
 import useObservable from './useObservable';
 import useOrientation from './useOrientation';
 import usePageLeave from './usePageLeave';
+import usePrevious from './usePrevious';
 import usePromise from './usePromise';
 import useRaf from './useRaf';
 import useRefMounted from './useRefMounted';
@@ -119,6 +120,7 @@ export {
   useObservable,
   useOrientation,
   usePageLeave,
+  usePrevious,
   usePromise,
   useRaf,
   useRefMounted,
