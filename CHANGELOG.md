@@ -1,3 +1,15 @@
+# [9.0.0](https://github.com/streamich/react-use/compare/v8.4.0...v9.0.0) (2019-05-09)
+
+
+### Features
+
+* improve useToggle interface ([81b1cac](https://github.com/streamich/react-use/commit/81b1cac))
+
+
+### BREAKING CHANGES
+
+* useToggle interface changed
+
 # [8.4.0](https://github.com/streamich/react-use/compare/v8.3.1...v8.4.0) (2019-05-07)
 
 
