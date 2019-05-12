@@ -1,27 +1,28 @@
 import { useState } from 'react';
 
-export interface Actions<K, V> {
-  get: (key: K) => any;
-  set: (key: K, value: V) => void;
-  remove: (key: K) => void;
+export interface Actions<T extends object> {
+  get: <K extends keyof T>(key: K) => T[K];
+  set: <K extends keyof T>(key: K, value: T[K]) => void;
+  remove: <K extends keyof T>(key: K) => void;
   reset: () => void;
 }
 
-const useMap = <T extends { [key: string]: any }>(initialMap: any = {}): [T, Actions<string, any>] => {
-  const [map, set] = useState<T>(initialMap as any);
+const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>] => {
+  const [map, set] = useState<T>(initialMap);
 
   return [
     map,
     {
-      get: (key: string) => map[key],
-      set: (key: string, entry: any) =>
+      get: (key: keyof T) => map[key as string],
+      set: <K extends keyof T>(key: K, entry: T[K]) => {
         set({
-          ...(map as any),
+          ...map,
           [key]: entry,
-        }),
-      remove: (key: string) => {
-        const { [key]: omit, ...rest } = map as any;
-        set(rest);
+        });
+      },
+      remove: (key: keyof T) => {
+        const { [key]: omit, ...rest } = map;
+        set(rest as T);
       },
       reset: () => set(initialMap),
     },
