@@ -1,3 +1,10 @@
+# [9.1.0](https://github.com/streamich/react-use/compare/v9.0.0...v9.1.0) (2019-05-24)
+
+
+### Features
+
+* pass arguments to useAsyncFn function ([6789d10](https://github.com/streamich/react-use/commit/6789d10))
+
 # [9.0.0](https://github.com/streamich/react-use/compare/v8.4.0...v9.0.0) (2019-05-09)
 
 
