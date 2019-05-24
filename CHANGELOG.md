@@ -1,3 +1,10 @@
+## [9.1.2](https://github.com/streamich/react-use/compare/v9.1.1...v9.1.2) (2019-05-24)
+
+
+### Bug Fixes
+
+* **useAudio:** src change should reset isPlaying state ([65bffca](https://github.com/streamich/react-use/commit/65bffca))
+
 ## [9.1.1](https://github.com/streamich/react-use/compare/v9.1.0...v9.1.1) (2019-05-24)
 
 
