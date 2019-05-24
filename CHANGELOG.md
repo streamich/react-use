@@ -1,3 +1,10 @@
+## [9.1.1](https://github.com/streamich/react-use/compare/v9.1.0...v9.1.1) (2019-05-24)
+
+
+### Bug Fixes
+
+* **useMap:** more stringent type ([7bbbe47](https://github.com/streamich/react-use/commit/7bbbe47))
+
 # [9.1.0](https://github.com/streamich/react-use/compare/v9.0.0...v9.1.0) (2019-05-24)
 
 
