@@ -91,7 +91,7 @@
     "rxjs": "6.5.2",
     "semantic-release": "15.13.12",
     "ts-loader": "5.4.5",
-    "ts-node": "8.1.0",
+    "ts-node": "8.1.1",
     "tslint": "5.16.0",
     "tslint-config-prettier": "1.18.0",
     "tslint-eslint-rules": "5.4.0",
