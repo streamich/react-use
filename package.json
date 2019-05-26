@@ -90,7 +90,7 @@
     "rimraf": "2.6.3",
     "rxjs": "6.5.2",
     "semantic-release": "15.13.12",
-    "ts-loader": "5.4.5",
+    "ts-loader": "6.0.1",
     "ts-node": "8.2.0",
     "tslint": "5.16.0",
     "tslint-config-prettier": "1.18.0",
