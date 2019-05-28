@@ -18,9 +18,12 @@ export type AsyncState<T> =
       value: T;
     };
 
-const useAsyncFn = <T>(fn: (...args: any[]) => Promise<T>, deps: DependencyList = []): [AsyncState<T>, () => void] => {
-  const [state, set] = useState<AsyncState<T>>({
-    loading: false,
+const useAsyncFn = <Result, Fn extends Function>(
+  fn: Fn,
+  deps: DependencyList = []
+): [AsyncState<Result>, () => void] => {
+  const [state, set] = useState<AsyncState<Result>>({
+    loading: true,
   });
 
   const mounted = useRefMounted();

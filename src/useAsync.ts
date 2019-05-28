@@ -18,8 +18,8 @@ export type AsyncState<T> =
       value: T;
     };
 
-const useAsync = <T>(fn: () => Promise<T>, deps: DependencyList = []) => {
-  const [state, callback] = useAsyncFn(fn, deps);
+const useAsync = <Result, Fn extends Function>(fn: Fn, deps: DependencyList = []) => {
+  const [state, callback] = useAsyncFn<Result, Fn>(fn, deps);
 
   useEffect(() => {
     callback();
