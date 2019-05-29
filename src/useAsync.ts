@@ -24,7 +24,7 @@ export default function useAsync<
   Args extends T[] = any[],
   Fn extends Function = (...args: Args) => Promise<Result>
 >(fn: Fn, deps: DependencyList = []) {
-  const [state, callback] = useAsyncFn<Result, T, Args, Fn>(fn, deps);
+  const [state, callback] = useAsyncFn<Result, T, Args, Fn>(fn, deps, { loading: false });
 
   useEffect(() => {
     callback();

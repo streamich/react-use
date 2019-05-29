@@ -1,19 +1,8 @@
 import { useCallback } from "react";
 import { cleanup, renderHook } from "react-hooks-testing-library";
-import useAsync, { AsyncState } from "../useAsync";
+import useAsync from "../useAsync";
 
 afterEach(cleanup);
-
-function wait(ms: number) {
-  return new Promise((resolve, reject) => {
-    setTimeout(resolve, ms);
-  });
-}
-
-interface AsyncProps<Result, T = any, Args extends T[] = any[]> {
-  fn: (...args: Args) => Promise<Result>;
-  args?: Args;
-}
 
 // NOTE: these tests cause console errors.
 //       maybe we should test in a real environment instead
