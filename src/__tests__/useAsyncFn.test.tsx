@@ -21,7 +21,7 @@ describe('useAsyncFn', () => {
     let hook;
     let callCount = 0;
     const adder = async (a: number, b: number): Promise<number> => {
-      callCount += 1;
+      callCount++;
       return a + b;
     };
 
