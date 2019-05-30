@@ -4,6 +4,7 @@
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
+  "sideEffects" false,
   "files": [
     "lib/",
     "esm/"
