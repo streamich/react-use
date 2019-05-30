@@ -44,7 +44,6 @@
   },
   "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "copy-to-clipboard": "^3.1.0",
     "nano-css": "^5.1.0",
     "react-fast-compare": "^2.0.4",
@@ -64,6 +63,7 @@
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.3.3",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
     "@semantic-release/npm": "5.1.7",
