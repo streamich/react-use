@@ -129,11 +129,13 @@
 <br />
 <br />
 <br />
+<br />
+<br />
 
 <p align="center">
-  <a href="./docs/Usage.md">Usage</a>
+  <a href="./docs/Usage.md"><strong>Usage</strong></a> &mdash; how to import.
   <br />
-  <a href="./LICENSE">Unlicense</a> &mdash; public domain.
+  <a href="./LICENSE"><strong>Unlicense</strong></a> &mdash; public domain.
 </p>
 
 <br />
