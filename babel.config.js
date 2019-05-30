@@ -5,7 +5,7 @@ module.exports = {
 		    plugins: ['dynamic-import-node']
 	    },
 	    production: {
-                    plugins: ['@babel/plugin-syntax-dynamic-import']
+        plugins: ['@babel/plugin-syntax-dynamic-import']
 	    }
     }
 };
