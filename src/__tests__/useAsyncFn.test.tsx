@@ -17,6 +17,39 @@ describe('useAsyncFn', () => {
     expect(useAsyncFn).toBeDefined();
   });
 
+  describe('the callback can be awaited and return the value', () => {
+    let hook;
+    let callCount = 0;
+    const adder = async (a: number, b: number): Promise<number> => {
+      callCount++;
+      return a + b;
+    };
+
+    beforeEach(() => {
+      // NOTE: renderHook isn't good at inferring array types
+      hook = renderHook<{ fn: AdderFn }, [AsyncState<number>, AdderFn]>(({ fn }) => useAsyncFn(fn), {
+        initialProps: {
+          fn: adder,
+        },
+      });
+    });
+
+    it('awaits the result', async () => {
+      expect.assertions(3);
+
+      const [s, callback] = hook.result.current;
+
+      const result = await callback(5, 7);
+
+      expect(result).toEqual(12);
+
+      const [state] = hook.result.current;
+
+      expect(state.value).toEqual(12);
+      expect(result).toEqual(state.value);
+    });
+  });
+
   describe('args can be passed to the function', () => {
     let hook;
     let callCount = 0;
