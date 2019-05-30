@@ -18,12 +18,8 @@ export type AsyncState<T> =
       value: T;
     };
 
-export default function useAsyncFn<
-  Result = any,
-  Args extends any[] = any[],
-  Fn extends Function = (...args: Args | []) => Promise<Result>
->(
-  fn: Fn,
+export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
+  fn: (...args: Args | []) => Promise<Result>,
   deps: DependencyList = [],
   initialState: AsyncState<Result> = { loading: false }
 ): [AsyncState<Result>, (...args: Args | []) => Promise<Result>] {
@@ -39,11 +35,15 @@ export default function useAsyncFn<
         if (mounted.current) {
           set({ value, loading: false });
         }
+
+        return value;
       },
       error => {
         if (mounted.current) {
           set({ error, loading: false });
         }
+
+        return error;
       }
     );
   }, deps);
