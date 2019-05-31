@@ -12351,9 +12351,9 @@ schema-utils@^1.0.0:
     ajv-keywords "^3.1.0"
 
 screenfull@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-4.1.0.tgz#30eb338f615941f5a2cdd96c14e36063d2d9d764"
-  integrity sha512-/qH0HAmc+ilbZ9Vf8J7RHjjecSdqmjIh98iMkA6uCSKcHdJK1TiXhTbR+cin8rG70xi4Peyz7wW1KJVP6sp30g==
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-4.2.0.tgz#d5252a5a0f56504719abbed9ebbcd9208115da03"
+  integrity sha512-qpyI9XbwuMJElWRP5vTgxkFAl4k7HpyhIqBFOZEwX9QBXn0MAuRSpn7LOc6/4CeSwoz61oBu1VPV+2fbIWC+5Q==
 
 select@^1.1.2:
   version "1.1.2"
