@@ -1,3 +1,10 @@
+# [9.3.0](https://github.com/streamich/react-use/compare/v9.2.0...v9.3.0) (2019-05-31)
+
+
+### Features
+
+* improve useAsync and useAsyncFn ([3ab1d5d](https://github.com/streamich/react-use/commit/3ab1d5d))
+
 # [9.2.0](https://github.com/streamich/react-use/compare/v9.1.2...v9.2.0) (2019-05-31)
 
 
