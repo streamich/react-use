@@ -9,7 +9,7 @@ afterEach(cleanup);
 //       of a fake one?
 describe('useAsync', () => {
   it('should be defined', () => {
-    expect(useAsync).toBeDefined();
+    throw 123;
   });
 
   describe('a success', () => {
