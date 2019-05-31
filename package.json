@@ -64,7 +64,7 @@
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.3.3",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
-    "babel-plugin-dynamic-import-node": "^2.2.0",
+    "babel-plugin-dynamic-import-node": "2.2.0",
     "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
     "@semantic-release/npm": "5.1.7",
