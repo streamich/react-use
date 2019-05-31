@@ -50,6 +50,7 @@ import usePrevious from './usePrevious';
 import usePromise from './usePromise';
 import useRaf from './useRaf';
 import useRefMounted from './useRefMounted';
+import useResizeObserver from './useResizeObserver';
 import useScroll from './useScroll';
 import useSessionStorage from './useSessionStorage';
 import useSetState from './useSetState';
@@ -84,6 +85,7 @@ export {
   useCopyToClipboard,
   useCounter,
   useCss,
+  useResizeObserver,
   useDebounce,
   useDeepCompareEffect,
   useDrop,
