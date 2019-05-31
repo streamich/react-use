@@ -1,3 +1,11 @@
+# [9.2.0](https://github.com/streamich/react-use/compare/v9.1.2...v9.2.0) (2019-05-31)
+
+
+### Features
+
+* 🎸 improve useObservable() type annotations ([d0c3713](https://github.com/streamich/react-use/commit/d0c3713))
+* improve useSetState() typings ([fad4440](https://github.com/streamich/react-use/commit/fad4440))
+
 ## [9.1.2](https://github.com/streamich/react-use/compare/v9.1.1...v9.1.2) (2019-05-24)
 
 
