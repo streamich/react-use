@@ -1,22 +1,7 @@
 import { DependencyList, useEffect } from 'react';
 import useAsyncFn from './useAsyncFn';
 
-export type AsyncState<T> =
-  | {
-      loading: true;
-      error?: undefined;
-      value?: undefined;
-    }
-  | {
-      loading: false;
-      error: Error;
-      value?: undefined;
-    }
-  | {
-      loading: false;
-      error?: undefined;
-      value: T;
-    };
+export { AsyncState, AsyncFn } from './useAsyncFn';
 
 export default function useAsync<Result = any, Args extends any[] = any[]>(
   fn: (...args: Args | []) => Promise<Result>,
