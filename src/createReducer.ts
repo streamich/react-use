@@ -9,8 +9,8 @@ function composeMiddleware(chain) {
 }
 
 const createReducer = (...middlewares) => (reducer, initialState, initializer = value => value) => {
-  const ref = useRef(initializer(initialState))
-  const [, setState] = useState(ref.current)
+  const ref = useRef(initializer(initialState));
+  const [, setState] = useState(ref.current);
   let middlewareDispatch = (_ = {}) => {
     throw new Error(
       'Dispatching while constructing your middleware is not allowed. ' +
@@ -18,10 +18,10 @@ const createReducer = (...middlewares) => (reducer, initialState, initializer = 
     );
   };
   const dispatch = action => {
-    ref.current = reducer(ref.current, action)
-    setState(ref.current)
+    ref.current = reducer(ref.current, action);
+    setState(ref.current);
     return action;
-  }
+  };
   const composedMiddleware = useMemo(() => {
     return composeMiddleware(middlewares);
   }, middlewares);
