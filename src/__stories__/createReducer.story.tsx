@@ -4,7 +4,6 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import { createReducer } from '..';
-// import ShowDocs from './util/ShowDocs';
 
 const useThunkReducer = createReducer(thunk, logger);
 
@@ -29,11 +28,11 @@ function reducer(state, action) {
 const Demo = ({ initialCount = 1 }) => {
   // Action creator to increment count, wait a second and then reset
   const addAndReset = React.useCallback(() => {
-    return dispatch => {
-      dispatch({ type: 'increment' });
+    return dispatch2 => {
+      dispatch2({ type: 'increment' });
 
       setTimeout(() => {
-        dispatch({ type: 'reset', payload: initialCount });
+        dispatch2({ type: 'reset', payload: initialCount });
       }, 1000);
     };
   }, [initialCount]);
