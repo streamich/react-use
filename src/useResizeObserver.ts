@@ -7,31 +7,40 @@ export interface ResizeObserverResult {
   height: number;
 }
 
-const useResizeObserver = !isClient
-  ? (ref: RefObject<Element>, { width = Infinity, height = Infinity }: Partial<ResizeObserverResult> = {}) => {
-      return { width, height };
-    }
-  : (
-      ref: RefObject<Element>,
-      { width = Infinity, height = Infinity }: Partial<ResizeObserverResult> = {}
-    ): ResizeObserverResult => {
-      const [state, setState] = useState<ResizeObserverResult>({ width, height });
+export type ResizeObserverHook = (
+  ref: RefObject<Element>,
+  defaults: Partial<ResizeObserverResult>
+) => ResizeObserverResult;
 
-      useEffect(() => {
-        const element = ref.current;
-        if (!element) {
-          return;
-        }
-        const observer = new ResizeObserver(([{ contentRect }]) => {
-          // tslint:disable-next-line no-shadowed-variable
-          const { width, height } = contentRect;
-          setState({ width, height });
-        });
-        observer.observe(element);
-        return () => observer.disconnect();
-      }, [ref.current]);
+let useResizeObserver: ResizeObserverHook;
 
-      return state;
-    };
+if (isClient) {
+  useResizeObserver = (
+    ref: RefObject<Element>,
+    { width = Infinity, height = Infinity }: Partial<ResizeObserverResult> = {}
+  ): ResizeObserverResult => {
+    const [state, setState] = useState<ResizeObserverResult>({ width, height });
+
+    useEffect(() => {
+      const element = ref.current;
+      if (!element) {
+        return;
+      }
+      const observer = new ResizeObserver(([{ contentRect }]) => {
+        // tslint:disable-next-line no-shadowed-variable
+        const { width, height } = contentRect;
+        setState({ width, height });
+      });
+      observer.observe(element);
+      return () => observer.disconnect();
+    }, [ref.current]);
+
+    return state;
+  };
+} else {
+  useResizeObserver = (ref, { width = Infinity, height = Infinity } = {}) => {
+    return { width, height };
+  };
+}
 
 export default useResizeObserver;
