@@ -1,3 +1,16 @@
+# [9.4.0](https://github.com/streamich/react-use/compare/v9.3.0...v9.4.0) (2019-06-04)
+
+
+### Bug Fixes
+
+* fix TypeScript error ([72e3036](https://github.com/streamich/react-use/commit/72e3036))
+* **docs:** syntax error, improve examples ([8bbe9d8](https://github.com/streamich/react-use/commit/8bbe9d8))
+
+
+### Features
+
+* improve createReducer function ([6ba2d93](https://github.com/streamich/react-use/commit/6ba2d93)), closes [#164](https://github.com/streamich/react-use/issues/164)
+
 # [9.3.0](https://github.com/streamich/react-use/compare/v9.2.0...v9.3.0) (2019-05-31)
 
 
