@@ -88,7 +88,7 @@
     "react": "16.8.4",
     "react-dom": "16.8.4",
     "react-hooks-testing-library": "0.4.1",
-    "react-spring": "6.1.10",
+    "react-spring": "8.0.20",
     "rebound": "0.1.0",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
