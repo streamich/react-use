@@ -86,7 +86,7 @@
     "markdown-loader": "5.0.0",
     "prettier": "1.17.1",
     "react": "16.8.4",
-    "react-dom": "16.8.4",
+    "react-dom": "16.8.6",
     "react-hooks-testing-library": "0.4.1",
     "react-spring": "6.1.10",
     "rebound": "0.1.0",
