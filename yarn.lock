@@ -11458,10 +11458,10 @@ react-select@^2.2.0:
     react-input-autosize "^2.2.1"
     react-transition-group "^2.2.1"
 
-react-spring@8.0.22:
-  version "8.0.22"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.22.tgz#df55bba25ff0d7d31455bf9a1ff78b63dd968c07"
-  integrity sha512-X2E75K9JvwqUGzTE9v1B3f0po6eOr2LwErXG4MNZ+QXl5LmBsprbH+ZUEgyDj9p8ZRIhdtIlndvhYtmG9Etl6g==
+react-spring@8.0.23:
+  version "8.0.23"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.23.tgz#2a0ddaeb0816ea9e21898d04d3b8da7d1a3daa14"
+  integrity sha512-2mp7+0DnoBQ67h2zY0rFztdMqSm8gdvSWHgfwKz4TbLQ+N4n2IauB6DCMc046K8uvUNwDCUdlKgshUrCj14QUA==
   dependencies:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
