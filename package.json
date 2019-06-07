@@ -84,7 +84,7 @@
     "keyboardjs": "2.5.1",
     "lint-staged": "8.2.0",
     "markdown-loader": "5.0.0",
-    "prettier": "1.17.1",
+    "prettier": "1.18.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-hooks-testing-library": "0.4.1",
