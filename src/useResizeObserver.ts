@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { isClient } from './util';
 declare const ResizeObserver: ResizeObserver;
 
@@ -7,18 +7,15 @@ export interface ResizeObserverResult {
   height: number;
 }
 
-export type ResizeObserverHook = (
-  ref: RefObject<Element>,
-  defaults: Partial<ResizeObserverResult>
-) => ResizeObserverResult;
+export type ResizeObserverHook = (defaults: Partial<ResizeObserverResult>) => [ResizeObserverResult, RefObject<Element>];
 
 let useResizeObserver: ResizeObserverHook;
 
 if (isClient) {
   useResizeObserver = (
-    ref: RefObject<Element>,
-    { width = Infinity, height = Infinity }: Partial<ResizeObserverResult> = {}
+    {width = Infinity, height = Infinity}: Partial<ResizeObserverResult> = {}
   ): ResizeObserverResult => {
+    const ref = useRef<Element>(null);
     const [state, setState] = useState<ResizeObserverResult>({ width, height });
 
     useEffect(() => {
@@ -38,7 +35,7 @@ if (isClient) {
     return state;
   };
 } else {
-  useResizeObserver = (ref, { width = Infinity, height = Infinity } = {}) => {
+  useResizeObserver = ({ width = Infinity, height = Infinity } = {}) => {
     return { width, height };
   };
 }

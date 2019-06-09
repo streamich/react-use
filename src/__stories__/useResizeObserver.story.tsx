@@ -5,8 +5,7 @@ import { useResizeObserver } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const ref = useRef(null);
-  const { width, height } = useResizeObserver(ref);
+  const { width, height } = useResizeObserver();
   console.log('wh', width, height);
 
   return (
