@@ -1,3 +1,10 @@
+## [9.4.1](https://github.com/streamich/react-use/compare/v9.4.0...v9.4.1) (2019-06-12)
+
+
+### Bug Fixes
+
+* fix Storybook docs Markdown import ([962a312](https://github.com/streamich/react-use/commit/962a312))
+
 # [9.4.0](https://github.com/streamich/react-use/compare/v9.3.0...v9.4.0) (2019-06-04)
 
 
