@@ -113,6 +113,7 @@
     <br/>
 - [**State**](./docs/State.md)
   - [`createMemo`](./docs/createMemo.md) &mdash; factory of memoized hooks.
+  - [`createReducer`](./docs/createReducer.md) &mdash; factory of reducer hooks with custom middleware.
   - [`useGetSet`](./docs/useGetSet.md) &mdash; returns state getter `get()` instead of raw state.
   - [`useGetSetState`](./docs/useGetSetState.md) &mdash; as if [`useGetSet`](./docs/useGetSet.md) and [`useSetState`](./docs/useSetState.md) had a baby.
   - [`usePrevious`](./docs/usePrevious.md) &mdash; returns the previous state or props.
