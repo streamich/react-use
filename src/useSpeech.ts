@@ -18,6 +18,7 @@ export interface SpeechOptions {
 const useSpeech = (text: string, opts: SpeechOptions = {}): SpeechState => {
   const [state, setState] = useSetState<SpeechState>({
     isPlaying: false,
+    rate: opts.rate || 1,
     volume: opts.volume || 1,
   });
 
@@ -25,6 +26,7 @@ const useSpeech = (text: string, opts: SpeechOptions = {}): SpeechState => {
 
   useMount(() => {
     const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = opts.rate || 1;
     utterance.volume = opts.volume || 1;
     utterance.onstart = () => setState({ isPlaying: true });
     utterance.onresume = () => setState({ isPlaying: true });
