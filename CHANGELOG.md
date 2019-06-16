@@ -1,3 +1,16 @@
+# [9.5.0](https://github.com/streamich/react-use/compare/v9.4.1...v9.5.0) (2019-06-16)
+
+
+### Bug Fixes
+
+* add missing `rate` property ([fb795a6](https://github.com/streamich/react-use/commit/fb795a6))
+
+
+### Features
+
+* add rate option in useSpeech ([f52f1f7](https://github.com/streamich/react-use/commit/f52f1f7))
+* add rate option in useSpeech ([#399](https://github.com/streamich/react-use/issues/399)) ([0e4ebc6](https://github.com/streamich/react-use/commit/0e4ebc6))
+
 ## [9.4.1](https://github.com/streamich/react-use/compare/v9.4.0...v9.4.1) (2019-06-12)
 
 
