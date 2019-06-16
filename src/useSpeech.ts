@@ -4,6 +4,7 @@ import useSetState from './useSetState';
 
 export interface SpeechState {
   isPlaying: boolean;
+  rate: number;
   volume: number;
 }
 
