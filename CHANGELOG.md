@@ -1,3 +1,19 @@
+# [9.6.0](https://github.com/streamich/react-use/compare/v9.5.0...v9.6.0) (2019-06-18)
+
+
+### Bug Fixes
+
+* add additional ref check on clean up ([d18d2d8](https://github.com/streamich/react-use/commit/d18d2d8))
+* always return something from effect ([3355426](https://github.com/streamich/react-use/commit/3355426))
+
+
+### Features
+
+* 🎸 add useScrolling hook ([bd9928e](https://github.com/streamich/react-use/commit/bd9928e))
+* 🎸 add useScrolling hook to index ([b3ba702](https://github.com/streamich/react-use/commit/b3ba702))
+* add useScrolling docs ([25a93f6](https://github.com/streamich/react-use/commit/25a93f6))
+* add useScrolling story ([760edf1](https://github.com/streamich/react-use/commit/760edf1))
+
 # [9.5.0](https://github.com/streamich/react-use/compare/v9.4.1...v9.5.0) (2019-06-16)
 
 
