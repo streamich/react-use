@@ -52,6 +52,7 @@ import usePromise from './usePromise';
 import useRaf from './useRaf';
 import useRefMounted from './useRefMounted';
 import useScroll from './useScroll';
+import useScrolling from './useScrolling';
 import useSessionStorage from './useSessionStorage';
 import useSetState from './useSetState';
 import useSize from './useSize';
@@ -127,6 +128,7 @@ export {
   useRaf,
   useRefMounted,
   useScroll,
+  useScrolling,
   useSessionStorage,
   useSetState,
   useSize,
