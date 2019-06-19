@@ -1,3 +1,10 @@
+# [9.7.0](https://github.com/streamich/react-use/compare/v9.6.0...v9.7.0) (2019-06-19)
+
+
+### Features
+
+* improve useClickAway() hook ([#394](https://github.com/streamich/react-use/issues/394)) ([c60df19](https://github.com/streamich/react-use/commit/c60df19))
+
 # [9.6.0](https://github.com/streamich/react-use/compare/v9.5.0...v9.6.0) (2019-06-18)
 
 
