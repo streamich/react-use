@@ -74,6 +74,7 @@
   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![][img-demo]](https://codesandbox.io/s/n090mqz69m)
   - [`useVideo`](./docs/useVideo.md) &mdash; plays video, tracks its state, and exposes playback controls. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usevideo--demo)
   - [`useWait`](./docs/useWait.md) &mdash; complex waiting management for UIs.
+  - [`useForm`](./docs/useForm.md) &mdash; React custom hook for form validation without the hassle.
     <br/>
     <br/>
 - [**Animations**](./docs/Animations.md)
