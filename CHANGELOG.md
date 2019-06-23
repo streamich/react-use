@@ -1,3 +1,10 @@
+## [9.7.1](https://github.com/streamich/react-use/compare/v9.7.0...v9.7.1) (2019-06-23)
+
+
+### Bug Fixes
+
+* 🐛 use synchronouse effect to subscribe to observables ([376eea3](https://github.com/streamich/react-use/commit/376eea3))
+
 # [9.7.0](https://github.com/streamich/react-use/compare/v9.6.0...v9.7.0) (2019-06-19)
 
 
