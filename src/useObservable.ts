@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export interface Observable<T> {
   subscribe: (
@@ -13,7 +14,7 @@ function useObservable<T>(observable$: Observable<T>, initialValue: T): T;
 function useObservable<T>(observable$: Observable<T>, initialValue?: T): T | undefined {
   const [value, update] = useState<T | undefined>(initialValue);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const s = observable$.subscribe(update);
     return () => s.unsubscribe();
   }, [observable$]);
