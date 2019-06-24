@@ -7,11 +7,17 @@ Factory for reducer hooks with custom middleware with an identical API as [React
 An example with [`redux-thunk`](https://github.com/reduxjs/redux-thunk) and [`redux-logger`](https://github.com/LogRocket/redux-logger).
 
 ```jsx
-import {createReducer} from 'react-use';
-import thunk from 'redux-thunk';
+import React from 'react';
+import { createReducer } from 'react-use';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 const useThunkReducer = createReducer(thunk, logger);
+
+// React useReducer lazy initialization example: https://reactjs.org/docs/hooks-reference.html#lazy-initialization
+function init(initialCount) {
+  return { count: initialCount };
+}
 
 function reducer(state, action) {
   switch (action.type) {
@@ -26,25 +32,32 @@ function reducer(state, action) {
   }
 }
 
-const Demo = () => {
+const Demo = ({ initialCount = 1 }) => {
+  // Action creator to increment count, wait a second and then reset
   const addAndReset = React.useCallback(() => {
     return dispatch => {
       dispatch({ type: 'increment' });
 
       setTimeout(() => {
-        dispatch({ type: 'reset', payload: 1 });
+        dispatch({ type: 'reset', payload: initialCount });
       }, 1000);
     };
-  }, []);
+  }, [initialCount]);
 
-  const [count, dispatch] = useThunkReducer(reducer, 1);
+  const [state, dispatch] = useThunkReducer(reducer, initialCount, init);
 
   return (
     <div>
-      <p>count: {count}</p>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
       <button onClick={() => dispatch(addAndReset())}>Add and reset</button>
+      <button
+        onClick={() => dispatch({ type: 'reset', payload: initialCount })}
+      >
+        Reset
+      </button>
       <button onClick={() => dispatch({ type: 'increment' })}>+</button>
       <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <p>Open your developer console to see actions logged by middleware</p>
     </div>
   );
 };
