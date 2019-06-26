@@ -47,6 +47,7 @@ import useNumber from './useNumber';
 import useObservable from './useObservable';
 import useOrientation from './useOrientation';
 import usePageLeave from './usePageLeave';
+import usePermission from './usePermission';
 import usePrevious from './usePrevious';
 import usePromise from './usePromise';
 import useRaf from './useRaf';
@@ -123,6 +124,7 @@ export {
   useObservable,
   useOrientation,
   usePageLeave,
+  usePermission,
   usePrevious,
   usePromise,
   useRaf,
