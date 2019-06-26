@@ -31,7 +31,7 @@ const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, (
       // If user is in private mode or has storage restriction
       // localStorage can throw. Also JSON.stringify can throw.
     }
-  });
+  }, [state]);
 
   return [state, setState];
 };
