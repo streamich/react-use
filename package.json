@@ -67,7 +67,7 @@
     "babel-plugin-dynamic-import-node": "2.3.0",
     "@semantic-release/changelog": "3.0.4",
     "@semantic-release/git": "7.0.12",
-    "@semantic-release/npm": "5.1.9",
+    "@semantic-release/npm": "5.1.12",
     "@storybook/addon-actions": "5.1.9",
     "@storybook/addon-knobs": "5.1.9",
     "@storybook/addon-notes": "5.1.9",
