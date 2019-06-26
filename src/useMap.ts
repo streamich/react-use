@@ -15,7 +15,7 @@ const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>
     {
       get: (key: keyof T) => map[key as string],
       set: <K extends keyof T>(key: K, entry: T[K]) => {
-        set((prevMap)=>({
+        set(prevMap => ({
           ...prevMap,
           [key]: entry,
         }));
