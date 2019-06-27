@@ -18,7 +18,8 @@ const useList = <T>(initialList: T[] = []): [T[], Actions<T>] => {
     {
       set,
       clear: () => set([]),
-      updateAt: (index, entry) => set(currentList => [...currentList.slice(0, index), entry, ...currentList.slice(index + 1)]),
+      updateAt: (index, entry) =>
+        set(currentList => [...currentList.slice(0, index), entry, ...currentList.slice(index + 1)]),
       remove: index => set(currentList => [...currentList.slice(0, index), ...currentList.slice(index + 1)]),
       push: entry => set(currentList => [...currentList, entry]),
       filter: fn => set(currentList => currentList.filter(fn)),
