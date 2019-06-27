@@ -1,3 +1,11 @@
+## [9.7.2](https://github.com/streamich/react-use/compare/v9.7.1...v9.7.2) (2019-06-27)
+
+
+### Bug Fixes
+
+* save to localStorage only when state changes ([ba6d375](https://github.com/streamich/react-use/commit/ba6d375))
+* use correct list variable in useList ([#412](https://github.com/streamich/react-use/issues/412)) ([b937296](https://github.com/streamich/react-use/commit/b937296))
+
 ## [9.7.1](https://github.com/streamich/react-use/compare/v9.7.0...v9.7.1) (2019-06-23)
 
 
