@@ -21,8 +21,10 @@ const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>
         }));
       },
       remove: (key: keyof T) => {
-        const { [key]: omit, ...rest } = map;
-        set(rest as T);
+        set(prevMap => {
+          const { [key]: omit, ...rest } = prevMap;
+          return rest as T;
+        } );
       },
       reset: () => set(initialMap),
     },
