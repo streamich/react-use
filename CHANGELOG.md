@@ -1,3 +1,12 @@
+## [9.8.1](https://github.com/streamich/react-use/compare/v9.8.0...v9.8.1) (2019-06-30)
+
+
+### Bug Fixes
+
+* lint fixes via lint:fix ([7ce8e4f](https://github.com/streamich/react-use/commit/7ce8e4f))
+* useMap uses prevMap state which is safer ([3554f79](https://github.com/streamich/react-use/commit/3554f79))
+* **useMap:** remove now also uses prevMap state to not overwrite or lose state ([0a59869](https://github.com/streamich/react-use/commit/0a59869))
+
 # [9.8.0](https://github.com/streamich/react-use/compare/v9.7.2...v9.8.0) (2019-06-30)
 
 
