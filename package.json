@@ -30,7 +30,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint:types && lint-staged"
+      "pre-commit": "yarn lint:types && lint-staged",
+      "pre-push": "yarn lint && yarn clean && yarn build && yarn test"
     }
   },
   "author": "@streamich",

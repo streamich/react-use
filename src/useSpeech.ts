@@ -19,7 +19,8 @@ export interface SpeechOptions {
   volume?: number;
 }
 
-const voices = window.speechSynthesis.getVoices();
+const voices =
+  typeof window === 'object' && typeof window.speechSynthesis === 'object' ? window.speechSynthesis.getVoices() : [];
 
 const useSpeech = (text: string, opts: SpeechOptions = {}): SpeechState => {
   const [state, setState] = useSetState<SpeechState>({
