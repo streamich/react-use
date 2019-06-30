@@ -24,7 +24,7 @@ const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>
         set(prevMap => {
           const { [key]: omit, ...rest } = prevMap;
           return rest as T;
-        } );
+        });
       },
       reset: () => set(initialMap),
     },
