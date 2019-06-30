@@ -3,8 +3,10 @@ import * as React from 'react';
 import { useSpeech } from '..';
 import ShowDocs from './util/ShowDocs';
 
+const voices = window.speechSynthesis.getVoices();
+
 const Demo = () => {
-  const state = useSpeech('Hello world!');
+  const state = useSpeech('Hello world!', { rate: 0.8, pitch: 0.5, voice: voices[0] });
 
   return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
