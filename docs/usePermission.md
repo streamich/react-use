@@ -1,6 +1,6 @@
 # `usePermission`
 
-React UI hook that query permission status from the user depends on the specific AP.
+React side-effect hook that query permission status from the user depends on the specific API.
 
 
 ## Usage

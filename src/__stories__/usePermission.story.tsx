@@ -9,6 +9,6 @@ const Demo = () => {
   return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
 
-storiesOf('UI|usePermission', module)
+storiesOf('Side effects|usePermission', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/usePermission.md')} />)
   .add('Demo', () => <Demo />);

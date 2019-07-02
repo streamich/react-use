@@ -7,12 +7,15 @@ type PermissionDesc =
   | MidiPermissionDescriptor
   | PushPermissionDescriptor;
 
+type State = PermissionState | '';
+
 const noop = () => {};
 
-const usePermission = (permissionDesc: PermissionDesc): string => {
-  const [state, setState] = useState('');
+const usePermission = (permissionDesc: PermissionDesc): State => {
   let mounted = true;
   let permissionStatus: PermissionStatus | null = null;
+
+  const [state, setState] = useState<State>('');
 
   const onChange = () => {
     if (mounted && permissionStatus) {
