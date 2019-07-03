@@ -88,7 +88,7 @@
     "prettier": "1.17.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-hooks-testing-library": "0.4.1",
+    "react-hooks-testing-library": "0.6.0",
     "react-spring": "8.0.27",
     "rebound": "0.1.0",
     "redux-logger": "3.0.6",
