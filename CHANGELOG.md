@@ -1,3 +1,12 @@
+## [9.8.2](https://github.com/streamich/react-use/compare/v9.8.1...v9.8.2) (2019-07-08)
+
+
+### Bug Fixes
+
+* **useSize:** prevents accessing iframe's property when it's not defined ([c9b5cdc](https://github.com/streamich/react-use/commit/c9b5cdc)), closes [#442](https://github.com/streamich/react-use/issues/442)
+* **useSize:** prevents accessing iframe's property when it's not… ([#443](https://github.com/streamich/react-use/issues/443)) ([8f04e8f](https://github.com/streamich/react-use/commit/8f04e8f))
+* iframe can be null ([a9e3bab](https://github.com/streamich/react-use/commit/a9e3bab))
+
 ## [9.8.1](https://github.com/streamich/react-use/compare/v9.8.0...v9.8.1) (2019-06-30)
 
 
