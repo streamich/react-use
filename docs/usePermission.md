@@ -1,7 +1,6 @@
 # `usePermission`
 
-React side-effect hook that query permission status from the user depends on the specific API.
-
+React side-effect hook to query permission status of browser APIs.
 
 ## Usage
 

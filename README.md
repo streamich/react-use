@@ -97,7 +97,7 @@
   - [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manages a value in `sessionStorage`.
   - [`useThrottle` and `useThrottleFn`](./docs/useThrottle.md) &mdash; throttles a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usethrottle--demo)
   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
-  - [`usePermission`](./docs/usePermission.md) &mdash; query permission from the user depends on the specific API.
+  - [`usePermission`](./docs/usePermission.md) &mdash; query permission status for browser APIs.
     <br/>
     <br/>
 - [**Lifecycles**](./docs/Lifecycles.md)
