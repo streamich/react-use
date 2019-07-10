@@ -6,7 +6,7 @@ import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 
 jest.mock('../useIsomorphicLayoutEffect');
 
-test('uses', async () => {
+test('uses layout effect (to subscribe synchronously)', async () => {
   const subject = new Subject();
   const container = document.createElement('div');
 
