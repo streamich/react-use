@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { isClient } from './util';
 
-const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, (value: T) => void] => {
+type Dispatch<A> = (value: A) => void;
+type SetStateAction<S> = S | ((prevState: S) => S);
+
+const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, Dispatch<SetStateAction<T>>] => {
   if (!isClient) {
     return [initialValue as T, () => {}];
   }
