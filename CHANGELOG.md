@@ -1,3 +1,10 @@
+## [9.8.3](https://github.com/streamich/react-use/compare/v9.8.2...v9.8.3) (2019-07-10)
+
+
+### Bug Fixes
+
+* useLocalStorage types for functional updates ([e2b8278](https://github.com/streamich/react-use/commit/e2b8278))
+
 ## [9.8.2](https://github.com/streamich/react-use/compare/v9.8.1...v9.8.2) (2019-07-08)
 
 
