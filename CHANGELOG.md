@@ -1,3 +1,10 @@
+# [9.10.0](https://github.com/streamich/react-use/compare/v9.9.0...v9.10.0) (2019-07-10)
+
+
+### Features
+
+* expose useIsomorphicLayoutEffect + docs ([#451](https://github.com/streamich/react-use/issues/451)) ([8dcbbf1](https://github.com/streamich/react-use/commit/8dcbbf1))
+
 # [9.9.0](https://github.com/streamich/react-use/compare/v9.8.3...v9.9.0) (2019-07-10)
 
 
