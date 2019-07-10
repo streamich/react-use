@@ -1,3 +1,11 @@
+# [9.9.0](https://github.com/streamich/react-use/compare/v9.8.3...v9.9.0) (2019-07-10)
+
+
+### Features
+
+* add usePermission ([4da40b9](https://github.com/streamich/react-use/commit/4da40b9))
+* usePermission ([588a0c5](https://github.com/streamich/react-use/commit/588a0c5))
+
 ## [9.8.3](https://github.com/streamich/react-use/compare/v9.8.2...v9.8.3) (2019-07-10)
 
 
