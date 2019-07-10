@@ -84,7 +84,7 @@
     "husky": "3.0.0",
     "jest": "24.8.0",
     "keyboardjs": "2.5.1",
-    "lint-staged": "8.2.1",
+    "lint-staged": "9.2.0",
     "markdown-loader": "5.0.0",
     "opencollective-postinstall": "2.0.2",
     "prettier": "1.17.1",
