@@ -1,3 +1,10 @@
+# [9.11.0](https://github.com/streamich/react-use/compare/v9.10.0...v9.11.0) (2019-07-11)
+
+
+### Features
+
+* useMedia - initialize state with call to media query ([#454](https://github.com/streamich/react-use/issues/454)) ([ab81897](https://github.com/streamich/react-use/commit/ab81897))
+
 # [9.10.0](https://github.com/streamich/react-use/compare/v9.9.0...v9.10.0) (2019-07-10)
 
 
