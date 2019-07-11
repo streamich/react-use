@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "9.8.1",
+  "version": "9.10.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -60,8 +60,8 @@
     "rebound": "*"
   },
   "devDependencies": {
-    "@babel/core": "7.4.5",
-    "@babel/preset-env": "7.4.5",
+    "@babel/core": "7.5.4",
+    "@babel/preset-env": "7.5.4",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.3.3",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
@@ -103,7 +103,7 @@
     "tslint-eslint-rules": "5.4.0",
     "tslint-plugin-prettier": "2.0.1",
     "tslint-react": "4.0.0",
-    "typescript": "3.5.2"
+    "typescript": "3.5.3"
   },
   "config": {
     "commitizen": {

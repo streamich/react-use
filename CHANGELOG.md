@@ -1,3 +1,34 @@
+# [9.10.0](https://github.com/streamich/react-use/compare/v9.9.0...v9.10.0) (2019-07-10)
+
+
+### Features
+
+* expose useIsomorphicLayoutEffect + docs ([#451](https://github.com/streamich/react-use/issues/451)) ([8dcbbf1](https://github.com/streamich/react-use/commit/8dcbbf1))
+
+# [9.9.0](https://github.com/streamich/react-use/compare/v9.8.3...v9.9.0) (2019-07-10)
+
+
+### Features
+
+* add usePermission ([4da40b9](https://github.com/streamich/react-use/commit/4da40b9))
+* usePermission ([588a0c5](https://github.com/streamich/react-use/commit/588a0c5))
+
+## [9.8.3](https://github.com/streamich/react-use/compare/v9.8.2...v9.8.3) (2019-07-10)
+
+
+### Bug Fixes
+
+* useLocalStorage types for functional updates ([e2b8278](https://github.com/streamich/react-use/commit/e2b8278))
+
+## [9.8.2](https://github.com/streamich/react-use/compare/v9.8.1...v9.8.2) (2019-07-08)
+
+
+### Bug Fixes
+
+* **useSize:** prevents accessing iframe's property when it's not defined ([c9b5cdc](https://github.com/streamich/react-use/commit/c9b5cdc)), closes [#442](https://github.com/streamich/react-use/issues/442)
+* **useSize:** prevents accessing iframe's property when it's not… ([#443](https://github.com/streamich/react-use/issues/443)) ([8f04e8f](https://github.com/streamich/react-use/commit/8f04e8f))
+* iframe can be null ([a9e3bab](https://github.com/streamich/react-use/commit/a9e3bab))
+
 ## [9.8.1](https://github.com/streamich/react-use/compare/v9.8.0...v9.8.1) (2019-06-30)
 
 

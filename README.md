@@ -97,6 +97,7 @@
   - [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manages a value in `sessionStorage`.
   - [`useThrottle` and `useThrottleFn`](./docs/useThrottle.md) &mdash; throttles a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usethrottle--demo)
   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
+  - [`usePermission`](./docs/usePermission.md) &mdash; query permission status for browser APIs.
     <br/>
     <br/>
 - [**Lifecycles**](./docs/Lifecycles.md)
@@ -109,6 +110,7 @@
   - [`useMount`](./docs/useMount.md) &mdash; calls `mount` callbacks.
   - [`useUnmount`](./docs/useUnmount.md) &mdash; calls `unmount` callbacks.
   - [`useUpdateEffect`](./docs/useUpdateEffect.md) &mdash; run an `effect` only on updates.
+  - [`useIsomorphicLayoutEffect`](./docs/useIsomorphicLayoutEffect.md) &mdash; `useLayoutEffect` that does not show warning when server-side rendering.
   - [`useDeepCompareEffect`](./docs/useDeepCompareEffect.md) &mdash; run an `effect` depending on deep comparison of its dependencies
     <br/>
     <br/>

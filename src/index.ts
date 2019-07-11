@@ -26,6 +26,7 @@ import useHover from './useHover';
 import useHoverDirty from './useHoverDirty';
 import useIdle from './useIdle';
 import useInterval from './useInterval';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 import useKey from './useKey';
 import useKeyboardJs from './useKeyboardJs';
 import useKeyPress from './useKeyPress';
@@ -48,6 +49,7 @@ import useNumber from './useNumber';
 import useObservable from './useObservable';
 import useOrientation from './useOrientation';
 import usePageLeave from './usePageLeave';
+import usePermission from './usePermission';
 import usePrevious from './usePrevious';
 import usePromise from './usePromise';
 import useRaf from './useRaf';
@@ -103,6 +105,7 @@ export {
   useHoverDirty,
   useIdle,
   useInterval,
+  useIsomorphicLayoutEffect,
   useKey,
   useKeyboardJs,
   useKeyPress,
@@ -125,6 +128,7 @@ export {
   useObservable,
   useOrientation,
   usePageLeave,
+  usePermission,
   usePrevious,
   usePromise,
   useRaf,
