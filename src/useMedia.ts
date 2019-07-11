@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-const useMedia = (query: string, defaultState: boolean = false) => {
-  const [state, setState] = useState(defaultState);
+const useMedia = (query: string) => {
+  const [state, setState] = useState(() => window.matchMedia(query).matches);
 
   useEffect(() => {
     let mounted = true;
