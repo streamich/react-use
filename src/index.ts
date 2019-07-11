@@ -25,6 +25,7 @@ import useGetSetState from './useGetSetState';
 import useHover from './useHover';
 import useHoverDirty from './useHoverDirty';
 import useIdle from './useIdle';
+import useInterval from './useInterval';
 import useKey from './useKey';
 import useKeyboardJs from './useKeyboardJs';
 import useKeyPress from './useKeyPress';
@@ -101,6 +102,7 @@ export {
   useHover,
   useHoverDirty,
   useIdle,
+  useInterval,
   useKey,
   useKeyboardJs,
   useKeyPress,
