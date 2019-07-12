@@ -7,17 +7,11 @@ Factory for reducer hooks with custom middleware with an identical API as [React
 An example with [`redux-thunk`](https://github.com/reduxjs/redux-thunk) and [`redux-logger`](https://github.com/LogRocket/redux-logger).
 
 ```jsx
-import React from 'react';
 import { createReducer } from 'react-use';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 const useThunkReducer = createReducer(thunk, logger);
-
-// React useReducer lazy initialization example: https://reactjs.org/docs/hooks-reference.html#lazy-initialization
-function init(initialCount) {
-  return { count: initialCount };
-}
 
 function reducer(state, action) {
   switch (action.type) {
@@ -26,7 +20,7 @@ function reducer(state, action) {
     case 'decrement':
       return { count: state.count - 1 };
     case 'reset':
-      return init(action.payload);
+      return { count: action.payload };
     default:
       throw new Error();
   }
@@ -44,11 +38,11 @@ const Demo = ({ initialCount = 1 }) => {
     };
   }, [initialCount]);
 
-  const [state, dispatch] = useThunkReducer(reducer, initialCount, init);
+  const [state, dispatch] = useThunkReducer(reducer, initialCount);
 
   return (
     <div>
-      <pre>{JSON.stringify(state, null, 2)}</pre>
+      <p>count: {state.count}</p>
       <button onClick={() => dispatch(addAndReset())}>Add and reset</button>
       <button
         onClick={() => dispatch({ type: 'reset', payload: initialCount })}
