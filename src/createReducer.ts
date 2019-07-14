@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 function composeMiddleware(chain) {
   return (context, dispatch) => {
@@ -13,32 +13,23 @@ const createReducer = (...middlewares) => {
 
   return (reducer, initialState, initializer = value => value) => {
     const ref = useRef(initializer(initialState));
-    const dispatchRef = useRef((_ = {}) => {
-      throw new Error(
-        'Dispatching while constructing your middleware is not allowed. ' +
-          'Other middleware would not be applied to this dispatch.'
-      );
-    });
     const [, setState] = useState(ref.current);
 
-    const dispatch = useCallback(
-      action => {
-        ref.current = reducer(ref.current, action);
-        setState(ref.current);
-        return action;
-      },
-      [reducer]
-    );
+    const dispatch = useCallback(action => {
+      ref.current = reducer(ref.current, action);
+      setState(ref.current);
+      return action;
+    }, []);
 
-    useMemo(() => {
-      dispatchRef.current = composedMiddleware(
+    const dispatchRef = useRef(
+      composedMiddleware(
         {
           getState: () => ref.current,
           dispatch: (...args) => dispatchRef.current(...args),
         },
         dispatch
-      );
-    }, [dispatch]);
+      )
+    );
 
     return [ref.current, dispatchRef.current];
   };
