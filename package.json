@@ -26,7 +26,8 @@
     "storybook:build": "build-storybook",
     "storybook:upload": "gh-pages -d storybook-static",
     "storybook:clean": "rimraf storybook-static",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "postinstall": "opencollective-postinstall || true"
   },
   "husky": {
     "hooks": {
@@ -47,6 +48,7 @@
   "dependencies": {
     "copy-to-clipboard": "^3.1.0",
     "nano-css": "^5.1.0",
+    "opencollective-postinstall": "^2.0.2",
     "react-fast-compare": "^2.0.4",
     "react-wait": "^0.3.0",
     "screenfull": "^4.1.0",
@@ -138,5 +140,9 @@
   "volta": {
     "node": "10.16.0",
     "yarn": "1.16.0"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/react-use"
   }
 }
