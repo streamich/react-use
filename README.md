@@ -13,9 +13,6 @@
   <sup>
     <br />
     <br />
-    <a href="https://www.npmjs.com/package/react-use">
-      <a href="https://opencollective.com/react-use" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/react-use/all/badge.svg?label=financial+contributors" /></a> <img src="https://img.shields.io/npm/v/react-use.svg" alt="npm package" />
-    </a>
     <a href="https://circleci.com/gh/streamich/react-use">
       <img src="https://img.shields.io/circleci/project/github/streamich/react-use/master.svg" alt="CircleCI master" />
     </a>
@@ -24,6 +21,9 @@
     </a>
     <a href="http://streamich.github.io/react-use">
       <img src="https://img.shields.io/badge/demos-🚀-yellow.svg" alt="demos" />
+    </a>
+    <a href="https://www.npmjs.com/package/react-use">
+      <a href="https://opencollective.com/react-use" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/react-use/all/badge.svg?label=$$$" /></a> <img src="https://img.shields.io/npm/v/react-use.svg" alt="npm package" />
     </a>
     <br />
     Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
@@ -140,6 +140,8 @@
   <a href="./docs/Usage.md"><strong>Usage</strong></a> &mdash; how to import.
   <br />
   <a href="./LICENSE"><strong>Unlicense</strong></a> &mdash; public domain.
+  <br />
+  <a href="https://opencollective.com/react-use/contribute"><strong>Support</strong></a> &mdash; add yourself to backer list below.
 </p>
 
 <br />
@@ -150,32 +152,47 @@
 
 [img-demo]: https://img.shields.io/badge/demo-%20%20%20%F0%9F%9A%80-green.svg
 
-## Contributors
 
-### Code Contributors
+<div align="center">
+  <h1>Contributors</h1>
+</div>
 
-This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<br />
+<br />
+<br />
+
 <a href="https://github.com/streamich/react-use/graphs/contributors"><img src="https://opencollective.com/react-use/contributors.svg?width=890&button=false" /></a>
 
-### Financial Contributors
+<br />
+<br />
+<br />
 
-Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/react-use/contribute)]
+<div align="center">
+  <h1>Backers</h1>
+</div>
 
-#### Individuals
+<br />
+<br />
+<br />
 
-<a href="https://opencollective.com/react-use"><img src="https://opencollective.com/react-use/individuals.svg?width=890"></a>
+<div align="center">
+  <a href="https://opencollective.com/react-use"><img src="https://opencollective.com/react-use/individuals.svg?width=890"></a>
+  <br />
+  <br />
+  <a href="https://opencollective.com/react-use/organization/0/website"><img src="https://opencollective.com/react-use/organization/0/avatar.svg"></a>
+  <a href="https://opencollective.com/react-use/organization/1/website"><img src="https://opencollective.com/react-use/organization/1/avatar.svg"></a>
+  <a href="https://opencollective.com/react-use/organization/2/website"><img src="https://opencollective.com/react-use/organization/2/avatar.svg"></a>
+  <a href="https://opencollective.com/react-use/organization/3/website"><img src="https://opencollective.com/react-use/organization/3/avatar.svg"></a>
+  <a href="https://opencollective.com/react-use/organization/4/website"><img src="https://opencollective.com/react-use/organization/4/avatar.svg"></a>
+  <a href="https://opencollective.com/react-use/organization/5/website"><img src="https://opencollective.com/react-use/organization/5/avatar.svg"></a>
+  <a href="https://opencollective.com/react-use/organization/6/website"><img src="https://opencollective.com/react-use/organization/6/avatar.svg"></a>
+  <a href="https://opencollective.com/react-use/organization/7/website"><img src="https://opencollective.com/react-use/organization/7/avatar.svg"></a>
+  <a href="https://opencollective.com/react-use/organization/8/website"><img src="https://opencollective.com/react-use/organization/8/avatar.svg"></a>
+  <a href="https://opencollective.com/react-use/organization/9/website"><img src="https://opencollective.com/react-use/organization/9/avatar.svg"></a>
+</div>
 
-#### Organizations
-
-Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/react-use/contribute)]
-
-<a href="https://opencollective.com/react-use/organization/0/website"><img src="https://opencollective.com/react-use/organization/0/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/1/website"><img src="https://opencollective.com/react-use/organization/1/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/2/website"><img src="https://opencollective.com/react-use/organization/2/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/3/website"><img src="https://opencollective.com/react-use/organization/3/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/4/website"><img src="https://opencollective.com/react-use/organization/4/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/5/website"><img src="https://opencollective.com/react-use/organization/5/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/6/website"><img src="https://opencollective.com/react-use/organization/6/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/7/website"><img src="https://opencollective.com/react-use/organization/7/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/8/website"><img src="https://opencollective.com/react-use/organization/8/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/9/website"><img src="https://opencollective.com/react-use/organization/9/avatar.svg"></a>
+<br />
+<br />
+<br />
+<br />
+<br />
