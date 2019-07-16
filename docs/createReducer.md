@@ -51,7 +51,6 @@ const Demo = ({ initialCount = 1 }) => {
       </button>
       <button onClick={() => dispatch({ type: 'increment' })}>+</button>
       <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
-      <p>Open your developer console to see actions logged by middleware</p>
     </div>
   );
 };
