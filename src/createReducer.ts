@@ -1,4 +1,5 @@
-import { useMemo, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import useUpdateEffect from './useUpdateEffect';
 
 function composeMiddleware(chain) {
   return (context, dispatch) => {
@@ -8,29 +9,44 @@ function composeMiddleware(chain) {
   };
 }
 
-const createReducer = (...middlewares) => (reducer, initialState, initializer = value => value) => {
-  const ref = useRef(initializer(initialState));
-  const [, setState] = useState(ref.current);
-  let middlewareDispatch = (_ = {}) => {
-    throw new Error(
-      'Dispatching while constructing your middleware is not allowed. ' +
-        'Other middleware would not be applied to this dispatch.'
+const createReducer = (...middlewares) => {
+  const composedMiddleware = composeMiddleware(middlewares);
+
+  return (reducer, initialState, initializer = value => value) => {
+    const ref = useRef(initializer(initialState));
+    const [, setState] = useState(ref.current);
+
+    const dispatch = useCallback(
+      action => {
+        ref.current = reducer(ref.current, action);
+        setState(ref.current);
+        return action;
+      },
+      [reducer]
     );
+
+    const dispatchRef = useRef(
+      composedMiddleware(
+        {
+          getState: () => ref.current,
+          dispatch: (...args) => dispatchRef.current(...args),
+        },
+        dispatch
+      )
+    );
+
+    useUpdateEffect(() => {
+      dispatchRef.current = composedMiddleware(
+        {
+          getState: () => ref.current,
+          dispatch: (...args) => dispatchRef.current(...args),
+        },
+        dispatch
+      );
+    }, [dispatch]);
+
+    return [ref.current, dispatchRef.current];
   };
-  const dispatch = action => {
-    ref.current = reducer(ref.current, action);
-    setState(ref.current);
-    return action;
-  };
-  const composedMiddleware = useMemo(() => {
-    return composeMiddleware(middlewares);
-  }, middlewares);
-  const middlewareAPI = {
-    getState: () => ref.current,
-    dispatch: (...args) => middlewareDispatch(...args),
-  };
-  middlewareDispatch = composedMiddleware(middlewareAPI, dispatch);
-  return [ref.current, middlewareDispatch];
 };
 
 export default createReducer;
