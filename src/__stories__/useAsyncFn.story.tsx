@@ -3,24 +3,31 @@ import * as React from 'react';
 import { useAsyncFn } from '..';
 import ShowDocs from './util/ShowDocs';
 
-const fn = () =>
-  new Promise<string>((resolve, reject) => {
-    setTimeout(() => {
-      if (Math.random() > 0.5) {
-        reject(new Error('Random error!'));
-      } else {
-        resolve('RESOLVED');
-      }
-    }, 1000);
-  });
-
 const Demo = () => {
-  const [{ loading, error, value }, callback] = useAsyncFn<string>(fn);
+  const [state, callback] = useAsyncFn<string>(
+    () =>
+      new Promise<string>((resolve, reject) => {
+        setTimeout(() => {
+          if (Math.random() > 0.5) {
+            resolve('✌️');
+          } else {
+            reject(new Error('A pseudo random error occurred'));
+          }
+        }, 1000);
+      })
+  );
 
   return (
     <div>
-      {loading ? <div>Loading...</div> : error ? <div>Error: {error.message}</div> : value && <div>Value: {value}</div>}
+      {state.loading ? (
+        <p>Loading...</p>
+      ) : state.error ? (
+        <p>Error: {state.error.message}</p>
+      ) : (
+        <p>Value: {state.value}</p>
+      )}
       <button onClick={() => callback()}>Start</button>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
     </div>
   );
 };

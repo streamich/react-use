@@ -5,16 +5,31 @@ import { useAsync } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = ({ delay }) => {
-  const { loading, error, value } = useAsync<string>(
+  const state = useAsync<string>(
     () =>
-      new Promise<string>(resolve => {
-        setTimeout(() => resolve('RESOLVED'), delay);
+      new Promise<string>((resolve, reject) => {
+        setTimeout(() => {
+          if (Math.random() > 0.5) {
+            resolve('✌️');
+          } else {
+            reject(new Error('A pseudo random error occurred'));
+          }
+        }, delay);
       }),
     [delay]
   );
 
   return (
-    <div>{loading ? <div>Loading...</div> : error ? <div>Error: {error.message}</div> : <div>Value: {value}</div>}</div>
+    <div>
+      {state.loading ? (
+        <p>Loading...</p>
+      ) : state.error ? (
+        <p>Error: {state.error.message}</p>
+      ) : (
+        <p>Value: {state.value}</p>
+      )}
+      <pre>{JSON.stringify(state, null, 2)}</pre>
+    </div>
   );
 };
 

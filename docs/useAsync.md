@@ -8,19 +8,20 @@ a promise;
 ```jsx
 import {useAsync} from 'react-use';
 
-const Demo = ({delay = 1000}) => {
-  const state = useAsync(() => {
-    // Returns a Promise that resolves after x milliseconds
-    return new Promise((resolve) => setTimeout(() => resolve('RESOLVED'), delay);
-  }, [delay]);
+const Demo = ({url}) => {
+  const state = useAsync(async () => {
+    const response = await fetch(url);
+    const result = await response.text();
+    return result
+  }, [url]);
 
   return (
     <div>
-      {state.loading?
-        <div>Loading...</div>
-        : state.error?
-        <div>Error...</div>
-        : <div>Value: {state.value}</div>
+      {state.loading
+        ? <div>Loading...</div>
+        : state.error
+          ? <div>Error: {state.error.message}</div>
+          : <div>Value: {state.value}</div>
       }
     </div>
   );
