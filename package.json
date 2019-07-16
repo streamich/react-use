@@ -87,7 +87,7 @@
     "lint-staged": "8.2.1",
     "markdown-loader": "5.0.0",
     "opencollective-postinstall": "2.0.2",
-    "prettier": "1.17.1",
+    "prettier": "1.18.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-hooks-testing-library": "0.4.1",
