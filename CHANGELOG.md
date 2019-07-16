@@ -1,3 +1,15 @@
+# [9.12.0](https://github.com/streamich/react-use/compare/v9.11.2...v9.12.0) (2019-07-16)
+
+
+### Bug Fixes
+
+* 🐛 fix useDebounce import ([40b33da](https://github.com/streamich/react-use/commit/40b33da))
+
+
+### Features
+
+* add useInterval hook ([6645ed9](https://github.com/streamich/react-use/commit/6645ed9))
+
 ## [9.11.2](https://github.com/streamich/react-use/compare/v9.11.1...v9.11.2) (2019-07-16)
 
 
