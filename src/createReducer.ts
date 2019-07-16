@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+import useUpdateEffect from './useUpdateEffect';
 
 function composeMiddleware(chain) {
   return (context, dispatch) => {
@@ -15,11 +16,14 @@ const createReducer = (...middlewares) => {
     const ref = useRef(initializer(initialState));
     const [, setState] = useState(ref.current);
 
-    const dispatch = useCallback(action => {
-      ref.current = reducer(ref.current, action);
-      setState(ref.current);
-      return action;
-    }, []);
+    const dispatch = useCallback(
+      action => {
+        ref.current = reducer(ref.current, action);
+        setState(ref.current);
+        return action;
+      },
+      [reducer]
+    );
 
     const dispatchRef = useRef(
       composedMiddleware(
@@ -30,6 +34,16 @@ const createReducer = (...middlewares) => {
         dispatch
       )
     );
+
+    useUpdateEffect(() => {
+      dispatchRef.current = composedMiddleware(
+        {
+          getState: () => ref.current,
+          dispatch: (...args) => dispatchRef.current(...args),
+        },
+        dispatch
+      );
+    }, [dispatch]);
 
     return [ref.current, dispatchRef.current];
   };
