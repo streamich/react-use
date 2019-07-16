@@ -1,4 +1,4 @@
-import { useUpdateEffect } from '..';
+import useUpdateEffect from './useUpdateEffect';
 
 const useDebounce = (fn: () => any, ms: number = 0, args: any[] = []) => {
   useUpdateEffect(() => {
