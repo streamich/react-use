@@ -1,12 +1,12 @@
 # `useInterval`
 
-React hook that allow you using declarative setInterval.
+React hook that allow you using declarative `setInterval`.
 
 ## Usage
 
 ```jsx
 import * as React from 'react';
-import { useInterval } from 'react-use';
+import useInterval from 'react-use/lib/useInterval';
 
 const Demo = () => {
   const [count, setCount] = React.useState(0);
@@ -23,11 +23,11 @@ const Demo = () => {
   return (
     <div>
       <div>
-        delay: <input type="text" value={delay} onChange={handleDelayChange} />
+        delay: <input value={delay} onChange={handleDelayChange} />
       </div>
       <h1>count: {count}</h1>
       <div>
-        <button onClick={() => setDelay(null)}>stop</button>
+        <button onClick={() => setDelay(delay ? null : 1000)}>{delay ? 'stop' : 'start'}</button>
       </div>
     </div>
   );

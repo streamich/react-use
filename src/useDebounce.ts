@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useUpdateEffect } from '..';
 
 const useDebounce = (fn: () => any, ms: number = 0, args: any[] = []) => {

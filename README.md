@@ -78,6 +78,7 @@
     <br/>
 - [**Animations**](./docs/Animations.md)
   - [`useRaf`](./docs/useRaf.md) &mdash; re-renders component on each `requestAnimationFrame`.
+  - [`useInterval`](./docs/useInterval.md) &mdash; re-renders component on a set interval using `setInterval`.
   - [`useSpring`](./docs/useSpring.md) &mdash; interpolates number over time according to spring dynamics.
   - [`useTimeout`](./docs/useTimeout.md) &mdash; returns true after a timeout.
   - [`useTween`](./docs/useTween.md) &mdash; re-renders component, while tweening a number from 0 to 1. [![][img-demo]](https://codesandbox.io/s/52990wwzyl)

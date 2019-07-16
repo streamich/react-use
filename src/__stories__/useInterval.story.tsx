@@ -22,7 +22,7 @@ const Demo = () => {
       </div>
       <h1>count: {count}</h1>
       <div>
-        <button onClick={() => setDelay(null)}>stop</button>
+        <button onClick={() => setDelay(delay ? null : 1000)}>{delay ? 'stop' : 'start'}</button>
       </div>
     </div>
   );
