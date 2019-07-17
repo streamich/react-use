@@ -1,3 +1,15 @@
+# [10.0.0](https://github.com/streamich/react-use/compare/v9.12.0...v10.0.0) (2019-07-17)
+
+
+### Features
+
+* remove big libs from peerDependencies ([1dbdc5d](https://github.com/streamich/react-use/commit/1dbdc5d))
+
+
+### BREAKING CHANGES
+
+* `useSpring` and `useKeyboardJs` hooks need to be imported directly now and libs they depend on are not in peerDependencies anymore.
+
 # [9.12.0](https://github.com/streamich/react-use/compare/v9.11.2...v9.12.0) (2019-07-16)
 
 
