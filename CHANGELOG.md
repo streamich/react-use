@@ -1,3 +1,10 @@
+# [10.1.0](https://github.com/streamich/react-use/compare/v10.0.0...v10.1.0) (2019-07-17)
+
+
+### Features
+
+* add latest `react-wait` types ([6ebe3bb](https://github.com/streamich/react-use/commit/6ebe3bb))
+
 # [10.0.0](https://github.com/streamich/react-use/compare/v9.12.0...v10.0.0) (2019-07-17)
 
 
