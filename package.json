@@ -55,10 +55,8 @@
     "ts-easing": "^0.2.0"
   },
   "peerDependencies": {
-    "keyboardjs": "*",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "rebound": "*"
+    "react-dom": "^16.8.0"
   },
   "devDependencies": {
     "@babel/core": "7.5.4",
