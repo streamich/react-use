@@ -1,3 +1,34 @@
+# [10.1.0](https://github.com/streamich/react-use/compare/v10.0.0...v10.1.0) (2019-07-17)
+
+
+### Features
+
+* add latest `react-wait` types ([6ebe3bb](https://github.com/streamich/react-use/commit/6ebe3bb))
+
+# [10.0.0](https://github.com/streamich/react-use/compare/v9.12.0...v10.0.0) (2019-07-17)
+
+
+### Features
+
+* remove big libs from peerDependencies ([1dbdc5d](https://github.com/streamich/react-use/commit/1dbdc5d))
+
+
+### BREAKING CHANGES
+
+* `useSpring` and `useKeyboardJs` hooks need to be imported directly now and libs they depend on are not in peerDependencies anymore.
+
+# [9.12.0](https://github.com/streamich/react-use/compare/v9.11.2...v9.12.0) (2019-07-16)
+
+
+### Bug Fixes
+
+* 🐛 fix useDebounce import ([40b33da](https://github.com/streamich/react-use/commit/40b33da))
+
+
+### Features
+
+* add useInterval hook ([6645ed9](https://github.com/streamich/react-use/commit/6645ed9))
+
 ## [9.11.2](https://github.com/streamich/react-use/compare/v9.11.1...v9.11.2) (2019-07-16)
 
 
