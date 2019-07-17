@@ -6,7 +6,7 @@ to spring dynamics.
 ## Usage
 
 ```jsx
-import useSpring from 'react-use/lib/useSprint';
+import useSpring from 'react-use/lib/useSpring';
 
 const Demo = () => {
   const [target, setTarget] = useState(50);
