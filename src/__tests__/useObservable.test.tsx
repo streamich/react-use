@@ -1,6 +1,6 @@
+import { act, renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { act, renderHook } from 'react-hooks-testing-library';
 import { Subject } from 'rxjs';
 import { useObservable } from '..';
 

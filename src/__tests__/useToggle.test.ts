@@ -1,7 +1,5 @@
-import { act, cleanup, renderHook } from 'react-hooks-testing-library';
+import { act, renderHook } from '@testing-library/react-hooks';
 import useToggle from '../useToggle';
-
-afterEach(cleanup);
 
 const setUp = (initialValue: boolean) => renderHook(() => useToggle(initialValue));
 
@@ -16,7 +14,7 @@ it('should init state to false', () => {
   const { result } = setUp(false);
 
   expect(result.current[0]).toBe(false);
-  expect(typeof result.current[1]).toBe('function');
+  expect(result.current[1]).toBeInstanceOf(Function);
 });
 
 it('should set state to true', () => {

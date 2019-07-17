@@ -1,7 +1,5 @@
-import { cleanup, renderHook } from 'react-hooks-testing-library';
+import { renderHook } from '@testing-library/react-hooks';
 import usePrevious from '../usePrevious';
-
-afterEach(cleanup);
 
 describe('usePrevious', () => {
   it('should be defined', () => {
