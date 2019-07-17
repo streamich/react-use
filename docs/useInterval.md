@@ -6,7 +6,7 @@ React hook that allow you using declarative `setInterval`.
 
 ```jsx
 import * as React from 'react';
-import useInterval from 'react-use/lib/useInterval';
+import {useInterval} from 'react-use';
 
 const Demo = () => {
   const [count, setCount] = React.useState(0);

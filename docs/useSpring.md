@@ -6,7 +6,7 @@ to spring dynamics.
 ## Usage
 
 ```jsx
-import {useSpring} from 'react-use';
+import useSpring from 'react-use/lib/useSpring';
 
 const Demo = () => {
   const [target, setTarget] = useState(50);
@@ -22,6 +22,8 @@ const Demo = () => {
   );
 };
 ```
+
+Note: Because of dependency on `rebound` you have to import this hook directly like shown above.
 
 ## Requirements
 

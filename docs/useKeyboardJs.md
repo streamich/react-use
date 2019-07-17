@@ -22,6 +22,8 @@ const Demo = () => {
 };
 ```
 
+Note: Because of dependency on `keyboardjs` you have to import this hook directly like shown above.
+
 ## Requirements
 
 Install [`keyboardjs`](https://github.com/RobertWHurst/KeyboardJS) peer dependency:

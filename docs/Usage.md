@@ -6,7 +6,7 @@ You need to have React [`16.8.0`](https://reactjs.org/blog/2019/02/06/react-v16.
 import useToggle from 'react-use/lib/useToggle'
 ```
 
-or use ES6 named imports
+or use ES6 named imports (tree shaking recommended)
 
 ```js
 import {useToggle} from 'react-use'
