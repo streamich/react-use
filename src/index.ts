@@ -74,7 +74,7 @@ import useUnmount from './useUnmount';
 import useUpdate from './useUpdate';
 import useUpdateEffect from './useUpdateEffect';
 import useVideo from './useVideo';
-import useWait from './useWait';
+import { useWait, Waiter } from './useWait';
 import useWindowScroll from './useWindowScroll';
 import useWindowSize from './useWindowSize';
 
@@ -154,4 +154,5 @@ export {
   useWait,
   useWindowScroll,
   useWindowSize,
+  Waiter,
 };

@@ -46,6 +46,7 @@
   },
   "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
+    "@types/react-wait": "^0.3.0",
     "copy-to-clipboard": "^3.1.0",
     "nano-css": "^5.1.0",
     "react-fast-compare": "^2.0.4",
