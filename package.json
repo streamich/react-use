@@ -27,7 +27,7 @@
     "storybook:upload": "gh-pages -d storybook-static",
     "storybook:clean": "rimraf storybook-static",
     "release": "semantic-release",
-    "postinstall": "opencollective-postinstall || true"
+    "postinstall": "opencollective-postinstall"
   },
   "husky": {
     "hooks": {
@@ -49,6 +49,7 @@
     "@types/react-wait": "^0.3.0",
     "copy-to-clipboard": "^3.1.0",
     "nano-css": "^5.1.0",
+    "opencollective-postinstall": "2.0.2",
     "react-fast-compare": "^2.0.4",
     "react-wait": "^0.3.0",
     "screenfull": "^4.1.0",
@@ -85,7 +86,6 @@
     "keyboardjs": "2.5.1",
     "lint-staged": "9.2.0",
     "markdown-loader": "5.0.0",
-    "opencollective-postinstall": "2.0.2",
     "prettier": "1.17.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
