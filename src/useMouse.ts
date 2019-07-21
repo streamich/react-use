@@ -11,7 +11,7 @@ export interface State {
   elW: number;
 }
 
-const useMouse = (ref: RefObject<HTMLElement>): State => {
+const useMouse = (ref: RefObject<Element>): State => {
   if (process.env.NODE_ENV === 'development') {
     if (typeof ref !== 'object' || typeof ref.current === 'undefined') {
       console.error('useMouse expects a single ref argument.');
