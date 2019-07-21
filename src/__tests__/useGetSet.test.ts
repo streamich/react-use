@@ -16,23 +16,23 @@ describe('useGetSet hook', () => {
     expect(set).toBeInstanceOf(Function);
   });
 
-  it('should get current state', () => {
+  it('should get current value', () => {
     const { result } = setUp('foo');
     const [get] = result.current;
 
-    const currentState = get();
+    const currentValue = get();
 
-    expect(currentState).toBe('foo');
+    expect(currentValue).toBe('foo');
   });
 
-  it('should set new state', () => {
+  it('should set new value', () => {
     const { result } = setUp('foo');
     const [get, set] = result.current;
 
     act(() => set('bar'));
 
-    const currentState = get();
-    expect(currentState).toBe('bar');
+    const currentValue = get();
+    expect(currentValue).toBe('bar');
   });
 
   /**
@@ -59,8 +59,8 @@ describe('useGetSet hook', () => {
       jest.runAllTimers();
     });
 
-    const currentState = get();
-    expect(currentState).toBe(3);
+    const currentValue = get();
+    expect(currentValue).toBe(3);
     expect(onClick).toHaveBeenCalledTimes(3);
   });
 });
