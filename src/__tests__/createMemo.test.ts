@@ -1,52 +1,47 @@
 import { renderHook } from '@testing-library/react-hooks';
 import createMemo from '../createMemo';
 
-const fibonacci = jest.fn((n: number) => {
-  if (n === 0) {
-    return 0;
-  }
-  if (n === 1) {
-    return 1;
-  }
-  return fibonacci(n - 1) + fibonacci(n - 2);
-});
+const getDouble = jest.fn((n: number): number => n * 2);
 
 describe('createMemo hook factory', () => {
   it('should init memoized hook', () => {
-    const useMemoFibonacci = createMemo(fibonacci);
+    const useMemoGetDouble = createMemo(getDouble);
 
-    expect(useMemoFibonacci).toBeInstanceOf(Function);
+    expect(useMemoGetDouble).toBeInstanceOf(Function);
   });
 
   describe('created memo hook', () => {
-    let useMemoFibonacci;
-    const setUp = (initialValue: any) => renderHook(() => useMemoFibonacci(initialValue));
+    let useMemoGetDouble;
 
     beforeEach(() => {
-      useMemoFibonacci = createMemo(fibonacci);
+      useMemoGetDouble = createMemo(getDouble);
     });
 
     it.each([[1], [3], [5]])('should return same result as original function for argument %d', (val: number) => {
-      const { result } = setUp(val);
-      expect(result.current).toBe(fibonacci(val));
+      const { result } = renderHook(() => useMemoGetDouble(val));
+      expect(result.current).toBe(getDouble(val));
     });
 
-    // MB: Is `createMemo` really memoizing original fn? Or problem mocking fn for tests here?
-    xit('should NOT call original function for same arguments', () => {
-      // call memo fn and get how many times original fn was called
-      setUp(5);
-      const memoFnCalledTimes = fibonacci.mock.calls.length;
-      console.log(fibonacci.mock.calls.length);
+    it('should NOT call original function for same arguments', () => {
+      let initialValue = 5;
+      expect(getDouble).not.toHaveBeenCalled();
 
-      fibonacci.mockClear();
-      console.log(fibonacci.mock.calls.length);
+      // it's called first time calculating for argument 5
+      const { rerender } = renderHook(() => useMemoGetDouble(initialValue));
+      expect(getDouble).toHaveBeenCalled();
 
-      // call original fn and get how many times it was called
-      fibonacci(5);
-      const originalFnCalledTimes = fibonacci.mock.calls.length;
-      console.log(fibonacci.mock.calls.length);
+      getDouble.mockClear();
 
-      expect(memoFnCalledTimes).toBeLessThan(originalFnCalledTimes);
+      // it's NOT called second time calculating for argument 5
+      rerender();
+      expect(getDouble).not.toHaveBeenCalled();
+
+      getDouble.mockClear();
+
+      // it's called again calculating for different argument
+      initialValue = 7;
+      rerender();
+      expect(getDouble).toHaveBeenCalled();
     });
   });
 });
