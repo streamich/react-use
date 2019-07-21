@@ -45,7 +45,7 @@ describe('useGetSetState hook', () => {
     expect(currentState).toEqual({ foo: 'a', bar: 'z' });
   });
 
-  it('should set new state by applying partial patch with existing keys', () => {
+  it('should set new state by applying patch with existing keys', () => {
     const { result } = setUp({ foo: 'a', bar: 'z' });
     const [get, set] = result.current;
 
@@ -55,7 +55,7 @@ describe('useGetSetState hook', () => {
     expect(currentState).toEqual({ foo: 'a', bar: 'y' });
   });
 
-  it('should set new state by applying partial patch with new keys', () => {
+  it('should set new state by applying patch with new keys', () => {
     const { result } = setUp({ foo: 'a', bar: 'z' });
     const [get, set] = result.current;
 
@@ -65,7 +65,7 @@ describe('useGetSetState hook', () => {
     expect(currentState).toEqual({ foo: 'a', bar: 'z', qux: 'f' });
   });
 
-  it('should set new state by applying partial patch with both new and old keys', () => {
+  it('should set new state by applying patch with both new and old keys', () => {
     const { result } = setUp({ foo: 'a', bar: 'z' });
     const [get, set] = result.current;
 
@@ -75,11 +75,22 @@ describe('useGetSetState hook', () => {
     expect(currentState).toEqual({ foo: 'a', bar: 'y', qux: 'f' });
   });
 
-  it('should NOT set new state if empty partial patch received', () => {
+  it('should NOT set new state if empty patch received', () => {
     const { result } = setUp({ foo: 'a', bar: 'z' });
     const [get, set] = result.current;
 
     act(() => set({}));
+
+    const currentState = get();
+    expect(currentState).toEqual({ foo: 'a', bar: 'z' });
+  });
+
+  it('should NOT set new state if no patch received', () => {
+    const { result } = setUp({ foo: 'a', bar: 'z' });
+    const [get, set] = result.current;
+
+    // @ts-ignore
+    act(() => set());
 
     const currentState = get();
     expect(currentState).toEqual({ foo: 'a', bar: 'z' });
