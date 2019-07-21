@@ -9,7 +9,7 @@ export interface UseMouseHoveredOptions {
 
 const nullRef = { current: null };
 
-const useMouseHovered = (ref: RefObject<HTMLElement>, options: UseMouseHoveredOptions = {}): State => {
+const useMouseHovered = (ref: RefObject<Element>, options: UseMouseHoveredOptions = {}): State => {
   const whenHovered = !!options.whenHovered;
   const bound = !!options.bound;
 
