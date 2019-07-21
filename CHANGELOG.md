@@ -1,3 +1,10 @@
+## [10.1.2](https://github.com/streamich/react-use/compare/v10.1.1...v10.1.2) (2019-07-21)
+
+
+### Bug Fixes
+
+* remove OpenCollective postinstall hook ([26dcebc](https://github.com/streamich/react-use/commit/26dcebc))
+
 ## [10.1.1](https://github.com/streamich/react-use/compare/v10.1.0...v10.1.1) (2019-07-21)
 
 
