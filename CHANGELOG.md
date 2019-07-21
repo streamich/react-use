@@ -1,3 +1,11 @@
+## [10.1.1](https://github.com/streamich/react-use/compare/v10.1.0...v10.1.1) (2019-07-21)
+
+
+### Bug Fixes
+
+* useMouse & useMouseHovered type definitions for SVG ([9e97451](https://github.com/streamich/react-use/commit/9e97451))
+* useMouse & useMouseHovered type definitions for SVG ([#479](https://github.com/streamich/react-use/issues/479)) ([e2e4a60](https://github.com/streamich/react-use/commit/e2e4a60))
+
 # [10.1.0](https://github.com/streamich/react-use/compare/v10.0.0...v10.1.0) (2019-07-17)
 
 
