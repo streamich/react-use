@@ -9,8 +9,8 @@ export interface State {
 const useWindowScroll = (): State => {
   const frame = useRef(0);
   const [state, setState] = useState<State>({
-    x: isClient ? window.scrollX : 0,
-    y: isClient ? window.scrollY : 0,
+    x: isClient ? window.pageXOffset : 0,
+    y: isClient ? window.pageYOffset : 0,
   });
 
   useEffect(() => {
@@ -18,8 +18,8 @@ const useWindowScroll = (): State => {
       cancelAnimationFrame(frame.current);
       frame.current = requestAnimationFrame(() => {
         setState({
-          x: window.scrollX,
-          y: window.scrollY,
+          x: window.pageXOffset,
+          y: window.pageYOffset,
         });
       });
     };
