@@ -1,3 +1,11 @@
+# [10.2.0](https://github.com/streamich/react-use/compare/v10.1.2...v10.2.0) (2019-07-25)
+
+
+### Features
+
+* useWindowScroll - for cross-browser compatibility ([5987cc8](https://github.com/streamich/react-use/commit/5987cc8))
+* useWindowScroll - for cross-browser compatibility ([#480](https://github.com/streamich/react-use/issues/480)) ([e37dd8d](https://github.com/streamich/react-use/commit/e37dd8d))
+
 ## [10.1.2](https://github.com/streamich/react-use/compare/v10.1.1...v10.1.2) (2019-07-21)
 
 
