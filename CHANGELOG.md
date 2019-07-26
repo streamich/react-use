@@ -1,3 +1,10 @@
+# [10.3.0](https://github.com/streamich/react-use/compare/v10.2.0...v10.3.0) (2019-07-26)
+
+
+### Features
+
+* add useDefault hook ([ade0557](https://github.com/streamich/react-use/commit/ade0557))
+
 # [10.2.0](https://github.com/streamich/react-use/compare/v10.1.2...v10.2.0) (2019-07-25)
 
 
