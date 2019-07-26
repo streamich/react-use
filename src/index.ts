@@ -13,6 +13,7 @@ import useCounter from './useCounter';
 import useCss from './useCss';
 import useDebounce from './useDebounce';
 import useDeepCompareEffect from './useDeepCompareEffect';
+import useDefault from './useDefault';
 import useDrop from './useDrop';
 import useDropArea from './useDropArea';
 import useEffectOnce from './useEffectOnce';
@@ -94,6 +95,7 @@ export {
   useCss,
   useDebounce,
   useDeepCompareEffect,
+  useDefault,
   useDrop,
   useDropArea,
   useEffectOnce,
