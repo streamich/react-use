@@ -79,7 +79,7 @@
     "babel-plugin-dynamic-import-node": "2.3.0",
     "fork-ts-checker-webpack-plugin": "1.4.3",
     "gh-pages": "2.0.1",
-    "husky": "3.0.1",
+    "husky": "3.0.2",
     "jest": "24.8.0",
     "keyboardjs": "2.5.1",
     "lint-staged": "9.2.1",
