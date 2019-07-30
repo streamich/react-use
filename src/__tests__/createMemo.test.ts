@@ -3,13 +3,13 @@ import createMemo from '../createMemo';
 
 const getDouble = jest.fn((n: number): number => n * 2);
 
-it('should init memoized hook', () => {
+it('should init memo hook', () => {
   const useMemoGetDouble = createMemo(getDouble);
 
   expect(useMemoGetDouble).toBeInstanceOf(Function);
 });
 
-describe('created memo hook', () => {
+describe('when using created memo hook', () => {
   let useMemoGetDouble;
 
   beforeEach(() => {
