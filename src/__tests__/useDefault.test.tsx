@@ -1,7 +1,5 @@
-import { act, cleanup, renderHook } from 'react-hooks-testing-library';
+import { act, renderHook } from '@testing-library/react-hooks';
 import useDefault from '../useDefault';
-
-afterEach(cleanup);
 
 describe('useDefault', () => {
   test('should be defined', () => {
