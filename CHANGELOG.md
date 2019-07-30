@@ -1,3 +1,33 @@
+# [10.3.0](https://github.com/streamich/react-use/compare/v10.2.0...v10.3.0) (2019-07-26)
+
+
+### Features
+
+* add useDefault hook ([ade0557](https://github.com/streamich/react-use/commit/ade0557))
+
+# [10.2.0](https://github.com/streamich/react-use/compare/v10.1.2...v10.2.0) (2019-07-25)
+
+
+### Features
+
+* useWindowScroll - for cross-browser compatibility ([5987cc8](https://github.com/streamich/react-use/commit/5987cc8))
+* useWindowScroll - for cross-browser compatibility ([#480](https://github.com/streamich/react-use/issues/480)) ([e37dd8d](https://github.com/streamich/react-use/commit/e37dd8d))
+
+## [10.1.2](https://github.com/streamich/react-use/compare/v10.1.1...v10.1.2) (2019-07-21)
+
+
+### Bug Fixes
+
+* remove OpenCollective postinstall hook ([26dcebc](https://github.com/streamich/react-use/commit/26dcebc))
+
+## [10.1.1](https://github.com/streamich/react-use/compare/v10.1.0...v10.1.1) (2019-07-21)
+
+
+### Bug Fixes
+
+* useMouse & useMouseHovered type definitions for SVG ([9e97451](https://github.com/streamich/react-use/commit/9e97451))
+* useMouse & useMouseHovered type definitions for SVG ([#479](https://github.com/streamich/react-use/issues/479)) ([e2e4a60](https://github.com/streamich/react-use/commit/e2e4a60))
+
 # [10.1.0](https://github.com/streamich/react-use/compare/v10.0.0...v10.1.0) (2019-07-17)
 
 
