@@ -44,6 +44,7 @@ import useMedia from './useMedia';
 import useMediaDevices from './useMediaDevices';
 import useMotion from './useMotion';
 import useMount from './useMount';
+import useMountedState from './useMountedState';
 import useMouse from './useMouse';
 import useMouseHovered from './useMouseHovered';
 import useNetwork from './useNetwork';
@@ -124,6 +125,7 @@ export {
   useMediaDevices,
   useMotion,
   useMount,
+  useMountedState,
   useMouse,
   useMouseHovered,
   useNetwork,
