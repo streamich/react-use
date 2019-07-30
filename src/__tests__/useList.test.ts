@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import useList from '../useList';
 
-const setUp = (initialList: any[]) => renderHook(() => useList(initialList));
+const setUp = (initialList?: any[]) => renderHook(() => useList(initialList));
 
 it('should init list and utils', () => {
   const { result } = setUp([1, 2, 3]);
@@ -17,6 +17,12 @@ it('should init list and utils', () => {
     filter: expect.any(Function),
     sort: expect.any(Function),
   });
+});
+
+it('should init empty list if not initial list provided', () => {
+  const { result } = setUp();
+
+  expect(result.current[0]).toEqual([]);
 });
 
 it('should set new list', () => {
