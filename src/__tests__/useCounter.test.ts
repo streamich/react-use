@@ -3,11 +3,11 @@ import useCounter from '../useCounter';
 
 const setUp = (initialValue?: number) => renderHook(() => useCounter(initialValue));
 
-it('should init counter', () => {
+it('should init counter and utils', () => {
   const { result } = setUp(5);
 
   expect(result.current[0]).toBe(5);
-  expect(result.current[1]).toEqual({
+  expect(result.current[1]).toStrictEqual({
     inc: expect.any(Function),
     dec: expect.any(Function),
     get: expect.any(Function),
