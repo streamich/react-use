@@ -96,6 +96,7 @@
   - [`useFavicon`](./docs/useFavicon.md) &mdash; sets favicon of the page.
   - [`useLocalStorage`](./docs/useLocalStorage.md) &mdash; manages a value in `localStorage`.
   - [`useLockBodyScroll`](./docs/useLockBodyScroll.md) &mdash; lock scrolling of the body element.
+  - [`useRafLoop`](./docs/useRafLoop.md) &mdash; calls given function inside the RAF loop.
   - [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manages a value in `sessionStorage`.
   - [`useThrottle` and `useThrottleFn`](./docs/useThrottle.md) &mdash; throttles a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usethrottle--demo)
   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
