@@ -1,36 +1,40 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as TestRenderer from 'react-test-renderer';
 import { Subject } from 'rxjs';
 import { useObservable } from '..';
+import * as useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 
-let container: HTMLDivElement | null;
-
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  document.body.removeChild(container!);
-  container = null;
-});
-
-test('default initial value is undefined', () => {
-  const subject$ = new Subject();
-  const { result } = renderHook(() => useObservable(subject$));
-
-  expect(result.current).toBe(undefined);
-});
-
-test('can specify initial value', () => {
+it('should init to initial value provided', () => {
   const subject$ = new Subject();
   const { result } = renderHook(() => useObservable(subject$, 123));
 
   expect(result.current).toBe(123);
 });
 
-test('returns the latest value of observables', () => {
+it('should init to undefined if not initial value provided', () => {
+  const subject$ = new Subject();
+  const { result } = renderHook(() => useObservable(subject$));
+
+  expect(result.current).toBeUndefined();
+});
+
+it('should use layout effect (to subscribe synchronously)', async () => {
+  const subject = new Subject();
+  const spy = jest.spyOn(useIsomorphicLayoutEffect, 'default');
+
+  const Demo = ({ obs }) => {
+    const value = useObservable(obs);
+    return <>{value}</>;
+  };
+  expect(spy).toHaveBeenCalledTimes(0);
+
+  TestRenderer.create(<Demo obs={subject} />);
+
+  expect(spy).toHaveBeenCalledTimes(1);
+});
+
+it('should return latest value of observables', () => {
   const subject$ = new Subject();
   const { result } = renderHook(() => useObservable(subject$, 123));
 
@@ -46,26 +50,25 @@ test('returns the latest value of observables', () => {
   expect(result.current).toBe(400);
 });
 
-test('subscribes to observable only once', async () => {
+it('should subscribe to observable only once', () => {
   const subject = new Subject();
   const spy = jest.spyOn(subject, 'subscribe');
 
-  expect(spy).toHaveBeenCalledTimes(0);
+  expect(spy).not.toHaveBeenCalled();
 
   const Demo = ({ obs }) => {
     const value = useObservable(obs);
     return <>{value}</>;
   };
 
-  ReactDOM.render(<Demo obs={subject} />, container);
+  TestRenderer.create(<Demo obs={subject} />);
 
   expect(spy).toHaveBeenCalledTimes(1);
 
-  await new Promise(r => setTimeout(r, 1));
   act(() => {
     subject.next('a');
   });
-  await new Promise(r => setTimeout(r, 1));
+
   act(() => {
     subject.next('b');
   });
@@ -73,7 +76,7 @@ test('subscribes to observable only once', async () => {
   expect(spy).toHaveBeenCalledTimes(1);
 });
 
-test('re-renders component as obsevable changes', async () => {
+it('should re-render component when observable changes', () => {
   const subject = new Subject();
 
   let cnt = 0;
@@ -83,25 +86,56 @@ test('re-renders component as obsevable changes', async () => {
     return <>{value}</>;
   };
 
-  ReactDOM.render(<Demo obs={subject} />, container);
+  const testRenderer = TestRenderer.create(<Demo obs={subject} />);
+  const testInstance = testRenderer.root;
 
-  await new Promise(r => setTimeout(r, 1));
   expect(cnt).toBe(1);
-  expect(container.innerHTML).toBe('');
+  expect(testInstance.children).toEqual([]);
 
   act(() => {
     subject.next('a');
   });
 
-  await new Promise(r => setTimeout(r, 1));
   expect(cnt).toBe(2);
-  expect(container.innerHTML).toBe('a');
+  expect(testInstance.children).toEqual(['a']);
 
   act(() => {
     subject.next('b');
   });
 
-  await new Promise(r => setTimeout(r, 1));
   expect(cnt).toBe(3);
-  expect(container.innerHTML).toBe('b');
+  expect(testInstance.children).toEqual(['b']);
+});
+
+it('should unsubscribe from observable', () => {
+  const subject = new Subject();
+  const unsubscribeMock = jest.fn();
+  subject.subscribe = jest.fn().mockReturnValue({
+    unsubscribe: unsubscribeMock,
+  });
+
+  expect(unsubscribeMock).not.toHaveBeenCalled();
+
+  const Demo = ({ obs }) => {
+    const value = useObservable(obs);
+    return <>{value}</>;
+  };
+
+  const testRenderer = TestRenderer.create(<Demo obs={subject} />);
+
+  expect(unsubscribeMock).not.toHaveBeenCalled();
+
+  act(() => {
+    subject.next('a');
+  });
+
+  act(() => {
+    subject.next('b');
+  });
+
+  expect(unsubscribeMock).not.toHaveBeenCalled();
+
+  testRenderer.unmount();
+
+  expect(unsubscribeMock).toHaveBeenCalledTimes(1);
 });
