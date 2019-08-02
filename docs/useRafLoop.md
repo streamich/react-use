@@ -1,10 +1,9 @@
 # `useRafLoop`
-React hook that calls given function inside the RAF loop without re-rendering parent component if not needed. Loop stops automatically on component unmount.  
-Provides controls to stop and start loop manually.
 
-2nd parameter is dependencies list as in `useEffect` hook.
+React hook that calls given function inside the RAF loop without re-rendering parent component if not needed. Loop stops automatically on component unmount. Provides controls to stop and start loop manually.
 
 ## Usage
+
 ```jsx
 import * as React from 'react';
 import { useRafLoop } from 'react-use';
@@ -27,9 +26,10 @@ const Demo = () => {
 ```
 
 ## Reference
+
 ```ts
 const [stopLoop, isActive, startLoop] = useRafLoop(callback: CallableFunction, deps?: DependencyList);
 ```
-* `callback` - function to call each RAF tick
-* `deps` - a list of dependencies, as if it was in `useEffect` hook.
 
+- `callback` &mdash; function to call each RAF tick
+- `deps` &mdash; a list of dependencies, as in `useEffect` hook.
