@@ -8,7 +8,7 @@ const Demo = () => {
 
   const [loopStop, isActive, loopStart] = useRafLoop(() => {
     setTicks(ticks + 1);
-  }, [ticks]);
+  });
 
   return (
     <div>

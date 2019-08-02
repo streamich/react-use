@@ -1,8 +1,8 @@
-import { DependencyList, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export type RafLoopReturns = [() => void, boolean | null, () => void];
 
-export default function useRafLoop(callback: CallableFunction, deps?: DependencyList): RafLoopReturns {
+export default function useRafLoop(callback: CallableFunction): RafLoopReturns {
   const raf = useRef<number | null>(null);
   const [isActive, setIsActive] = useState<boolean | null>(true);
 
@@ -25,15 +25,12 @@ export default function useRafLoop(callback: CallableFunction, deps?: Dependency
 
   useEffect(() => clearCurrentLoop, []);
 
-  useEffect(
-    () => {
-      clearCurrentLoop();
-      isActive && (raf.current = requestAnimationFrame(loopStep));
+  useEffect(() => {
+    clearCurrentLoop();
+    isActive && (raf.current = requestAnimationFrame(loopStep));
 
-      return clearCurrentLoop;
-    },
-    deps ? [isActive, ...deps] : [isActive]
-  );
+    return clearCurrentLoop;
+  }, [isActive, callback]);
 
   return [loopStop, isActive, loopStart];
 }
