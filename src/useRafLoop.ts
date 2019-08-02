@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
-export type RafLoopReturns = [() => void, boolean | null, () => void];
+export type RafLoopReturns = [() => void, boolean, () => void];
 
 export default function useRafLoop(callback: CallableFunction): RafLoopReturns {
   const raf = useRef<number | null>(null);
-  const [isActive, setIsActive] = useState<boolean | null>(true);
+  const [isActive, setIsActive] = useState<boolean>(true);
 
   function loopStep() {
     callback();
