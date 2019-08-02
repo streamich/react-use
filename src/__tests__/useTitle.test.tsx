@@ -1,7 +1,5 @@
-import { cleanup, renderHook } from 'react-hooks-testing-library';
+import { renderHook } from '@testing-library/react-hooks';
 import useTitle from '../useTitle';
-
-afterEach(cleanup);
 
 describe('useTitle', () => {
   it('should be defined', () => {
