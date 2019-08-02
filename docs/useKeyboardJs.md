@@ -37,5 +37,5 @@ yarn add keyboardjs
 ## Reference
 
 ```js
-useKeyboardJs(combination: string): [isPressed: boolean, event?: KeyboardEvent]
+useKeyboardJs(combination: string | string[]): [isPressed: boolean, event?: KeyboardEvent]
 ```
