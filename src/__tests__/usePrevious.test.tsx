@@ -1,20 +1,23 @@
 import { renderHook } from '@testing-library/react-hooks';
 import usePrevious from '../usePrevious';
 
-describe('usePrevious', () => {
-  it('should be defined', () => {
-    expect(usePrevious).toBeDefined();
-  });
+const setUp = () => renderHook(({ state }) => usePrevious(state), { initialProps: { state: 0 } });
 
-  const hook = renderHook(props => usePrevious(props), { initialProps: 0 });
+it('should return undefined on initial render', () => {
+  const { result } = setUp();
 
-  it('should return undefined on initial render', () => {
-    expect(hook.result.current).toBe(undefined);
-  });
+  expect(result.current).toBeUndefined();
+});
 
-  it('should return previous state after update', () => {
-    hook.rerender(1);
-    hook.rerender(2);
-    expect(hook.result.current).toBe(1);
-  });
+it('should always return previous state after each update', () => {
+  const { result, rerender } = setUp();
+
+  rerender({ state: 2 });
+  expect(result.current).toBe(0);
+
+  rerender({ state: 4 });
+  expect(result.current).toBe(2);
+
+  rerender({ state: 6 });
+  expect(result.current).toBe(4);
 });
