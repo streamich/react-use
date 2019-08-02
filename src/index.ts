@@ -44,6 +44,7 @@ export { default as useMedia } from './useMedia';
 export { default as useMediaDevices } from './useMediaDevices';
 export { default as useMotion } from './useMotion';
 export { default as useMount } from './useMount';
+export { default as useMountedState } from './useMountedState';
 export { default as useMouse } from './useMouse';
 export { default as useMouseHovered } from './useMouseHovered';
 export { default as useNetwork } from './useNetwork';
