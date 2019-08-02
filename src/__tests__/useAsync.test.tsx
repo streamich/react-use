@@ -1,8 +1,6 @@
+import { renderHook } from '@testing-library/react-hooks';
 import { useCallback } from 'react';
-import { cleanup, renderHook } from 'react-hooks-testing-library';
 import useAsync from '../useAsync';
-
-afterEach(cleanup);
 
 // NOTE: these tests cause console errors.
 //       maybe we should test in a real environment instead
@@ -17,7 +15,7 @@ describe('useAsync', () => {
     let callCount = 0;
 
     const resolver = async () => {
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         callCount++;
 
         const wait = setTimeout(() => {
@@ -58,7 +56,7 @@ describe('useAsync', () => {
     let callCount = 0;
 
     const rejection = async () => {
-      return new Promise((resolve, reject) => {
+      return new Promise((_, reject) => {
         callCount++;
 
         const wait = setTimeout(() => {

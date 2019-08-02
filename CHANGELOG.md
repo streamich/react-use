@@ -1,3 +1,19 @@
+# [10.4.0](https://github.com/streamich/react-use/compare/v10.3.1...v10.4.0) (2019-08-02)
+
+
+### Features
+
+* add useMountedState hook ([9081b99](https://github.com/streamich/react-use/commit/9081b99))
+
+## [10.3.1](https://github.com/streamich/react-use/compare/v10.3.0...v10.3.1) (2019-08-02)
+
+
+### Bug Fixes
+
+* **storybook:** fix useKeyboardJs import path ([b7481f6](https://github.com/streamich/react-use/commit/b7481f6))
+* **useKeyboardJs:** fix argument type error ([8c820ce](https://github.com/streamich/react-use/commit/8c820ce))
+* allow string list in useKeyboardJs hook ([aecbd0b](https://github.com/streamich/react-use/commit/aecbd0b))
+
 # [10.3.0](https://github.com/streamich/react-use/compare/v10.2.0...v10.3.0) (2019-07-26)
 
 

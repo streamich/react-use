@@ -1,4 +1,4 @@
-import { act, cleanup, renderHook } from 'react-hooks-testing-library';
+import { act, renderHook } from '@testing-library/react-hooks';
 import useWindowSize from '../useWindowSize';
 
 // simulate window resize
@@ -16,8 +16,6 @@ function fireResize(type, value) {
 
   window.dispatchEvent(new Event('resize'));
 }
-
-afterEach(cleanup);
 
 describe('useWindowSize', () => {
   it('should be defined', () => {
