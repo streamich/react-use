@@ -51,14 +51,14 @@ describe('useRafLoop', () => {
     const spy = () => calls++;
     const hook = renderHook(() => useRafLoop(spy), { initialProps: false });
 
-    expect(hook.result.current[1]).toBeTruthy();
+    expect(hook.result.current[1]).toBe(true);
 
     // stop the loop
     act(() => {
       hook.result.current[0]();
     });
 
-    expect(hook.result.current[1]).toBeFalsy();
+    expect(hook.result.current[1]).toBe(false);
     setTimeout(() => {
       expect(calls).toEqual(0);
 
@@ -71,7 +71,7 @@ describe('useRafLoop', () => {
     const spy = () => calls++;
     const hook = renderHook(() => useRafLoop(spy), { initialProps: false });
 
-    expect(hook.result.current[1]).toBeTruthy();
+    expect(hook.result.current[1]).toBe(true);
 
     // stop the loop
     act(() => {
@@ -79,7 +79,7 @@ describe('useRafLoop', () => {
     });
 
     setTimeout(() => {
-      expect(hook.result.current[1]).toBeFalsy();
+      expect(hook.result.current[1]).toBe(false);
       expect(calls).toEqual(0);
 
       // start the loop
@@ -88,7 +88,7 @@ describe('useRafLoop', () => {
       });
 
       setTimeout(() => {
-        expect(hook.result.current[1]).toBeTruthy();
+        expect(hook.result.current[1]).toBe(true);
         expect(calls).toBeGreaterThanOrEqual(5);
         expect(calls).toBeLessThan(10);
 
