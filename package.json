@@ -24,7 +24,7 @@
     "clean": "rimraf lib storybook-static esm",
     "storybook": "start-storybook -p 6008",
     "storybook:build": "build-storybook",
-    "storybook:upload": "gh-pages -d storybook-static",
+    "storybook:upload": "gh-pages -d storybook-static --git \"$(which git)\"",
     "storybook:clean": "rimraf storybook-static",
     "release": "semantic-release"
   },
