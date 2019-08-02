@@ -14,7 +14,7 @@ describe('useRafLoop', () => {
     expect(calls).toEqual(0);
 
     setTimeout(() => {
-      expect(calls).toBeGreaterThanOrEqual(6);
+      expect(calls).toBeGreaterThanOrEqual(5);
       expect(calls).toBeLessThan(10);
 
       done();
@@ -89,7 +89,7 @@ describe('useRafLoop', () => {
 
       setTimeout(() => {
         expect(hook.result.current[1]).toBeTruthy();
-        expect(calls).toBeGreaterThanOrEqual(6);
+        expect(calls).toBeGreaterThanOrEqual(5);
         expect(calls).toBeLessThan(10);
 
         done();
