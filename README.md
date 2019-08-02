@@ -106,8 +106,7 @@
   - [`useEffectOnce`](./docs/useEffectOnce.md) &mdash; a modified [`useEffect`](https://reactjs.org/docs/hooks-reference.html#useeffect) hook that only runs once.
   - [`useEvent`](./docs/useEvent.md) &mdash; subscribe to events.
   - [`useLifecycles`](./docs/useLifecycles.md) &mdash; calls `mount` and `unmount` callbacks.
-  - [`useMountedState`](./docs/useMountedState.md) &mdash; tracks if component is mounted.
-  - [`useRefMounted`](./docs/useRefMounted.md) &mdash; tracks if component is mounted.
+  - [`useMountedState`](./docs/useMountedState.md) and [`useRefMounted`](./docs/useRefMounted.md) &mdash; track if component is mounted.
   - [`usePromise`](./docs/usePromise.md) &mdash; resolves promise only while component is mounted.
   - [`useLogger`](./docs/useLogger.md) &mdash; logs in console as component goes through life-cycles.
   - [`useMount`](./docs/useMount.md) &mdash; calls `mount` callbacks.
