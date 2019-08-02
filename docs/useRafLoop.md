@@ -14,7 +14,7 @@ const Demo = () => {
 
   const [loopStop, isActive, loopStart] = useRafLoop(() => {
     setTicks(ticks + 1);
-  });
+  }, [ticks]);
 
   return (
     <div>
@@ -31,4 +31,5 @@ const Demo = () => {
 const [stopLoop, isActive, startLoop] = useRafLoop(callback: CallableFunction, deps?: DependencyList);
 ```
 * `callback` - function to call each RAF tick
+* `deps` - a list of dependencies, as if it was in `useEffect` hook.
 
