@@ -1,7 +1,7 @@
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { useKeyboardJs } from '..';
+import useKeyboardJs from '../useKeyboardJs';
 import { CenterStory } from './util/CenterStory';
 import ShowDocs from './util/ShowDocs';
 
