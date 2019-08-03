@@ -1,4 +1,4 @@
-import { act, renderHook } from 'react-hooks-testing-library';
+import { renderHook, act } from '@testing-library/react-hooks';
 import useRafLoop from '../useRafLoop';
 
 describe('useRafLoop', () => {
