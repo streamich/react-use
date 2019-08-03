@@ -100,8 +100,7 @@ it('should log an error if set with a patch different than an object', () => {
   const [, set] = result.current;
   expect(mockConsoleError).not.toHaveBeenCalled();
 
-  // @ts-ignore
-  act(() => set('not an object'));
+  act(() => set('not an object' as any));
 
   expect(mockConsoleError).toHaveBeenCalledTimes(1);
   expect(mockConsoleError).toHaveBeenCalledWith('useGetSetState setter patch must be an object.');
