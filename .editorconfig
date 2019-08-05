@@ -7,8 +7,12 @@ end_of_line = lf
 indent_size = 2
 indent_style = space
 insert_final_newline = true
-max_line_length = 80
 trim_trailing_whitespace = true
+max_line_length = 120
+ij_typescript_enforce_trailing_comma = keep
+ij_typescript_use_double_quotes = false
+ij_typescript_force_quote_style = true
+ij_typescript_align_imports = false
 
 [*.md]
 max_line_length = 0
