@@ -129,17 +129,17 @@ it('should wait until delay reached to start calculating elapsed percentage', ()
   expect(result.current).toBe(0);
 
   act(() => {
-    jest.runTimersToTime(250); // fast-forward only half of custom delay
+    jest.advanceTimersByTime(250); // fast-forward only half of custom delay
   });
   expect(result.current).toBe(0);
 
   act(() => {
-    jest.runTimersToTime(249); // fast-forward 1ms less than custom delay
+    jest.advanceTimersByTime(249); // fast-forward 1ms less than custom delay
   });
   expect(result.current).toBe(0);
 
   act(() => {
-    jest.runTimersToTime(1); // fast-forward exactly to custom delay
+    jest.advanceTimersByTime(1); // fast-forward exactly to custom delay
   });
   expect(result.current).not.toBe(0);
 });
