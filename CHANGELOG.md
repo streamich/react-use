@@ -1,3 +1,17 @@
+# [10.5.0](https://github.com/streamich/react-use/compare/v10.4.0...v10.5.0) (2019-08-03)
+
+
+### Features
+
+* add useRafLoop hook ([be7d7c3](https://github.com/streamich/react-use/commit/be7d7c3))
+
+# [10.4.0](https://github.com/streamich/react-use/compare/v10.3.1...v10.4.0) (2019-08-02)
+
+
+### Features
+
+* add useMountedState hook ([9081b99](https://github.com/streamich/react-use/commit/9081b99))
+
 ## [10.3.1](https://github.com/streamich/react-use/compare/v10.3.0...v10.3.1) (2019-08-02)
 
 
