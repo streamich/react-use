@@ -76,10 +76,8 @@ it('should always return ready as true after custom timeout reached', () => {
 
 it('should clear pending timer on unmount', () => {
   const { unmount } = renderHook(() => useTimeout());
-  // @ts-ignore getTimerCount is not defined on jest types
   expect(jest.getTimerCount()).toBe(1);
 
   unmount();
-  // @ts-ignore getTimerCount is not defined on jest types
   expect(jest.getTimerCount()).toBe(0);
 });

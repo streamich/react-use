@@ -148,13 +148,11 @@ it('should clear pending timers on unmount', () => {
   const stopSpy = jest.spyOn(global, 'cancelAnimationFrame' as any);
   const { unmount } = renderHook(() => useRaf());
 
-  // @ts-ignore getTimerCount is not defined on jest types
   expect(jest.getTimerCount()).toBe(1);
   expect(stopSpy).not.toHaveBeenCalled();
 
   unmount();
 
-  // @ts-ignore getTimerCount is not defined on jest types
   expect(jest.getTimerCount()).toBe(0);
   expect(stopSpy).toHaveBeenCalledTimes(1);
 });
