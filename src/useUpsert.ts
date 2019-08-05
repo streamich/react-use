@@ -11,18 +11,20 @@ const useUpsert = <T>(
   const [items, actions] = useList(initialList);
 
   const upsert = (upsertedItem: T) => {
-    const itemAlreadyExists = items.find(item => comparisonFunction(upsertedItem, item));
-    if (itemAlreadyExists) {
-      return actions.set(
-        items.map(existingItem => {
-          if (comparisonFunction(upsertedItem, existingItem)) {
-            return upsertedItem;
-          }
-          return existingItem;
-        })
-      );
+    let itemWasFound = false;
+    for (let i = 0; i < items.length; i++) {
+      const existingItem = items[i];
+
+      const shouldUpdate = comparisonFunction(existingItem, upsertedItem);
+      if (shouldUpdate) {
+        actions.updateAt(i, upsertedItem);
+        itemWasFound = true;
+        break;
+      }
     }
-    return actions.push(upsertedItem);
+    if (!itemWasFound) {
+      actions.push(upsertedItem);
+    }
   };
 
   return [
