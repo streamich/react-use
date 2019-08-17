@@ -1,3 +1,10 @@
+# [10.6.0](https://github.com/streamich/react-use/compare/v10.5.0...v10.6.0) (2019-08-17)
+
+
+### Features
+
+* add min/max to useNumber ([586faab](https://github.com/streamich/react-use/commit/586faab))
+
 # [10.5.0](https://github.com/streamich/react-use/compare/v10.4.0...v10.5.0) (2019-08-03)
 
 
