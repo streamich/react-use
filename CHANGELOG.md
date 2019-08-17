@@ -1,3 +1,10 @@
+## [10.6.1](https://github.com/streamich/react-use/compare/v10.6.0...v10.6.1) (2019-08-17)
+
+
+### Bug Fixes
+
+* useUpdateEffect run on the wrong time ([1d5cd10](https://github.com/streamich/react-use/commit/1d5cd10))
+
 # [10.6.0](https://github.com/streamich/react-use/compare/v10.5.0...v10.6.0) (2019-08-17)
 
 
