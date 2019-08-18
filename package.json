@@ -93,7 +93,7 @@
     "rebound": "0.1.0",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
-    "rimraf": "2.6.3",
+    "rimraf": "2.7.1",
     "rxjs": "6.5.2",
     "semantic-release": "15.13.21",
     "ts-loader": "6.0.4",
