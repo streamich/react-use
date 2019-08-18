@@ -1,3 +1,10 @@
+## [10.6.2](https://github.com/streamich/react-use/compare/v10.6.1...v10.6.2) (2019-08-18)
+
+
+### Bug Fixes
+
+* 🐛 fix master ([d1df7a5](https://github.com/streamich/react-use/commit/d1df7a5))
+
 ## [10.6.1](https://github.com/streamich/react-use/compare/v10.6.0...v10.6.1) (2019-08-17)
 
 
