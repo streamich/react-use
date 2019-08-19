@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import useRefMounted from './useRefMounted';
+import useMountedState from './useMountedState';
 
 export interface DropAreaState {
   over: boolean;
@@ -20,16 +20,13 @@ export interface DropAreaOptions {
 }
 
 const noop = () => {};
-/* 
+/*
 const defaultState: DropAreaState = {
   over: false,
-}; 
+};
 */
 
-const createProcess = (options: DropAreaOptions, mounted: React.RefObject<boolean>) => (
-  dataTransfer: DataTransfer,
-  event
-) => {
+const createProcess = (options: DropAreaOptions, mounted: boolean) => (dataTransfer: DataTransfer, event) => {
   const uri = dataTransfer.getData('text/uri-list');
 
   if (uri) {
@@ -44,7 +41,7 @@ const createProcess = (options: DropAreaOptions, mounted: React.RefObject<boolea
 
   if (dataTransfer.items && dataTransfer.items.length) {
     dataTransfer.items[0].getAsString(text => {
-      if (mounted.current) {
+      if (mounted) {
         (options.onText || noop)(text, event);
       }
     });
@@ -76,9 +73,9 @@ const createBond = (process, setOver): DropAreaBond => ({
 
 const useDropArea = (options: DropAreaOptions = {}): [DropAreaBond, DropAreaState] => {
   const { onFiles, onText, onUri } = options;
-  const mounted = useRefMounted();
+  const isMounted = useMountedState();
   const [over, setOver] = useState<boolean>(false);
-  const process = useMemo(() => createProcess(options, mounted), [onFiles, onText, onUri]);
+  const process = useMemo(() => createProcess(options, isMounted()), [onFiles, onText, onUri]);
   const bond: DropAreaBond = useMemo(() => createBond(process, setOver), [process, setOver]);
 
   return [bond, { over }];

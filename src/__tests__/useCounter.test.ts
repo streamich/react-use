@@ -1,7 +1,8 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import useCounter from '../useCounter';
 
-const setUp = (initialValue?: number) => renderHook(() => useCounter(initialValue));
+const setUp = (initialValue?: number, max: number | null = null, min: number | null = null) =>
+  renderHook(() => useCounter(initialValue, max, min));
 
 it('should init counter and utils', () => {
   const { result } = setUp(5);
@@ -121,8 +122,81 @@ it('should reset and set new original value', () => {
   expect(get()).toBe(8);
 });
 
-it.todo('should log an error if initial value is other than a number');
-it.todo('should log an error if increment value is other than a number');
-it.todo('should log an error if increment value is a negative number');
-it.todo('should log an error if decrement value is other than a number');
-it.todo('should log an error if decrement value is a negative number');
+it('should not exceed max value', () => {
+  const { result } = setUp(10, 5);
+  expect(result.current[0]).toBe(5);
+
+  const { get, inc, reset } = result.current[1];
+
+  act(() => reset(10));
+  expect(get()).toBe(5);
+
+  act(() => reset(4));
+  expect(get()).toBe(4);
+
+  act(() => inc());
+  expect(get()).toBe(5);
+
+  act(() => inc());
+  expect(get()).toBe(5);
+});
+
+it('should not exceed min value', () => {
+  const { result } = setUp(3, null, 5);
+  expect(result.current[0]).toBe(5);
+
+  const { get, dec, reset } = result.current[1];
+
+  act(() => reset(4));
+  expect(get()).toBe(5);
+
+  act(() => reset(6));
+  expect(get()).toBe(6);
+
+  act(() => dec());
+  expect(get()).toBe(5);
+
+  act(() => dec());
+  expect(get()).toBe(5);
+});
+
+describe('should `console.error` on unexpected inputs', () => {
+  it('on any of call parameters', () => {
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    // @ts-ignore
+    setUp(false);
+    expect(spy.mock.calls[0][0]).toBe('initialValue has to be a number, got boolean');
+
+    // @ts-ignore
+    setUp(10, false);
+    expect(spy.mock.calls[1][0]).toBe('max has to be a number, got boolean');
+
+    // @ts-ignore
+    setUp(10, 5, {});
+    expect(spy.mock.calls[2][0]).toBe('min has to be a number, got object');
+
+    spy.mockRestore();
+  });
+
+  it('on any of returned methods has unexpected input', () => {
+    const { result } = setUp(10);
+    const { inc, dec, reset } = result.current[1];
+
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    // @ts-ignore
+    act(() => inc(false));
+    expect(spy.mock.calls[0][0]).toBe('delta has to be a number, got boolean');
+
+    // @ts-ignore
+    act(() => dec(false));
+    expect(spy.mock.calls[1][0]).toBe('delta has to be a number, got boolean');
+
+    // @ts-ignore
+    act(() => reset({}));
+    expect(spy.mock.calls[2][0]).toBe('value has to be a number, got object');
+
+    spy.mockRestore();
+  });
+});

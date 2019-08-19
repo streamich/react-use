@@ -9,6 +9,7 @@
     "rootDir": "src",
     "sourceMap": false,
     "strict": true,
+    "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
