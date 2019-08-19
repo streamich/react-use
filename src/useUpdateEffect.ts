@@ -7,7 +7,7 @@ const useUpdateEffect: typeof useEffect = (effect, deps) => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {
-      effect();
+      return effect();
     }
   }, deps);
 };
