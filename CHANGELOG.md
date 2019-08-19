@@ -1,3 +1,11 @@
+## [10.6.4](https://github.com/streamich/react-use/compare/v10.6.3...v10.6.4) (2019-08-19)
+
+
+### Bug Fixes
+
+* return from useUpdateEffect ([2f70dc2](https://github.com/streamich/react-use/commit/2f70dc2))
+* useUpdateEffect add return ([8b24df4](https://github.com/streamich/react-use/commit/8b24df4))
+
 ## [10.6.3](https://github.com/streamich/react-use/compare/v10.6.2...v10.6.3) (2019-08-19)
 
 
