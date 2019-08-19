@@ -73,7 +73,7 @@
     "@storybook/addon-options": "5.1.11",
     "@storybook/react": "5.1.11",
     "@testing-library/react-hooks": "2.0.1",
-    "@types/jest": "24.0.17",
+    "@types/jest": "24.0.18",
     "@types/react": "16.9.2",
     "babel-core": "6.26.3",
     "babel-loader": "8.0.6",
