@@ -1,12 +1,6 @@
 import * as React from 'react';
+import * as isEqual from 'react-fast-compare';
 import { off, on } from './util';
-
-enum BatteryManagerEvents {
-  levelChange = 'levelchange',
-  dischargingTimeChange = 'dischargingtimechange',
-  chargingTimeChange = 'chargingtimechange',
-  chargingChange = 'chargingchange',
-}
 
 export interface BatteryState {
   charging: boolean;
@@ -26,81 +20,85 @@ interface NavigatorWithPossibleBattery extends Navigator {
   getBattery?: () => Promise<BatteryManager>;
 }
 
+type UseBatteryState =
+  | { isSupported: false } // Battery API is not supported
+  | { isSupported: true; fetched: false } // battery API supported but not fetched yet
+  | BatteryState & { isSupported: true; fetched: true }; // battery API supported and fetched
+
 const nav: NavigatorWithPossibleBattery = navigator;
+const isBatteryApiSupported = nav && typeof nav.getBattery !== 'undefined';
 
-type UseBatteryState = BatteryState & {
-  isSupported: boolean;
-};
+function useBatteryMock(): UseBatteryState {
+  return { isSupported: false };
+}
 
-export default function useBattery() {
-  const [state, setState] = React.useState<UseBatteryState>({
-    isSupported: nav && typeof nav.getBattery !== 'undefined',
-    level: 1,
-    charging: true,
-    dischargingTime: Infinity,
-    chargingTime: 0,
-  });
-  const battery = React.useRef<BatteryManager>();
-  let isMounted = true;
+function useBattery(): UseBatteryState {
+  const [state, setState] = React.useState<UseBatteryState>({ isSupported: true, fetched: false });
+  const battery = React.useRef<BatteryManager | null>();
+  const isMounted = React.useRef(false);
 
-  if (state.isSupported) {
-    const onChange = React.useCallback(() => {
-      if (isMounted && battery.current) {
-        setState({
-          isSupported: true,
-          level: battery.current.level,
-          charging: battery.current.charging,
-          dischargingTime: battery.current.dischargingTime,
-          chargingTime: battery.current.chargingTime,
-        });
-      }
-    }, [setState]);
+  const handleChange = React.useCallback(() => {
+    if (!isMounted.current || !battery.current) {
+      return;
+    }
 
-    const bindBatteryEvents = React.useCallback(
-      (bat: BatteryManager) => {
-        on(bat, BatteryManagerEvents.chargingChange, onChange);
-        on(bat, BatteryManagerEvents.chargingTimeChange, onChange);
-        on(bat, BatteryManagerEvents.dischargingTimeChange, onChange);
-        on(bat, BatteryManagerEvents.levelChange, onChange);
-      },
-      [onChange]
-    );
+    const newState: UseBatteryState = {
+      isSupported: true,
+      fetched: true,
+      level: battery.current.level,
+      charging: battery.current.charging,
+      dischargingTime: battery.current.dischargingTime,
+      chargingTime: battery.current.chargingTime,
+    };
 
-    const unbindBatteryEvents = React.useCallback(
-      (bat: BatteryManager) => {
-        off(bat, BatteryManagerEvents.chargingChange, onChange);
-        off(bat, BatteryManagerEvents.chargingTimeChange, onChange);
-        off(bat, BatteryManagerEvents.dischargingTimeChange, onChange);
-        off(bat, BatteryManagerEvents.levelChange, onChange);
-      },
-      [onChange]
-    );
+    !isEqual(state, newState) && setState(newState);
+  }, [state, setState]);
 
-    React.useEffect(() => {
-      battery.current && bindBatteryEvents(battery.current);
+  const bindBatteryEvents = React.useCallback(() => {
+    if (!battery.current || !isMounted.current) {
+      return;
+    }
 
-      return () => {
-        battery.current && unbindBatteryEvents(battery.current);
-      };
-    }, [onChange]);
+    on(battery.current, 'chargingchange', handleChange);
+    on(battery.current, 'chargingtimechange', handleChange);
+    on(battery.current, 'dischargingtimechange', handleChange);
+    on(battery.current, 'levelchange', handleChange);
+  }, [handleChange]);
+  const unbindBatteryEvents = React.useCallback(() => {
+    if (!battery.current) {
+      return;
+    }
 
-    React.useEffect(() => {
-      nav.getBattery!().then((bat: BatteryManager) => {
-        if (!isMounted) {
-          return;
-        }
+    off(battery.current, 'chargingchange', handleChange);
+    off(battery.current, 'chargingtimechange', handleChange);
+    off(battery.current, 'dischargingtimechange', handleChange);
+    off(battery.current, 'levelchange', handleChange);
+  }, [handleChange]);
 
-        battery.current = bat;
-        bindBatteryEvents(bat);
-      });
+  React.useEffect(() => {
+    bindBatteryEvents();
+    handleChange(); // this one is for case when update performed between unbind and bind, extremely rare, but better to handle
 
-      return () => {
-        isMounted = false;
+    return unbindBatteryEvents;
+  }, [handleChange]);
 
-        battery.current && unbindBatteryEvents(battery.current);
-      };
-    }, []);
-  }
+  React.useEffect(() => {
+    isMounted.current = true;
+
+    nav.getBattery!().then((bat: BatteryManager) => {
+      battery.current = bat;
+
+      bindBatteryEvents();
+      handleChange();
+    });
+
+    return () => {
+      isMounted.current = false;
+      unbindBatteryEvents();
+    };
+  }, []);
 
   return state;
 }
+
+export default isBatteryApiSupported ? useBattery : useBatteryMock;
