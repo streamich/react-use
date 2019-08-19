@@ -1,4 +1,4 @@
-import * as writeText from 'copy-to-clipboard';
+import writeText from 'copy-to-clipboard';
 import { useCallback } from 'react';
 import useMountedState from './useMountedState';
 import useSetState from './useSetState';
