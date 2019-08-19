@@ -1,3 +1,11 @@
+## [10.6.3](https://github.com/streamich/react-use/compare/v10.6.2...v10.6.3) (2019-08-19)
+
+
+### Bug Fixes
+
+* allow import default for ESM ([bd3a062](https://github.com/streamich/react-use/commit/bd3a062))
+* rollup build error: Cannot call a namespace ('writeText') ([b3e672b](https://github.com/streamich/react-use/commit/b3e672b))
+
 ## [10.6.2](https://github.com/streamich/react-use/compare/v10.6.1...v10.6.2) (2019-08-18)
 
 
