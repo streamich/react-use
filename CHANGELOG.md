@@ -1,3 +1,12 @@
+# [10.7.0](https://github.com/streamich/react-use/compare/v10.6.4...v10.7.0) (2019-08-19)
+
+
+### Features
+
+* 🎸 add useUpsert ([6875e13](https://github.com/streamich/react-use/commit/6875e13))
+* 🎸 export useUpsert from index ([3eda2b2](https://github.com/streamich/react-use/commit/3eda2b2))
+* add useUpsert ([a7c2899](https://github.com/streamich/react-use/commit/a7c2899))
+
 ## [10.6.4](https://github.com/streamich/react-use/compare/v10.6.3...v10.6.4) (2019-08-19)
 
 
