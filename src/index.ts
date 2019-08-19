@@ -57,6 +57,9 @@ export { default as usePrevious } from './usePrevious';
 export { default as usePromise } from './usePromise';
 export { default as useRaf } from './useRaf';
 export { default as useRafLoop } from './useRafLoop';
+/**
+ * @deprecated This hook is obsolete, use `useMountedState` instead
+ */
 export { default as useRefMounted } from './useRefMounted';
 export { default as useScroll } from './useScroll';
 export { default as useScrolling } from './useScrolling';
