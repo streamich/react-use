@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 export default function useMountedState(): () => boolean {
   const mountedRef = useRef<boolean>(false);
+  const get = useCallback(() => mountedRef.current, []);
 
   useEffect(() => {
     mountedRef.current = true;
@@ -11,5 +12,5 @@ export default function useMountedState(): () => boolean {
     };
   });
 
-  return () => mountedRef.current;
+  return get;
 }

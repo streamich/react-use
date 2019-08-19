@@ -37,8 +37,8 @@ const useMouse = (ref: RefObject<Element>): State => {
       frame.current = requestAnimationFrame(() => {
         if (ref && ref.current) {
           const { left, top, width: elW, height: elH } = ref.current.getBoundingClientRect();
-          const posX = left + window.scrollX;
-          const posY = top + window.scrollY;
+          const posX = left + window.pageXOffset;
+          const posY = top + window.pageYOffset;
           const elX = event.pageX - posX;
           const elY = event.pageY - posY;
 
