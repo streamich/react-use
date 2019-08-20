@@ -107,11 +107,14 @@ describe('useAsync', () => {
         return 'new value';
       };
 
-      beforeEach(() => {
+      beforeEach(done => {
         callCount = 0;
+
         hook = renderHook(({ fn }) => useAsync(fn, [fn]), {
           initialProps: { fn: initialFn },
         });
+
+        hook.waitForNextUpdate().then(done);
       });
 
       it('renders the first value', () => {
@@ -140,7 +143,7 @@ describe('useAsync', () => {
         return `counter is ${counter} and callCount is ${callCount}`;
       };
 
-      beforeEach(() => {
+      beforeEach(done => {
         callCount = 0;
         hook = renderHook(
           ({ fn, counter }) => {
@@ -154,6 +157,8 @@ describe('useAsync', () => {
             },
           }
         );
+
+        hook.waitForNextUpdate().then(done);
       });
 
       it('initial renders the first passed pargs', () => {
