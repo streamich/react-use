@@ -1,3 +1,17 @@
+# [10.8.0](https://github.com/streamich/react-use/compare/v10.7.1...v10.8.0) (2019-08-20)
+
+
+### Bug Fixes
+
+* Reworked useBattery hook ([1069060](https://github.com/streamich/react-use/commit/1069060))
+* succeed useRafLoop tests ([09167df](https://github.com/streamich/react-use/commit/09167df))
+
+
+### Features
+
+* 🎸 support useBattery hook on server side ([5d31cf0](https://github.com/streamich/react-use/commit/5d31cf0))
+* 🎸 use only one useState and one useEffect call ([2d0fabf](https://github.com/streamich/react-use/commit/2d0fabf))
+
 ## [10.7.1](https://github.com/streamich/react-use/compare/v10.7.0...v10.7.1) (2019-08-20)
 
 
