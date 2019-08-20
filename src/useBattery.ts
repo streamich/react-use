@@ -25,8 +25,8 @@ type UseBatteryState =
   | { isSupported: true; fetched: false } // battery API supported but not fetched yet
   | BatteryState & { isSupported: true; fetched: true }; // battery API supported and fetched
 
-const nav: NavigatorWithPossibleBattery = navigator;
-const isBatteryApiSupported = nav && typeof nav.getBattery !== 'undefined';
+const isBatteryApiSupported =
+  typeof navigator === 'object' && typeof (navigator as NavigatorWithPossibleBattery).getBattery === 'function';
 
 function useBatteryMock(): UseBatteryState {
   return { isSupported: false };
@@ -85,7 +85,7 @@ function useBattery(): UseBatteryState {
   React.useEffect(() => {
     isMounted.current = true;
 
-    nav.getBattery!().then((bat: BatteryManager) => {
+    (navigator as NavigatorWithPossibleBattery).getBattery!().then((bat: BatteryManager) => {
       battery.current = bat;
 
       bindBatteryEvents();
