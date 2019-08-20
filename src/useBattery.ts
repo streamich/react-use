@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as isEqual from 'react-fast-compare';
+import isEqual from 'react-fast-compare';
 import { off, on } from './util';
 
 const { useState, useEffect } = React;
