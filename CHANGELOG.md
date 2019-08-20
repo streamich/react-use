@@ -1,3 +1,10 @@
+## [10.7.1](https://github.com/streamich/react-use/compare/v10.7.0...v10.7.1) (2019-08-20)
+
+
+### Bug Fixes
+
+* async test warnings ([#543](https://github.com/streamich/react-use/issues/543)) ([7af237e](https://github.com/streamich/react-use/commit/7af237e))
+
 # [10.7.0](https://github.com/streamich/react-use/compare/v10.6.4...v10.7.0) (2019-08-19)
 
 
