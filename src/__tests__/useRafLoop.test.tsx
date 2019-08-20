@@ -1,23 +1,26 @@
 import { act, renderHook } from '@testing-library/react-hooks';
+import { replaceRaf } from 'raf-stub';
 import useRafLoop from '../useRafLoop';
 
+declare var requestAnimationFrame: {
+  add: (cb: Function) => number;
+  remove: (id: number) => void;
+  flush: (duration?: number) => void;
+  reset: () => void;
+  step: (steps?: number, duration?: number) => void;
+};
+
 describe('useRafLoop', () => {
-  it('should be defined', () => {
-    expect(useRafLoop).toBeDefined();
+  beforeAll(() => {
+    replaceRaf();
   });
 
-  it('should call a callback constantly inside the raf loop', done => {
-    let calls = 0;
-    const spy = () => calls++;
-    renderHook(() => useRafLoop(spy), { initialProps: false });
+  afterEach(() => {
+    requestAnimationFrame.reset();
+  });
 
-    expect(calls).toEqual(0);
-
-    setTimeout(() => {
-      expect(calls).toBeGreaterThanOrEqual(2);
-
-      done();
-    }, 120);
+  it('should be defined', () => {
+    expect(useRafLoop).toBeDefined();
   });
 
   it('should return stop function, start function and loop state', () => {
@@ -28,26 +31,31 @@ describe('useRafLoop', () => {
     expect(typeof hook.result.current[2]).toEqual('function');
   });
 
-  it('first element call should stop the loop', done => {
-    let calls = 0;
-    const spy = () => calls++;
+  it('should call a callback constantly inside the raf loop', () => {
+    const spy = jest.fn();
+    renderHook(() => useRafLoop(spy), { initialProps: false });
+
+    expect(spy).not.toBeCalled();
+    requestAnimationFrame.step();
+    requestAnimationFrame.step();
+    expect(spy).toBeCalledTimes(2);
+  });
+
+  it('first element call should stop the loop', () => {
+    const spy = jest.fn();
     const hook = renderHook(() => useRafLoop(spy), { initialProps: false });
 
-    // stop the loop
+    expect(spy).not.toBeCalled();
+
     act(() => {
       hook.result.current[0]();
     });
-
-    setTimeout(() => {
-      expect(calls).toEqual(0);
-
-      done();
-    }, 50);
+    requestAnimationFrame.step();
+    expect(spy).not.toBeCalled();
   });
 
-  it('second element should represent loop state', done => {
-    let calls = 0;
-    const spy = () => calls++;
+  it('second element should represent loop state', () => {
+    const spy = jest.fn();
     const hook = renderHook(() => useRafLoop(spy), { initialProps: false });
 
     expect(hook.result.current[1]).toBe(true);
@@ -56,56 +64,39 @@ describe('useRafLoop', () => {
     act(() => {
       hook.result.current[0]();
     });
-
     expect(hook.result.current[1]).toBe(false);
-    setTimeout(() => {
-      expect(calls).toEqual(0);
-
-      done();
-    }, 120);
   });
 
-  it('third element call should restart loop', done => {
-    let calls = 0;
-    const spy = () => calls++;
+  it('third element call should restart loop', () => {
+    const spy = jest.fn();
     const hook = renderHook(() => useRafLoop(spy), { initialProps: false });
 
-    expect(hook.result.current[1]).toBe(true);
-
+    expect(spy).not.toBeCalled();
     // stop the loop
     act(() => {
       hook.result.current[0]();
     });
+    requestAnimationFrame.step();
+    expect(spy).not.toBeCalled();
 
-    setTimeout(() => {
-      expect(hook.result.current[1]).toBe(false);
-      expect(calls).toEqual(0);
+    // start the loop
+    act(() => {
+      hook.result.current[2]();
+    });
 
-      // start the loop
-      act(() => {
-        hook.result.current[2]();
-      });
-
-      setTimeout(() => {
-        expect(hook.result.current[1]).toBe(true);
-        expect(calls).toBeGreaterThanOrEqual(2);
-
-        done();
-      }, 120);
-    }, 50);
+    requestAnimationFrame.step();
+    requestAnimationFrame.step();
+    expect(spy).toBeCalledTimes(2);
   });
 
-  it('loop should stop itself on unmount', done => {
-    let calls = 0;
-    const spy = () => calls++;
+  it('loop should stop itself on unmount', () => {
+    const spy = jest.fn();
     const hook = renderHook(() => useRafLoop(spy), { initialProps: false });
 
     hook.unmount();
 
-    setTimeout(() => {
-      expect(calls).toEqual(0);
+    requestAnimationFrame.step();
 
-      done();
-    }, 50);
+    expect(spy).not.toBeCalled();
   });
 });
