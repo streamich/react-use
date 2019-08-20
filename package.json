@@ -86,6 +86,7 @@
     "lint-staged": "9.2.3",
     "markdown-loader": "5.1.0",
     "prettier": "1.18.2",
+    "raf-stub": "^3.0.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-spring": "8.0.27",
