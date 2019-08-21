@@ -13,7 +13,7 @@ declare var requestAnimationFrame: RequestAnimationFrame;
 
 replaceRaf();
 const fixedStart = 1564949709496;
-const dateNowSpy = jest.spyOn(Date, 'now');
+const spyDateNow = jest.spyOn(Date, 'now').mockImplementation(() => fixedStart);
 
 beforeEach(() => {
   jest.useFakeTimers();
@@ -33,32 +33,30 @@ it('should init percentage of time elapsed', () => {
 });
 
 it('should return corresponding percentage of time elapsed for default ms', () => {
-  dateNowSpy.mockImplementationOnce(() => fixedStart); // start time
-  dateNowSpy.mockImplementationOnce(() => fixedStart + 1e12 * 0.25); // 25%
-  dateNowSpy.mockImplementationOnce(() => fixedStart + 1e12 * 0.5); // 50%
-  dateNowSpy.mockImplementationOnce(() => fixedStart + 1e12 * 0.75); // 75%
-  dateNowSpy.mockImplementationOnce(() => fixedStart + 1e12); // 100%
-
   const { result } = renderHook(() => useRaf());
   expect(result.current).toBe(0);
 
   act(() => {
     jest.runOnlyPendingTimers(); // start after delay
+    spyDateNow.mockImplementationOnce(() => fixedStart + 1e12 * 0.25); // 25%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(0.25);
 
   act(() => {
+    spyDateNow.mockImplementationOnce(() => fixedStart + 1e12 * 0.5); // 50%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(0.5);
 
   act(() => {
+    spyDateNow.mockImplementationOnce(() => fixedStart + 1e12 * 0.75); // 75%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(0.75);
 
   act(() => {
+    spyDateNow.mockImplementationOnce(() => fixedStart + 1e12); // 100%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(1);
@@ -66,58 +64,55 @@ it('should return corresponding percentage of time elapsed for default ms', () =
 
 it('should return corresponding percentage of time elapsed for custom ms', () => {
   const customMs = 2000;
-  dateNowSpy.mockImplementationOnce(() => fixedStart); // start time
-  dateNowSpy.mockImplementationOnce(() => fixedStart + customMs * 0.25); // 25%
-  dateNowSpy.mockImplementationOnce(() => fixedStart + customMs * 0.5); // 50%
-  dateNowSpy.mockImplementationOnce(() => fixedStart + customMs * 0.75); // 75%
-  dateNowSpy.mockImplementationOnce(() => fixedStart + customMs); // 100%
 
   const { result } = renderHook(() => useRaf(customMs));
   expect(result.current).toBe(0);
 
   act(() => {
     jest.runOnlyPendingTimers(); // start after delay
+    spyDateNow.mockImplementationOnce(() => fixedStart + customMs * 0.25); // 25%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(0.25);
 
   act(() => {
+    spyDateNow.mockImplementationOnce(() => fixedStart + customMs * 0.5); // 50%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(0.5);
 
   act(() => {
+    spyDateNow.mockImplementationOnce(() => fixedStart + customMs * 0.75); // 75%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(0.75);
 
   act(() => {
+    spyDateNow.mockImplementationOnce(() => fixedStart + customMs); // 100%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(1);
 });
 
 it('should return always 1 after corresponding ms reached', () => {
-  dateNowSpy.mockImplementationOnce(() => fixedStart); // start time
-  dateNowSpy.mockImplementationOnce(() => fixedStart + 1e12); // 100%
-  dateNowSpy.mockImplementationOnce(() => fixedStart + 1e12 * 1.1); // 110%
-  dateNowSpy.mockImplementationOnce(() => fixedStart + 1e12 * 3); // 300%
-
   const { result } = renderHook(() => useRaf());
   expect(result.current).toBe(0);
 
   act(() => {
     jest.runOnlyPendingTimers(); // start after delay
+    spyDateNow.mockImplementationOnce(() => fixedStart + 1e12); // 100%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(1);
 
   act(() => {
+    spyDateNow.mockImplementationOnce(() => fixedStart + 1e12 * 1.1); // 110%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(1);
 
   act(() => {
+    spyDateNow.mockImplementationOnce(() => fixedStart + 1e12 * 3); // 300%
     requestAnimationFrame.step();
   });
   expect(result.current).toBe(1);
@@ -145,14 +140,14 @@ it('should wait until delay reached to start calculating elapsed percentage', ()
 });
 
 it('should clear pending timers on unmount', () => {
-  const stopSpy = jest.spyOn(global, 'cancelAnimationFrame' as any);
+  const spyRafStop = jest.spyOn(global, 'cancelAnimationFrame' as any);
   const { unmount } = renderHook(() => useRaf());
 
-  expect(jest.getTimerCount()).toBe(1);
-  expect(stopSpy).not.toHaveBeenCalled();
+  expect(clearTimeout).not.toHaveBeenCalled();
+  expect(spyRafStop).not.toHaveBeenCalled();
 
   unmount();
 
-  expect(jest.getTimerCount()).toBe(0);
-  expect(stopSpy).toHaveBeenCalledTimes(1);
+  expect(clearTimeout).toHaveBeenCalledTimes(2);
+  expect(spyRafStop).toHaveBeenCalledTimes(1);
 });
