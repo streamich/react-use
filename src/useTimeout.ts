@@ -1,19 +1,10 @@
-import { useEffect, useState } from 'react';
+import useTimeoutFn from './useTimeoutFn';
+import useUpdate from './useUpdate';
 
-const useTimeout = (ms: number = 0) => {
-  const [ready, setReady] = useState(false);
+export type UseTimeoutReturn = [() => boolean | null, () => void, () => void];
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setReady(true);
-    }, ms);
+export default function useTimeout(ms: number = 0): UseTimeoutReturn {
+  const update = useUpdate();
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [ms]);
-
-  return ready;
-};
-
-export default useTimeout;
+  return useTimeoutFn(update, ms);
+}
