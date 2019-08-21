@@ -82,4 +82,4 @@ function useBattery(): UseBatteryState {
   return state;
 }
 
-export default (isBatteryApiSupported ? useBattery : useBatteryMock);
+export default isBatteryApiSupported ? useBattery : useBatteryMock;

@@ -84,4 +84,4 @@ const useLocationBrowser = (): LocationSensorState => {
   return state;
 };
 
-export default (isClient ? useLocationBrowser : useLocationServer);
+export default isClient ? useLocationBrowser : useLocationServer;
