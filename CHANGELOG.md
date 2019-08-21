@@ -1,3 +1,70 @@
+# [10.8.0](https://github.com/streamich/react-use/compare/v10.7.1...v10.8.0) (2019-08-20)
+
+
+### Bug Fixes
+
+* Reworked useBattery hook ([1069060](https://github.com/streamich/react-use/commit/1069060))
+* succeed useRafLoop tests ([09167df](https://github.com/streamich/react-use/commit/09167df))
+
+
+### Features
+
+* 🎸 support useBattery hook on server side ([5d31cf0](https://github.com/streamich/react-use/commit/5d31cf0))
+* 🎸 use only one useState and one useEffect call ([2d0fabf](https://github.com/streamich/react-use/commit/2d0fabf))
+
+## [10.7.1](https://github.com/streamich/react-use/compare/v10.7.0...v10.7.1) (2019-08-20)
+
+
+### Bug Fixes
+
+* async test warnings ([#543](https://github.com/streamich/react-use/issues/543)) ([7af237e](https://github.com/streamich/react-use/commit/7af237e))
+
+# [10.7.0](https://github.com/streamich/react-use/compare/v10.6.4...v10.7.0) (2019-08-19)
+
+
+### Features
+
+* 🎸 add useUpsert ([6875e13](https://github.com/streamich/react-use/commit/6875e13))
+* 🎸 export useUpsert from index ([3eda2b2](https://github.com/streamich/react-use/commit/3eda2b2))
+* add useUpsert ([a7c2899](https://github.com/streamich/react-use/commit/a7c2899))
+
+## [10.6.4](https://github.com/streamich/react-use/compare/v10.6.3...v10.6.4) (2019-08-19)
+
+
+### Bug Fixes
+
+* return from useUpdateEffect ([2f70dc2](https://github.com/streamich/react-use/commit/2f70dc2))
+* useUpdateEffect add return ([8b24df4](https://github.com/streamich/react-use/commit/8b24df4))
+
+## [10.6.3](https://github.com/streamich/react-use/compare/v10.6.2...v10.6.3) (2019-08-19)
+
+
+### Bug Fixes
+
+* allow import default for ESM ([bd3a062](https://github.com/streamich/react-use/commit/bd3a062))
+* rollup build error: Cannot call a namespace ('writeText') ([b3e672b](https://github.com/streamich/react-use/commit/b3e672b))
+
+## [10.6.2](https://github.com/streamich/react-use/compare/v10.6.1...v10.6.2) (2019-08-18)
+
+
+### Bug Fixes
+
+* 🐛 fix master ([d1df7a5](https://github.com/streamich/react-use/commit/d1df7a5))
+
+## [10.6.1](https://github.com/streamich/react-use/compare/v10.6.0...v10.6.1) (2019-08-17)
+
+
+### Bug Fixes
+
+* useUpdateEffect run on the wrong time ([1d5cd10](https://github.com/streamich/react-use/commit/1d5cd10))
+
+# [10.6.0](https://github.com/streamich/react-use/compare/v10.5.0...v10.6.0) (2019-08-17)
+
+
+### Features
+
+* add min/max to useNumber ([586faab](https://github.com/streamich/react-use/commit/586faab))
+
 # [10.5.0](https://github.com/streamich/react-use/compare/v10.4.0...v10.5.0) (2019-08-03)
 
 

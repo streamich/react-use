@@ -1,5 +1,8 @@
 # `useRefMounted`
 
+>**DEPRECATED**  
+>This method is obsolete, use `useMountedState` instead.
+
 Lifecycle hook that tracks if component is mounted. Returns a ref, which has a
 boolean `.current` property.
 

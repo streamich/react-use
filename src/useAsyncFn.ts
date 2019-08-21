@@ -1,5 +1,5 @@
 import { DependencyList, useCallback, useState } from 'react';
-import useRefMounted from './useRefMounted';
+import useMountedState from './useMountedState';
 
 export type AsyncState<T> =
   | {
@@ -30,23 +30,19 @@ export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
 ): AsyncFn<Result, Args> {
   const [state, set] = useState<AsyncState<Result>>(initialState);
 
-  const mounted = useRefMounted();
+  const isMounted = useMountedState();
 
   const callback = useCallback((...args: Args | []) => {
     set({ loading: true });
 
     return fn(...args).then(
       value => {
-        if (mounted.current) {
-          set({ value, loading: false });
-        }
+        isMounted() && set({ value, loading: false });
 
         return value;
       },
       error => {
-        if (mounted.current) {
-          set({ error, loading: false });
-        }
+        isMounted() && set({ error, loading: false });
 
         return error;
       }
