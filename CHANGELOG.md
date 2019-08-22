@@ -1,3 +1,16 @@
+# [11.0.0](https://github.com/streamich/react-use/compare/v10.8.0...v11.0.0) (2019-08-22)
+
+
+### Features
+
+* add cancel and reset methods to useTimeout ([283045a](https://github.com/streamich/react-use/commit/283045a))
+* add useTimeoutFn ([284e6fd](https://github.com/streamich/react-use/commit/284e6fd))
+
+
+### BREAKING CHANGES
+
+* useTimeout now returns a tuple
+
 # [10.8.0](https://github.com/streamich/react-use/compare/v10.7.1...v10.8.0) (2019-08-20)
 
 
