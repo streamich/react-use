@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Spring, SpringSystem } from 'rebound';
 
 const useSpring = (targetValue: number = 0, tension: number = 50, friction: number = 3) => {

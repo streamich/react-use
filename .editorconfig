@@ -9,11 +9,19 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 max_line_length = 120
+
+[*.{ts, tsx}]
 ij_typescript_enforce_trailing_comma = keep
 ij_typescript_use_double_quotes = false
 ij_typescript_force_quote_style = true
 ij_typescript_align_imports = false
+ij_typescript_align_multiline_ternary_operation = false
+ij_typescript_align_multiline_parameters_in_calls = false
+ij_typescript_align_multiline_parameters = false
+ij_typescript_align_multiline_chained_methods = false
 ij_typescript_else_on_new_line = false
+ij_typescript_catch_on_new_line = false
+ij_typescript_spaces_within_interpolation_expressions = false
 
 [*.md]
 max_line_length = 0
