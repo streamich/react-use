@@ -1,3 +1,10 @@
+## [11.0.1](https://github.com/streamich/react-use/compare/v11.0.0...v11.0.1) (2019-08-23)
+
+
+### Bug Fixes
+
+* correct useSpring() hook behaviour ([d7a622d](https://github.com/streamich/react-use/commit/d7a622d))
+
 # [11.0.0](https://github.com/streamich/react-use/compare/v10.8.0...v11.0.0) (2019-08-22)
 
 
