@@ -4,12 +4,12 @@ export type UseTimeoutFnReturn = [() => boolean | null, () => void, () => void];
 
 export default function useTimeoutFn(fn: Function, ms: number = 0): UseTimeoutFnReturn {
   const ready = useRef<boolean | null>(false);
-  const timeout = useRef(0);
+  const timeout = useRef<ReturnType<typeof setTimeout>>();
 
   const isReady = useCallback(() => ready.current, []);
   const set = useCallback(() => {
     ready.current = false;
-    timeout.current = window.setTimeout(() => {
+    timeout.current = setTimeout(() => {
       ready.current = true;
       fn();
     }, ms);
