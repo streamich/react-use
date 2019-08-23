@@ -22,6 +22,14 @@
     "no-empty-interface": [false],
     "object-literal-sort-keys": false,
     "no-unused-expression": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case",
+      "allow-leading-underscore",
+      "allow-trailing-underscore"
+    ],
     "prettier": [
       true,
       {

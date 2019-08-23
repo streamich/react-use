@@ -13,6 +13,7 @@ ij_typescript_enforce_trailing_comma = keep
 ij_typescript_use_double_quotes = false
 ij_typescript_force_quote_style = true
 ij_typescript_align_imports = false
+ij_typescript_else_on_new_line = false
 
 [*.md]
 max_line_length = 0
