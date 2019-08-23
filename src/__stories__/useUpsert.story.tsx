@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import ShowDocs from './util/ShowDocs';
 import { useUpsert } from '../index';
+import ShowDocs from './util/ShowDocs';
 
 interface DemoType {
   id: string;

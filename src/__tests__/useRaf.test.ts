@@ -7,8 +7,10 @@ import useRaf from '../useRaf';
  */
 interface RequestAnimationFrame {
   reset(): void;
+
   step(): void;
 }
+
 declare var requestAnimationFrame: RequestAnimationFrame;
 
 replaceRaf();

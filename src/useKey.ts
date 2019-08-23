@@ -4,6 +4,7 @@ import useEvent, { UseEventTarget } from './useEvent';
 export type KeyPredicate = (event: KeyboardEvent) => boolean;
 export type KeyFilter = null | undefined | string | ((event: KeyboardEvent) => boolean);
 export type Handler = (event: KeyboardEvent) => void;
+
 export interface UseKeyOptions {
   event?: 'keydown' | 'keypress' | 'keyup';
   target?: UseEventTarget;

@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import useSpring from '../useSpring';
 import { Spring } from 'rebound';
+import useSpring from '../useSpring';
 
 // simulate Spring for testing
 const mockSetCurrentValue = jest.fn();
