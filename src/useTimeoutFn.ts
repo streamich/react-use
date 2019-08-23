@@ -9,7 +9,7 @@ export default function useTimeoutFn(fn: Function, ms: number = 0): UseTimeoutFn
   const isReady = useCallback(() => ready.current, []);
   const set = useCallback(() => {
     ready.current = false;
-    timeout.current = window.setTimeout(() => {
+    timeout.current = setTimeout(() => {
       ready.current = true;
       fn();
     }, ms);
