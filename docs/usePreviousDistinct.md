@@ -7,17 +7,19 @@ distinct value
 ## Usage
 
 ```jsx
-import {usePreviousDistinct} from 'react-use';
+import {usePreviousDistinct, useCounter} from 'react-use';
 
 const Demo = () => {
-  const [count, setCount] = React.useState(0);
-  const [unrelatedCount, setUnrelatedCount] = React.useState(0);
+  const [count, { inc: relatedInc }] = useCounter(0);
+  const [unrelatedCount, { inc }] = useCounter(0);
   const prevCount = usePreviousDistinct(count);
 
   return (
     <p>
       Now: {count}, before: {prevCount}
+      <button onClick={() => relatedInc()}>Increment</button>
       Unrelated: {unrelatedCount}
+      <button onClick={() => inc()}>Increment Unrelated</button>
     </p>
   );
 };
