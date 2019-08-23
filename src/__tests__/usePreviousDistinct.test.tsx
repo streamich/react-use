@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks';
-import usePrevious from '../usePreviousDistinct';
+import usePreviousDistinct from '../usePreviousDistinct';
 
-describe('usePrevious with default compare', () => {
-  const hook = renderHook(props => usePrevious(props), { initialProps: 0 });
+describe('usePreviousDistinct with default compare', () => {
+  const hook = renderHook(props => usePreviousDistinct(props), { initialProps: 0 });
 
   it('should return undefined on initial render', () => {
     expect(hook.result.current).toBe(undefined);
@@ -21,7 +21,7 @@ describe('usePrevious with default compare', () => {
   });
 });
 
-describe('usePrevious with complex comparison', () => {
+describe('usePreviousDistinct with complex comparison', () => {
   const exampleObjects = [
     {
       id: 'something-unique',
@@ -40,9 +40,12 @@ describe('usePrevious with complex comparison', () => {
       name: 'Alice',
     },
   ];
-  const hook = renderHook(props => usePrevious(props, (prev, next) => (prev && prev.id) === (next && next.id)), {
-    initialProps: exampleObjects[0],
-  });
+  const hook = renderHook(
+    props => usePreviousDistinct(props, (prev, next) => (prev && prev.id) === (next && next.id)),
+    {
+      initialProps: exampleObjects[0],
+    }
+  );
 
   it('should return undefined on initial render', () => {
     expect(hook.result.current).toBe(undefined);
