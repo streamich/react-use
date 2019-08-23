@@ -1,3 +1,11 @@
+## [11.0.2](https://github.com/streamich/react-use/compare/v11.0.1...v11.0.2) (2019-08-23)
+
+
+### Bug Fixes
+
+* **useSetState:** memoize setState callback ([0275329](https://github.com/streamich/react-use/commit/0275329))
+* **useSetState:** memoize setState callback ([16f023f](https://github.com/streamich/react-use/commit/16f023f))
+
 ## [11.0.1](https://github.com/streamich/react-use/compare/v11.0.0...v11.0.1) (2019-08-23)
 
 
