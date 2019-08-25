@@ -1,3 +1,10 @@
+## [11.1.1](https://github.com/streamich/react-use/compare/v11.1.0...v11.1.1) (2019-08-25)
+
+
+### Bug Fixes
+
+* [#550](https://github.com/streamich/react-use/issues/550) ([2617d74](https://github.com/streamich/react-use/commit/2617d74))
+
 # [11.1.0](https://github.com/streamich/react-use/compare/v11.0.2...v11.1.0) (2019-08-25)
 
 
