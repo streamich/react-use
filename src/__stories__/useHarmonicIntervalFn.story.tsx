@@ -16,7 +16,7 @@ const Clock: React.FC<{ useInt: typeof useHarmonicIntervalFn }> = ({ useInt }) =
   s = s < 10 ? '0' + s : String(s);
 
   const style: React.CSSProperties = {
-    padding: '20px',
+    padding: '20px 5px',
     border: '1px solid #fafafa',
     float: 'left',
     fontFamily: 'monospace',
@@ -34,7 +34,8 @@ const Demo: React.FC<{ useInt: typeof useHarmonicIntervalFn }> = ({ useInt }) =>
   const headingStyle: React.CSSProperties = {
     fontFamily: 'sans',
     fontSize: '20px',
-    padding: '30px 0 0',
+    padding: '0',
+    lineHeight: '1.5em',
   };
 
   const rowStyle: React.CSSProperties = {
@@ -53,11 +54,16 @@ const Demo: React.FC<{ useInt: typeof useHarmonicIntervalFn }> = ({ useInt }) =>
   );
 };
 
-storiesOf('Side effects|useHarmonicIntervalFn', module)
+storiesOf('Animation|useHarmonicIntervalFn', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useInterval.md')} />)
   .add('Demo', () => (
     <>
       <Demo useInt={useInterval} />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <Demo useInt={useHarmonicIntervalFn} />
     </>
   ));
