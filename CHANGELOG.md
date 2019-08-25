@@ -1,3 +1,10 @@
+# [11.2.0](https://github.com/streamich/react-use/compare/v11.1.1...v11.2.0) (2019-08-25)
+
+
+### Features
+
+* add useCircularIterate ([8d84340](https://github.com/streamich/react-use/commit/8d84340))
+
 ## [11.1.1](https://github.com/streamich/react-use/compare/v11.1.0...v11.1.1) (2019-08-25)
 
 
