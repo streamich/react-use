@@ -84,7 +84,7 @@
     "husky": "3.0.4",
     "jest": "24.9.0",
     "keyboardjs": "2.5.1",
-    "lint-staged": "9.2.3",
+    "lint-staged": "9.2.4",
     "markdown-loader": "5.1.0",
     "prettier": "1.18.2",
     "raf-stub": "3.0.0",
