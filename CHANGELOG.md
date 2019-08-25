@@ -1,3 +1,10 @@
+# [11.3.0](https://github.com/streamich/react-use/compare/v11.2.0...v11.3.0) (2019-08-25)
+
+
+### Features
+
+* add usePreviousDistinct ([#551](https://github.com/streamich/react-use/issues/551)) ([6c3e569](https://github.com/streamich/react-use/commit/6c3e569))
+
 # [11.2.0](https://github.com/streamich/react-use/compare/v11.1.1...v11.2.0) (2019-08-25)
 
 
