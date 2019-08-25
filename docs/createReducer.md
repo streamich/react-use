@@ -45,7 +45,7 @@ const Demo = ({ initialCount = 1 }) => {
       <p>count: {state.count}</p>
       <button onClick={() => dispatch(addAndReset())}>Add and reset</button>
       <button
-        onClick={() => dispatch({ type: 'reset', payload: initialCount })}
+        onClick={() => dispatch({ type: 'reset', payload: { count: initialCount }})}
       >
         Reset
       </button>

@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { useGetSetState, useSetState } from '..';
+import { useGetSetState } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {

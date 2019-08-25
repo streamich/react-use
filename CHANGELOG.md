@@ -1,3 +1,96 @@
+## [11.3.1](https://github.com/streamich/react-use/compare/v11.3.0...v11.3.1) (2019-08-25)
+
+
+### Bug Fixes
+
+* update createReducer to fix initial state ([fd083f2](https://github.com/streamich/react-use/commit/fd083f2))
+
+# [11.3.0](https://github.com/streamich/react-use/compare/v11.2.0...v11.3.0) (2019-08-25)
+
+
+### Features
+
+* add usePreviousDistinct ([#551](https://github.com/streamich/react-use/issues/551)) ([6c3e569](https://github.com/streamich/react-use/commit/6c3e569))
+
+# [11.2.0](https://github.com/streamich/react-use/compare/v11.1.1...v11.2.0) (2019-08-25)
+
+
+### Features
+
+* add useCircularIterate ([8d84340](https://github.com/streamich/react-use/commit/8d84340))
+
+## [11.1.1](https://github.com/streamich/react-use/compare/v11.1.0...v11.1.1) (2019-08-25)
+
+
+### Bug Fixes
+
+* [#550](https://github.com/streamich/react-use/issues/550) ([2617d74](https://github.com/streamich/react-use/commit/2617d74))
+
+# [11.1.0](https://github.com/streamich/react-use/compare/v11.0.2...v11.1.0) (2019-08-25)
+
+
+### Features
+
+* 🎸 add useHarmonicIntervalFn() hook ([d9f21e3](https://github.com/streamich/react-use/commit/d9f21e3))
+
+## [11.0.2](https://github.com/streamich/react-use/compare/v11.0.1...v11.0.2) (2019-08-23)
+
+
+### Bug Fixes
+
+* **useSetState:** memoize setState callback ([0275329](https://github.com/streamich/react-use/commit/0275329))
+* **useSetState:** memoize setState callback ([16f023f](https://github.com/streamich/react-use/commit/16f023f))
+
+## [11.0.1](https://github.com/streamich/react-use/compare/v11.0.0...v11.0.1) (2019-08-23)
+
+
+### Bug Fixes
+
+* correct useSpring() hook behaviour ([d7a622d](https://github.com/streamich/react-use/commit/d7a622d))
+
+# [11.0.0](https://github.com/streamich/react-use/compare/v10.8.0...v11.0.0) (2019-08-22)
+
+
+### Features
+
+* add cancel and reset methods to useTimeout ([283045a](https://github.com/streamich/react-use/commit/283045a))
+* add useTimeoutFn ([284e6fd](https://github.com/streamich/react-use/commit/284e6fd))
+
+
+### BREAKING CHANGES
+
+* useTimeout now returns a tuple
+
+# [10.8.0](https://github.com/streamich/react-use/compare/v10.7.1...v10.8.0) (2019-08-20)
+
+
+### Bug Fixes
+
+* Reworked useBattery hook ([1069060](https://github.com/streamich/react-use/commit/1069060))
+* succeed useRafLoop tests ([09167df](https://github.com/streamich/react-use/commit/09167df))
+
+
+### Features
+
+* 🎸 support useBattery hook on server side ([5d31cf0](https://github.com/streamich/react-use/commit/5d31cf0))
+* 🎸 use only one useState and one useEffect call ([2d0fabf](https://github.com/streamich/react-use/commit/2d0fabf))
+
+## [10.7.1](https://github.com/streamich/react-use/compare/v10.7.0...v10.7.1) (2019-08-20)
+
+
+### Bug Fixes
+
+* async test warnings ([#543](https://github.com/streamich/react-use/issues/543)) ([7af237e](https://github.com/streamich/react-use/commit/7af237e))
+
+# [10.7.0](https://github.com/streamich/react-use/compare/v10.6.4...v10.7.0) (2019-08-19)
+
+
+### Features
+
+* 🎸 add useUpsert ([6875e13](https://github.com/streamich/react-use/commit/6875e13))
+* 🎸 export useUpsert from index ([3eda2b2](https://github.com/streamich/react-use/commit/3eda2b2))
+* add useUpsert ([a7c2899](https://github.com/streamich/react-use/commit/a7c2899))
+
 ## [10.6.4](https://github.com/streamich/react-use/compare/v10.6.3...v10.6.4) (2019-08-19)
 
 

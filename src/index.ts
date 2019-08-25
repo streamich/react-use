@@ -23,6 +23,7 @@ export { default as useFullscreen } from './useFullscreen';
 export { default as useGeolocation } from './useGeolocation';
 export { default as useGetSet } from './useGetSet';
 export { default as useGetSetState } from './useGetSetState';
+export { default as useHarmonicIntervalFn } from './useHarmonicIntervalFn';
 export { default as useHover } from './useHover';
 export { default as useHoverDirty } from './useHoverDirty';
 export { default as useIdle } from './useIdle';
@@ -54,9 +55,13 @@ export { default as useOrientation } from './useOrientation';
 export { default as usePageLeave } from './usePageLeave';
 export { default as usePermission } from './usePermission';
 export { default as usePrevious } from './usePrevious';
+export { default as usePreviousDistinct } from './usePreviousDistinct';
 export { default as usePromise } from './usePromise';
 export { default as useRaf } from './useRaf';
 export { default as useRafLoop } from './useRafLoop';
+/**
+ * @deprecated This hook is obsolete, use `useMountedState` instead
+ */
 export { default as useRefMounted } from './useRefMounted';
 export { default as useScroll } from './useScroll';
 export { default as useScrolling } from './useScrolling';
@@ -67,15 +72,18 @@ export { default as useSpeech } from './useSpeech';
 // not exported because of peer dependency
 // export { default as useSpring } from './useSpring';
 export { default as useStartTyping } from './useStartTyping';
+export { default as useStateList } from './useStateList';
 export { default as useThrottle } from './useThrottle';
 export { default as useThrottleFn } from './useThrottleFn';
 export { default as useTimeout } from './useTimeout';
+export { default as useTimeoutFn } from './useTimeoutFn';
 export { default as useTitle } from './useTitle';
 export { default as useToggle } from './useToggle';
 export { default as useTween } from './useTween';
 export { default as useUnmount } from './useUnmount';
 export { default as useUpdate } from './useUpdate';
 export { default as useUpdateEffect } from './useUpdateEffect';
+export { default as useUpsert } from './useUpsert';
 export { default as useVideo } from './useVideo';
 export { useWait, Waiter } from './useWait';
 export { default as useWindowScroll } from './useWindowScroll';

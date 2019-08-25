@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import { Subject } from 'rxjs';
-import useObservable, { Observable } from '../useObservable';
 import * as useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
+import useObservable, { Observable } from '../useObservable';
 
 const setUp = (observable: Observable<any>, initialValue?: any) =>
   renderHook(() => useObservable(observable, initialValue));

@@ -40,3 +40,21 @@ it('should merge changes into current state when providing function', () => {
 
   expect(result.current[0]).toEqual({ foo: 'bar', count: 2, someBool: true });
 });
+
+/**
+ * Enforces cases where a hook can safely depend on the callback without
+ * causing an endless rerender cycle: useEffect(() => setState({ data }), [setState]);
+ */
+it('should return a memoized setState callback', () => {
+  const { result, rerender } = setUp({ ok: false });
+  const [, setState1] = result.current;
+
+  act(() => {
+    setState1({ ok: true });
+  });
+  rerender();
+
+  const [, setState2] = result.current;
+
+  expect(setState1).toBe(setState2);
+});
