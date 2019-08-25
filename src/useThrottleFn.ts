@@ -3,7 +3,7 @@ import useUnmount from './useUnmount';
 
 const useThrottleFn = <T>(fn: (...args: any[]) => T, ms: number = 200, args: any[]) => {
   const [state, setState] = useState<T>(null as any);
-  const timeout = useRef<any>(null);
+  const timeout = useRef<ReturnType<typeof setTimeout>>();
   const nextArgs = useRef(null) as any;
   const hasNextArgs = useRef(false) as any;
 
@@ -16,7 +16,7 @@ const useThrottleFn = <T>(fn: (...args: any[]) => T, ms: number = 200, args: any
           setState(fn(...nextArgs.current));
           timeout.current = setTimeout(timeoutCallback, ms);
         } else {
-          timeout.current = null;
+          timeout.current = undefined;
         }
       };
       timeout.current = setTimeout(timeoutCallback, ms);
@@ -27,7 +27,7 @@ const useThrottleFn = <T>(fn: (...args: any[]) => T, ms: number = 200, args: any
   }, args);
 
   useUnmount(() => {
-    clearTimeout(timeout.current);
+    timeout.current && clearTimeout(timeout.current);
   });
 
   return state;

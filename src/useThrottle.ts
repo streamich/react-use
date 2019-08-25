@@ -3,7 +3,7 @@ import useUnmount from './useUnmount';
 
 const useThrottle = <T>(value: T, ms: number = 200) => {
   const [state, setState] = useState<T>(value);
-  const timeout = useRef<any>(null);
+  const timeout = useRef<ReturnType<typeof setTimeout>>();
   const nextValue = useRef(null) as any;
   const hasNextValue = useRef(0) as any;
 
@@ -16,7 +16,7 @@ const useThrottle = <T>(value: T, ms: number = 200) => {
           setState(nextValue.current);
           timeout.current = setTimeout(timeoutCallback, ms);
         } else {
-          timeout.current = null;
+          timeout.current = undefined;
         }
       };
       timeout.current = setTimeout(timeoutCallback, ms);
@@ -27,7 +27,7 @@ const useThrottle = <T>(value: T, ms: number = 200) => {
   }, [value]);
 
   useUnmount(() => {
-    clearTimeout(timeout.current);
+    timeout.current && clearTimeout(timeout.current);
   });
 
   return state;
