@@ -1,3 +1,10 @@
+# [11.1.0](https://github.com/streamich/react-use/compare/v11.0.2...v11.1.0) (2019-08-25)
+
+
+### Features
+
+* 🎸 add useHarmonicIntervalFn() hook ([d9f21e3](https://github.com/streamich/react-use/commit/d9f21e3))
+
 ## [11.0.2](https://github.com/streamich/react-use/compare/v11.0.1...v11.0.2) (2019-08-23)
 
 
