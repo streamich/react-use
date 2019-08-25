@@ -55,7 +55,7 @@ const Demo: React.FC<{ useInt: typeof useHarmonicIntervalFn }> = ({ useInt }) =>
 };
 
 storiesOf('Animation|useHarmonicIntervalFn', module)
-  .add('Docs', () => <ShowDocs md={require('../../docs/useInterval.md')} />)
+  .add('Docs', () => <ShowDocs md={require('../../docs/useHarmonicIntervalFn.md')} />)
   .add('Demo', () => (
     <>
       <Demo useInt={useInterval} />
