@@ -7,15 +7,12 @@ The third argument is the array of values that the debounce depends on, in the s
 ## Usage
 
 ```jsx
-import React, { useState } from 'react';
-import { useDebounce } from 'react-use';
-
 const Demo = () => {
   const [state, setState] = React.useState('Typing stopped');
   const [val, setVal] = React.useState('');
   const [debouncedValue, setDebouncedValue] = React.useState('');
 
-  useDebounce(
+  const [, cancel] = useDebounce(
     () => {
       setState('Typing stopped');
       setDebouncedValue(val);
@@ -36,7 +33,10 @@ const Demo = () => {
         }}
       />
       <div>{state}</div>
-      <div>Debounced value: {debouncedValue}</div>
+      <div>
+        Debounced value: {debouncedValue}
+        <button onClick={cancel}>Cancel debounce</button>
+      </div>
     </div>
   );
 };
@@ -45,5 +45,17 @@ const Demo = () => {
 ## Reference
 
 ```ts
-const { cancel } = useDebounce(fn, ms: number, args: any[]);
+const [
+    isReady: () => boolean | null,
+    cancel: () => void,
+] = useDebounce(fn: Function, ms: number, args: DependencyList = []);
 ```
+
+- **`fn`**_`: Function`_ - function that will be called;
+- **`ms`**_`: number`_ - delay in milliseconds;
+- **`args`**_`: DependencyList`_ - array of values that the debounce depends on, in the same manner as useEffect;
+- **`isReady`**_`: ()=>boolean|null`_ - function returning current debounce state:
+    - `false` - pending
+    - `true` - called
+    - `null` - cancelled
+- **`cancel`**_`: ()=>void`_ - cancel the debounce
