@@ -28,6 +28,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side effects|useInterval', module)
+storiesOf('Animation|useInterval', module)
   .add('Docs', () => <ShowDocs md={require('../../docs/useInterval.md')} />)
   .add('Demo', () => <Demo />);

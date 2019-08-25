@@ -51,6 +51,7 @@
     "react-fast-compare": "^2.0.4",
     "react-wait": "^0.3.0",
     "screenfull": "^4.1.0",
+    "set-harmonic-interval": "^1.0.0",
     "throttle-debounce": "^2.0.1",
     "ts-easing": "^0.2.0"
   },
