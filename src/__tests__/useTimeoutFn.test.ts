@@ -28,9 +28,11 @@ describe('useTimeoutFn', () => {
     expect(typeof hook.result.current[2]).toBe('function');
   });
 
-  function getHook(ms: number = 5): [jest.Mock, RenderHookResult<{ delay: number }, UseTimeoutFnReturn>] {
-    const spy = jest.fn();
-    return [spy, renderHook(({ delay = 5 }) => useTimeoutFn(spy, delay), { initialProps: { delay: ms } })];
+  function getHook(
+    ms: number = 5,
+    fn: Function = jest.fn()
+  ): [Function, RenderHookResult<{ delay: number; cb: Function }, UseTimeoutFnReturn>] {
+    return [fn, renderHook(({ delay = 5, cb }) => useTimeoutFn(cb, delay), { initialProps: { delay: ms, cb: fn } })];
   }
 
   it('should call passed function after given amount of time', () => {
@@ -108,9 +110,23 @@ describe('useTimeoutFn', () => {
     const [spy, hook] = getHook(50);
 
     expect(spy).not.toHaveBeenCalled();
-    hook.rerender({ delay: 5 });
+    hook.rerender({ delay: 5, cb: spy });
 
     jest.advanceTimersByTime(5);
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should NOT reset timeout on function change', () => {
+    const [spy, hook] = getHook(50);
+
+    jest.advanceTimersByTime(25);
+    expect(spy).not.toHaveBeenCalled();
+
+    const spy2 = jest.fn();
+    hook.rerender({ delay: 50, cb: spy2 });
+
+    jest.advanceTimersByTime(25);
+    expect(spy).not.toHaveBeenCalled();
+    expect(spy2).toHaveBeenCalledTimes(1);
   });
 });
