@@ -48,12 +48,12 @@ const Demo = () => {
 const [
     isReady: () => boolean | null,
     cancel: () => void,
-] = useDebounce(fn: Function, ms: number, args: DependencyList = []);
+] = useDebounce(fn: Function, ms: number, deps: DependencyList = []);
 ```
 
 - **`fn`**_`: Function`_ - function that will be called;
 - **`ms`**_`: number`_ - delay in milliseconds;
-- **`args`**_`: DependencyList`_ - array of values that the debounce depends on, in the same manner as useEffect;
+- **`deps`**_`: DependencyList`_ - array of values that the debounce depends on, in the same manner as useEffect;
 - **`isReady`**_`: ()=>boolean|null`_ - function returning current debounce state:
     - `false` - pending
     - `true` - called
