@@ -24,3 +24,12 @@ it('should forces a re-render every time update function is called', () => {
   act(() => update());
   expect(renderCount).toBe(3);
 });
+
+it('should return same update function instance on each update', () => {
+  const { result, rerender } = renderHook(() => useUpdate());
+  const { current: updateCb } = result;
+
+  rerender();
+
+  expect(Object.is(result.current, updateCb)).toBe(true);
+});
