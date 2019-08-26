@@ -123,7 +123,7 @@ describe('useTimeoutFn', () => {
     expect(spy).not.toHaveBeenCalled();
 
     const spy2 = jest.fn();
-    hook.rerender({ delay: 5, cb: spy2 });
+    hook.rerender({ delay: 50, cb: spy2 });
 
     jest.advanceTimersByTime(25);
     expect(spy).not.toHaveBeenCalled();
