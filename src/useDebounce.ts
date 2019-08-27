@@ -1,6 +1,6 @@
 import useUpdateEffect from './useUpdateEffect';
 
-const useDebounce = (fn, ms, args = []) => {
+const useDebounce = (fn: (args: any[]) => any, ms: number = 0, args: any[] = []) => {
   let handle;
   let canFlush = false;
 
