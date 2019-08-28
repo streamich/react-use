@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
-
 export interface ContentRect {
   width: number;
   height: number;
@@ -23,7 +22,9 @@ const useMeasure = <T>(): [(instance: T) => void, ContentRect] => {
     () =>
       new ResizeObserver(entries => {
         const entry = entries[0];
-        set(entry.contentRect);
+        if (entry) {
+          set(entry.contentRect);
+        }
       })
   );
 
