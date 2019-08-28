@@ -1,6 +1,6 @@
-# `useSize`
+# `useMeasure`
 
-React sensor hook that tracks size of an HTML element.
+React sensor hook that reacts to changes in size of any of the observed elements.
 
 ## Usage
 
@@ -8,7 +8,7 @@ React sensor hook that tracks size of an HTML element.
 import { useMeasure } from "react-use";
 
 const Demo = () => {
-  const [ref, { width, height }] = useSize();
+  const [ref, { width, height }] = useMeasure();
 
   return (
     <div ref={ref}>
@@ -18,6 +18,7 @@ const Demo = () => {
   );
 };
 ```
+
 ## Related hooks
 
 - [useSize](./useSize.md)
