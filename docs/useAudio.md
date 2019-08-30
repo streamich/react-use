@@ -2,15 +2,16 @@
 
 Creates `<audio>` element, tracks its state and exposes playback controls.
 
+
 ## Usage
 
 ```jsx
-import { useAudio } from 'react-use';
+import {useAudio} from 'react-use';
 
 const Demo = () => {
   const [audio, state, controls, ref] = useAudio({
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-    autoPlay: true
+    autoPlay: true,
   });
 
   return (
@@ -19,14 +20,14 @@ const Demo = () => {
       <pre>{JSON.stringify(state, null, 2)}</pre>
       <button onClick={controls.pause}>Pause</button>
       <button onClick={controls.play}>Play</button>
-      <br />
+      <br/>
       <button onClick={controls.mute}>Mute</button>
       <button onClick={controls.unmute}>Un-mute</button>
-      <br />
-      <button onClick={() => controls.volume(0.1)}>Volume: 10%</button>
-      <button onClick={() => controls.volume(0.5)}>Volume: 50%</button>
+      <br/>
+      <button onClick={() => controls.volume(.1)}>Volume: 10%</button>
+      <button onClick={() => controls.volume(.5)}>Volume: 50%</button>
       <button onClick={() => controls.volume(1)}>Volume: 100%</button>
-      <br />
+      <br/>
       <button onClick={() => controls.seek(state.time - 5)}>-5 sec</button>
       <button onClick={() => controls.seek(state.time + 5)}>+5 sec</button>
     </div>
@@ -34,11 +35,12 @@ const Demo = () => {
 };
 ```
 
+
 ## Reference
 
 ```jsx
 const [audio, state, controls, ref] = useAudio(props);
-const [audio, state, controls] = useAudio(<audio {...props} />);
+const [audio, state, controls] = useAudio(<audio {...props}/>);
 ```
 
 `audio` is React's `<audio>` element that you have to insert somewhere in your
@@ -60,7 +62,7 @@ render tree, for example:
   ],
   "time": 5.244996,
   "duration": 425.952625,
-  "paused": true,
+  "paused": false,
   "muted": false,
   "volume": 1
 }
