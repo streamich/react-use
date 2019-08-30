@@ -2,11 +2,10 @@
 
 Creates `<video>` element, tracks its state and exposes playback controls.
 
-
 ## Usage
 
 ```jsx
-import {useVideo} from 'react-use';
+import { useVideo } from 'react-use';
 
 const Demo = () => {
   const [video, state, controls, ref] = useVideo(
@@ -19,14 +18,14 @@ const Demo = () => {
       <pre>{JSON.stringify(state, null, 2)}</pre>
       <button onClick={controls.pause}>Pause</button>
       <button onClick={controls.play}>Play</button>
-      <br/>
+      <br />
       <button onClick={controls.mute}>Mute</button>
       <button onClick={controls.unmute}>Un-mute</button>
-      <br/>
-      <button onClick={() => controls.volume(.1)}>Volume: 10%</button>
-      <button onClick={() => controls.volume(.5)}>Volume: 50%</button>
+      <br />
+      <button onClick={() => controls.volume(0.1)}>Volume: 10%</button>
+      <button onClick={() => controls.volume(0.5)}>Volume: 50%</button>
       <button onClick={() => controls.volume(1)}>Volume: 100%</button>
-      <br/>
+      <br />
       <button onClick={() => controls.seek(state.time - 5)}>-5 sec</button>
       <button onClick={() => controls.seek(state.time + 5)}>+5 sec</button>
     </div>
@@ -34,12 +33,11 @@ const Demo = () => {
 };
 ```
 
-
 ## Reference
 
 ```jsx
 const [video, state, controls, ref] = useVideo(props);
-const [video, state, controls, ref] = useVideo(<video {...props}/>);
+const [video, state, controls, ref] = useVideo(<video {...props} />);
 ```
 
 `video` is React's `<video>` element that you have to insert somewhere in your
@@ -61,7 +59,7 @@ render tree, for example:
   ],
   "time": 5.244996,
   "duration": 425.952625,
-  "isPlaying": false,
+  "paused": true,
   "muted": false,
   "volume": 1
 }
