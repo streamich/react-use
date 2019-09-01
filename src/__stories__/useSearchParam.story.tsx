@@ -4,24 +4,28 @@ import { useSearchParam } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const foo = useSearchParam('foo');
+  const edit = useSearchParam('edit');
 
   return (
     <div>
-      <div>foo: {foo || '🤷‍♂️'}</div>
+      <div>edit: {edit || '🤷‍♂️'}</div>
       <div>
-        <button onClick={() => history.pushState({}, '', location.pathname + '?foo=bar')}>foo: bar</button>
+        <button onClick={() => history.pushState({}, '', location.pathname + '?edit=123')}>
+          Edit post 123 (?edit=123)
+        </button>
       </div>
       <div>
-        <button onClick={() => history.pushState({}, '', location.pathname + '?foo=baz')}>foo: baz</button>
+        <button onClick={() => history.pushState({}, '', location.pathname + '?edit=999')}>
+          Edit post 999 (?edit=999)
+        </button>
       </div>
       <div>
-        <button onClick={() => history.pushState({}, '', location.pathname)}>delete</button>
+        <button onClick={() => history.pushState({}, '', location.pathname)}>Close modal</button>
       </div>
     </div>
   );
 };
 
 storiesOf('Sensors|useSearchParam', module)
-  // .add('Docs', () => <ShowDocs md={require('../../docs/useQueryParam.md')} />)
+  .add('Docs', () => <ShowDocs md={require('../../docs/useSearchParam.md')} />)
   .add('Demo', () => <Demo />);
