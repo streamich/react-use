@@ -63,6 +63,7 @@ export { default as useRafLoop } from './useRafLoop';
  * @deprecated This hook is obsolete, use `useMountedState` instead
  */
 export { default as useRefMounted } from './useRefMounted';
+export { default as useSearchParam } from './useSearchParam';
 export { default as useScroll } from './useScroll';
 export { default as useScrolling } from './useScrolling';
 export { default as useSessionStorage } from './useSessionStorage';
