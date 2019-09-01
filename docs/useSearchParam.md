@@ -1,4 +1,4 @@
-# `useLocation`
+# `useSearchParam`
 
 React sensor hook that tracks browser's location search param.
 

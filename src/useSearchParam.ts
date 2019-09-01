@@ -26,4 +26,6 @@ const useSearchParam: UseQueryParam = param => {
   return value;
 };
 
-export default useSearchParam;
+const useSearchParamServer = () => null;
+
+export default typeof window === 'object' ? useSearchParam : useSearchParamServer;
