@@ -61,7 +61,7 @@ render tree, for example:
   ],
   "time": 5.244996,
   "duration": 425.952625,
-  "isPlaying": false,
+  "paused": false,
   "muted": false,
   "volume": 1
 }

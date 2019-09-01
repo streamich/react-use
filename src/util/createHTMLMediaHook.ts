@@ -10,7 +10,7 @@ export interface HTMLMediaProps extends React.AudioHTMLAttributes<any>, React.Vi
 export interface HTMLMediaState {
   buffered: any[];
   duration: number;
-  isPlaying: boolean;
+  paused: boolean;
   muted: boolean;
   time: number;
   volume: number;
@@ -43,7 +43,7 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
       buffered: [],
       time: 0,
       duration: 0,
-      isPlaying: false,
+      paused: true,
       muted: false,
       volume: 1,
     });
@@ -59,8 +59,8 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
       };
     };
 
-    const onPlay = () => setState({ isPlaying: true });
-    const onPause = () => setState({ isPlaying: false });
+    const onPlay = () => setState({ paused: false });
+    const onPause = () => setState({ paused: true });
     const onVolumeChange = () => {
       const el = ref.current;
       if (!el) {
@@ -208,7 +208,7 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
       setState({
         volume: el.volume,
         muted: el.muted,
-        isPlaying: !el.paused,
+        paused: el.paused,
       });
 
       // Start media, if autoPlay requested.
