@@ -18,22 +18,15 @@ const Demo = () => {
         : state.value && <p>Copied {state.value}</p>}
     </div>
   )
-
-  const [text, setText] = React.useState('');
-  const [copied, copyToClipboard] = useCopyToClipboard(text);
-
-  return (
-    <div>
-      <input value={text} onChange={e => setText(e.target.value)} />
-      <button type="button" onClick={copyToClipboard}>copy text</button>
-      <div>Copied: {copied ? 'Yes' : 'No'}</div>
-    </div>
-  )
 }
 ```
 
 ## Reference
 
 ```js
-const [state, copyToClipboard] = useCopyToClipboard();
+const [{value, error, noUserInteraction}, copyToClipboard] = useCopyToClipboard();
 ```
+
+- `value` &mdash; value that was copied to clipboard, undefined when nothing was copied.
+- `error` &mdash; catched error when trying to copy to clipboard.
+- `noUserInteraction` &mdash; boolean indicating if user interaction was required to copy the value to clipboard to expose full API from underlying [`copy-to-clipboard`](https://github.com/sudodoki/copy-to-clipboard) library.
