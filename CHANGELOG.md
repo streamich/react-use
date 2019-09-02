@@ -1,3 +1,10 @@
+# [12.2.0](https://github.com/streamich/react-use/compare/v12.1.0...v12.2.0) (2019-09-02)
+
+
+### Features
+
+* improve useWindowSize performance rAF ([60a4937](https://github.com/streamich/react-use/commit/60a4937))
+
 # [12.1.0](https://github.com/streamich/react-use/compare/v12.0.0...v12.1.0) (2019-09-01)
 
 
