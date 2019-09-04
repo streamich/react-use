@@ -51,9 +51,7 @@ describe('useThrottle', () => {
       expect(hook.result.current).toBe(1);
       done();
     });
-    jest.advanceTimersByTime(100);
-    expect(hook.result.current).toBe(0);
-    jest.advanceTimersByTime(100);
+    jest.advanceTimersByTime(200);
   });
 
   it('should not update the value after the given time', () => {

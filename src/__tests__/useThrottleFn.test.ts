@@ -1,32 +1,98 @@
-import { renderHook, act } from '@testing-library/react-hooks';
-import useThrottleFn from '../useThrottleFn';
+import { renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { useThrottleFn } from '../';
 
-const mockFn = jest.fn(count => count);
-jest.useFakeTimers();
+describe('useThrottleFn', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
 
-it('it should throttle the given function by specific time', () => {
-  const { result, rerender, unmount } = renderHook(props => useThrottleFn(mockFn, 1000, [props]), { initialProps: 1 });
-  // Only called once if the mockFn called multiple times in 1 second.
-  expect(mockFn).toHaveBeenCalledTimes(1);
-  expect(result.current).toBe(1);
-  rerender(2);
-  expect(mockFn).toHaveBeenCalledTimes(1);
-  expect(result.current).toBe(1);
-  act(() => {
-    jest.advanceTimersByTime(1000);
+  it('should be defined', () => {
+    expect(useThrottleFn).toBeDefined();
   });
-  // The mockFn can be called again after 1 second.
-  rerender(2);
-  expect(mockFn).toHaveBeenCalledTimes(2);
-  expect(result.current).toBe(2);
-  // wait 1 second to intialize the timeout ref
-  act(() => {
-    jest.advanceTimersByTime(1000);
+
+  const getHook = <T>(initialProps: T, ms?: number): [Function, RenderHookResult<T, T>] => {
+    const mockFn = jest.fn(props => props);
+    return [mockFn, renderHook(props => useThrottleFn(mockFn, ms, [props]), { initialProps })];
+  };
+
+  it('should return the value that the given function return', () => {
+    const [fn, hook] = getHook(10, 100);
+
+    expect(hook.result.current).toBe(10);
+    expect(fn).toHaveBeenCalledTimes(1);
   });
-  // Call clearTimeout when unmount.
-  rerender(3);
-  act(() => {
-    jest.advanceTimersByTime(500);
+
+  it('should has same value if time is advanced less than the given time', () => {
+    const [fn, hook] = getHook(10, 100);
+
+    expect(hook.result.current).toBe(10);
+    expect(fn).toHaveBeenCalledTimes(1);
+
+    hook.rerender(20);
+    jest.advanceTimersByTime(50);
+
+    expect(hook.result.current).toBe(10);
+    expect(fn).toHaveBeenCalledTimes(1);
+    expect(jest.getTimerCount()).toBe(1);
   });
-  unmount();
+
+  it('should update the value after the given time when arguments change', done => {
+    const [fn, hook] = getHook('boo', 100);
+
+    expect(hook.result.current).toBe('boo');
+    expect(fn).toHaveBeenCalledTimes(1);
+
+    hook.rerender('foo');
+    hook.waitForNextUpdate().then(() => {
+      expect(hook.result.current).toBe('foo');
+      expect(fn).toHaveBeenCalledTimes(2);
+      done();
+    });
+    jest.advanceTimersByTime(100);
+  });
+
+  it('should use the default ms value when missing', done => {
+    const [fn, hook] = getHook('boo');
+
+    expect(hook.result.current).toBe('boo');
+    expect(fn).toHaveBeenCalledTimes(1);
+
+    hook.rerender('foo');
+    hook.waitForNextUpdate().then(() => {
+      expect(hook.result.current).toBe('foo');
+      expect(fn).toHaveBeenCalledTimes(2);
+      done();
+    });
+    jest.advanceTimersByTime(200);
+  });
+  it('should not exist timer when arguments did not update after the given time', () => {
+    const [fn, hook] = getHook('boo', 100);
+
+    expect(hook.result.current).toBe('boo');
+    expect(fn).toHaveBeenCalledTimes(1);
+    expect(jest.getTimerCount()).toBe(1);
+
+    jest.advanceTimersByTime(100);
+
+    expect(jest.getTimerCount()).toBe(0);
+  });
+  it('should cancel timeout on unmount', () => {
+    const [fn, hook] = getHook('boo', 100);
+
+    expect(hook.result.current).toBe('boo');
+    expect(fn).toHaveBeenCalledTimes(1);
+
+    hook.rerender('foo');
+    hook.unmount();
+
+    expect(jest.getTimerCount()).toBe(0);
+    jest.advanceTimersByTime(100);
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
 });
