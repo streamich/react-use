@@ -1,5 +1,6 @@
 import { DependencyList, useCallback, useState } from 'react';
 import useMountedState from './useMountedState';
+import { FnReturningPromise, PromiseType } from './util';
 
 export type AsyncState<T> =
   | {
@@ -18,16 +19,17 @@ export type AsyncState<T> =
       value: T;
     };
 
-export type FnReturningPromise = (...args: any[]) => Promise<any>;
-export type AsyncFnReturn<T extends FnReturningPromise = FnReturningPromise> = [AsyncState<ReturnType<T>>, T];
+type StateFromFnReturningPromise<T extends FnReturningPromise> = AsyncState<PromiseType<ReturnType<T>>>;
 
-export default function useAsync<T extends FnReturningPromise>(
+export type AsyncFnReturn<T extends FnReturningPromise = FnReturningPromise> = [StateFromFnReturningPromise<T>, T];
+
+export default function useAsyncFn<T extends FnReturningPromise>(
   fn: T,
   deps: DependencyList = [],
-  initialState: AsyncState<ReturnType<T>> = { loading: false }
+  initialState: StateFromFnReturningPromise<T> = { loading: false }
 ): AsyncFnReturn<T> {
   const isMounted = useMountedState();
-  const [state, set] = useState<AsyncState<ReturnType<T>>>(initialState);
+  const [state, set] = useState<StateFromFnReturningPromise<T>>(initialState);
 
   const callback = useCallback((...args: Parameters<T>): ReturnType<T> => {
     set({ loading: true });

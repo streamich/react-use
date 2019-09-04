@@ -1,5 +1,6 @@
 import { DependencyList, useEffect } from 'react';
-import useAsyncFn, { FnReturningPromise } from './useAsyncFn';
+import useAsyncFn from './useAsyncFn';
+import { FnReturningPromise } from './util';
 
 export { AsyncState, AsyncFnReturn } from './useAsyncFn';
 
