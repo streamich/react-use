@@ -12,7 +12,9 @@ it('should init list and utils', () => {
     set: expect.any(Function),
     clear: expect.any(Function),
     updateAt: expect.any(Function),
+    updateItem: expect.any(Function),
     remove: expect.any(Function),
+    removeItem: expect.any(Function),
     push: expect.any(Function),
     filter: expect.any(Function),
     sort: expect.any(Function),
@@ -64,6 +66,19 @@ it('should update element at specific position', () => {
   expect(result.current[0]).not.toBe(initList); // checking immutability
 });
 
+it('should update element by predicate and updater', () => {
+  const initList = [{ id: 1, color: 'red' }, { id: 2, color: 'green' }, { id: 3, color: 'blue' }];
+  const { result } = setUp(initList);
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.updateItem(item => item.id === 2, item => ({ ...item, color: 'black' }));
+  });
+
+  expect(result.current[0]).toEqual([{ id: 1, color: 'red' }, { id: 2, color: 'black' }, { id: 3, color: 'blue' }]);
+  expect(result.current[0]).not.toBe(initList); // checking immutability
+});
+
 it('should remove element at specific position', () => {
   const initList = [1, 2, 3];
   const { result } = setUp(initList);
@@ -74,6 +89,19 @@ it('should remove element at specific position', () => {
   });
 
   expect(result.current[0]).toEqual([1, 3]);
+  expect(result.current[0]).not.toBe(initList); // checking immutability
+});
+
+it('should remove element by predicate', () => {
+  const initList = [{ id: 1 }, { id: 2 }, { id: 3 }];
+  const { result } = setUp(initList);
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.removeItem(item => item.id === 2);
+  });
+
+  expect(result.current[0]).toEqual([{ id: 1 }, { id: 3 }]);
   expect(result.current[0]).not.toBe(initList); // checking immutability
 });
 
