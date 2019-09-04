@@ -18,21 +18,18 @@ export type AsyncState<T> =
       value: T;
     };
 
-export type AsyncFn<Result = any, Args extends any[] = any[]> = [
-  AsyncState<Result>,
-  (...args: Args | []) => Promise<Result>
-];
+export type FnReturningPromise = (...args: any[]) => Promise<any>;
+export type AsyncFnReturn<T extends FnReturningPromise = FnReturningPromise> = [AsyncState<ReturnType<T>>, T];
 
-export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
-  fn: (...args: Args | []) => Promise<Result>,
+export default function useAsync<T extends FnReturningPromise>(
+  fn: T,
   deps: DependencyList = [],
-  initialState: AsyncState<Result> = { loading: false }
-): AsyncFn<Result, Args> {
-  const [state, set] = useState<AsyncState<Result>>(initialState);
-
+  initialState: AsyncState<ReturnType<T>> = { loading: false }
+): AsyncFnReturn<T> {
   const isMounted = useMountedState();
+  const [state, set] = useState<AsyncState<ReturnType<T>>>(initialState);
 
-  const callback = useCallback((...args: Args | []) => {
+  const callback = useCallback((...args: Parameters<T>): ReturnType<T> => {
     set({ loading: true });
 
     return fn(...args).then(
@@ -46,8 +43,8 @@ export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
 
         return error;
       }
-    );
+    ) as ReturnType<T>;
   }, deps);
 
-  return [state, callback];
+  return [state, (callback as unknown) as T];
 }
