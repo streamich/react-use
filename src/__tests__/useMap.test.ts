@@ -110,10 +110,12 @@ it('should reset map to initial object provided', () => {
 it('should memoized its utils methods', () => {
   const { result } = setUp({ foo: 'bar', a: 1 });
   const [, utils] = result.current;
+  const { set } = utils;
 
   act(() => {
-    utils.set('foo', 'baz');
+    set('foo', 'baz');
   });
 
   expect(result.current[1]).toBe(utils);
+  expect(result.current[1].set).toBe(set);
 });
