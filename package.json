@@ -51,7 +51,7 @@
     "react-fast-compare": "^2.0.4",
     "react-wait": "^0.3.0",
     "resize-observer-polyfill": "^1.5.1",
-    "screenfull": "^4.1.0",
+    "screenfull": "^5.0.0",
     "set-harmonic-interval": "^1.0.0",
     "throttle-debounce": "^2.0.1",
     "ts-easing": "^0.2.0"
