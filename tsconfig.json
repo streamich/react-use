@@ -16,7 +16,8 @@
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
     "outDir": "lib",
-    "lib": ["es2018", "dom"]
+    "lib": ["es2018", "dom"],
+    "importHelpers": true
   },
   "exclude": [
     "node_modules",

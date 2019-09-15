@@ -54,7 +54,8 @@
     "screenfull": "^4.1.0",
     "set-harmonic-interval": "^1.0.0",
     "throttle-debounce": "^2.0.1",
-    "ts-easing": "^0.2.0"
+    "ts-easing": "^0.2.0",
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",
