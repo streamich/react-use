@@ -9,6 +9,7 @@ export interface State {
   elY: number;
   elH: number;
   elW: number;
+  dirty: boolean;
 }
 
 const useMouse = (ref: RefObject<Element>): State => {
@@ -28,6 +29,7 @@ const useMouse = (ref: RefObject<Element>): State => {
     elY: 0,
     elH: 0,
     elW: 0,
+    dirty: false,
   });
 
   useEffect(() => {
@@ -51,6 +53,7 @@ const useMouse = (ref: RefObject<Element>): State => {
             elY,
             elH,
             elW,
+            dirty: true,
           });
         }
       });
