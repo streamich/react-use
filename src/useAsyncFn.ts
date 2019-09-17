@@ -39,12 +39,12 @@ export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
       value => {
         isMounted() && set({ value, loading: false });
 
-        return value;
+        return Promise.resolve(value);
       },
       error => {
         isMounted() && set({ error, loading: false });
 
-        return error;
+        return Promise.reject(error);
       }
     );
   }, deps);
