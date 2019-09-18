@@ -133,6 +133,7 @@
   - [`useCounter` and `useNumber`](./docs/useCounter.md) &mdash; tracks state of a number. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-usecounter--demo)
   - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
   - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
+  - [`useQueue`](./docs/useQueue.md) &mdash; implements simple queue.
 
 
 <br />

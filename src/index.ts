@@ -57,6 +57,7 @@ export { default as usePermission } from './usePermission';
 export { default as usePrevious } from './usePrevious';
 export { default as usePreviousDistinct } from './usePreviousDistinct';
 export { default as usePromise } from './usePromise';
+export { default as useQueue } from './useQueue';
 export { default as useRaf } from './useRaf';
 export { default as useRafLoop } from './useRafLoop';
 /**
