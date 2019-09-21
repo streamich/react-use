@@ -12,8 +12,14 @@ export default function useAsync<Result = any, Args extends any[] = any[]>(
   });
 
   useEffect(() => {
-    callback();
+    init();
   }, [callback]);
+
+  async function init() {
+    try {
+      await callback();
+    } catch {}
+  }
 
   return state;
 }
