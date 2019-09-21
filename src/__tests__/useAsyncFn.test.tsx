@@ -9,6 +9,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import useAsyncFn, { AsyncState } from '../useAsyncFn';
 
 type AdderFn = (a: number, b: number) => Promise<number>;
+type FailedPromise = () => Promise<string>;
 
 describe('useAsyncFn', () => {
   it('should be defined', () => {
@@ -44,6 +45,38 @@ describe('useAsyncFn', () => {
 
       expect(state.value).toEqual(12);
       expect(result).toEqual(state.value);
+    });
+  });
+
+  describe('the callback can be awaited and catch thrown error', () => {
+    let hook;
+    const failedPromise = (): Promise<string> => Promise.reject('error message');
+
+    beforeEach(() => {
+      hook = renderHook<{ fn: FailedPromise }, [AsyncState<string>, FailedPromise]>(({ fn }) => useAsyncFn(fn), {
+        initialProps: { fn: failedPromise },
+      });
+    });
+
+    it('catch errors', async () => {
+      const [, callback] = hook.result.current;
+      let error;
+
+      await act(async () => {
+        try {
+          await callback();
+        } catch (e) {
+          error = e;
+        }
+      });
+
+      expect(error).toEqual('error message');
+
+      const [state] = hook.result.current;
+
+      expect(state.value).toEqual(undefined);
+      expect(state.error).toEqual(error);
+      expect(state.error).toEqual('error message');
     });
   });
 
