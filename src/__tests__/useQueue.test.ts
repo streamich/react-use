@@ -25,7 +25,7 @@ it('appends new member', () => {
 it('pops oldest member', () => {
   const { result } = setUp([1, 2]);
   act(() => {
-    result.current.pop();
+    result.current.remove();
   });
   const { first, size } = result.current;
   expect(first).toEqual(2);

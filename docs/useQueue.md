@@ -1,6 +1,6 @@
 # `useQueue`
 
-React state hook implements simple queue.
+React state hook implements simple FIFO queue.
 
 
 ## Usage
@@ -9,7 +9,7 @@ React state hook implements simple queue.
 import { useQueue } from 'react-use';
 
 const Demo = () => {
-  const { add, pop, first, last, size } = useQueue();
+  const { add, remove, first, last, size } = useQueue();
 
   return (
     <div>
@@ -19,7 +19,7 @@ const Demo = () => {
         <li>size: {size}</li>
       </ul>
       <button onClick={() => add((last || 0) + 1)}>Add</button>
-      <button onClick={() => pop()}>Pop</button>
+      <button onClick={() => pop()}>Remove</button>
     </div>
   );
 };

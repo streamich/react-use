@@ -4,7 +4,7 @@ import { useQueue } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const { add, pop, first, last, size } = useQueue();
+  const { add, remove, first, last, size } = useQueue();
   return (
     <div>
       <ul>
@@ -13,7 +13,7 @@ const Demo = () => {
         <li>size: {size}</li>
       </ul>
       <button onClick={() => add((last || 0) + 1)}>Add</button>
-      <button onClick={() => pop()}>Pop</button>
+      <button onClick={() => remove()}>Removw</button>
     </div>
   );
 };
