@@ -1,3 +1,10 @@
+## [12.2.1](https://github.com/streamich/react-use/compare/v12.2.0...v12.2.1) (2019-09-23)
+
+
+### Bug Fixes
+
+* remove attempt from deps of retry in useAsyncRetry ([#614](https://github.com/streamich/react-use/issues/614)) ([adce59e](https://github.com/streamich/react-use/commit/adce59e))
+
 # [12.2.0](https://github.com/streamich/react-use/compare/v12.1.0...v12.2.0) (2019-09-02)
 
 
