@@ -20,7 +20,7 @@ const useAsyncRetry = <T>(fn: () => Promise<T>, deps: DependencyList = []) => {
     }
 
     setAttempt(currentAttempt => currentAttempt + 1);
-  }, [...deps, stateLoading, attempt]);
+  }, [...deps, stateLoading]);
 
   return { ...state, retry };
 };
