@@ -103,6 +103,19 @@ it('should push duplicated element at the end of the list', () => {
   expect(result.current[0]).not.toBe(initList); // checking immutability
 });
 
+it('should push multiple elements at the end of the list', () => {
+  const initList = [1, 2, 3];
+  const { result } = setUp(initList);
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.push(4, 5, 6);
+  });
+
+  expect(result.current[0]).toEqual([1, 2, 3, 4, 5, 6]);
+  expect(result.current[0]).not.toBe(initList); // checking immutability
+});
+
 it('should filter current list by provided function', () => {
   const initList = [1, -1, 2, -2, 3, -3];
   const { result } = setUp(initList);
