@@ -5,7 +5,7 @@ const useInterval = (callback: Function, delay?: number | null) => {
 
   useEffect(() => {
     latestCallback.current = callback;
-  });
+  }, [callback]);
 
   useEffect(() => {
     if (delay !== null) {
