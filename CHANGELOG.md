@@ -1,3 +1,10 @@
+## [12.2.2](https://github.com/streamich/react-use/compare/v12.2.1...v12.2.2) (2019-09-26)
+
+
+### Bug Fixes
+
+* useDebounce remove deps from function arguments ([#623](https://github.com/streamich/react-use/issues/623)) ([23d6a5a](https://github.com/streamich/react-use/commit/23d6a5a))
+
 ## [12.2.1](https://github.com/streamich/react-use/compare/v12.2.0...v12.2.1) (2019-09-23)
 
 
