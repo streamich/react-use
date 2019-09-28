@@ -6511,10 +6511,10 @@ humanize-url@^1.0.0:
     normalize-url "^1.0.0"
     strip-url-auth "^1.0.0"
 
-husky@3.0.6:
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-3.0.6.tgz#035aa2c0ae992a131fc72fcb410f1758daad1147"
-  integrity sha512-bNTgujuC5VS0m8gK70zRpzXq9rccFUFcjuU6L/SFLZxV7eke+6x10Tpk+st3rmgCEsQ4vn+yJk1jx3gvSD8knQ==
+husky@3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-3.0.7.tgz#05e869006c7d9a31b27893aeda520e730bd125b9"
+  integrity sha512-fIrkaREoQk6DO8KnSX16Aq7Kg9SxqYYQZH/9b+4AxXyXNNgpJLsc8lWlQCShLus1nbujIyZ/WQZBHGwClohK/w==
   dependencies:
     chalk "^2.4.2"
     cosmiconfig "^5.2.1"
