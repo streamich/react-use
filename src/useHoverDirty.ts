@@ -25,7 +25,7 @@ const useHoverDirty = (ref, enabled: boolean = true) => {
         ref.current.removeEventListener('mouseout', onMouseOut);
       }
     };
-  }, [enabled, ref]);
+  }, [enabled, ref.current]);
 
   return value;
 };
