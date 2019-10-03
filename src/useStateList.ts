@@ -2,7 +2,9 @@ import { useState, useCallback } from 'react';
 
 import useUpdateEffect from './useUpdateEffect';
 
-export default function useStateList<T>(stateSet: T[] = []): { state: T; next: () => void; prev: () => void } {
+export default function useStateList<T>(
+  stateSet: T[] = []
+): { state: T; next: () => void; prev: () => void; currentIndex: number } {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // In case we receive a different state set, check if the current index still exists and
@@ -29,5 +31,6 @@ export default function useStateList<T>(stateSet: T[] = []): { state: T; next: (
     state: stateSet[currentIndex],
     next,
     prev,
+    currentIndex,
   };
 }
