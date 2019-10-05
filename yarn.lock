@@ -2227,7 +2227,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-wait@^0.3.0":
+"@types/react-wait@0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@types/react-wait/-/react-wait-0.3.0.tgz#6f7ef17571a17e72c7864ede8cf7d3aa525a005e"
   integrity sha512-5jIfDcHRjqeE7QfZG7kCqOpfrPSvOM1E3/nlKuJ/NZrG/WrhLo/AFr0i72jhTWzyNRo4ex0pshBaiCHksZXH3A==
