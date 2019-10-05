@@ -131,7 +131,7 @@
   - [`useStateList`](./docs/useStateList.md) &mdash; circularly iterates over an array.
   - [`useToggle` and `useBoolean`](./docs/useToggle.md) &mdash; tracks state of a boolean.
   - [`useCounter` and `useNumber`](./docs/useCounter.md) &mdash; tracks state of a number. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-usecounter--demo)
-  - [`useList`](./docs/useList.md) &mdash; tracks state of an array.
+  - [`useList`](./docs/useList.md) &mdash; tracks state of an array. [![][img-demo]](https://codesandbox.io/s/wonderful-mahavira-1sm0w)
   - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object.
 
 
