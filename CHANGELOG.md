@@ -1,3 +1,10 @@
+## [12.2.3](https://github.com/streamich/react-use/compare/v12.2.2...v12.2.3) (2019-10-05)
+
+
+### Bug Fixes
+
+* move react-wait types to dev dependencies, closes [#644](https://github.com/streamich/react-use/issues/644) ([49372ac](https://github.com/streamich/react-use/commit/49372ac))
+
 ## [12.2.2](https://github.com/streamich/react-use/compare/v12.2.1...v12.2.2) (2019-09-26)
 
 
