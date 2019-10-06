@@ -27,6 +27,7 @@ export { default as useHarmonicIntervalFn } from './useHarmonicIntervalFn';
 export { default as useHover } from './useHover';
 export { default as useHoverDirty } from './useHoverDirty';
 export { default as useIdle } from './useIdle';
+export { default as useIntersection } from './useIntersection';
 export { default as useInterval } from './useInterval';
 export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 export { default as useKey } from './useKey';
