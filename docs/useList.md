@@ -9,13 +9,28 @@ React state hook that tracks a value of an array.
 import {useList} from 'react-use';
 
 const Demo = () => {
-  const [list, {set, push}] = useList();
+  const [list, callbacks] = useList(defaultList);
+  const { clear, filter, push, remove, set, sort, updateAt } = callbacks;
 
   return (
     <div>
-      <div>{list.join(',')}</div>
-      <button onClick={() => set([])}>Reset</button>
-      <button onClick={() => push(Date.now())}>Push</button>
+      <div>{list.join(",")}</div>
+      <button onClick={() => set([1, 2, 3])}>Set list to 1,2,3</button>
+      <button onClick={() => push(Date.now())}>Push timestamp</button>
+      <button onClick={() => updateAt(1, Date.now())}>
+        Update value at index 1
+      </button>
+      <button onClick={() => remove(1)}>Remove element at index 1</button>
+      <button onClick={() => filter(item => item % 2 === 0)}>
+        Filter even values
+      </button>
+      <button onClick={() => sort((a,b) => a - b)}>
+        Sort ascending
+      </button>
+      <button onClick={() => sort((a,b) => b - a)}>
+        Sort descending
+      </button>
+      <button onClick={() => clear([])}>Reset</button>
     </div>
   );
 };
