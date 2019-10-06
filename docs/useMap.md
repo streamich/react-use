@@ -9,15 +9,18 @@ React state hook that tracks a value of an object.
 import {useMap} from 'react-use';
 
 const Demo = () => {
-  const [map, {set, reset}] = useMap({
+  const [map, {set, remove, reset}] = useMap({
     hello: 'there',
   });
 
   return (
     <div>
       <pre>{JSON.stringify(map, null, 2)}</pre>
-      <button onClick={() => set(String(Date.now()), (new Date()).toJSON())}>Add</button>
+      <button onClick={() => set(String(Date.now()), new Date().toJSON())}>
+        Add
+      </button>
       <button onClick={() => reset()}>Reset</button>
+      <button onClick={() => remove("hello")}>Remove key 'hello'</button>
     </div>
   );
 };
