@@ -4,7 +4,7 @@ import { useList } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [list, { clear, filter, push, remove, set, sort, updateAt }] = useList();
+  const [list, { clear, filter, push, remove, set, sort, updateAt, reset }] = useList([1, 2, 3, 4, 5]);
 
   return (
     <div>
@@ -15,7 +15,8 @@ const Demo = () => {
       <button onClick={() => filter(item => item % 2 === 0)}>Filter even values</button>
       <button onClick={() => sort((a, b) => a - b)}>Sort ascending</button>
       <button onClick={() => sort((a, b) => b - a)}>Sort descending</button>
-      <button onClick={() => clear()}>Clear</button>
+      <button onClick={clear}>Clear</button>
+      <button onClick={reset}>Reset</button>
       <pre>{JSON.stringify(list, null, 2)}</pre>
     </div>
   );
