@@ -16,6 +16,7 @@ it('should init list and utils', () => {
     push: expect.any(Function),
     filter: expect.any(Function),
     sort: expect.any(Function),
+    reset: expect.any(Function),
   });
 });
 
@@ -149,4 +150,44 @@ it('should sort current list by provided function', () => {
 
   expect(result.current[0]).toEqual(['March', 'Jan', 'Feb', 'Dec']);
   expect(result.current[0]).not.toBe(initList); // checking immutability
+});
+
+it('should reset the list to initial list provided', () => {
+  const initList = [1, 2, 3];
+  const { result } = setUp(initList);
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.push(4);
+  });
+
+  expect(result.current[0]).toEqual([1, 2, 3, 4]);
+
+  act(() => {
+    utils.reset();
+  });
+
+  expect(result.current[0]).toEqual([1, 2, 3]);
+  expect(result.current[0]).not.toBe(initList); // checking immutability
+});
+
+it('should memoized its utils methods', () => {
+  const initList = [1, 2, 3];
+  const { result } = setUp(initList);
+  const [, utils] = result.current;
+  const { set, clear, updateAt, remove, push, filter, sort, reset } = utils;
+
+  act(() => {
+    push(4);
+  });
+
+  expect(result.current[1]).toBe(utils);
+  expect(result.current[1].set).toBe(set);
+  expect(result.current[1].clear).toBe(clear);
+  expect(result.current[1].updateAt).toBe(updateAt);
+  expect(result.current[1].remove).toBe(remove);
+  expect(result.current[1].push).toBe(push);
+  expect(result.current[1].filter).toBe(filter);
+  expect(result.current[1].sort).toBe(sort);
+  expect(result.current[1].reset).toBe(reset);
 });

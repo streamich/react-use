@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 export interface Actions<T> {
   set: (list: T[]) => void;
@@ -8,14 +8,14 @@ export interface Actions<T> {
   push: (item: T) => void;
   filter: (fn: (value: T) => boolean) => void;
   sort: (fn?: (a: T, b: T) => number) => void;
+  reset: () => void;
 }
 
 const useList = <T>(initialList: T[] = []): [T[], Actions<T>] => {
   const [list, set] = useState<T[]>(initialList);
 
-  return [
-    list,
-    {
+  const utils = useMemo<Actions<T>>(
+    () => ({
       set,
       clear: () => set([]),
       updateAt: (index, entry) =>
@@ -24,8 +24,12 @@ const useList = <T>(initialList: T[] = []): [T[], Actions<T>] => {
       push: entry => set(currentList => [...currentList, entry]),
       filter: fn => set(currentList => currentList.filter(fn)),
       sort: (fn?) => set(currentList => [...currentList].sort(fn)),
-    },
-  ];
+      reset: () => set([...initialList]),
+    }),
+    [set]
+  );
+
+  return [list, utils];
 };
 
 export default useList;
