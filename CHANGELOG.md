@@ -1,3 +1,10 @@
+# [12.3.0](https://github.com/streamich/react-use/compare/v12.2.3...v12.3.0) (2019-10-07)
+
+
+### Features
+
+* reset util callback for useList ([#654](https://github.com/streamich/react-use/issues/654)) ([9ea3548](https://github.com/streamich/react-use/commit/9ea3548))
+
 ## [12.2.3](https://github.com/streamich/react-use/compare/v12.2.2...v12.2.3) (2019-10-05)
 
 
