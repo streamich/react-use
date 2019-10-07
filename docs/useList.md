@@ -25,3 +25,7 @@ const Demo = () => {
   );
 };
 ```
+
+## Related hooks
+
+- [useUpsert](./useUpsert.md)
