@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { useScroll } from '..';
+import { useScrollbarWidth } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {

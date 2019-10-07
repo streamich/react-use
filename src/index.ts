@@ -90,3 +90,4 @@ export { useWait, Waiter } from './useWait';
 export { default as useWindowScroll } from './useWindowScroll';
 export { default as useWindowSize } from './useWindowSize';
 export { default as useMeasure } from './useMeasure';
+export { default as useScrollbarWidth } from './useScrollbarWidth';
