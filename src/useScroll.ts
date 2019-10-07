@@ -48,7 +48,7 @@ const useScroll = (ref: RefObject<HTMLElement>): State => {
         ref.current.removeEventListener('scroll', handler);
       }
     };
-  }, [ref.current]);
+  }, [ref]);
 
   return state;
 };
