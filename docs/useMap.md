@@ -2,7 +2,6 @@
 
 React state hook that tracks a value of an object.
 
-
 ## Usage
 
 ```jsx
@@ -15,12 +14,16 @@ const Demo = () => {
 
   return (
     <div>
-      <pre>{JSON.stringify(map, null, 2)}</pre>
       <button onClick={() => set(String(Date.now()), new Date().toJSON())}>
         Add
       </button>
-      <button onClick={() => reset()}>Reset</button>
-      <button onClick={() => remove("hello")}>Remove key 'hello'</button>
+      <button onClick={() => reset()}>
+        Reset
+      </button>
+      <button onClick={() => remove('hello')} disabled={!map.hello}>
+        Remove 'hello'
+      </button>
+      <pre>{JSON.stringify(map, null, 2)}</pre>
     </div>
   );
 };
