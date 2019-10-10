@@ -45,6 +45,7 @@
   },
   "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
+    "@types/react-wait": "^0.3.0",
     "copy-to-clipboard": "^3.1.0",
     "nano-css": "^5.1.0",
     "react-fast-compare": "^2.0.4",
@@ -76,7 +77,6 @@
     "@testing-library/react-hooks": "2.0.3",
     "@types/jest": "24.0.18",
     "@types/react": "16.9.2",
-    "@types/react-wait": "0.3.0",
     "babel-core": "6.26.3",
     "babel-loader": "8.0.6",
     "babel-plugin-dynamic-import-node": "2.3.0",
