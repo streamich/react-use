@@ -70,7 +70,7 @@ export default function useCounter(
       initialValue = value;
       set(value);
     },
-    [max, min]
+    [max, min, initialValue]
   );
 
   const actions = {
