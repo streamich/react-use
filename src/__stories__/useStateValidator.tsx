@@ -1,12 +1,12 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { useCallback } from 'react';
-import { useValidatableState } from '../index';
+import useStateValidator from '../useStateValidator';
 import ShowDocs from './util/ShowDocs';
 
+const DemoStateValidator = s => [s === '' ? null : (s * 1) % 2 === 0];
 const Demo = () => {
-  const validator = useCallback(s => [s === '' ? null : (s * 1) % 2 === 0], []);
-  const [state, setState, [isValid]] = useValidatableState<string>(validator, '');
+  const [state, setState] = React.useState<string | number>(0);
+  const [[isValid]] = useStateValidator(state, DemoStateValidator);
 
   return (
     <div>
@@ -16,7 +16,7 @@ const Demo = () => {
         min="0"
         max="10"
         value={state}
-        onChange={ev => {
+        onChange={(ev: React.ChangeEvent<HTMLInputElement>) => {
           setState(ev.target.value);
         }}
       />
@@ -25,6 +25,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useValidatableState', module)
-  .add('Docs', () => <ShowDocs md={require('../../docs/useValidatableState.md')} />)
+storiesOf('State|useStateValidator', module)
+  .add('Docs', () => <ShowDocs md={require('../../docs/useStateValidator.md')} />)
   .add('Demo', () => <Demo />);
