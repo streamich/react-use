@@ -1,3 +1,38 @@
+## [12.3.1](https://github.com/streamich/react-use/compare/v12.3.0...v12.3.1) (2019-10-10)
+
+
+### Bug Fixes
+
+* move [@types](https://github.com/types)/react-wait to dependencies, closes [#661](https://github.com/streamich/react-use/issues/661) ([#662](https://github.com/streamich/react-use/issues/662)) ([6bdd74e](https://github.com/streamich/react-use/commit/6bdd74e))
+
+# [12.3.0](https://github.com/streamich/react-use/compare/v12.2.3...v12.3.0) (2019-10-07)
+
+
+### Features
+
+* reset util callback for useList ([#654](https://github.com/streamich/react-use/issues/654)) ([9ea3548](https://github.com/streamich/react-use/commit/9ea3548))
+
+## [12.2.3](https://github.com/streamich/react-use/compare/v12.2.2...v12.2.3) (2019-10-05)
+
+
+### Bug Fixes
+
+* move react-wait types to dev dependencies, closes [#644](https://github.com/streamich/react-use/issues/644) ([49372ac](https://github.com/streamich/react-use/commit/49372ac))
+
+## [12.2.2](https://github.com/streamich/react-use/compare/v12.2.1...v12.2.2) (2019-09-26)
+
+
+### Bug Fixes
+
+* useDebounce remove deps from function arguments ([#623](https://github.com/streamich/react-use/issues/623)) ([23d6a5a](https://github.com/streamich/react-use/commit/23d6a5a))
+
+## [12.2.1](https://github.com/streamich/react-use/compare/v12.2.0...v12.2.1) (2019-09-23)
+
+
+### Bug Fixes
+
+* remove attempt from deps of retry in useAsyncRetry ([#614](https://github.com/streamich/react-use/issues/614)) ([adce59e](https://github.com/streamich/react-use/commit/adce59e))
+
 # [12.2.0](https://github.com/streamich/react-use/compare/v12.1.0...v12.2.0) (2019-09-02)
 
 
