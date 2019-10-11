@@ -86,6 +86,7 @@ export { default as useUpdate } from './useUpdate';
 export { default as useUpdateEffect } from './useUpdateEffect';
 export { default as useUpsert } from './useUpsert';
 export { default as useVideo } from './useVideo';
+export { default as useStateValidator } from './useStateValidator';
 export { useWait, Waiter } from './useWait';
 export { default as useWindowScroll } from './useWindowScroll';
 export { default as useWindowSize } from './useWindowSize';
