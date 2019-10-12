@@ -49,6 +49,7 @@
   - [`useGeolocation`](./docs/useGeolocation.md) &mdash; tracks geo location state of user's device. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usegeolocation--demo)
   - [`useHover` and `useHoverDirty`](./docs/useHover.md) &mdash; tracks mouse hover state of some element. [![][img-demo]](https://codesandbox.io/s/zpn583rvx)
   - [`useIdle`](./docs/useIdle.md) &mdash; tracks whether user is being inactive.
+  - [`useIntersection`](./docs/useIntersection.md) &mdash; tracks an HTML element's intersection. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-useintersection--demo)
   - [`useKey`](./docs/useKey.md), [`useKeyPress`](./docs/useKeyPress.md), [`useKeyboardJs`](./docs/useKeyboardJs.md), and [`useKeyPressEvent`](./docs/useKeyPressEvent.md) &mdash; track keys. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usekeypressevent--demo)
   - [`useLocation`](./docs/useLocation.md) and [`useSearchParam`](./docs/useSearchParam.md) &mdash; tracks page navigation bar location state.
   - [`useMedia`](./docs/useMedia.md) &mdash; tracks state of a CSS media query. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemedia--demo)
@@ -104,7 +105,7 @@
   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
   - [`usePermission`](./docs/usePermission.md) &mdash; query permission status for browser APIs.
     <br/>
-    <br/> 
+    <br/>
 - [**Lifecycles**](./docs/Lifecycles.md)
   - [`useEffectOnce`](./docs/useEffectOnce.md) &mdash; a modified [`useEffect`](https://reactjs.org/docs/hooks-reference.html#useeffect) hook that only runs once.
   - [`useEvent`](./docs/useEvent.md) &mdash; subscribe to events.
@@ -135,7 +136,6 @@
   - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object. [![][img-demo]](https://codesandbox.io/s/quirky-dewdney-gi161)
   - [`useStateValidator`](./docs/useStateValidator.md) &mdash; tracks state of an object. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-usestatevalidator--demo)
 
-
 <br />
 <br />
 <br />
@@ -159,7 +159,6 @@
 <br />
 
 [img-demo]: https://img.shields.io/badge/demo-%20%20%20%F0%9F%9A%80-green.svg
-
 
 <div align="center">
   <h1>Contributors</h1>
