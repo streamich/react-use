@@ -65,7 +65,7 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
         video.current.webkitExitFullscreen();
       }
     };
-  }, [ref.current, video, on]);
+  }, [on, video, ref]);
 
   return isFullscreen;
 };
