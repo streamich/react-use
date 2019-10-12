@@ -1729,7 +1729,7 @@
   resolved "https://registry.yarnpkg.com/@shopify/function-enhancers/-/function-enhancers-1.0.5.tgz#7c3e516e26ce7a9b63c263679bdcf5121d994a10"
   integrity sha512-34ML8DX4RmmA9hXDlf2BAz4SA37unShZxoBRPz585a+FaEzNcMvw5NzLD+Ih9XrP/wrxTUcN+p6pazvoS+jB7w==
 
-"@shopify/jest-dom-mocks@^2.8.2":
+"@shopify/jest-dom-mocks@2.8.2":
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.8.2.tgz#477c3159897807cc8d7797c33e8a79e787051779"
   integrity sha512-4drt+S1cQ1ZSP1DaEHAj5XPPCiI2R8IIt+ZnH9h08Ngy8PjtjFFNHNcSJ6bKBmk7eO2c6+5UaJQzNcg56nt7gg==
