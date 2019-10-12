@@ -1,3 +1,10 @@
+# [12.4.0](https://github.com/streamich/react-use/compare/v12.3.2...v12.4.0) (2019-10-12)
+
+
+### Features
+
+* useIntersection ([#652](https://github.com/streamich/react-use/issues/652)) ([d5f359f](https://github.com/streamich/react-use/commit/d5f359f))
+
 ## [12.3.2](https://github.com/streamich/react-use/compare/v12.3.1...v12.3.2) (2019-10-12)
 
 
