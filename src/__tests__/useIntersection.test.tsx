@@ -1,4 +1,4 @@
-import React, { createRef, RefObject } from 'react';
+import React, { createRef } from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import TestRenderer from 'react-test-renderer';
