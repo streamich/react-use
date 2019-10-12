@@ -1,3 +1,24 @@
+# [12.4.0](https://github.com/streamich/react-use/compare/v12.3.2...v12.4.0) (2019-10-12)
+
+
+### Features
+
+* useIntersection ([#652](https://github.com/streamich/react-use/issues/652)) ([d5f359f](https://github.com/streamich/react-use/commit/d5f359f))
+
+## [12.3.2](https://github.com/streamich/react-use/compare/v12.3.1...v12.3.2) (2019-10-12)
+
+
+### Bug Fixes
+
+* improve use of refs in dependency lists ([#655](https://github.com/streamich/react-use/issues/655)) ([ed8e26d](https://github.com/streamich/react-use/commit/ed8e26d))
+
+## [12.3.1](https://github.com/streamich/react-use/compare/v12.3.0...v12.3.1) (2019-10-10)
+
+
+### Bug Fixes
+
+* move [@types](https://github.com/types)/react-wait to dependencies, closes [#661](https://github.com/streamich/react-use/issues/661) ([#662](https://github.com/streamich/react-use/issues/662)) ([6bdd74e](https://github.com/streamich/react-use/commit/6bdd74e))
+
 # [12.3.0](https://github.com/streamich/react-use/compare/v12.2.3...v12.3.0) (2019-10-07)
 
 
