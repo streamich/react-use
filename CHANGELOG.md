@@ -1,3 +1,10 @@
+## [12.3.2](https://github.com/streamich/react-use/compare/v12.3.1...v12.3.2) (2019-10-12)
+
+
+### Bug Fixes
+
+* improve use of refs in dependency lists ([#655](https://github.com/streamich/react-use/issues/655)) ([ed8e26d](https://github.com/streamich/react-use/commit/ed8e26d))
+
 ## [12.3.1](https://github.com/streamich/react-use/compare/v12.3.0...v12.3.1) (2019-10-10)
 
 
