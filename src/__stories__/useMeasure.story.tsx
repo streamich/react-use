@@ -4,18 +4,12 @@ import { useMeasure } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [ref, { width, height }] = useMeasure();
+  const [ref, state] = useMeasure();
 
   return (
     <>
-      <div>width: {width}</div>
-      <div>height: {height}</div>
-      <div
-        style={{
-          background: 'red',
-        }}
-        ref={ref}
-      >
+      <pre>{JSON.stringify(state, null, 2)}</pre>
+      <div ref={ref} style={{ background: 'red' }}>
         resize me
       </div>
     </>

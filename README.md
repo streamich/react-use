@@ -61,11 +61,11 @@
   - [`usePageLeave`](./docs/usePageLeave.md) &mdash; triggers when mouse leaves page boundaries.
   - [`useScroll`](./docs/useScroll.md) &mdash; tracks an HTML element's scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usescroll--docs)
   - [`useScrolling`](./docs/useScrolling.md) &mdash; tracks whether HTML element is scrolling.
-  - [`useSize`](./docs/useSize.md) &mdash; tracks an HTML element's dimensions.
+  - [`useSize`](./docs/useSize.md) &mdash; tracks an HTML element's size.
   - [`useStartTyping`](./docs/useStartTyping.md) &mdash; detects when user starts typing.
   - [`useWindowScroll`](./docs/useWindowScroll.md) &mdash; tracks `Window` scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usewindowscroll--docs)
   - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions. [![][img-demo]](https://codesandbox.io/s/m7ln22668)
-  - [`useMeasure`](./docs/useMeasure.md) &mdash; tracks an HTML element's dimensions by [Resize Observer](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/ResizeObserver).[![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemeasure--demo)
+  - [`useMeasure`](./docs/useMeasure.md) &mdash; tracks an HTML element's dimensions using the Resize Observer API.[![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemeasure--demo)
     <br/>
     <br/>
 - [**UI**](./docs/UI.md)
