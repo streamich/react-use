@@ -1,6 +1,6 @@
 # `useInterval`
 
-React hook that allow you using declarative `setInterval`.
+A declarative interval hook based on [Dan Abramov's article on overreacted.io](https://overreacted.io/making-setinterval-declarative-with-react-hooks). The interval can be paused by setting the delay to `null`.
 
 ## Usage
 
@@ -11,32 +11,31 @@ import {useInterval} from 'react-use';
 const Demo = () => {
   const [count, setCount] = React.useState(0);
   const [delay, setDelay] = React.useState(1000);
+  const [isRunning, toggleIsRunning] = useBoolean(true);
 
-  useInterval(() => {
-    setCount(count + 1);
-  }, delay);
-
-  function handleDelayChange(e) {
-    setDelay(Number(e.target.value));
-  }
+  useInterval(
+    () => {
+      setCount(count + 1);
+    },
+    isRunning ? delay : null
+  );
 
   return (
     <div>
       <div>
-        delay: <input value={delay} onChange={handleDelayChange} />
+        delay: <input value={delay} onChange={event => setDelay(Number(event.target.value))} />
       </div>
       <h1>count: {count}</h1>
       <div>
-        <button onClick={() => setDelay(delay ? null : 1000)}>{delay ? 'stop' : 'start'}</button>
+        <button onClick={toggleIsRunning}>{isRunning ? 'stop' : 'start'}</button>
       </div>
     </div>
   );
 };
 ```
 
-
 ## Reference
 
 ```js
-useInterval(fn, delay?: number)
+useInterval(callback, delay?: number)
 ```
