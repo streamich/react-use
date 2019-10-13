@@ -1,3 +1,10 @@
+# [12.5.0](https://github.com/streamich/react-use/compare/v12.4.0...v12.5.0) (2019-10-13)
+
+
+### Features
+
+* useList allow pushing multiple items ([#621](https://github.com/streamich/react-use/issues/621)) ([a624364](https://github.com/streamich/react-use/commit/a624364))
+
 # [12.4.0](https://github.com/streamich/react-use/compare/v12.3.2...v12.4.0) (2019-10-12)
 
 
