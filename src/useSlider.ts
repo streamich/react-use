@@ -1,4 +1,4 @@
-import { useEffect, useRef, RefObject } from 'react';
+import { useEffect, useRef, RefObject, CSSProperties } from 'react';
 
 import { isClient, off, on } from './util';
 import useMountedState from './useMountedState';
@@ -11,18 +11,17 @@ export interface State {
   length: number;
 }
 
-const REVERSE = false;
-// const ONSCRUB = undefined;
-// const ONSCRUBSTART = undefined;
-// const ONSCRUBSTOP = undefined
-// const NOOP = () => {};
-
 export interface Options {
-  onScrub: (event: Event) => void;
+  onScrub: (value: number) => void;
+  onScrubStart: () => void;
+  onScrubStop: () => void;
   reverse: boolean;
+  styles: boolean | CSSProperties;
 }
 
-const useSlider = (ref: RefObject<Element>): State => {
+const noop = () => {};
+
+const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}): State => {
   const isMounted = useMountedState();
   const isSliding = useRef(false);
   const frame = useRef(0);
@@ -35,9 +34,16 @@ const useSlider = (ref: RefObject<Element>): State => {
 
   useEffect(() => {
     if (isClient) {
+      const styles = options.styles === undefined ? true : options.styles;
+      const reverse = options.reverse === undefined ? false : options.reverse;
+
+      if (ref.current && styles) {
+        ref.current.style.userSelect = 'none';
+      }
+
       const startScrubbing = () => {
         if (!isSliding.current && isMounted()) {
-          // (ONSCRUBSTART || NOOP)();
+          (options.onScrubStart || noop)();
           isSliding.current = true;
           setState({ isSliding: true });
           bindEvents();
@@ -46,7 +52,7 @@ const useSlider = (ref: RefObject<Element>): State => {
 
       const stopScrubbing = () => {
         if (isSliding.current && isMounted()) {
-          // (ONSCRUBSTOP || NOOP)();
+          (options.onScrubStop || noop)();
           isSliding.current = false;
           setState({ isSliding: false });
           unbindEvents();
@@ -105,7 +111,7 @@ const useSlider = (ref: RefObject<Element>): State => {
               value = 0;
             }
 
-            if (REVERSE) {
+            if (reverse) {
               value = 1 - value;
             }
 
@@ -114,7 +120,8 @@ const useSlider = (ref: RefObject<Element>): State => {
               pos: clientX - pos,
               length,
             });
-            // (ONSCRUB || NOOP)(value);
+
+            (options.onScrub || noop)(value);
           }
         });
       };
