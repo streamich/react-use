@@ -33,7 +33,16 @@ function useStatesValidator(ValidityState: SchemaType[]) {
       const findItem = ValidityState.find(item => {
         return item.name === name;
       });
-      const { required, pattern, minlength, maxlength, email, phone, message } = findItem;
+
+      const {
+        required = null,
+        pattern = null,
+        minlength = null,
+        maxlength = null,
+        email = null,
+        phone = null,
+        message = null
+      } = findItem!;
 
       if (required && !value) {
         error = "Please enter required item.";
