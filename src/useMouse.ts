@@ -62,7 +62,7 @@ const useMouse = (ref: RefObject<Element>): State => {
       cancelAnimationFrame(frame.current);
       document.removeEventListener('mousemove', moveHandler);
     };
-  }, [ref.current]);
+  }, [ref]);
 
   return state;
 };
