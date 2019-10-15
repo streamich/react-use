@@ -1,6 +1,6 @@
 # `useNotification`
 
-Returns a function to display a desktop notification. Requests notification permission from users. Uses the [Notification API](https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification).
+React UI hook that returns a function to display a desktop notification. Requests notification permission from users. Uses the [Notification API](https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification).
 
 ## Usage
 
