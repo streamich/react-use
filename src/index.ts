@@ -51,6 +51,7 @@ export { default as useMouse } from './useMouse';
 export { default as useMouseHovered } from './useMouseHovered';
 export { default as useNetwork } from './useNetwork';
 export { default as useNumber } from './useNumber';
+export { default as useNotification } from './useNotification';
 export { default as useObservable } from './useObservable';
 export { default as useOrientation } from './useOrientation';
 export { default as usePageLeave } from './usePageLeave';
