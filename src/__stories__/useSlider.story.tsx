@@ -9,8 +9,11 @@ const Demo = () => {
 
   return (
     <div>
-      <div ref={ref} style={{ position: 'relative', width: '100%', height: 25, background: 'lightgray' }}>
-        <div style={{ position: 'absolute', left: state.value * state.length - 10 }}>🎚</div>
+      <div ref={ref} style={{ position: 'relative', background: 'lightgray', padding: 4 }}>
+        <p style={{ margin: 0, textAlign: 'center', color: state.isSliding ? 'red' : 'green' }}>
+          {Math.round(state.value * 100)}%
+        </p>
+        <div style={{ position: 'absolute', top: 0, left: state.value * state.length - 10 }}>🎚</div>
       </div>
       <pre>{JSON.stringify(state, null, 2)}</pre>
     </div>
