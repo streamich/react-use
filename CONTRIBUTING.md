@@ -48,13 +48,15 @@ You can also write your tests first if you prefer [test-driven development](http
 
 ### Commit messages
 
-This repo uses [Angular-style semantic commits](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type) so prefix your commits with `fix:` or `feat:` if you want your changes to appear in [release notes](https://github.com/streamich/react-use/blob/master/CHANGELOG.md).
+This repo uses [semantic-release](https://github.com/semantic-release/semantic-release) and [conventional commit messages](https://conventionalcommits.org) so prefix your commits with `fix:` or `feat:` if you want your changes to appear in [release notes](https://github.com/streamich/react-use/blob/master/CHANGELOG.md).
 
 ### Git hooks
 
 There are git hooks set up with this project that are automatically enabled
-when you install dependencies. These hooks automatically test and validate your code when creating commits. They're really handy but can be temporarily disabled by adding a `--no-verify` flag to your commit command. This is useful when you want to commit and push some uncompleted code.
+when you install dependencies. These hooks automatically test and validate your code when creating commits. They're really handy but can be temporarily disabled by adding a `--no-verify` flag to your commit command. This is useful when you want to commit and push to get feedback on uncompleted code.
 
 ## Help needed
 
 Please have a look at the [open issues](https://github.com/streamich/react-use/issues) and respond to questions, bug reports and feature requests. Thanks!
+
+We're also looking to improve the code coverage on this project. To easily know what hooks need tests run `yarn test:coverage` to generate a code coverage report. You can see the report in your terminal or open `coverage/lcov-report/index.html` to see the HTML report.
