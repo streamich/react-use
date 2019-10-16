@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "12.5.0",
+  "version": "12.6.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -15,6 +15,7 @@
     "start": "yarn storybook",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
@@ -54,7 +55,8 @@
     "screenfull": "^5.0.0",
     "set-harmonic-interval": "^1.0.0",
     "throttle-debounce": "^2.0.1",
-    "ts-easing": "^0.2.0"
+    "ts-easing": "^0.2.0",
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -76,7 +78,7 @@
     "@storybook/addon-options": "5.1.11",
     "@storybook/react": "5.1.11",
     "@testing-library/react-hooks": "2.0.3",
-    "@types/jest": "24.0.18",
+    "@types/jest": "24.0.19",
     "@types/react": "16.9.2",
     "babel-core": "6.26.3",
     "babel-loader": "8.0.6",

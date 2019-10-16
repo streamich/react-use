@@ -1,3 +1,10 @@
+# [12.6.0](https://github.com/streamich/react-use/compare/v12.5.0...v12.6.0) (2019-10-16)
+
+
+### Features
+
+* useRafState ([#684](https://github.com/streamich/react-use/issues/684)) ([00816a4](https://github.com/streamich/react-use/commit/00816a4))
+
 # [12.5.0](https://github.com/streamich/react-use/compare/v12.4.0...v12.5.0) (2019-10-13)
 
 
