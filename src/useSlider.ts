@@ -3,6 +3,7 @@ import { useEffect, useRef, RefObject, CSSProperties } from 'react';
 import { isClient, off, on } from './util';
 import useMountedState from './useMountedState';
 import useSetState from './useSetState';
+import useMeasureDirty from './useMeasureDirty';
 
 export interface State {
   isSliding: boolean;
@@ -31,6 +32,8 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
     pos: 0,
     length: 0,
   });
+
+  const { width } = useMeasureDirty(ref);
 
   useEffect(() => {
     if (isClient) {
@@ -91,11 +94,7 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
         cancelAnimationFrame(frame.current);
 
         frame.current = requestAnimationFrame(() => {
-          if (!isMounted()) {
-            return;
-          }
-
-          if (ref.current) {
+          if (isMounted() && ref.current) {
             const { left: pos, width: length } = ref.current.getBoundingClientRect();
 
             // Prevent returning 0 when element is hidden by CSS
@@ -126,17 +125,24 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
         });
       };
 
-      on(document, 'mousedown', onMouseDown);
-      on(document, 'touchstart', onTouchStart);
+      on(ref.current, 'mousedown', onMouseDown);
+      on(ref.current, 'touchstart', onTouchStart);
 
       return () => {
-        off(document, 'mousedown', onMouseDown);
-        off(document, 'touchstart', onTouchStart);
+        off(ref.current, 'mousedown', onMouseDown);
+        off(ref.current, 'touchstart', onTouchStart);
       };
     } else {
       return undefined;
     }
   }, [ref]);
+
+  useEffect(() => {
+    setState(prevState => ({
+      pos: Math.round(prevState.value * width),
+      length: width,
+    }));
+  }, [width]);
 
   return state;
 };
