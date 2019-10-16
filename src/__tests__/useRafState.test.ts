@@ -24,47 +24,60 @@ describe('useRafState', () => {
     expect(useRafState).toBeDefined();
   });
 
-  const hook = renderHook(() => useRafState(0));
-
   it('should only update state after requestAnimationFrame when providing an object', () => {
+    const { result } = renderHook(() => useRafState(0));
+
     act(() => {
-      hook.result.current[1](1);
+      result.current[1](1);
     });
-    expect(hook.result.current[0]).toBe(0);
+    expect(result.current[0]).toBe(0);
 
     act(() => {
       requestAnimationFrame.step();
     });
-    expect(hook.result.current[0]).toBe(1);
+    expect(result.current[0]).toBe(1);
 
     act(() => {
-      hook.result.current[1](2);
+      result.current[1](2);
       requestAnimationFrame.step();
     });
-    expect(hook.result.current[0]).toBe(2);
+    expect(result.current[0]).toBe(2);
 
     act(() => {
-      hook.result.current[1](prevState => prevState * 2);
+      result.current[1](prevState => prevState * 2);
       requestAnimationFrame.step();
     });
-    expect(hook.result.current[0]).toBe(4);
+    expect(result.current[0]).toBe(4);
   });
 
   it('should only update state after requestAnimationFrame when providing a function', () => {
+    const { result } = renderHook(() => useRafState(0));
+
     act(() => {
-      hook.result.current[1](prevState => prevState + 1);
+      result.current[1](prevState => prevState + 1);
     });
-    expect(hook.result.current[0]).toBe(4);
+    expect(result.current[0]).toBe(0);
 
     act(() => {
       requestAnimationFrame.step();
     });
-    expect(hook.result.current[0]).toBe(5);
+    expect(result.current[0]).toBe(1);
 
     act(() => {
-      hook.result.current[1](prevState => prevState * 3);
+      result.current[1](prevState => prevState * 3);
       requestAnimationFrame.step();
     });
-    expect(hook.result.current[0]).toBe(15);
+    expect(result.current[0]).toBe(3);
+  });
+
+  it('should cancel update state on unmount', () => {
+    const { unmount } = renderHook(() => useRafState(0));
+    const spyRafCancel = jest.spyOn(global, 'cancelAnimationFrame' as any);
+
+    expect(spyRafCancel).not.toHaveBeenCalled();
+
+    unmount();
+
+    expect(spyRafCancel).toHaveBeenCalledTimes(1);
   });
 });
