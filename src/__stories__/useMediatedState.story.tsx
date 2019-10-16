@@ -3,9 +3,9 @@ import * as React from 'react';
 import { useMediatedState } from '../useMediatedState';
 import ShowDocs from './util/ShowDocs';
 
-const InputMediator = s => s.replace(/[\s]+/, ' ');
+const inputMediator = s => s.replace(/[\s]+/g, ' ');
 const Demo = () => {
-  const [state, setState] = useMediatedState(InputMediator, '');
+  const [state, setState] = useMediatedState(inputMediator, '');
 
   return (
     <div>
