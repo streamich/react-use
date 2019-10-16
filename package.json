@@ -15,6 +15,7 @@
     "start": "yarn storybook",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
