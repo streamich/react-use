@@ -1,3 +1,11 @@
+## [12.7.1](https://github.com/streamich/react-use/compare/v12.7.0...v12.7.1) (2019-10-17)
+
+
+### Bug Fixes
+
+* example in the docs; ([7f54cad](https://github.com/streamich/react-use/commit/7f54cad))
+* rename story's mediator and add `g` flag to it's regex; ([652b318](https://github.com/streamich/react-use/commit/652b318))
+
 # [12.7.0](https://github.com/streamich/react-use/compare/v12.6.0...v12.7.0) (2019-10-17)
 
 
