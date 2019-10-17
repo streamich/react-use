@@ -1,3 +1,16 @@
+# [12.7.0](https://github.com/streamich/react-use/compare/v12.6.0...v12.7.0) (2019-10-17)
+
+
+### Bug Fixes
+
+* error throw tests; ([056875b](https://github.com/streamich/react-use/commit/056875b))
+* useMultiStateValidator readme description; ([8c7f7f5](https://github.com/streamich/react-use/commit/8c7f7f5))
+
+
+### Features
+
+* useMultiStateValidator ([ae26988](https://github.com/streamich/react-use/commit/ae26988))
+
 # [12.6.0](https://github.com/streamich/react-use/compare/v12.5.0...v12.6.0) (2019-10-16)
 
 
