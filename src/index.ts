@@ -61,6 +61,8 @@ export { default as usePreviousDistinct } from './usePreviousDistinct';
 export { default as usePromise } from './usePromise';
 export { default as useRaf } from './useRaf';
 export { default as useRafLoop } from './useRafLoop';
+export { default as useRafState } from './useRafState';
+
 /**
  * @deprecated This hook is obsolete, use `useMountedState` instead
  */
@@ -89,6 +91,7 @@ export { default as useUpdateEffect } from './useUpdateEffect';
 export { default as useUpsert } from './useUpsert';
 export { default as useVideo } from './useVideo';
 export { default as useStateValidator } from './useStateValidator';
+export { useMultiStateValidator } from './useMultiStateValidator';
 export { useWait, Waiter } from './useWait';
 export { default as useWindowScroll } from './useWindowScroll';
 export { default as useWindowSize } from './useWindowSize';
