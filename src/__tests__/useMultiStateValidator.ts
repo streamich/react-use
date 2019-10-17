@@ -68,14 +68,14 @@ describe('useMultiStateValidator', () => {
   });
 
   it('should throw if states is not an object', () => {
-    try {
+    expect(() => {
       // @ts-ignore
-      getHook(defaultStatesValidator, 123);
-    } catch (err) {
-      expect(err).toBeDefined();
-      expect(err instanceof Error).toBe(true);
-      expect(err.message).toBe('states expected to be an object or array, got number');
-    }
+      const [, hook] = getHook(defaultStatesValidator, 123);
+
+      if (hook.result.error) {
+        throw hook.result.error;
+      }
+    }).toThrowError('states expected to be an object or array, got number');
   });
 
   it('first returned element should represent current validity state', () => {

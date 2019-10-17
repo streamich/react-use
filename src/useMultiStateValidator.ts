@@ -17,7 +17,7 @@ export function useMultiStateValidator<
   S extends MultiStateValidatorStates = MultiStateValidatorStates
 >(states: S, validator: MultiStateValidator<V, S>, initialValidity: V = [undefined] as V): UseValidatorReturn<V> {
   if (typeof states !== 'object') {
-    throw Error('states expected to be an object or array, got ' + typeof states);
+    throw new Error('states expected to be an object or array, got ' + typeof states);
   }
 
   const validatorFn = useRef(validator);
