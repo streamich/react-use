@@ -1,13 +1,14 @@
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import * as React from 'react';
 import { useMount } from '..';
-import ConsoleStory from './util/ConsoleStory';
+import ActionsTabStory from './util/ActionsTabStory';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  useMount(() => console.log('MOUNTED'));
+  useMount(action('MOUNTED'));
 
-  return <ConsoleStory />;
+  return <ActionsTabStory />;
 };
 
 storiesOf('Lifecycle|useMount', module)
