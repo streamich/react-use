@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 
 function useBreakpoint(breakpoints: { [name: string]: number } = { laptopL: 1440, laptop: 1024, tablet: 768 }) {
       const [screen, setScreen] = useState(0)
@@ -13,7 +13,7 @@ function useBreakpoint(breakpoints: { [name: string]: number } = { laptopL: 1440
                   window.removeEventListener('resize', setSideScreen)
             }
       })
-      const sortedBreakpoints = Object.entries(breakpoints).sort((a, b) => a[1] >= b[1] ? 1 : -1)
+      const sortedBreakpoints = useMemo(() => Object.entries(breakpoints).sort((a, b) => a[1] >= b[1] ? 1 : -1), [breakpoints])
       const result = sortedBreakpoints.reduce((acc, [name, width]) => {
             if (screen >= width) return name
             else return acc
