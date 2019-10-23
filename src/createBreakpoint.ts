@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from 'react'
 
-function useBreakpoint(breakpoints: { [name: string]: number } = { laptopL: 1440, laptop: 1024, tablet: 768 }) {
+function createBreakpoint(breakpoints: { [name: string]: number } = { laptopL: 1440, laptop: 1024, tablet: 768 }) {
       const [screen, setScreen] = useState(0)
 
       useEffect(() => {
@@ -21,4 +21,4 @@ function useBreakpoint(breakpoints: { [name: string]: number } = { laptopL: 1440
       return result
 }
 
-export default useBreakpoint
+export default createBreakpoint
