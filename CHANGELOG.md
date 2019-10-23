@@ -1,3 +1,10 @@
+## [12.7.2](https://github.com/streamich/react-use/compare/v12.7.1...v12.7.2) (2019-10-23)
+
+
+### Bug Fixes
+
+* 🐛 bump set-harmonic-interval package version ([f7c709a](https://github.com/streamich/react-use/commit/f7c709a))
+
 ## [12.7.1](https://github.com/streamich/react-use/compare/v12.7.0...v12.7.1) (2019-10-17)
 
 
