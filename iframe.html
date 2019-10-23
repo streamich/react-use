@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Storybook</title><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_parent"><style>:not(.sb-show-main) > .sb-main,
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Storybook</title><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_parent"><style>:not(.sb-show-main) > .sb-main,
   :not(.sb-show-nopreview) > .sb-nopreview,
   :not(.sb-show-errordisplay) > .sb-errordisplay {
     display: none;
@@ -11,15 +11,17 @@
     left: 0;
     right: 0;
     padding: 20px;
-    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", Roboto, "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
+    overflow: auto;
   }
 
   .sb-heading {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.2px;
     margin: 10px 0;
+    padding-right: 25px;
   }
 
   .sb-nopreview {
@@ -40,14 +42,21 @@
   }
 
   .sb-errordisplay {
-    background-color: rgb(187, 49, 49);
-    color: #FFF;
+    border: 20px solid rgb(187, 49, 49);
+    background: #222;
+    color: #fff;
+    z-index: 999999;
   }
 
   .sb-errordisplay_code {
-    font-size: 14px;
-    width: 100vw;
-    overflow: auto;
+    padding: 10px;
+    background: #000;
+    color: #eee;
+    font-family: "Operator Mono", "Fira Code Retina", "Fira Code", "FiraCode-Retina", "Andale Mono", "Lucida Console", Consolas, Monaco, monospace;
+  }
+
+  .sb-errordisplay pre {
+    white-space: pre-wrap;
   }</style><script>/* globals window */
   /* eslint-disable no-underscore-dangle */
   try {
@@ -58,4 +67,7 @@
   } catch (e) {
     // eslint-disable-next-line no-console
     console.warn('unable to connect to parent frame for connecting dev tools');
-  }</script></head><body><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><div id="error-message" class="sb-heading"></div><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="root"></div><script src="runtime~main.78a0df7629e4f5fbe975.bundle.js"></script><script src="vendors~main.78a0df7629e4f5fbe975.bundle.js"></script><script src="main.78a0df7629e4f5fbe975.bundle.js"></script></body></html>
+  }</script><style>#root[hidden],
+      #docs-root[hidden] {
+        display: none !important;
+      }</style></head><body><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><pre id="error-message" class="sb-heading"></pre><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="root"></div><div id="docs-root"></div><script src="runtime~main.a43c14d38b644199d084.bundle.js"></script><script src="vendors~main.a43c14d38b644199d084.bundle.js"></script><script src="main.a43c14d38b644199d084.bundle.js"></script></body></html>
