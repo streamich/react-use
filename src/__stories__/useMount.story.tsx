@@ -1,14 +1,16 @@
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import * as React from 'react';
 import { useMount } from '..';
-import ActionsTabStory from './util/ActionsTabStory';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  useMount(action('MOUNTED'));
+  useMount(() => alert('MOUNTED'));
 
-  return <ActionsTabStory />;
+  return (
+    <div>
+      <code>useMount()</code> hook can be used to perform a side-effect when component is mounted.
+    </div>
+  );
 };
 
 storiesOf('Lifecycle|useMount', module)

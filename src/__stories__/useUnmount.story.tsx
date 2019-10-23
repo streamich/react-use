@@ -1,14 +1,17 @@
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import * as React from 'react';
 import { useUnmount } from '..';
-import ActionsTabStory from './util/ActionsTabStory';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  useUnmount(action('UNMOUNTED'));
+  useUnmount(() => alert('UNMOUNTED'));
 
-  return <ActionsTabStory />;
+  return (
+    <div>
+      <code>useUnmount()</code> hook can be used to perform side-effects when component unmounts. This component will
+      alert you when it is un-mounted.
+    </div>
+  );
 };
 
 storiesOf('Lifecycle|useUnmount', module)
