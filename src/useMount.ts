@@ -1,8 +1,15 @@
 import useEffectOnce from './useEffectOnce';
+import useUnmount from './useUnmount'
 
-const useMount = (fn: () => void) => {
+const useMount = (fn: (isMount?: () => boolean) => void) => {
+  let isMount: boolean = true;
+
   useEffectOnce(() => {
-    fn();
+    fn(() => isMount);
+  });
+
+  useUnmount(()=> {
+    isMount = false
   });
 };
 
