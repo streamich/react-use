@@ -1,17 +1,21 @@
 import { number, withKnobs } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import React from "react";
-import { useBreakpoint } from "..";
+import { createBreakpoint } from "..";
 import ShowDocs from "./util/ShowDocs";
+
+const useBreakpointA = createBreakpoint();
+const useBreakpointB = createBreakpoint({ mobileM: 350, laptop: 1024, tablet: 768 });
+
 const Demo = () => {
-  const breakpoint = useBreakpoint();
-  const breakpointB = useBreakpoint({ mobileM: 350, laptop: 1024, tablet: 768 });
+  const breakpointA = useBreakpointA();
+  const breakpointB = useBreakpointB();
   return (
     <div>
       <p>{"try resize your window"}</p>
-      <p>{"useBreakpoint() #default : { laptopL: 1440, laptop: 1024, tablet: 768 }"}</p>
-      <p>{breakpoint}</p>
-      <p>{"useBreakpoint({ mobileM: 350, laptop: 1024, tablet: 768 })"}</p>
+      <p>{"createBreakpoint() #default : { laptopL: 1440, laptop: 1024, tablet: 768 }"}</p>
+      <p>{breakpointA}</p>
+      <p>{"createBreakpoint({ mobileM: 350, laptop: 1024, tablet: 768 })"}</p>
       <p>{breakpointB}</p>
     </div>
   );
