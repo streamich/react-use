@@ -32,6 +32,7 @@ export { default as useIntersection } from './useIntersection';
 export { default as useInterval } from './useInterval';
 export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 export { default as useKey } from './useKey';
+export { default as createBreakpoint } from './createBreakpoint';
 // not exported because of peer dependency
 // export { default as useKeyboardJs } from './useKeyboardJs';
 export { default as useKeyPress } from './useKeyPress';
@@ -63,7 +64,6 @@ export { default as usePromise } from './usePromise';
 export { default as useRaf } from './useRaf';
 export { default as useRafLoop } from './useRafLoop';
 export { default as useRafState } from './useRafState';
-
 /**
  * @deprecated This hook is obsolete, use `useMountedState` instead
  */
