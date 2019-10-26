@@ -7,19 +7,25 @@ interface HistoryState<S> {
   capacity: number;
   back: (amount?: number) => void;
   forward: (amount?: number) => void;
+  go: (position: number) => void;
 }
 
 type UseStateHistoryReturn<S> = [S, Dispatch<SetStateAction<S>>, HistoryState<S>];
 
-export function useStateHistory<S>(initialState: S | (() => S), capacity?: number): UseStateHistoryReturn<S>;
+export function useStateHistory<S>(
+  initialState: S | (() => S),
+  initialHistory?: S[],
+  capacity?: number
+): UseStateHistoryReturn<S>;
 export function useStateHistory<S = undefined>(): UseStateHistoryReturn<S | undefined>;
 export function useStateHistory<S>(
   initialState?: S | (() => S),
+  initialHistory?: S[],
   capacity: number = 10
 ): UseStateHistoryReturn<S | undefined> {
   const [state, innerSetState] = useState<S | undefined>(initialState);
-  const history = useRef<Array<S | undefined>>([resolveHookState<S | undefined>(initialState)]);
-  const historyPosition = useRef<number>(0);
+  const history = useRef<Array<S | undefined>>(initialHistory || [resolveHookState<S | undefined>(initialState)]);
+  const historyPosition = useRef<number>(history.current.length - 1);
 
   const setState = useCallback(
     (newState: S | (() => S)) => {
@@ -53,18 +59,34 @@ export function useStateHistory<S>(
           return;
         }
 
-        historyPosition.current -= Math.min(amount, historyPosition.current);
+        innerSetState(() => {
+          historyPosition.current -= Math.min(amount, historyPosition.current);
 
-        innerSetState(history.current[historyPosition.current]);
+          return history.current[historyPosition.current];
+        });
       },
       forward: (amount: number = 1) => {
         if (historyPosition.current >= history.current.length - 1) {
           return;
         }
 
-        historyPosition.current += Math.min(amount, history.current.length - 1 - historyPosition.current);
+        innerSetState(() => {
+          historyPosition.current += Math.min(amount, history.current.length - 1 - historyPosition.current);
 
-        innerSetState(history.current[historyPosition.current]);
+          return history.current[historyPosition.current];
+        });
+      },
+      go: (pos: number) => {
+        if (pos === 0) {
+          return;
+        }
+
+        innerSetState(() => {
+          historyPosition.current =
+            pos < 0 ? Math.max(history.current.length - 1 - pos, 0) : Math.min(history.current.length - 1, pos);
+
+          return history.current[historyPosition.current];
+        });
       },
     }),
     [state, capacity]
