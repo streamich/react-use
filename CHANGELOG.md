@@ -1,3 +1,10 @@
+# [12.9.0](https://github.com/streamich/react-use/compare/v12.8.0...v12.9.0) (2019-10-26)
+
+
+### Features
+
+* add createBreakpoint ([79ba4ef](https://github.com/streamich/react-use/commit/79ba4ef))
+
 # [12.8.0](https://github.com/streamich/react-use/compare/v12.7.2...v12.8.0) (2019-10-25)
 
 
