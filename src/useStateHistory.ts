@@ -18,36 +18,40 @@ export function useStateHistory<S>(
   capacity?: number
 ): UseStateHistoryReturn<S>;
 export function useStateHistory<S = undefined>(): UseStateHistoryReturn<S | undefined>;
+
 export function useStateHistory<S>(
   initialState?: S | (() => S),
   initialHistory?: S[],
   capacity: number = 10
-): UseStateHistoryReturn<S | undefined> {
-  const [state, innerSetState] = useState<S | undefined>(initialState);
-  const history = useRef<Array<S | undefined>>(initialHistory || [resolveHookState<S | undefined>(initialState)]);
-  const historyPosition = useRef<number>(history.current.length - 1);
+): UseStateHistoryReturn<S> {
+  initialState = resolveHookState(initialState as S);
+  initialHistory = Array.isArray(initialHistory) ? [...initialHistory] : ([initialState] as S[]);
+
+  const [state, innerSetState] = useState(initialState);
+  const history = useRef(initialHistory);
+  const historyPosition = useRef(history.current.length - 1);
 
   const setState = useCallback(
     (newState: S | (() => S)) => {
       innerSetState(() => {
-        const s = resolveHookState<S | undefined>(newState);
+        newState = resolveHookState(newState);
 
         if (history.current.length && historyPosition.current < history.current.length - 1) {
-          history.current.splice(historyPosition.current, history.current.length - historyPosition.current);
+          history.current.splice(historyPosition.current, history.current.length - historyPosition.current - 1);
         }
 
-        historyPosition.current = history.current.push(s) - 1;
+        historyPosition.current = history.current.push(newState) - 1;
 
-        if (historyPosition.current > 9) {
-          history.current.splice(0, historyPosition.current - 9);
-          historyPosition.current = 9;
+        if (historyPosition.current > capacity) {
+          history.current.splice(0, historyPosition.current - capacity + 1);
+          historyPosition.current = capacity;
         }
 
-        return s;
+        return newState;
       });
     },
-    [state]
-  ) as Dispatch<SetStateAction<S | undefined>>;
+    [state, capacity]
+  ) as Dispatch<SetStateAction<S>>;
 
   const historyState = useMemo(
     () => ({
@@ -77,13 +81,13 @@ export function useStateHistory<S>(
         });
       },
       go: (pos: number) => {
-        if (pos === 0) {
+        if (pos === historyPosition.current) {
           return;
         }
 
         innerSetState(() => {
           historyPosition.current =
-            pos < 0 ? Math.max(history.current.length - 1 - pos, 0) : Math.min(history.current.length - 1, pos);
+            pos < 0 ? Math.max(history.current.length - pos, 0) : Math.min(history.current.length - 1, pos);
 
           return history.current[historyPosition.current];
         });
