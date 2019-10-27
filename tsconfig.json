@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es3",
     "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react",
@@ -15,13 +15,16 @@
     "noImplicitReturns": true,
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
-    "outDir": "lib",
-    "lib": ["es2018", "dom"],
+    "outDir": "dist/esnext",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "importHelpers": true
   },
   "exclude": [
     "node_modules",
-    "lib",
+    "dist",
     "**/__tests__/**/*",
     "**/__stories__/**/*",
     "*.test.ts",
