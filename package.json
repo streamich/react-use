@@ -103,6 +103,7 @@
     "rimraf": "3.0.0",
     "rxjs": "6.5.3",
     "semantic-release": "15.13.24",
+    "ts-jest": "^24.1.0",
     "ts-loader": "6.2.1",
     "ts-node": "8.4.1",
     "tslint": "5.20.0",
@@ -149,5 +150,13 @@
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/react-use"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "clearMocks": true,
+    "coverageDirectory": "coverage",
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.ts"
+    ]
   }
 }
