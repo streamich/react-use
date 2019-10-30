@@ -1,3 +1,10 @@
+# [12.10.0](https://github.com/streamich/react-use/compare/v12.9.1...v12.10.0) (2019-10-30)
+
+
+### Features
+
+* **useUpdate:** improve memory usage - now single function instance to increment all counters; ([0f02fd0](https://github.com/streamich/react-use/commit/0f02fd0))
+
 ## [12.9.1](https://github.com/streamich/react-use/compare/v12.9.0...v12.9.1) (2019-10-28)
 
 
