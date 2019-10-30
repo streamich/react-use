@@ -65,7 +65,7 @@ export { default as useRaf } from './useRaf';
 export { default as useRafLoop } from './useRafLoop';
 export { default as useRafState } from './useRafState';
 /**
- * @deprecated This hook is obsolete, use `useMountedState` instead
+ * @deprecated This hook is obsolete and Will be removed soon, use `useMountedState` instead
  */
 export { default as useRefMounted } from './useRefMounted';
 export { default as useSearchParam } from './useSearchParam';
@@ -93,6 +93,9 @@ export { default as useUpsert } from './useUpsert';
 export { default as useVideo } from './useVideo';
 export { default as useStateValidator } from './useStateValidator';
 export { useMultiStateValidator } from './useMultiStateValidator';
+/**
+ * @deprecated Will be removed soon
+ */
 export { useWait, Waiter } from './useWait';
 export { default as useWindowScroll } from './useWindowScroll';
 export { default as useWindowSize } from './useWindowSize';
