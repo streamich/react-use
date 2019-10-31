@@ -1,3 +1,10 @@
+# [12.12.0](https://github.com/streamich/react-use/compare/v12.11.0...v12.12.0) (2019-10-31)
+
+
+### Features
+
+* add typings for createReducer ([f1cf036](https://github.com/streamich/react-use/commit/f1cf036))
+
 # [12.11.0](https://github.com/streamich/react-use/compare/v12.10.0...v12.11.0) (2019-10-31)
 
 
