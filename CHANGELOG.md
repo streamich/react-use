@@ -1,3 +1,10 @@
+# [12.11.0](https://github.com/streamich/react-use/compare/v12.10.0...v12.11.0) (2019-10-31)
+
+
+### Features
+
+* **useWait:** add deprecation messages to readme and export; ([d338245](https://github.com/streamich/react-use/commit/d338245))
+
 # [12.10.0](https://github.com/streamich/react-use/compare/v12.9.1...v12.10.0) (2019-10-30)
 
 
