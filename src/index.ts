@@ -64,10 +64,6 @@ export { default as usePromise } from './usePromise';
 export { default as useRaf } from './useRaf';
 export { default as useRafLoop } from './useRafLoop';
 export { default as useRafState } from './useRafState';
-/**
- * @deprecated This hook is obsolete and Will be removed soon, use `useMountedState` instead
- */
-export { default as useRefMounted } from './useRefMounted';
 export { default as useSearchParam } from './useSearchParam';
 export { default as useScroll } from './useScroll';
 export { default as useScrolling } from './useScrolling';
