@@ -1,3 +1,12 @@
+# [12.13.0](https://github.com/streamich/react-use/compare/v12.12.0...v12.13.0) (2019-10-31)
+
+
+### Features
+
+* **useCounter:** reworked with use of new resolveHookState function plus improved memory usage; ([befcf84](https://github.com/streamich/react-use/commit/befcf84))
+* **useGetSet:** reworked with use of new resolveHookState function plus improved memory usage; ([9b5d0f2](https://github.com/streamich/react-use/commit/9b5d0f2))
+* react-like state resolver to use it in stateful hooks; ([9fd02eb](https://github.com/streamich/react-use/commit/9fd02eb))
+
 # [12.12.0](https://github.com/streamich/react-use/compare/v12.11.0...v12.12.0) (2019-10-31)
 
 
