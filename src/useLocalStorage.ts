@@ -4,9 +4,9 @@ import { isClient } from './util';
 type Dispatch<A> = (value: A) => void;
 type SetStateAction<S> = S | ((prevState: S) => S);
 
-const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, Dispatch<SetStateAction<T>>] => {
+const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T | undefined, Dispatch<SetStateAction<T>>] => {
   if (!isClient) {
-    return [initialValue as T, () => {}];
+    return [initialValue, () => {}];
   }
 
   const [state, setState] = useState<T>(() => {
