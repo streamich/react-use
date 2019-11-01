@@ -1,3 +1,10 @@
+# [13.1.0](https://github.com/streamich/react-use/compare/v13.0.1...v13.1.0) (2019-11-01)
+
+
+### Features
+
+* pull request template for features ([1dc21f3](https://github.com/streamich/react-use/commit/1dc21f3))
+
 ## [13.0.1](https://github.com/streamich/react-use/compare/v13.0.0...v13.0.1) (2019-11-01)
 
 
