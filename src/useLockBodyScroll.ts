@@ -17,7 +17,7 @@ export function getClosestBody(el: Element | HTMLElement | HTMLIFrameElement | n
 
 export interface BodyInfoItem {
   counter: number;
-  initialOverflow: string | null;
+  initialOverflow: CSSStyleDeclaration['overflow'];
 }
 
 const bodies: Map<HTMLElement, BodyInfoItem> = new Map();
