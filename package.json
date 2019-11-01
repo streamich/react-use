@@ -75,7 +75,7 @@
     "@storybook/addon-notes": "5.2.5",
     "@storybook/addon-options": "5.2.5",
     "@storybook/react": "5.2.5",
-    "@testing-library/react-hooks": "2.0.3",
+    "@testing-library/react-hooks": "3.1.1",
     "@types/jest": "24.0.21",
     "@types/react": "16.9.2",
     "babel-core": "6.26.3",
