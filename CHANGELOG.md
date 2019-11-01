@@ -1,3 +1,21 @@
+# [13.0.0](https://github.com/streamich/react-use/compare/v12.13.0...v13.0.0) (2019-11-01)
+
+
+* Merge pull request #711 from streamich/remove-react-wait ([8d40f18](https://github.com/streamich/react-use/commit/8d40f18)), closes [#711](https://github.com/streamich/react-use/issues/711)
+
+
+### Features
+
+* remove useRefMounted hook ([ad74d3d](https://github.com/streamich/react-use/commit/ad74d3d))
+* **useRefMounted:** remove obsolete hook; ([dc364c8](https://github.com/streamich/react-use/commit/dc364c8))
+* **useWait:** removed from package due to it is simple reexport of other package; ([d7c38bd](https://github.com/streamich/react-use/commit/d7c38bd))
+
+
+### BREAKING CHANGES
+
+* useWait hook has been removed from react-use
+* deprecated useRefMounted hook is now removed, use useMountedState hook instead
+
 # [12.13.0](https://github.com/streamich/react-use/compare/v12.12.0...v12.13.0) (2019-10-31)
 
 
