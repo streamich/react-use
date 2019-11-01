@@ -89,10 +89,6 @@ export { default as useUpsert } from './useUpsert';
 export { default as useVideo } from './useVideo';
 export { default as useStateValidator } from './useStateValidator';
 export { useMultiStateValidator } from './useMultiStateValidator';
-/**
- * @deprecated Will be removed soon
- */
-export { useWait, Waiter } from './useWait';
 export { default as useWindowScroll } from './useWindowScroll';
 export { default as useWindowSize } from './useWindowSize';
 export { default as useMeasure } from './useMeasure';

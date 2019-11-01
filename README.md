@@ -77,7 +77,6 @@
   - [`useFullscreen`](./docs/useFullscreen.md) &mdash; display an element or video full-screen. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usefullscreen--demo)
   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![][img-demo]](https://codesandbox.io/s/n090mqz69m)
   - [`useVideo`](./docs/useVideo.md) &mdash; plays video, tracks its state, and exposes playback controls. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usevideo--demo)
-  - ~~[`useWait`](./docs/useWait.md) &mdash; complex waiting management for UIs.~~ _Deprecated_: will be removed soon
     <br/>
     <br/>
 - [**Animations**](./docs/Animations.md)
