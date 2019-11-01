@@ -8,12 +8,14 @@ const createSuperContext = (reducer, initialState, effects) => {
   let currentAction = null;
 
   const Provider = props => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch]: [any, any] = useReducer(reducer, initialState);
     const prevState = usePrevious(state);
     $$dispatch = dispatch;
 
     useUpdateEffect(() => {
-      if (currentAction) effects.forEach(effect => effect(prevState, currentAction, state));
+      if (currentAction) {
+        effects.forEach(effect => effect(prevState, currentAction, state));
+      }
       currentAction = null;
     });
 
