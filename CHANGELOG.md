@@ -1,3 +1,10 @@
+## [13.0.1](https://github.com/streamich/react-use/compare/v13.0.0...v13.0.1) (2019-11-01)
+
+
+### Bug Fixes
+
+* **useLockBodyScroll:** infer overflow type directly from declaration. ([26baf47](https://github.com/streamich/react-use/commit/26baf47))
+
 # [13.0.0](https://github.com/streamich/react-use/compare/v12.13.0...v13.0.0) (2019-11-01)
 
 
