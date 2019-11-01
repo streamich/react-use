@@ -7,7 +7,7 @@ const createSuperContext = (reducer, initialState, effects) => {
   let $$dispatch;
   let currentAction = null;
 
-  const Provider = ({ children }) => {
+  const Provider = props => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const prevState = usePrevious(state);
     $$dispatch = dispatch;
@@ -17,7 +17,7 @@ const createSuperContext = (reducer, initialState, effects) => {
       currentAction = null;
     });
 
-    return createElement(Context.Provider, { value: state }, children);
+    return createElement(Context.Provider, { value: state }, props.children);
   };
 
   return {
