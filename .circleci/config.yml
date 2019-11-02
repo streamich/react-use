@@ -50,8 +50,8 @@ refs:
       run:
         name: Post commit status for Storybook
         command: |
-          npx cross-ci :run curl -H "'Authorization: token $GITHUB_TOKEN' -H 'Accept: application/vnd.github.v3+json'" \
-          "'https://api.github.com/repos/streamich/react-use/statuses/$CIRCLE_SHA1'" -X POST \
+          npx cross-ci :run curl -H "'Authorization: token \${GITHUB_TOKEN}' -H 'Accept: application/vnd.github.v3+json'" \
+          "'https://api.github.com/repos/\${PROJECT_OWNER}/\${PROJECT_NAME}/statuses/$CIRCLE_SHA1'" -X POST \
           -d "'{\"state\": \"success\", \"context\": \"Storybook\", \"description\": \"\${BUILD_VERSION}\", \"target_url\": \"https://$CIRCLE_BUILD_NUM-154950925-gh.circle-artifacts.com/0/root/repo/storybook-static/index.html\"}'"
 
 jobs:
