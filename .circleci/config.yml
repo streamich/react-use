@@ -10,10 +10,18 @@ refs:
       run:
         name: Versions
         command: node -v && npm -v && yarn -v
+    - &CacheRestore
+      restore_cache:
+        key: dependency-cache-{{ checksum "yarn.lock" }}
     - &Install
       run:
         name: Install Dependencies
         command: yarn install --pure-lockfile
+    - &CacheSave
+      save_cache:
+        key: dependency-cache-{{ checksum "yarn.lock" }}
+        paths:
+          - ./node_modules
     - &Build
       run:
         name: Build
@@ -52,7 +60,9 @@ jobs:
     steps:
       - checkout
       - *Versions
+      - *CacheRestore
       - *Install
+      - *CacheSave
       - *Build
       - *Build_Storybook
       - *Test
@@ -66,7 +76,9 @@ jobs:
     steps:
       - checkout
       - *Versions
+      - *CacheRestore
       - *Install
+      - *CacheSave
       - *Build
       - *Build_Storybook
       - *Test
@@ -88,7 +100,9 @@ jobs:
     steps:
       - checkout
       - *Versions
+      - *CacheRestore
       - *Install
+      - *CacheSave
       - *Build
       - *Build_Storybook
       - *Test
