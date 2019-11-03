@@ -1,73 +1,88 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import { replaceRaf } from 'raf-stub';
 import useWindowSize from '../useWindowSize';
+import { isClient } from '../util';
 
-interface RequestAnimationFrame {
-  reset(): void;
-  step(): void;
-}
-
-declare var requestAnimationFrame: RequestAnimationFrame;
-
-replaceRaf();
-
-beforeEach(() => {
-  requestAnimationFrame.reset();
-});
-
-afterEach(() => {
-  requestAnimationFrame.reset();
-});
-
-// simulate window resize
-function fireResize(type, value) {
-  switch (type) {
-    case 'width':
-      (window.innerWidth as number) = value; // assert type of window.innerWidth as it is typed as readonly.
-      break;
-    case 'height':
-      (window.innerHeight as number) = value; // assert type of window.innerHeight as it is typed as readonly.
-      break;
-    default:
-      break;
-  }
-
-  window.dispatchEvent(new Event('resize'));
-}
+declare var requestAnimationFrame: {
+  reset: () => void;
+  step: (steps?: number, duration?: number) => void;
+};
 
 describe('useWindowSize', () => {
+  beforeAll(() => {
+    replaceRaf();
+  });
+
+  afterEach(() => {
+    requestAnimationFrame.reset();
+  });
+
   it('should be defined', () => {
     expect(useWindowSize).toBeDefined();
   });
 
-  const hook = renderHook(() => useWindowSize());
+  function getHook(...args) {
+    return renderHook(() => useWindowSize(...args));
+  }
 
-  it('should update width', () => {
-    act(() => {
-      fireResize('width', 320);
-      requestAnimationFrame.step();
-    });
+  function triggerResize(dimension: 'width' | 'height', value: number) {
+    if (dimension === 'width') {
+      (window.innerWidth as number) = value;
+    } else if (dimension === 'height') {
+      (window.innerHeight as number) = value;
+    }
 
-    expect(hook.result.current.width).toBe(320);
+    window.dispatchEvent(new Event('resize'));
+  }
 
-    act(() => {
-      fireResize('width', 640);
-      requestAnimationFrame.step();
-    });
-    expect(hook.result.current.width).toBe(640);
+  it('should return current window dimensions', () => {
+    const hook = getHook();
+
+    expect(typeof hook.result.current).toBe('object');
+    expect(typeof hook.result.current.height).toBe('number');
+    expect(typeof hook.result.current.width).toBe('number');
   });
 
-  it('should update height', () => {
-    act(() => {
-      fireResize('height', 500);
-      requestAnimationFrame.step();
-    });
-    expect(hook.result.current.height).toBe(500);
+  it('should use passed parameters as initial values in case of non-browser use', () => {
+    const hook = getHook(1, 1);
+
+    expect(hook.result.current.height).toBe(isClient ? window.innerHeight : 1);
+    expect(hook.result.current.width).toBe(isClient ? window.innerWidth : 1);
+  });
+
+  it('should re-render after height change on closest RAF', () => {
+    const hook = getHook();
 
     act(() => {
-      fireResize('height', 1000);
+      triggerResize('height', 360);
       requestAnimationFrame.step();
     });
-    expect(hook.result.current.height).toBe(1000);
+
+    expect(hook.result.current.height).toBe(360);
+
+    act(() => {
+      triggerResize('height', 2048);
+      requestAnimationFrame.step();
+    });
+
+    expect(hook.result.current.height).toBe(2048);
+  });
+
+  it('should re-render after width change on closest RAF', () => {
+    const hook = getHook();
+
+    act(() => {
+      triggerResize('width', 360);
+      requestAnimationFrame.step();
+    });
+
+    expect(hook.result.current.width).toBe(360);
+
+    act(() => {
+      triggerResize('width', 2048);
+      requestAnimationFrame.step();
+    });
+
+    expect(hook.result.current.width).toBe(2048);
   });
 });
