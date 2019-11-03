@@ -1712,10 +1712,10 @@
     parse-github-url "^1.0.1"
     url-join "^4.0.0"
 
-"@semantic-release/npm@5.3.3":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-5.3.3.tgz#8b92e915ec51820e8c91a7179ab4e825b0795b04"
-  integrity sha512-9UhVIri3yZzgzPO9Vcbyg4EZuCVDgR3UC+f4iOb62tRSLBGflY1oRdNpoyonIayOec0JyRzvfapiXm1Bu111og==
+"@semantic-release/npm@5.3.4":
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-5.3.4.tgz#2998cd9455aaedf278334d4a5b56f8e0b715919d"
+  integrity sha512-XjITNRA/oOpJ7BfHk/WaOHs1WniYBszTde/bwADjjk1Luacpxg87jbDQVVt/oA3Zlx+MelxACRIEuRiPC5gu8g==
   dependencies:
     "@semantic-release/error" "^2.2.0"
     aggregate-error "^3.0.0"
