@@ -1,3 +1,10 @@
+## [13.2.1](https://github.com/streamich/react-use/compare/v13.2.0...v13.2.1) (2019-11-04)
+
+
+### Bug Fixes
+
+* **yarn.lock:** re-create the yarn.lock file with nailed versions in devDeps ([f094a3a](https://github.com/streamich/react-use/commit/f094a3ae833f406137b9d5355843a6615af20164))
+
 # [13.2.0](https://github.com/streamich/react-use/compare/v13.1.0...v13.2.0) (2019-11-04)
 
 
