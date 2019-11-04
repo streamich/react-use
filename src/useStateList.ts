@@ -1,33 +1,46 @@
-import { useState, useCallback } from 'react';
-
+import { useCallback, useRef } from 'react';
+import useMountedState from './useMountedState';
+import useUpdate from './useUpdate';
 import useUpdateEffect from './useUpdateEffect';
 
 export default function useStateList<T>(stateSet: T[] = []): { state: T; next: () => void; prev: () => void } {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const isMounted = useMountedState();
+  const update = useUpdate();
+  const index = useRef(0);
 
-  // In case we receive a different state set, check if the current index still exists and
-  // reset it to the last if it don't.
+  // If new state list is shorter that before - switch to the last element
   useUpdateEffect(() => {
-    if (!stateSet[currentIndex]) {
-      setCurrentIndex(stateSet.length - 1);
+    if (stateSet.length <= index.current) {
+      index.current = stateSet.length - 1;
+      update();
     }
-  }, [stateSet]);
-
-  const next = useCallback(() => {
-    const nextStateIndex = stateSet.length === currentIndex + 1 ? 0 : currentIndex + 1;
-
-    setCurrentIndex(nextStateIndex);
-  }, [stateSet, currentIndex]);
-
-  const prev = useCallback(() => {
-    const prevStateIndex = currentIndex === 0 ? stateSet.length - 1 : currentIndex - 1;
-
-    setCurrentIndex(prevStateIndex);
-  }, [stateSet, currentIndex]);
+  }, [stateSet.length]);
 
   return {
-    state: stateSet[currentIndex],
-    next,
-    prev,
+    state: stateSet[index.current],
+    next: useCallback(() => {
+      // do nothing on unmounted component
+      if (!isMounted()) {
+        return;
+      }
+
+      // act only if stateSet has element within
+      if (stateSet.length) {
+        index.current = (index.current + 1) % stateSet.length;
+        update();
+      }
+    }, [stateSet, index]),
+    prev: useCallback(() => {
+      // do nothing on unmounted component
+      if (!isMounted()) {
+        return;
+      }
+
+      // act only if stateSet has element within
+      if (stateSet.length) {
+        index.current = index.current - 1 < 0 ? stateSet.length - 1 : index.current - 1;
+        update();
+      }
+    }, [stateSet, index]),
   };
 }
