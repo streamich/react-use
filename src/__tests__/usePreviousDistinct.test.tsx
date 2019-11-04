@@ -47,6 +47,23 @@ describe('usePreviousDistinct', () => {
     expect(hook.result.current).toBe(2);
   });
 
+  it('should work fine with `undefined` values', () => {
+    const hook = renderHook(({ value }) => usePreviousDistinct(value), {
+      initialProps: { value: undefined as undefined | number },
+    });
+
+    expect(hook.result.current).toBeUndefined();
+
+    hook.rerender({ value: 1 });
+    expect(hook.result.current).toBeUndefined();
+
+    hook.rerender({ value: undefined });
+    expect(hook.result.current).toBe(1);
+
+    hook.rerender({ value: 2 });
+    expect(hook.result.current).toBeUndefined();
+  });
+
   it('should receive a predicate as a second parameter that will compare prev and current', () => {
     const obj1 = { label: 'John', value: 'john' };
     const obj2 = { label: 'Jonny', value: 'john' };
