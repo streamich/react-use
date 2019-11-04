@@ -10,7 +10,7 @@ interface Store<Action, State> {
 
 type Middleware<Action, State> = (store: Store<Action, State>) => (next: Dispatch<Action>) => (action: Action) => void;
 
-function composeMiddleware<Action, State>(chain: Array<Middleware<Action, State>>) {
+function composeMiddleware<Action, State>(chain: Middleware<Action, State>[]) {
   return (context: Store<Action, State>, dispatch: Dispatch<Action>) => {
     return chain.reduceRight((res, middleware) => {
       return middleware(context)(res);
@@ -18,7 +18,7 @@ function composeMiddleware<Action, State>(chain: Array<Middleware<Action, State>
   };
 }
 
-const createReducer = <Action, State>(...middlewares: Array<Middleware<Action, State>>) => {
+const createReducer = <Action, State>(...middlewares: Middleware<Action, State>[]) => {
   const composedMiddleware = composeMiddleware<Action, State>(middlewares);
 
   return (
