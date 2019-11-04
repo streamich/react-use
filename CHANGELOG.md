@@ -1,3 +1,17 @@
+# [13.2.0](https://github.com/streamich/react-use/compare/v13.1.0...v13.2.0) (2019-11-04)
+
+
+### Features
+
+* re-create yarn.lock ([d48e03e](https://github.com/streamich/react-use/commit/d48e03e9ee38555ff29ca46fb6e75c13e9c23aba))
+* re-create yarn.lock ([ccdffe0](https://github.com/streamich/react-use/commit/ccdffe027fba15bdca1f35dc375a0c32739aee6f))
+* **usePreviousDistinct:** add tests for undefined value behaviour; ([cb373f9](https://github.com/streamich/react-use/commit/cb373f951fb3f34b9e54793687de14000a2dc08e))
+* **usePreviousDistinct:** improve types; ([30f53e8](https://github.com/streamich/react-use/commit/30f53e8c5d7e8b27bf3f273ebfcacabf30146ba3))
+* **usePreviousDistinct:** now predicate not called on initial render; ([fbe9b13](https://github.com/streamich/react-use/commit/fbe9b1303c0433d5608ca5b507d9c76711b5cb68))
+* **useStateList:** rework useStateList to make it work properly. ([242c274](https://github.com/streamich/react-use/commit/242c274dd49779fa80f8b9e451c699205279339e))
+* **useTitle:** reworked hook to make it synchronous without useUpdate; ([a133267](https://github.com/streamich/react-use/commit/a13326779ffd6885ac531240b984a77bcad3bee6))
+* **useWindowSize:** A bit changed lyfecycle and added types; ([03bdecf](https://github.com/streamich/react-use/commit/03bdecf7ac6aa0ad863a1efd71c056aa41df62b7))
+
 # [13.1.0](https://github.com/streamich/react-use/compare/v13.0.1...v13.1.0) (2019-11-01)
 
 
