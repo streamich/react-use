@@ -12787,10 +12787,10 @@ tslint-react@4.1.0:
   dependencies:
     tsutils "^3.9.1"
 
-tslint@6.0.0-beta0:
-  version "6.0.0-beta0"
-  resolved "https://registry.yarnpkg.com/tslint/-/tslint-6.0.0-beta0.tgz#9a67cc1ff8282dd21be745f76d9c3c13d5c49c9d"
-  integrity sha512-BpLIOM7+as9FLOPmQuTvzZVH6MIZUN1OHh2nD7uh8rOPpidLfNHg4qrdxMBWL9AoTamNftEvafvWzUwuGOo4bw==
+tslint@6.0.0-beta1:
+  version "6.0.0-beta1"
+  resolved "https://registry.yarnpkg.com/tslint/-/tslint-6.0.0-beta1.tgz#2a7d0f0b65858b6ebb88328f5993f123bc8905bc"
+  integrity sha512-nQMCs8L7mjInzGpQYwtM2nt68qs+hvUY3nkTyjfZJB5JbCMmzseNl2z11XZInR4D+RebfLndgwkuBYzWnU0mSQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     builtin-modules "^1.1.1"

@@ -103,7 +103,7 @@
     "semantic-release": "15.13.30",
     "ts-loader": "6.2.1",
     "ts-node": "8.4.1",
-    "tslint": "6.0.0-beta0",
+    "tslint": "6.0.0-beta1",
     "tslint-config-prettier": "1.18.0",
     "tslint-eslint-rules": "5.4.0",
     "tslint-plugin-prettier": "2.0.1",
