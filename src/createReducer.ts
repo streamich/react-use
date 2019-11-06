@@ -1,18 +1,31 @@
-import { useCallback, useRef, useState } from 'react';
+import { MutableRefObject, useCallback, useRef, useState } from 'react';
 import useUpdateEffect from './useUpdateEffect';
 
-function composeMiddleware(chain) {
-  return (context, dispatch) => {
+type Dispatch<Action> = (action: Action) => void;
+
+interface Store<Action, State> {
+  getState: () => State;
+  dispatch: Dispatch<Action>;
+}
+
+type Middleware<Action, State> = (store: Store<Action, State>) => (next: Dispatch<Action>) => (action: Action) => void;
+
+function composeMiddleware<Action, State>(chain: Middleware<Action, State>[]) {
+  return (context: Store<Action, State>, dispatch: Dispatch<Action>) => {
     return chain.reduceRight((res, middleware) => {
       return middleware(context)(res);
     }, dispatch);
   };
 }
 
-const createReducer = (...middlewares) => {
-  const composedMiddleware = composeMiddleware(middlewares);
+const createReducer = <Action, State>(...middlewares: Middleware<Action, State>[]) => {
+  const composedMiddleware = composeMiddleware<Action, State>(middlewares);
 
-  return (reducer, initialState, initializer = value => value) => {
+  return (
+    reducer: (state: State, action: Action) => State,
+    initialState: State,
+    initializer = (value: State) => value
+  ): [State, Dispatch<Action>] => {
     const ref = useRef(initializer(initialState));
     const [, setState] = useState(ref.current);
 
@@ -25,11 +38,11 @@ const createReducer = (...middlewares) => {
       [reducer]
     );
 
-    const dispatchRef = useRef(
+    const dispatchRef: MutableRefObject<Dispatch<Action>> = useRef(
       composedMiddleware(
         {
           getState: () => ref.current,
-          dispatch: (...args) => dispatchRef.current(...args),
+          dispatch: (...args: [Action]) => dispatchRef.current(...args),
         },
         dispatch
       )
@@ -39,7 +52,7 @@ const createReducer = (...middlewares) => {
       dispatchRef.current = composedMiddleware(
         {
           getState: () => ref.current,
-          dispatch: (...args) => dispatchRef.current(...args),
+          dispatch: (...args: [Action]) => dispatchRef.current(...args),
         },
         dispatch
       );

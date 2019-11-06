@@ -1,14 +1,14 @@
+import { DependencyList } from 'react';
 import useUpdateEffect from './useUpdateEffect';
 
-const useDebounce = (fn: () => any, ms: number = 0, args: any[] = []) => {
+const useDebounce = (fn: () => any, ms: number = 0, deps: DependencyList = []) => {
   useUpdateEffect(() => {
-    const handle = setTimeout(fn.bind(null, args), ms);
+    const timeout = setTimeout(fn, ms);
 
     return () => {
-      // if args change then clear timeout
-      clearTimeout(handle);
+      clearTimeout(timeout);
     };
-  }, args);
+  }, deps);
 };
 
 export default useDebounce;

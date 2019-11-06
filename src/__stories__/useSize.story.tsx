@@ -4,15 +4,14 @@ import { useSize } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [sized, { width, height }] = useSize(({ width: currentWidth }) => (
-    <div style={{ border: '1px solid red' }}>Size me up! ({currentWidth}px)</div>
+  const [sized, state] = useSize(({ width: currentWidth }) => (
+    <div style={{ background: 'red' }}>Size me up! ({currentWidth}px)</div>
   ));
 
   return (
     <div>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
       {sized}
-      <div>width: {width}</div>
-      <div>height: {height}</div>
     </div>
   );
 };
