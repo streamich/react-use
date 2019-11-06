@@ -8,4 +8,4 @@ function useTitle(title: string) {
   }
 }
 
-export default document ? useTitle : (_title: string) => {};
+export default typeof document !== 'undefined' ? useTitle : (_title: string) => {};
