@@ -1,3 +1,10 @@
+## [13.2.2](https://github.com/streamich/react-use/compare/v13.2.1...v13.2.2) (2019-11-06)
+
+
+### Bug Fixes
+
+* **#749:** now should work with SSR ([c12976c](https://github.com/streamich/react-use/commit/c12976cad26577a4be3ac65133268f41bbdc82da)), closes [#749](https://github.com/streamich/react-use/issues/749)
+
 ## [13.2.1](https://github.com/streamich/react-use/compare/v13.2.0...v13.2.1) (2019-11-04)
 
 
