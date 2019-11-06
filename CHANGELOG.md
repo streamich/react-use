@@ -1,3 +1,11 @@
+# [13.3.0](https://github.com/streamich/react-use/compare/v13.2.2...v13.3.0) (2019-11-06)
+
+
+### Features
+
+* useDebounce add cancel ([693aec8](https://github.com/streamich/react-use/commit/693aec8307c378697c88c635a401832f24d3531a))
+* useDebounce add cancel ([26cab31](https://github.com/streamich/react-use/commit/26cab31f10a995ec45d6c1e2a2f724d9994d801f))
+
 ## [13.2.2](https://github.com/streamich/react-use/compare/v13.2.1...v13.2.2) (2019-11-06)
 
 
