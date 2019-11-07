@@ -13,14 +13,89 @@ describe('useStateList', () => {
   it('should return an object containing `state`, `next` and `prev`', () => {
     const res = getHook().result.current;
 
-    expect(typeof res).toBe('object');
-    expect(typeof res.state).toBe('string');
-    expect(typeof res.prev).toBe('function');
-    expect(typeof res.next).toBe('function');
+    expect(res).toStrictEqual({
+      state: expect.any(String),
+      currentIndex: expect.any(Number),
+      prev: expect.any(Function),
+      next: expect.any(Function),
+      setStateAt: expect.any(Function),
+      setState: expect.any(Function),
+    });
   });
 
   it('should return the first state on init', () => {
     expect(getHook().result.current.state).toBe('a');
+  });
+
+  describe('setState()', () => {
+    it('should set state value if it exists in states list', () => {
+      const hook = getHook();
+
+      expect(hook.result.current.state).toBe('a');
+
+      act(() => hook.result.current.setState('c'));
+
+      expect(hook.result.current.state).toBe('c');
+    });
+
+    it('should throw if required state not exists', () => {
+      const hook = getHook();
+
+      expect(hook.result.current.state).toBe('a');
+
+      expect(() => hook.result.current.setState('d')).toThrow(
+        `State 'd' is not a valid state (does not exist in state list)`
+      );
+    });
+
+    it('should do nothing on unmounted component', () => {
+      const hook = getHook();
+
+      expect(hook.result.current.state).toBe('a');
+      hook.unmount();
+
+      expect(() => hook.result.current.setState('c')).not.toThrow(Error);
+      expect(hook.result.current.state).toBe('a');
+    });
+  });
+
+  describe('setStateAt()', () => {
+    it('should set state by it`s index in states list', () => {
+      const hook = getHook();
+
+      expect(hook.result.current.state).toBe('a');
+
+      act(() => hook.result.current.setStateAt(2));
+      expect(hook.result.current.state).toBe('c');
+      act(() => hook.result.current.setStateAt(1));
+      expect(hook.result.current.state).toBe('b');
+    });
+
+    it('should cyclically travel through the right border', () => {
+      const hook = getHook();
+
+      expect(hook.result.current.state).toBe('a');
+
+      act(() => hook.result.current.setStateAt(5));
+      expect(hook.result.current.state).toBe('c');
+      act(() => hook.result.current.setStateAt(9));
+      expect(hook.result.current.state).toBe('a');
+      act(() => hook.result.current.setStateAt(10));
+      expect(hook.result.current.state).toBe('b');
+    });
+
+    it('should cyclically travel through the left border', () => {
+      const hook = getHook();
+
+      expect(hook.result.current.state).toBe('a');
+
+      act(() => hook.result.current.setStateAt(-1));
+      expect(hook.result.current.state).toBe('c');
+      act(() => hook.result.current.setStateAt(-2));
+      expect(hook.result.current.state).toBe('b');
+      act(() => hook.result.current.setStateAt(-17));
+      expect(hook.result.current.state).toBe('b');
+    });
   });
 
   describe('next()', () => {
@@ -40,7 +115,7 @@ describe('useStateList', () => {
       expect(hook.result.current.state).toBe('c');
     });
 
-    it('should on overflow should switch to first element (should be cycled)', () => {
+    it('on overflow should switch to first element (should be cycled)', () => {
       const hook = getHook();
 
       expect(hook.result.current.state).toBe('a');
@@ -55,7 +130,7 @@ describe('useStateList', () => {
   });
 
   describe('prev()', () => {
-    it('should on overflow should switch to last element (should be cycled)', () => {
+    it('on overflow should switch to last element (should be cycled)', () => {
       const hook = getHook();
 
       expect(hook.result.current.state).toBe('a');
