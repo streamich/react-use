@@ -31,7 +31,16 @@ jest.mock('resize-observer-polyfill', () => {
       target[method] = (...args) => {
         const [attrName, value] = args;
         if (attrName === 'style') {
-          const rect: DOMRectReadOnly = { x: 0, y: 0, top: 0, left: 0, right: 0, bottom: 0, width: 0, height: 0 } as DOMRectReadOnly;
+          const rect: DOMRectReadOnly = {
+            x: 0,
+            y: 0,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: 0,
+            height: 0,
+          } as DOMRectReadOnly;
           value.split(';').map(kv => {
             const [key, v] = kv.split(':');
             if (['top', 'bottom', 'left', 'right', 'width', 'height'].includes(key)) {
