@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import { useRef } from 'react';
-import useList, { ListActions } from '../useList';
+import useList, { ListActions } from '../src/useList';
 
 describe('useList', () => {
   it('should be defined', () => {

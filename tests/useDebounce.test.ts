@@ -1,7 +1,7 @@
 import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
 import { DependencyList } from 'react';
-import { useDebounce } from '../index';
-import { UseDebounceReturn } from '../useDebounce';
+import { UseDebounceReturn } from '../src/useDebounce';
+import { useDebounce } from '../src';
 
 describe('useDebounce', () => {
   beforeAll(() => {

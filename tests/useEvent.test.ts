@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useEvent, { ListenerType1, ListenerType2 } from '../useEvent';
+import useEvent, { ListenerType1, ListenerType2 } from '../src/useEvent';
 
 interface Props {
   name: string;

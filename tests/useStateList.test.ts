@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import useStateList from '../useStateList';
+import useStateList from '../src/useStateList';
 
 describe('useStateList', () => {
   it('should be defined', () => {
