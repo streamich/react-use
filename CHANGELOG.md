@@ -1,3 +1,15 @@
+# [13.5.0](https://github.com/streamich/react-use/compare/v13.4.0...v13.5.0) (2019-11-08)
+
+
+### Bug Fixes
+
+* **resolveHookState:** by accident removed needed type. ([59aa41c](https://github.com/streamich/react-use/commit/59aa41cff435f5adf7f38d361649761b8dd69794))
+
+
+### Features
+
+* **useList:** reimplemented useList hook; ([1840b57](https://github.com/streamich/react-use/commit/1840b577e2a3d321b8dbb44d5ae443e84d4d9e20))
+
 # [13.4.0](https://github.com/streamich/react-use/compare/v13.3.0...v13.4.0) (2019-11-08)
 
 
