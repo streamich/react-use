@@ -61,13 +61,10 @@ export { default as usePermission } from './usePermission';
 export { default as usePrevious } from './usePrevious';
 export { default as usePreviousDistinct } from './usePreviousDistinct';
 export { default as usePromise } from './usePromise';
+export { default as useQueue } from './useQueue';
 export { default as useRaf } from './useRaf';
 export { default as useRafLoop } from './useRafLoop';
 export { default as useRafState } from './useRafState';
-/**
- * @deprecated This hook is obsolete, use `useMountedState` instead
- */
-export { default as useRefMounted } from './useRefMounted';
 export { default as useSearchParam } from './useSearchParam';
 export { default as useScroll } from './useScroll';
 export { default as useScrolling } from './useScrolling';
@@ -90,10 +87,10 @@ export { default as useUnmount } from './useUnmount';
 export { default as useUpdate } from './useUpdate';
 export { default as useUpdateEffect } from './useUpdateEffect';
 export { default as useUpsert } from './useUpsert';
+export { default as useVibrate } from './useVibrate';
 export { default as useVideo } from './useVideo';
 export { default as useStateValidator } from './useStateValidator';
 export { useMultiStateValidator } from './useMultiStateValidator';
-export { useWait, Waiter } from './useWait';
 export { default as useWindowScroll } from './useWindowScroll';
 export { default as useWindowSize } from './useWindowSize';
 export { default as useMeasure } from './useMeasure';

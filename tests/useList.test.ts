@@ -1,206 +1,373 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import useList from '../src/useList';
+import { useRef } from 'react';
+import useList, { ListActions } from '../useList';
 
-const setUp = (initialList?: any[]) => renderHook(() => useList(initialList));
-
-it('should init list and utils', () => {
-  const { result } = setUp([1, 2, 3]);
-  const [list, utils] = result.current;
-
-  expect(list).toEqual([1, 2, 3]);
-  expect(utils).toStrictEqual({
-    set: expect.any(Function),
-    clear: expect.any(Function),
-    updateAt: expect.any(Function),
-    remove: expect.any(Function),
-    push: expect.any(Function),
-    filter: expect.any(Function),
-    sort: expect.any(Function),
-    reset: expect.any(Function),
-  });
-});
-
-it('should init empty list if not initial list provided', () => {
-  const { result } = setUp();
-
-  expect(result.current[0]).toEqual([]);
-});
-
-it('should set new list', () => {
-  const initList = [1, 2, 3];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
-
-  act(() => {
-    utils.set([4, 5, 6]);
+describe('useList', () => {
+  it('should be defined', () => {
+    expect(useList).toBeDefined();
   });
 
-  expect(result.current[0]).toEqual([4, 5, 6]);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
+  function getHook<T>(initialArray?: T[]) {
+    return renderHook(
+      (props): [number, [T[], ListActions<T>]] => {
+        const counter = useRef(0);
 
-it('should clear current list', () => {
-  const initList = [1, 2, 3];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
+        return [++counter.current, useList(props)];
+      },
+      { initialProps: initialArray }
+    );
+  }
 
-  act(() => {
-    utils.clear();
-  });
+  it('should init with 1st parameter and actions', () => {
+    const hook = getHook([1, 2, 3]);
+    const [, [list, actions]] = hook.result.current;
 
-  expect(result.current[0]).toEqual([]);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
-
-it('should update element at specific position', () => {
-  const initList = [1, 2, 3];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
-
-  act(() => {
-    utils.updateAt(1, 'foo');
-  });
-
-  expect(result.current[0]).toEqual([1, 'foo', 3]);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
-
-it('should remove element at specific position', () => {
-  const initList = [1, 2, 3];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
-
-  act(() => {
-    utils.remove(1);
-  });
-
-  expect(result.current[0]).toEqual([1, 3]);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
-
-it('should push new element at the end of the list', () => {
-  const initList = [1, 2, 3];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
-
-  act(() => {
-    utils.push(0);
-  });
-
-  expect(result.current[0]).toEqual([1, 2, 3, 0]);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
-
-it('should push duplicated element at the end of the list', () => {
-  const initList = [1, 2, 3];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
-
-  act(() => {
-    utils.push(2);
-  });
-
-  expect(result.current[0]).toEqual([1, 2, 3, 2]);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
-
-it('should push multiple elements at the end of the list', () => {
-  const initList = [1, 2, 3];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
-
-  act(() => {
-    utils.push(4, 5, 6);
-  });
-
-  expect(result.current[0]).toEqual([1, 2, 3, 4, 5, 6]);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
-
-it('should filter current list by provided function', () => {
-  const initList = [1, -1, 2, -2, 3, -3];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
-
-  act(() => {
-    utils.filter(n => n < 0);
-  });
-
-  expect(result.current[0]).toEqual([-1, -2, -3]);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
-
-it('should sort current list by default order', () => {
-  const initList = ['March', 'Jan', 'Feb', 'Dec'];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
-
-  act(() => {
-    utils.sort();
-  });
-
-  expect(result.current[0]).toEqual(['Dec', 'Feb', 'Jan', 'March']);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
-
-it('should sort current list by provided function', () => {
-  const initList = ['March', 'Jan', 'Feb', 'Dec'];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
-
-  act(() => {
-    utils.sort((a, b) => {
-      if (a < b) {
-        return 1;
-      }
-      if (a > b) {
-        return -1;
-      }
-
-      return 0;
+    expect(list).toEqual([1, 2, 3]);
+    expect(actions).toStrictEqual({
+      set: expect.any(Function),
+      push: expect.any(Function),
+      updateAt: expect.any(Function),
+      insertAt: expect.any(Function),
+      update: expect.any(Function),
+      updateFirst: expect.any(Function),
+      upsert: expect.any(Function),
+      sort: expect.any(Function),
+      filter: expect.any(Function),
+      removeAt: expect.any(Function),
+      remove: expect.any(Function),
+      clear: expect.any(Function),
+      reset: expect.any(Function),
     });
   });
 
-  expect(result.current[0]).toEqual(['March', 'Jan', 'Feb', 'Dec']);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
+  it('should return the same actions object each render', () => {
+    const hook = getHook([1, 2, 3]);
+    const [, [, actions]] = hook.result.current;
 
-it('should reset the list to initial list provided', () => {
-  const initList = [1, 2, 3];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
+    act(() => {
+      actions.set([1, 2, 3, 4]);
+    });
 
-  act(() => {
-    utils.push(4);
+    expect(actions).toBe(hook.result.current[1][1]);
   });
 
-  expect(result.current[0]).toEqual([1, 2, 3, 4]);
-
-  act(() => {
-    utils.reset();
+  it('should default with empty array', () => {
+    expect(getHook().result.current[1][0]).toEqual([]);
   });
 
-  expect(result.current[0]).toEqual([1, 2, 3]);
-  expect(result.current[0]).not.toBe(initList); // checking immutability
-});
+  describe('set()', () => {
+    it('should reset list with given array and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { set }]] = hook.result.current;
 
-it('should memoized its utils methods', () => {
-  const initList = [1, 2, 3];
-  const { result } = setUp(initList);
-  const [, utils] = result.current;
-  const { set, clear, updateAt, remove, push, filter, sort, reset } = utils;
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        set([1, 2, 3, 4]);
+      });
+      expect(hook.result.current[1][0]).toEqual([1, 2, 3, 4]);
+      expect(hook.result.current[0]).toBe(2);
 
-  act(() => {
-    push(4);
+      act(() => {
+        set([1, 2, 3, 4, 5]);
+      });
+      expect(hook.result.current[1][0]).toEqual([1, 2, 3, 4, 5]);
+      expect(hook.result.current[0]).toBe(3);
+    });
   });
 
-  expect(result.current[1]).toBe(utils);
-  expect(result.current[1].set).toBe(set);
-  expect(result.current[1].clear).toBe(clear);
-  expect(result.current[1].updateAt).toBe(updateAt);
-  expect(result.current[1].remove).toBe(remove);
-  expect(result.current[1].push).toBe(push);
-  expect(result.current[1].filter).toBe(filter);
-  expect(result.current[1].sort).toBe(sort);
-  expect(result.current[1].reset).toBe(reset);
+  describe('push()', () => {
+    it('should add arbitrary amount of items to the end and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { push }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        push(1, 2, 3, 4);
+      });
+      expect(hook.result.current[1][0]).toEqual([1, 2, 3, 1, 2, 3, 4]);
+      expect(hook.result.current[0]).toBe(2);
+    });
+
+    it('should not do anything if called with no parameters', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [list, { push }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        push();
+      });
+      expect(hook.result.current[0]).toBe(1);
+      expect(list).toBe(hook.result.current[1][0]);
+    });
+  });
+
+  describe('updateAt()', () => {
+    it('should replace item at given index with given value and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { updateAt }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        updateAt(1, 5);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([1, 5, 3]);
+    });
+
+    it('should work fine if target index is out of array length', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { updateAt }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        updateAt(5, 6);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([1, 2, 3, undefined, undefined, 6]);
+    });
+  });
+
+  describe('insertAt()', () => {
+    it('should insert item at given index shifting all the right elements and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { insertAt }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        insertAt(1, 5);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([1, 5, 2, 3]);
+    });
+
+    it('should work if index is out of array length', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { insertAt }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        insertAt(5, 6);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([1, 2, 3, undefined, undefined, 6]);
+    });
+  });
+
+  describe('update()', () => {
+    it('should replace all items that matches the predicate and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { update }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        update((a, _) => a % 2 === 1, 0);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([0, 2, 0]);
+    });
+
+    it('should pass two parameters to the predicate, iterated element and new one', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { update }]] = hook.result.current;
+      const spy = jest.fn();
+
+      act(() => {
+        update(spy, 0);
+      });
+
+      expect(spy.mock.calls[0][0]).toBe(1);
+      expect(spy.mock.calls[0][1]).toBe(0);
+    });
+  });
+
+  describe('updateFirst()', () => {
+    it('should replace first items that matches the predicate and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { updateFirst }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        updateFirst((a, _) => a % 2 === 1, 0);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([0, 2, 3]);
+    });
+
+    it('should pass two parameters to the predicate, iterated element and new one', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { updateFirst }]] = hook.result.current;
+      const spy = jest.fn();
+
+      act(() => {
+        updateFirst(spy, 0);
+      });
+
+      expect(spy.mock.calls[0].length).toBe(2);
+      expect(spy.mock.calls[0][0]).toBe(1);
+      expect(spy.mock.calls[0][1]).toBe(0);
+    });
+  });
+
+  describe('upsert()', () => {
+    it('should replace first item that matches the predicate and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { upsert }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        upsert((a, _) => a === 1, 0);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([0, 2, 3]);
+    });
+
+    it('otherwise should push it to the list and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { upsert }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        upsert((a, _) => a === 5, 0);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([1, 2, 3, 0]);
+    });
+
+    it('should pass two parameters to the predicate, iterated element and new one', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { upsert }]] = hook.result.current;
+      const spy = jest.fn();
+
+      act(() => {
+        upsert(spy, 0);
+      });
+
+      expect(spy.mock.calls[0].length).toBe(2);
+      expect(spy.mock.calls[0][0]).toBe(1);
+      expect(spy.mock.calls[0][1]).toBe(0);
+    });
+  });
+
+  describe('sort()', () => {
+    it('should sort the list with given comparator and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { sort }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        sort((a, b) => (a === b ? 0 : a < b ? 1 : -1));
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([3, 2, 1]);
+    });
+
+    it('should use default array`s sorting function of called without parameters', () => {
+      const hook = getHook([2, 3, 1]);
+      const [, [, { sort }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        sort();
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([1, 2, 3]);
+    });
+  });
+
+  describe('filter()', () => {
+    it('should filter the list with given predicate and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { filter }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        filter(val => val % 2 === 1);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([1, 3]);
+    });
+
+    it('should pass three parameters to the predicate, iterated element, it`s index and filtered array', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [list, { filter }]] = hook.result.current;
+      const spy = jest.fn((_, _2, _3) => false);
+
+      act(() => {
+        filter(spy);
+      });
+
+      expect(spy.mock.calls[0].length).toBe(3);
+      expect(spy.mock.calls[0][0]).toBe(1);
+      expect(spy.mock.calls[0][1]).toBe(0);
+      expect(spy.mock.calls[0][2]).toEqual(list);
+    });
+  });
+
+  describe('removeAt()', () => {
+    it('should remove item at given index and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { removeAt }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        removeAt(1);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([1, 3]);
+    });
+
+    it('should do nothing if index is out of array length, although it should cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { removeAt }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        removeAt(5);
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([1, 2, 3]);
+    });
+  });
+
+  describe('remove()', () => {
+    it('should be a ref to removeAt', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { remove, removeAt }]] = hook.result.current;
+
+      expect(remove).toBe(removeAt);
+    });
+  });
+
+  describe('clear()', () => {
+    it('should clear the list and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { clear }]] = hook.result.current;
+
+      expect(hook.result.current[0]).toBe(1);
+      act(() => {
+        clear();
+      });
+      expect(hook.result.current[0]).toBe(2);
+      expect(hook.result.current[1][0]).toEqual([]);
+    });
+  });
+
+  describe('reset()', () => {
+    it('should reset list to initial values and cause re-render', () => {
+      const hook = getHook([1, 2, 3]);
+      const [, [, { set, reset }]] = hook.result.current;
+
+      act(() => {
+        set([1, 2, 3, 4, 6, 7, 8]);
+      });
+      expect(hook.result.current[1][0]).toEqual([1, 2, 3, 4, 6, 7, 8]);
+
+      expect(hook.result.current[0]).toBe(2);
+      act(() => {
+        reset();
+      });
+      expect(hook.result.current[0]).toBe(3);
+      expect(hook.result.current[1][0]).toEqual([1, 2, 3]);
+    });
+  });
 });

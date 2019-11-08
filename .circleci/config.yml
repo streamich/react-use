@@ -3,17 +3,25 @@ version: 2
 refs:
   container: &container
     docker:
-      - image: node:12.12.0
+      - image: node:12.13.0
     working_directory: ~/repo
   steps:
     - &Versions
       run:
         name: Versions
         command: node -v && npm -v && yarn -v
+    - &CacheRestore
+      restore_cache:
+        key: dependency-cache-{{ checksum "yarn.lock" }}
     - &Install
       run:
         name: Install Dependencies
         command: yarn install --pure-lockfile
+    - &CacheSave
+      save_cache:
+        key: dependency-cache-{{ checksum "yarn.lock" }}
+        paths:
+          - ./node_modules
     - &Build
       run:
         name: Build
@@ -42,8 +50,9 @@ refs:
       run:
         name: Post commit status for Storybook
         command: |
-          npx cross-ci :run \
-            npx commit-status success Storybook "'\${BUILD_VERSION}'" "'https://$CIRCLE_BUILD_NUM-154950925-gh.circle-artifacts.com/0/root/repo/storybook-static/index.html'"
+          npx cross-ci :run curl -H "'Authorization: token \${GITHUB_TOKEN}' -H 'Accept: application/vnd.github.v3+json'" \
+          "'https://api.github.com/repos/\${PROJECT_OWNER}/\${PROJECT_NAME}/statuses/$CIRCLE_SHA1'" -X POST \
+          -d "'{\"state\": \"success\", \"context\": \"Storybook\", \"description\": \"\${BUILD_VERSION}\", \"target_url\": \"https://$CIRCLE_BUILD_NUM-154950925-gh.circle-artifacts.com/0/root/repo/storybook-static/index.html\"}'"
 
 jobs:
   all:
@@ -51,7 +60,9 @@ jobs:
     steps:
       - checkout
       - *Versions
+      - *CacheRestore
       - *Install
+      - *CacheSave
       - *Build
       - *Build_Storybook
       - *Test
@@ -65,7 +76,9 @@ jobs:
     steps:
       - checkout
       - *Versions
+      - *CacheRestore
       - *Install
+      - *CacheSave
       - *Build
       - *Build_Storybook
       - *Test
@@ -87,7 +100,9 @@ jobs:
     steps:
       - checkout
       - *Versions
+      - *CacheRestore
       - *Install
+      - *CacheSave
       - *Build
       - *Build_Storybook
       - *Test

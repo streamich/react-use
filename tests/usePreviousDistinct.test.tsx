@@ -1,65 +1,85 @@
 import { renderHook } from '@testing-library/react-hooks';
-import usePreviousDistinct from '../src/usePreviousDistinct';
+import usePreviousDistinct, { Predicate } from '../usePreviousDistinct';
 
-describe('usePreviousDistinct with default compare', () => {
-  const hook = renderHook(props => usePreviousDistinct(props), { initialProps: 0 });
-
-  it('should return undefined on initial render', () => {
-    expect(hook.result.current).toBe(undefined);
+describe('usePreviousDistinct', () => {
+  it('should be defined', () => {
+    expect(usePreviousDistinct).toBeDefined();
   });
 
-  it('should return previous state only after a different value is rendered', () => {
+  function getHook<T>(initialValue?: T, predicate?: Predicate<T>) {
+    return renderHook(({ val, cmp }) => usePreviousDistinct<T>(val as T, cmp), {
+      initialProps: {
+        val: initialValue || 0,
+        cmp: predicate,
+      } as { val?: T; cmp?: Predicate<T> },
+    });
+  }
+
+  it('should return undefined on init', () => {
+    expect(getHook().result.current).toBeUndefined();
+  });
+
+  it('should not invoke predicate on first render', () => {
+    const spy = jest.fn();
+    getHook(0, spy);
+
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('should update previous value only after render with different value', () => {
+    const hook = getHook();
+
     expect(hook.result.current).toBeUndefined();
-    hook.rerender(1);
+
+    hook.rerender({ val: 0 });
+    expect(hook.result.current).toBeUndefined();
+
+    hook.rerender({ val: 1 });
     expect(hook.result.current).toBe(0);
-    hook.rerender(2);
-    hook.rerender(2);
+
+    hook.rerender({ val: 2 });
     expect(hook.result.current).toBe(1);
 
-    hook.rerender(3);
+    hook.rerender({ val: 2 });
+    expect(hook.result.current).toBe(1);
+
+    hook.rerender({ val: 3 });
     expect(hook.result.current).toBe(2);
   });
-});
 
-describe('usePreviousDistinct with complex comparison', () => {
-  const exampleObjects = [
-    {
-      id: 'something-unique',
-      name: 'Nancy',
-    },
-    {
-      id: 'something-unique2',
-      name: 'Fred',
-    },
-    {
-      id: 'something-unique3',
-      name: 'Bill',
-    },
-    {
-      id: 'something-unique4',
-      name: 'Alice',
-    },
-  ];
-  const hook = renderHook(
-    props => usePreviousDistinct(props, (prev, next) => (prev && prev.id) === (next && next.id)),
-    {
-      initialProps: exampleObjects[0],
-    }
-  );
+  it('should work fine with `undefined` values', () => {
+    const hook = renderHook(({ value }) => usePreviousDistinct(value), {
+      initialProps: { value: undefined as undefined | number },
+    });
 
-  it('should return undefined on initial render', () => {
-    expect(hook.result.current).toBe(undefined);
+    expect(hook.result.current).toBeUndefined();
+
+    hook.rerender({ value: 1 });
+    expect(hook.result.current).toBeUndefined();
+
+    hook.rerender({ value: undefined });
+    expect(hook.result.current).toBe(1);
+
+    hook.rerender({ value: 2 });
+    expect(hook.result.current).toBeUndefined();
   });
 
-  it('should return previous state only after a different value is rendered', () => {
-    expect(hook.result.current).toBeUndefined();
-    hook.rerender(exampleObjects[1]);
-    expect(hook.result.current).toMatchObject(exampleObjects[0]);
-    hook.rerender(exampleObjects[2]);
-    hook.rerender(exampleObjects[2]);
-    expect(hook.result.current).toMatchObject(exampleObjects[1]);
+  it('should receive a predicate as a second parameter that will compare prev and current', () => {
+    const obj1 = { label: 'John', value: 'john' };
+    const obj2 = { label: 'Jonny', value: 'john' };
+    const obj3 = { label: 'Kate', value: 'kate' };
+    const predicate = (a, b) => !!a && a.value === b.value;
 
-    hook.rerender(exampleObjects[3]);
-    expect(hook.result.current).toMatchObject(exampleObjects[2]);
+    const hook = getHook(obj1 as { label: string; value: string }, predicate);
+
+    expect(hook.result.current).toBeUndefined();
+
+    hook.rerender({ val: obj2, cmp: predicate });
+
+    expect(hook.result.current).toBeUndefined();
+
+    hook.rerender({ val: obj3, cmp: predicate });
+
+    expect(hook.result.current).toBe(obj1);
   });
 });

@@ -6,9 +6,9 @@ describe('useTitle', () => {
     expect(useTitle).toBeDefined();
   });
 
-  const hook = renderHook(props => useTitle(props), { initialProps: 'My page title' });
-
   it('should update document title', () => {
+    const hook = renderHook(props => useTitle(props), { initialProps: 'My page title' });
+
     expect(document.title).toBe('My page title');
     hook.rerender('My other page title');
     expect(document.title).toBe('My other page title');
