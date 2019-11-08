@@ -22,6 +22,7 @@
   "exclude": [
     "node_modules",
     "lib",
+    "tests",
     "**/__tests__/**/*",
     "**/__stories__/**/*",
     "*.test.ts",

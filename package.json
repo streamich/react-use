@@ -13,10 +13,10 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "start": "yarn storybook",
-    "test": "jest",
+    "test": "jest --maxWorkers 2",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
+    "lint": "tslint '{src,tests}/**/*.{ts,tsx}' -t verbose",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
     "build:cjs": "tsc",
@@ -101,6 +101,7 @@
     "rimraf": "3.0.0",
     "rxjs": "6.5.3",
     "semantic-release": "15.13.30",
+    "ts-jest": "^24.1.0",
     "ts-loader": "6.2.1",
     "ts-node": "8.4.1",
     "tslint": "6.0.0-beta1",
@@ -147,5 +148,13 @@
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/react-use"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "clearMocks": true,
+    "coverageDirectory": "coverage",
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.ts"
+    ]
   }
 }
