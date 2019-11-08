@@ -13,7 +13,7 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "start": "yarn storybook",
-    "test": "jest",
+    "test": "jest --maxWorkers 2",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "tslint '{src,tests}/**/*.{ts,tsx}' -t verbose",
