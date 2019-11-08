@@ -1,5 +1,8 @@
 # `useUpsert`
 
+> DEPRECATED!  
+> Use `useList` hook's upsert action instead
+
 Superset of [`useList`](./useList.md). Provides an additional method to upsert (update or insert) an element into the list.
 
 ## Usage
