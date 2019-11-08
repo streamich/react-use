@@ -1,3 +1,10 @@
+# [13.4.0](https://github.com/streamich/react-use/compare/v13.3.0...v13.4.0) (2019-11-08)
+
+
+### Features
+
+* **useStateList:** implemented `currentIndex`, `setState`, `setStateAt` methods as requested in [#634](https://github.com/streamich/react-use/issues/634); ([43cb6aa](https://github.com/streamich/react-use/commit/43cb6aa612ae869e24f67acf6f0a1712a65f128b))
+
 # [13.3.0](https://github.com/streamich/react-use/compare/v13.2.2...v13.3.0) (2019-11-06)
 
 
