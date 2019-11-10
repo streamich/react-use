@@ -1,4 +1,4 @@
-import { resolveHookState } from '../util/resolveHookState';
+import { resolveHookState } from '../src/util/resolveHookState';
 
 describe('resolveHookState', () => {
   it('should defined', () => {
