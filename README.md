@@ -25,7 +25,6 @@
     <a href="http://streamich.github.io/react-use">
       <img src="https://img.shields.io/badge/demos-🚀-yellow.svg" alt="demos" />
     </a>
-    <a href="https://opencollective.com/react-use" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/react-use/all/badge.svg?label=$$$" /></a>
     <br />
     Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
     <em>Port of</em> <a href="https://github.com/streamich/libreact"><code>libreact</code></a>.
@@ -179,28 +178,6 @@
 <br />
 
 <a href="https://github.com/streamich/react-use/graphs/contributors"><img src="https://opencollective.com/react-use/contributors.svg?width=890&button=false" /></a>
-
-<br />
-<br />
-
-<div align="center">
-  <h1>Backers</h1>
-</div>
-
-<br />
-<br />
-
-<a href="https://opencollective.com/react-use"><img src="https://opencollective.com/react-use/individuals.svg?width=890"></a>
-<a href="https://opencollective.com/react-use/organization/0/website"><img src="https://opencollective.com/react-use/organization/0/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/1/website"><img src="https://opencollective.com/react-use/organization/1/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/2/website"><img src="https://opencollective.com/react-use/organization/2/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/3/website"><img src="https://opencollective.com/react-use/organization/3/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/4/website"><img src="https://opencollective.com/react-use/organization/4/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/5/website"><img src="https://opencollective.com/react-use/organization/5/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/6/website"><img src="https://opencollective.com/react-use/organization/6/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/7/website"><img src="https://opencollective.com/react-use/organization/7/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/8/website"><img src="https://opencollective.com/react-use/organization/8/avatar.svg"></a>
-<a href="https://opencollective.com/react-use/organization/9/website"><img src="https://opencollective.com/react-use/organization/9/avatar.svg"></a>
 
 <br />
 <br />
