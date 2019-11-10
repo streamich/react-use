@@ -1,3 +1,10 @@
+## [13.6.1](https://github.com/streamich/react-use/compare/v13.6.0...v13.6.1) (2019-11-10)
+
+
+### Bug Fixes
+
+* 🐛 check window.Event constructor exists in useLocation ([ad09431](https://github.com/streamich/react-use/commit/ad094311454c48873ba7143654a29b8a0c54459d))
+
 # [13.6.0](https://github.com/streamich/react-use/compare/v13.5.0...v13.6.0) (2019-11-10)
 
 
