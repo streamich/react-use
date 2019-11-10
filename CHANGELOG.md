@@ -1,3 +1,10 @@
+# [13.6.0](https://github.com/streamich/react-use/compare/v13.5.0...v13.6.0) (2019-11-10)
+
+
+### Features
+
+* **useCounter:** `reset` to the newest initialValue ([#667](https://github.com/streamich/react-use/issues/667)) ([e653383](https://github.com/streamich/react-use/commit/e65338372adfccd4800496b377f63bcdf6646788))
+
 # [13.5.0](https://github.com/streamich/react-use/compare/v13.4.0...v13.5.0) (2019-11-08)
 
 
