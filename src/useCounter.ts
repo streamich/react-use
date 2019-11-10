@@ -84,6 +84,6 @@ export default function useCounter(
           set(rValue);
         },
       };
-    }, [min, max]),
+    }, [init, min, max]),
   ];
 }
