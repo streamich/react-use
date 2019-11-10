@@ -1,85 +1,89 @@
-import { useCallback } from 'react';
+import { useMemo } from 'react';
 import useGetSet from './useGetSet';
+import { HookState, InitialHookState, resolveHookState } from './util/resolveHookState';
 
 export interface CounterActions {
   inc: (delta?: number) => void;
   dec: (delta?: number) => void;
   get: () => number;
-  set: (value: number) => void;
-  reset: (value?: number) => void;
+  set: (value: HookState<number>) => void;
+  reset: (value?: HookState<number>) => void;
 }
 
 export default function useCounter(
-  initialValue: number = 0,
+  initialValue: InitialHookState<number> = 0,
   max: number | null = null,
   min: number | null = null
 ): [number, CounterActions] {
-  typeof initialValue !== 'number' && console.error('initialValue has to be a number, got ' + typeof initialValue);
+  let init = resolveHookState(initialValue);
+
+  typeof init !== 'number' && console.error('initialValue has to be a number, got ' + typeof initialValue);
 
   if (typeof min === 'number') {
-    initialValue = Math.max(initialValue, min);
+    init = Math.max(init, min);
   } else if (min !== null) {
     console.error('min has to be a number, got ' + typeof min);
   }
 
   if (typeof max === 'number') {
-    initialValue = Math.min(initialValue, max);
+    init = Math.min(init, max);
   } else if (max !== null) {
     console.error('max has to be a number, got ' + typeof max);
   }
 
-  const [get, setInternal] = useGetSet<number>(initialValue);
+  const [get, setInternal] = useGetSet(init);
 
-  function set(value: number): void {
-    const current = get();
+  return [
+    get(),
+    useMemo(() => {
+      const set = (newState: HookState<number>) => {
+        const prevState = get();
+        let rState = resolveHookState(newState, prevState);
 
-    if (current === value) {
-      return;
-    }
+        if (prevState !== rState) {
+          if (typeof min === 'number') {
+            rState = Math.max(rState, min);
+          }
+          if (typeof max === 'number') {
+            rState = Math.min(rState, max);
+          }
 
-    if (typeof min === 'number') {
-      value = Math.max(value, min);
-    }
-    if (typeof max === 'number') {
-      value = Math.min(value, max);
-    }
+          prevState !== rState && setInternal(rState);
+        }
+      };
 
-    current !== value && setInternal(value);
-  }
+      return {
+        get,
+        set,
+        inc: (delta: HookState<number> = 1) => {
+          const rDelta = resolveHookState(delta, get());
 
-  const inc = useCallback(
-    (delta: number = 1) => {
-      typeof delta !== 'number' && console.error('delta has to be a number, got ' + typeof delta);
+          if (typeof rDelta !== 'number') {
+            console.error('delta has to be a number or function returning a number, got ' + typeof rDelta);
+          }
 
-      set(get() + delta);
-    },
-    [max, min]
-  );
-  const dec = useCallback(
-    (delta: number = 1) => {
-      typeof delta !== 'number' && console.error('delta has to be a number, got ' + typeof delta);
+          set((num: number) => num + rDelta);
+        },
+        dec: (delta: HookState<number> = 1) => {
+          const rDelta = resolveHookState(delta, get());
 
-      set(get() - delta);
-    },
-    [max, min]
-  );
-  const reset = useCallback(
-    (value: number = initialValue) => {
-      typeof value !== 'number' && console.error('value has to be a number, got ' + typeof value);
+          if (typeof rDelta !== 'number') {
+            console.error('delta has to be a number or function returning a number, got ' + typeof rDelta);
+          }
 
-      initialValue = value;
-      set(value);
-    },
-    [max, min, initialValue]
-  );
+          set((num: number) => num - rDelta);
+        },
+        reset: (value: HookState<number> = init) => {
+          const rValue = resolveHookState(value, get());
 
-  const actions = {
-    inc,
-    dec,
-    get,
-    set,
-    reset,
-  };
+          if (typeof rValue !== 'number') {
+            console.error('value has to be a number or function returning a number, got ' + typeof rValue);
+          }
 
-  return [get(), actions];
+          init = rValue;
+          set(rValue);
+        },
+      };
+    }, [init, min, max]),
+  ];
 }

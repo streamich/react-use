@@ -1,35 +1,154 @@
-import { useState, useMemo } from 'react';
+import { useMemo, useRef } from 'react';
+import useUpdate from './useUpdate';
+import { InitialHookState, ResolvableHookState, resolveHookState } from './util/resolveHookState';
 
-export interface Actions<T> {
-  set: (list: T[]) => void;
-  clear: () => void;
+export interface ListActions<T> {
+  /**
+   * @description Set new list instead old one
+   */
+  set: (newList: ResolvableHookState<T[]>) => void;
+  /**
+   * @description Add item(s) at the end of list
+   */
+  push: (...items: T[]) => void;
+
+  /**
+   * @description Replace item at given position. If item at given position not exists it will be set.
+   */
   updateAt: (index: number, item: T) => void;
+  /**
+   * @description Insert item at given position, all items to the right will be shifted.
+   */
+  insertAt: (index: number, item: T) => void;
+
+  /**
+   * @description Replace all items that matches predicate with given one.
+   */
+  update: (predicate: (a: T, b: T) => boolean, newItem: T) => void;
+  /**
+   * @description Replace first item matching predicate with given one.
+   */
+  updateFirst: (predicate: (a: T, b: T) => boolean, newItem: T) => void;
+  /**
+   * @description Like `updateFirst` bit in case of predicate miss - pushes item to the list
+   */
+  upsert: (predicate: (a: T, b: T) => boolean, newItem: T) => void;
+
+  /**
+   * @description Sort list with given sorting function
+   */
+  sort: (compareFn?: (a: T, b: T) => number) => void;
+  /**
+   * @description Same as native Array's method
+   */
+  filter: (callbackFn: (value: T, index?: number, array?: T[]) => boolean, thisArg?: any) => void;
+
+  /**
+   * @description Removes item at given position. All items to the right from removed will be shifted.
+   */
+  removeAt: (index: number) => void;
+  /**
+   * @deprecated Use removeAt method instead
+   */
   remove: (index: number) => void;
-  push: (item: T) => void;
-  filter: (fn: (value: T) => boolean) => void;
-  sort: (fn?: (a: T, b: T) => number) => void;
+
+  /**
+   * @description Make the list empty
+   */
+  clear: () => void;
+  /**
+   * @description Reset list to initial value
+   */
   reset: () => void;
 }
 
-const useList = <T>(initialList: T[] = []): [T[], Actions<T>] => {
-  const [list, set] = useState<T[]>(initialList);
+function useList<T>(initialList: InitialHookState<T[]> = []): [T[], ListActions<T>] {
+  const list = useRef(resolveHookState(initialList));
+  const update = useUpdate();
 
-  const utils = useMemo<Actions<T>>(
-    () => ({
-      set,
-      clear: () => set([]),
-      updateAt: (index, entry) =>
-        set(currentList => [...currentList.slice(0, index), entry, ...currentList.slice(index + 1)]),
-      remove: index => set(currentList => [...currentList.slice(0, index), ...currentList.slice(index + 1)]),
-      push: entry => set(currentList => [...currentList, entry]),
-      filter: fn => set(currentList => currentList.filter(fn)),
-      sort: (fn?) => set(currentList => [...currentList].sort(fn)),
-      reset: () => set([...initialList]),
-    }),
-    [set]
-  );
+  const actions = useMemo<ListActions<T>>(() => {
+    const a = {
+      set: (newList: ResolvableHookState<T[]>) => {
+        list.current = resolveHookState(newList, list.current);
+        update();
+      },
 
-  return [list, utils];
-};
+      push: (...items: T[]) => {
+        items.length && actions.set((curr: T[]) => curr.concat(items));
+      },
+
+      updateAt: (index: number, item: T) => {
+        actions.set((curr: T[]) => {
+          const arr = curr.slice();
+
+          arr[index] = item;
+
+          return arr;
+        });
+      },
+
+      insertAt: (index: number, item: T) => {
+        actions.set((curr: T[]) => {
+          const arr = curr.slice();
+
+          index > arr.length ? (arr[index] = item) : arr.splice(index, 0, item);
+
+          return arr;
+        });
+      },
+
+      update: (predicate: (a: T, b: T) => boolean, newItem: T) => {
+        actions.set((curr: T[]) => curr.map(item => (predicate(item, newItem) ? newItem : item)));
+      },
+
+      updateFirst: (predicate: (a: T, b: T) => boolean, newItem: T) => {
+        const index = list.current.findIndex(item => predicate(item, newItem));
+
+        index >= 0 && actions.updateAt(index, newItem);
+      },
+
+      upsert: (predicate: (a: T, b: T) => boolean, newItem: T) => {
+        const index = list.current.findIndex(item => predicate(item, newItem));
+
+        index >= 0 ? actions.updateAt(index, newItem) : actions.push(newItem);
+      },
+
+      sort: (compareFn?: (a: T, b: T) => number) => {
+        actions.set((curr: T[]) => curr.slice().sort(compareFn));
+      },
+
+      filter: <S extends T>(callbackFn: (value: T, index: number, array: T[]) => value is S, thisArg?: any) => {
+        actions.set((curr: T[]) => curr.slice().filter(callbackFn, thisArg));
+      },
+
+      removeAt: (index: number) => {
+        actions.set((curr: T[]) => {
+          const arr = curr.slice();
+
+          arr.splice(index, 1);
+
+          return arr;
+        });
+      },
+
+      clear: () => {
+        actions.set([]);
+      },
+
+      reset: () => {
+        actions.set(resolveHookState(initialList).slice());
+      },
+    };
+
+    /**
+     * @deprecated Use removeAt method instead
+     */
+    (a as ListActions<T>).remove = a.removeAt;
+
+    return a as ListActions<T>;
+  }, []);
+
+  return [list.current, actions];
+}
 
 export default useList;

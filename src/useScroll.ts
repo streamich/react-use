@@ -1,4 +1,6 @@
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect } from 'react';
+
+import useRafState from './useRafState';
 
 export interface State {
   x: number;
@@ -12,24 +14,19 @@ const useScroll = (ref: RefObject<HTMLElement>): State => {
     }
   }
 
-  const frame = useRef(0);
-  const [state, setState] = useState<State>({
+  const [state, setState] = useRafState<State>({
     x: 0,
     y: 0,
   });
 
   useEffect(() => {
     const handler = () => {
-      cancelAnimationFrame(frame.current);
-
-      frame.current = requestAnimationFrame(() => {
-        if (ref.current) {
-          setState({
-            x: ref.current.scrollLeft,
-            y: ref.current.scrollTop,
-          });
-        }
-      });
+      if (ref.current) {
+        setState({
+          x: ref.current.scrollLeft,
+          y: ref.current.scrollTop,
+        });
+      }
     };
 
     if (ref.current) {
@@ -40,15 +37,11 @@ const useScroll = (ref: RefObject<HTMLElement>): State => {
     }
 
     return () => {
-      if (frame.current) {
-        cancelAnimationFrame(frame.current);
-      }
-
       if (ref.current) {
         ref.current.removeEventListener('scroll', handler);
       }
     };
-  }, [ref.current]);
+  }, [ref]);
 
   return state;
 };
