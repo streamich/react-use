@@ -4,7 +4,7 @@ import useUnmount from './useUnmount';
 const useThrottleFn = <T, U extends any[]>(fn: (...args: U) => T, ms: number = 200, args: U) => {
   const [state, setState] = useState<T>(null as any);
   const timeout = useRef<ReturnType<typeof setTimeout>>();
-  const nextArgs = useRef(null) as any;
+  const nextArgs = useRef<U>();
 
   useEffect(() => {
     if (!timeout.current) {
