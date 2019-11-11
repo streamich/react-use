@@ -1,3 +1,10 @@
+## [13.6.2](https://github.com/streamich/react-use/compare/v13.6.1...v13.6.2) (2019-11-11)
+
+
+### Bug Fixes
+
+* restrict useThrottleFn types ([61a83d1](https://github.com/streamich/react-use/commit/61a83d124d35d5606b6c0700faf1361fd3170ca4))
+
 ## [13.6.1](https://github.com/streamich/react-use/compare/v13.6.0...v13.6.1) (2019-11-10)
 
 
