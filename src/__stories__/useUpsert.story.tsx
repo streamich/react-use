@@ -8,7 +8,10 @@ interface DemoType {
   text: string;
 }
 
-const initialItems: DemoType[] = [{ id: '1', text: 'Sample' }, { id: '2', text: '' }];
+const initialItems: DemoType[] = [
+  { id: '1', text: 'Sample' },
+  { id: '2', text: '' },
+];
 
 const Demo = () => {
   const comparisonFunction = (a: DemoType, b: DemoType) => {

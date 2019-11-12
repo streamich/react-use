@@ -4,7 +4,10 @@ import { useLifecycles } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  useLifecycles(() => console.log('MOUNTED'), () => console.log('UNMOUNTED'));
+  useLifecycles(
+    () => console.log('MOUNTED'),
+    () => console.log('UNMOUNTED')
+  );
   return null;
 };
 

@@ -51,7 +51,10 @@ interface UpsertDemoType {
 }
 
 const upsertPredicate = (a: UpsertDemoType, b: UpsertDemoType) => a.id === b.id;
-const upsertInitialItems: UpsertDemoType[] = [{ id: '1', text: 'Sample' }, { id: '2', text: 'Example' }];
+const upsertInitialItems: UpsertDemoType[] = [
+  { id: '1', text: 'Sample' },
+  { id: '2', text: 'Example' },
+];
 const UpsertDemo = () => {
   const [list, { upsert, reset, removeAt }] = useList(upsertInitialItems);
 

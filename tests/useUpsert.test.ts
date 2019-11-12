@@ -6,7 +6,10 @@ interface TestItem {
   text: string;
 }
 
-const testItems: TestItem[] = [{ id: '1', text: '1' }, { id: '2', text: '2' }];
+const testItems: TestItem[] = [
+  { id: '1', text: '1' },
+  { id: '2', text: '2' },
+];
 
 const itemsAreEqual = (a: TestItem, b: TestItem) => {
   return a.id === b.id;
