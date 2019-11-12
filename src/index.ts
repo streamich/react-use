@@ -75,7 +75,7 @@ export { default as useSpeech } from './useSpeech';
 // not exported because of peer dependency
 // export { default as useSpring } from './useSpring';
 export { default as useStartTyping } from './useStartTyping';
-export { useStateHistory } from './useStateHistory';
+export { useStateWithHistory } from './useStateWithHistory';
 export { default as useStateList } from './useStateList';
 export { default as useThrottle } from './useThrottle';
 export { default as useThrottleFn } from './useThrottleFn';
