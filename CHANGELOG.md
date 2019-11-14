@@ -1,3 +1,10 @@
+# [13.7.0](https://github.com/streamich/react-use/compare/v13.6.3...v13.7.0) (2019-11-14)
+
+
+### Features
+
+* Add useSet hook ([095b4de](https://github.com/streamich/react-use/commit/095b4de2321b8bf3431e3f66139629b0495f1ac9))
+
 ## [13.6.3](https://github.com/streamich/react-use/compare/v13.6.2...v13.6.3) (2019-11-12)
 
 
