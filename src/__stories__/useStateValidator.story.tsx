@@ -3,9 +3,9 @@ import * as React from 'react';
 import useStateValidator from '../useStateValidator';
 import ShowDocs from './util/ShowDocs';
 
-const DemoStateValidator = s => [s === '' ? null : (s * 1) % 2 === 0];
+const DemoStateValidator = s => [s === '' ? undefined : (s * 1) % 2 === 0] as [boolean | undefined];
 const Demo = () => {
-  const [state, setState] = React.useState<string | number>(0);
+  const [state, setState] = React.useState<number>(0);
   const [[isValid]] = useStateValidator(state, DemoStateValidator);
 
   return (
@@ -17,10 +17,10 @@ const Demo = () => {
         max="10"
         value={state}
         onChange={(ev: React.ChangeEvent<HTMLInputElement>) => {
-          setState(ev.target.value);
+          setState((ev.target.value as unknown) as number);
         }}
       />
-      {isValid !== null && <span>{isValid ? 'Valid!' : 'Invalid'}</span>}
+      {isValid !== undefined && <span>{isValid ? 'Valid!' : 'Invalid'}</span>}
     </div>
   );
 };
