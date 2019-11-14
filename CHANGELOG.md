@@ -1,3 +1,10 @@
+# [13.8.0](https://github.com/streamich/react-use/compare/v13.7.0...v13.8.0) (2019-11-14)
+
+
+### Features
+
+* **useStateValidator:** Refactor method and improve typings; ([436c210](https://github.com/streamich/react-use/commit/436c210f7b577c6958e47df3a244907b07a4db9f))
+
 # [13.7.0](https://github.com/streamich/react-use/compare/v13.6.3...v13.7.0) (2019-11-14)
 
 
