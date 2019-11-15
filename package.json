@@ -69,7 +69,7 @@
     "@semantic-release/changelog": "3.0.5",
     "@semantic-release/git": "7.0.18",
     "@semantic-release/npm": "5.3.4",
-    "@shopify/jest-dom-mocks": "2.8.5",
+    "@shopify/jest-dom-mocks": "2.8.6",
     "@storybook/addon-actions": "5.2.6",
     "@storybook/addon-knobs": "5.2.6",
     "@storybook/addon-notes": "5.2.6",
