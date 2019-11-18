@@ -13,7 +13,7 @@ const Demo = () => {
         <li>size: {size}</li>
       </ul>
       <button onClick={() => add((last || 0) + 1)}>Add</button>
-      <button onClick={() => remove()}>Removw</button>
+      <button onClick={() => remove()}>Remove</button>
     </div>
   );
 };
