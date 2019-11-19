@@ -65,7 +65,7 @@
   - [`useWindowScroll`](./docs/useWindowScroll.md) &mdash; tracks `Window` scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usewindowscroll--docs)
   - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions. [![][img-demo]](https://codesandbox.io/s/m7ln22668)
   - [`useMeasure`](./docs/useMeasure.md) &mdash; tracks an HTML element's dimensions using the Resize Observer API.[![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemeasure--demo)
-  - [`createBreakpoint`](./doc/createBreakpoint.md) &mdash; tracks `innerWidth`
+  - [`createBreakpoint`](./docs/createBreakpoint.md) &mdash; tracks `innerWidth`
     <br/>
     <br/>
 - [**UI**](./docs/UI.md)
