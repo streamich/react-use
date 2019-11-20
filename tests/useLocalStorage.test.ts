@@ -55,7 +55,8 @@ describe(useLocalStorage, () => {
     rerender();
 
     const [foo] = result.current;
-    expect(foo).toEqual("baz");
+    expect(foo).not.toMatch(/\\/i); // should not contain extra escapes
+    expect(foo).toBe('baz');
   });
   it("keeps multiple hooks accessing the same key in sync", () => {
     localStorage.setItem("foo", "bar");
@@ -112,19 +113,43 @@ describe(useLocalStorage, () => {
     );
 
     const [, setFoo] = result.current;
-    act(() =>
-      setFoo(state => {
-        console.log(state);
-        return { ...state, fizz: "buzz" };
-      })
-    );
+    act(() => setFoo(state => ({ ...state, fizz: "buzz" })));
     rerender();
 
     const [value] = result.current;
-
-    console.log(value);
-
     expect(value.foo).toEqual("bar");
     expect(value.fizz).toEqual("buzz");
+  });
+  describe("raw setting", () => {
+    it('returns a string when localStorage is a stringified object', () => {
+      localStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
+      const { result } = renderHook(() => useLocalStorage('foo', null, true));
+      const [foo] = result.current;
+      expect(typeof foo).toBe('string');
+    });
+    it('returns a string after an update', () => {
+      localStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
+      const { result, rerender } = renderHook(() => useLocalStorage('foo', null, true));
+
+      const [,setFoo] = result.current;
+      act(() => setFoo({ fizz: 'bang' }))
+      rerender();
+
+      const [foo] = result.current;
+      expect(typeof foo).toBe('string');
+      expect(JSON.parse(foo)).toBeInstanceOf(Object);
+      expect(JSON.parse(foo).fizz).toEqual('bang');
+    });
+    it('still forces setState to a string', () => {
+      localStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
+      const { result, rerender } = renderHook(() => useLocalStorage('foo', null, true));
+
+      const [,setFoo] = result.current;
+      act(() => setFoo({ fizz: 'bang' }))
+      rerender();
+
+      const [value] = result.current;
+      expect(JSON.parse(value).fizz).toEqual('bang');
+    });
   });
 });

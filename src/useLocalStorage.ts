@@ -1,42 +1,55 @@
-import { useEffect, useState } from 'react';
 import { isClient } from './util';
+import { useMemo, useCallback, useEffect, Dispatch, SetStateAction } from 'react';
 
-type Dispatch<A> = (value: A) => void;
-type SetStateAction<S> = S | ((prevState: S) => S);
-
-const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, Dispatch<SetStateAction<T>>] => {
-  if (!isClient) {
+const useLocalStorage = <T extends any>(
+  key: string,
+  initialValue?: any,
+  raw?: boolean
+): [any, Dispatch<SetStateAction<any>>] => {
+  if (!isClient || !localStorage) {
     return [initialValue as T, () => {}];
   }
 
-  const [state, setState] = useState<T>(() => {
+  let localStorageValue: string | null = null;
+  try {
+    localStorageValue = localStorage.getItem(key);
+  } catch {
+    // If user is in private mode or has storage restriction
+    // localStorage can throw.
+    localStorageValue = initialValue;
+  }
+
+  const state = useMemo(() => {
     try {
-      const localStorageValue = localStorage.getItem(key);
-      if (typeof localStorageValue !== 'string') {
-        localStorage.setItem(key, raw ? String(initialValue) : JSON.stringify(initialValue));
-        return initialValue;
-      } else {
-        return raw ? localStorageValue : JSON.parse(localStorageValue || 'null');
-      }
+      if (localStorageValue === null) return initialValue; // key hasn't been set yet
+      return raw ? localStorageValue : JSON.parse(localStorageValue);
     } catch {
-      // If user is in private mode or has storage restriction
-      // localStorage can throw. JSON.parse and JSON.stringify
-      // can throw, too.
-      return initialValue;
+      /* JSON.parse and JSON.stringify can throw. */
+      return localStorageValue === null ? initialValue : localStorageValue;
     }
-  });
+  }, [key, localStorageValue, initialValue]);
+
+  const setState = useCallback(
+    (valOrFunc: any) => {
+      try {
+        let newState = typeof valOrFunc === 'function' ? valOrFunc(state) : valOrFunc;
+        newState = typeof newState === 'string' ? newState : JSON.stringify(newState);
+        localStorage.setItem(key, newState);
+      } catch {
+        /**
+         * If user is in private mode or has storage restriction
+         * localStorage can throw. Also JSON.stringify can throw.
+         */
+      }
+    },
+    [state, raw]
+  );
 
   useEffect(() => {
-    try {
-      const serializedState = raw ? String(state) : JSON.stringify(state);
-      localStorage.setItem(key, serializedState);
-    } catch {
-      // If user is in private mode or has storage restriction
-      // localStorage can throw. Also JSON.stringify can throw.
-    }
-  }, [state]);
+    if (localStorageValue === null) setState(initialValue);
+  }, [localStorageValue, setState]);
 
-  return [state, setState];
+  return [state as any, setState];
 };
 
 export default useLocalStorage;
