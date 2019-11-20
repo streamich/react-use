@@ -37,6 +37,18 @@ describe(useLocalStorage, () => {
 
     expect(localStorage.__STORE__["foo"]).toEqual("baz");
   });
+  it("returns and allow setting null", () => {
+    localStorage.setItem('foo', 'null');
+    const { result, rerender } = renderHook(() => useLocalStorage('foo'));
+
+    const [foo1, setFoo] = result.current;
+    act(() => setFoo(null));
+    rerender();
+
+    const [foo2] = result.current;
+    expect(foo1).toEqual(null);
+    expect(foo2).toEqual(null);
+  });
   it("correctly and promptly returns a new value", () => {
     const { result, rerender } = renderHook(() => useLocalStorage("foo", "bar"));
 
@@ -120,6 +132,15 @@ describe(useLocalStorage, () => {
     expect(value.foo).toEqual("bar");
     expect(value.fizz).toEqual("buzz");
   });
+  it('rejects nullish or undefined keys', () => {
+    const { result } = renderHook(() => useLocalStorage(null as any));
+    try {
+      result.current;
+      fail('hook should have thrown');
+    } catch (e) {
+      expect(String(e)).toMatch(/key may not be/i);
+    }
+  });
   describe("raw setting", () => {
     it('returns a string when localStorage is a stringified object', () => {
       localStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
@@ -151,14 +172,5 @@ describe(useLocalStorage, () => {
       const [value] = result.current;
       expect(JSON.parse(value).fizz).toEqual('bang');
     });
-  });
-  it('rejects nullish or undefined keys', () => {
-    const { result } = renderHook(() => useLocalStorage(null as any));
-    try {
-      result.current;
-      fail('hook should have thrown');
-    } catch (e) {
-      expect(String(e)).toMatch(/key may not be/i);
-    }
   });
 });

@@ -1,11 +1,7 @@
 import { isClient } from './util';
 import { useMemo, useCallback, useEffect, Dispatch, SetStateAction } from 'react';
 
-const useLocalStorage = <T extends any>(
-  key: string,
-  initialValue?: any,
-  raw?: boolean
-): [any, Dispatch<SetStateAction<any>>] => {
+const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, Dispatch<SetStateAction<T>>] => {
   if (!isClient || !localStorage) {
     return [initialValue as T, () => {}];
   }
@@ -19,12 +15,12 @@ const useLocalStorage = <T extends any>(
   } catch {
     // If user is in private mode or has storage restriction
     // localStorage can throw.
-    localStorageValue = initialValue;
   }
 
-  const state = useMemo(() => {
+  const state: T = useMemo(() => {
     try {
-      if (localStorageValue === null) return initialValue; // key hasn't been set yet
+      /* If key hasn't been set yet */
+      if (localStorageValue === null) return initialValue as T;
       return raw ? localStorageValue : JSON.parse(localStorageValue);
     } catch {
       /* JSON.parse and JSON.stringify can throw. */
@@ -32,10 +28,10 @@ const useLocalStorage = <T extends any>(
     }
   }, [key, localStorageValue, initialValue]);
 
-  const setState = useCallback(
-    (valOrFunc: any) => {
+  const setState: Dispatch<SetStateAction<T>> = useCallback(
+    (valOrFunc: SetStateAction<T>): void => {
       try {
-        let newState = typeof valOrFunc === 'function' ? valOrFunc(state) : valOrFunc;
+        let newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
         newState = typeof newState === 'string' ? newState : JSON.stringify(newState);
         localStorage.setItem(key, newState);
       } catch {
@@ -48,11 +44,11 @@ const useLocalStorage = <T extends any>(
     [state, raw]
   );
 
-  useEffect(() => {
-    if (localStorageValue === null) setState(initialValue);
+  useEffect((): void => {
+    if (localStorageValue === null && initialValue) setState(initialValue);
   }, [localStorageValue, setState]);
 
-  return [state as any, setState];
+  return [state, setState];
 };
 
 export default useLocalStorage;
