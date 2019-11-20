@@ -9,6 +9,9 @@ const useLocalStorage = <T extends any>(
   if (!isClient || !localStorage) {
     return [initialValue as T, () => {}];
   }
+  if (!key && (key as any) !== 0) {
+    throw new Error('useLocalStorage key may not be nullish or undefined');
+  }
 
   let localStorageValue: string | null = null;
   try {

@@ -152,4 +152,13 @@ describe(useLocalStorage, () => {
       expect(JSON.parse(value).fizz).toEqual('bang');
     });
   });
+  it('rejects nullish or undefined keys', () => {
+    const { result } = renderHook(() => useLocalStorage(null as any));
+    try {
+      result.current;
+      fail('hook should have thrown');
+    } catch (e) {
+      expect(String(e)).toMatch(/key may not be/i);
+    }
+  });
 });
