@@ -154,7 +154,7 @@
     "clearMocks": true,
     "coverageDirectory": "coverage",
     "testMatch": [
-      "<rootDir>/tests/**/*.test.ts"
+      "<rootDir>/tests/**/*.test.(ts|tsx)"
     ]
   }
 }

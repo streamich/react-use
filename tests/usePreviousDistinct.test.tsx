@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import usePreviousDistinct, { Predicate } from '../usePreviousDistinct';
+import usePreviousDistinct, { Predicate } from '../src/usePreviousDistinct';
 
 describe('usePreviousDistinct', () => {
   it('should be defined', () => {

@@ -102,7 +102,7 @@ describe('useIntersection', () => {
       ReactDOM.render(<div ref={targetRef} />, container);
     });
 
-    const initialObserverOptions = { root: null, threshold: 0.8 };
+    const initialObserverOptions = { root: null as HTMLElement | null, threshold: 0.8 };
     const { rerender } = renderHook(({ ref, options }) => useIntersection(ref, options), {
       initialProps: { ref: targetRef, options: initialObserverOptions },
     });
