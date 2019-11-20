@@ -153,12 +153,15 @@ describe(useLocalStorage, () => {
       const { result, rerender } = renderHook(() => useLocalStorage('foo', null, true));
 
       const [, setFoo] = result.current;
+      // @ts-ignore
       act(() => setFoo({ fizz: 'bang' }));
       rerender();
 
       const [foo] = result.current;
       expect(typeof foo).toBe('string');
+      // @ts-ignore
       expect(JSON.parse(foo)).toBeInstanceOf(Object);
+      // @ts-ignore
       expect(JSON.parse(foo).fizz).toEqual('bang');
     });
     it('still forces setState to a string', () => {
@@ -166,10 +169,12 @@ describe(useLocalStorage, () => {
       const { result, rerender } = renderHook(() => useLocalStorage('foo', null, true));
 
       const [, setFoo] = result.current;
+      // @ts-ignore
       act(() => setFoo({ fizz: 'bang' }));
       rerender();
 
       const [value] = result.current;
+      // @ts-ignore
       expect(JSON.parse(value).fizz).toEqual('bang');
     });
   });
