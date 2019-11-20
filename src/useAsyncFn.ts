@@ -3,7 +3,7 @@ import useMountedState from './useMountedState';
 
 export type AsyncState<T> =
   | {
-      loading: boolean;
+      loading: true;
       error?: undefined;
       value?: undefined;
     }
@@ -18,17 +18,33 @@ export type AsyncState<T> =
       value: T;
     };
 
-export type AsyncFn<Result = any, Args extends any[] = any[]> = [
-  AsyncState<Result>,
+export type AsyncFn<Result = any, Args extends any[] = any[], InitialState = Result> = [
+  AsyncState<Result | InitialState>,
   (...args: Args | []) => Promise<Result>
 ];
 
-export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
+// initialState with value: returns AsyncFn<Result, Args>
+function useAsyncFn<Result = any, Args extends any[] = any[]>(
+  fn: (...args: Args | []) => Promise<Result>,
+  deps: DependencyList | undefined,
+  initialState: AsyncState<Result>
+): AsyncFn<Result, Args>;
+
+// initialState without value: returns AsyncFn<Result, Args, undefined>
+// also the case when no initialState is provided
+function useAsyncFn<Result = any, Args extends any[] = any[]>(
+  fn: (...args: Args | []) => Promise<Result>,
+  deps?: DependencyList,
+  initialState?: AsyncState<Result | undefined>
+): AsyncFn<Result, Args, undefined>;
+
+// implementation
+function useAsyncFn<Result = any, Args extends any[] = any[]>(
   fn: (...args: Args | []) => Promise<Result>,
   deps: DependencyList = [],
-  initialState: AsyncState<Result> = { loading: false }
-): AsyncFn<Result, Args> {
-  const [state, set] = useState<AsyncState<Result>>(initialState);
+  initialState: AsyncState<Result> | AsyncState<Result | undefined> = { loading: false, value: undefined }
+): AsyncFn<Result, Args> | AsyncFn<Result, Args, undefined> {
+  const [state, set] = useState(initialState);
 
   const isMounted = useMountedState();
 
@@ -51,3 +67,5 @@ export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
 
   return [state, callback];
 }
+
+export default useAsyncFn;
