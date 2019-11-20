@@ -8,7 +8,7 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import useAsyncFn, { AsyncState } from '../src/useAsyncFn';
 
-type AdderFn = (a: number, b: number) => Promise<number>;
+type AdderFn = (a?: number, b?: number) => Promise<number>;
 
 describe('useAsyncFn', () => {
   it('should be defined', () => {
@@ -17,8 +17,8 @@ describe('useAsyncFn', () => {
 
   describe('the callback can be awaited and return the value', () => {
     let hook;
-    const adder = async (a: number, b: number): Promise<number> => {
-      return a + b;
+    const adder: AdderFn = async (a?: number, b?: number): Promise<number> => {
+      return (a || 0) + (b || 0);
     };
 
     beforeEach(() => {
@@ -50,9 +50,9 @@ describe('useAsyncFn', () => {
   describe('args can be passed to the function', () => {
     let hook;
     let callCount = 0;
-    const adder = async (a: number, b: number): Promise<number> => {
+    const adder = async (a?: number, b?: number): Promise<number> => {
       callCount++;
-      return a + b;
+      return (a || 0) + (b || 0);
     };
 
     beforeEach(() => {
