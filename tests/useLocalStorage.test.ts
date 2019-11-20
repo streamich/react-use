@@ -178,4 +178,34 @@ describe(useLocalStorage, () => {
       expect(JSON.parse(value).fizz).toEqual('bang');
     });
   });
+  /* Enforces proper eslint react-hooks/rules-of-hooks usage */
+  describe('eslint react-hooks/rules-of-hooks', () => {
+    it('memoizes an object between rerenders', () => {
+      const { result, rerender } = renderHook(() => useLocalStorage('foo', { ok: true }));
+
+      result.current; // if localStorage isn't set then r1 and r2 will be different
+      rerender();
+      const [r2] = result.current;
+      rerender();
+      const [r3] = result.current;
+      expect(r2).toBe(r3);
+    });
+    it('memoizes an object immediately if localStorage is already set', () => {
+      localStorage.setItem('foo', JSON.stringify({ ok: true }));
+      const { result, rerender } = renderHook(() => useLocalStorage('foo', { ok: true }));
+
+      const [r1] = result.current; // if localStorage isn't set then r1 and r2 will be different
+      rerender();
+      const [r2] = result.current;
+      expect(r1).toBe(r2);
+    });
+    it('memoizes the setState function', () => {
+      localStorage.setItem('foo', JSON.stringify({ ok: true }));
+      const { result, rerender } = renderHook(() => useLocalStorage('foo', { ok: true }));
+      const [, s1] = result.current;
+      rerender();
+      const [, s2] = result.current;
+      expect(s1).toBe(s2);
+    });
+  });
 });

@@ -26,7 +26,7 @@ const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, D
       /* JSON.parse and JSON.stringify can throw. */
       return localStorageValue === null ? initialValue : localStorageValue;
     }
-  }, [key, localStorageValue, initialValue]);
+  }, [key, localStorageValue]);
 
   const setState: Dispatch<SetStateAction<T>> = useCallback(
     (valOrFunc: SetStateAction<T>): void => {
