@@ -1,3 +1,10 @@
+## [13.8.1](https://github.com/streamich/react-use/compare/v13.8.0...v13.8.1) (2019-11-21)
+
+
+### Bug Fixes
+
+* useAsyncFn does not discard old promises and might produce races ([022fa0b](https://github.com/streamich/react-use/commit/022fa0b7b77d582a10c6ca61a3dcd901770011c8))
+
 # [13.8.0](https://github.com/streamich/react-use/compare/v13.7.0...v13.8.0) (2019-11-14)
 
 
