@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import { replaceRaf } from 'raf-stub';
-import useWindowSize from '../useWindowSize';
-import { isClient } from '../util';
+import useWindowSize from '../src/useWindowSize';
+import { isClient } from '../src/util';
 
 declare var requestAnimationFrame: {
   reset: () => void;
