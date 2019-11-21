@@ -94,4 +94,36 @@ describe('useAsyncFn', () => {
       });
     });
   });
+
+  it('should only consider last call and discard previous ones', async () => {
+    const queuedPromises: { id: number; resolve: () => void }[] = [];
+    const delayedFunction1 = () => {
+      return new Promise<number>(resolve => queuedPromises.push({ id: 1, resolve: () => resolve(1) }));
+    };
+    const delayedFunction2 = () => {
+      return new Promise<number>(resolve => queuedPromises.push({ id: 2, resolve: () => resolve(2) }));
+    };
+
+    const hook = renderHook<{ fn: () => Promise<number> }, [AsyncState<number>, () => Promise<number>]>(
+      ({ fn }) => useAsyncFn(fn, [fn]),
+      {
+        initialProps: { fn: delayedFunction1 },
+      }
+    );
+    act(() => {
+      hook.result.current[1](); // invoke 1st callback
+    });
+
+    hook.rerender({ fn: delayedFunction2 });
+    act(() => {
+      hook.result.current[1](); // invoke 2nd callback
+    });
+
+    act(() => {
+      queuedPromises[1].resolve();
+      queuedPromises[0].resolve();
+    });
+    await hook.waitForNextUpdate();
+    expect(hook.result.current[0]).toEqual({ loading: false, value: 2 });
+  });
 });
