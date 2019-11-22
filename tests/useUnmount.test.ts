@@ -1,32 +1,51 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { useUnmount } from '../src';
 
-const mockCallback = jest.fn();
+describe('useUnmount', () => {
+  it('should be defined', () => {
+    expect(useUnmount).toBeDefined();
+  });
 
-afterEach(() => {
-  jest.resetAllMocks();
-});
+  it('should not call provided callback on mount', () => {
+    const spy = jest.fn();
+    renderHook(() => useUnmount(spy));
 
-it('should not call provided callback on mount', () => {
-  renderHook(() => useUnmount(mockCallback));
+    expect(spy).not.toHaveBeenCalled();
+  });
 
-  expect(mockCallback).not.toHaveBeenCalled();
-});
+  it('should not call provided callback on re-renders', () => {
+    const spy = jest.fn();
+    const hook = renderHook(() => useUnmount(spy));
 
-it('should call provided callback on unmount', () => {
-  const { unmount } = renderHook(() => useUnmount(mockCallback));
-  expect(mockCallback).not.toHaveBeenCalled();
+    hook.rerender();
+    hook.rerender();
+    hook.rerender();
+    hook.rerender();
 
-  unmount();
+    expect(spy).not.toHaveBeenCalled();
+  });
 
-  expect(mockCallback).toHaveBeenCalledTimes(1);
-});
+  it('should call provided callback on unmount', () => {
+    const spy = jest.fn();
+    const hook = renderHook(() => useUnmount(spy));
 
-it('should not call provided callback on rerender', () => {
-  const { rerender } = renderHook(() => useUnmount(mockCallback));
-  expect(mockCallback).not.toHaveBeenCalled();
+    hook.unmount();
 
-  rerender();
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
 
-  expect(mockCallback).not.toHaveBeenCalled();
+  it('should call provided callback if is has been changed', () => {
+    const spy = jest.fn();
+    const spy2 = jest.fn();
+    const spy3 = jest.fn();
+    const hook = renderHook(cb => useUnmount(cb), { initialProps: spy });
+
+    hook.rerender(spy2);
+    hook.rerender(spy3);
+    hook.unmount();
+
+    expect(spy).not.toHaveBeenCalled();
+    expect(spy2).not.toHaveBeenCalled();
+    expect(spy3).toHaveBeenCalledTimes(1);
+  });
 });
