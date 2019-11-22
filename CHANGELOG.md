@@ -1,3 +1,10 @@
+## [13.8.2](https://github.com/streamich/react-use/compare/v13.8.1...v13.8.2) (2019-11-22)
+
+
+### Bug Fixes
+
+* **#792:** make useUnmount invoke the current callback version instead of very first ([75284c6](https://github.com/streamich/react-use/commit/75284c62c8e4a68dfeb41a8d98a1e636e9ef531a)), closes [#792](https://github.com/streamich/react-use/issues/792)
+
 ## [13.8.1](https://github.com/streamich/react-use/compare/v13.8.0...v13.8.1) (2019-11-21)
 
 
