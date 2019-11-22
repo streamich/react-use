@@ -101,7 +101,7 @@
     "rimraf": "3.0.0",
     "rxjs": "6.5.3",
     "semantic-release": "15.13.31",
-    "ts-jest": "24.1.0",
+    "ts-jest": "24.2.0",
     "ts-loader": "6.2.1",
     "ts-node": "8.5.2",
     "tslint": "6.0.0-beta1",
