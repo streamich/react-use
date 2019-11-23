@@ -1,3 +1,10 @@
+# [13.9.0](https://github.com/streamich/react-use/compare/v13.8.2...v13.9.0) (2019-11-23)
+
+
+### Features
+
+* add useFirstMountState & useRendersCount hooks ([#769](https://github.com/streamich/react-use/issues/769)) ([30abe2b](https://github.com/streamich/react-use/commit/30abe2b22e3cb7a3e4c6dedd2466d74ce660911d))
+
 ## [13.8.2](https://github.com/streamich/react-use/compare/v13.8.1...v13.8.2) (2019-11-22)
 
 
