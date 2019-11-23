@@ -1,7 +1,7 @@
 import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
 import { useState } from 'react';
 import { MultiStateValidator, useMultiStateValidator } from '../src/useMultiStateValidator';
-import { UseValidatorReturn, ValidityState } from '../src/useStateValidator';
+import { UseStateValidatorReturn, ValidityState } from '../src/useStateValidator';
 
 interface Mock extends jest.Mock {}
 
@@ -16,7 +16,7 @@ describe('useMultiStateValidator', () => {
     fn: MultiStateValidator<any, number[]> = jest.fn(defaultStatesValidator),
     initialStates = [1, 2],
     initialValidity = [false]
-  ): [MultiStateValidator<any, number[]>, RenderHookResult<any, [Function, UseValidatorReturn<ValidityState>]>] {
+  ): [MultiStateValidator<any, number[]>, RenderHookResult<any, [Function, UseStateValidatorReturn<ValidityState>]>] {
     return [
       fn,
       renderHook(
@@ -114,7 +114,7 @@ describe('useMultiStateValidator', () => {
   it('if validator expects 2nd parameters it should pass a validity setter there', () => {
     const spy = (jest.fn((states: number[], done) => {
       done([states.every(num => !!(num % 2))]);
-    }) as unknown) as MultiStateValidator;
+    }) as unknown) as MultiStateValidator<[boolean], number[]>;
     const [, hook] = getHook(spy, [1, 3]);
     const [, [validity]] = hook.result.current;
 

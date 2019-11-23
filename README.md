@@ -65,7 +65,7 @@
   - [`useWindowScroll`](./docs/useWindowScroll.md) &mdash; tracks `Window` scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usewindowscroll--docs)
   - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions. [![][img-demo]](https://codesandbox.io/s/m7ln22668)
   - [`useMeasure`](./docs/useMeasure.md) &mdash; tracks an HTML element's dimensions using the Resize Observer API.[![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemeasure--demo)
-  - [`createBreakpoint`](./doc/createBreakpoint.md) &mdash; tracks `innerWidth`
+  - [`createBreakpoint`](./docs/createBreakpoint.md) &mdash; tracks `innerWidth`
     <br/>
     <br/>
 - [**UI**](./docs/UI.md)
@@ -134,6 +134,7 @@
   - [`useCounter` and `useNumber`](./docs/useCounter.md) &mdash; tracks state of a number. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-usecounter--demo)
   - [`useList`](./docs/useList.md) ~and [`useUpsert`](./docs/useUpsert.md)~ &mdash; tracks state of an array. [![][img-demo]](https://codesandbox.io/s/wonderful-mahavira-1sm0w)
   - [`useMap`](./docs/useMap.md) &mdash; tracks state of an object. [![][img-demo]](https://codesandbox.io/s/quirky-dewdney-gi161)
+  - [`useSet`](./docs/useSet.md) &mdash; tracks state of a Set. [![][img-demo]](https://codesandbox.io/s/bold-shtern-6jlgw)
   - [`useQueue`](./docs/useQueue.md) &mdash; implements simple queue.
   - [`useStateValidator`](./docs/useStateValidator.md) &mdash; tracks state of an object. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-usestatevalidator--demo)
   - [`useMultiStateValidator`](./docs/useMultiStateValidator.md) &mdash; alike the `useStateValidator`, but tracks multiple states at a time. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-usemultistatevalidator--demo)

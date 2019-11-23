@@ -1,6 +1,6 @@
 import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
 import { useState } from 'react';
-import useStateValidator, { UseValidatorReturn, Validator } from '../src/useStateValidator';
+import useStateValidator, { StateValidator, UseStateValidatorReturn } from '../src/useStateValidator';
 
 interface Mock extends jest.Mock {}
 
@@ -10,8 +10,8 @@ describe('useStateValidator', () => {
   });
 
   function getHook(
-    fn: Validator<any> = jest.fn(state => [!!(state % 2)])
-  ): [jest.Mock | Function, RenderHookResult<any, [Function, UseValidatorReturn<any>]>] {
+    fn: StateValidator<[boolean], number> = jest.fn((state): [boolean] => [!!(state % 2)])
+  ): [jest.Mock | Function, RenderHookResult<any, [Function, UseStateValidatorReturn<any>]>] {
     return [
       fn,
       renderHook(() => {
@@ -80,8 +80,12 @@ describe('useStateValidator', () => {
     expect((spy as Mock).mock.calls[2][0]).toBe(5);
   });
 
-  it('if validator expects 2nd parameters it should pass a validity setter there', () => {
-    const [spy, hook] = getHook(jest.fn((state, setValidity) => setValidity!([state % 2 === 0])));
+  it('if validator expects 2nd parameter it should pass a validity setter there', () => {
+    const [spy, hook] = getHook(
+      (jest.fn((state, setValidity): void => {
+        setValidity([state % 2 === 0]);
+      }) as unknown) as StateValidator<[boolean], number>
+    );
     let [setState, [[isValid]]] = hook.result.current;
 
     expect((spy as Mock).mock.calls[0].length).toBe(2);
