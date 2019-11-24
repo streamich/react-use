@@ -5,7 +5,7 @@ import { useCounter, useStateWithHistory } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [state, setState, history] = useStateWithHistory('', ['hello', 'world']);
+  const [state, setState, history] = useStateWithHistory('', 10, ['hello', 'world']);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [stepSize, { set: setStepSize }] = useCounter(1, 3, 1);
@@ -84,6 +84,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useStateHistory', module)
-  .add('Docs', () => <ShowDocs md={require('../../docs/useStateHistory.md')} />)
+storiesOf('State|useStateWithHistory', module)
+  .add('Docs', () => <ShowDocs md={require('../../docs/useStateWithHistory.md')} />)
   .add('Demo', () => <Demo />);

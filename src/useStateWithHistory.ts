@@ -32,7 +32,7 @@ export function useStateWithHistory<S, I extends S>(
   const isFirstMount = useFirstMountState();
   const [state, innerSetState] = useState<S>(initialState as S);
   const history = useRef<S[]>((initialHistory ?? []) as S[]);
-  const historyPosition = useRef(history.current.length && history.current.length - 1);
+  const historyPosition = useRef(0);
 
   // do the states manipulation only on first mount, no sense to load re-renders with useless calculations
   if (isFirstMount) {
@@ -50,6 +50,8 @@ export function useStateWithHistory<S, I extends S>(
       // initiate the history with initial state
       history.current.push(initialState as I);
     }
+
+    historyPosition.current = history.current.length && history.current.length - 1;
   }
 
   const setState = useCallback(

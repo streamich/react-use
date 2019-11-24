@@ -7,10 +7,10 @@ Stores defined amount of previous state values and provides handles to travel th
 ## Reference
 
 ```typescript
-const [state, setState, stateHistory] = useStateHistory<S = undefined>(
+const [state, setState, stateHistory] = useStateWithHistory<S = undefined>(
   initialState?: S | (()=>S),
-  initialHistory?: S,
-  historyCapacity?: number = 0
+  historyCapacity?: number = 10,
+  initialHistory?: S
 );
 ```
 
