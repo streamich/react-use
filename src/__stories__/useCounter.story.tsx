@@ -4,9 +4,10 @@ import { useCounter } from '..';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
+  const [initialValue, setInitialValue] = React.useState(5);
   const [min, { inc: incMin, dec: decMin }] = useCounter(1);
   const [max, { inc: incMax, dec: decMax }] = useCounter(10);
-  const [value, { inc, dec, set, reset }] = useCounter(5, max, min);
+  const [value, { inc, dec, set, reset }] = useCounter(initialValue, max, min);
 
   return (
     <div>
@@ -31,6 +32,11 @@ const Demo = () => {
       Max value:
       <button onClick={() => incMax()}>Increment</button>
       <button onClick={() => decMax()}>Decrement</button>
+      <br />
+      <br />
+      Initial value: {initialValue}
+      <button onClick={() => setInitialValue(v => ++v)}>Increment</button>
+      <button onClick={() => setInitialValue(v => --v)}>Decrement</button>
     </div>
   );
 };
