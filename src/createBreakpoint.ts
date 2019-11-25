@@ -1,7 +1,26 @@
 import { useEffect, useState, useMemo } from 'react';
 
+interface Screen {
+  laptopL: number;
+  laptop: number;
+  tablet: number;
+}
+
+enum ScreenSize {
+  LAPTOPL = 1440,
+  LAPTOP = 1024,
+  TABLET = 768,
+}
+
+const NAME = 0;
+const WIDTH = 1;
+
 const createBreakpoint = (
-  breakpoints: { [name: string]: number } = { laptopL: 1440, laptop: 1024, tablet: 768 }
+  breakpoints: Screen = {
+    laptopL: ScreenSize.LAPTOPL,
+    laptop: ScreenSize.LAPTOP,
+    tablet: ScreenSize.TABLET,
+  }
 ) => () => {
   const [screen, setScreen] = useState(0);
 
@@ -15,17 +34,15 @@ const createBreakpoint = (
       window.removeEventListener('resize', setSideScreen);
     };
   });
-  const sortedBreakpoints = useMemo(() => Object.entries(breakpoints).sort((a, b) => (a[1] >= b[1] ? 1 : -1)), [
-    breakpoints,
-  ]);
-  const result = sortedBreakpoints.reduce((acc, [name, width]) => {
-    if (screen >= width) {
-      return name;
-    } else {
-      return acc;
-    }
-  }, sortedBreakpoints[0][0]);
-  return result;
+
+  const sortedBreakpoints = useMemo(
+    (): [string, number][] => Object.entries(breakpoints).sort((a, b) => (a[WIDTH] >= b[WIDTH] ? 1 : -1)),
+    [breakpoints]
+  );
+
+  const result =
+    sortedBreakpoints.find(([_, width]) => width >= screen) || sortedBreakpoints[sortedBreakpoints.length - 1];
+  return result[NAME];
 };
 
 export default createBreakpoint;
