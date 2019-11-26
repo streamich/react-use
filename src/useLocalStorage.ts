@@ -1,5 +1,6 @@
 import { isClient } from './util';
-import { useMemo, useCallback, useEffect, Dispatch, SetStateAction } from 'react';
+import { useMemo, useCallback, Dispatch, SetStateAction } from 'react';
+import useEffectOnce from './useEffectOnce';
 
 const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, Dispatch<SetStateAction<T>>] => {
   if (!isClient || !localStorage) {
@@ -44,9 +45,10 @@ const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, D
     [state, raw]
   );
 
-  useEffect((): void => {
+  /* If value hasn't been set yet (null not 'null') then initialize it. */
+  useEffectOnce((): void => {
     if (localStorageValue === null && initialValue) setState(initialValue);
-  }, [localStorageValue, setState]);
+  });
 
   return [state, setState];
 };
