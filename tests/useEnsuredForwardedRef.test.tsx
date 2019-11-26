@@ -13,7 +13,7 @@ beforeEach(() => {
 
 afterEach(() => {
   document.body.removeChild(container);
-  container = null;
+  container = null!;
 });
 
 test('should return a valid ref with existing forwardedRef', () => {
@@ -38,7 +38,7 @@ test('should return a valid ref with existing forwardedRef', () => {
 
 test('should return a valid ref when the forwarded ref is undefined', () => {
   const { result } = renderHook(() => {
-    const ref = useEnsuredForwardedRef<HTMLDivElement>(undefined);
+    const ref = useEnsuredForwardedRef<HTMLDivElement>(undefined!);
 
     TestUtils.act(() => {
       ReactDOM.render(<div id="test_id" ref={ref} />, container);

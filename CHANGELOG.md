@@ -1,3 +1,24 @@
+# [13.9.0](https://github.com/streamich/react-use/compare/v13.8.2...v13.9.0) (2019-11-23)
+
+
+### Features
+
+* add useFirstMountState & useRendersCount hooks ([#769](https://github.com/streamich/react-use/issues/769)) ([30abe2b](https://github.com/streamich/react-use/commit/30abe2b22e3cb7a3e4c6dedd2466d74ce660911d))
+
+## [13.8.2](https://github.com/streamich/react-use/compare/v13.8.1...v13.8.2) (2019-11-22)
+
+
+### Bug Fixes
+
+* **#792:** make useUnmount invoke the current callback version instead of very first ([75284c6](https://github.com/streamich/react-use/commit/75284c62c8e4a68dfeb41a8d98a1e636e9ef531a)), closes [#792](https://github.com/streamich/react-use/issues/792)
+
+## [13.8.1](https://github.com/streamich/react-use/compare/v13.8.0...v13.8.1) (2019-11-21)
+
+
+### Bug Fixes
+
+* useAsyncFn does not discard old promises and might produce races ([022fa0b](https://github.com/streamich/react-use/commit/022fa0b7b77d582a10c6ca61a3dcd901770011c8))
+
 # [13.8.0](https://github.com/streamich/react-use/compare/v13.7.0...v13.8.0) (2019-11-14)
 
 
