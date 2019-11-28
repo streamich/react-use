@@ -17,7 +17,7 @@ const useSet = <K>(initialSet = new Set<K>()): [Set<K>, Actions<K>] => {
       remove: item => setSet(prevSet => new Set(Array.from(prevSet).filter(i => i !== item))),
       reset: () => setSet(initialSet),
     }),
-    [setSet]
+    [set, setSet]
   );
 
   return [set, utils];
