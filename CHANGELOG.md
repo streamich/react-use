@@ -1,3 +1,10 @@
+# [13.10.0](https://github.com/streamich/react-use/compare/v13.9.0...v13.10.0) (2019-11-28)
+
+
+### Features
+
+* useStateHistory ([#709](https://github.com/streamich/react-use/issues/709)) ([0a66359](https://github.com/streamich/react-use/commit/0a6635914319e9ef7a2902189a3c2dea90a2bf7f))
+
 # [13.9.0](https://github.com/streamich/react-use/compare/v13.8.2...v13.9.0) (2019-11-23)
 
 
