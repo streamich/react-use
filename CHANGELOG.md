@@ -1,3 +1,10 @@
+## [13.10.1](https://github.com/streamich/react-use/compare/v13.10.0...v13.10.1) (2019-12-03)
+
+
+### Bug Fixes
+
+* "get" method in useMap updated to reference latest map object ([044d267](https://github.com/streamich/react-use/commit/044d2677aa474d19da776444b78bd3d2594c6ae5))
+
 # [13.10.0](https://github.com/streamich/react-use/compare/v13.9.0...v13.10.0) (2019-11-28)
 
 
