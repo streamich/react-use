@@ -22,7 +22,7 @@ it('should init empty map if not initial object provided', () => {
   expect(result.current[0]).toEqual({});
 });
 
-it('should get corresponding value for existing provided key', () => {
+it('should get corresponding value for initial provided key', () => {
   const { result } = setUp({ foo: 'bar', a: 1 });
   const [, utils] = result.current;
 
@@ -32,6 +32,21 @@ it('should get corresponding value for existing provided key', () => {
   });
 
   expect(value).toBe(1);
+});
+
+it('should get corresponding value for existing provided key', () => {
+  const { result } = setUp({ foo: 'bar', a: 1 });
+
+  act(() => {
+    result.current[1].set('a', 99);
+  });
+
+  let value;
+  act(() => {
+    value = result.current[1].get('a');
+  });
+
+  expect(value).toBe(99);
 });
 
 it('should get undefined for non-existing provided key', () => {
@@ -105,17 +120,4 @@ it('should reset map to initial object provided', () => {
   });
 
   expect(result.current[0]).toEqual({ foo: 'bar', a: 1 });
-});
-
-it('should memoized its utils methods', () => {
-  const { result } = setUp({ foo: 'bar', a: 1 });
-  const [, utils] = result.current;
-  const { set } = utils;
-
-  act(() => {
-    set('foo', 'baz');
-  });
-
-  expect(result.current[1]).toBe(utils);
-  expect(result.current[1].set).toBe(set);
 });
