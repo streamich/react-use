@@ -1,3 +1,10 @@
+## [13.10.2](https://github.com/streamich/react-use/compare/v13.10.1...v13.10.2) (2019-12-05)
+
+
+### Bug Fixes
+
+* useUpdate hitting maxInt, failing to trigger rerender ([93e7291](https://github.com/streamich/react-use/commit/93e72910abf2dafe5bdff625a21f633afd6e52c5))
+
 ## [13.10.1](https://github.com/streamich/react-use/compare/v13.10.0...v13.10.1) (2019-12-03)
 
 
