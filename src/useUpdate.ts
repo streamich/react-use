@@ -1,16 +1,9 @@
 import { useCallback, useState } from 'react';
 
-/**
- * MIN & MAX safe integers are literals due to no support in IE
- */
-const minInt = -1000000000
-const maxInt = 9007199254740991
-const incrementParameter = (num: number): number => {
-  return num !== maxInt ? (num += 1) : minInt;
-}
+const incrementParameter = (num: number): number => ++num % 1_000_000;
 
 const useUpdate = () => {
-  const [, setState] = useState(minInt);
+  const [, setState] = useState(0);
   // useCallback with empty deps as we only want to define updateCb once
   return useCallback(() => setState(incrementParameter), []);
 };
