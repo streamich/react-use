@@ -85,6 +85,7 @@ export { default as useTitle } from './useTitle';
 export { default as useToggle } from './useToggle';
 export { default as useTween } from './useTween';
 export { default as useUnmount } from './useUnmount';
+export { default as useUnmountPromise } from './useUnmountPromise';
 export { default as useUpdate } from './useUpdate';
 export { default as useUpdateEffect } from './useUpdateEffect';
 export { default as useUpsert } from './useUpsert';
