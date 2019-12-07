@@ -111,7 +111,7 @@
   - [`useMountedState`](./docs/useMountedState.md) &mdash; track if component is mounted.
   - [`usePromise`](./docs/usePromise.md) &mdash; resolves promise only while component is mounted.
   - [`useLogger`](./docs/useLogger.md) &mdash; logs in console as component goes through life-cycles.
-  - [`useMount`](./docs/useMount.md) &mdash; calls `mount` callbacks.
+  - [`useMount`](./docs/useMount.md) and [`useUnmountPromise`](./docs/useUnmountPromise.md) &mdash; tracks if component is mounted.
   - [`useUnmount`](./docs/useUnmount.md) &mdash; calls `unmount` callbacks.
   - [`useUpdateEffect`](./docs/useUpdateEffect.md) &mdash; run an `effect` only on updates.
   - [`useIsomorphicLayoutEffect`](./docs/useIsomorphicLayoutEffect.md) &mdash; `useLayoutEffect` that does not show warning when server-side rendering.
