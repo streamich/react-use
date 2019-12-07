@@ -1448,10 +1448,10 @@
     js-levenshtein "^1.1.3"
     semver "^5.5.0"
 
-"@babel/preset-env@7.7.5":
-  version "7.7.5"
-  resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.7.5.tgz#f28573ed493edb4ba763b37fb4fbb85601469370"
-  integrity sha512-wDPbiaZdGzsJuTWlpLHJxmwslwHGLZ8F5v69zX3oAWeTOFWdy4OJHoTKg26oAnFg052v+/LAPY5os9KB0LrOEA==
+"@babel/preset-env@7.7.6":
+  version "7.7.6"
+  resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.7.6.tgz#39ac600427bbb94eec6b27953f1dfa1d64d457b2"
+  integrity sha512-k5hO17iF/Q7tR9Jv8PdNBZWYW6RofxhnxKjBMc0nG4JTaWvOTiPoO/RLFwAKcA4FpmuBFm6jkoqaRJLGi0zdaQ==
   dependencies:
     "@babel/helper-module-imports" "^7.7.4"
     "@babel/helper-plugin-utils" "^7.0.0"
