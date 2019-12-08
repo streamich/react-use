@@ -1,3 +1,10 @@
+# [13.11.0](https://github.com/streamich/react-use/compare/v13.10.2...v13.11.0) (2019-12-08)
+
+
+### Features
+
+* 🎸 add useUnmountPromise hook ([01421bc](https://github.com/streamich/react-use/commit/01421bc634b941044e95c611f37eb87339486241))
+
 ## [13.10.2](https://github.com/streamich/react-use/compare/v13.10.1...v13.10.2) (2019-12-05)
 
 
