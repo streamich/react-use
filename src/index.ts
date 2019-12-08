@@ -92,6 +92,7 @@ export { default as useUpsert } from './useUpsert';
 export { default as useVibrate } from './useVibrate';
 export { default as useVideo } from './useVideo';
 export { default as useStateValidator } from './useStateValidator';
+export { useScrollbarWidth } from './useScrollbarWidth';
 export { useMultiStateValidator } from './useMultiStateValidator';
 export { default as useWindowScroll } from './useWindowScroll';
 export { default as useWindowSize } from './useWindowSize';
