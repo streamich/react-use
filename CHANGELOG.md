@@ -1,3 +1,10 @@
+## [13.12.1](https://github.com/streamich/react-use/compare/v13.12.0...v13.12.1) (2019-12-09)
+
+
+### Bug Fixes
+
+* **useMap:** methods with side effects should be stable across renders. ([020b4db](https://github.com/streamich/react-use/commit/020b4dbc6c47ab25243ab8af257dd045e6c1bf6d))
+
 # [13.12.0](https://github.com/streamich/react-use/compare/v13.11.0...v13.12.0) (2019-12-09)
 
 
