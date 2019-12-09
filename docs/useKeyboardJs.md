@@ -36,6 +36,12 @@ yarn add keyboardjs
 
 ## Reference
 
-```js
-useKeyboardJs(combination: string | string[]): [isPressed: boolean, event?: KeyboardEvent]
+```ts
+useKeyboardJs(combination: string | string[], options?: Options): [isPressed: boolean, event?: KeyboardEvent]
+
+Options {
+  preventRepeatByDefault?: boolean;
+  pressedFn?(KeyEvent): void;
+  releasedFn?(KeyEvent): void;
+}
 ```
