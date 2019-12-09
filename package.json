@@ -46,6 +46,7 @@
   },
   "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
+    "@xobotyi/scrollbar-width": "1.5.0",
     "copy-to-clipboard": "^3.2.0",
     "nano-css": "^5.2.1",
     "react-fast-compare": "^2.0.4",
