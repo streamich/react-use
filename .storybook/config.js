@@ -12,7 +12,7 @@ setOptions({
   sidebarAnimations: false,
 });
 
-const req = require.context('../src/', true, /.*\.(stories|story)\.(js|jsx|ts|tsx)?$/);
+const req = require.context('../stories/', true, /\.story\.tsx?$/);
 
 const loadStories = () => {
   req.keys().forEach((filename) => req(filename));
