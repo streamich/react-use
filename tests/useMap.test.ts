@@ -121,3 +121,17 @@ it('should reset map to initial object provided', () => {
 
   expect(result.current[0]).toEqual({ foo: 'bar', a: 1 });
 });
+
+it('should memoize actions with side effects', () => {
+  const { result } = setUp({ foo: 'bar', a: 1 });
+  const [, utils] = result.current;
+  const { set, remove, reset } = utils;
+
+  act(() => {
+    set('foo', 'baz');
+  });
+
+  expect(result.current[1].set).toBe(set);
+  expect(result.current[1].remove).toBe(remove);
+  expect(result.current[1].reset).toBe(reset);
+});
