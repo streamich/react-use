@@ -1,3 +1,10 @@
+## [13.12.2](https://github.com/streamich/react-use/compare/v13.12.1...v13.12.2) (2019-12-10)
+
+
+### Bug Fixes
+
+* **useSet:** "has" method in useSet updated to reference latest set object ([4f1d8c2](https://github.com/streamich/react-use/commit/4f1d8c2cbd773f2a26e2eee4fbad88883ea4b405))
+
 ## [13.12.1](https://github.com/streamich/react-use/compare/v13.12.0...v13.12.1) (2019-12-09)
 
 
