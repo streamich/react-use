@@ -34,6 +34,21 @@ it('should have an initially provided key', () => {
   expect(value).toBe(true);
 });
 
+it('should have an added key', () => {
+  const { result } = setUp(new Set());
+
+  act(() => {
+    result.current[1].add('newKey');
+  });
+
+  let value;
+  act(() => {
+    value = result.current[1].has('newKey');
+  });
+
+  expect(value).toBe(true);
+});
+
 it('should get false for non-existing key', () => {
   const { result } = setUp(new Set(['a']));
   const [, utils] = result.current;
@@ -110,12 +125,13 @@ it('should reset to initial set provided', () => {
 it('should memoized its utils methods', () => {
   const { result } = setUp(new Set(['a', 'b']));
   const [, utils] = result.current;
-  const { add } = utils;
+  const { add, remove, reset } = utils;
 
   act(() => {
     add('foo');
   });
 
-  expect(result.current[1]).toBe(utils);
   expect(result.current[1].add).toBe(add);
+  expect(result.current[1].remove).toBe(remove);
+  expect(result.current[1].reset).toBe(reset);
 });
