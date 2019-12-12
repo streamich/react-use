@@ -78,6 +78,7 @@
   - [`useSpeech`](./docs/useSpeech.md) &mdash; synthesizes speech from a text string. [![][img-demo]](https://codesandbox.io/s/n090mqz69m)
   - [`useVibrate`](./docs/useVibrate.md) &mdash; provide physical feedback using the [Vibration API](https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API). [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usevibrate--demo)
   - [`useVideo`](./docs/useVideo.md) &mdash; plays video, tracks its state, and exposes playback controls. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usevideo--demo)
+  - [`useInput`](./docs/useInput.md) &mdash; simple to use controlled component.
     <br/>
     <br/>
 - [**Animations**](./docs/Animations.md)
