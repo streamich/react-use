@@ -1,7 +1,7 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Storybook</title><base target="_parent"><style>:not(.sb-show-main) > .sb-main,
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Storybook</title><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_parent"><style>:not(.sb-show-main) > .sb-main,
   :not(.sb-show-nopreview) > .sb-nopreview,
   :not(.sb-show-errordisplay) > .sb-errordisplay {
-      display: none;
+    display: none;
   }
 
   .sb-wrapper {
@@ -11,15 +11,17 @@
     left: 0;
     right: 0;
     padding: 20px;
-    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", Roboto, "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+    font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
+    overflow: auto;
   }
 
   .sb-heading {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.2px;
     margin: 10px 0;
+    padding-right: 25px;
   }
 
   .sb-nopreview {
@@ -40,21 +42,32 @@
   }
 
   .sb-errordisplay {
-    background-color: rgb(187, 49, 49);
-    color: #FFF;
+    border: 20px solid rgb(187, 49, 49);
+    background: #222;
+    color: #fff;
+    z-index: 999999;
   }
 
   .sb-errordisplay_code {
-    font-size: 14px;
-    width: 100vw;
-    overflow: auto;
-  }</style><script>try {
+    padding: 10px;
+    background: #000;
+    color: #eee;
+    font-family: "Operator Mono", "Fira Code Retina", "Fira Code", "FiraCode-Retina", "Andale Mono", "Lucida Console", Consolas, Monaco, monospace;
+  }
+
+  .sb-errordisplay pre {
+    white-space: pre-wrap;
+  }</style><script>/* globals window */
+  /* eslint-disable no-underscore-dangle */
+  try {
     if (window.parent !== window) {
       window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;
       window.__VUE_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__VUE_DEVTOOLS_GLOBAL_HOOK__;
     }
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.warn('unable to connect to parent frame for connecting dev tools');
-  }</script></head><body><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the storybook config.</li><li>Try reloading the page.</li></ul></div></div><div class="sb-errordisplay sb-wrapper"><div id="error-message" class="sb-heading"></div><pre class="sb-errordisplay_code">
-    <code id="error-stack"></code>
-  </pre></div><div id="root"></div><script src="static/runtime~iframe.36305751f78a2d599ec4.bundle.js"></script><script src="static/vendors~iframe.b5f0cc3c916b33c96e0e.bundle.js"></script><script src="static/iframe.c42a4f4924564a47ff4d.bundle.js"></script></body></html>
+  }</script><style>#root[hidden],
+      #docs-root[hidden] {
+        display: none !important;
+      }</style></head><body><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><pre id="error-message" class="sb-heading"></pre><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="root"></div><div id="docs-root"></div><script src="runtime~main.6f97e21a10a12926121e.bundle.js"></script><script src="vendors~main.6f97e21a10a12926121e.bundle.js"></script><script src="main.6f97e21a10a12926121e.bundle.js"></script></body></html>
