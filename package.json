@@ -62,11 +62,11 @@
     "react-dom": "^16.8.0"
   },
   "devDependencies": {
-    "@babel/core": "7.7.5",
+    "@babel/core": "7.7.7",
     "@babel/plugin-syntax-dynamic-import": "7.7.4",
-    "@babel/preset-env": "7.7.6",
+    "@babel/preset-env": "7.7.7",
     "@babel/preset-react": "7.7.4",
-    "@babel/preset-typescript": "7.7.4",
+    "@babel/preset-typescript": "7.7.7",
     "@semantic-release/changelog": "3.0.6",
     "@semantic-release/git": "7.0.18",
     "@semantic-release/npm": "5.3.4",
