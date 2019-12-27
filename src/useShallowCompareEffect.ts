@@ -4,7 +4,7 @@ import useCustomCompareEffect from './useCustomCompareEffect';
 
 const isPrimitive = (val: any) => val !== Object(val);
 const shallowCompareDepsList = (depsListA: DependencyList, depsListB: DependencyList) =>
-  depsListA.some((dep, index) => isShallowEqual(dep, depsListB[index]));
+  depsListA.every((dep, index) => isShallowEqual(dep, depsListB[index]));
 
 const useShallowCompareEffect = (effect: EffectCallback, deps: DependencyList) => {
   if (process.env.NODE_ENV !== 'production') {
