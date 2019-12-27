@@ -27,5 +27,5 @@ const Demo = () => {
 ## Reference
 
 ```ts
-useCustomCompareEffect(effect: () => void | (() => void | undefined), deps: any[], customCompareCb: (prevDeps: any[], nextDeps: any[]) => boolean);
+useCustomCompareEffect(effect: () => void | (() => void | undefined), deps: any[], depsEqual: (prevDeps: any[], nextDeps: any[]) => boolean);
 ```

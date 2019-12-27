@@ -3,8 +3,8 @@ import { equal as isShallowEqual } from 'fast-shallow-equal';
 import useCustomCompareEffect from './useCustomCompareEffect';
 
 const isPrimitive = (val: any) => val !== Object(val);
-const shallowCompareDepsList = (depsListA: DependencyList, depsListB: DependencyList) =>
-  depsListA.every((dep, index) => isShallowEqual(dep, depsListB[index]));
+const shallowEqualDepsList = (prevDeps: DependencyList, nextDeps: DependencyList) =>
+  prevDeps.every((dep, index) => isShallowEqual(dep, nextDeps[index]));
 
 const useShallowCompareEffect = (effect: EffectCallback, deps: DependencyList) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -19,7 +19,7 @@ const useShallowCompareEffect = (effect: EffectCallback, deps: DependencyList) =
     }
   }
 
-  useCustomCompareEffect(effect, deps, shallowCompareDepsList);
+  useCustomCompareEffect(effect, deps, shallowEqualDepsList);
 };
 
 export default useShallowCompareEffect;
