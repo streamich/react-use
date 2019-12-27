@@ -11,6 +11,7 @@ export { default as useClickAway } from './useClickAway';
 export { default as useCopyToClipboard } from './useCopyToClipboard';
 export { default as useCounter } from './useCounter';
 export { default as useCss } from './useCss';
+export { default as useCustomCompareEffect } from './useCustomCompareEffect';
 export { default as useDebounce } from './useDebounce';
 export { default as useDeepCompareEffect } from './useDeepCompareEffect';
 export { default as useDefault } from './useDefault';
@@ -70,6 +71,7 @@ export { default as useScroll } from './useScroll';
 export { default as useScrolling } from './useScrolling';
 export { default as useSessionStorage } from './useSessionStorage';
 export { default as useSetState } from './useSetState';
+export { default as useShallowCompareEffect } from './useShallowCompareEffect';
 export { default as useSize } from './useSize';
 export { default as useSpeech } from './useSpeech';
 // not exported because of peer dependency
