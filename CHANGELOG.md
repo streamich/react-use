@@ -1,3 +1,10 @@
+# [13.13.0](https://github.com/streamich/react-use/compare/v13.12.2...v13.13.0) (2019-12-27)
+
+
+### Features
+
+* add useShallowCompareEffect and useCustomCompareEffect hooks ([ba8803e](https://github.com/streamich/react-use/commit/ba8803eab26d2d48028a4b7120a7354c6d318aea))
+
 ## [13.12.2](https://github.com/streamich/react-use/compare/v13.12.1...v13.12.2) (2019-12-10)
 
 
