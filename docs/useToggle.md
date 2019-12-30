@@ -7,7 +7,7 @@ React state hook that tracks value of a boolean.
 ## Usage
 
 ```jsx
-import {useToggle, useBoolean} from 'react-use';
+import {useToggle} from 'react-use';
 
 const Demo = () => {
   const [on, toggle] = useToggle(true);

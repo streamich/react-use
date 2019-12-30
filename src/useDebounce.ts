@@ -1,14 +1,12 @@
-import useUpdateEffect from './useUpdateEffect';
+import { DependencyList, useEffect } from 'react';
+import useTimeoutFn from './useTimeoutFn';
 
-const useDebounce = (fn: () => any, ms: number = 0, args: any[] = []) => {
-  useUpdateEffect(() => {
-    const handle = setTimeout(fn.bind(null, args), ms);
+export type UseDebounceReturn = [() => boolean | null, () => void];
 
-    return () => {
-      // if args change then clear timeout
-      clearTimeout(handle);
-    };
-  }, args);
-};
+export default function useDebounce(fn: Function, ms: number = 0, deps: DependencyList = []): UseDebounceReturn {
+  const [isReady, cancel, reset] = useTimeoutFn(fn, ms);
 
-export default useDebounce;
+  useEffect(reset, deps);
+
+  return [isReady, cancel];
+}

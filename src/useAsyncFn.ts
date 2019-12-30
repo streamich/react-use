@@ -1,4 +1,4 @@
-import { DependencyList, useCallback, useState } from 'react';
+import { DependencyList, useCallback, useState, useRef } from 'react';
 import useMountedState from './useMountedState';
 import { FnReturningPromise, PromiseType } from './util';
 
@@ -28,20 +28,22 @@ export default function useAsyncFn<T extends FnReturningPromise>(
   deps: DependencyList = [],
   initialState: StateFromFnReturningPromise<T> = { loading: false }
 ): AsyncFnReturn<T> {
+  const lastCallId = useRef(0);
   const isMounted = useMountedState();
   const [state, set] = useState<StateFromFnReturningPromise<T>>(initialState);
 
   const callback = useCallback((...args: Parameters<T>): ReturnType<T> => {
+    const callId = ++lastCallId.current;
     set({ loading: true });
 
     return fn(...args).then(
       value => {
-        isMounted() && set({ value, loading: false });
+        isMounted() && callId === lastCallId.current && set({ value, loading: false });
 
         return value;
       },
       error => {
-        isMounted() && set({ error, loading: false });
+        isMounted() && callId === lastCallId.current && set({ error, loading: false });
 
         return error;
       }
