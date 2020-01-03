@@ -1,3 +1,10 @@
+# [13.14.0](https://github.com/streamich/react-use/compare/v13.13.0...v13.14.0) (2020-01-03)
+
+
+### Features
+
+* 🎸 add [vertical] flag to useSlider() hook ([777865c](https://github.com/streamich/react-use/commit/777865c3ac6772fbda2bc0a6f58cde3eff7dec43))
+
 # [13.13.0](https://github.com/streamich/react-use/compare/v13.12.2...v13.13.0) (2019-12-27)
 
 
