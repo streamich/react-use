@@ -15,6 +15,7 @@ export interface Options {
   onScrubStop: () => void;
   reverse: boolean;
   styles: boolean | CSSProperties;
+  vertical?: boolean;
 }
 
 const noop = () => {};
@@ -59,13 +60,17 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
         startScrubbing();
         onMouseMove(event);
       };
-      const onMouseMove = (event: MouseEvent) => onScrub(event.clientX);
+      const onMouseMove = options.vertical
+        ? (event: MouseEvent) => onScrub(event.clientY)
+        : (event: MouseEvent) => onScrub(event.clientX);
 
       const onTouchStart = (event: TouchEvent) => {
         startScrubbing();
         onTouchMove(event);
       };
-      const onTouchMove = (event: TouchEvent) => onScrub(event.changedTouches[0].clientX);
+      const onTouchMove = options.vertical
+        ? (event: TouchEvent) => onScrub(event.changedTouches[0].clientY)
+        : (event: TouchEvent) => onScrub(event.changedTouches[0].clientX);
 
       const bindEvents = () => {
         on(document, 'mousemove', onMouseMove);
@@ -83,19 +88,21 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
         off(document, 'touchend', stopScrubbing);
       };
 
-      const onScrub = (clientX: number) => {
+      const onScrub = (clientXY: number) => {
         cancelAnimationFrame(frame.current);
 
         frame.current = requestAnimationFrame(() => {
           if (isMounted() && ref.current) {
-            const { left: pos, width: length } = ref.current.getBoundingClientRect();
+            const rect = ref.current.getBoundingClientRect();
+            const pos = options.vertical ? rect.top : rect.left;
+            const length = options.vertical ? rect.height : rect.width;
 
             // Prevent returning 0 when element is hidden by CSS
             if (!length) {
               return;
             }
 
-            let value = (clientX - pos) / length;
+            let value = (clientXY - pos) / length;
 
             if (value > 1) {
               value = 1;
@@ -126,7 +133,7 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
     } else {
       return undefined;
     }
-  }, [ref]);
+  }, [ref, options.vertical]);
 
   return state;
 };
