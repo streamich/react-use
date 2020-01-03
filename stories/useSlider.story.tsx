@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { useSlider } from '..';
+import { useSlider } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
@@ -21,5 +21,5 @@ const Demo = () => {
 };
 
 storiesOf('UI|useSlider', module)
-  .add('Docs', () => <ShowDocs md={require('../../docs/useSlider.md')} />)
+  .add('Docs', () => <ShowDocs md={require('../docs/useSlider.md')} />)
   .add('Demo', () => <Demo />);
