@@ -3,9 +3,9 @@ import { off, on } from './util';
 
 const defaultEvents = ['mousedown', 'touchstart'];
 
-const useClickAway = (
+const useClickAway = <T extends Event>(
   ref: RefObject<HTMLElement | null>,
-  onClickAway: (event: KeyboardEvent) => void,
+  onClickAway: (event: T | Event) => void,
   events: string[] = defaultEvents
 ) => {
   const savedCallback = useRef(onClickAway);
