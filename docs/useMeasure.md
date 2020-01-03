@@ -12,7 +12,7 @@ const Demo = () => {
 
   return (
     <div ref={ref}>
-      <div>x: {x}</div>
+      <div>x: {x}</div>	
       <div>y: {y}</div>
       <div>width: {width}</div>
       <div>height: {height}</div>

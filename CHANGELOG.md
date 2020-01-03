@@ -1,3 +1,288 @@
+# [13.13.0](https://github.com/streamich/react-use/compare/v13.12.2...v13.13.0) (2019-12-27)
+
+
+### Features
+
+* add useShallowCompareEffect and useCustomCompareEffect hooks ([ba8803e](https://github.com/streamich/react-use/commit/ba8803eab26d2d48028a4b7120a7354c6d318aea))
+
+## [13.12.2](https://github.com/streamich/react-use/compare/v13.12.1...v13.12.2) (2019-12-10)
+
+
+### Bug Fixes
+
+* **useSet:** "has" method in useSet updated to reference latest set object ([4f1d8c2](https://github.com/streamich/react-use/commit/4f1d8c2cbd773f2a26e2eee4fbad88883ea4b405))
+
+## [13.12.1](https://github.com/streamich/react-use/compare/v13.12.0...v13.12.1) (2019-12-09)
+
+
+### Bug Fixes
+
+* **useMap:** methods with side effects should be stable across renders. ([020b4db](https://github.com/streamich/react-use/commit/020b4dbc6c47ab25243ab8af257dd045e6c1bf6d))
+
+# [13.12.0](https://github.com/streamich/react-use/compare/v13.11.0...v13.12.0) (2019-12-09)
+
+
+### Features
+
+* useScrollbarWidth hook; ([#825](https://github.com/streamich/react-use/issues/825)) ([125c7e9](https://github.com/streamich/react-use/commit/125c7e96a188405aea36e94ed1bb3d984232b2f6))
+
+# [13.11.0](https://github.com/streamich/react-use/compare/v13.10.2...v13.11.0) (2019-12-08)
+
+
+### Features
+
+* 🎸 add useUnmountPromise hook ([01421bc](https://github.com/streamich/react-use/commit/01421bc634b941044e95c611f37eb87339486241))
+
+## [13.10.2](https://github.com/streamich/react-use/compare/v13.10.1...v13.10.2) (2019-12-05)
+
+
+### Bug Fixes
+
+* useUpdate hitting maxInt, failing to trigger rerender ([93e7291](https://github.com/streamich/react-use/commit/93e72910abf2dafe5bdff625a21f633afd6e52c5))
+
+## [13.10.1](https://github.com/streamich/react-use/compare/v13.10.0...v13.10.1) (2019-12-03)
+
+
+### Bug Fixes
+
+* "get" method in useMap updated to reference latest map object ([044d267](https://github.com/streamich/react-use/commit/044d2677aa474d19da776444b78bd3d2594c6ae5))
+
+# [13.10.0](https://github.com/streamich/react-use/compare/v13.9.0...v13.10.0) (2019-11-28)
+
+
+### Features
+
+* useStateHistory ([#709](https://github.com/streamich/react-use/issues/709)) ([0a66359](https://github.com/streamich/react-use/commit/0a6635914319e9ef7a2902189a3c2dea90a2bf7f))
+
+# [13.9.0](https://github.com/streamich/react-use/compare/v13.8.2...v13.9.0) (2019-11-23)
+
+
+### Features
+
+* add useFirstMountState & useRendersCount hooks ([#769](https://github.com/streamich/react-use/issues/769)) ([30abe2b](https://github.com/streamich/react-use/commit/30abe2b22e3cb7a3e4c6dedd2466d74ce660911d))
+
+## [13.8.2](https://github.com/streamich/react-use/compare/v13.8.1...v13.8.2) (2019-11-22)
+
+
+### Bug Fixes
+
+* **#792:** make useUnmount invoke the current callback version instead of very first ([75284c6](https://github.com/streamich/react-use/commit/75284c62c8e4a68dfeb41a8d98a1e636e9ef531a)), closes [#792](https://github.com/streamich/react-use/issues/792)
+
+## [13.8.1](https://github.com/streamich/react-use/compare/v13.8.0...v13.8.1) (2019-11-21)
+
+
+### Bug Fixes
+
+* useAsyncFn does not discard old promises and might produce races ([022fa0b](https://github.com/streamich/react-use/commit/022fa0b7b77d582a10c6ca61a3dcd901770011c8))
+
+# [13.8.0](https://github.com/streamich/react-use/compare/v13.7.0...v13.8.0) (2019-11-14)
+
+
+### Features
+
+* **useStateValidator:** Refactor method and improve typings; ([436c210](https://github.com/streamich/react-use/commit/436c210f7b577c6958e47df3a244907b07a4db9f))
+
+# [13.7.0](https://github.com/streamich/react-use/compare/v13.6.3...v13.7.0) (2019-11-14)
+
+
+### Features
+
+* Add useSet hook ([095b4de](https://github.com/streamich/react-use/commit/095b4de2321b8bf3431e3f66139629b0495f1ac9))
+
+## [13.6.3](https://github.com/streamich/react-use/compare/v13.6.2...v13.6.3) (2019-11-12)
+
+
+### Bug Fixes
+
+* remove any types in useThrottleFn ([bb5baea](https://github.com/streamich/react-use/commit/bb5baea30cf59721098ca9e3185105bf1b82218b))
+
+## [13.6.2](https://github.com/streamich/react-use/compare/v13.6.1...v13.6.2) (2019-11-11)
+
+
+### Bug Fixes
+
+* restrict useThrottleFn types ([61a83d1](https://github.com/streamich/react-use/commit/61a83d124d35d5606b6c0700faf1361fd3170ca4))
+
+## [13.6.1](https://github.com/streamich/react-use/compare/v13.6.0...v13.6.1) (2019-11-10)
+
+
+### Bug Fixes
+
+* 🐛 check window.Event constructor exists in useLocation ([ad09431](https://github.com/streamich/react-use/commit/ad094311454c48873ba7143654a29b8a0c54459d))
+
+# [13.6.0](https://github.com/streamich/react-use/compare/v13.5.0...v13.6.0) (2019-11-10)
+
+
+### Features
+
+* **useCounter:** `reset` to the newest initialValue ([#667](https://github.com/streamich/react-use/issues/667)) ([e653383](https://github.com/streamich/react-use/commit/e65338372adfccd4800496b377f63bcdf6646788))
+
+# [13.5.0](https://github.com/streamich/react-use/compare/v13.4.0...v13.5.0) (2019-11-08)
+
+
+### Bug Fixes
+
+* **resolveHookState:** by accident removed needed type. ([59aa41c](https://github.com/streamich/react-use/commit/59aa41cff435f5adf7f38d361649761b8dd69794))
+
+
+### Features
+
+* **useList:** reimplemented useList hook; ([1840b57](https://github.com/streamich/react-use/commit/1840b577e2a3d321b8dbb44d5ae443e84d4d9e20))
+
+# [13.4.0](https://github.com/streamich/react-use/compare/v13.3.0...v13.4.0) (2019-11-08)
+
+
+### Features
+
+* **useStateList:** implemented `currentIndex`, `setState`, `setStateAt` methods as requested in [#634](https://github.com/streamich/react-use/issues/634); ([43cb6aa](https://github.com/streamich/react-use/commit/43cb6aa612ae869e24f67acf6f0a1712a65f128b))
+
+# [13.3.0](https://github.com/streamich/react-use/compare/v13.2.2...v13.3.0) (2019-11-06)
+
+
+### Features
+
+* useDebounce add cancel ([693aec8](https://github.com/streamich/react-use/commit/693aec8307c378697c88c635a401832f24d3531a))
+* useDebounce add cancel ([26cab31](https://github.com/streamich/react-use/commit/26cab31f10a995ec45d6c1e2a2f724d9994d801f))
+
+## [13.2.2](https://github.com/streamich/react-use/compare/v13.2.1...v13.2.2) (2019-11-06)
+
+
+### Bug Fixes
+
+* **#749:** now should work with SSR ([c12976c](https://github.com/streamich/react-use/commit/c12976cad26577a4be3ac65133268f41bbdc82da)), closes [#749](https://github.com/streamich/react-use/issues/749)
+
+## [13.2.1](https://github.com/streamich/react-use/compare/v13.2.0...v13.2.1) (2019-11-04)
+
+
+### Bug Fixes
+
+* **yarn.lock:** re-create the yarn.lock file with nailed versions in devDeps ([f094a3a](https://github.com/streamich/react-use/commit/f094a3ae833f406137b9d5355843a6615af20164))
+
+# [13.2.0](https://github.com/streamich/react-use/compare/v13.1.0...v13.2.0) (2019-11-04)
+
+
+### Features
+
+* re-create yarn.lock ([d48e03e](https://github.com/streamich/react-use/commit/d48e03e9ee38555ff29ca46fb6e75c13e9c23aba))
+* re-create yarn.lock ([ccdffe0](https://github.com/streamich/react-use/commit/ccdffe027fba15bdca1f35dc375a0c32739aee6f))
+* **usePreviousDistinct:** add tests for undefined value behaviour; ([cb373f9](https://github.com/streamich/react-use/commit/cb373f951fb3f34b9e54793687de14000a2dc08e))
+* **usePreviousDistinct:** improve types; ([30f53e8](https://github.com/streamich/react-use/commit/30f53e8c5d7e8b27bf3f273ebfcacabf30146ba3))
+* **usePreviousDistinct:** now predicate not called on initial render; ([fbe9b13](https://github.com/streamich/react-use/commit/fbe9b1303c0433d5608ca5b507d9c76711b5cb68))
+* **useStateList:** rework useStateList to make it work properly. ([242c274](https://github.com/streamich/react-use/commit/242c274dd49779fa80f8b9e451c699205279339e))
+* **useTitle:** reworked hook to make it synchronous without useUpdate; ([a133267](https://github.com/streamich/react-use/commit/a13326779ffd6885ac531240b984a77bcad3bee6))
+* **useWindowSize:** A bit changed lyfecycle and added types; ([03bdecf](https://github.com/streamich/react-use/commit/03bdecf7ac6aa0ad863a1efd71c056aa41df62b7))
+
+# [13.1.0](https://github.com/streamich/react-use/compare/v13.0.1...v13.1.0) (2019-11-01)
+
+
+### Features
+
+* pull request template for features ([1dc21f3](https://github.com/streamich/react-use/commit/1dc21f3))
+
+## [13.0.1](https://github.com/streamich/react-use/compare/v13.0.0...v13.0.1) (2019-11-01)
+
+
+### Bug Fixes
+
+* **useLockBodyScroll:** infer overflow type directly from declaration. ([26baf47](https://github.com/streamich/react-use/commit/26baf47))
+
+# [13.0.0](https://github.com/streamich/react-use/compare/v12.13.0...v13.0.0) (2019-11-01)
+
+
+* Merge pull request #711 from streamich/remove-react-wait ([8d40f18](https://github.com/streamich/react-use/commit/8d40f18)), closes [#711](https://github.com/streamich/react-use/issues/711)
+
+
+### Features
+
+* remove useRefMounted hook ([ad74d3d](https://github.com/streamich/react-use/commit/ad74d3d))
+* **useRefMounted:** remove obsolete hook; ([dc364c8](https://github.com/streamich/react-use/commit/dc364c8))
+* **useWait:** removed from package due to it is simple reexport of other package; ([d7c38bd](https://github.com/streamich/react-use/commit/d7c38bd))
+
+
+### BREAKING CHANGES
+
+* useWait hook has been removed from react-use
+* deprecated useRefMounted hook is now removed, use useMountedState hook instead
+
+# [12.13.0](https://github.com/streamich/react-use/compare/v12.12.0...v12.13.0) (2019-10-31)
+
+
+### Features
+
+* **useCounter:** reworked with use of new resolveHookState function plus improved memory usage; ([befcf84](https://github.com/streamich/react-use/commit/befcf84))
+* **useGetSet:** reworked with use of new resolveHookState function plus improved memory usage; ([9b5d0f2](https://github.com/streamich/react-use/commit/9b5d0f2))
+* react-like state resolver to use it in stateful hooks; ([9fd02eb](https://github.com/streamich/react-use/commit/9fd02eb))
+
+# [12.12.0](https://github.com/streamich/react-use/compare/v12.11.0...v12.12.0) (2019-10-31)
+
+
+### Features
+
+* add typings for createReducer ([f1cf036](https://github.com/streamich/react-use/commit/f1cf036))
+
+# [12.11.0](https://github.com/streamich/react-use/compare/v12.10.0...v12.11.0) (2019-10-31)
+
+
+### Features
+
+* **useWait:** add deprecation messages to readme and export; ([d338245](https://github.com/streamich/react-use/commit/d338245))
+
+# [12.10.0](https://github.com/streamich/react-use/compare/v12.9.1...v12.10.0) (2019-10-30)
+
+
+### Features
+
+* **useUpdate:** improve memory usage - now single function instance to increment all counters; ([0f02fd0](https://github.com/streamich/react-use/commit/0f02fd0))
+
+## [12.9.1](https://github.com/streamich/react-use/compare/v12.9.0...v12.9.1) (2019-10-28)
+
+
+### Bug Fixes
+
+* useSize avoid crash in Safari 11 ([da0e66b](https://github.com/streamich/react-use/commit/da0e66b))
+
+# [12.9.0](https://github.com/streamich/react-use/compare/v12.8.0...v12.9.0) (2019-10-26)
+
+
+### Features
+
+* add createBreakpoint ([79ba4ef](https://github.com/streamich/react-use/commit/79ba4ef))
+
+# [12.8.0](https://github.com/streamich/react-use/compare/v12.7.2...v12.8.0) (2019-10-25)
+
+
+### Features
+
+* add ensuredForwardRef and useEnsuredForwardedRef ([1bfe063](https://github.com/streamich/react-use/commit/1bfe063))
+
+## [12.7.2](https://github.com/streamich/react-use/compare/v12.7.1...v12.7.2) (2019-10-23)
+
+
+### Bug Fixes
+
+* 🐛 bump set-harmonic-interval package version ([f7c709a](https://github.com/streamich/react-use/commit/f7c709a))
+
+## [12.7.1](https://github.com/streamich/react-use/compare/v12.7.0...v12.7.1) (2019-10-17)
+
+
+### Bug Fixes
+
+* example in the docs; ([7f54cad](https://github.com/streamich/react-use/commit/7f54cad))
+* rename story's mediator and add `g` flag to it's regex; ([652b318](https://github.com/streamich/react-use/commit/652b318))
+
+# [12.7.0](https://github.com/streamich/react-use/compare/v12.6.0...v12.7.0) (2019-10-17)
+
+
+### Bug Fixes
+
+* error throw tests; ([056875b](https://github.com/streamich/react-use/commit/056875b))
+* useMultiStateValidator readme description; ([8c7f7f5](https://github.com/streamich/react-use/commit/8c7f7f5))
+
+
+### Features
+
+* useMultiStateValidator ([ae26988](https://github.com/streamich/react-use/commit/ae26988))
+
 # [12.6.0](https://github.com/streamich/react-use/compare/v12.5.0...v12.6.0) (2019-10-16)
 
 

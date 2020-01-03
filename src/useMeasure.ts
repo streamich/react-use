@@ -1,17 +1,12 @@
 import { useCallback, useState } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
-export interface ContentRect {
-  width: number;
-  height: number;
-  top: number;
-  right: number;
-  left: number;
-  bottom: number;
-}
+export type ContentRect = Pick<DOMRectReadOnly, 'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'>;
 
 const useMeasure = <T>(): [(instance: T) => void, ContentRect] => {
-  const [rect, set] = useState({
+  const [rect, set] = useState<ContentRect>({
+    x: 0,
+    y: 0,
     width: 0,
     height: 0,
     top: 0,
