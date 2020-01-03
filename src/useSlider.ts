@@ -3,13 +3,10 @@ import { useEffect, useRef, RefObject, CSSProperties } from 'react';
 import { isClient, off, on } from './util';
 import useMountedState from './useMountedState';
 import useSetState from './useSetState';
-import useMeasureDirty from './useMeasureDirty';
 
 export interface State {
   isSliding: boolean;
   value: number;
-  pos: number;
-  length: number;
 }
 
 export interface Options {
@@ -29,11 +26,7 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
   const [state, setState] = useSetState<State>({
     isSliding: false,
     value: 0,
-    pos: 0,
-    length: 0,
   });
-
-  const { width } = useMeasureDirty(ref);
 
   useEffect(() => {
     if (isClient) {
@@ -116,8 +109,6 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
 
             setState({
               value,
-              pos: clientX - pos,
-              length,
             });
 
             (options.onScrub || noop)(value);
@@ -136,13 +127,6 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
       return undefined;
     }
   }, [ref]);
-
-  useEffect(() => {
-    setState(prevState => ({
-      pos: Math.round(prevState.value * width),
-      length: width,
-    }));
-  }, [width]);
 
   return state;
 };

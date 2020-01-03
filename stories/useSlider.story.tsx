@@ -11,7 +11,7 @@ const Demo = () => {
     <div>
       <div ref={ref} style={{ position: 'relative', background: 'yellow', padding: 4 }}>
         <p style={{ margin: 0, textAlign: 'center' }}>Slide me</p>
-        <div style={{ position: 'absolute', top: 0, left: state.pos, transform: 'scale(2)' }}>
+        <div style={{ position: 'absolute', top: 0, left: (100 * state.value) + '%', transform: 'scale(2)' }}>
           {state.isSliding ? '🏂' : '🎿'}
         </div>
       </div>
