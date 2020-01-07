@@ -5,7 +5,9 @@ const useUpdateEffect: typeof useEffect = (effect, deps) => {
   const isFirstMount = useFirstMountState();
 
   useEffect(() => {
-    !isFirstMount && effect();
+    if (!isFirstMount) {
+      return effect();
+    }
   }, deps);
 };
 
