@@ -1,3 +1,11 @@
+## [13.14.1](https://github.com/streamich/react-use/compare/v13.14.0...v13.14.1) (2020-01-07)
+
+
+### Bug Fixes
+
+* useUpdateEffect returns optional cleanup function ([0ce421c](https://github.com/streamich/react-use/commit/0ce421ced78fd6eb06a5676fefb856e18bfcacc1))
+* useUpdateEffect returns optional cleanup function ([#864](https://github.com/streamich/react-use/issues/864)) ([7960127](https://github.com/streamich/react-use/commit/7960127a98c0d3c33000088fbd97804d41084f7d))
+
 # [13.14.0](https://github.com/streamich/react-use/compare/v13.13.0...v13.14.0) (2020-01-03)
 
 
