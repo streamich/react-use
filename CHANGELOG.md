@@ -1,3 +1,10 @@
+## [13.14.2](https://github.com/streamich/react-use/compare/v13.14.1...v13.14.2) (2020-01-08)
+
+
+### Bug Fixes
+
+* bump fast-shallow-equal ([19b2b39](https://github.com/streamich/react-use/commit/19b2b39eeae3898bd8d8e3478eb7459372bb09d5))
+
 ## [13.14.1](https://github.com/streamich/react-use/compare/v13.14.0...v13.14.1) (2020-01-07)
 
 
