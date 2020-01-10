@@ -75,7 +75,6 @@ export default !doc
             if (bodyInfo.counter === 1) {
               bodies.delete(body);
               if (isIosDevice) {
-                body.ontouchstart = null;
                 body.ontouchmove = null;
 
                 if (documentListenerAdded) {
