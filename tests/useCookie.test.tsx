@@ -1,18 +1,18 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import Cookies from "js-cookie";
-import { useCookie } from "../src";
+import { renderHook, act } from '@testing-library/react-hooks';
+import Cookies from 'js-cookie';
+import { useCookie } from '../src';
 
 const setup = (cookieName: string) => renderHook(() => useCookie(cookieName));
 
-it("should have initial value of null if no cookie exists", () => {
-  const { result } = setup("some-cookie");
+it('should have initial value of null if no cookie exists', () => {
+  const { result } = setup('some-cookie');
 
   expect(result.current[0]).toBeNull();
 });
 
-it("should have initial value of the cookie if it exists", () => {
-  const cookieName = "some-cookie";
-  const value = "some-value";
+it('should have initial value of the cookie if it exists', () => {
+  const cookieName = 'some-cookie';
+  const value = 'some-value';
   Cookies.set(cookieName, value);
 
   const { result } = setup(cookieName);
@@ -23,13 +23,13 @@ it("should have initial value of the cookie if it exists", () => {
   Cookies.remove(cookieName);
 });
 
-it("should update the cookie on call to updateCookie", () => {
-  const spy = jest.spyOn(Cookies, "set");
+it('should update the cookie on call to updateCookie', () => {
+  const spy = jest.spyOn(Cookies, 'set');
 
-  const cookieName = "some-cookie";
+  const cookieName = 'some-cookie';
   const { result } = setup(cookieName);
 
-  const newValue = "some-new-value";
+  const newValue = 'some-new-value';
   act(() => {
     result.current[1](newValue);
   });
@@ -43,12 +43,12 @@ it("should update the cookie on call to updateCookie", () => {
   Cookies.remove(cookieName);
 });
 
-it("should delete the cookie on call to deleteCookie", () => {
-  const cookieName = "some-cookie";
-  const value = "some-value";
+it('should delete the cookie on call to deleteCookie', () => {
+  const cookieName = 'some-cookie';
+  const value = 'some-value';
   Cookies.set(cookieName, value);
 
-  const spy = jest.spyOn(Cookies, "remove");
+  const spy = jest.spyOn(Cookies, 'remove');
 
   const { result } = setup(cookieName);
 
