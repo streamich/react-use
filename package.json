@@ -157,6 +157,9 @@
     "coverageDirectory": "coverage",
     "testMatch": [
       "<rootDir>/tests/**/*.test.(ts|tsx)"
+    ],
+    "setupFiles": [
+      "<rootDir>/tests/_setup.js"
     ]
   }
 }
