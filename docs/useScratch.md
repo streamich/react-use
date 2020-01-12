@@ -1,7 +1,11 @@
-import { storiesOf } from '@storybook/react';
-import * as React from 'react';
-import { useScratch } from '../src';
-import ShowDocs from './util/ShowDocs';
+# `useScratch`
+
+React sensor hook that tracks state of mouse "scrubs" (or "scratches").
+
+## Usage
+
+```jsx
+import useScratch from 'react-use/lib/useScratch';
 
 const Demo = () => {
   const [ref, state] = useScratch();
@@ -40,7 +44,32 @@ const Demo = () => {
     </div>
   );
 };
+```
 
-storiesOf('Sensors/useScratch', module)
-  .add('Docs', () => <ShowDocs md={require('../docs/useScratch.md')} />)
-  .add('Demo', () => <Demo />);
+## Reference
+
+```ts
+const [ref, state] = useScratch();
+```
+
+`state` is:
+
+```ts
+export interface ScratchSensorState {
+  isScratching: boolean;
+  start?: number;
+  end?: number;
+  x?: number;
+  y?: number;
+  dx?: number;
+  dy?: number;
+  docX?: number;
+  docY?: number;
+  posX?: number;
+  posY?: number;
+  elH?: number;
+  elW?: number;
+  elX?: number;
+  elY?: number;
+}
+```
