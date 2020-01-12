@@ -51,6 +51,7 @@
     "fast-shallow-equal": "^0.1.1",
     "nano-css": "^5.2.1",
     "react-fast-compare": "^2.0.4",
+    "react-universal-interface": "^0.6.0",
     "resize-observer-polyfill": "^1.5.1",
     "screenfull": "^5.0.0",
     "set-harmonic-interval": "^1.0.1",
