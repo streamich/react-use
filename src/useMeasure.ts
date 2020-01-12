@@ -1,39 +1,48 @@
-import { useCallback, useState } from 'react';
+import { useState, useMemo } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
-export type ContentRect = Pick<DOMRectReadOnly, 'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'>;
+export type UseMeasureRect = Pick<
+  DOMRectReadOnly,
+  'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'
+>;
+export type UseMeasureRef = (element: HTMLElement) => void;
+export type UseMeasureResult = [UseMeasureRef, UseMeasureRect];
 
-const useMeasure = <T>(): [(instance: T) => void, ContentRect] => {
-  const [rect, set] = useState<ContentRect>({
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-  });
+const defaultState: UseMeasureRect = {
+  x: -1,
+  y: -1,
+  width: -1,
+  height: -1,
+  top: -1,
+  left: -1,
+  bottom: -1,
+  right: -1,
+};
 
-  const [observer] = useState(
+const useMeasure = (): UseMeasureResult => {
+  const [element, ref] = useState<HTMLElement | null>(null);
+  const [rect, setRect] = useState<UseMeasureRect>(defaultState);
+
+  const observer = useMemo(
     () =>
       new ResizeObserver(entries => {
-        const entry = entries[0];
-        if (entry) {
-          set(entry.contentRect);
+        if (entries[0]) {
+          const { x, y, width, height, top, left, bottom, right } = entries[0].contentRect;
+          setRect({ x, y, width, height, top, left, bottom, right });
         }
-      })
+      }),
+    []
   );
 
-  const ref = useCallback(
-    node => {
+  useIsomorphicLayoutEffect(() => {
+    if (!element) return;
+    observer.observe(element);
+    return () => {
       observer.disconnect();
-      if (node) {
-        observer.observe(node);
-      }
-    },
-    [observer]
-  );
+    };
+  }, [element]);
+
   return [ref, rect];
 };
 
