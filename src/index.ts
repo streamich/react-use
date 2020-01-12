@@ -74,6 +74,7 @@ export { default as useSessionStorage } from './useSessionStorage';
 export { default as useSetState } from './useSetState';
 export { default as useShallowCompareEffect } from './useShallowCompareEffect';
 export { default as useSize } from './useSize';
+export { default as useSlider } from './useSlider';
 export { default as useSpeech } from './useSpeech';
 // not exported because of peer dependency
 // export { default as useSpring } from './useSpring';

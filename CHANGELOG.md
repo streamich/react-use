@@ -1,3 +1,33 @@
+## [13.14.3](https://github.com/streamich/react-use/compare/v13.14.2...v13.14.3) (2020-01-08)
+
+
+### Bug Fixes
+
+* useUpdateEffect cleanup test returns false positive ([9b31c42](https://github.com/streamich/react-use/commit/9b31c42ccb42fe13fc24f7434b00a1bcbee8cd8a))
+* useUpdateEffect test returning false positive ([#865](https://github.com/streamich/react-use/issues/865)) ([1946006](https://github.com/streamich/react-use/commit/1946006c4224bc61eabb797f4cdd7d20fff7ab25))
+
+## [13.14.2](https://github.com/streamich/react-use/compare/v13.14.1...v13.14.2) (2020-01-08)
+
+
+### Bug Fixes
+
+* bump fast-shallow-equal ([19b2b39](https://github.com/streamich/react-use/commit/19b2b39eeae3898bd8d8e3478eb7459372bb09d5))
+
+## [13.14.1](https://github.com/streamich/react-use/compare/v13.14.0...v13.14.1) (2020-01-07)
+
+
+### Bug Fixes
+
+* useUpdateEffect returns optional cleanup function ([0ce421c](https://github.com/streamich/react-use/commit/0ce421ced78fd6eb06a5676fefb856e18bfcacc1))
+* useUpdateEffect returns optional cleanup function ([#864](https://github.com/streamich/react-use/issues/864)) ([7960127](https://github.com/streamich/react-use/commit/7960127a98c0d3c33000088fbd97804d41084f7d))
+
+# [13.14.0](https://github.com/streamich/react-use/compare/v13.13.0...v13.14.0) (2020-01-03)
+
+
+### Features
+
+* 🎸 add [vertical] flag to useSlider() hook ([777865c](https://github.com/streamich/react-use/commit/777865c3ac6772fbda2bc0a6f58cde3eff7dec43))
+
 # [13.13.0](https://github.com/streamich/react-use/compare/v13.12.2...v13.13.0) (2019-12-27)
 
 
