@@ -25,6 +25,21 @@ const Demo = () => {
 };
 ```
 
+This hook uses [`ResizeObserver` API][resize-observer], if you want to support 
+legacy browsers, consider installing [`resize-observer-polyfill`][resize-observer-polyfill] 
+before running your app. 
+
+```js
+if (!window.ResizeObserver) {
+  window.ResizeObserver = (await import('resize-observer-polyfill')).default;
+}
+```
+
+
 ## Related hooks
 
 - [useSize](./useSize.md)
+
+
+[resize-observer]: https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
+[resize-observer-polyfill]: https://www.npmjs.com/package/resize-observer-polyfill
