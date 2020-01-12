@@ -33,7 +33,7 @@ const useScratch = ({
   onScratch = noop,
   onScratchStart = noop,
   onScratchEnd = noop,
-}: ScratchSensorParams = {}): [ScratchSensorState, (el: HTMLElement | null) => void] => {
+}: ScratchSensorParams = {}): [(el: HTMLElement | null) => void, ScratchSensorState] => {
   const [state, setState] = useState<ScratchSensorState>({ isScratching: false });
   const refState = useRef<ScratchSensorState>(state);
   const refScratching = useRef<boolean>(false);
@@ -154,7 +154,7 @@ const useScratch = ({
     };
   }, [el, disabled, onScratchStart, onScratch, onScratchEnd]);
 
-  return [state, setEl];
+  return [setEl, state];
 };
 
 export interface ScratchSensorProps extends ScratchSensorParams {
@@ -163,7 +163,7 @@ export interface ScratchSensorProps extends ScratchSensorParams {
 
 export const ScratchSensor: FC<ScratchSensorProps> = props => {
   const { children, ...params } = props;
-  const [state, ref] = useScratch(params);
+  const [ref, state] = useScratch(params);
   const element = render(props, state);
   return cloneElement(element, {
     ...element.props,
