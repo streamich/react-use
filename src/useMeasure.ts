@@ -46,4 +46,6 @@ const useMeasure = (): UseMeasureResult => {
   return [ref, rect];
 };
 
-export default useMeasure;
+const useMeasureMock = () => [() => {}, defaultState];
+
+export default !!(window as any).ResizeObserver ? useMeasure : useMeasureMock;
