@@ -1,5 +1,4 @@
 import { useState, useMemo } from 'react';
-import ResizeObserver from 'resize-observer-polyfill';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export type UseMeasureRect = Pick<
@@ -26,7 +25,7 @@ const useMeasure = (): UseMeasureResult => {
 
   const observer = useMemo(
     () =>
-      new ResizeObserver(entries => {
+      new (window as any).ResizeObserver(entries => {
         if (entries[0]) {
           const { x, y, width, height, top, left, bottom, right } = entries[0].contentRect;
           setRect({ x, y, width, height, top, left, bottom, right });
