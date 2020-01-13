@@ -114,4 +114,19 @@ describe('when using among multiple components', () => {
 
     expect(renderCount).toBe(1);
   });
+
+  it('should override initialValue', () => {
+    const { baseElement } = render(
+      <>
+        <SharedTextProvider>
+          <DisplayComponent />
+        </SharedTextProvider>
+        <SharedTextProvider initialValue={'other'}>
+          <DisplayComponent />
+        </SharedTextProvider>
+      </>
+    );
+
+    expect(baseElement.innerHTML).toBe('<div><p>init</p><p>other</p></div>');
+  });
 });

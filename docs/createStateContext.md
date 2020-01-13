@@ -48,8 +48,16 @@ const Demo = () => {
 
 ## Reference
 
-```js
+```jsx
 const [useSharedState, SharedStateProvider] = createStateContext(initialValue);
+
+// In wrapper
+const Wrapper = ({ children }) => (
+  // You can override the initial value for each Provider
+  <SharedStateProvider initialValue={overrideInitialValue}>
+    { children }
+  </SharedStateProvider>
+)
 
 // In a component
 const Component = () => {

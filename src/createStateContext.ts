@@ -1,11 +1,11 @@
 import { createFactory, createContext, useContext, useState } from 'react';
 
-const createStateContext = <T>(initialValue: T) => {
+const createStateContext = <T>(defaultInitialValue: T) => {
   const context = createContext<[T, React.Dispatch<React.SetStateAction<T>>] | undefined>(undefined);
   const providerFactory = createFactory(context.Provider);
 
-  const StateProvider: React.FC = ({ children }) => {
-    const state = useState<T>(initialValue);
+  const StateProvider: React.FC<{ initialValue?: T }> = ({ children, initialValue }) => {
+    const state = useState<T>(initialValue !== undefined ? initialValue : defaultInitialValue);
     return providerFactory({ value: state }, children);
   };
 
