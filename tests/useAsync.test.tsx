@@ -34,8 +34,9 @@ describe('useAsync', () => {
       });
     });
 
-    it('initially starts loading', () => {
+    it('initially starts loading', async () => {
       expect(hook.result.current.loading).toEqual(true);
+      await hook.waitForNextUpdate();
     });
 
     it('resolves', async () => {
@@ -75,8 +76,9 @@ describe('useAsync', () => {
       });
     });
 
-    it('initially starts loading', () => {
+    it('initially starts loading', async () => {
       expect(hook.result.current.loading).toBeTruthy();
+      await hook.waitForNextUpdate();
     });
 
     it('resolves', async () => {
