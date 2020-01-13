@@ -123,6 +123,7 @@
 - [**State**](./docs/State.md)
   - [`createMemo`](./docs/createMemo.md) &mdash; factory of memoized hooks.
   - [`createReducer`](./docs/createReducer.md) &mdash; factory of reducer hooks with custom middleware.
+  - [`createStateContext`](./docs/createStateContext.md) &mdash; factory of context hooks for a shared state among components.
   - [`useDefault`](./docs/useDefault.md) &mdash; returns the default value when state is `null` or `undefined`.
   - [`useGetSet`](./docs/useGetSet.md) &mdash; returns state getter `get()` instead of raw state.
   - [`useGetSetState`](./docs/useGetSetState.md) &mdash; as if [`useGetSet`](./docs/useGetSet.md) and [`useSetState`](./docs/useSetState.md) had a baby.
