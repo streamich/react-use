@@ -1,4 +1,5 @@
 export { default as createMemo } from './createMemo';
+export { default as createReducerContext } from './createReducerContext';
 export { default as createReducer } from './createReducer';
 export { default as createStateContext } from './createStateContext';
 export { default as useAsync } from './useAsync';
