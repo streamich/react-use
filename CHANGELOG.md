@@ -1,3 +1,10 @@
+# [13.15.0](https://github.com/streamich/react-use/compare/v13.14.3...v13.15.0) (2020-01-13)
+
+
+### Features
+
+* add useCookie hook ([4e5c90f](https://github.com/streamich/react-use/commit/4e5c90f021f56ae2008dc25daad69c43063f608f))
+
 ## [13.14.3](https://github.com/streamich/react-use/compare/v13.14.2...v13.14.3) (2020-01-08)
 
 
