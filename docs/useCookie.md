@@ -35,5 +35,5 @@ const Demo = () => {
 ## Reference
 
 ```ts
-useCookie(cookieName: string);
+const [value, updateCookie, deleteCookie] = useCookie(cookieName: string);
 ```
