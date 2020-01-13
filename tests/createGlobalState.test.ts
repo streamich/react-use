@@ -1,12 +1,12 @@
-import { act, renderHook } from "@testing-library/react-hooks";
-import createGlobalState from "../src/createGlobalState";
+import { act, renderHook } from '@testing-library/react-hooks';
+import createGlobalState from '../src/createGlobalState';
 
-describe("useGlobalState", () => {
-  it("should be defined", () => {
+describe('useGlobalState', () => {
+  it('should be defined', () => {
     expect(createGlobalState).toBeDefined();
   });
 
-  it("both components should be updated", () => {
+  it('both components should be updated', () => {
     const useGlobalValue = createGlobalState(0);
     const { result: result1 } = renderHook(() => useGlobalValue());
     const { result: result2 } = renderHook(() => useGlobalValue());
