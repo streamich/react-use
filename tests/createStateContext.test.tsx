@@ -10,6 +10,12 @@ it('should create a hook and a provider', () => {
 });
 
 describe('when using created hook', () => {
+  it('should throw out of a provider', () => {
+    const [useSharedText] = createStateContext('init');
+    const { result } = renderHook(() => useSharedText());
+    expect(result.error).toEqual(new Error('useStateContext must be used inside a StateProvider.'));
+  });
+
   const setUp = () => {
     const [useSharedText, SharedTextProvider] = createStateContext('init');
     const wrapper: React.FC = ({ children }) => <SharedTextProvider>{children}</SharedTextProvider>;
