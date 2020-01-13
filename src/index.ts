@@ -8,6 +8,7 @@ export { default as useBattery } from './useBattery';
 export { default as useBeforeUnload } from './useBeforeUnload';
 export { default as useBoolean } from './useBoolean';
 export { default as useClickAway } from './useClickAway';
+export { default as useCookie } from './useCookie';
 export { default as useCopyToClipboard } from './useCopyToClipboard';
 export { default as useCounter } from './useCounter';
 export { default as useCss } from './useCss';
