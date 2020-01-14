@@ -94,6 +94,7 @@
 - [**Side-effects**](./docs/Side-effects.md)
   - [`useAsync`](./docs/useAsync.md), [`useAsyncFn`](./docs/useAsyncFn.md), and [`useAsyncRetry`](./docs/useAsyncRetry.md) &mdash; resolves an `async` function.
   - [`useBeforeUnload`](./docs/useBeforeUnload.md) &mdash; shows browser alert when user try to reload or close the page.
+  - [`useCookie`](./docs/useCookie.md) &mdash; provides way to read, update and delete a cookie. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usecookie--demo)
   - [`useCopyToClipboard`](./docs/useCopyToClipboard.md) &mdash; copies text to clipboard.
   - [`useDebounce`](./docs/useDebounce.md) &mdash; debounces a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usedebounce--demo)
   - [`useFavicon`](./docs/useFavicon.md) &mdash; sets favicon of the page.
@@ -148,7 +149,6 @@
     <br/>
 - [**Miscellaneous**]()
   - [`useEnsuredForwardedRef`](./docs/useEnsuredForwardedRef.md) and [`ensuredForwardRef`](./docs/useEnsuredForwardedRef.md) &mdash; use a React.forwardedRef safely. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-useensuredforwardedref--demo)
-
 
 <br />
 <br />
