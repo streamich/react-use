@@ -1,3 +1,10 @@
+## [13.16.1](https://github.com/streamich/react-use/compare/v13.16.0...v13.16.1) (2020-01-14)
+
+
+### Bug Fixes
+
+* update the types dep for js-cookie ([5c55d59](https://github.com/streamich/react-use/commit/5c55d59a7d1d799cba7af87e15ab4a4b27a8fc67))
+
 # [13.16.0](https://github.com/streamich/react-use/compare/v13.15.0...v13.16.0) (2020-01-14)
 
 
