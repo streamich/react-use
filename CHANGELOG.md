@@ -1,3 +1,10 @@
+# [13.16.0](https://github.com/streamich/react-use/compare/v13.15.0...v13.16.0) (2020-01-14)
+
+
+### Features
+
+* add option to useTitle to restore title on un-mount ([b8b3e47](https://github.com/streamich/react-use/commit/b8b3e479cea6071d4310bac29f138bd8917eee0b))
+
 # [13.15.0](https://github.com/streamich/react-use/compare/v13.14.3...v13.15.0) (2020-01-13)
 
 
