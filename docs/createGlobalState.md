@@ -1,6 +1,6 @@
 # `useGlobalState`
 
-A React hook witch create a globally shared state.
+A React hook which creates a globally shared state.
 
 ## Usage
 
