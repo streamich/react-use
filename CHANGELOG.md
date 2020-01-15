@@ -1,3 +1,10 @@
+# [13.17.0](https://github.com/streamich/react-use/compare/v13.16.1...v13.17.0) (2020-01-15)
+
+
+### Features
+
+* add support for body lock on iOS ([d778408](https://github.com/streamich/react-use/commit/d7784084fe84aca72efe85260101b00ef1df7580))
+
 ## [13.16.1](https://github.com/streamich/react-use/compare/v13.16.0...v13.16.1) (2020-01-14)
 
 
