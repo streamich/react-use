@@ -21,6 +21,7 @@ export { default as useDropArea } from './useDropArea';
 export { default as useEffectOnce } from './useEffectOnce';
 export { default as useEnsuredForwardedRef, ensuredForwardRef } from './useEnsuredForwardedRef';
 export { default as useEvent } from './useEvent';
+export { default as useError } from './useError';
 export { default as useFavicon } from './useFavicon';
 export { default as useFullscreen } from './useFullscreen';
 export { default as useGeolocation } from './useGeolocation';
