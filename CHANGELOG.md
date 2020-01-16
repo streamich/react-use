@@ -1,3 +1,10 @@
+# [13.19.0](https://github.com/streamich/react-use/compare/v13.18.0...v13.19.0) (2020-01-16)
+
+
+### Features
+
+* add useError hook ([65f3644](https://github.com/streamich/react-use/commit/65f364420524bacebe8f8149b8197fb62bff1a08))
+
 # [13.18.0](https://github.com/streamich/react-use/compare/v13.17.0...v13.18.0) (2020-01-16)
 
 
