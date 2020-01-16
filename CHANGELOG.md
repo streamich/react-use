@@ -1,3 +1,15 @@
+# [13.18.0](https://github.com/streamich/react-use/compare/v13.17.0...v13.18.0) (2020-01-16)
+
+
+### Bug Fixes
+
+* check for null ([d619c39](https://github.com/streamich/react-use/commit/d619c39a21e9f0b4b4bfc6a209311bf0bd495f9b))
+
+
+### Features
+
+* add serializer/deserializer option to useLocalStorage ([5316510](https://github.com/streamich/react-use/commit/5316510babf7606a2f4b78de2b0eb85c930890cf))
+
 # [13.17.0](https://github.com/streamich/react-use/compare/v13.16.1...v13.17.0) (2020-01-15)
 
 
