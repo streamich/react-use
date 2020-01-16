@@ -27,7 +27,7 @@ const useLocalStorage = <T>(
   const [state, setState] = useState<T>(() => {
     try {
       const localStorageValue = localStorage.getItem(key);
-      if (localStorageValue) {
+      if (localStorageValue !== null) {
         return deserializer(localStorageValue);
       } else {
         initialValue && localStorage.setItem(key, serializer(initialValue));
