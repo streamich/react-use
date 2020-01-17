@@ -2,10 +2,7 @@ import { DependencyList, EffectCallback, useEffect, useRef } from 'react';
 
 const isPrimitive = (val: any) => val !== Object(val);
 
-type DepsEqualFnType<TDeps extends DependencyList> = (
-  prevDeps: TDeps,
-  nextDeps: TDeps
-) => boolean;
+type DepsEqualFnType<TDeps extends DependencyList> = (prevDeps: TDeps, nextDeps: TDeps) => boolean;
 
 const useCustomCompareEffect = <TDeps extends DependencyList>(
   effect: EffectCallback,
