@@ -36,7 +36,7 @@ describe('useCopyToClipboard', () => {
     expect(state.error).not.toBeDefined();
   });
 
-  it('should only call writeText if passed a valid input and set state', () => {
+  it('should not call writeText if passed an invalid input and set state', () => {
     const testValue = {}; // invalid value
     let [state, copyToClipboard] = hook.result.current;
     act(() => copyToClipboard(testValue));
@@ -58,6 +58,7 @@ describe('useCopyToClipboard', () => {
     expect(state.noUserInteraction).not.toBeDefined();
     expect(state.error).toStrictEqual(new Error(valueToRaiseMockException));
   });
+
   it('should return initial state while unmounted', () => {
     hook.unmount();
     const [state, copyToClipboard] = hook.result.current;
