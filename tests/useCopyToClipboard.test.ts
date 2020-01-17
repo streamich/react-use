@@ -42,11 +42,20 @@ describe('useCopyToClipboard', () => {
   });
 
   it('should not call writeText if passed an invalid input and set state', () => {
-    const testValue = {}; // invalid value
+    let testValue = {}; // invalid value
     let [state, copyToClipboard] = hook.result.current;
     act(() => copyToClipboard(testValue));
     [state, copyToClipboard] = hook.result.current;
 
+    expect(writeText).not.toBeCalled();
+    expect(state.value).toBe(testValue);
+    expect(state.noUserInteraction).toBe(true);
+    expect(state.error).toBeDefined();
+
+    testValue = ''; // emtpy string is also invalid
+    act(() => copyToClipboard(testValue));
+    [state, copyToClipboard] = hook.result.current;
+    console.log(state);
     expect(writeText).not.toBeCalled();
     expect(state.value).toBe(testValue);
     expect(state.noUserInteraction).toBe(true);
