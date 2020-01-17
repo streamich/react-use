@@ -1,8 +1,15 @@
 import { useEffect, useState, useCallback } from 'react';
 import { isClient } from './util';
 
-type Dispatch<A> = (value: A) => void;
-type SetStateAction<S> = S | ((prevState: S) => S);
+type parserOptions<T> =
+  | {
+      raw: true;
+    }
+  | {
+      raw: false;
+      serializer: (value: T) => string;
+      deserializer: (value: string) => T;
+    };
 
 const noop = () => {};
 const isUndefined = (value?: any): boolean => typeof value === 'undefined';
@@ -10,23 +17,25 @@ const isUndefined = (value?: any): boolean => typeof value === 'undefined';
 const useLocalStorage = <T>(
   key: string,
   initialValue?: T,
-  raw?: boolean
-): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
+  options?: parserOptions<T>
+): [T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>, () => void] => {
   if (!isClient) {
     return [initialValue as T, noop, noop];
   }
 
+  // Use provided serializer/deserializer or the default ones
+  const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
+  const deserializer = options ? (options.raw ? String : options.deserializer) : JSON.parse;
+
   const [state, setState] = useState<T | undefined>(() => {
     try {
       const localStorageValue = localStorage.getItem(key);
-      if (isUndefined(initialValue)) {
-        return undefined;
-      }
-      if (typeof localStorageValue !== 'string') {
-        localStorage.setItem(key, raw ? String(initialValue) : JSON.stringify(initialValue));
+      if (localStorageValue !== null) {
+        return deserializer(localStorageValue);
+      } else {
+        initialValue && localStorage.setItem(key, serializer(initialValue));
         return initialValue;
       }
-      return raw ? localStorageValue : JSON.parse(localStorageValue || 'null');
     } catch {
       // If user is in private mode or has storage restriction
       // localStorage can throw. JSON.parse and JSON.stringify
@@ -48,8 +57,7 @@ const useLocalStorage = <T>(
   useEffect(() => {
     if (isUndefined(state)) return;
     try {
-      const serializedState = raw ? String(state) : JSON.stringify(state);
-      localStorage.setItem(key, serializedState);
+      localStorage.setItem(key, serializer(state));
     } catch {
       // If user is in private mode or has storage restriction
       // localStorage can throw. Also JSON.stringify can throw.

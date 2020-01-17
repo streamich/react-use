@@ -1,3 +1,50 @@
+# [13.19.0](https://github.com/streamich/react-use/compare/v13.18.0...v13.19.0) (2020-01-16)
+
+
+### Features
+
+* add useError hook ([65f3644](https://github.com/streamich/react-use/commit/65f364420524bacebe8f8149b8197fb62bff1a08))
+
+# [13.18.0](https://github.com/streamich/react-use/compare/v13.17.0...v13.18.0) (2020-01-16)
+
+
+### Bug Fixes
+
+* check for null ([d619c39](https://github.com/streamich/react-use/commit/d619c39a21e9f0b4b4bfc6a209311bf0bd495f9b))
+
+
+### Features
+
+* add serializer/deserializer option to useLocalStorage ([5316510](https://github.com/streamich/react-use/commit/5316510babf7606a2f4b78de2b0eb85c930890cf))
+
+# [13.17.0](https://github.com/streamich/react-use/compare/v13.16.1...v13.17.0) (2020-01-15)
+
+
+### Features
+
+* add support for body lock on iOS ([d778408](https://github.com/streamich/react-use/commit/d7784084fe84aca72efe85260101b00ef1df7580))
+
+## [13.16.1](https://github.com/streamich/react-use/compare/v13.16.0...v13.16.1) (2020-01-14)
+
+
+### Bug Fixes
+
+* update the types dep for js-cookie ([5c55d59](https://github.com/streamich/react-use/commit/5c55d59a7d1d799cba7af87e15ab4a4b27a8fc67))
+
+# [13.16.0](https://github.com/streamich/react-use/compare/v13.15.0...v13.16.0) (2020-01-14)
+
+
+### Features
+
+* add option to useTitle to restore title on un-mount ([b8b3e47](https://github.com/streamich/react-use/commit/b8b3e479cea6071d4310bac29f138bd8917eee0b))
+
+# [13.15.0](https://github.com/streamich/react-use/compare/v13.14.3...v13.15.0) (2020-01-13)
+
+
+### Features
+
+* add useCookie hook ([4e5c90f](https://github.com/streamich/react-use/commit/4e5c90f021f56ae2008dc25daad69c43063f608f))
+
 ## [13.14.3](https://github.com/streamich/react-use/compare/v13.14.2...v13.14.3) (2020-01-08)
 
 
