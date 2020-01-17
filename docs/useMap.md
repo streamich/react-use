@@ -8,7 +8,7 @@ React state hook that tracks a value of an object.
 import {useMap} from 'react-use';
 
 const Demo = () => {
-  const [map, {set, remove, reset}] = useMap({
+  const [map, {set, setAll, remove, reset}] = useMap({
     hello: 'there',
   });
 
@@ -18,10 +18,10 @@ const Demo = () => {
         Add
       </button>
       <button onClick={() => reset()}>
-        Reset to initial
+        Reset
       </button>
-      <button onClick={() => reset({hello: 'different'})}>
-        Reset with new object
+      <button onClick={() => setAll({ hello: 'new', data: 'data' })}>
+        Set new data
       </button>
       <button onClick={() => remove('hello')} disabled={!map.hello}>
         Remove 'hello'

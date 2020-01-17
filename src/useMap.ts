@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback } from 'react';
 
 export interface StableActions<T extends object> {
   set: <K extends keyof T>(key: K, value: T[K]) => void;
+  setAll: (newMap: T) => void;
   remove: <K extends keyof T>(key: K) => void;
   reset: () => void;
 }
@@ -21,13 +22,16 @@ const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>
           [key]: entry,
         }));
       },
+      setAll: (newMap: T) => {
+        set(newMap);
+      },
       remove: key => {
         set(prevMap => {
           const { [key]: omit, ...rest } = prevMap;
           return rest as T;
         });
       },
-      reset: (newMap = initialMap) => set(newMap),
+      reset: () => set(initialMap),
     }),
     [set]
   );
