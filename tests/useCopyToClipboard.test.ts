@@ -55,7 +55,7 @@ describe('useCopyToClipboard', () => {
     testValue = ''; // emtpy string is also invalid
     act(() => copyToClipboard(testValue));
     [state, copyToClipboard] = hook.result.current;
-    console.log(state);
+
     expect(writeText).not.toBeCalled();
     expect(state.value).toBe(testValue);
     expect(state.noUserInteraction).toBe(true);
