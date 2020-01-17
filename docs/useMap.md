@@ -18,7 +18,10 @@ const Demo = () => {
         Add
       </button>
       <button onClick={() => reset()}>
-        Reset
+        Reset to initial
+      </button>
+      <button onClick={() => reset({hello: 'different'})}>
+        Reset with new object
       </button>
       <button onClick={() => remove('hello')} disabled={!map.hello}>
         Remove 'hello'

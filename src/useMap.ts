@@ -27,7 +27,7 @@ const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>
           return rest as T;
         });
       },
-      reset: () => set(initialMap),
+      reset: (newMap = initialMap) => set(newMap),
     }),
     [set]
   );
