@@ -1,3 +1,10 @@
+# [13.20.0](https://github.com/streamich/react-use/compare/v13.19.0...v13.20.0) (2020-01-17)
+
+
+### Features
+
+* `useMap`: allow resetting with provided value other then initial ([7645f72](https://github.com/streamich/react-use/commit/7645f7249dbf52db140dfc8b7866cb4a171e439c))
+
 # [13.19.0](https://github.com/streamich/react-use/compare/v13.18.0...v13.19.0) (2020-01-16)
 
 
