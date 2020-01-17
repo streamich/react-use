@@ -12,12 +12,17 @@ jest.mock('copy-to-clipboard', () =>
     return true;
   })
 );
+jest.spyOn(global.console, 'error').mockImplementation(() => {});
 
 describe('useCopyToClipboard', () => {
   let hook;
 
   beforeEach(() => {
     hook = renderHook(() => useCopyToClipboard());
+  });
+
+  afterAll(() => {
+    jest.restoreAllMocks();
   });
 
   it('should be defined ', () => {
@@ -67,5 +72,23 @@ describe('useCopyToClipboard', () => {
     expect(state.value).not.toBeDefined();
     expect(state.error).not.toBeDefined();
     expect(state.noUserInteraction).toBe(true);
+  });
+
+  it('should console error if in dev environment', () => {
+    const ORIGINAL_NODE_ENV = process.env.NODE_ENV;
+    const testValue = {}; // invalid value
+
+    process.env.NODE_ENV = 'development';
+    let [state, copyToClipboard] = hook.result.current;
+    act(() => copyToClipboard(testValue));
+    process.env.NODE_ENV = ORIGINAL_NODE_ENV;
+
+    [state, copyToClipboard] = hook.result.current;
+
+    expect(writeText).not.toBeCalled();
+    expect(console.error).toBeCalled();
+    expect(state.value).toBe(testValue);
+    expect(state.noUserInteraction).toBe(true);
+    expect(state.error).toBeDefined();
   });
 });
