@@ -1,23 +1,38 @@
-/* eslint-disable */
-import { useMemo, useReducer } from 'react';
+import { useMemo, useReducer, Reducer } from 'react';
 
-const useMethods = (createMethods, initialState) => {
-  const reducer = useMemo(
-    () => (reducerState, action) => {
+type Action = {
+  type: string;
+  payload?: any;
+};
+
+type CreateMethods<M, T> = (
+  state: T
+) => {
+  [P in keyof M]: (payload?: any) => T;
+};
+
+type WrappedMethods<M> = {
+  [P in keyof M]: (...payload: any) => void;
+};
+
+const useMethods = <M, T>(createMethods: CreateMethods<M, T>, initialState: T): [T, WrappedMethods<M>] => {
+  const reducer = useMemo<Reducer<T, Action>>(
+    () => (reducerState: T, action: Action) => {
       return createMethods(reducerState)[action.type](...action.payload);
     },
     [createMethods]
   );
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer<Reducer<T, Action>>(reducer, initialState);
 
-  const wrappedMethods = useMemo(() => {
+  const wrappedMethods: WrappedMethods<M> = useMemo(() => {
     const actionTypes = Object.keys(createMethods(initialState));
+
     return actionTypes.reduce((acc, type) => {
       acc[type] = (...payload) => dispatch({ type, payload });
       return acc;
-    }, {});
-  }, []);
+    }, {} as WrappedMethods<M>);
+  }, [createMethods]);
 
   return [state, wrappedMethods];
 };
