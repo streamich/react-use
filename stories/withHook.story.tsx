@@ -23,7 +23,7 @@ const useCounter = props => {
   };
 };
 
-const Demo = withHook(useCounter)(Counter);
+const Demo = withHook(useCounter)(Counter, (hookValues, props) => ({ ...hookValues }));
 
 storiesOf('Side effects|withHook', module)
   .add('Docs', () => <ShowDocs md={require('../docs/withHook.md')} />)

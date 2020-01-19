@@ -27,14 +27,15 @@ const useCounter = props => {
   };
 };
 
-const Demo = withHook(useCounter)(Counter);
+const Demo = withHook(useCounter)(Counter, (hookValues, props) => ({ ...hookValues }));
 ```
 
 ## Reference
 
 ```js
-withHook(useHook)(Component);
+withHook(useHook)(Component, mapHookToProps);
 ```
 
 - `useHook` &mdash; a `hook` whose returned values are passed as props to Component.
 - `Component` &mdash; a `Component` getting wrapped by the HOC.
+- `mapHookToProps` &mdash; a mapper `function` of shape `(hookValues, props) => object`

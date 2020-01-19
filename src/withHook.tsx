@@ -1,14 +1,18 @@
-import React, { forwardRef } from 'react';
+import React, { ComponentType, forwardRef } from 'react';
 
-type passedHook<T> = (props: React.Props<T>) => object | undefined;
+type passedHook<TProps, TReturnType> = (props: TProps) => TReturnType;
 
-function withHook<T>(useHook: passedHook<T>) {
-  return (WrappedComponent: React.ComponentType<T>) =>
-    forwardRef((props: React.PropsWithChildren<T>, ref) => {
-      const propsToMapFromHook = useHook(props);
+function withHook<THookProps, THookReturnType>(useHook: passedHook<THookProps, THookReturnType>) {
+  return <TComponentProps, TMapperReturnType extends TComponentProps>(
+    WrappedComponent: ComponentType<TComponentProps>,
+    mapHookToProps: (hook: THookReturnType, props: TComponentProps) => TMapperReturnType
+  ) => {
+    return forwardRef((props: THookProps & TComponentProps, ref) => {
+      const hookValues = useHook(props);
 
-      return <WrappedComponent ref={ref} {...propsToMapFromHook} {...props} />;
+      return <WrappedComponent ref={ref} {...mapHookToProps(hookValues, props)} />;
     });
+  };
 }
 
 export default withHook;
