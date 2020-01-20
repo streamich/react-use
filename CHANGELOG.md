@@ -1,3 +1,10 @@
+# [13.21.0](https://github.com/streamich/react-use/compare/v13.20.0...v13.21.0) (2020-01-20)
+
+
+### Features
+
+* Typings for `useDefault` ([fa0f53b](https://github.com/streamich/react-use/commit/fa0f53bf86a712f4b7e503cdf4718a8ff5448e05))
+
 # [13.20.0](https://github.com/streamich/react-use/compare/v13.19.0...v13.20.0) (2020-01-17)
 
 
