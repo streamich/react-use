@@ -5,8 +5,6 @@ interface Options {
   delay?: number;
 }
 
-const DEFAULT_OPTIONS = { isPreventDefault: true, delay: 300 };
-
 const isTouchEvent = (event: Event): event is TouchEvent => {
   return 'touches' in event;
 };
@@ -19,28 +17,30 @@ const preventDefault = (event: Event) => {
   }
 };
 
-const useLongPress = (callback: (e: TouchEvent | MouseEvent) => void, options: Options = DEFAULT_OPTIONS) => {
+const useLongPress = (
+  callback: (e: TouchEvent | MouseEvent) => void,
+  { isPreventDefault = true, delay = 300 }: Options = {}
+) => {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const target = useRef<EventTarget>();
 
   const start = useCallback(
     (event: TouchEvent | MouseEvent) => {
       // prevent ghost click on mobile devices
-      if (options.isPreventDefault && event.target) {
-        target.current = event.target;
+      if (isPreventDefault && event.target) {
         event.target.addEventListener('touchend', preventDefault, { passive: false });
+        target.current = event.target;
       }
-
-      timeout.current = setTimeout(() => callback(event), options.delay);
+      timeout.current = setTimeout(() => callback(event), delay);
     },
-    [callback, options.delay]
+    [callback, delay]
   );
 
   const clear = useCallback(() => {
     // clearTimeout and removeEventListener
     timeout.current && clearTimeout(timeout.current);
 
-    if (options.isPreventDefault && target.current) {
+    if (isPreventDefault && target.current) {
       target.current.removeEventListener('touchend', preventDefault);
     }
   }, []);
