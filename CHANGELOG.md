@@ -1,3 +1,15 @@
+# [13.22.0](https://github.com/streamich/react-use/compare/v13.21.0...v13.22.0) (2020-01-24)
+
+
+### Bug Fixes
+
+* Fail testing and update doc ([57b9041](https://github.com/streamich/react-use/commit/57b904118e2cd1f1b4e367c9a14e2a981db2f06a))
+
+
+### Features
+
+* add useLongPress hook ([45681b8](https://github.com/streamich/react-use/commit/45681b88e3fd3d9337a38da07248c46ec6d5956e))
+
 # [13.21.0](https://github.com/streamich/react-use/compare/v13.20.0...v13.21.0) (2020-01-20)
 
 
