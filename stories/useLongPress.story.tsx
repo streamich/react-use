@@ -8,8 +8,11 @@ const Demo = () => {
     console.log('calls callback after long pressing 300ms');
   };
 
-  const defaultDelay = 300;
-  const longPressEvent = useLongPress(onLongPress, defaultDelay);
+  const defaultOptions = {
+    isPreventDefault: true,
+    delay: 300,
+  };
+  const longPressEvent = useLongPress(onLongPress, defaultOptions);
 
   return <button {...longPressEvent}>useLongPress</button>;
 };

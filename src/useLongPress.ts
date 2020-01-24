@@ -1,5 +1,12 @@
 import { useCallback, useRef } from 'react';
 
+interface Options {
+  isPreventDefault?: boolean;
+  delay?: number;
+}
+
+const DEFAULT_OPTIONS = { isPreventDefault: true, delay: 300 };
+
 const isTouchEvent = (event: Event): event is TouchEvent => {
   return 'touches' in event;
 };
@@ -12,28 +19,30 @@ const preventDefault = (event: Event) => {
   }
 };
 
-const useLongPress = (callback: (e: TouchEvent | MouseEvent) => void, delay: number = 300) => {
+const useLongPress = (callback: (e: TouchEvent | MouseEvent) => void, options: Options = DEFAULT_OPTIONS) => {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const target = useRef<EventTarget>();
 
   const start = useCallback(
     (event: TouchEvent | MouseEvent) => {
       // prevent ghost click on mobile devices
-      if (event.target) {
+      if (options.isPreventDefault && event.target) {
         target.current = event.target;
         event.target.addEventListener('touchend', preventDefault, { passive: false });
       }
 
-      timeout.current = setTimeout(() => callback(event), delay);
+      timeout.current = setTimeout(() => callback(event), options.delay);
     },
-    [callback, delay]
+    [callback, options.delay]
   );
 
   const clear = useCallback(() => {
     // clearTimeout and removeEventListener
     timeout.current && clearTimeout(timeout.current);
 
-    target.current && target.current.removeEventListener('touchend', preventDefault);
+    if (options.isPreventDefault && target.current) {
+      target.current.removeEventListener('touchend', preventDefault);
+    }
   }, []);
 
   return {
