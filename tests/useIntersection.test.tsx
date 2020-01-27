@@ -8,6 +8,10 @@ import { useIntersection } from '../src';
 
 beforeEach(() => {
   intersectionObserver.mock();
+  const IO = IntersectionObserver;
+  jest.spyOn(IO.prototype, 'disconnect');
+  jest.spyOn(global as any, 'IntersectionObserver');
+  IntersectionObserver.prototype = IO.prototype;
 });
 
 afterEach(() => {
@@ -43,6 +47,22 @@ describe('useIntersection', () => {
 
     const { result } = renderHook(() => useIntersection(targetRef, { root: null, threshold: 1 }));
     expect(result.current).toBe(null);
+  });
+
+  it('should disconnect an old IntersectionObserver instance when the ref changes', () => {
+    targetRef = createRef();
+    targetRef.current = document.createElement('div');
+
+    const { rerender } = renderHook(() => useIntersection(targetRef, {}));
+
+    targetRef.current = document.createElement('div');
+    rerender();
+
+    targetRef.current = null;
+    rerender();
+
+    expect(IntersectionObserver).toHaveBeenCalledTimes(2);
+    expect(IntersectionObserver.prototype.disconnect).toHaveBeenCalledTimes(2);
   });
 
   it('should return the first IntersectionObserverEntry when the IntersectionObserver registers an intersection', () => {

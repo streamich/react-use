@@ -15,14 +15,10 @@ const useIntersection = (
       const observer = new IntersectionObserver(handler, options);
       observer.observe(ref.current);
 
-      return () => {
-        if (ref.current) {
-          observer.disconnect();
-        }
-      };
+      return () => observer.disconnect();
     }
     return () => {};
-  }, [ref, options.threshold, options.root, options.rootMargin]);
+  }, [ref.current, options.threshold, options.root, options.rootMargin]);
 
   return intersectionObserverEntry;
 };
