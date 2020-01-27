@@ -49,6 +49,35 @@ describe('useIntersection', () => {
     expect(result.current).toBe(null);
   });
 
+  it('should reset an intersectionObserverEntry when the ref changes', () => {
+    TestUtils.act(() => {
+      targetRef = createRef();
+      ReactDOM.render(<div ref={targetRef} />, container);
+    });
+
+    const { result, rerender } = renderHook(() => useIntersection(targetRef, { root: container, threshold: 0.8 }));
+
+    const mockIntersectionObserverEntry = {
+      boundingClientRect: targetRef.current.getBoundingClientRect(),
+      intersectionRatio: 0.81,
+      intersectionRect: container.getBoundingClientRect(),
+      isIntersecting: true,
+      rootBounds: container.getBoundingClientRect(),
+      target: targetRef.current,
+      time: 300,
+    };
+    TestRenderer.act(() => {
+      intersectionObserver.simulate(mockIntersectionObserverEntry);
+    });
+
+    expect(result.current).toEqual(mockIntersectionObserverEntry);
+
+    targetRef.current = document.createElement('div');
+    rerender();
+
+    expect(result.current).toEqual(null);
+  });
+
   it('should disconnect an old IntersectionObserver instance when the ref changes', () => {
     targetRef = createRef();
     targetRef.current = document.createElement('div');
