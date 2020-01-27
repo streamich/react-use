@@ -78,6 +78,14 @@ describe('useIntersection', () => {
     expect(result.current).toEqual(null);
   });
 
+  it('should return null if IntersectionObserver is not supported', () => {
+    targetRef = createRef();
+    targetRef.current = document.createElement('div');
+    delete window.IntersectionObserver;
+
+    expect(() => renderHook(() => useIntersection(targetRef, {}))).not.toThrow();
+  });
+
   it('should disconnect an old IntersectionObserver instance when the ref changes', () => {
     targetRef = createRef();
     targetRef.current = document.createElement('div');

@@ -7,7 +7,7 @@ const useIntersection = (
   const [intersectionObserverEntry, setIntersectionObserverEntry] = useState<IntersectionObserverEntry | null>(null);
 
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && typeof IntersectionObserver === 'function') {
       const handler = (entries: IntersectionObserverEntry[]) => {
         setIntersectionObserverEntry(entries[0]);
       };
