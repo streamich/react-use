@@ -38,7 +38,7 @@ const Demo = () => {
 };
 
 storiesOf('Side effects|useError', module)
-  .add('Docs', () => <ShowDocs md={require('../docs/useLocalStorage.md')} />)
+  .add('Docs', () => <ShowDocs md={require('../docs/useError.md')} />)
   .add('Demo', () => (
     <ErrorBoundary>
       <Demo />
