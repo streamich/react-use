@@ -1,3 +1,12 @@
+## [13.22.3](https://github.com/streamich/react-use/compare/v13.22.2...v13.22.3) (2020-01-28)
+
+
+### Bug Fixes
+
+* **useIntersection:** disconnect an old IntersectionObserver instance when the ref changes ([ac2f54a](https://github.com/streamich/react-use/commit/ac2f54a8f683296feecfeeb6354738b9ebbc36d0))
+* **useIntersection:** reset an intersectionObserverEntry when the ref changes ([3f8687e](https://github.com/streamich/react-use/commit/3f8687e1f51cc48efbf6be3f0677f5bd06ecba08))
+* **useIntersection:** return null if IntersectionObserver is not supported ([4f6d388](https://github.com/streamich/react-use/commit/4f6d3887be5cf62ce42357a7bf27f4ae8b080eba))
+
 ## [13.22.2](https://github.com/streamich/react-use/compare/v13.22.1...v13.22.2) (2020-01-27)
 
 
