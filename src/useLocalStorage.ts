@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { isClient } from './util';
 
 type parserOptions<T> =
@@ -19,6 +19,8 @@ const useLocalStorage = <T>(
   if (!isClient) {
     return [initialValue as T, () => {}];
   }
+
+  const isMountedRef = useRef(true);
 
   // Use provided serializer/deserializer or the default ones
   const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
@@ -42,15 +44,35 @@ const useLocalStorage = <T>(
   });
 
   useEffect(() => {
+    return () => {
+      isMountedRef.current = false;
+    };
+  });
+
+  const setItem = (newState: T) => {
     try {
-      localStorage.setItem(key, serializer(state));
+      localStorage.setItem(key, serializer(newState));
     } catch {
       // If user is in private mode or has storage restriction
       // localStorage can throw. Also JSON.stringify can throw.
     }
+  };
+
+  useEffect(() => {
+    setItem(state);
   }, [state]);
 
-  return [state, setState];
+  const setLocalStorageValue: React.Dispatch<React.SetStateAction<T>> = newState => {
+    const isMounted = isMountedRef.current;
+    // if component unmounted set local storage directly
+    if (!isMounted) {
+      setItem(newState as any);
+      return;
+    }
+    setState(newState);
+  };
+
+  return [state, setLocalStorageValue];
 };
 
 export default useLocalStorage;
