@@ -49,7 +49,7 @@ const useLocalStorage = <T>(
     };
   });
 
-  const setItem = (newState: T) => {
+  const setLocalStorage = (newState: T) => {
     try {
       localStorage.setItem(key, serializer(newState));
     } catch {
@@ -59,14 +59,14 @@ const useLocalStorage = <T>(
   };
 
   useEffect(() => {
-    setItem(state);
+    setLocalStorage(state);
   }, [state]);
 
   const setLocalStorageValue: React.Dispatch<React.SetStateAction<T>> = newState => {
     const isMounted = isMountedRef.current;
     // if component unmounted set local storage directly
     if (!isMounted) {
-      setItem(newState as any);
+      setLocalStorage(newState as any);
       return;
     }
     setState(newState);
