@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { isClient } from './util';
 
 type parserOptions<T> =
@@ -20,13 +20,7 @@ const useLocalStorage = <T>(
     return [initialValue as T, () => {}];
   }
 
-  const isMountedRef = useRef(true);
-
-  // Use provided serializer/deserializer or the default ones
-  const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
-  const deserializer = options ? (options.raw ? String : options.deserializer) : JSON.parse;
-
-  const [state, setState] = useState<T>(() => {
+  const getLocalStorage = () => {
     try {
       const localStorageValue = localStorage.getItem(key);
       if (localStorageValue !== null) {
@@ -37,42 +31,57 @@ const useLocalStorage = <T>(
       }
     } catch {
       // If user is in private mode or has storage restriction
-      // localStorage can throw. JSON.parse and JSON.stringify
-      // can throw, too.
-      return initialValue;
+      // localStorage can throw. Also JSON.stringify can throw.
     }
-  });
+  };
+  const setLocalStorage = (newState: T) => {
+    try {
+      localStorage.setItem(key, serializer(newState));
+    } catch {}
+  };
 
+  // Use provided serializer/deserializer or the default ones
+  const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
+  const deserializer = options ? (options.raw ? String : options.deserializer) : JSON.parse;
+
+  const [state, setState] = useState<T>(() => getLocalStorage());
+
+  useEffect(() => {
+    setLocalStorage(state);
+  }, [state]);
+
+  const isMountedRef = useRef(true);
   useEffect(() => {
     return () => {
       isMountedRef.current = false;
     };
   });
 
-  const setLocalStorage = (newState: T) => {
-    try {
-      localStorage.setItem(key, serializer(newState));
-    } catch {
-      // If user is in private mode or has storage restriction
-      // localStorage can throw. Also JSON.stringify can throw.
+  // if component unmounted set local storage directly
+  const setStateWhenUnmounted: React.Dispatch<React.SetStateAction<T>> = newState => {
+    if (typeof newState === 'function') {
+      type FunctionSetState = (oldState: T) => T;
+      const currentState = getLocalStorage();
+      const resolvedValue = (newState as FunctionSetState)(currentState);
+      setLocalStorage(resolvedValue);
+    } else {
+      setLocalStorage(newState as T);
     }
   };
 
-  useEffect(() => {
-    setLocalStorage(state);
-  }, [state]);
+  const wrappedSetState: React.Dispatch<React.SetStateAction<T>> = useCallback(
+    newState => {
+      const isMounted = isMountedRef.current;
+      if (!isMounted) {
+        setStateWhenUnmounted(newState);
+      } else {
+        setState(newState);
+      }
+    },
+    [isMountedRef]
+  );
 
-  const setLocalStorageValue: React.Dispatch<React.SetStateAction<T>> = newState => {
-    const isMounted = isMountedRef.current;
-    // if component unmounted set local storage directly
-    if (!isMounted) {
-      setLocalStorage(newState as any);
-      return;
-    }
-    setState(newState);
-  };
-
-  return [state, setLocalStorageValue];
+  return [state, wrappedSetState];
 };
 
 export default useLocalStorage;

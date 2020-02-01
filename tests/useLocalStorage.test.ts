@@ -70,7 +70,23 @@ it('should properly update the localStorageOnChange when component unmounts', ()
   act(() => {
     result.current[1](updatedValue);
   });
-  console.log('assert');
+
+  expect(localStorage.__STORE__[key]).toBe(expectedValue);
+});
+
+it('should properly update the localStorageOnChange when component unmounts and newState is set with a function', () => {
+  const key = 'some_key';
+  const updatedValue = { b: 'a' };
+  const expectedValue = '{"b":"a"}';
+
+  const { result, unmount } = renderHook(() => useLocalStorage(key));
+
+  unmount();
+
+  act(() => {
+    result.current[1](() => updatedValue);
+  });
+
   expect(localStorage.__STORE__[key]).toBe(expectedValue);
 });
 
