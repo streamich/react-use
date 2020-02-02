@@ -3,7 +3,7 @@ version: 2
 refs:
   container: &container
     docker:
-      - image: node:12.13.1
+      - image: node:12.14.1
     working_directory: ~/repo
   steps:
     - &Versions

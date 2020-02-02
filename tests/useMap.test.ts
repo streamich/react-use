@@ -11,6 +11,7 @@ it('should init map and utils', () => {
   expect(utils).toStrictEqual({
     get: expect.any(Function),
     set: expect.any(Function),
+    setAll: expect.any(Function),
     remove: expect.any(Function),
     reset: expect.any(Function),
   });
@@ -22,7 +23,7 @@ it('should init empty map if not initial object provided', () => {
   expect(result.current[0]).toEqual({});
 });
 
-it('should get corresponding value for existing provided key', () => {
+it('should get corresponding value for initial provided key', () => {
   const { result } = setUp({ foo: 'bar', a: 1 });
   const [, utils] = result.current;
 
@@ -32,6 +33,21 @@ it('should get corresponding value for existing provided key', () => {
   });
 
   expect(value).toBe(1);
+});
+
+it('should get corresponding value for existing provided key', () => {
+  const { result } = setUp({ foo: 'bar', a: 1 });
+
+  act(() => {
+    result.current[1].set('a', 99);
+  });
+
+  let value;
+  act(() => {
+    value = result.current[1].get('a');
+  });
+
+  expect(value).toBe(99);
 });
 
 it('should get undefined for non-existing provided key', () => {
@@ -66,6 +82,17 @@ it('should override current value if setting existing key', () => {
   });
 
   expect(result.current[0]).toEqual({ foo: 'qux', a: 1 });
+});
+
+it('should set new map', () => {
+  const { result } = setUp<{ foo: string; a: number; newKey?: number }>({ foo: 'bar', a: 1 });
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.setAll({ foo: 'foo', a: 2 });
+  });
+
+  expect(result.current[0]).toEqual({ foo: 'foo', a: 2 });
 });
 
 it('should remove corresponding key-value pair for existing provided key', () => {
@@ -107,15 +134,16 @@ it('should reset map to initial object provided', () => {
   expect(result.current[0]).toEqual({ foo: 'bar', a: 1 });
 });
 
-it('should memoized its utils methods', () => {
+it('should memoize actions with side effects', () => {
   const { result } = setUp({ foo: 'bar', a: 1 });
   const [, utils] = result.current;
-  const { set } = utils;
+  const { set, remove, reset } = utils;
 
   act(() => {
     set('foo', 'baz');
   });
 
-  expect(result.current[1]).toBe(utils);
   expect(result.current[1].set).toBe(set);
+  expect(result.current[1].remove).toBe(remove);
+  expect(result.current[1].reset).toBe(reset);
 });

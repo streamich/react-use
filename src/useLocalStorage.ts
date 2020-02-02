@@ -2,13 +2,32 @@ import { isClient } from './util';
 import { useMemo, useCallback, Dispatch, SetStateAction } from 'react';
 import useEffectOnce from './useEffectOnce';
 
-const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, Dispatch<SetStateAction<T>>] => {
+type parserOptions<T> =
+  | {
+      raw: true;
+    }
+  | {
+      raw: false;
+      serializer: (value: T) => string;
+      deserializer: (value: string) => T;
+    };
+
+const useLocalStorage = <T>(
+  key: string,
+  initialValue?: T,
+  options?: parserOptions<T>
+): [T, Dispatch<SetStateAction<T>>] => {
+  // TODO: !localStorage needed? What does isClient do?
   if (!isClient || !localStorage) {
     return [initialValue as T, () => {}];
   }
-  if (!key && (key as any) !== 0) {
+  if ((!key && (key as any) !== 0) || (key as any) === false) {
     throw new Error('useLocalStorage key may not be nullish or undefined');
   }
+
+  // Use provided serializer/deserializer or the default ones
+  const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
+  const deserializer = options ? (options.raw ? String : options.deserializer || null) : JSON.parse;
 
   let localStorageValue: string | null = null;
   try {
@@ -21,8 +40,9 @@ const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, D
   const state: T = useMemo(() => {
     try {
       /* If key hasn't been set yet */
+      console.log({ localStorageValue, initialValue, deserializer });
       if (localStorageValue === null) return initialValue as T;
-      return raw ? localStorageValue : JSON.parse(localStorageValue);
+      return deserializer ? deserializer(localStorageValue) : localStorageValue;
     } catch {
       /* JSON.parse and JSON.stringify can throw. */
       return localStorageValue === null ? initialValue : localStorageValue;
@@ -33,7 +53,7 @@ const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, D
     (valOrFunc: SetStateAction<T>): void => {
       try {
         let newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
-        newState = typeof newState === 'string' ? newState : JSON.stringify(newState);
+        newState = typeof newState === 'string' ? newState : serializer(newState);
         localStorage.setItem(key, newState);
       } catch {
         /**
@@ -42,7 +62,7 @@ const useLocalStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, D
          */
       }
     },
-    [state, raw]
+    [state, serializer]
   );
 
   /* If value hasn't been set yet (null not 'null') then initialize it. */

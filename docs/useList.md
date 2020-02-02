@@ -60,7 +60,7 @@ const [list, {
 - **`insertAt`**_`: (index: number, item: T) => void;`_ &mdash; Insert item at given position, all items to the right will be shifted;
 - **`update`**_`: (predicate: (a: T, b: T) => boolean, newItem: T) => void;`_ &mdash; Replace all items that matches predicate with given one;
 - **`updateFirst`**_`: (predicate: (a: T, b: T) => boolean, newItem: T) => void;`_ &mdash; Replace first item matching predicate with given one;
-- **`upsert`**_`: (predicate: (a: T, b: T) => boolean, newItem: T) => void;`_ &mdash; Like `updateFirst` bit in case of predicate miss - pushes item to the list;
+- **`upsert`**_`: (predicate: (a: T, b: T) => boolean, newItem: T) => void;`_ &mdash; Like `updateFirst` but in case of predicate miss - pushes item to the list;
 - **`sort`**_`: (compareFn?: (a: T, b: T) => number) => void;`_ &mdash; Sort list with given sorting function;
 - **`filter`**_`: (callbackFn: (value: T, index?: number, array?: T[]) => boolean, thisArg?: any) => void;`_ &mdash; Same as native Array's method;
 - **`removeAt`**_`: (index: number) => void;`_ &mdash; Removes item at given position. All items to the right from removed will be shifted;
