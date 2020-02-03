@@ -1,1 +1,0 @@
-import 'jest-localstorage-mock';
