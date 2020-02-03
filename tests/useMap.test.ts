@@ -11,6 +11,7 @@ it('should init map and utils', () => {
   expect(utils).toStrictEqual({
     get: expect.any(Function),
     set: expect.any(Function),
+    setAll: expect.any(Function),
     remove: expect.any(Function),
     reset: expect.any(Function),
   });
@@ -81,6 +82,17 @@ it('should override current value if setting existing key', () => {
   });
 
   expect(result.current[0]).toEqual({ foo: 'qux', a: 1 });
+});
+
+it('should set new map', () => {
+  const { result } = setUp<{ foo: string; a: number; newKey?: number }>({ foo: 'bar', a: 1 });
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.setAll({ foo: 'foo', a: 2 });
+  });
+
+  expect(result.current[0]).toEqual({ foo: 'foo', a: 2 });
 });
 
 it('should remove corresponding key-value pair for existing provided key', () => {

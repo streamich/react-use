@@ -46,6 +46,7 @@ export { default as useLocalStorage } from './useLocalStorage';
 export { default as useLocation } from './useLocation';
 export { default as useLockBodyScroll } from './useLockBodyScroll';
 export { default as useLogger } from './useLogger';
+export { default as useLongPress } from './useLongPress';
 export { default as useMap } from './useMap';
 export { default as useMedia } from './useMedia';
 export { default as useMediaDevices } from './useMediaDevices';
