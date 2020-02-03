@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "13.22.4",
+  "version": "14.0.0-alpha.2",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -53,6 +53,7 @@
     "js-cookie": "^2.2.1",
     "nano-css": "^5.2.1",
     "react-fast-compare": "^2.0.4",
+    "react-universal-interface": "^0.6.0",
     "resize-observer-polyfill": "^1.5.1",
     "screenfull": "^5.0.0",
     "set-harmonic-interval": "^1.0.1",
@@ -106,7 +107,7 @@
     "rimraf": "3.0.1",
     "rxjs": "6.5.4",
     "semantic-release": "17.0.2",
-    "ts-jest": "25.1.0",
+    "ts-jest": "25.2.0",
     "ts-loader": "6.2.1",
     "ts-node": "8.6.2",
     "tslint": "6.0.0-beta1",
@@ -160,6 +161,10 @@
     "coverageDirectory": "coverage",
     "testMatch": [
       "<rootDir>/tests/**/*.test.(ts|tsx)"
+    ],
+    "setupFiles": [
+      "<rootDir>/tests/_setup.js",
+      "./tests/setupTests.ts"
     ]
   }
 }
