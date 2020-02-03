@@ -17,7 +17,6 @@ const useLocalStorage = <T>(
   initialValue?: T,
   options?: parserOptions<T>
 ): [T, Dispatch<SetStateAction<T>>] => {
-  // TODO: !localStorage needed? What does isClient do?
   if (!isClient || !localStorage) {
     return [initialValue as T, () => {}];
   }
@@ -25,9 +24,8 @@ const useLocalStorage = <T>(
     throw new Error('useLocalStorage key may not be nullish or undefined');
   }
 
-  // Use provided serializer/deserializer or the default ones
-  const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
-  const deserializer = options ? (options.raw ? String : options.deserializer || null) : JSON.parse;
+  // @ts-ignore - These are allowed to be undefined
+  const { raw, deserializer, serializer } = options || {};
 
   let localStorageValue: string | null = null;
   try {
@@ -40,20 +38,21 @@ const useLocalStorage = <T>(
   const state: T = useMemo(() => {
     try {
       /* If key hasn't been set yet */
-      console.log({ localStorageValue, initialValue, deserializer });
       if (localStorageValue === null) return initialValue as T;
-      return deserializer ? deserializer(localStorageValue) : localStorageValue;
+      if (raw) return localStorageValue;
+      if (!raw && deserializer) return deserializer(localStorageValue);
+      return JSON.parse(localStorageValue);
     } catch {
       /* JSON.parse and JSON.stringify can throw. */
       return localStorageValue === null ? initialValue : localStorageValue;
     }
-  }, [key, localStorageValue]);
+  }, [key, localStorageValue, raw, deserializer]);
 
   const setState: Dispatch<SetStateAction<T>> = useCallback(
     (valOrFunc: SetStateAction<T>): void => {
       try {
         let newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
-        newState = typeof newState === 'string' ? newState : serializer(newState);
+        newState = typeof newState === 'string' ? newState : (serializer || JSON.stringify)(newState);
         localStorage.setItem(key, newState);
       } catch {
         /**
@@ -62,7 +61,7 @@ const useLocalStorage = <T>(
          */
       }
     },
-    [state, serializer]
+    [state, raw, serializer]
   );
 
   /* If value hasn't been set yet (null not 'null') then initialize it. */

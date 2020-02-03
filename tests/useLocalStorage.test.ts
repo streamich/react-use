@@ -58,6 +58,10 @@ describe(useLocalStorage, () => {
     expect(foo1).toEqual(null);
     expect(foo2).toEqual(null);
   });
+  it('sets initialState if initialState is an object', () => {
+    renderHook(() => useLocalStorage('foo', { bar: true }));
+    expect(localStorage.__STORE__.foo).toEqual('{"bar":true}');
+  });
   it("correctly and promptly returns a new value", () => {
     const { result, rerender } = renderHook(() => useLocalStorage("foo", "bar"));
 
@@ -150,6 +154,21 @@ describe(useLocalStorage, () => {
       expect(String(e)).toMatch(/key may not be/i);
     }
   });
+  it('should properly update the localStorageOnChange when component unmounts', () => {
+    const key = 'some_key';
+    const updatedValue = { b: 'a' };
+    const expectedValue = '{"b":"a"}';
+
+    const { result, unmount } = renderHook(() => useLocalStorage(key));
+
+    unmount();
+
+    act(() => {
+      result.current[1](updatedValue);
+    });
+
+    expect(localStorage.__STORE__[key]).toBe(expectedValue);
+  });
   /* Enforces proper eslint react-hooks/rules-of-hooks usage */
   describe("eslint react-hooks/rules-of-hooks", () => {
     it("memoizes an object between rerenders", () => {
@@ -183,20 +202,15 @@ describe(useLocalStorage, () => {
 
   describe("Options: raw", () => {
     const STRINGIFIED_VALUE = '{"a":"b"}';
-    const serializer = (_: string) => '321';
-    const deserializer = (_: string) => '123';
-
-    const rawOption = { raw: true, serializer, deserializer };
-
     it("returns a string when localStorage is a stringified object", () => {
       localStorage.setItem("foo", JSON.stringify({ fizz: "buzz" }));
-      const { result } = renderHook(() => useLocalStorage("foo", null, rawOption));
+      const { result } = renderHook(() => useLocalStorage("foo", null, { raw: true }));
       const [foo] = result.current;
       expect(typeof foo).toBe("string");
     });
     it("returns a string after an update", () => {
       localStorage.setItem("foo", JSON.stringify({ fizz: "buzz" }));
-      const { result, rerender } = renderHook(() => useLocalStorage("foo", null, rawOption));
+      const { result, rerender } = renderHook(() => useLocalStorage("foo", null, { raw: true }));
 
       const [, setFoo] = result.current;
       // @ts-ignore
@@ -210,10 +224,6 @@ describe(useLocalStorage, () => {
       // @ts-ignore
       expect(JSON.parse(foo).fizz).toEqual("bang");
     });
-
-
-
-
     it("still forces setState to a string", () => {
       localStorage.setItem("foo", JSON.stringify({ fizz: "buzz" }));
       const { result, rerender } = renderHook(() => useLocalStorage("foo", null, { raw: true }));
@@ -236,7 +246,6 @@ describe(useLocalStorage, () => {
 
         expect(result.current[0]).toEqual(STRINGIFIED_VALUE);
       });
-
       it("should return initialValue if localStorage empty and set that to localStorage", () => {
         const key = "some_key";
 
@@ -249,7 +258,6 @@ describe(useLocalStorage, () => {
     describe("raw false and provided serializer/deserializer", () => {
       const serializer = (_: string) => "321";
       const deserializer = (_: string) => "123";
-
       it("should return valid serialized value from existing localStorage key", () => {
         const key = "some_key";
         localStorage.setItem(key, STRINGIFIED_VALUE);
