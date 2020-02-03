@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useState, useCallback, Dispatch, SetStateAction } from 'react';
 import { isClient } from './util';
 
 type parserOptions<T> =
@@ -12,23 +12,25 @@ type parserOptions<T> =
     };
 
 const noop = () => {};
-const isUndefined = (value?: any): boolean => typeof value === 'undefined';
 
 const useLocalStorage = <T>(
   key: string,
   initialValue?: T,
   options?: parserOptions<T>
-): [T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>, () => void] => {
+): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
   if (!isClient) {
     return [initialValue as T, noop, noop];
   }
+  if (!key) {
+    throw new Error('useLocalStorage key may not be falsy');
+  }
 
-  // Use provided serializer/deserializer or the default ones
-  const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
-  const deserializer = options ? (options.raw ? String : options.deserializer) : JSON.parse;
+  const deserializer = options ? (options.raw ? value => value : options.deserializer) : JSON.parse;
 
   const [state, setState] = useState<T | undefined>(() => {
     try {
+      const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
+
       const localStorageValue = localStorage.getItem(key);
       if (localStorageValue !== null) {
         return deserializer(localStorageValue);
@@ -44,6 +46,31 @@ const useLocalStorage = <T>(
     }
   });
 
+  const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
+    valOrFunc => {
+      try {
+        const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
+        if (typeof newState === 'undefined') return;
+        let value: string;
+
+        if (options)
+          if (options.raw)
+            if (typeof newState === 'string') value = newState;
+            else value = JSON.stringify(newState);
+          else if (options.serializer) value = options.serializer(newState);
+          else value = JSON.stringify(newState);
+        else value = JSON.stringify(newState);
+
+        localStorage.setItem(key, value);
+        setState(deserializer(value));
+      } catch {
+        // If user is in private mode or has storage restriction
+        // localStorage can throw. Also JSON.stringify can throw.
+      }
+    },
+    [key, setState]
+  );
+
   const remove = useCallback(() => {
     try {
       localStorage.removeItem(key);
@@ -54,16 +81,7 @@ const useLocalStorage = <T>(
     }
   }, [key, setState]);
 
-  useEffect(() => {
-    if (isUndefined(state)) return;
-    try {
-      localStorage.setItem(key, serializer(state));
-    } catch {
-      // If user is in private mode or has storage restriction
-      // localStorage can throw. Also JSON.stringify can throw.
-    }
-  }, [state]);
-  return [state, setState, remove];
+  return [state, set, remove];
 };
 
 export default useLocalStorage;
