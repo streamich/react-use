@@ -163,8 +163,7 @@
       "<rootDir>/tests/**/*.test.(ts|tsx)"
     ],
     "setupFiles": [
-      "<rootDir>/tests/_setup.js",
-      "./tests/setupTests.ts"
+      "<rootDir>/tests/_setup.js"
     ]
   }
 }

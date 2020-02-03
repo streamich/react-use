@@ -1,6 +1,5 @@
-import { useMemo, useCallback, Dispatch, SetStateAction } from 'react';
+import { useState, useCallback, Dispatch, SetStateAction } from 'react';
 import { isClient } from './util';
-import useEffectOnce from './useEffectOnce';
 
 type parserOptions<T> =
   | {
@@ -19,49 +18,57 @@ const useLocalStorage = <T>(
   initialValue?: T,
   options?: parserOptions<T>
 ): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
-  if (!isClient || !localStorage) {
+  if (!isClient) {
     return [initialValue as T, noop, noop];
   }
-  if ((!key && (key as any) !== 0) || (key as any) === false) {
-    throw new Error('useLocalStorage key may not be nullish or undefined');
+  if (!key) {
+    throw new Error('useLocalStorage key may not be falsy');
   }
 
-  // Use provided serializer / deserializer or the default ones.
-  const serializer = options ? (options.raw ? String : options.serializer || JSON.stringify) : JSON.stringify;
-  const deserializer = options ? (options.raw ? value => value : options.deserializer || JSON.parse) : JSON.parse;
+  const deserializer = options ? (options.raw ? value => value : options.deserializer) : JSON.parse;
 
-  let localStorageValue: string | null = null;
-  try {
-    localStorageValue = localStorage.getItem(key);
-  } catch {
-    // If user is in private mode or has storage restriction
-    // localStorage can throw.
-  }
-
-  const state: T = useMemo(() => {
+  const [state, setState] = useState<T | undefined>(() => {
     try {
-      /* If key hasn't been set yet */
-      if (localStorageValue === null) return initialValue as T;
-      return deserializer(localStorageValue);
-    } catch {
-      /* JSON.parse and JSON.stringify can throw. */
-      return localStorageValue === null ? initialValue : localStorageValue;
-    }
-  }, [key, localStorageValue, deserializer]);
+      const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
 
-  const setState: Dispatch<SetStateAction<T | undefined>> = useCallback(
-    (valOrFunc: SetStateAction<T | undefined>): void => {
+      const localStorageValue = localStorage.getItem(key);
+      if (localStorageValue !== null) {
+        return deserializer(localStorageValue);
+      } else {
+        initialValue && localStorage.setItem(key, serializer(initialValue));
+        return initialValue;
+      }
+    } catch {
+      // If user is in private mode or has storage restriction
+      // localStorage can throw. JSON.parse and JSON.stringify
+      // can throw, too.
+      return initialValue;
+    }
+  });
+
+  const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
+    valOrFunc => {
       try {
-        const value = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
-        localStorage.setItem(key, serializer(value));
+        const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
+        if (typeof newState === 'undefined') return;
+        let value: string;
+
+        if (options)
+          if (options.raw)
+            if (typeof newState === 'string') value = newState;
+            else value = JSON.stringify(newState);
+          else if (options.serializer) value = options.serializer(newState);
+          else value = JSON.stringify(newState);
+        else value = JSON.stringify(newState);
+
+        localStorage.setItem(key, value);
+        setState(deserializer(value));
       } catch {
-        /**
-         * If user is in private mode or has storage restriction
-         * localStorage can throw. Also JSON.stringify can throw.
-         */
+        // If user is in private mode or has storage restriction
+        // localStorage can throw. Also JSON.stringify can throw.
       }
     },
-    [state, serializer]
+    [key, setState]
   );
 
   const remove = useCallback(() => {
@@ -74,12 +81,7 @@ const useLocalStorage = <T>(
     }
   }, [key, setState]);
 
-  /* If value hasn't been set yet (null not 'null') then initialize it. */
-  useEffectOnce((): void => {
-    if (localStorageValue === null && initialValue) setState(initialValue);
-  });
-
-  return [state, setState, remove];
+  return [state, set, remove];
 };
 
 export default useLocalStorage;
