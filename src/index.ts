@@ -106,3 +106,4 @@ export { default as useMeasure } from './useMeasure';
 export { useRendersCount } from './useRendersCount';
 export { useFirstMountState } from './useFirstMountState';
 export { default as useSet } from './useSet';
+export { createGlobalState } from './createGlobalState';
