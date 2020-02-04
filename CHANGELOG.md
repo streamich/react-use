@@ -1,3 +1,114 @@
+# [13.23.0](https://github.com/streamich/react-use/compare/v13.22.5...v13.23.0) (2020-02-04)
+
+
+### Features
+
+* add createGlobalState hook generator ([fda7199](https://github.com/streamich/react-use/commit/fda7199b7da23f321e68d0784deb1f0f3d273e3c))
+
+## [13.22.5](https://github.com/streamich/react-use/compare/v13.22.4...v13.22.5) (2020-02-04)
+
+
+### Bug Fixes
+
+* 🐛 don't throw in useMediaDevices on missing browser API ([0f119fe](https://github.com/streamich/react-use/commit/0f119fe23e837e0d8c2a8c882b1aaf3b62cbc7d2))
+* handle undefined mediaDevices ([6f68437](https://github.com/streamich/react-use/commit/6f68437359704dace7d518f1f013bc3516400c67))
+
+## [13.22.4](https://github.com/streamich/react-use/compare/v13.22.3...v13.22.4) (2020-01-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @xobotyi/scrollbar-width to v1.8.2 ([#930](https://github.com/streamich/react-use/issues/930)) ([727b950](https://github.com/streamich/react-use/commit/727b95096ec6654ba4da22f6825e6d8982258033))
+
+## [13.22.3](https://github.com/streamich/react-use/compare/v13.22.2...v13.22.3) (2020-01-28)
+
+
+### Bug Fixes
+
+* **useIntersection:** disconnect an old IntersectionObserver instance when the ref changes ([ac2f54a](https://github.com/streamich/react-use/commit/ac2f54a8f683296feecfeeb6354738b9ebbc36d0))
+* **useIntersection:** reset an intersectionObserverEntry when the ref changes ([3f8687e](https://github.com/streamich/react-use/commit/3f8687e1f51cc48efbf6be3f0677f5bd06ecba08))
+* **useIntersection:** return null if IntersectionObserver is not supported ([4f6d388](https://github.com/streamich/react-use/commit/4f6d3887be5cf62ce42357a7bf27f4ae8b080eba))
+
+## [13.22.2](https://github.com/streamich/react-use/compare/v13.22.1...v13.22.2) (2020-01-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @xobotyi/scrollbar-width to v1.7.0 ([db74101](https://github.com/streamich/react-use/commit/db741019324c3d20a17bbc20a014cedd21e66b1a))
+
+## [13.22.1](https://github.com/streamich/react-use/compare/v13.22.0...v13.22.1) (2020-01-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @xobotyi/scrollbar-width to v1.6.0 ([431ba5d](https://github.com/streamich/react-use/commit/431ba5d0816cb7701b03460c5efa5199ad27cbc4))
+
+# [13.22.0](https://github.com/streamich/react-use/compare/v13.21.0...v13.22.0) (2020-01-24)
+
+
+### Bug Fixes
+
+* Fail testing and update doc ([57b9041](https://github.com/streamich/react-use/commit/57b904118e2cd1f1b4e367c9a14e2a981db2f06a))
+
+
+### Features
+
+* add useLongPress hook ([45681b8](https://github.com/streamich/react-use/commit/45681b88e3fd3d9337a38da07248c46ec6d5956e))
+
+# [13.21.0](https://github.com/streamich/react-use/compare/v13.20.0...v13.21.0) (2020-01-20)
+
+
+### Features
+
+* Typings for `useDefault` ([fa0f53b](https://github.com/streamich/react-use/commit/fa0f53bf86a712f4b7e503cdf4718a8ff5448e05))
+
+# [13.20.0](https://github.com/streamich/react-use/compare/v13.19.0...v13.20.0) (2020-01-17)
+
+
+### Features
+
+* `useMap`: allow resetting with provided value other then initial ([7645f72](https://github.com/streamich/react-use/commit/7645f7249dbf52db140dfc8b7866cb4a171e439c))
+
+# [13.19.0](https://github.com/streamich/react-use/compare/v13.18.0...v13.19.0) (2020-01-16)
+
+
+### Features
+
+* add useError hook ([65f3644](https://github.com/streamich/react-use/commit/65f364420524bacebe8f8149b8197fb62bff1a08))
+
+# [13.18.0](https://github.com/streamich/react-use/compare/v13.17.0...v13.18.0) (2020-01-16)
+
+
+### Bug Fixes
+
+* check for null ([d619c39](https://github.com/streamich/react-use/commit/d619c39a21e9f0b4b4bfc6a209311bf0bd495f9b))
+
+
+### Features
+
+* add serializer/deserializer option to useLocalStorage ([5316510](https://github.com/streamich/react-use/commit/5316510babf7606a2f4b78de2b0eb85c930890cf))
+
+# [13.17.0](https://github.com/streamich/react-use/compare/v13.16.1...v13.17.0) (2020-01-15)
+
+
+### Features
+
+* add support for body lock on iOS ([d778408](https://github.com/streamich/react-use/commit/d7784084fe84aca72efe85260101b00ef1df7580))
+
+## [13.16.1](https://github.com/streamich/react-use/compare/v13.16.0...v13.16.1) (2020-01-14)
+
+
+### Bug Fixes
+
+* update the types dep for js-cookie ([5c55d59](https://github.com/streamich/react-use/commit/5c55d59a7d1d799cba7af87e15ab4a4b27a8fc67))
+
+# [13.16.0](https://github.com/streamich/react-use/compare/v13.15.0...v13.16.0) (2020-01-14)
+
+
+### Features
+
+* add option to useTitle to restore title on un-mount ([b8b3e47](https://github.com/streamich/react-use/commit/b8b3e479cea6071d4310bac29f138bd8917eee0b))
+
 # [13.15.0](https://github.com/streamich/react-use/compare/v13.14.3...v13.15.0) (2020-01-13)
 
 
