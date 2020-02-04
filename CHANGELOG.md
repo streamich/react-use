@@ -1,3 +1,10 @@
+# [13.23.0](https://github.com/streamich/react-use/compare/v13.22.5...v13.23.0) (2020-02-04)
+
+
+### Features
+
+* add createGlobalState hook generator ([fda7199](https://github.com/streamich/react-use/commit/fda7199b7da23f321e68d0784deb1f0f3d273e3c))
+
 ## [13.22.5](https://github.com/streamich/react-use/compare/v13.22.4...v13.22.5) (2020-02-04)
 
 
