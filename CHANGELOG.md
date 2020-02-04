@@ -1,3 +1,10 @@
+# [13.24.0](https://github.com/streamich/react-use/compare/v13.23.0...v13.24.0) (2020-02-04)
+
+
+### Features
+
+* add createReducerContext and createStateContext factories ([84b8310](https://github.com/streamich/react-use/commit/84b83101c2253f8935b2804a48ade081e41982a8))
+
 # [13.23.0](https://github.com/streamich/react-use/compare/v13.22.5...v13.23.0) (2020-02-04)
 
 
