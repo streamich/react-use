@@ -9,6 +9,11 @@ export type AsyncState<T> =
       value?: undefined;
     }
   | {
+      loading: true;
+      error?: Error | undefined;
+      value?: T;
+    }
+  | {
       loading: false;
       error: Error;
       value?: undefined;
@@ -34,7 +39,7 @@ export default function useAsyncFn<T extends FnReturningPromise>(
 
   const callback = useCallback((...args: Parameters<T>): ReturnType<T> => {
     const callId = ++lastCallId.current;
-    set({ loading: true });
+    set(prevState => ({ ...prevState, loading: true }));
 
     return fn(...args).then(
       value => {
