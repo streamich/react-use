@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { RefObject, useEffect, useRef } from 'react';
 
 export function getClosestBody(el: Element | HTMLElement | HTMLIFrameElement | null): HTMLElement | null {

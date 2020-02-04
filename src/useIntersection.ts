@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { RefObject, useEffect, useState } from 'react';
 
 const useIntersection = (

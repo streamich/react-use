@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useCallback, useRef } from 'react';
 
 interface Options {
