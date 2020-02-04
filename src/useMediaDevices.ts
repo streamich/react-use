@@ -10,17 +10,16 @@ const useMediaDevices = () => {
     let mounted = true;
 
     const onChange = () => {
-      navigator.mediaDevices &&
-        navigator.mediaDevices
-          .enumerateDevices()
-          .then(devices => {
-            if (mounted) {
-              setState({
-                devices: devices.map(({ deviceId, groupId, kind, label }) => ({ deviceId, groupId, kind, label })),
-              });
-            }
-          })
-          .catch(noop);
+      navigator.mediaDevices
+        .enumerateDevices()
+        .then(devices => {
+          if (mounted) {
+            setState({
+              devices: devices.map(({ deviceId, groupId, kind, label }) => ({ deviceId, groupId, kind, label })),
+            });
+          }
+        })
+        .catch(noop);
     };
 
     on(navigator.mediaDevices, 'devicechange', onChange);
@@ -35,4 +34,6 @@ const useMediaDevices = () => {
   return state;
 };
 
-export default useMediaDevices;
+const useMediaDevicesMock = () => ({});
+
+export default typeof navigator === 'object' && !!navigator.mediaDevices ? useMediaDevices : useMediaDevicesMock;
