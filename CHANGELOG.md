@@ -1,3 +1,18 @@
+# [13.23.0](https://github.com/streamich/react-use/compare/v13.22.5...v13.23.0) (2020-02-04)
+
+
+### Features
+
+* add createGlobalState hook generator ([fda7199](https://github.com/streamich/react-use/commit/fda7199b7da23f321e68d0784deb1f0f3d273e3c))
+
+## [13.22.5](https://github.com/streamich/react-use/compare/v13.22.4...v13.22.5) (2020-02-04)
+
+
+### Bug Fixes
+
+* 🐛 don't throw in useMediaDevices on missing browser API ([0f119fe](https://github.com/streamich/react-use/commit/0f119fe23e837e0d8c2a8c882b1aaf3b62cbc7d2))
+* handle undefined mediaDevices ([6f68437](https://github.com/streamich/react-use/commit/6f68437359704dace7d518f1f013bc3516400c67))
+
 ## [13.22.4](https://github.com/streamich/react-use/compare/v13.22.3...v13.22.4) (2020-01-30)
 
 
