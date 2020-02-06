@@ -52,7 +52,7 @@
     "fast-shallow-equal": "^1.0.0",
     "js-cookie": "^2.2.1",
     "nano-css": "^5.2.1",
-    "react-fast-compare": "^2.0.4",
+    "react-fast-compare": "^3.0.0",
     "resize-observer-polyfill": "^1.5.1",
     "screenfull": "^5.0.0",
     "set-harmonic-interval": "^1.0.1",
