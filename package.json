@@ -75,14 +75,14 @@
     "@semantic-release/git": "9.0.0",
     "@semantic-release/npm": "7.0.2",
     "@shopify/jest-dom-mocks": "2.8.9",
-    "@storybook/addon-actions": "5.3.9",
-    "@storybook/addon-knobs": "5.3.9",
-    "@storybook/addon-notes": "5.3.9",
-    "@storybook/addon-options": "5.3.9",
-    "@storybook/react": "5.3.9",
-    "@testing-library/react": "^9.4.0",
+    "@storybook/addon-actions": "5.3.12",
+    "@storybook/addon-knobs": "5.3.12",
+    "@storybook/addon-notes": "5.3.12",
+    "@storybook/addon-options": "5.3.12",
+    "@storybook/react": "5.3.12",
+    "@testing-library/react": "9.4.0",
     "@testing-library/react-hooks": "3.2.1",
-    "@types/jest": "25.1.1",
+    "@types/jest": "25.1.2",
     "@types/react": "16.9.11",
     "babel-core": "6.26.3",
     "babel-loader": "8.0.6",
@@ -105,7 +105,7 @@
     "rebound": "0.1.0",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
-    "rimraf": "3.0.1",
+    "rimraf": "3.0.2",
     "rxjs": "6.5.4",
     "semantic-release": "17.0.2",
     "ts-jest": "25.2.0",
@@ -149,8 +149,8 @@
     ]
   },
   "volta": {
-    "node": "10.18.1",
-    "yarn": "1.21.1"
+    "node": "10.19.0",
+    "yarn": "1.22.0"
   },
   "collective": {
     "type": "opencollective",
