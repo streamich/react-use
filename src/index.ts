@@ -8,6 +8,7 @@ export { default as useAsyncRetry } from './useAsyncRetry';
 export { default as useAudio } from './useAudio';
 export { default as useBattery } from './useBattery';
 export { default as useBeforeUnload } from './useBeforeUnload';
+export { default as useBobo } from './useBobo';
 export { default as useBoolean } from './useBoolean';
 export { default as useClickAway } from './useClickAway';
 export { default as useCookie } from './useCookie';
