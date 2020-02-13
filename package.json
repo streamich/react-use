@@ -86,7 +86,7 @@
     "babel-core": "6.26.3",
     "babel-loader": "8.0.6",
     "babel-plugin-dynamic-import-node": "2.3.0",
-    "fork-ts-checker-webpack-plugin": "4.0.3",
+    "fork-ts-checker-webpack-plugin": "4.0.4",
     "gh-pages": "2.2.0",
     "husky": "4.2.3",
     "jest": "25.1.0",
