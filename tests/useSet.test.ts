@@ -12,6 +12,7 @@ it('should init set and utils', () => {
     has: expect.any(Function),
     add: expect.any(Function),
     remove: expect.any(Function),
+    toggle: expect.any(Function),
     reset: expect.any(Function),
   });
 });
@@ -92,6 +93,28 @@ it('should remove existing key', () => {
   });
 
   expect(result.current[0]).toEqual(new Set([1]));
+});
+
+it('should remove an existing key on toggle', () => {
+  const { result } = setUp(new Set([1, 2]));
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.toggle(2);
+  });
+
+  expect(result.current[0]).toEqual(new Set([1]));
+});
+
+it('should add a new key on toggle', () => {
+  const { result } = setUp(new Set([1]));
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.toggle(2);
+  });
+
+  expect(result.current[0]).toEqual(new Set([1, 2]));
 });
 
 it('should do nothing if removing non-existing key', () => {

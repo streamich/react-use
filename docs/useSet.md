@@ -8,7 +8,7 @@ React state hook that tracks a [Set](https://developer.mozilla.org/en-US/docs/We
 import {useSet} from 'react-use';
 
 const Demo = () => {
-  const [set, { add, has, remove, reset }] = useSet(new Set(['hello']));
+  const [set, { add, has, remove, toggle, reset }] = useSet(new Set(['hello']));
 
   return (
     <div>
@@ -17,6 +17,7 @@ const Demo = () => {
       <button onClick={() => remove('hello')} disabled={!has('hello')}>
         Remove 'hello'
       </button>
+      <button onClick={() => toggle('hello')}>{has('hello') ? 'Remove' : 'Add'} hello</button>
       <pre>{JSON.stringify(Array.from(set), null, 2)}</pre>
     </div>
   );
