@@ -4,7 +4,7 @@ import useMountedState from './useMountedState';
 
 export type AsyncState<T> =
   | {
-      loading: boolean;
+      loading: true;
       error?: undefined;
       value?: undefined;
     }
@@ -27,7 +27,7 @@ export type AsyncFn<Result = any, Args extends any[] = any[]> = [
 export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
   fn: (...args: Args | []) => Promise<Result>,
   deps: DependencyList = [],
-  initialState: AsyncState<Result> = { loading: false }
+  initialState: AsyncState<Result> = { loading: true }
 ): AsyncFn<Result, Args> {
   const lastCallId = useRef(0);
   const [state, set] = useState<AsyncState<Result>>(initialState);
@@ -36,7 +36,10 @@ export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
 
   const callback = useCallback((...args: Args | []) => {
     const callId = ++lastCallId.current;
-    set({ loading: true });
+
+    if (!state.loading) {
+      set({ loading: true });
+    }
 
     return fn(...args).then(
       value => {

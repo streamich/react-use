@@ -68,7 +68,7 @@ describe('useAsyncFn', () => {
       const [state] = hook.result.current;
 
       expect(state.value).toEqual(undefined);
-      expect(state.loading).toEqual(false);
+      expect(state.loading).toEqual(true);
       expect(state.error).toEqual(undefined);
       expect(callCount).toEqual(0);
     });
