@@ -1,12 +1,14 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
-const useBeforeUnload = (enabled: boolean = true, message?: string) => {
-  useEffect(() => {
-    if (!enabled) {
-      return;
-    }
+const useBeforeUnload = (enabled: boolean | (() => boolean) = true, message?: string) => {
+  const handler = useCallback(
+    (event: BeforeUnloadEvent) => {
+      const finalEnabled = typeof enabled === 'function' ? enabled() : true;
 
-    const handler = (event: BeforeUnloadEvent) => {
+      if (!finalEnabled) {
+        return;
+      }
+
       event.preventDefault();
 
       if (message) {
@@ -14,12 +16,19 @@ const useBeforeUnload = (enabled: boolean = true, message?: string) => {
       }
 
       return message;
-    };
+    },
+    [enabled, message]
+  );
+
+  useEffect(() => {
+    if (!enabled) {
+      return;
+    }
 
     window.addEventListener('beforeunload', handler);
 
     return () => window.removeEventListener('beforeunload', handler);
-  }, [message, enabled]);
+  }, [enabled, handler]);
 };
 
 export default useBeforeUnload;
