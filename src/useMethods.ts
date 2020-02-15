@@ -32,7 +32,7 @@ const useMethods = <M, T>(createMethods: CreateMethods<M, T>, initialState: T): 
       acc[type] = (...payload) => dispatch({ type, payload });
       return acc;
     }, {} as WrappedMethods<M>);
-  }, [createMethods]);
+  }, [createMethods, initialState]);
 
   return [state, wrappedMethods];
 };
