@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { RefObject, useEffect, useState } from 'react';
 
 const useIntersection = (
@@ -7,7 +8,7 @@ const useIntersection = (
   const [intersectionObserverEntry, setIntersectionObserverEntry] = useState<IntersectionObserverEntry | null>(null);
 
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && typeof IntersectionObserver === 'function') {
       const handler = (entries: IntersectionObserverEntry[]) => {
         setIntersectionObserverEntry(entries[0]);
       };
@@ -16,13 +17,12 @@ const useIntersection = (
       observer.observe(ref.current);
 
       return () => {
-        if (ref.current) {
-          observer.disconnect();
-        }
+        setIntersectionObserverEntry(null);
+        observer.disconnect();
       };
     }
     return () => {};
-  }, [ref, options.threshold, options.root, options.rootMargin]);
+  }, [ref.current, options.threshold, options.root, options.rootMargin]);
 
   return intersectionObserverEntry;
 };

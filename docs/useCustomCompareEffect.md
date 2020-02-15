@@ -5,7 +5,7 @@ A modified useEffect hook that accepts a comparator which is used for comparison
 ## Usage
 
 ```jsx
-import {useCounter, useDeepCompareEffect} from 'react-use';
+import {useCounter, useCustomCompareEffect} from 'react-use';
 import isEqual from 'lodash/isEqual';
 
 const Demo = () => {

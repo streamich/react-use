@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useCallback } from 'react';
 import useMountedState from './useMountedState';
 

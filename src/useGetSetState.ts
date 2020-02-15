@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useCallback, useRef } from 'react';
 import useUpdate from './useUpdate';
 

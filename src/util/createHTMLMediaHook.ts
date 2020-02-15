@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import useSetState from '../useSetState';

@@ -34,4 +34,6 @@ const useMediaDevices = () => {
   return state;
 };
 
-export default useMediaDevices;
+const useMediaDevicesMock = () => ({});
+
+export default typeof navigator === 'object' && !!navigator.mediaDevices ? useMediaDevices : useMediaDevicesMock;
