@@ -1,5 +1,5 @@
 import { DependencyList, EffectCallback } from 'react';
-import isEqual from 'react-fast-compare';
+import { isDeepEqual } from './util';
 import useCustomCompareEffect from './useCustomCompareEffect';
 
 const isPrimitive = (val: any) => val !== Object(val);
@@ -17,7 +17,7 @@ const useDeepCompareEffect = (effect: EffectCallback, deps: DependencyList) => {
     }
   }
 
-  useCustomCompareEffect(effect, deps, isEqual);
+  useCustomCompareEffect(effect, deps, isDeepEqual);
 };
 
 export default useDeepCompareEffect;

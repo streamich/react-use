@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { useCounter, useCustomCompareEffect } from '../src';
-import isDeepEqual from 'react-fast-compare';
+import { isDeepEqual } from '../src/util';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
