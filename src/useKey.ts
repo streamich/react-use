@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { DependencyList, useMemo } from 'react';
 import useEvent, { UseEventTarget } from './useEvent';
 

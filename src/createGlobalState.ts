@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useLayoutEffect, useState } from 'react';
 import useEffectOnce from './useEffectOnce';
 
