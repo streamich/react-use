@@ -5,11 +5,10 @@ A higher-order component that takes in a hook and wraps a component with props p
 ## Usage
 
 ```jsx
-import { withHook } from 'react-use';
-
 const Counter = props => {
   return (
     <div>
+      <div>Started At: {props.startAt}</div>
       <div>Counter: {props.count}</div>
       <button onClick={props.increment}>Increment</button>
       <button onClick={props.decrement}>Decrement</button>
@@ -18,7 +17,7 @@ const Counter = props => {
 };
 
 const useCounter = props => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(props.startAt);
 
   return {
     count,
@@ -27,15 +26,14 @@ const useCounter = props => {
   };
 };
 
-const Demo = withHook(useCounter)(Counter, (hookValues, props) => ({ ...hookValues }));
+const Demo = withHook(Counter, useCounter);
 ```
 
 ## Reference
 
 ```js
-withHook(useHook)(Component, mapHookToProps);
+withHook(Component, useHook);
 ```
 
-- `useHook` &mdash; a `hook` whose returned values are passed as props to Component.
 - `Component` &mdash; a `Component` getting wrapped by the HOC.
-- `mapHookToProps` &mdash; a mapper `function` of shape `(hookValues, props) => object`
+- `useHook` &mdash; a `hook` whose returned values are passed as props to Component.
