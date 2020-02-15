@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useEffect, useRef, FC, cloneElement } from 'react';
 import { render } from 'react-universal-interface';
 
