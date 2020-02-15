@@ -6,6 +6,7 @@ import ShowDocs from './util/ShowDocs';
 const Counter = props => {
   return (
     <div>
+      <div>Started At: {props.startAt}</div>
       <div>Counter: {props.count}</div>
       <button onClick={props.increment}>Increment</button>
       <button onClick={props.decrement}>Decrement</button>
@@ -14,7 +15,7 @@ const Counter = props => {
 };
 
 const useCounter = props => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(props.startAt);
 
   return {
     count,
@@ -23,8 +24,8 @@ const useCounter = props => {
   };
 };
 
-const Demo = withHook(useCounter)(Counter, (hookValues, props) => ({ ...hookValues }));
+const Demo = withHook(Counter, useCounter);
 
 storiesOf('Side effects|withHook', module)
   .add('Docs', () => <ShowDocs md={require('../docs/withHook.md')} />)
-  .add('Demo', () => <Demo />);
+  .add('Demo', () => <Demo startAt={10} />);
