@@ -1,3 +1,10 @@
+## [13.24.1](https://github.com/streamich/react-use/compare/v13.24.0...v13.24.1) (2020-02-15)
+
+
+### Performance Improvements
+
+* use fast-deep-equal for deep comparisons ([b9a8aad](https://github.com/streamich/react-use/commit/b9a8aad053a40028f119192ddecedb5c7ec05247))
+
 # [13.24.0](https://github.com/streamich/react-use/compare/v13.23.0...v13.24.0) (2020-02-04)
 
 
