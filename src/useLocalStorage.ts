@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useCallback, Dispatch, SetStateAction } from 'react';
 import { isClient } from './util';
 

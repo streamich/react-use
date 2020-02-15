@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useMemo } from 'react';
 
 const createMemo = <T extends (...args: any) => any>(fn: T) => (...args: Parameters<T>) =>
