@@ -1,6 +1,6 @@
 /* eslint-disable */
 import useSessionStorage from '../src/useSessionStorage';
-import 'jest-localStorage-mock';
+import 'jest-localstorage-mock';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 describe(useSessionStorage, () => {
