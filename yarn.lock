@@ -3429,10 +3429,10 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@xobotyi/scrollbar-width@1.8.2":
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@xobotyi/scrollbar-width/-/scrollbar-width-1.8.2.tgz#056946ac41ade4885c576619c8d70c46c77e9683"
-  integrity sha512-RV6+4hR29oMaPCvSYFUvzOvlsrg2s2k5NE9tNERs+4nFIC9dRXxs+lL2CcaRTbl3yQxKwAZ8Cd+qMI8aUu9TFw==
+"@xobotyi/scrollbar-width@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@xobotyi/scrollbar-width/-/scrollbar-width-1.9.0.tgz#2a5d02f15c7f5624339e5d690aba432bfd9e79f0"
+  integrity sha512-W8oNXd3HkW9eQHxk+47iRx4aqd0yIV9NoeykUTd0uE0sYx3LOAQE7rfHOd8xtMP7IADfLIdG0o0H1sXvHUF7dw==
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
