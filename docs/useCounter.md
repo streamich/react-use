@@ -50,7 +50,7 @@ const Demo = () => {
 ## Reference
 
 ```ts 
-const [ current, { inc, dec, get, set, reset } ] = useCounter(initial: number, max: number | null = null, 20: number | null = null);
+const [ current, { inc, dec, get, set, reset } ] = useCounter(initial: number, max: number | null = null, min: number | null = null);
 ```
 - `current` - current counter value;
 - `get(): number` - getter of current counter value;
