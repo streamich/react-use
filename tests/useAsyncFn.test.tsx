@@ -126,4 +126,31 @@ describe('useAsyncFn', () => {
     await hook.waitForNextUpdate();
     expect(hook.result.current[0]).toEqual({ loading: false, value: 2 });
   });
+
+  it('should keeping value of initialState when loading', async () => {
+    const fetch = async () => 'new state';
+    const initialState = { loading: false, value: 'init state' };
+
+    const hook = renderHook<{ fn: () => Promise<string> }, [AsyncState<string>, () => Promise<string>]>(
+      ({ fn }) => useAsyncFn(fn, [fn], initialState),
+      {
+        initialProps: { fn: fetch },
+      }
+    );
+
+    const [state, callback] = hook.result.current;
+    expect(state.loading).toBe(false);
+    expect(state.value).toBe('init state');
+
+    act(() => {
+      callback();
+    });
+
+    expect(hook.result.current[0].loading).toBe(true);
+    expect(hook.result.current[0].value).toBe('init state');
+
+    await hook.waitForNextUpdate();
+    expect(hook.result.current[0].loading).toBe(false);
+    expect(hook.result.current[0].value).toBe('new state');
+  });
 });
