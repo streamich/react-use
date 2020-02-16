@@ -17,7 +17,7 @@ const Demo = () => {
       <button onClick={() => remove('hello')} disabled={!has('hello')}>
         Remove 'hello'
       </button>
-      <button onClick={() => toggle('hello')}>{has('hello') ? 'Remove' : 'Add'} hello</button>
+      <button onClick={() => toggle('hello')}>Toggle hello</button>
       <pre>{JSON.stringify(Array.from(set), null, 2)}</pre>
     </div>
   );
