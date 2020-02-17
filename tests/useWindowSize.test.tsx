@@ -85,4 +85,20 @@ describe('useWindowSize', () => {
 
     expect(hook.result.current.width).toBe(2048);
   });
+
+  it('triggers the callback after state change', () => {
+    const mockCallback = jest.fn();
+    getHook(null, null, mockCallback);
+
+    act(() => {
+      triggerResize('width', 200);
+      triggerResize('height', 100);
+      requestAnimationFrame.step();
+    });
+
+    expect(mockCallback).toHaveBeenCalledWith({
+      width: 200,
+      height: 100,
+    });
+  });
 });

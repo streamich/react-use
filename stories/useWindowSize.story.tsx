@@ -4,7 +4,8 @@ import { useWindowSize } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const { width, height } = useWindowSize();
+  const callback = state => console.log('Callback fired with: ', state);
+  const { width, height } = useWindowSize(null, null, callback);
 
   return (
     <div>
