@@ -1,3 +1,22 @@
+## [13.26.1](https://github.com/streamich/react-use/compare/v13.26.0...v13.26.1) (2020-02-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @xobotyi/scrollbar-width to v1.9.0 ([601d787](https://github.com/streamich/react-use/commit/601d7871a0325677a24a7a93fc9ce2b11132370f))
+
+# [13.26.0](https://github.com/streamich/react-use/compare/v13.25.1...v13.26.0) (2020-02-15)
+
+
+### Bug Fixes
+
+* add initialState to deps ([b394f3d](https://github.com/streamich/react-use/commit/b394f3d72356d331dbce48acd3686bbb64d331b5))
+
+
+### Features
+
+* add useMethods state hook ([7554b9a](https://github.com/streamich/react-use/commit/7554b9a61eb9b4744b9feb113775ff538b16beaf))
+
 ## [13.25.1](https://github.com/streamich/react-use/compare/v13.25.0...v13.25.1) (2020-02-15)
 
 
