@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "14.0.0-alpha.4",
+  "version": "14.0.0-alpha.5",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
