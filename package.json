@@ -95,7 +95,7 @@
     "eslint-plugin-import": "2.20.1",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.18.3",
-    "eslint-plugin-react-hooks": "2.3.0",
+    "eslint-plugin-react-hooks": "2.4.0",
     "fork-ts-checker-webpack-plugin": "4.0.4",
     "gh-pages": "2.2.0",
     "husky": "4.2.3",
