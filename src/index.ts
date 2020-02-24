@@ -16,6 +16,7 @@ export { default as useCounter } from './useCounter';
 export { default as useCss } from './useCss';
 export { default as useCustomCompareEffect } from './useCustomCompareEffect';
 export { default as useDebounce } from './useDebounce';
+export { default as useDebounceFn } from './useDebounceFn';
 export { default as useDeepCompareEffect } from './useDeepCompareEffect';
 export { default as useDefault } from './useDefault';
 export { default as useDrop } from './useDrop';

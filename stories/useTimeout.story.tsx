@@ -24,6 +24,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Animation|useTimeout', module)
+storiesOf('Side-effects|useTimeout', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useTimeout.md')} />)
   .add('Demo', () => <Demo />);

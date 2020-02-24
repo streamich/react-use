@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { useCallback } from 'react';
-import { useTimeoutFn } from '../src';
+import { useDebounceFn } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
@@ -11,7 +11,7 @@ const Demo = () => {
     setState(`called at ${Date.now()}`);
   }
 
-  const [isReady, cancel, reset] = useTimeoutFn(fn, 5000);
+  const [isReady, cancel, reset] = useDebounceFn(fn, 5000);
   const cancelButtonClick = useCallback(() => {
     if (isReady() === false) {
       cancel();
@@ -35,6 +35,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side-effects|useTimeoutFn', module)
+storiesOf('Side-effects|useDebounceFn', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useTimeoutFn.md')} />)
   .add('Demo', () => <Demo />);

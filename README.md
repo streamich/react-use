@@ -86,8 +86,6 @@
   - [`useRaf`](./docs/useRaf.md) &mdash; re-renders component on each `requestAnimationFrame`.
   - [`useInterval`](./docs/useInterval.md) and [`useHarmonicIntervalFn`](./docs/useHarmonicIntervalFn.md) &mdash; re-renders component on a set interval using `setInterval`.
   - [`useSpring`](./docs/useSpring.md) &mdash; interpolates number over time according to spring dynamics.
-  - [`useTimeout`](./docs/useTimeout.md) &mdash; re-renders component after a timeout.
-  - [`useTimeoutFn`](./docs/useTimeoutFn.md) &mdash; calls given function after a timeout. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/animation-usetimeoutfn--demo)
   - [`useTween`](./docs/useTween.md) &mdash; re-renders component, while tweening a number from 0 to 1. [![][img-demo]](https://codesandbox.io/s/52990wwzyl)
   - [`useUpdate`](./docs/useUpdate.md) &mdash; returns a callback, which re-renders component when called.
     <br/>
@@ -105,6 +103,8 @@
   - [`useRafLoop`](./docs/useRafLoop.md) &mdash; calls given function inside the RAF loop.
   - [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manages a value in `sessionStorage`.
   - [`useThrottle` and `useThrottleFn`](./docs/useThrottle.md) &mdash; throttles a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usethrottle--demo)
+  - [`useTimeout`](./docs/useTimeout.md) &mdash; re-renders component after a timeout.
+  - [`useTimeoutFn and useDebounceFn`](./docs/useTimeoutFn.md) &mdash; calls given function after a timeout. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/animation-usetimeoutfn--demo)
   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
   - [`usePermission`](./docs/usePermission.md) &mdash; query permission status for browser APIs.
     <br/>
