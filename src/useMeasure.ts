@@ -1,7 +1,10 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
-export type ContentRect = Pick<DOMRectReadOnly, 'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'>;
+export type ContentRect = Pick<
+  DOMRectReadOnly,
+  'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'
+>;
 
 const useMeasure = <T>(): [(instance: T) => void, ContentRect] => {
   const [rect, set] = useState<ContentRect>({
@@ -14,15 +17,20 @@ const useMeasure = <T>(): [(instance: T) => void, ContentRect] => {
     bottom: 0,
     right: 0,
   });
+  const [animationFrameID, setAnimatonFrameID] = useState(null);
 
   const [observer] = useState(
     () =>
       new ResizeObserver(entries => {
-        const entry = entries[0];
-        if (entry) {
-          set(entry.contentRect);
-        }
-      })
+        setAnimatonFrameID(
+          window.requestAnimationFrame(() => {
+            const entry = entries[0];
+            if (entry) {
+              set(entry.contentRect);
+            }
+          }),
+        );
+      }),
   );
 
   const ref = useCallback(
@@ -32,8 +40,17 @@ const useMeasure = <T>(): [(instance: T) => void, ContentRect] => {
         observer.observe(node);
       }
     },
-    [observer]
+    [observer],
   );
+
+  useEffect(() => {
+    return () => {
+      if (animationFrameID) {
+        window.cancelAnimationFrame(animationFrameID);
+      }
+    };
+  }, [animationFrameID]);
+
   return [ref, rect];
 };
 
