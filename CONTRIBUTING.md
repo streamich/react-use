@@ -31,10 +31,10 @@ This library is a collection of React hooks so a proposal for a new hook will ne
 
 ### Creating a new hook
 
-1. Create `src/useYourHookName.ts` and `src/__stories__/useYourHookName.story.tsx`, run `yarn start` to start the storybook development server and start coding your hook
-1. Create `src/__tests__/useYourHookName.test.ts`, run `yarn test:watch` to start the test runner in watch mode and start writing tests for your hook
-1. Create `src/docs/useYourHookName.md` and create documentation for your hook
-1. Export your hook from `src/index.ts` and add your hook to `README.md`
+1. Create `src/useYourHookName.ts` and `stories/useYourHookName.story.tsx`, run `yarn start` to start the storybook development server and start coding your hook
+2. Create `tests/useYourHookName.test.ts`, run `yarn test:watch` to start the test runner in watch mode and start writing tests for your hook
+3. Create `docs/useYourHookName.md` and create documentation for your hook
+4. Export your hook from `src/index.ts` and add your hook to `README.md`
 
 You can also write your tests first if you prefer [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development).
 
