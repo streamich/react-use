@@ -106,6 +106,7 @@ export { useMultiStateValidator } from './useMultiStateValidator';
 export { default as useWindowScroll } from './useWindowScroll';
 export { default as useWindowSize } from './useWindowSize';
 export { default as useMeasure } from './useMeasure';
+export { default as useMeasureDirty } from './useMeasureDirty';
 export { useRendersCount } from './useRendersCount';
 export { useFirstMountState } from './useFirstMountState';
 export { default as useSet } from './useSet';
