@@ -1,3 +1,10 @@
+## [13.26.2](https://github.com/streamich/react-use/compare/v13.26.1...v13.26.2) (2020-02-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @xobotyi/scrollbar-width to v1.9.3 ([6e2287d](https://github.com/streamich/react-use/commit/6e2287d7e84ef1e455da7209ee32cf86643b00a5))
+
 ## [13.26.1](https://github.com/streamich/react-use/compare/v13.26.0...v13.26.1) (2020-02-16)
 
 
