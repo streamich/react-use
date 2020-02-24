@@ -206,7 +206,9 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
         return;
       }
 
+      // In Safari, change src, onTimeUpdate not trigger 
       setState({
+        time: 0,
         volume: el.volume,
         muted: el.muted,
         paused: el.paused,
