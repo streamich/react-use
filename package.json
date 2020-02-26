@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
-    "@types/js-cookie": "2.2.4",
+    "@types/js-cookie": "2.2.5",
     "@xobotyi/scrollbar-width": "1.9.3",
     "copy-to-clipboard": "^3.2.0",
     "fast-deep-equal": "^3.1.1",
