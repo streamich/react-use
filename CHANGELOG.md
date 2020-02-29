@@ -1,3 +1,10 @@
+## [13.26.4](https://github.com/streamich/react-use/compare/v13.26.3...v13.26.4) (2020-02-29)
+
+
+### Bug Fixes
+
+* useHoverDirty eslint fix ([0ed6521](https://github.com/streamich/react-use/commit/0ed6521179fe193007f504b3b221a6c5295f9fa0))
+
 ## [13.26.3](https://github.com/streamich/react-use/compare/v13.26.2...v13.26.3) (2020-02-26)
 
 
