@@ -1,3 +1,10 @@
+# [13.27.0](https://github.com/streamich/react-use/compare/v13.26.5...v13.27.0) (2020-03-03)
+
+
+### Features
+
+* **useSet:** add toggle a method ([#968](https://github.com/streamich/react-use/issues/968)) ([477614f](https://github.com/streamich/react-use/commit/477614f9ef84d3cfa75f9c8a97dbc73d30dd411d))
+
 ## [13.26.5](https://github.com/streamich/react-use/compare/v13.26.4...v13.26.5) (2020-03-02)
 
 
