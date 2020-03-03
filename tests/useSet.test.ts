@@ -148,7 +148,7 @@ it('should reset to initial set provided', () => {
 it('should memoized its utils methods', () => {
   const { result } = setUp(new Set(['a', 'b']));
   const [, utils] = result.current;
-  const { add, remove, reset } = utils;
+  const { add, remove, reset, toggle } = utils;
 
   act(() => {
     add('foo');
@@ -156,5 +156,6 @@ it('should memoized its utils methods', () => {
 
   expect(result.current[1].add).toBe(add);
   expect(result.current[1].remove).toBe(remove);
+  expect(result.current[1].toggle).toBe(toggle);
   expect(result.current[1].reset).toBe(reset);
 });
