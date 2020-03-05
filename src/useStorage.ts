@@ -1,6 +1,21 @@
 /* eslint-disable */
-import { useState, useCallback, Dispatch, SetStateAction, useMemo } from 'react';
+import { useCallback, Dispatch, useMemo } from 'react';
+import { InitialHookState, HookState, resolveHookState,  } from './util/resolveHookState';
 import { isClient } from './util';
+import { createGlobalState, GlobalStateHookReturn } from './createGlobalState';
+
+type DispatchAction<T> = Dispatch<HookState<T | undefined>>;
+type localStateHook<T> = (initialState?: InitialHookState<T>) => GlobalStateHookReturn<T>;
+type storageKeyHooks = {
+  [storageType: string]: {
+    [key: string]: localStateHook<any>
+  }
+};
+let useStorageKeyHook: storageKeyHooks = {}
+// This is useful for testing
+export const resetStorageState = () => {
+  useStorageKeyHook = {}
+}
 
 export type parserOptions<T> =
   | {
@@ -19,7 +34,7 @@ const useStorage = <T>(
   key: string,
   initialValue?: T,
   options?: parserOptions<T>
-): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
+): [T | undefined, DispatchAction<T>, () => void] => {
   if (!isClient) {
     return [initialValue as T, noop, noop];
   }
@@ -36,7 +51,7 @@ const useStorage = <T>(
 
   const deserializer = options ? (options.raw ? value => value : options.deserializer) : JSON.parse;
 
-  const [state, setState] = useState<T | undefined>(() => {
+  const setInitialState = () => {
     try {
       const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
 
@@ -47,19 +62,41 @@ const useStorage = <T>(
         initialValue && storage.setItem(key, serializer(initialValue));
         return initialValue;
       }
-    } catch {
+    } catch (error) {
       // If user is in private mode or has storage restriction
       // storage can throw. JSON.parse and JSON.stringify
       // can throw, too.
+      console.error(error)
       return initialValue;
     }
-  });
+  };
 
-  const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
+  if (!useStorageKeyHook[storageType]) {
+    useStorageKeyHook[storageType] = {}
+  }
+  if (!useStorageKeyHook[storageType][key]) {
+    useStorageKeyHook[storageType][key] = createGlobalState<T | undefined>(undefined)
+  }
+  const useStorageState: localStateHook<T | undefined> = useStorageKeyHook[storageType][key]
+  const [ state, setState ] = useStorageState(setInitialState)
+
+  const removeKey = () => {
+    try {
+      storage.removeItem(key);
+      setState(undefined);
+    } catch(error) {
+      // If user is in private mode or has storage restriction
+      // storage can throw.
+      console.error(error);
+    }
+  }
+
+  const set: DispatchAction<T> = useCallback(
     valOrFunc => {
       try {
-        const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
-        if (typeof newState === 'undefined') return;
+        const newState = resolveHookState(valOrFunc, state)
+        // if (typeof newState === 'undefined') return;
+        if (typeof newState === 'undefined') return removeKey()
         let value: string;
 
         if (options)
@@ -72,23 +109,16 @@ const useStorage = <T>(
 
         storage.setItem(key, value);
         setState(deserializer(value));
-      } catch {
+      } catch (error) {
         // If user is in private mode or has storage restriction
         // storage can throw. Also JSON.stringify can throw.
+        console.error(error);
       }
     },
     [key, setState]
   );
 
-  const remove = useCallback(() => {
-    try {
-      storage.removeItem(key);
-      setState(undefined);
-    } catch {
-      // If user is in private mode or has storage restriction
-      // storage can throw.
-    }
-  }, [key, setState]);
+  const remove = useCallback(removeKey, [key, setState]);
 
   return [state, set, remove];
 };

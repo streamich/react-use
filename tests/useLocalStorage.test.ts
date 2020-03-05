@@ -1,5 +1,6 @@
 /* eslint-disable */
 import useLocalStorage from '../src/useLocalStorage';
+import { resetStorageState } from '../src/useStorage';
 import 'jest-localstorage-mock';
 import { renderHook, act } from '@testing-library/react-hooks';
 
@@ -7,6 +8,7 @@ describe(useLocalStorage, () => {
   afterEach(() => {
     localStorage.clear();
     jest.clearAllMocks();
+    resetStorageState();
   });
 
   it('retrieves an existing value from localStorage', () => {
@@ -232,5 +234,21 @@ describe(useLocalStorage, () => {
 
       expect(JSON.parse(value!).fizz).toEqual('bang');
     });
+  });
+
+  it('both components should be updated', () => {
+    const { result: result1 } = renderHook(() => useLocalStorage('foo', 'bar'));
+    const { result: result2 } = renderHook(() => useLocalStorage('foo'));
+    let [ state1, setState1 ] = result1.current;
+    let [ state2 ] = result2.current;
+    expect(state1).toBe('bar');
+    expect(state2).toBe('bar');
+    act(() => {
+      setState1('baz');
+    });
+    [ state1, setState1 ] = result1.current;
+    [ state2 ] = result2.current;
+    expect(state1).toBe('baz');
+    expect(state2).toBe('baz');
   });
 });
