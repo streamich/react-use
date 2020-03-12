@@ -11,8 +11,12 @@ addonVCSSOM(nano);
 
 let counter = 0;
 
+export const resetCssCounter = () => {
+  counter = 0;
+}
+
 const useClassName = (): string => {
-  return useMemo(() => 'react-use-css-' + (counter++).toString(36), []);
+  return useMemo(() => `react-use-css-${(counter++).toString(36)}`, []);
 }
 
 const useCss = (css: object): string => {

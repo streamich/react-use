@@ -4,7 +4,6 @@ React UI hook that changes [CSS dynamically][gen-5]. Works like "virtual CSS" &m
 it re-renders only CSS rules that change. It is different from inline styles, because
 you can use media queries and pseudo selectors.
 
-
 ## Usage
 
 ```jsx
@@ -26,7 +25,6 @@ const Demo = () => {
   );
 };
 ```
-
 
 ## Examples
 
@@ -56,6 +54,17 @@ const className = useCss({
     }
   },
 });
+```
+
+### Use on SSR
+
+```js
+// server.js
+import ReactDOMServer from 'react-dom/server';
+import { resetCssCounter } from 'react-use';
+
+resetCssCounter(); // need reset counter to 0 on each ssr for correct hydration
+ReactDOMServer.renderToString(...);
 ```
 
 [gen-5]: https://github.com/streamich/freestyler/blob/master/docs/en/generations.md#5th-generation
