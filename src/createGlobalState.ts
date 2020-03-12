@@ -1,7 +1,6 @@
 /* eslint-disable */
-import { useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import useEffectOnce from './useEffectOnce';
-import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export function createGlobalState<S = any>(initialState?: S) {
   const store: { state: S | undefined; setState: (state: S) => void; setters: any[] } = {
@@ -20,7 +19,7 @@ export function createGlobalState<S = any>(initialState?: S) {
       store.setters = store.setters.filter(setter => setter !== stateSetter);
     });
 
-    useIsomorphicLayoutEffect(() => {
+    useLayoutEffect(() => {
       if (!store.setters.includes(stateSetter)) {
         store.setters.push(stateSetter);
       }
