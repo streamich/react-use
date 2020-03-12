@@ -2,7 +2,8 @@ import { create, NanoRenderer } from 'nano-css';
 import { addon as addonCSSOM, CSSOMAddon } from 'nano-css/addon/cssom';
 import { addon as addonVCSSOM, VCSSOMAddon } from 'nano-css/addon/vcssom';
 import { cssToTree } from 'nano-css/addon/vcssom/cssToTree';
-import { useLayoutEffect, useMemo } from 'react';
+import { useMemo } from 'react';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 type Nano = NanoRenderer & CSSOMAddon & VCSSOMAddon;
 const nano = create() as Nano;
@@ -13,16 +14,19 @@ let counter = 0;
 
 const useCss = (css: object): string => {
   const className = useMemo(() => 'react-use-css-' + (counter++).toString(36), []);
-  const sheet = useMemo(() => new nano.VSheet(), []);
+  // nano.VSheet === undefined, if no window
+  const sheet = useMemo(() => nano.VSheet && new nano.VSheet(), []);
 
-  useLayoutEffect(() => {
-    const tree = {};
-    cssToTree(tree, css, '.' + className, '');
-    sheet.diff(tree);
+  useIsomorphicLayoutEffect(() => {
+    if (sheet) {
+      const tree = {};
+      cssToTree(tree, css, '.' + className, '');
+      sheet.diff(tree);
 
-    return () => {
-      sheet.diff({});
-    };
+      return () => {
+        sheet.diff({});
+      };
+    }
   });
 
   return className;
