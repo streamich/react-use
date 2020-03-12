@@ -56,7 +56,7 @@ const className = useCss({
 });
 ```
 
-### Use on SSR
+### Setup for SSR
 
 ```js
 // server.js
