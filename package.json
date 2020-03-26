@@ -99,7 +99,7 @@
     "fork-ts-checker-webpack-plugin": "4.1.2",
     "gh-pages": "2.2.0",
     "husky": "4.2.3",
-    "jest": "25.2.1",
+    "jest": "25.2.2",
     "jest-localstorage-mock": "2.4.0",
     "keyboardjs": "2.5.1",
     "lint-staged": "10.0.9",
