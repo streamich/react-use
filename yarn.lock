@@ -2471,14 +2471,14 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@semantic-release/changelog@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-5.0.0.tgz#3db43fc15d78267c5b3f3f9dd311ddb2a0f8596b"
-  integrity sha512-A1uKqWtQG4WX9Vh4QI5b2ddhqx1qAJFlbow8szSNiXn+TaJg15LSUA9NVqyu0VxQFy3hKUJYwbBHGRXCxCy2fg==
+"@semantic-release/changelog@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-5.0.1.tgz#50a84b63e5d391b7debfe021421589fa2bcdafe4"
+  integrity sha512-unvqHo5jk4dvAf2nZ3aw4imrlwQ2I50eVVvq9D47Qc3R+keNqepx1vDYwkjF8guFXnOYaYcR28yrZWno1hFbiw==
   dependencies:
     "@semantic-release/error" "^2.1.0"
     aggregate-error "^3.0.0"
-    fs-extra "^8.0.0"
+    fs-extra "^9.0.0"
     lodash "^4.17.4"
 
 "@semantic-release/commit-analyzer@^8.0.0":
