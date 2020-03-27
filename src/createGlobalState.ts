@@ -1,6 +1,5 @@
 /* eslint-disable */
 import { useLayoutEffect, useState } from 'react';
-import useEffectOnce from './useEffectOnce';
 
 export function createGlobalState<S = any>(initialState?: S) {
   const store: { state: S | undefined; setState: (state: S) => void; setters: any[] } = {
@@ -15,15 +14,12 @@ export function createGlobalState<S = any>(initialState?: S) {
   return (): [S | undefined, (state: S) => void] => {
     const [globalState, stateSetter] = useState<S | undefined>(store.state);
 
-    useEffectOnce(() => () => {
-      store.setters = store.setters.filter(setter => setter !== stateSetter);
-    });
-
     useLayoutEffect(() => {
-      if (!store.setters.includes(stateSetter)) {
-        store.setters.push(stateSetter);
+      store.setters.push(stateSetter);
+      return () => {
+        store.setters = store.setters.filter(setter => setter !== stateSetter);
       }
-    });
+    }, []);
 
     return [globalState, store.setState];
   };
