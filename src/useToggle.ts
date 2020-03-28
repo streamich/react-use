@@ -1,20 +1,10 @@
-import { useCallback, useState } from 'react';
+import { useReducer, Reducer } from 'react';
 
 const useToggle = (initialValue: boolean): [boolean, (nextValue?: any) => void] => {
-  const [value, setValue] = useState<boolean>(initialValue);
-
-  const toggle = useCallback(
-    (nextValue?: any) => {
-      if (typeof nextValue === 'boolean') {
-        setValue(nextValue);
-      } else {
-        setValue(currentValue => !currentValue);
-      }
-    },
-    [setValue]
+  return useReducer<Reducer<boolean, any>>(
+    (state: boolean, nextValue?: any) => (typeof nextValue === 'boolean' ? nextValue : !state),
+    initialValue
   );
-
-  return [value, toggle];
 };
 
 export default useToggle;
