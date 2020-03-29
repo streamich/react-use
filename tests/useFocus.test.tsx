@@ -15,7 +15,7 @@ it('should return an element (object) and a boolean', () => {
   expect(typeof result.current[1]).toBe('boolean');
 });
 
-it('should change focused to true when calling onFocus', () => {
+it('should change focused to true when calling onFocus and to false when calling onBlur', () => {
   const element = () => (<label id="labelFoo" htmlFor="foo">Foo<input id="foo" type="text"/></label>)
   const { result } = renderHook(() => useFocus(element))
   
@@ -28,4 +28,10 @@ it('should change focused to true when calling onFocus', () => {
   })
 
   expect(result.current[1]).toBe(true)
+
+  act(() => {
+    component.props.onBlur()
+  })
+
+  expect(result.current[1]).toBe(false)  
 });
