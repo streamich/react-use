@@ -154,6 +154,7 @@
     <br/>
 - [**Miscellaneous**]()
   - [`useEnsuredForwardedRef`](./docs/useEnsuredForwardedRef.md) and [`ensuredForwardRef`](./docs/useEnsuredForwardedRef.md) &mdash; use a React.forwardedRef safely. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-useensuredforwardedref--demo)
+  - [`useBobo`](./docs/useBobo.md) &mdash; Quick, up-to-date links to DJ Bobo's breakout 1994 hit. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/ui-usebobo--demo)
 
 <br />
 <br />
