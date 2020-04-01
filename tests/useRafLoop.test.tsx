@@ -99,4 +99,20 @@ describe('useRafLoop', () => {
 
     expect(spy).not.toBeCalled();
   });
+
+  it('should pass timestamp as 1st argument of callback', () => {
+    const spy = jest.fn();
+    const hook = renderHook(() => useRafLoop(spy), { initialProps: false });
+
+    requestAnimationFrame.step();
+
+    act(() => {
+      hook.result.current[0]();
+    });
+
+    requestAnimationFrame.step();
+
+    expect(spy).toHaveBeenCalled();
+    expect(typeof spy.mock.calls[0][0]).toBe('number');
+  });
 });

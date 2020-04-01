@@ -31,5 +31,5 @@ const Demo = () => {
 ```ts
 const [stopLoop, isActive, startLoop] = useRafLoop(callback: CallableFunction, deps?: DependencyList);
 ```
-* `callback` &mdash; function to call each RAF tick
+* `callback(time: number)` &mdash; function to call each RAF tick
 
