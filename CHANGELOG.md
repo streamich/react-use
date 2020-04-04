@@ -1,3 +1,18 @@
+# [14.0.0](https://github.com/streamich/react-use/compare/v13.27.1...v14.0.0) (2020-04-04)
+
+
+### Features
+
+* **useRafLoop:** implement [#1090](https://github.com/streamich/react-use/issues/1090) ([1ef1272](https://github.com/streamich/react-use/commit/1ef1272d6dbe8fbcc2d08223cd80ef32ce28a9c9))
+* **useRafLoop:** reworked the hook, now it do not re-render parent component. ([baa2f75](https://github.com/streamich/react-use/commit/baa2f7511e18fc9fec29376afa27af73de633d8f))
+
+
+### BREAKING CHANGES
+
+* **useRafLoop:** changed return array, now it returns only functions in next order: [stop, start, isActive].
+
+Parent component is not re-rendered on loop start/stop.
+
 ## [13.27.1](https://github.com/streamich/react-use/compare/v13.27.0...v13.27.1) (2020-03-25)
 
 
