@@ -1,20 +1,27 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { useRafLoop } from '../src';
+import { useRafLoop, useUpdate } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [ticks, setTicks] = React.useState(0);
+  const [lastCall, setLastCall] = React.useState(0);
+  const update = useUpdate();
 
-  const [loopStop, isActive, loopStart] = useRafLoop(() => {
-    setTicks(ticks + 1);
+  const [loopStop, loopStart, isActive] = useRafLoop((time) => {
+    setTicks(ticks => ticks + 1);
+    setLastCall(time);
   });
 
   return (
     <div>
       <div>RAF triggered: {ticks} (times)</div>
+      <div>Last high res timestamp: {lastCall}</div>
       <br />
-      <button onClick={isActive ? loopStop : loopStart}>{isActive ? 'STOP' : 'START'}</button>
+      <button onClick={() => {
+        isActive() ? loopStop() : loopStart();
+        update();
+      }}>{isActive() ? 'STOP' : 'START'}</button>
     </div>
   );
 };
