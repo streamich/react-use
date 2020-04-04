@@ -19,13 +19,16 @@ export type AsyncState<T> =
       value: T;
     };
 
+export type AsyncFnInput<Result = any, Args extends any[] = any[]> =
+  Args extends [] ? (() => Promise<Result>) : ((...args: Args) => Promise<Result>);
+
 export type AsyncFn<Result = any, Args extends any[] = any[]> = [
   AsyncState<Result>,
-  (...args: Args | []) => Promise<Result>
+  AsyncFnInput<Result, Args>
 ];
 
 export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
-  fn: (...args: Args | []) => Promise<Result>,
+  fn: AsyncFnInput<Result, Args>,
   deps: DependencyList = [],
   initialState: AsyncState<Result> = { loading: false }
 ): AsyncFn<Result, Args> {
@@ -34,7 +37,7 @@ export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
 
   const isMounted = useMountedState();
 
-  const callback = useCallback((...args: Args | []) => {
+  const callback = useCallback(((...args) => {
     const callId = ++lastCallId.current;
     set({ loading: true });
 
@@ -50,7 +53,7 @@ export default function useAsyncFn<Result = any, Args extends any[] = any[]>(
         return error;
       }
     );
-  }, deps);
+  }) as AsyncFnInput<Result, Args>, deps);
 
   return [state, callback];
 }
