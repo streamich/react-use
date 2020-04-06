@@ -1,11 +1,11 @@
-import { useCallback, useState } from 'react';
+import { useRef, useState } from 'react';
 
 const incrementParameter = (num: number): number => ++num % 1_000_000;
 
 const useUpdate = () => {
   const [, setState] = useState(0);
-  // useCallback with empty deps as we only want to define updateCb once
-  return useCallback(() => setState(incrementParameter), []);
+  // define updateCb only once
+  return useRef(() => setState(incrementParameter)).current;
 };
 
 export default useUpdate;
