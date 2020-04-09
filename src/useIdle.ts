@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import { off, on } from './util';
@@ -6,7 +5,12 @@ import { off, on } from './util';
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
 const oneMinute = 60e3;
 
-const useIdle = (ms: number = oneMinute, initialState: boolean = false, events: string[] = defaultEvents): boolean => {
+// Make sure hook won't break when using SSR
+const isBrowser = (typeof window === 'undefined' ? 'undefined' : typeof window) === 'object'
+const documentElement = isBrowser ? document : {}
+const windowElement = isBrowser ? window : {}
+
+const useIdle = (ms: number = oneMinute, initialState = false, events: string[] = defaultEvents): boolean => {
   const [state, setState] = useState<boolean>(initialState);
 
   useEffect(() => {
@@ -29,15 +33,15 @@ const useIdle = (ms: number = oneMinute, initialState: boolean = false, events: 
       timeout = setTimeout(() => set(true), ms);
     });
     const onVisibility = () => {
-      if (!document.hidden) {
+      if (isBrowser && !document.hidden) {
         onEvent();
       }
     };
 
     for (let i = 0; i < events.length; i++) {
-      on(window, events[i], onEvent);
+      on(windowElement, events[i], onEvent);
     }
-    on(document, 'visibilitychange', onVisibility);
+    on(documentElement, 'visibilitychange', onVisibility);
 
     timeout = setTimeout(() => set(true), ms);
 
@@ -45,11 +49,11 @@ const useIdle = (ms: number = oneMinute, initialState: boolean = false, events: 
       mounted = false;
 
       for (let i = 0; i < events.length; i++) {
-        off(window, events[i], onEvent);
+        off(windowElement, events[i], onEvent);
       }
-      off(document, 'visibilitychange', onVisibility);
+      off(documentElement, 'visibilitychange', onVisibility);
     };
-  }, [ms, events]);
+  }, [ms, events, state]);
 
   return state;
 };
