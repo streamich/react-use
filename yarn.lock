@@ -8515,10 +8515,10 @@ humanize-url@^1.0.0:
     normalize-url "^1.0.0"
     strip-url-auth "^1.0.0"
 
-husky@4.2.3:
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.3.tgz#3b18d2ee5febe99e27f2983500202daffbc3151e"
-  integrity sha512-VxTsSTRwYveKXN4SaH1/FefRJYCtx+wx04sSVcOpD7N2zjoHxa+cEJ07Qg5NmV3HAK+IRKOyNVpi2YBIVccIfQ==
+husky@4.2.4:
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.4.tgz#05e21f730cf1996c72508d703d4c50574822f77b"
+  integrity sha512-aLUw3YxdljMuu57SQvSGW33/Dbsztis7UZRAx1WHC13O4Lv0wa9oHaeobSMOBI/nGiVRbCJBGj263WUxaw2p2Q==
   dependencies:
     chalk "^3.0.0"
     ci-info "^2.0.0"
