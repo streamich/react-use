@@ -6,7 +6,7 @@ const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstar
 const oneMinute = 60e3;
 
 // Make sure hook won't break when using SSR
-const isBrowser = (typeof window === 'undefined' ? 'undefined' : typeof window) === 'object'
+const isBrowser = typeof window !== 'undefined'
 const documentElement = isBrowser ? document : {}
 const windowElement = isBrowser ? window : {}
 
