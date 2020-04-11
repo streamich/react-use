@@ -1,3 +1,10 @@
+## [14.1.1](https://github.com/streamich/react-use/compare/v14.1.0...v14.1.1) (2020-04-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/js-cookie to v2.2.6 ([f9f4fae](https://github.com/streamich/react-use/commit/f9f4fae6a9a136fdd6763dd2b2214c1746fb0595))
+
 # [14.1.0](https://github.com/streamich/react-use/compare/v14.0.0...v14.1.0) (2020-04-08)
 
 
