@@ -6,7 +6,7 @@ const useKeyboardJs = (combination: string | string[]) => {
   const [keyboardJs, setKeyboardJs] = useState<any>(null);
 
   useMount(() => {
-    import('keyboardjs').then(setKeyboardJs);
+    import('keyboardjs').then(res => setKeyboardJs(res.default));
   });
 
   useEffect(() => {
