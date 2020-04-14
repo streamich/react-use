@@ -70,6 +70,7 @@ export { default as usePreviousDistinct } from './usePreviousDistinct';
 export { default as usePromise } from './usePromise';
 export { default as useQueue } from './useQueue';
 export { default as useRaf } from './useRaf';
+export { default as useRafFn } from './useRafFn';
 export { default as useRafLoop } from './useRafLoop';
 export { default as useRafState } from './useRafState';
 export { default as useSearchParam } from './useSearchParam';
