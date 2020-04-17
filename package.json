@@ -102,7 +102,7 @@
     "jest": "25.3.0",
     "jest-localstorage-mock": "2.4.0",
     "keyboardjs": "2.5.1",
-    "lint-staged": "10.1.3",
+    "lint-staged": "10.1.4",
     "markdown-loader": "5.1.0",
     "prettier": "2.0.4",
     "raf-stub": "3.0.0",
