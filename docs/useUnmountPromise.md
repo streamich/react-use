@@ -10,8 +10,10 @@ import useUnmountPromise from 'react-use/lib/useUnmountPromise';
 
 const Demo = () => {
   const mounted = useUnmountPromise();
-  useEffect(async () => {
-    await mounted(someFunction()); // Will not resolve if component un-mounts.
+  useEffect(() => {
+    (async () => {
+      await mounted(someFunction()); // Will not resolve if component un-mounts.
+    })();
   });
 };
 ```
