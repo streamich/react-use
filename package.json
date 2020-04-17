@@ -117,7 +117,7 @@
     "rimraf": "3.0.2",
     "rxjs": "6.5.5",
     "semantic-release": "17.0.6",
-    "ts-jest": "25.3.1",
+    "ts-jest": "25.4.0",
     "ts-loader": "6.2.2",
     "ts-node": "8.8.2",
     "typescript": "3.8.3"
