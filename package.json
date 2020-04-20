@@ -119,7 +119,7 @@
     "semantic-release": "17.0.6",
     "ts-jest": "25.4.0",
     "ts-loader": "6.2.2",
-    "ts-node": "8.8.2",
+    "ts-node": "8.9.0",
     "typescript": "3.8.3"
   },
   "config": {
