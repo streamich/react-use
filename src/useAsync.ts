@@ -3,11 +3,11 @@ import useAsyncFn from './useAsyncFn';
 
 export { AsyncState, AsyncFn } from './useAsyncFn';
 
-export default function useAsync<Result = any, Args extends any[] = any[]>(
-  fn: (...args: Args | []) => Promise<Result>,
+export default function useAsync<Result = any>(
+  fn: () => Promise<Result>,
   deps: DependencyList = []
 ) {
-  const [state, callback] = useAsyncFn<Result, Args>(fn, deps, {
+  const [state, callback] = useAsyncFn<Result, []>(fn, deps, {
     loading: true,
   });
 
