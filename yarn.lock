@@ -2684,10 +2684,10 @@
   resolved "https://registry.yarnpkg.com/@shopify/function-enhancers/-/function-enhancers-1.0.9.tgz#aa95e49ca2a3be1c76259ebce078b607faf26007"
   integrity sha512-iGoGIuJIFgWyEnEttjvtSH+5nQS6Lv4LAAooSNaviL10Ah+gLBfFcuSIj19fVLaRl9WxYSIu4sWqwnwn/W+n1g==
 
-"@shopify/jest-dom-mocks@2.8.12":
-  version "2.8.12"
-  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.8.12.tgz#aa33fdd04f5b6c2366d07fe291a6a6b3c06b36fa"
-  integrity sha512-+tzhX9yWE57Kg9qWRrQatwY84csn8Y8XX5ioicqhnExltq2We9DJqBuzpKQ7kibJYjOU/4yL63UsF9Y90ZldNw==
+"@shopify/jest-dom-mocks@2.9.0":
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.9.0.tgz#7b1c2ed58a6554f30e945fe5b49e9ef35f9195e7"
+  integrity sha512-+S3Hf7Tx7Tt5U0trOfTMh77aZ6OsbCiXhTRX79FO7/XY6f2azUE0JubqAz6GyGbuE0Fd4DgP0/reRRICXfN+Ng==
   dependencies:
     "@shopify/async" "^2.1.4"
     "@shopify/decorators" "^1.1.11"
