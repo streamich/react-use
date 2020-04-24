@@ -1,3 +1,10 @@
+# [14.2.0](https://github.com/streamich/react-use/compare/v14.1.1...v14.2.0) (2020-04-24)
+
+
+### Features
+
+* 🎸 onScrubStop provide value where scrub stopped ([138b43c](https://github.com/streamich/react-use/commit/138b43cd1ac9ea7c76a1a42fca48ebdcb94e1006))
+
 ## [14.1.1](https://github.com/streamich/react-use/compare/v14.1.0...v14.1.1) (2020-04-11)
 
 
