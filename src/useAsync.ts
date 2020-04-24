@@ -3,7 +3,7 @@ import useAsyncFn from './useAsyncFn';
 
 export { AsyncState, AsyncFn } from './useAsyncFn';
 
-export default function useAsync<Result = any>(
+export default function useAsync<Result>(
   fn: () => Promise<Result>,
   deps: DependencyList = []
 ) {
