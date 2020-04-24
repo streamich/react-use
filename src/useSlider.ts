@@ -13,7 +13,7 @@ export interface State {
 export interface Options {
   onScrub: (value: number) => void;
   onScrubStart: () => void;
-  onScrubStop: () => void;
+  onScrubStop: (value: number) => void;
   reverse: boolean;
   styles: boolean | CSSProperties;
   vertical?: boolean;
@@ -24,11 +24,14 @@ const noop = () => {};
 const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}): State => {
   const isMounted = useMountedState();
   const isSliding = useRef(false);
+  const valueRef = useRef(0);
   const frame = useRef(0);
   const [state, setState] = useSetState<State>({
     isSliding: false,
     value: 0,
   });
+
+  valueRef.current = state.value;
 
   useEffect(() => {
     if (isClient) {
@@ -50,7 +53,7 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
 
       const stopScrubbing = () => {
         if (isSliding.current && isMounted()) {
-          (options.onScrubStop || noop)();
+          (options.onScrubStop || noop)(valueRef.current);
           isSliding.current = false;
           setState({ isSliding: false });
           unbindEvents();
