@@ -1,13 +1,12 @@
 /* eslint-disable */
-import { useLayoutEffect, useState } from 'react';
-import useEffectOnce from './useEffectOnce';
+import { useEffect, useState } from 'react';
 
 export function createGlobalState<S = any>(initialState?: S) {
   const store: { state: S | undefined; setState: (state: S) => void; setters: any[] } = {
     state: initialState,
     setState(state: S) {
       store.state = state;
-      store.setters.forEach(setter => setter(store.state));
+      store.setters.forEach((setter) => setter(store.state));
     },
     setters: [],
   };
@@ -15,11 +14,13 @@ export function createGlobalState<S = any>(initialState?: S) {
   return (): [S | undefined, (state: S) => void] => {
     const [globalState, stateSetter] = useState<S | undefined>(store.state);
 
-    useEffectOnce(() => () => {
-      store.setters = store.setters.filter(setter => setter !== stateSetter);
-    });
+    useEffect(() => {
+      return () => {
+        store.setters = store.setters.filter((setter) => setter !== stateSetter);
+      };
+    }, []);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
       if (!store.setters.includes(stateSetter)) {
         store.setters.push(stateSetter);
       }
