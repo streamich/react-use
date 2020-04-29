@@ -1,8 +1,14 @@
 /* eslint-disable */
 import { useEffect, useState, useMemo } from 'react';
 
-const createBreakpoint = (
-  breakpoints: { [name: string]: number } = { laptopL: 1440, laptop: 1024, tablet: 768 }
+type Breakpoint = Record<string, number>;
+
+const defaultBreakpoint = { laptopL: 1440, laptop: 1024, tablet: 768 };
+
+const createBreakpoint: <A extends Breakpoint = typeof defaultBreakpoint>(
+	breakpoints?: A
+) => () => keyof A = (
+  breakpoints: Breakpoint = defaultBreakpoint
 ) => () => {
   const [screen, setScreen] = useState(0);
 
