@@ -56,8 +56,8 @@ const [list, {
 - **`list`**_`: T{}`_ &mdash; current list;
 - **`set`**_`: (list: T[]) => void;`_ &mdash; Set new list instead old one;
 - **`push`**_`: (...items: T[]) => void;`_ &mdash; Add item(s) at the end of list;
-- **`updateAt`**_`: (index: number, item: T) => void;`_ &mdash; Replace item at given position. If item at given position does not exist it will be set;
-- **`insertAt`**_`: (index: number, item: T) => void;`_ &mdash; Insert item at given position, all items to the right will be shifted;
+- **`updateAt`**_`: (index: number, item: T) => void;`_ &mdash; Replaces item at given position. If item at given position does not exist it will be set;
+- **`insertAt`**_`: (index: number, item: T) => void;`_ &mdash; Inserts item at given position, all items to the right will be shifted;
 - **`update`**_`: (predicate: (a: T, b: T) => boolean, newItem: T) => void;`_ &mdash; Replace all items that matches predicate with given one;
 - **`updateFirst`**_`: (predicate: (a: T, b: T) => boolean, newItem: T) => void;`_ &mdash; Replace first item matching predicate with given one;
 - **`upsert`**_`: (predicate: (a: T, b: T) => boolean, newItem: T) => void;`_ &mdash; Like `updateFirst` but in case of predicate miss - pushes item to the list;
