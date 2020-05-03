@@ -15472,10 +15472,10 @@ ts-loader@6.2.2:
     micromatch "^4.0.0"
     semver "^6.0.0"
 
-ts-node@8.9.1:
-  version "8.9.1"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.9.1.tgz#2f857f46c47e91dcd28a14e052482eb14cfd65a5"
-  integrity sha512-yrq6ODsxEFTLz0R3BX2myf0WBCSQh9A+py8PBo1dCzWIOcvisbyH6akNKqDHMgXePF2kir5mm5JXJTH3OUJYOQ==
+ts-node@8.10.0:
+  version "8.10.0"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.10.0.tgz#b4678e5a1d2475db79d1a56aec56ef7b9bccf1a7"
+  integrity sha512-9llNE7EOwPXr40e01DAVHTMgWLXDyHBMRaBB47xbF1ppbYVhc6iNT/VUz2jntkzPxjBOjxOn//XkeBgBtHbn/w==
   dependencies:
     arg "^4.1.0"
     diff "^4.0.1"
