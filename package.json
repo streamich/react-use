@@ -108,7 +108,7 @@
     "raf-stub": "3.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-frame-component": "4.1.1",
+    "react-frame-component": "4.1.2",
     "react-spring": "8.0.27",
     "react-test-renderer": "16.13.1",
     "rebound": "0.1.0",
