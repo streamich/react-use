@@ -1,5 +1,7 @@
+/* eslint-disable */
 import { useState, useCallback } from "react"
 import useLifecycles from "./useLifecycles"
+import { isClient } from './util';
 
 /**
  * read and write url hash, response to url hash change
@@ -12,6 +14,9 @@ export const useHash = () => {
   }, [])
 
   useLifecycles(() => {
+    if (!isClient) {
+      return;
+    }
     window.addEventListener('hashchange', onHashChange)
   }, () => {
     window.removeEventListener('hashchange', onHashChange)
