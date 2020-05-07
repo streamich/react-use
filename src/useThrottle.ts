@@ -6,7 +6,7 @@ const useThrottle = <T>(value: T, ms: number = 200) => {
   const [state, setState] = useState<T>(value);
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const nextValue = useRef(null) as any;
-  const hasNextValue = useRef(0) as any;
+  const hasNextValue = useRef(false) as any;
 
   useEffect(() => {
     if (!timeout.current) {
