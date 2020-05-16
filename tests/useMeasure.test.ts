@@ -10,12 +10,12 @@ it('by default, state defaults every value to -1', () => {
   });
 
   expect(result.current[1]).toMatchObject({
-    width: -1,
-    height: -1,
-    top: -1,
-    bottom: -1,
-    left: -1,
-    right: -1,
+    width: 0,
+    height: 0,
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
   });
 });
 
