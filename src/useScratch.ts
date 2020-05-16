@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useState, useEffect, useRef, FC, cloneElement } from 'react';
 import { render } from 'react-universal-interface';
 
@@ -153,7 +152,7 @@ const useScratch = ({
       refState.current = { isScratching: false };
       setState(refState.current);
     };
-  }, [el, disabled]);
+  }, [el, disabled, onScratchStart, onScratch, onScratchEnd]);
 
   return [setEl, state];
 };

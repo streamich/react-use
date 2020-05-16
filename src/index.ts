@@ -53,6 +53,7 @@ export { default as useMap } from './useMap';
 export { default as useMedia } from './useMedia';
 export { default as useMediaDevices } from './useMediaDevices';
 export { useMediatedState } from './useMediatedState';
+export { default as useMethods } from './useMethods';
 export { default as useMotion } from './useMotion';
 export { default as useMount } from './useMount';
 export { default as useMountedState } from './useMountedState';
@@ -110,3 +111,4 @@ export { useRendersCount } from './useRendersCount';
 export { useFirstMountState } from './useFirstMountState';
 export { default as useSet } from './useSet';
 export { createGlobalState } from './createGlobalState';
+export { useHash } from './useHash'
