@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
+import { isClient } from './util';
 
 export type UseMeasureRect = Pick<
   DOMRectReadOnly,
@@ -47,4 +48,4 @@ const useMeasure = (): UseMeasureResult => {
 
 const useMeasureMock = () => [() => {}, defaultState];
 
-export default !!(window as any).ResizeObserver ? useMeasure : useMeasureMock;
+export default (isClient && !!(window as any).ResizeObserver) ? useMeasure : useMeasureMock;
