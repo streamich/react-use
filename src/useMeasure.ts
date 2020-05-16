@@ -28,6 +28,7 @@ const useMeasure = <T>(): [(instance: T) => void, ContentRect] => {
   const ref = useCallback(
     node => {
       observer.disconnect();
+      ref.current = node
       if (node) {
         observer.observe(node);
       }
