@@ -156,7 +156,6 @@ it('tracks multiple updates', () => {
 it('calls .disconnect() on ResizeObserver when component unmounts', () => {
   const disconnect = jest.fn();
   (window as any).ResizeObserver = class ResizeObserver {
-    constructor() {}
     observe() {}
     disconnect() {
       disconnect();
