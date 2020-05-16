@@ -1,3 +1,10 @@
+## [15.0.1](https://github.com/streamich/react-use/compare/v15.0.0...v15.0.1) (2020-05-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency tslib to v2 ([6aebf3c](https://github.com/streamich/react-use/commit/6aebf3c25e14d12d8f34e62ecbaecfd3125cf2d9))
+
 # [15.0.0](https://github.com/streamich/react-use/compare/v14.3.0...v15.0.0) (2020-05-16)
 
 
