@@ -3,7 +3,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 
 export type ContentRect = Pick<DOMRectReadOnly, 'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'>;
 
-const useMeasure = <T>(): [(instance: T) => void, ContentRect] => {
+const useMeasure = <T>(): [{ (instance: T), current: HTMLElement } => void, ContentRect] => {
   const [rect, set] = useState<ContentRect>({
     x: 0,
     y: 0,
