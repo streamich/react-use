@@ -1,3 +1,88 @@
+# [14.3.0](https://github.com/streamich/react-use/compare/v14.2.0...v14.3.0) (2020-05-16)
+
+
+### Features
+
+* 🎸 add useScratch hook ([2a2a298](https://github.com/streamich/react-use/commit/2a2a298b73f7beb9a2a61c309e649be3d2527473))
+
+# [14.2.0](https://github.com/streamich/react-use/compare/v14.1.1...v14.2.0) (2020-04-24)
+
+
+### Features
+
+* 🎸 onScrubStop provide value where scrub stopped ([138b43c](https://github.com/streamich/react-use/commit/138b43cd1ac9ea7c76a1a42fca48ebdcb94e1006))
+
+## [14.1.1](https://github.com/streamich/react-use/compare/v14.1.0...v14.1.1) (2020-04-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/js-cookie to v2.2.6 ([f9f4fae](https://github.com/streamich/react-use/commit/f9f4fae6a9a136fdd6763dd2b2214c1746fb0595))
+
+# [14.1.0](https://github.com/streamich/react-use/compare/v14.0.0...v14.1.0) (2020-04-08)
+
+
+### Features
+
+* add useHash hook ([44a6cde](https://github.com/streamich/react-use/commit/44a6cde00e1c74831d7c38b8ae4946f6f2171cf5))
+
+# [14.0.0](https://github.com/streamich/react-use/compare/v13.27.1...v14.0.0) (2020-04-04)
+
+
+### Features
+
+* **useRafLoop:** implement [#1090](https://github.com/streamich/react-use/issues/1090) ([1ef1272](https://github.com/streamich/react-use/commit/1ef1272d6dbe8fbcc2d08223cd80ef32ce28a9c9))
+* **useRafLoop:** reworked the hook, now it do not re-render parent component. ([baa2f75](https://github.com/streamich/react-use/commit/baa2f7511e18fc9fec29376afa27af73de633d8f))
+
+
+### BREAKING CHANGES
+
+* **useRafLoop:** changed return array, now it returns only functions in next order: [stop, start, isActive].
+
+Parent component is not re-rendered on loop start/stop.
+
+## [13.27.1](https://github.com/streamich/react-use/compare/v13.27.0...v13.27.1) (2020-03-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @xobotyi/scrollbar-width to v1.9.5 ([9751390](https://github.com/streamich/react-use/commit/97513900de7b60d8da62db35125e2f81458a4f25))
+
+# [13.27.0](https://github.com/streamich/react-use/compare/v13.26.5...v13.27.0) (2020-03-03)
+
+
+### Features
+
+* **useSet:** add toggle a method ([#968](https://github.com/streamich/react-use/issues/968)) ([477614f](https://github.com/streamich/react-use/commit/477614f9ef84d3cfa75f9c8a97dbc73d30dd411d))
+
+## [13.26.5](https://github.com/streamich/react-use/compare/v13.26.4...v13.26.5) (2020-03-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @xobotyi/scrollbar-width to v1.9.4 ([29d017b](https://github.com/streamich/react-use/commit/29d017b2417f53455ee182aa1ad9574a3ee098d6))
+
+## [13.26.4](https://github.com/streamich/react-use/compare/v13.26.3...v13.26.4) (2020-02-29)
+
+
+### Bug Fixes
+
+* useHoverDirty eslint fix ([0ed6521](https://github.com/streamich/react-use/commit/0ed6521179fe193007f504b3b221a6c5295f9fa0))
+
+## [13.26.3](https://github.com/streamich/react-use/compare/v13.26.2...v13.26.3) (2020-02-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/js-cookie to v2.2.5 ([1f3217a](https://github.com/streamich/react-use/commit/1f3217a07f0b11ed4d6264687188f587501c133b))
+
+## [13.26.2](https://github.com/streamich/react-use/compare/v13.26.1...v13.26.2) (2020-02-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @xobotyi/scrollbar-width to v1.9.3 ([6e2287d](https://github.com/streamich/react-use/commit/6e2287d7e84ef1e455da7209ee32cf86643b00a5))
+
 ## [13.26.1](https://github.com/streamich/react-use/compare/v13.26.0...v13.26.1) (2020-02-16)
 
 
