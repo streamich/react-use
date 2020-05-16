@@ -1,6 +1,6 @@
 # `createReducer`
 
-Factory for reducer hooks with custom middleware with an identical API as [React's `useReducer`](https://reactjs.org/docs/hooks-reference.html#usereducer). Compatible with [Redux middlware](https://redux.js.org/advanced/middleware).
+Factory for reducer hooks with custom middleware with an identical API as [React's `useReducer`](https://reactjs.org/docs/hooks-reference.html#usereducer). Compatible with [Redux middleware](https://redux.js.org/advanced/middleware).
 
 ## Usage
 

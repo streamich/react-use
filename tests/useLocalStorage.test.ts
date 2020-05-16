@@ -53,10 +53,9 @@ describe(useLocalStorage, () => {
     expect(result.current[0]).toBeUndefined();
   });
 
-  it('returns and allow setting null', () => {
+  it('returns and allows null setting', () => {
     localStorage.setItem('foo', 'null');
     const { result, rerender } = renderHook(() => useLocalStorage('foo'));
-
     const [foo1, setFoo] = result.current;
     act(() => setFoo(null));
     rerender();
