@@ -1,3 +1,51 @@
+# [15.0.0](https://github.com/streamich/react-use/compare/v14.3.0...v15.0.0) (2020-05-16)
+
+
+* v15 release ([0f82ba6](https://github.com/streamich/react-use/commit/0f82ba650ed3e8b05b5458a243e7eb246fd954d2))
+
+
+### Bug Fixes
+
+* 🐛 better serialization handling in useLocalStorage hook ([68fb835](https://github.com/streamich/react-use/commit/68fb835ea64cf5587c99645a09c6de93ab1b71df))
+* 🐛 correctly test if env is browser in useMeasure ([9ae494f](https://github.com/streamich/react-use/commit/9ae494fc1874619aad2f3856df790cbc1a2a8239))
+* 🐛 make useMeasure work on server ([2daf769](https://github.com/streamich/react-use/commit/2daf76990d0e1040f8c0f31e16e7c1eebd94c9bf))
+* 🐛 remove set dependencies in useSet hook ([90ba9d0](https://github.com/streamich/react-use/commit/90ba9d000ff35039028cb66753114a6b0b452491))
+* 🐛 revert useMeasure defaults to zeros ([dc92b64](https://github.com/streamich/react-use/commit/dc92b646d0cd0f12868fde370c83e94ca3c7e297))
+* remove console log 🤓 ([f17c8a0](https://github.com/streamich/react-use/commit/f17c8a0f8e63bfddb8f13a094edbea1e3ee9680b))
+* **useLocalStorage:** using undefined for empty value instead of null ([1620e01](https://github.com/streamich/react-use/commit/1620e019fff94fb4a7a711fd3121ec02c7e99301))
+* use latest set object in useSet "has" method ([41f9452](https://github.com/streamich/react-use/commit/41f9452722d6fb7d2628480d7ce657e4f08e441a))
+
+
+### Features
+
+* 🎸 add useScratch() sensor hook ([58db2f9](https://github.com/streamich/react-use/commit/58db2f989d5d4f75ac5e8ef54c25a9df8bb173a5))
+* 🎸 catch up with v14 ([be69035](https://github.com/streamich/react-use/commit/be69035caf13f551e7717d3de0ea339c8943a9de))
+* 🎸 improve implementation of useMeasure() hook ([a164843](https://github.com/streamich/react-use/commit/a1648439021a45c781c2074489d7c6aaaa867406))
+* 🎸 improve implementation of useMeasure() hook ([4d88240](https://github.com/streamich/react-use/commit/4d8824064a0afbeba5a15597b007f8463fdbe027))
+* 🎸 mock useMeasure() hook on server and w/o ResizeObserver ([866f3d7](https://github.com/streamich/react-use/commit/866f3d740b08d4772dfbad9c48b3b0b8bac69a28))
+* 🎸 mock useMeasure() hook on server and w/o ResizeObserver ([2bbc73a](https://github.com/streamich/react-use/commit/2bbc73a5f08e9a21bb3054527fc8ff9fd51cfd47))
+* 🎸 remove resize-observer-polyfill from useMeasure ([2a13fba](https://github.com/streamich/react-use/commit/2a13fbae45af3a26c984de03130139181c0c3839))
+* 🎸 remove resize-observer-polyfill from useMeasure ([bf11131](https://github.com/streamich/react-use/commit/bf11131052c4a4ab2b9306486f0b171ac15057b0))
+* Dependencies inference for useCustomCompareEffect ([477c164](https://github.com/streamich/react-use/commit/477c1644a7225513c53294337be3c5b50126712f))
+* improve useAsyncFn and useAsync typings ([85967e2](https://github.com/streamich/react-use/commit/85967e294ce268bd1edc57968f2c3f85a3ee6cb7))
+* keep previous state in useAsyncFn ([54ac91b](https://github.com/streamich/react-use/commit/54ac91b28dca0f5c276b092d563b9c821cbab081))
+* use useReducer in useUpdate hook, instead of useState + useCallback ([6575b14](https://github.com/streamich/react-use/commit/6575b14985ede9b8f45fdad068ee9238d6f7ab80))
+* **useLocalStorage:** add remove feature. ([#229](https://github.com/streamich/react-use/issues/229)) ([587de16](https://github.com/streamich/react-use/commit/587de16ef5c85497d01e63247a578116d0605ff9))
+
+
+### BREAKING CHANGES
+
+* implementation of useMeasure and useLocalStorage changed
+* resize-observer-polyfill package is not used with useMeasure() hook
+anymore.
+* useMeasure() now defaults all values to -1, if they were not set and
+internal implementation heavily refactored.
+* useAsyncFn now keeps hold of old result/error when called multiple times
+* resize-observer-polyfill package is not used with useMeasure() hook
+anymore.
+* useMeasure() now defaults all values to -1, if they were not set and
+internal implementation heavily refactored.
+
 # [14.3.0](https://github.com/streamich/react-use/compare/v14.2.0...v14.3.0) (2020-05-16)
 
 
