@@ -26,11 +26,12 @@ const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] =
         }
       }
 
-      const noUserInteraction = writeText(value);
-
       if (!isMounted()) {
         return;
       }
+
+      const noUserInteraction = writeText(value);
+
       setState({
         value,
         error: undefined,
