@@ -1,3 +1,10 @@
+# [14.3.0](https://github.com/streamich/react-use/compare/v14.2.0...v14.3.0) (2020-05-16)
+
+
+### Features
+
+* 🎸 add useScratch hook ([2a2a298](https://github.com/streamich/react-use/commit/2a2a298b73f7beb9a2a61c309e649be3d2527473))
+
 # [14.2.0](https://github.com/streamich/react-use/compare/v14.1.1...v14.2.0) (2020-04-24)
 
 
