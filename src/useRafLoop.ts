@@ -1,37 +1,45 @@
-/* eslint-disable */
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 
-export type RafLoopReturns = [() => void, boolean, () => void];
+export type RafLoopReturns = [() => void, () => void, () => boolean];
 
-export default function useRafLoop(callback: CallableFunction): RafLoopReturns {
+export default function useRafLoop(callback: FrameRequestCallback, initiallyActive = true): RafLoopReturns {
   const raf = useRef<number | null>(null);
-  const [isActive, setIsActive] = useState<boolean>(true);
+  const rafActivity = useRef<boolean>(false);
+  const rafCallback = useRef(callback);
+  rafCallback.current = callback;
 
-  function loopStep() {
-    callback();
-    raf.current = requestAnimationFrame(loopStep);
-  }
+  const step = useCallback((time: number) => {
+    if (rafActivity.current) {
+      rafCallback.current(time);
+      raf.current = requestAnimationFrame(step);
+    }
+  }, []);
 
-  function loopStop() {
-    setIsActive(false);
-  }
-
-  function loopStart() {
-    setIsActive(true);
-  }
-
-  function clearCurrentLoop() {
-    raf.current && cancelAnimationFrame(raf.current);
-  }
-
-  useEffect(() => clearCurrentLoop, []);
+  const result = useMemo(() => ([
+    () => { // stop
+      if (rafActivity.current) {
+        rafActivity.current = false;
+        raf.current && cancelAnimationFrame(raf.current);
+      }
+    },
+    () => { // start
+      if (!rafActivity.current) {
+        rafActivity.current = true;
+        raf.current = requestAnimationFrame(step);
+      }
+    },
+    (): boolean => rafActivity.current  // isActive
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  ] as RafLoopReturns), []);
 
   useEffect(() => {
-    clearCurrentLoop();
-    isActive && (raf.current = requestAnimationFrame(loopStep));
+    if (initiallyActive) {
+      result[1]();
+    }
 
-    return clearCurrentLoop;
-  }, [isActive, callback]);
+    return result[0];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return [loopStop, isActive, loopStart];
+  return result;
 }

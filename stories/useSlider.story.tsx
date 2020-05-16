@@ -5,7 +5,11 @@ import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const ref = React.useRef(null);
-  const state = useSlider(ref);
+  const state = useSlider(ref, {
+    onScrubStop: (value) => {
+      console.log('onScrubStop', value);
+    },
+  });
 
   return (
     <div>
