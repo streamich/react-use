@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "14.3.0",
+  "version": "15.0.0-alpha.1",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -169,7 +169,7 @@
       "<rootDir>/tests/**/*.test.(ts|tsx)"
     ],
     "setupFiles": [
-      "./tests/setupTests.ts"
+      "<rootDir>/tests/setupTests.ts"
     ]
   }
 }
