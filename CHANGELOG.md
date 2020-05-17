@@ -1,3 +1,10 @@
+## [15.0.2](https://github.com/streamich/react-use/compare/v15.0.1...v15.0.2) (2020-05-17)
+
+
+### Bug Fixes
+
+* 🐛 dont memoize useScratch event handlers ([ffc7579](https://github.com/streamich/react-use/commit/ffc75790e329cb26000a174074c07d80283b5443))
+
 ## [15.0.1](https://github.com/streamich/react-use/compare/v15.0.0...v15.0.1) (2020-05-16)
 
 
