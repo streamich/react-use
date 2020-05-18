@@ -1,11 +1,9 @@
-import { useRef, MutableRefObject } from 'react';
+import {useRef} from 'react';
 
-const useLatest = <T>(value: T): MutableRefObject<T> => {
-  const latest = useRef<T>(value);
-
-  latest.current = value;
-
-  return latest;
+const useLatest = <T>(value: T): {readonly current: T} => {
+  const ref = useRef(value);
+  ref.current = value;
+  return ref;
 };
 
 export default useLatest;

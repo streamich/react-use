@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "14.2.0",
+  "version": "15.0.2",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -53,12 +53,13 @@
     "fast-shallow-equal": "^1.0.0",
     "js-cookie": "^2.2.1",
     "nano-css": "^5.2.1",
+    "react-universal-interface": "^0.6.0",
     "resize-observer-polyfill": "^1.5.1",
     "screenfull": "^5.0.0",
     "set-harmonic-interval": "^1.0.1",
     "throttle-debounce": "^2.1.0",
     "ts-easing": "^0.2.0",
-    "tslib": "^1.10.0"
+    "tslib": "^2.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -81,22 +82,22 @@
     "@storybook/react": "5.3.18",
     "@testing-library/react": "10.0.4",
     "@testing-library/react-hooks": "3.2.1",
-    "@types/jest": "25.2.1",
+    "@types/jest": "25.2.2",
     "@types/react": "16.9.11",
-    "@typescript-eslint/eslint-plugin": "2.31.0",
-    "@typescript-eslint/parser": "2.31.0",
+    "@typescript-eslint/eslint-plugin": "2.33.0",
+    "@typescript-eslint/parser": "2.33.0",
     "babel-core": "6.26.3",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.1.0",
     "babel-plugin-dynamic-import-node": "2.3.3",
     "eslint": "6.8.0",
     "eslint-config-react-app": "5.2.1",
-    "eslint-plugin-flowtype": "4.7.0",
+    "eslint-plugin-flowtype": "5.1.0",
     "eslint-plugin-import": "2.20.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react": "7.20.0",
     "eslint-plugin-react-hooks": "3.0.0",
-    "fork-ts-checker-webpack-plugin": "4.1.3",
+    "fork-ts-checker-webpack-plugin": "4.1.4",
     "gh-pages": "2.2.0",
     "husky": "4.2.5",
     "jest": "25.5.4",
@@ -117,7 +118,7 @@
     "rimraf": "3.0.2",
     "rxjs": "6.5.5",
     "semantic-release": "17.0.7",
-    "ts-jest": "25.5.1",
+    "ts-jest": "26.0.0",
     "ts-loader": "6.2.2",
     "ts-node": "8.10.1",
     "typescript": "3.8.3"
@@ -168,7 +169,7 @@
       "<rootDir>/tests/**/*.test.(ts|tsx)"
     ],
     "setupFiles": [
-      "./tests/setupTests.ts"
+      "<rootDir>/tests/setupTests.ts"
     ]
   }
 }
