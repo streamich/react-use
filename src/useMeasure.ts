@@ -6,8 +6,8 @@ export type UseMeasureRect = Pick<
   DOMRectReadOnly,
   'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'
 >;
-export type UseMeasureRef = (element: HTMLElement) => void;
-export type UseMeasureResult = [UseMeasureRef, UseMeasureRect];
+export type UseMeasureRef<E extends HTMLElement = HTMLElement> = (element: E) => void;
+export type UseMeasureResult<E extends HTMLElement = HTMLElement> = [UseMeasureRef<E>, UseMeasureRect];
 
 const defaultState: UseMeasureRect = {
   x: 0,
@@ -20,8 +20,8 @@ const defaultState: UseMeasureRect = {
   right: 0,
 };
 
-const useMeasure = (): UseMeasureResult => {
-  const [element, ref] = useState<HTMLElement | null>(null);
+const useMeasure = <E extends HTMLElement = HTMLElement>(): UseMeasureResult<E> => {
+  const [element, ref] = useState<E | null>(null);
   const [rect, setRect] = useState<UseMeasureRect>(defaultState);
 
   const observer = useMemo(
@@ -46,6 +46,6 @@ const useMeasure = (): UseMeasureResult => {
   return [ref, rect];
 };
 
-const useMeasureMock = () => [() => {}, defaultState];
+const useMeasureMock: typeof useMeasure = () => [() => {}, defaultState];
 
 export default (isClient && !!(window as any).ResizeObserver) ? useMeasure : useMeasureMock;
