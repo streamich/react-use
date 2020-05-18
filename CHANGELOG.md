@@ -1,3 +1,10 @@
+## [15.0.3](https://github.com/streamich/react-use/compare/v15.0.2...v15.0.3) (2020-05-18)
+
+
+### Bug Fixes
+
+* 🐛 correct useMeasure typings ([bedbad7](https://github.com/streamich/react-use/commit/bedbad723171ed1946bc80f72609432983d4c1ba))
+
 ## [15.0.2](https://github.com/streamich/react-use/compare/v15.0.1...v15.0.2) (2020-05-17)
 
 
