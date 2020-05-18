@@ -13,7 +13,7 @@ const isTouchEvent = (event: Event): event is TouchEvent => {
 const preventDefault = (event: Event) => {
   if (!isTouchEvent(event)) return;
 
-  if (event.touches.length < 2 && event.preventDefault) {
+  if (event.touches.length < 2 && event.cancelable && event.preventDefault) {
     event.preventDefault();
   }
 };
@@ -32,7 +32,10 @@ const useLongPress = (
         event.target.addEventListener('touchend', preventDefault, { passive: false });
         target.current = event.target;
       }
-      timeout.current = setTimeout(() => callback(event), delay);
+      timeout.current = setTimeout(() => {
+        clear();
+        callback(event);
+      }, delay);
     },
     [callback, delay]
   );
