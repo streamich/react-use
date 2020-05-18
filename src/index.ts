@@ -42,6 +42,7 @@ export { default as createBreakpoint } from './createBreakpoint';
 // export { default as useKeyboardJs } from './useKeyboardJs';
 export { default as useKeyPress } from './useKeyPress';
 export { default as useKeyPressEvent } from './useKeyPressEvent';
+export { default as useLatest } from './useLatest';
 export { default as useLifecycles } from './useLifecycles';
 export { default as useList } from './useList';
 export { default as useLocalStorage } from './useLocalStorage';
@@ -111,4 +112,4 @@ export { useRendersCount } from './useRendersCount';
 export { useFirstMountState } from './useFirstMountState';
 export { default as useSet } from './useSet';
 export { createGlobalState } from './createGlobalState';
-export { useHash } from './useHash'
+export { useHash } from './useHash';

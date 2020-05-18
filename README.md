@@ -131,6 +131,7 @@
   - [`useDefault`](./docs/useDefault.md) &mdash; returns the default value when state is `null` or `undefined`.
   - [`useGetSet`](./docs/useGetSet.md) &mdash; returns state getter `get()` instead of raw state.
   - [`useGetSetState`](./docs/useGetSetState.md) &mdash; as if [`useGetSet`](./docs/useGetSet.md) and [`useSetState`](./docs/useSetState.md) had a baby.
+  - [`useLatest`](./docs/useLatest.md) &mdash; returns the latest state or props
   - [`usePrevious`](./docs/usePrevious.md) &mdash; returns the previous state or props. [![][img-demo]](https://codesandbox.io/s/fervent-galileo-krgx6)
   - [`usePreviousDistinct`](./docs/usePreviousDistinct.md) &mdash; like `usePrevious` but with a predicate to determine if `previous` should update.
   - [`useObservable`](./docs/useObservable.md) &mdash; tracks latest value of an `Observable`.
