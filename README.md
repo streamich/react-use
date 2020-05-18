@@ -155,6 +155,8 @@
     <br/>
 - [**Miscellaneous**]()
   - [`useEnsuredForwardedRef`](./docs/useEnsuredForwardedRef.md) and [`ensuredForwardRef`](./docs/useEnsuredForwardedRef.md) &mdash; use a React.forwardedRef safely. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-useensuredforwardedref--demo)
+  - [`useFunction`](./docs/useFunction.md) &mdash; mutable alternative to `useCallback`. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/miscellaneous-usefunction--demo)
+  - [`useValue`](./docs/useValue.md) &mdash; `useRef` that keeps latest taken value. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/miscellaneous-usevalue--demo)
 
 <br />
 <br />
