@@ -108,6 +108,7 @@
   - [`useThrottle` and `useThrottleFn`](./docs/useThrottle.md) &mdash; throttles a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usethrottle--demo)
   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
   - [`usePermission`](./docs/usePermission.md) &mdash; query permission status for browser APIs.
+  - [`createGlobalEventBus`](./docs/createGlobalEventBus.md) &mdash; create a global event bus, akin to Redux' actions [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-createglobaleventbus--demo)
     <br/>
     <br/>
 - [**Lifecycles**](./docs/Lifecycles.md)
