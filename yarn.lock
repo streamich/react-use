@@ -10232,10 +10232,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@10.2.3:
-  version "10.2.3"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.2.3.tgz#22fb3e251b915e64a46d3eead03a5e37e969eac3"
-  integrity sha512-dX5CeCIDtKoNv5IQpOMq/YUP8PXc58/QW+iWapv8KzgYcbgUWJwhPaFjX5aUS9pAa8cpGH7Jur3Puw3tugTGIg==
+lint-staged@10.2.4:
+  version "10.2.4"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.2.4.tgz#0ed5d1cf06bdac0d3fbb003931bb6df3771fbf42"
+  integrity sha512-doTMGKXQAT34c3S3gwDrTnXmCZp/z1/92D8suPqqh755sKPT18ew1NoPNHxJdrvv1D4WrJ7CEnx79Ns3EdEFbg==
   dependencies:
     chalk "^4.0.0"
     commander "^5.1.0"
@@ -10243,7 +10243,7 @@ lint-staged@10.2.3:
     debug "^4.1.1"
     dedent "^0.7.0"
     execa "^4.0.1"
-    listr2 "2.0.1"
+    listr2 "^2.0.2"
     log-symbols "^4.0.0"
     micromatch "^4.0.2"
     normalize-path "^3.0.0"
@@ -10251,10 +10251,10 @@ lint-staged@10.2.3:
     string-argv "0.3.1"
     stringify-object "^3.3.0"
 
-listr2@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/listr2/-/listr2-2.0.1.tgz#06a05868795da04d91a8ad86ab299c166602ad80"
-  integrity sha512-APezMtg3gQTamAgixvFKPpq8ipQJix5dJcEw4S+UzF4k5fNn1Bm0ssULO01ekr3PkDT/hoT0bMKBb8hNFDAl2g==
+listr2@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/listr2/-/listr2-2.0.2.tgz#35e11e742ee151a8c446d1649792cadf7eb1d780"
+  integrity sha512-HkbraLsbHRFtuT0p1g9KUiMoJeqlPdgsi4Q3mCvBlYnVK+2I1vPdCxBvJ+nAxwpL7SZiyaICWMvLOyMBtu+VKw==
   dependencies:
     "@samverschueren/stream-to-observable" "^0.3.0"
     chalk "^4.0.0"
@@ -10269,7 +10269,7 @@ listr2@2.0.1:
     pad "^3.2.0"
     rxjs "^6.5.5"
     through "^2.3.8"
-    uuid "^8.0.0"
+    uuid "^7.0.2"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -15896,10 +15896,10 @@ uuid@^3.3.2, uuid@^3.3.3:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.3.tgz#4568f0216e78760ee1dbf3a4d2cf53e224112866"
   integrity sha512-pW0No1RGHgzlpHJO1nsVrHKpOEIxkGg1xB+v0ZmdNH5OAeAwzAVrCnI2/6Mtx+Uys6iaylxa+D3g4j63IKKjSQ==
 
-uuid@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.0.0.tgz#bc6ccf91b5ff0ac07bbcdbf1c7c4e150db4dbb6c"
-  integrity sha512-jOXGuXZAWdsTH7eZLtyXMqUb9EcWMGZNbL9YcGBJl4MH4nrxHmZJhEHvyLFrkxo+28uLb/NYRcStH48fnD0Vzw==
+uuid@^7.0.2:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
+  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 v8-compile-cache@^2.0.3:
   version "2.1.0"
