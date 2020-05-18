@@ -1,3 +1,16 @@
+# [15.1.0](https://github.com/streamich/react-use/compare/v15.0.3...v15.1.0) (2020-05-18)
+
+
+### Bug Fixes
+
+* display alert timeout in story ([2bb65ef](https://github.com/streamich/react-use/commit/2bb65ef3d85e82b6bd134a714e51e27876037734))
+* mutate ref in render directly ([5488f5e](https://github.com/streamich/react-use/commit/5488f5eb3e8504dcae03584b5797a48659e16623))
+
+
+### Features
+
+* add useLatest hook ([d6fe267](https://github.com/streamich/react-use/commit/d6fe2676153f19302ce170b03ceadc3bab5a945a))
+
 ## [15.0.3](https://github.com/streamich/react-use/compare/v15.0.2...v15.0.3) (2020-05-18)
 
 
