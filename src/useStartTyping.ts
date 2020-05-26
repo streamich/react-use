@@ -1,5 +1,6 @@
 /* eslint-disable */
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
+import useLatest from './useLatest';
 
 const isFocusedElementEditable = () => {
   const { activeElement, body } = document;
@@ -41,9 +42,11 @@ const isTypedCharGood = ({ keyCode, metaKey, ctrlKey, altKey }: KeyboardEvent) =
 };
 
 const useStartTyping = (onStartTyping: (event: KeyboardEvent) => void) => {
+  const latestOnStartTyping = useLatest(onStartTyping);
+
   useIsomorphicLayoutEffect(() => {
     const keydown = event => {
-      !isFocusedElementEditable() && isTypedCharGood(event) && onStartTyping(event);
+      !isFocusedElementEditable() && isTypedCharGood(event) && latestOnStartTyping.current(event);
     };
 
     document.addEventListener('keydown', keydown);
