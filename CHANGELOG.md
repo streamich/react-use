@@ -1,3 +1,10 @@
+## [15.1.1](https://github.com/streamich/react-use/compare/v15.1.0...v15.1.1) (2020-05-30)
+
+
+### Bug Fixes
+
+* 🐛 use useIsomorphicLayoutEffect everywhere ([dad26e5](https://github.com/streamich/react-use/commit/dad26e507d3409300f945bc57930f88c5a11953d))
+
 # [15.1.0](https://github.com/streamich/react-use/compare/v15.0.3...v15.1.0) (2020-05-18)
 
 
