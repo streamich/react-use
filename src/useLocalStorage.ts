@@ -20,7 +20,7 @@ function useLocalStorage<T>(
   initialValue: T,
   options?: parserOptions<T>
 ): [T, Dispatch<SetStateAction<T>>, () => void];
-function useLocalStorage<T = undefined>(
+function useLocalStorage<T>(
   key: string,
   initialValue?: T,
   options?: parserOptions<T>
