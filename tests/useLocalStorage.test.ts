@@ -55,7 +55,7 @@ describe(useLocalStorage, () => {
 
   it('returns and allows null setting', () => {
     localStorage.setItem('foo', 'null');
-    const { result, rerender } = renderHook(() => useLocalStorage('foo'));
+    const { result, rerender } = renderHook(() => useLocalStorage<null>('foo'));
     const [foo1, setFoo] = result.current;
     act(() => setFoo(null));
     rerender();
@@ -143,7 +143,7 @@ describe(useLocalStorage, () => {
     );
 
     const [, setFoo] = result.current;
-    act(() => setFoo(state => ({ ...state!, fizz: 'buzz' })));
+    act(() => setFoo((state) => ({ ...state!, fizz: 'buzz' })));
     rerender();
 
     const [value] = result.current;
