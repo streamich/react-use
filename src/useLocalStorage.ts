@@ -1,6 +1,5 @@
 /* eslint-disable */
-import { Dispatch, SetStateAction, useCallback, useState } from 'react';
-
+import { useState, useCallback, Dispatch, SetStateAction } from 'react';
 import { isClient } from './util';
 
 type parserOptions<T> =
@@ -33,7 +32,7 @@ function useLocalStorage<T>(key: string, initialValue?: T, options?: parserOptio
     throw new Error('useLocalStorage key may not be falsy');
   }
 
-  const deserializer = options ? (options.raw ? (value) => value : options.deserializer) : JSON.parse;
+  const deserializer = options ? (options.raw ? value => value : options.deserializer) : JSON.parse;
 
   const [state, setState] = useState<T | undefined>(() => {
     try {
@@ -55,7 +54,7 @@ function useLocalStorage<T>(key: string, initialValue?: T, options?: parserOptio
   });
 
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
-    (valOrFunc) => {
+    valOrFunc => {
       try {
         const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
         if (typeof newState === 'undefined') return;
