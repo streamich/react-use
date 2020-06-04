@@ -10,13 +10,19 @@ export interface CopyToClipboardState {
   error?: Error;
 }
 
-const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] => {
+const initial = {
+  value: undefined,
+  error: undefined,
+  noUserInteraction: true,
+};
+
+const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void, () => void] => {
   const isMounted = useMountedState();
-  const [state, setState] = useSetState<CopyToClipboardState>({
-    value: undefined,
-    error: undefined,
-    noUserInteraction: true,
-  });
+  const [state, setState] = useSetState<CopyToClipboardState>(initial);
+
+  const resetState = useCallback(() => {
+    setState(initial);
+  }, [setState]);
 
   const copyToClipboard = useCallback(value => {
     if (!isMounted()) {
@@ -63,7 +69,7 @@ const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] =
     }
   }, []);
 
-  return [state, copyToClipboard];
+  return [state, copyToClipboard, resetState];
 };
 
 export default useCopyToClipboard;

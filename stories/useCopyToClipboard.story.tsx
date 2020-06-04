@@ -5,13 +5,16 @@ import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [text, setText] = React.useState('');
-  const [state, copyToClipboard] = useCopyToClipboard();
+  const [state, copyToClipboard, reset] = useCopyToClipboard();
 
   return (
     <div>
       <input value={text} onChange={e => setText(e.target.value)} />
       <button type="button" onClick={() => copyToClipboard(text)}>
         copy text
+      </button>
+      <button type="button" disabled={state.value === undefined} onClick={reset}>
+        reset
       </button>
       {state.error ? (
         <p>Unable to copy value: {state.error.message}</p>
