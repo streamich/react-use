@@ -3250,10 +3250,10 @@
     "@babel/runtime" "^7.5.4"
     "@types/testing-library__react-hooks" "^3.0.0"
 
-"@testing-library/react@10.2.0":
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-10.2.0.tgz#dde740cb7374c93cefec4faa750c4b50dca7bf3f"
-  integrity sha512-TYQZ4vz0lGCGRgFqQivrtUGQhAlRSxHlYB0sDFJ6h2BZ0IrgRMF3EDQixn5UJk8oMsZJuE1HNnOA0yP4Ci2kyA==
+"@testing-library/react@10.2.1":
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-10.2.1.tgz#f0c5ac9072ad54c29672150943f35d6617263f26"
+  integrity sha512-pv2jZhiZgN1/alz1aImhSasZAOPg3er2Kgcfg9fzuw7aKPLxVengqqR1n0CJANeErR1DqORauQaod+gGUgAJOQ==
   dependencies:
     "@babel/runtime" "^7.10.2"
     "@testing-library/dom" "^7.9.0"
