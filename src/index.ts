@@ -60,6 +60,7 @@ export { default as useMount } from './useMount';
 export { default as useMountedState } from './useMountedState';
 export { default as useMouse } from './useMouse';
 export { default as useMouseHovered } from './useMouseHovered';
+export { default as useMouseWheel } from './useMouseWheel';
 export { default as useNetwork } from './useNetwork';
 export { default as useNumber } from './useNumber';
 export { default as useObservable } from './useObservable';
