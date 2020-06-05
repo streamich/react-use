@@ -9939,10 +9939,10 @@ jsx-ast-utils@^2.2.1, jsx-ast-utils@^2.2.3:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
 
-keyboardjs@2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/keyboardjs/-/keyboardjs-2.5.1.tgz#2eb5d96bd1028e07136cd71919f607579edca716"
-  integrity sha512-mRf7MQMiFcudADEpPn3vTtl/rtFELo5MAiKA6yH4ShsFsnwwjMrVfaNt6bpYhBDeODs/T5NXwltz4+ktRQyP7A==
+keyboardjs@2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/keyboardjs/-/keyboardjs-2.6.2.tgz#eec5818a660c6f208e263111d440e37ce9fa4c5e"
+  integrity sha512-DiiJTgvX5gOqmEdwN9Sqt5a/XO2VRKYrUHWb8pWqYXYNQOL+yzhOSbEGQr3eKIUAfZggw97hxJbgCc4Q/dSIBg==
 
 kind-of@^2.0.1:
   version "2.0.1"
