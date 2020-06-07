@@ -1,3 +1,10 @@
+# [15.2.0](https://github.com/streamich/react-use/compare/v15.1.1...v15.2.0) (2020-06-07)
+
+
+### Features
+
+* add useMouseWheel hook ([d714b12](https://github.com/streamich/react-use/commit/d714b12e8b2d071c65fe4dc7643be10f69dc5dba))
+
 ## [15.1.1](https://github.com/streamich/react-use/compare/v15.1.0...v15.1.1) (2020-05-30)
 
 
