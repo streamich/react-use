@@ -1,3 +1,10 @@
+## [15.2.1](https://github.com/streamich/react-use/compare/v15.2.0...v15.2.1) (2020-06-08)
+
+
+### Bug Fixes
+
+* 🐛 bump fast-deep-equal, and consume it through ES import ([f3c715c](https://github.com/streamich/react-use/commit/f3c715c12412224be815e0d1bc3e2285f275df26))
+
 # [15.2.0](https://github.com/streamich/react-use/compare/v15.1.1...v15.2.0) (2020-06-07)
 
 
