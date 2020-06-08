@@ -1,3 +1,10 @@
+## [15.2.2](https://github.com/streamich/react-use/compare/v15.2.1...v15.2.2) (2020-06-08)
+
+
+### Bug Fixes
+
+* repair useKeyboardJs hook ([8410bb0](https://github.com/streamich/react-use/commit/8410bb042fec8f1996e8bcecb85fadfbb414b3f9))
+
 ## [15.2.1](https://github.com/streamich/react-use/compare/v15.2.0...v15.2.1) (2020-06-08)
 
 
