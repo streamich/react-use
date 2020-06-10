@@ -19,5 +19,6 @@ test('useIdle test', async () => {
     expect(queryByTestId('active')).not.toBeInTheDocument();
     expect(queryByTestId('idle')).toBeInTheDocument();
   });
+  jest.clearAllTimers();
   cleanup();
 });
