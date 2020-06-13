@@ -1,3 +1,10 @@
+## [15.2.3](https://github.com/streamich/react-use/compare/v15.2.2...v15.2.3) (2020-06-13)
+
+
+### Bug Fixes
+
+* 🐛 improve how text is dropped in useDrop hook ([b2f46d1](https://github.com/streamich/react-use/commit/b2f46d10f25c5e658bb7f790950a1fd9a4e5e288))
+
 ## [15.2.2](https://github.com/streamich/react-use/compare/v15.2.1...v15.2.2) (2020-06-08)
 
 
