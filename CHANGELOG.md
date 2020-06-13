@@ -1,3 +1,10 @@
+## [15.2.4](https://github.com/streamich/react-use/compare/v15.2.3...v15.2.4) (2020-06-13)
+
+
+### Bug Fixes
+
+*  doesn't unlock the body on unmount ([1ead4ef](https://github.com/streamich/react-use/commit/1ead4efab6c67131e480570b578b0ce803204953))
+
 ## [15.2.3](https://github.com/streamich/react-use/compare/v15.2.2...v15.2.3) (2020-06-13)
 
 
