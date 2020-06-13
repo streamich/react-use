@@ -1,6 +1,5 @@
 /* eslint-disable */
 import * as React from 'react';
-import useMountedState from './useMountedState';
 
 const { useState, useMemo, useCallback, useEffect } = React;
 
@@ -23,13 +22,8 @@ export interface DropAreaOptions {
 }
 
 const noop = () => {};
-/*
-const defaultState: DropAreaState = {
-  over: false,
-};
-*/
 
-const createProcess = (options: DropAreaOptions, mounted: boolean) => (dataTransfer: DataTransfer, event) => {
+const createProcess = (options: DropAreaOptions) => (dataTransfer: DataTransfer, event) => {
   const uri = dataTransfer.getData('text/uri-list');
 
   if (uri) {
@@ -42,21 +36,18 @@ const createProcess = (options: DropAreaOptions, mounted: boolean) => (dataTrans
     return;
   }
 
-  if (dataTransfer.items && dataTransfer.items.length) {
-    dataTransfer.items[0].getAsString(text => {
-      if (mounted) {
-        (options.onText || noop)(text, event);
-      }
-    });
+  if (event.clipboardData) {
+    const text = event.clipboardData.getData('text');
+    (options.onText || noop)(text, event);
+    return;
   }
 };
 
 const useDrop = (options: DropAreaOptions = {}, args = []): DropAreaState => {
   const { onFiles, onText, onUri } = options;
-  const isMounted = useMountedState();
   const [over, setOverRaw] = useState<boolean>(false);
   const setOver = useCallback(setOverRaw, []);
-  const process = useMemo(() => createProcess(options, isMounted()), [onFiles, onText, onUri]);
+  const process = useMemo(() => createProcess(options), [onFiles, onText, onUri]);
 
   useEffect(() => {
     const onDragOver = event => {
