@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import { off, on } from './util';
 
+interface MediaDevices {
+  devices?: MediaDeviceInfo[];
+}
+
 const noop = () => {};
 
 const useMediaDevices = () => {
-  const [state, setState] = useState({});
+  const [state, setState] = useState<MediaDevices>({});
 
   useEffect(() => {
     let mounted = true;
@@ -12,10 +16,10 @@ const useMediaDevices = () => {
     const onChange = () => {
       navigator.mediaDevices
         .enumerateDevices()
-        .then(devices => {
+        .then((devices) => {
           if (mounted) {
             setState({
-              devices: devices.map(({ deviceId, groupId, kind, label }) => ({ deviceId, groupId, kind, label })),
+              devices,
             });
           }
         })
