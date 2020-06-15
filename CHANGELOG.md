@@ -1,3 +1,10 @@
+## [15.2.5](https://github.com/streamich/react-use/compare/v15.2.4...v15.2.5) (2020-06-15)
+
+
+### Bug Fixes
+
+* bump react-universal-interface ([1540c1a](https://github.com/streamich/react-use/commit/1540c1ab8f338dfa2f53de16506fbf47803d45ba))
+
 ## [15.2.4](https://github.com/streamich/react-use/compare/v15.2.3...v15.2.4) (2020-06-13)
 
 
