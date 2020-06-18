@@ -32,7 +32,7 @@ interface UseHashSearchParamsType {
  * const [id, setId] = useHashSearchParams('id2', '2')  // id: "2"
  * ```
  */
-export const useHashSearchParamsClient: UseHashSearchParamsType = (key?: any, defaultValue?: any): any => {
+const useHashSearchParamsClient: UseHashSearchParamsType = (key?: any, defaultValue?: any): any => {
   const [hash, setHash] = useHash();
   const questionIndex = hash.indexOf('?');
   const search = questionIndex !== -1 ? hash.substring(questionIndex) : '';
