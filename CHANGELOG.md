@@ -1,3 +1,10 @@
+# [15.3.0](https://github.com/streamich/react-use/compare/v15.2.5...v15.3.0) (2020-06-19)
+
+
+### Features
+
+* **usePrevious:** reworked the hook, now it is more memory-efficient. ([8c6f467](https://github.com/streamich/react-use/commit/8c6f4675beac9c71e96126dd6f06f455c4e4bf01))
+
 ## [15.2.5](https://github.com/streamich/react-use/compare/v15.2.4...v15.2.5) (2020-06-15)
 
 
