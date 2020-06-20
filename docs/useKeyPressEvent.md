@@ -1,6 +1,6 @@
 # `useKeyPressEvent`
 
-This hook fires `keydown` and `keyup` calllbacks, similar to how [`useKey`](./useKey.md)
+This hook fires `keydown` and `keyup` callbacks, similar to how [`useKey`](./useKey.md)
 hook does, but it only triggers each callback once per press cycle. For example,
 if you press and hold a key, it will fire `keydown` callback only once.
 

@@ -48,47 +48,65 @@ export default !doc
   : function useLockBody(locked: boolean = true, elementRef?: RefObject<HTMLElement>) {
       elementRef = elementRef || useRef(doc!.body);
 
+      const lock = body => {
+        const bodyInfo = bodies.get(body);
+        if (!bodyInfo) {
+          bodies.set(body, { counter: 1, initialOverflow: body.style.overflow });
+          if (isIosDevice) {
+            if (!documentListenerAdded) {
+              document.addEventListener('touchmove', preventDefault, { passive: false });
+
+              documentListenerAdded = true;
+            }
+          } else {
+            body.style.overflow = 'hidden';
+          }
+        } else {
+          bodies.set(body, { counter: bodyInfo.counter + 1, initialOverflow: bodyInfo.initialOverflow });
+        }
+      };
+
+      const unlock = body => {
+        const bodyInfo = bodies.get(body);
+        if (bodyInfo) {
+          if (bodyInfo.counter === 1) {
+            bodies.delete(body);
+            if (isIosDevice) {
+              body.ontouchmove = null;
+
+              if (documentListenerAdded) {
+                document.removeEventListener('touchmove', preventDefault);
+                documentListenerAdded = false;
+              }
+            } else {
+              body.style.overflow = bodyInfo.initialOverflow;
+            }
+          } else {
+            bodies.set(body, { counter: bodyInfo.counter - 1, initialOverflow: bodyInfo.initialOverflow });
+          }
+        }
+      };
+
       useEffect(() => {
         const body = getClosestBody(elementRef!.current);
         if (!body) {
           return;
         }
-
-        const bodyInfo = bodies.get(body);
-
         if (locked) {
-          if (!bodyInfo) {
-            bodies.set(body, { counter: 1, initialOverflow: body.style.overflow });
-            if (isIosDevice) {
-              if (!documentListenerAdded) {
-                document.addEventListener('touchmove', preventDefault, { passive: false });
-
-                documentListenerAdded = true;
-              }
-            } else {
-              body.style.overflow = 'hidden';
-            }
-          } else {
-            bodies.set(body, { counter: bodyInfo.counter + 1, initialOverflow: bodyInfo.initialOverflow });
-          }
+          lock(body);
         } else {
-          if (bodyInfo) {
-            if (bodyInfo.counter === 1) {
-              bodies.delete(body);
-              if (isIosDevice) {
-                body.ontouchmove = null;
-
-                if (documentListenerAdded) {
-                  document.removeEventListener('touchmove', preventDefault);
-                  documentListenerAdded = false;
-                }
-              } else {
-                body.style.overflow = bodyInfo.initialOverflow;
-              }
-            } else {
-              bodies.set(body, { counter: bodyInfo.counter - 1, initialOverflow: bodyInfo.initialOverflow });
-            }
-          }
+          unlock(body);
         }
       }, [locked, elementRef.current]);
+
+      // clean up, on un-mount
+      useEffect(() => {
+        const body = getClosestBody(elementRef!.current);
+        if (!body) {
+          return;
+        }
+        return () => {
+          unlock(body);
+        };
+      }, []);
     };

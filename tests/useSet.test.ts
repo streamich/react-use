@@ -12,6 +12,7 @@ it('should init set and utils', () => {
     has: expect.any(Function),
     add: expect.any(Function),
     remove: expect.any(Function),
+    toggle: expect.any(Function),
     reset: expect.any(Function),
   });
 });
@@ -94,6 +95,28 @@ it('should remove existing key', () => {
   expect(result.current[0]).toEqual(new Set([1]));
 });
 
+it('should remove an existing key on toggle', () => {
+  const { result } = setUp(new Set([1, 2]));
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.toggle(2);
+  });
+
+  expect(result.current[0]).toEqual(new Set([1]));
+});
+
+it('should add a new key on toggle', () => {
+  const { result } = setUp(new Set([1]));
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.toggle(2);
+  });
+
+  expect(result.current[0]).toEqual(new Set([1, 2]));
+});
+
 it('should do nothing if removing non-existing key', () => {
   const { result } = setUp(new Set(['a', 'b']));
   const [, utils] = result.current;
@@ -125,7 +148,7 @@ it('should reset to initial set provided', () => {
 it('should memoized its utils methods', () => {
   const { result } = setUp(new Set(['a', 'b']));
   const [, utils] = result.current;
-  const { add, remove, reset } = utils;
+  const { add, remove, reset, toggle } = utils;
 
   act(() => {
     add('foo');
@@ -133,5 +156,6 @@ it('should memoized its utils methods', () => {
 
   expect(result.current[1].add).toBe(add);
   expect(result.current[1].remove).toBe(remove);
+  expect(result.current[1].toggle).toBe(toggle);
   expect(result.current[1].reset).toBe(reset);
 });

@@ -28,5 +28,5 @@ const [{value, error, noUserInteraction}, copyToClipboard] = useCopyToClipboard(
 ```
 
 - `value` &mdash; value that was copied to clipboard, undefined when nothing was copied.
-- `error` &mdash; catched error when trying to copy to clipboard.
+- `error` &mdash; caught error when trying to copy to clipboard.
 - `noUserInteraction` &mdash; boolean indicating if user interaction was required to copy the value to clipboard to expose full API from underlying [`copy-to-clipboard`](https://github.com/sudodoki/copy-to-clipboard) library.
