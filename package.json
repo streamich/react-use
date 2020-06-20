@@ -98,7 +98,7 @@
     "eslint-plugin-react": "7.20.1",
     "eslint-plugin-react-hooks": "4.0.4",
     "fork-ts-checker-webpack-plugin": "4.1.6",
-    "gh-pages": "2.2.0",
+    "gh-pages": "3.1.0",
     "husky": "4.2.5",
     "jest": "25.5.4",
     "jest-localstorage-mock": "2.4.2",
