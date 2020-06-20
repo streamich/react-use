@@ -1,8 +1,8 @@
 /* eslint-disable */
-import { useLayoutEffect, useState, Dispatch } from 'react';
+import { useState, Dispatch } from 'react';
 import { resolveHookState, InitialHookState, HookState } from './util/resolveHookState'
 import useEffectOnce from './useEffectOnce';
-import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
+import { useFirstMountState } from './useFirstMountState';
 
 export type GlobalStateHookReturn<S> = [ S, Dispatch<HookState<S>> ]
 export type GlobalStateHook<S> = (initialState?: InitialHookState<S>) => GlobalStateHookReturn<S>
@@ -39,11 +39,10 @@ export function createGlobalState<S = any>(defaultState: S): GlobalStateHook<S> 
       store.setters = store.setters.filter(setter => setter !== stateSetter);
     });
 
-    useIsomorphicLayoutEffect(() => {
-      if (!store.setters.includes(stateSetter)) {
-        store.setters.push(stateSetter);
-      }
-    });
+    const isFirstMount = useFirstMountState();
+    if (isFirstMount && !store.setters.includes(stateSetter)) {
+      store.setters.push(stateSetter);
+    }
 
     store.initialized = true;
     return [globalState, store.setState];
