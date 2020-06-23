@@ -19,12 +19,13 @@ const Demo = () => {
   useKeyPressEvent(']', increment);
   useKeyPressEvent('[', decrement);
   useKeyPressEvent('r', reset);
+  useKeyPressEvent(' ', reset);
 
   return (
     <div>
       <style dangerouslySetInnerHTML={{ __html: `code {color: red}` }} />
       <p>
-        Try pressing <code>[</code>, <code>]</code>, and <code>r</code> to see the count incremented and decremented.
+        Try pressing <code>[</code>, <code>]</code>, and <code>r (or space)</code> to see the count incremented and decremented.
       </p>
       <p>Count: {count}</p>
     </div>
