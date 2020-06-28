@@ -30,5 +30,5 @@ const {
     hasLoaded: boolean,
     hasError: boolean,
     hasStartedInitialFetch: boolean
-} = useFetchImage(imageSrc: string);
+} = useImage(imageSrc: string);
 ```
