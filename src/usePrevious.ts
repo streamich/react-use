@@ -1,11 +1,11 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function usePrevious<T>(state: T): T | undefined {
-  const curRef = useRef<T>();
-  const prevRef = useRef<T>();
+  const ref = useRef<T>();
 
-  prevRef.current = curRef.current;
-  curRef.current = state;
+  useEffect(() => {
+    ref.current = state
+  });
 
-  return prevRef.current;
+  return ref.current;
 }
