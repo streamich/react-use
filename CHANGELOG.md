@@ -1,3 +1,10 @@
+## [15.3.1](https://github.com/streamich/react-use/compare/v15.3.0...v15.3.1) (2020-06-29)
+
+
+### Bug Fixes
+
+* **usePrevious:** revert the reworked variant as a fix of [#1315](https://github.com/streamich/react-use/issues/1315) ([a4279eb](https://github.com/streamich/react-use/commit/a4279eb660f6b433ed88e0d90c2bb0b3158d3b00))
+
 # [15.3.0](https://github.com/streamich/react-use/compare/v15.2.5...v15.3.0) (2020-06-19)
 
 
