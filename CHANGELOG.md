@@ -1,3 +1,10 @@
+## [15.3.2](https://github.com/streamich/react-use/compare/v15.3.1...v15.3.2) (2020-06-29)
+
+
+### Bug Fixes
+
+* **useFullscreen:** fix typings so [#1205](https://github.com/streamich/react-use/issues/1205) can be merged. ([e6e55a3](https://github.com/streamich/react-use/commit/e6e55a3f94993b621566ac66488fd973e992704f))
+
 ## [15.3.1](https://github.com/streamich/react-use/compare/v15.3.0...v15.3.1) (2020-06-29)
 
 
