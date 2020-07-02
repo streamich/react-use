@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { RefObject, useEffect } from 'react';
 
 import useRafState from './useRafState';

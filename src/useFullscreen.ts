@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { RefObject, useState } from 'react';
 import screenfull from 'screenfull';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';

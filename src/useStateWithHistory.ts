@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Dispatch, useCallback, useMemo, useRef, useState } from 'react';
 import { useFirstMountState } from './useFirstMountState';
 import { InitialHookState, ResolvableHookState, resolveHookState } from './util/resolveHookState';

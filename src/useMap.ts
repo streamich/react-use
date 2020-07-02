@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useState, useMemo, useCallback } from 'react';
 
 export interface StableActions<T extends object> {

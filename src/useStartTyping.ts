@@ -1,4 +1,3 @@
-/* eslint-disable */
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 const isFocusedElementEditable = () => {

@@ -151,7 +151,7 @@
   "lint-staged": {
     "src/**/**/*.{ts,tsx}": [
       "eslint --fix",
-      "prettier --write",
+      "yarn prettier --write",
       "git add"
     ]
   },
