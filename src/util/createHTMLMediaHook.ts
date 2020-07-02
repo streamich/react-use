@@ -51,7 +51,7 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => {
     const ref = useRef<HTMLAudioElement | null>(null);
 
     const wrapEvent = (userEvent, proxyEvent?) => {
-      return event => {
+      return (event) => {
         try {
           proxyEvent && proxyEvent(event);
         } finally {

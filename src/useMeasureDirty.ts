@@ -24,7 +24,7 @@ const useMeasureDirty = (ref: RefObject<HTMLElement>): ContentRect => {
 
   const [observer] = useState(
     () =>
-      new ResizeObserver(entries => {
+      new ResizeObserver((entries) => {
         const entry = entries[0];
 
         if (entry) {

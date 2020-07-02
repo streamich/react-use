@@ -11,8 +11,8 @@ export interface QueueMethods<T> {
 const useQueue = <T>(initialValue: T[] = []): QueueMethods<T> => {
   const [state, set] = useState(initialValue);
   return {
-    add: value => {
-      set(queue => [...queue, value]);
+    add: (value) => {
+      set((queue) => [...queue, value]);
     },
     remove: () => {
       let result;

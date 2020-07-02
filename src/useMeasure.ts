@@ -26,7 +26,7 @@ const useMeasure = <E extends HTMLElement = HTMLElement>(): UseMeasureResult<E> 
 
   const observer = useMemo(
     () =>
-      new (window as any).ResizeObserver(entries => {
+      new (window as any).ResizeObserver((entries) => {
         if (entries[0]) {
           const { x, y, width, height, top, left, bottom, right } = entries[0].contentRect;
           setRect({ x, y, width, height, top, left, bottom, right });
@@ -48,4 +48,4 @@ const useMeasure = <E extends HTMLElement = HTMLElement>(): UseMeasureResult<E> 
 
 const useMeasureMock: typeof useMeasure = () => [() => {}, defaultState];
 
-export default (isClient && !!(window as any).ResizeObserver) ? useMeasure : useMeasureMock;
+export default isClient && !!(window as any).ResizeObserver ? useMeasure : useMeasureMock;

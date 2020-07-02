@@ -19,6 +19,7 @@
     "lint": "eslint {src,tests}/**/*.{ts,tsx}",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
+    "lint:prettier":"yarn prettier --write src/**/**/*.{ts,tsx}",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn build:cjs && yarn build:es",
@@ -148,8 +149,9 @@
     ]
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": [
+    "src/**/**/*.{ts,tsx}": [
       "eslint --fix",
+      "prettier --write",
       "git add"
     ]
   },

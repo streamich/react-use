@@ -2,10 +2,10 @@
 import { useEffect, useState } from 'react';
 import { isClient, off, on } from './util';
 
-const patchHistoryMethod = method => {
+const patchHistoryMethod = (method) => {
   const original = history[method];
 
-  history[method] = function(state) {
+  history[method] = function (state) {
     const result = original.apply(this, arguments);
     const event = new Event(method.toLowerCase());
 

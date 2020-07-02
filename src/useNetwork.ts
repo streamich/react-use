@@ -40,7 +40,7 @@ const useNetwork = (initialState: NetworkState = {}) => {
 
   useEffect(() => {
     let localState = state;
-    const localSetState = patch => {
+    const localSetState = (patch) => {
       localState = { ...localState, ...patch };
       setState(localState);
     };

@@ -5,7 +5,7 @@ const getValue = (search: string, param: string) => new URLSearchParams(search).
 
 export type UseQueryParam = (param: string) => string | null;
 
-const useSearchParam: UseQueryParam = param => {
+const useSearchParam: UseQueryParam = (param) => {
   const [value, setValue] = useState<string | null>(() => getValue(location.search, param));
 
   useEffect(() => {

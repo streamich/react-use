@@ -43,7 +43,7 @@ const useMotion = (initialState: MotionSensorState = defaultState) => {
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
-    const handler = event => {
+    const handler = (event) => {
       const { acceleration, accelerationIncludingGravity, rotationRate, interval } = event;
 
       setState({

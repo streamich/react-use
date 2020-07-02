@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useMemo } from 'react';
 import useGetSet from './useGetSet';
 import { HookState, InitialHookState, resolveHookState } from './util/resolveHookState';
