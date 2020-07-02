@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import { isClient, off, on } from './util';
 
-const history = window.history;
-const location = window.location;
-
 const patchHistoryMethod = (method) => {
+  const history = window.history;
   const original = history[method];
 
   history[method] = function (state) {
@@ -45,9 +43,9 @@ const useLocationServer = (): LocationSensorState => ({
 });
 
 const buildState = (trigger: string) => {
-  const { state, length } = history;
+  const { state, length } = window.history;
 
-  const { hash, host, hostname, href, origin, pathname, port, protocol, search } = location;
+  const { hash, host, hostname, href, origin, pathname, port, protocol, search } = window.location;
 
   return {
     trigger,

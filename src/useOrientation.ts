@@ -11,9 +11,8 @@ const defaultState: OrientationState = {
   type: 'landscape-primary',
 };
 
-const screen = window.screen;
-
 const useOrientation = (initialState: OrientationState = defaultState) => {
+  const screen = window.screen;
   const [state, setState] = useState(initialState);
 
   useEffect(() => {

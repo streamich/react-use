@@ -1,4 +1,3 @@
-
 import useLocalStorage from '../src/useLocalStorage';
 import 'jest-localstorage-mock';
 import { renderHook, act } from '@testing-library/react-hooks';
@@ -143,7 +142,7 @@ describe(useLocalStorage, () => {
     );
 
     const [, setFoo] = result.current;
-    act(() => setFoo(state => ({ ...state!, fizz: 'buzz' })));
+    act(() => setFoo((state) => ({ ...state!, fizz: 'buzz' })));
     rerender();
 
     const [value] = result.current;
@@ -154,7 +153,9 @@ describe(useLocalStorage, () => {
   it('rejects nullish or undefined keys', () => {
     const { result } = renderHook(() => useLocalStorage(null as any));
     try {
-      const current = result.current;
+      (() => {
+        return result.current;
+      })();
       fail('hook should have thrown');
     } catch (e) {
       expect(String(e)).toMatch(/key may not be/i);
@@ -165,8 +166,9 @@ describe(useLocalStorage, () => {
   describe('eslint react-hooks/rules-of-hooks', () => {
     it('memoizes an object between rerenders', () => {
       const { result, rerender } = renderHook(() => useLocalStorage('foo', { ok: true }));
-
-      const current = result.current; // if localStorage isn't set then r1 and r2 will be different
+      (() => {
+        return result.current; // if localStorage isn't set then r1 and r2 will be different
+      })();
       rerender();
       const [r2] = result.current;
       rerender();
