@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useState, useEffect, useRef, RefObject } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 

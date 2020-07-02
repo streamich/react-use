@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useMemo, useState } from 'react';
 import { Spring, SpringSystem } from 'rebound';
 

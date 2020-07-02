@@ -1,9 +1,10 @@
-/* eslint-disable */
 import { useState, useEffect } from 'react';
 
 const getValue = (search: string, param: string) => new URLSearchParams(search).get(param);
 
 export type UseQueryParam = (param: string) => string | null;
+
+const location = window.location;
 
 const useSearchParam: UseQueryParam = (param) => {
   const [value, setValue] = useState<string | null>(() => getValue(location.search, param));

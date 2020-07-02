@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { RefObject, useEffect, useRef } from 'react';
 
 export function getClosestBody(el: Element | HTMLElement | HTMLIFrameElement | null): HTMLElement | null {
@@ -46,7 +45,8 @@ let documentListenerAdded = false;
 export default !doc
   ? function useLockBodyMock(_locked: boolean = true, _elementRef?: RefObject<HTMLElement>) {}
   : function useLockBody(locked: boolean = true, elementRef?: RefObject<HTMLElement>) {
-      elementRef = elementRef || useRef(doc!.body);
+      const bodyRef = useRef(doc!.body);
+      elementRef = elementRef || bodyRef;
 
       const lock = (body) => {
         const bodyInfo = bodies.get(body);

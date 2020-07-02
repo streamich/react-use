@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react';
 import { off, on } from './util';
 
@@ -11,6 +10,8 @@ const defaultState: OrientationState = {
   angle: 0,
   type: 'landscape-primary',
 };
+
+const screen = window.screen;
 
 const useOrientation = (initialState: OrientationState = defaultState) => {
   const [state, setState] = useState(initialState);

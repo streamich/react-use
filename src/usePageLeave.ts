@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect } from 'react';
 
 const usePageLeave = (onPageLeave, args = []) => {

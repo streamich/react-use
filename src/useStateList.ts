@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useMemo, useRef } from 'react';
 import useMountedState from './useMountedState';
 import useUpdate from './useUpdate';

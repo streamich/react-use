@@ -1,6 +1,8 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react';
 import { isClient, off, on } from './util';
+
+const history = window.history;
+const location = window.location;
 
 const patchHistoryMethod = (method) => {
   const original = history[method];
