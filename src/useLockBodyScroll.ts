@@ -48,7 +48,7 @@ export default !doc
   : function useLockBody(locked: boolean = true, elementRef?: RefObject<HTMLElement>) {
       elementRef = elementRef || useRef(doc!.body);
 
-      const lock = body => {
+      const lock = (body) => {
         const bodyInfo = bodies.get(body);
         if (!bodyInfo) {
           bodies.set(body, { counter: 1, initialOverflow: body.style.overflow });
@@ -66,7 +66,7 @@ export default !doc
         }
       };
 
-      const unlock = body => {
+      const unlock = (body) => {
         const bodyInfo = bodies.get(body);
         if (bodyInfo) {
           if (bodyInfo.counter === 1) {

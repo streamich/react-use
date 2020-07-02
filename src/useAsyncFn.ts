@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { DependencyList, useCallback, useState, useRef } from 'react';
 import useMountedState from './useMountedState';
 import { FnReturningPromise, PromiseType } from './util';
@@ -40,15 +39,15 @@ export default function useAsyncFn<T extends FnReturningPromise>(
 
   const callback = useCallback((...args: Parameters<T>): ReturnType<T> => {
     const callId = ++lastCallId.current;
-    set(prevState => ({ ...prevState, loading: true }));
+    set((prevState) => ({ ...prevState, loading: true }));
 
     return fn(...args).then(
-      value => {
+      (value) => {
         isMounted() && callId === lastCallId.current && set({ value, loading: false });
 
         return value;
       },
-      error => {
+      (error) => {
         isMounted() && callId === lastCallId.current && set({ error, loading: false });
 
         return error;

@@ -26,7 +26,7 @@ const useLocalStorage = <T>(
     throw new Error('useLocalStorage key may not be falsy');
   }
 
-  const deserializer = options ? (options.raw ? value => value : options.deserializer) : JSON.parse;
+  const deserializer = options ? (options.raw ? (value) => value : options.deserializer) : JSON.parse;
 
   const [state, setState] = useState<T | undefined>(() => {
     try {
@@ -48,7 +48,7 @@ const useLocalStorage = <T>(
   });
 
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
-    valOrFunc => {
+    (valOrFunc) => {
       try {
         const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
         if (typeof newState === 'undefined') return;
