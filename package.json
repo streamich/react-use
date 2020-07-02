@@ -116,7 +116,7 @@
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
     "rimraf": "3.0.2",
-    "rxjs": "6.5.5",
+    "rxjs": "6.6.0",
     "semantic-release": "17.1.1",
     "ts-jest": "26.1.1",
     "ts-loader": "7.0.5",
