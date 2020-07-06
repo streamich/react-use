@@ -41,7 +41,7 @@ const Demo = () => {
 const { state, currentIndex, prev, next, setStateAt, setState } = useStateList<T>(stateSet: T[] = []);
 ```
 
-If `stateSet` changed, became shorter than before and `currentIndex` left in shrinked gap - the last element of list will be taken as current.
+If `stateSet` changed, became shorter than before and `currentIndex` left in shrunk gap - the last element of list will be taken as current.
 
 - **`state`**_`: T`_ &mdash; current state value;
 - **`currentIndex`**_`: number`_ &mdash; current state index;

@@ -1,6 +1,6 @@
-/* eslint-disable */
 import { useState, useEffect, useRef, FC, cloneElement } from 'react';
 import { render } from 'react-universal-interface';
+import useLatest from './useLatest';
 
 const noop = () => {};
 
@@ -29,12 +29,9 @@ export interface ScratchSensorState {
   elY?: number;
 }
 
-const useScratch = ({
-  disabled,
-  onScratch = noop,
-  onScratchStart = noop,
-  onScratchEnd = noop,
-}: ScratchSensorParams = {}): [(el: HTMLElement | null) => void, ScratchSensorState] => {
+const useScratch = (params: ScratchSensorParams = {}): [(el: HTMLElement | null) => void, ScratchSensorState] => {
+  const {disabled} = params;
+  const paramsRef = useLatest(params);
   const [state, setState] = useState<ScratchSensorState>({ isScratching: false });
   const refState = useRef<ScratchSensorState>(state);
   const refScratching = useRef<boolean>(false);
@@ -61,7 +58,7 @@ const useScratch = ({
             isScratching: true,
           };
           refState.current = newState;
-          onScratch(newState);
+          (paramsRef.current.onScratch || noop)(newState);
           return newState;
         });
       });
@@ -82,7 +79,7 @@ const useScratch = ({
       if (!refScratching.current) return;
       refScratching.current = false;
       refState.current = { ...refState.current, isScratching: false };
-      onScratchEnd(refState.current);
+      (paramsRef.current.onScratchEnd || noop)(refState.current);
       setState({ isScratching: false });
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('touchmove', onTouchMove);
@@ -117,7 +114,7 @@ const useScratch = ({
         elY,
       };
       refState.current = newState;
-      onScratchStart(newState);
+      (paramsRef.current.onScratchStart || noop)(newState);
       setState(newState);
       window.addEventListener('mousemove', onMouseMove);
       window.addEventListener('touchmove', onTouchMove);
@@ -153,7 +150,7 @@ const useScratch = ({
       refState.current = { isScratching: false };
       setState(refState.current);
     };
-  }, [el, disabled]);
+  }, [el, disabled, paramsRef]);
 
   return [setEl, state];
 };

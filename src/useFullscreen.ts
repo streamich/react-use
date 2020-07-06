@@ -1,6 +1,7 @@
 /* eslint-disable */
-import { RefObject, useLayoutEffect, useState } from 'react';
+import { RefObject, useState } from 'react';
 import screenfull from 'screenfull';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export interface FullScreenOptions {
   video?: RefObject<HTMLVideoElement>;
@@ -13,7 +14,7 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
   const { video, onClose = noop } = options;
   const [isFullscreen, setIsFullscreen] = useState(on);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!on) {
       return;
     }

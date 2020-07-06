@@ -3,21 +3,28 @@ import * as React from 'react';
 import { useLocalStorage } from '../src';
 import ShowDocs from './util/ShowDocs';
 
+const StorageKey = ({ storageKey }) => {
+  const [value, setValue, remove] = useLocalStorage(storageKey);
+  return (
+    <div>
+      <div>(Storage key: { storageKey }) Value: {value}</div>
+      <button onClick={() => setValue('bar')}>Set to: bar</button>
+      <button onClick={() => setValue('baz')}>Set to: baz</button>
+      <button onClick={() => remove()}>Clear</button>
+      <br />
+    </div>
+  );
+}
+
 const Demo = () => {
-  const [value, setValue] = useLocalStorage('hello-key', 'foo');
-  const [removableValue, setRemovableValue, remove] = useLocalStorage('removeable-key');
+  useLocalStorage('hello-key', 'initialValue');
+  useLocalStorage('no-initial-value');
 
   return (
     <div>
-      <div>Value: {value}</div>
-      <button onClick={() => setValue('bar')}>bar</button>
-      <button onClick={() => setValue('baz')}>baz</button>
-      <br />
-      <br />
-      <div>Removable Value: {removableValue}</div>
-      <button onClick={() => setRemovableValue('foo')}>foo</button>
-      <button onClick={() => setRemovableValue('bar')}>bar</button>
-      <button onClick={() => remove()}>Remove</button>
+      <StorageKey storageKey="hello-key" />
+      <StorageKey storageKey="hello-key" />
+      <StorageKey storageKey="no-initial-value-key" />
     </div>
   );
 };

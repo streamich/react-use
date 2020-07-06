@@ -4,7 +4,7 @@ import { useSet } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [set, { add, has, remove, reset }] = useSet(new Set(['hello']));
+  const [set, { add, has, remove, reset, toggle }] = useSet(new Set(['hello']));
 
   return (
     <div>
@@ -13,6 +13,7 @@ const Demo = () => {
       <button onClick={() => remove('hello')} disabled={!has('hello')}>
         Remove 'hello'
       </button>
+      <button onClick={() => toggle('hello')}>Toggle 'hello'</button>
       <pre>{JSON.stringify(Array.from(set), null, 2)}</pre>
     </div>
   );
