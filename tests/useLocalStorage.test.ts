@@ -233,4 +233,21 @@ describe(useLocalStorage, () => {
       expect(JSON.parse(value!).fizz).toEqual('bang');
     });
   });
+
+  it('use setState function', () => {
+    const { result } = renderHook(() => useLocalStorage('foo', { count: 0 }));
+    let [foo, setFoo] = result.current;
+
+    act(() => setFoo({ count: foo!.count + 1 }));
+    [foo, setFoo] = result.current;
+    expect(foo!.count).toEqual(1);
+
+    act(() =>
+      setFoo(state => {
+        return { count: state!.count + 1 };
+      })
+    );
+    [foo] = result.current;
+    expect(foo!.count).toEqual(2);
+  });
 });

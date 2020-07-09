@@ -69,7 +69,7 @@ const useLocalStorage = <T>(
         // localStorage can throw. Also JSON.stringify can throw.
       }
     },
-    [key, setState]
+    [key, state, setState]
   );
 
   const remove = useCallback(() => {
