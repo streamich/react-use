@@ -2,20 +2,19 @@ import { useMemo, useReducer, Reducer } from 'react';
 
 type Action = {
   type: string;
-  payload?: any;
+  payload: any[];
 };
 
-type CreateMethods<M, T> = (
-  state: T
-) => {
-  [P in keyof M]: (payload?: any) => T;
+type CreateMethods<M, T> = (state: T) => M;
+
+type WrappedMethods<M extends Record<string, (...args: any[]) => any>> = {
+  [P in keyof M]: (...payload: Parameters<M[P]>) => void;
 };
 
-type WrappedMethods<M> = {
-  [P in keyof M]: (...payload: any) => void;
-};
-
-const useMethods = <M, T>(createMethods: CreateMethods<M, T>, initialState: T): [T, WrappedMethods<M>] => {
+const useMethods = <M extends Record<string, (...args: any[]) => T>, T>(
+  createMethods: CreateMethods<M, T>,
+  initialState: T
+): [T, WrappedMethods<M>] => {
   const reducer = useMemo<Reducer<T, Action>>(
     () => (reducerState: T, action: Action) => {
       return createMethods(reducerState)[action.type](...action.payload);
@@ -28,10 +27,13 @@ const useMethods = <M, T>(createMethods: CreateMethods<M, T>, initialState: T): 
   const wrappedMethods: WrappedMethods<M> = useMemo(() => {
     const actionTypes = Object.keys(createMethods(initialState));
 
-    return actionTypes.reduce((acc, type) => {
-      acc[type] = (...payload) => dispatch({ type, payload });
-      return acc;
-    }, {} as WrappedMethods<M>);
+    return actionTypes.reduce(
+      (acc, type) => {
+        acc[type as keyof M] = (...payload) => dispatch({ type, payload });
+        return acc;
+      },
+      {} as WrappedMethods<M>
+    );
   }, [createMethods, initialState]);
 
   return [state, wrappedMethods];
