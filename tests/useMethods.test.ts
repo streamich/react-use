@@ -56,12 +56,6 @@ it('should properly update the state based on the createMethods', () => {
       return { ...state, count: state.count - 1 };
     },
     add(...nums: number[]) {
-      console.log(
-        nums,
-        nums.reduce((total, num) => (total += num), 0),
-        state.count,
-        '-=-='
-      )
       return { ...state, count: state.count + nums.reduce((total, num) => (total += num), 0) };
     },
   });
