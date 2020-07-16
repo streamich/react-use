@@ -121,7 +121,7 @@
     "ts-jest": "26.1.2",
     "ts-loader": "7.0.5",
     "ts-node": "8.10.2",
-    "typescript": "3.9.6"
+    "typescript": "3.9.7"
   },
   "config": {
     "commitizen": {
