@@ -3430,6 +3430,18 @@
   resolved "https://registry.yarnpkg.com/@types/lolex/-/lolex-2.1.3.tgz#793557c9b8ad319b4c8e4c6548b90893f4aa5f69"
   integrity sha512-nEipOLYyZJ4RKHCg7tlR37ewFy91oggmip2MBzPdVQ8QhTFqjcRhE8R0t4tfpDnSlxGWHoEGJl0UCC4kYhqoiw==
 
+"@types/lru-cache@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@types/lru-cache/-/lru-cache-5.1.0.tgz#57f228f2b80c046b4a1bd5cac031f81f207f4f03"
+  integrity sha512-RaE0B+14ToE4l6UqdarKPnXwVDuigfFv+5j9Dze/Nqr23yyuqdNvzcZi3xB+3Agvi5R4EOgAksfv3lXX4vBt9w==
+
+"@types/md5@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@types/md5/-/md5-2.2.0.tgz#cd82e16b95973f94bb03dee40c5b6be4a7fb7fb4"
+  integrity sha512-JN8OVL/wiDlCWTPzplsgMPu0uE9Q6blwp68rYsfk2G8aokRUQ8XD9MEhZwihfAiQvoyE+m31m6i3GFXwYWomKQ==
+  dependencies:
+    "@types/node" "*"
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
