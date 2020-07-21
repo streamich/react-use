@@ -1,4 +1,4 @@
-import useCustomFetchSuspense from '../src/useCustomFetchSuspense'
+import { useCustomFetchSuspense } from '../src/useCustomFetchSuspense'
 
 describe('useCustomFetchSuspense', () => {
     it('is defined', () => {
