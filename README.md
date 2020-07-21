@@ -155,6 +155,10 @@
   - [`useMethods`](./docs/useMethods.md) &mdash; neat alternative to `useReducer`. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-usemethods--demo)
     <br/>
     <br/>
+- [**Suspense**]()
+  - [`useCustomFetchSuspense`](./docs/useCustomFetchSuspense.md) &mdash; [![][img-demo]](http://localhost:6008/?path=/story/suspense-usecustomfetchsuspense--demo)
+    <br/>
+    <br/>
 - [**Miscellaneous**]()
   - [`useEnsuredForwardedRef`](./docs/useEnsuredForwardedRef.md) and [`ensuredForwardRef`](./docs/useEnsuredForwardedRef.md) &mdash; use a React.forwardedRef safely. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-useensuredforwardedref--demo)
 
