@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "jsx": "react",
     "declaration": true,
+    "declarationMap": true,
     "pretty": true,
     "rootDir": "src",
     "sourceMap": false,
