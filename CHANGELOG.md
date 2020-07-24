@@ -1,3 +1,10 @@
+## [15.3.3](https://github.com/streamich/react-use/compare/v15.3.2...v15.3.3) (2020-07-24)
+
+
+### Bug Fixes
+
+* replace createFactory usages with createElement ([ad29bea](https://github.com/streamich/react-use/commit/ad29bea7b03f46aa697e6623bdf7a17347ace651))
+
 ## [15.3.2](https://github.com/streamich/react-use/compare/v15.3.1...v15.3.2) (2020-06-29)
 
 
