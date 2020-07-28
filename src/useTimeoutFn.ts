@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { useCallback, useEffect, useRef } from 'react';
 
-export type UseTimeoutFnReturn = [() => boolean | null, () => void, () => void];
+export type UseTimeoutFnReturn = [() => boolean | null, () => void, () => void, () => void];
 
 export default function useTimeoutFn(fn: Function, ms: number = 0): UseTimeoutFnReturn {
   const ready = useRef<boolean | null>(false);
@@ -25,6 +25,12 @@ export default function useTimeoutFn(fn: Function, ms: number = 0): UseTimeoutFn
     timeout.current && clearTimeout(timeout.current);
   }, []);
 
+  const flush = useCallback(() => {
+    ready.current = true;
+    timeout.current && clearTimeout(timeout.current);
+    callback.current();
+  }, []);
+
   // update ref when function changes
   useEffect(() => {
     callback.current = fn;
@@ -37,5 +43,5 @@ export default function useTimeoutFn(fn: Function, ms: number = 0): UseTimeoutFn
     return clear;
   }, [ms]);
 
-  return [isReady, clear, set];
+  return [isReady, clear, set, flush];
 }

@@ -11,7 +11,7 @@ const Demo = () => {
     setState(`called at ${Date.now()}`);
   }
 
-  const [isReady, cancel, reset] = useTimeoutFn(fn, 5000);
+  const [isReady, cancel, reset, flush] = useTimeoutFn(fn, 5000);
   const cancelButtonClick = useCallback(() => {
     if (isReady() === false) {
       cancel();
@@ -21,6 +21,10 @@ const Demo = () => {
       setState('Not called yet');
     }
   }, []);
+  const flushButtonClick = useCallback(() => {
+    flush();
+    setState('flushed');
+  }, []);
 
   const readyState = isReady();
 
@@ -28,6 +32,7 @@ const Demo = () => {
     <div>
       <div>{readyState !== null ? 'Function will be called in 5 seconds' : 'Timer cancelled'}</div>
       <button onClick={cancelButtonClick}> {readyState === false ? 'cancel' : 'restart'} timeout</button>
+      <button onClick={flushButtonClick} disabled={readyState !== false}>flush</button>
       <br />
       <div>Function state: {readyState === false ? 'Pending' : readyState ? 'Called' : 'Cancelled'}</div>
       <div>{state}</div>
