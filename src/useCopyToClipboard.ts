@@ -1,4 +1,3 @@
-/* eslint-disable */
 import writeText from 'copy-to-clipboard';
 import { useCallback } from 'react';
 import useMountedState from './useMountedState';
@@ -61,7 +60,7 @@ const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] =
         noUserInteraction,
       });
     }
-  }, []);
+  }, [isMounted, setState]);
 
   return [state, copyToClipboard];
 };
