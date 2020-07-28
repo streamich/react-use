@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useMemo, useState } from 'react';
 import useMountedState from './useMountedState';
 
@@ -20,7 +19,7 @@ export interface DropAreaOptions {
   onUri?: (url: string, event?) => void;
 }
 
-const noop = () => {};
+const noop = () => { };
 /*
 const defaultState: DropAreaState = {
   over: false,
@@ -73,10 +72,9 @@ const createBond = (process, setOver): DropAreaBond => ({
 });
 
 const useDropArea = (options: DropAreaOptions = {}): [DropAreaBond, DropAreaState] => {
-  const { onFiles, onText, onUri } = options;
   const isMounted = useMountedState();
   const [over, setOver] = useState<boolean>(false);
-  const process = useMemo(() => createProcess(options, isMounted()), [onFiles, onText, onUri]);
+  const process = useMemo(() => createProcess(options, isMounted()), [isMounted, options]);
   const bond: DropAreaBond = useMemo(() => createBond(process, setOver), [process, setOver]);
 
   return [bond, { over }];
