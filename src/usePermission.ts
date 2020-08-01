@@ -30,12 +30,11 @@ const usePermission = (permissionDesc: PermissionDesc): State => {
   };
 
   useEffect(() => {
-
     // Permissions API is not available in every browser
-    if ('permissions' in navigator) {
+    if (navigator.permissions && navigator.permissions.query) {
       navigator.permissions
         .query(permissionDesc)
-        .then(status => {
+        .then((status) => {
           permissionStatus = status;
           changeState();
         })
