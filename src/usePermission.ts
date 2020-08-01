@@ -30,13 +30,17 @@ const usePermission = (permissionDesc: PermissionDesc): State => {
   };
 
   useEffect(() => {
-    navigator.permissions
-      .query(permissionDesc)
-      .then(status => {
-        permissionStatus = status;
-        changeState();
-      })
-      .catch(noop);
+
+    // Permissions API is not available in every browser
+    if ('permissions' in navigator) {
+      navigator.permissions
+        .query(permissionDesc)
+        .then(status => {
+          permissionStatus = status;
+          changeState();
+        })
+        .catch(noop);
+    }
 
     return () => {
       mounted = false;
