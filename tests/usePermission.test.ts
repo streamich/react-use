@@ -8,8 +8,14 @@ it('should avoid throwing an exception if permissions API is missing', () => {
 });
 
 it('should return permission state', async () => {
+  const status: Partial<PermissionStatus> = {
+    state: 'prompt',
+    addEventListener() {},
+    removeEventListener() {},
+  };
+
   (navigator as any).permissions = {
-    query: jest.fn().mockResolvedValue({ state: 'prompt', addEventListener() {}, removeEventListener() {} }),
+    query: jest.fn().mockResolvedValue(status),
   } as Permissions;
 
   const { result, waitForNextUpdate } = renderHook(() => usePermission({ name: 'notifications' }));
@@ -44,4 +50,25 @@ it('should listen to permission changes', async () => {
   await waitForNextUpdate();
 
   expect(result.current).toBe('granted');
+});
+
+it('should stop listening to changes when unmounted', async () => {
+  const removeEventListener = jest.fn();
+  const status: Partial<PermissionStatus> = {
+    state: 'prompt',
+    addEventListener() {},
+    removeEventListener,
+  };
+
+  (navigator as any).permissions = {
+    query: jest.fn().mockResolvedValue(status),
+  } as Permissions;
+
+  const { waitForNextUpdate, unmount } = renderHook(() => usePermission({ name: 'notifications' }));
+
+  await waitForNextUpdate();
+
+  unmount();
+
+  expect(removeEventListener).toHaveBeenCalledWith('change', expect.any(Function));
 });
