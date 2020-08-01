@@ -17,3 +17,7 @@ const Demo = () => {
   );
 };
 ```
+
+## Support
+
+The [`navigator.permissions` API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions) is not available in every browser, most notably Safari. In that case, the hook will return an empty value and no-op.
