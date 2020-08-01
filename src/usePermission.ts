@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { noop, off, on } from './misc/util';
+import { useEffect, useState } from "react";
+import { noop, off, on } from "./misc/util";
 
 type PermissionDesc =
   | PermissionDescriptor
@@ -7,13 +7,13 @@ type PermissionDesc =
   | MidiPermissionDescriptor
   | PushPermissionDescriptor;
 
-type State = PermissionState | '';
+type State = PermissionState | "";
 
 const usePermission = (permissionDesc: PermissionDesc): State => {
   let mounted = true;
   let permissionStatus: PermissionStatus | null = null;
 
-  const [state, setState] = useState<State>('');
+  const [state, setState] = useState<State>("");
 
   const onChange = () => {
     if (mounted && permissionStatus) {
@@ -23,12 +23,12 @@ const usePermission = (permissionDesc: PermissionDesc): State => {
 
   const changeState = () => {
     onChange();
-    on(permissionStatus, 'change', onChange);
+    on(permissionStatus, "change", onChange);
   };
 
   useEffect(() => {
     // Permissions API is not available in every browser
-    if (navigator.permissions && navigator.permissions.query) {
+    if ("permissions" in navigator) {
       navigator.permissions
         .query(permissionDesc)
         .then((status) => {
@@ -40,7 +40,7 @@ const usePermission = (permissionDesc: PermissionDesc): State => {
 
     return () => {
       mounted = false;
-      permissionStatus && off(permissionStatus, 'change', onChange);
+      permissionStatus && off(permissionStatus, "change", onChange);
     };
   }, []);
 
