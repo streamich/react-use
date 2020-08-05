@@ -6,7 +6,7 @@ const useUnmountPromise = (): Race => {
   const refUnmounted = useRef(false);
   useEffect(() => () => {
     refUnmounted.current = true;
-  });
+  }, []);
 
   const wrapper = useMemo(() => {
     const race = <P extends Promise<any>, E>(promise: P, onError?: (error: E) => void) => {
