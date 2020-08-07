@@ -1,6 +1,6 @@
 # `useMount`
 
-React lifecycle hook that calls a function after the component is mounted. Use `useEffectOnce` if you need both a mount and unmount function.
+React lifecycle hook that calls a function after the component is mounted. Use `useLifecycles` if you need both a mount and unmount function.
 
 ## Usage
 
