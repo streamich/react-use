@@ -36,4 +36,7 @@ const Demo = () => {
 Get latest url hash with `hash` and set url hash with `setHash`.
 
 - `hash: string`: get current url hash. listen to `hashchange` event.
-- `setHash: (newHash: string) => void`: change url hash. Invoke this method will trigger `hashchange` event.
+- `setHash: (newHash: string, replaceInHistory?: boolean) => void`: change url
+  hash. Invoke this method will trigger `hashchange` event. The leading `#` in
+  `newHash` is optional. If `replaceInHistory` is `true`, the current history entry will
+  be replaced with the new hash, instead of creating a new one.
