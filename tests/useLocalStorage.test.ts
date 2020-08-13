@@ -166,6 +166,21 @@ describe(useLocalStorage, () => {
     }
   });
 
+  describe('remove', () => {
+    it('removes value from localStorage and restores initialValue', () => {
+      localStorage.setItem('foo', '"bar"');
+      const { result, rerender } = renderHook(() => useLocalStorage('foo', 'initial'));
+      const [, , remove] = result.current;
+
+      act(() => remove());
+      rerender();
+
+      const [foo] = result.current;
+      expect(foo).toEqual('initial');
+      expect(localStorage.__STORE__.foo).toBeUndefined();
+    });
+  });
+
   /* Enforces proper eslint react-hooks/rules-of-hooks usage */
   describe('eslint react-hooks/rules-of-hooks', () => {
     it('memoizes an object between rerenders', () => {

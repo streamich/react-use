@@ -11,11 +11,21 @@ type parserOptions<T> =
       deserializer: (value: string) => T;
     };
 
-const useLocalStorage = <T>(
+export default function useLocalStorage<T>(
+  key: string,
+  initialValue: T,
+  options?: parserOptions<T>
+): [T, Dispatch<SetStateAction<T>>, () => void];
+export default function useLocalStorage<T>(
   key: string,
   initialValue?: T,
   options?: parserOptions<T>
-): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
+): [T | undefined, Dispatch<SetStateAction<T>>, () => void];
+export default function useLocalStorage<T>(
+  key: string,
+  initialValue?: T,
+  options?: parserOptions<T>
+): [T | undefined, Dispatch<SetStateAction<T>>, () => void] {
   if (!isBrowser) {
     return [initialValue as T, noop, noop];
   }
@@ -50,7 +60,7 @@ const useLocalStorage = <T>(
   });
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
+  const set: Dispatch<SetStateAction<T>> = useCallback(
     (valOrFunc) => {
       try {
         const newState =
@@ -80,7 +90,7 @@ const useLocalStorage = <T>(
   const remove = useCallback(() => {
     try {
       localStorage.removeItem(key);
-      setState(undefined);
+      setState(initialValue);
     } catch {
       // If user is in private mode or has storage restriction
       // localStorage can throw.
@@ -88,6 +98,4 @@ const useLocalStorage = <T>(
   }, [key, setState]);
 
   return [state, set, remove];
-};
-
-export default useLocalStorage;
+}
