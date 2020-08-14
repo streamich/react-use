@@ -157,6 +157,7 @@
     <br/>
 - [**Miscellaneous**]()
   - [`useEnsuredForwardedRef`](./docs/useEnsuredForwardedRef.md) and [`ensuredForwardRef`](./docs/useEnsuredForwardedRef.md) &mdash; use a React.forwardedRef safely. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-useensuredforwardedref--demo)
+- [`combineRefs`](./docs/combineRefs.md) &mdash; combine multiple refs into one.
 
 <br />
 <br />
