@@ -27,7 +27,7 @@ const useCustomCompareEffect = <TDeps extends DependencyList>(
 
   const ref = useRef<TDeps | undefined>(undefined);
 
-  if (!ref.current || !depsEqual(deps, ref.current)) {
+  if (!ref.current || !depsEqual(ref.current, deps)) {
     ref.current = deps;
   }
 
