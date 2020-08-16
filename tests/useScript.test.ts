@@ -100,12 +100,12 @@ it('makeScript with hook preload', async (done) => {
   const { result } = renderHook(() => useMockScript());
 
   expect(result.current.ready).toBeFalsy();
-  expect(result.current.failed).toBeFalsy;
+  expect(result.current.failed).toBeFalsy();
   expect(useMockScript.ready).toEqual(result.current.ready)
   expect(useMockScript.failed).toEqual(result.current.failed)
   act(() => ele.onload());
   expect(result.current.ready).toBeTruthy();
-  expect(result.current.failed).toBeFalsy;
+  expect(result.current.failed).toBeFalsy();
   expect(useMockScript.ready).toEqual(result.current.ready)
   expect(useMockScript.failed).toEqual(result.current.failed)
 });
@@ -128,7 +128,7 @@ it('makeScript with hook lazyload', async (done) => {
   expect(ele).toBeDefined();
 
   expect(result.current.ready).toBeFalsy();
-  expect(result.current.failed).toBeFalsy;
+  expect(result.current.failed).toBeFalsy();
   expect(useMockScript.ready).toEqual(result.current.ready)
   expect(useMockScript.failed).toEqual(result.current.failed)
   act(() => ele.onload());
