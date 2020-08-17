@@ -41,6 +41,26 @@ it('useScript load failed', async (done) => {
   expect(result.current.failed).toBeTruthy();
 });
 
+it('useScript load aborted', async (done) => {
+  const scriptId = 'useScript_load_aborted';
+  const { result } = setUp('mockUrl', {
+    onabort: () => {
+      done();
+    },
+    id: scriptId
+  });
+  
+  expect(result.current.ready).toBeFalsy();
+  expect(result.current.failed).toBeFalsy();
+  const ele = document.querySelector(`#${scriptId}`) as any;
+  expect(ele).toBeDefined();
+  act(() => ele.onabort(new UIEvent('script aborted')));
+  
+  expect(result.current.ready).toBe(false);
+  expect(result.current.failed).toBeTruthy();
+});
+
+
 
 it('makeScript load success', async (done) => {
   const scriptId = 'makeScript_load_success';
@@ -78,6 +98,29 @@ it('makeScript load failed', async (done) => {
   ele = document.querySelector(`#${scriptId}`) as any;
   expect(ele).toBeDefined();
   act(() => ele.onerror('load failed'));
+  expect(script.ready).toBeFalsy();
+  expect(script.failed).toBeTruthy();
+});
+
+it('makeScript load aborted', async (done) => {
+  const scriptId = 'makeScript_load_aborted';
+  const script = makeScript('mockUrl', {
+    onabort: () => {
+      done();
+    },
+    id: scriptId
+  });
+  
+  let ele = document.querySelector(`#${scriptId}`) as any;
+  expect(ele).toBeNull();
+  
+  script.load();
+  ele = document.querySelector(`#${scriptId}`);
+
+  expect(ele).toBeDefined();
+  act(() => {
+    ele.onabort(new UIEvent("load aborted"))
+  });
   expect(script.ready).toBeFalsy();
   expect(script.failed).toBeTruthy();
 });
@@ -165,6 +208,36 @@ it('makeScript with hook load failed', async (done) => {
   expect(useMockScript.failed).toEqual(result.current.failed)
 });
 
+it('makeScript with hook load aborted', async (done) => {
+  const scriptId = 'makeScript_with_hook_load_aborted';
+  const useMockScript = makeScript('mockUrl', {
+    onabort: () => {
+      done();
+    },
+    id: scriptId
+  });
+  let ele = document.querySelector<HTMLScriptElement>(`#${scriptId}`) as any;
+  expect(ele).toBeNull();
+  
+  const { result } = renderHook(() => useMockScript());
+
+  ele = document.querySelector<HTMLScriptElement>(`#${scriptId}`);
+  expect(ele).toBeDefined();
+
+  expect(result.current.ready).toBeFalsy();
+  expect(result.current.failed).toBeFalsy();
+  expect(useMockScript.ready).toEqual(result.current.ready)
+  expect(useMockScript.failed).toEqual(result.current.failed)
+
+  if (ele) {
+    act(() => ele.onabort(new UIEvent("load script aborted")));
+  }
+  
+  expect(result.current.ready).toBeFalsy();
+  expect(result.current.failed).toBeTruthy();
+  expect(useMockScript.ready).toEqual(result.current.ready)
+  expect(useMockScript.failed).toEqual(result.current.failed)
+});
 
 it('unload script should set ready to false', () => {
   const scriptId = 'unload_script_should_set_ready_to_false';
