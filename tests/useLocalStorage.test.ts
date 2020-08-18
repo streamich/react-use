@@ -151,6 +151,18 @@ describe(useLocalStorage, () => {
     expect(value!.fizz).toEqual('buzz');
   });
 
+  it("function updater doesn't get stale state", () => {
+    const { result, rerender } = renderHook(() => useLocalStorage('foo', false));
+
+    act(() => result.current[1](state => !state));
+    rerender();
+    expect(result.current[0]).toEqual(true);
+
+    act(() => result.current[1](state => !state));
+    rerender();
+    expect(result.current[0]).toEqual(false);
+  });
+
   it('rejects nullish or undefined keys', () => {
     const { result } = renderHook(() => useLocalStorage(null as any));
     try {
