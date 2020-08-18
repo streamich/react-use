@@ -12,7 +12,13 @@ const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
 
   useEffect(() => {
     const onMouseOver = () => setValue(true);
-    const onMouseOut = () => setValue(false);
+    function onMouseOut(this: any, event: any) {
+      const related = event.relatedTarget;
+      const target = this;
+      if (!related || (related !== target && !target.contains(related))) {
+        setValue(false); 
+      }
+    }
 
     if (enabled && ref && ref.current) {
       ref.current.addEventListener('mouseover', onMouseOver);
@@ -28,7 +34,7 @@ const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
         current.removeEventListener('mouseout', onMouseOut);
       }
     };
-  }, [enabled, ref]);
+  }, [enabled, ref, ref.current]);
 
   return value;
 };
