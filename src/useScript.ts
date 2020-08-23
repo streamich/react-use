@@ -1,39 +1,47 @@
 import {useEffect, useState} from 'react';
+import useEffectOnce from './useEffectOnce';
 
-export interface LoadScriptOptions {
-  id?: string;
-  type?: string;
-  async?: boolean;
-  onload?: Function;
-  onerror?: Function;
-  onabort?: Function;
-  crossOrigin?: string | null;
+export interface LoadScriptOptions extends Partial < Pick < HTMLScriptElement,
+'type' | 'async' | 'id' | 'crossOrigin' | 'charset' | 'defer' | 'integrity' | 'noModule' | 'nonce' | 'referrerPolicy' >> {
+  onLoad?: (event : Event) => void;
+  onError?: (event : ErrorEvent) => void;
+  onAbort?: (event : UIEvent) => void;
 }
 
 export function makeScript(url, options : LoadScriptOptions) {
-  let element : HTMLScriptElement | null;
+  let element : HTMLScriptElement;
+
   let _ready = false;
   let _failed = false;
   const {
     type = "text/javascript",
     async = true,
     id,
-    onload,
-    onerror,
-    onabort,
-    crossOrigin = null
+    crossOrigin = null,
+    charset,
+    defer = false,
+    integrity,
+    noModule = false,
+    nonce,
+    referrerPolicy,
+    onLoad,
+    onError,
+    onAbort
   } = options || {};
-  function _onload() {
+  function _onLoad(e : Event) {
     _ready = true;
-    onload && onload();
+    onLoad && onLoad(e);
+    unload();
   }
-  function _onerror(...args) {
+  function _onError(e : ErrorEvent) {
     _failed = true;
-    onerror && onerror(...args);
+    onError && onError(e);
+    unload();
   }
-  function _onabort(...args) {
+  function _onAbort(e : UIEvent) {
     _failed = true;
-    onabort && onabort(...args);
+    onAbort && onAbort(e);
+    unload();
   }
   function load() {
     if (element) {
@@ -41,17 +49,23 @@ export function makeScript(url, options : LoadScriptOptions) {
     }
     element = document.createElement("script");
 
-    element.src = url;
-    element.type = type;
-    element.async = async;
     if (id) {
       element.id = id;
     }
+    element.src = url;
+    element.type = type;
+    element.async = async;
+    element.charset = charset || element.charset;
+    element.defer = defer;
+    element.integrity = integrity || element.integrity;
+    element.noModule = noModule;
+    element.nonce = nonce;
+    element.referrerPolicy = referrerPolicy || element.referrerPolicy;
     element.crossOrigin = crossOrigin;
 
-    element.onload = _onload;
-    element.onerror = _onerror;
-    element.onabort = _onabort;
+    element.addEventListener('load', _onLoad);
+    element.addEventListener('error', _onError);
+    element.addEventListener('abort', _onAbort);
     document
       .head
       .appendChild(element);
@@ -59,12 +73,10 @@ export function makeScript(url, options : LoadScriptOptions) {
 
   function unload() {
     if (element) {
-      document
-        .head
-        .removeChild(element);
-      element = null;
-      _ready = false;
-      _failed = false;
+      element.removeEventListener('load', _onLoad);
+      element.removeEventListener('error', _onError);
+      element.removeEventListener('abort', _onAbort);
+      element.remove();
     }
   }
 
@@ -73,25 +85,25 @@ export function makeScript(url, options : LoadScriptOptions) {
       setReady] = useState(_ready);
     const [failed,
       setFailed] = useState(_failed);
-    useEffect(() => {
+    useEffectOnce(() => {
       load();
 
-      if (element) {
-        element.onload = () => {
-          setReady(true);
-          _onload();
-        }
-  
-        element.onerror = (...args) => {
-          setFailed(true);
-          _onerror(...args);
-        }
-        element.onabort = (...args) => {
-          setFailed(true);
-          _onabort(...args);
-        }
+      const onSuccess = () => {
+        setReady(true);
       }
-    }, []);
+      const onFailed = () => {
+        setFailed(true);
+      }
+      element.addEventListener('load', onSuccess);
+      element.addEventListener('error', onFailed);
+      element.addEventListener('abort', onFailed);
+
+      return () => {
+        element.removeEventListener('load', onSuccess);
+        element.removeEventListener('error', onFailed);
+        element.removeEventListener('abort', onFailed);
+      }
+    });
     return {ready, failed};
   }
 
@@ -123,30 +135,50 @@ const useScript = (url : string, options?: LoadScriptOptions) : {
   const [failed,
     setFailed] = useState(false);
   const {
-    type = "text/javascript",
-    async = true,
+    type,
+    async,
     id,
-    onload,
-    onerror,
-    onabort
+    crossOrigin,
+    charset,
+    defer,
+    integrity,
+    noModule,
+    nonce,
+    referrerPolicy,
+    onLoad,
+    onError,
+    onAbort,
   } = options || {};
   useEffect(() => {
     const script = makeScript(url, {
       type,
       async,
       id,
-      onload: () => {
+      crossOrigin,
+      charset,
+      defer,
+      integrity,
+      noModule,
+      nonce,
+      referrerPolicy,
+      onLoad: (e) => {
         setReady(true);
-        onload && onload();
+        if (onLoad) {
+          onLoad(e)
+        };
       },
-      onerror: (...args) => {
+      onError: (e) => {
         setFailed(true);
-        onerror && onerror(...args);
+        if (onError) {
+          onError(e);
+        }
       },
-      onabort: (...args) => {
+      onAbort: (e) => {
         setFailed(true);
-        onabort && onabort(...args);
-      }
+        if (onAbort) {
+          onAbort(e);
+        }
+      },
     });
     script.load();
     return () => {
@@ -154,9 +186,20 @@ const useScript = (url : string, options?: LoadScriptOptions) : {
       setReady(false);
       setFailed(false);
     };
-  // we don't want callback make script reload
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url, async, id, type]);
+    // we don't want callback make script reload react-hooks/exhaustive-deps
+  }, [
+    url,
+    type,
+    async,
+    id,
+    crossOrigin,
+    charset,
+    defer,
+    integrity,
+    noModule,
+    nonce,
+    referrerPolicy
+  ]);
 
   return {ready, failed};
 };

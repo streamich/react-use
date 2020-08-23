@@ -5,9 +5,9 @@ import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const { ready, failed } = useScript('https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.js', {
-    onload: () => console.log('load success'),
-    onerror: (...args) => console.log(args),
-    id: `jquery`
+    onLoad: () => console.log('load success'),
+    onError: (...args) => console.log(args),
+    id: `jquery`,
   })
 
   const w: Window & { $?: any } = window;

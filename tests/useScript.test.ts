@@ -8,7 +8,7 @@ function setUp(url: string, options?: LoadScriptOptions) {
 it('useScript load success', async (done) => {
   const scriptId = 'useScript_load_success';
   const { result } = setUp('mockUrl', {
-    onload: () =>{
+    onLoad: () =>{
       done();
     },
     id: scriptId
@@ -17,7 +17,9 @@ it('useScript load success', async (done) => {
   expect(result.current.failed).toBe(false);
   const ele = document.querySelector(`#${scriptId}`) as any;
   expect(ele).toBeDefined();
-  act(() => ele.onload());
+  act(() => {
+    ele.dispatchEvent(new Event('load'))
+  });
   
   expect(result.current.ready).toBe(true);
   expect(result.current.failed).toBe(false);
@@ -26,7 +28,7 @@ it('useScript load success', async (done) => {
 it('useScript load failed', async (done) => {
   const scriptId = 'script2';
   const { result } = setUp('mockUrl', {
-    onerror: () => {
+    onError: () => {
       done();
     },
     id: scriptId
@@ -35,7 +37,9 @@ it('useScript load failed', async (done) => {
   expect(result.current.failed).toBeFalsy();
   const ele = document.querySelector(`#${scriptId}`) as any;
   expect(ele).toBeDefined();
-  act(() => ele.onerror("load script error"));
+  act(() => {
+    ele.dispatchEvent(new ErrorEvent('error'))
+  });
   
   expect(result.current.ready).toBe(false);
   expect(result.current.failed).toBeTruthy();
@@ -44,7 +48,7 @@ it('useScript load failed', async (done) => {
 it('useScript load aborted', async (done) => {
   const scriptId = 'useScript_load_aborted';
   const { result } = setUp('mockUrl', {
-    onabort: () => {
+    onAbort: () => {
       done();
     },
     id: scriptId
@@ -54,7 +58,9 @@ it('useScript load aborted', async (done) => {
   expect(result.current.failed).toBeFalsy();
   const ele = document.querySelector(`#${scriptId}`) as any;
   expect(ele).toBeDefined();
-  act(() => ele.onabort(new UIEvent('script aborted')));
+  act(() => {
+    ele.dispatchEvent(new UIEvent('abort'))
+  });
   
   expect(result.current.ready).toBe(false);
   expect(result.current.failed).toBeTruthy();
@@ -65,7 +71,7 @@ it('useScript load aborted', async (done) => {
 it('makeScript load success', async (done) => {
   const scriptId = 'makeScript_load_success';
   const script = makeScript('mockUrl', {
-    onload: () =>{
+    onLoad: () =>{
       done();
     },
     id: scriptId
@@ -77,7 +83,9 @@ it('makeScript load success', async (done) => {
   script.load();
   ele = document.querySelector(`#${scriptId}`) as any;
   expect(ele).toBeDefined();
-  act(() => ele.onload());
+  act(() => {
+    ele.dispatchEvent(new Event('load'))
+  });
   expect(script.ready).toBeTruthy();
   expect(script.failed).toBeFalsy();
 });
@@ -85,7 +93,7 @@ it('makeScript load success', async (done) => {
 it('makeScript load failed', async (done) => {
   const scriptId = 'makeScript_load_failed';
   const script = makeScript('mockUrl', {
-    onerror: () => {
+    onError: () => {
       done();
     },
     id: scriptId
@@ -97,7 +105,9 @@ it('makeScript load failed', async (done) => {
   script.load();
   ele = document.querySelector(`#${scriptId}`) as any;
   expect(ele).toBeDefined();
-  act(() => ele.onerror('load failed'));
+  act(() => {
+    ele.dispatchEvent(new ErrorEvent('error'))
+  });
   expect(script.ready).toBeFalsy();
   expect(script.failed).toBeTruthy();
 });
@@ -105,7 +115,7 @@ it('makeScript load failed', async (done) => {
 it('makeScript load aborted', async (done) => {
   const scriptId = 'makeScript_load_aborted';
   const script = makeScript('mockUrl', {
-    onabort: () => {
+    onAbort: () => {
       done();
     },
     id: scriptId
@@ -119,7 +129,7 @@ it('makeScript load aborted', async (done) => {
 
   expect(ele).toBeDefined();
   act(() => {
-    ele.onabort(new UIEvent("load aborted"))
+    ele.dispatchEvent(new Event('abort'))
   });
   expect(script.ready).toBeFalsy();
   expect(script.failed).toBeTruthy();
@@ -128,7 +138,7 @@ it('makeScript load aborted', async (done) => {
 it('makeScript with hook preload', async (done) => {
   const scriptId = 'makeScript_with_hook_preload';
   const useMockScript = makeScript('mockUrl', {
-    onload: () =>{
+    onLoad: () =>{
       done();
     },
     id: scriptId
@@ -146,7 +156,9 @@ it('makeScript with hook preload', async (done) => {
   expect(result.current.failed).toBeFalsy();
   expect(useMockScript.ready).toEqual(result.current.ready)
   expect(useMockScript.failed).toEqual(result.current.failed)
-  act(() => ele.onload());
+  act(() => {
+    ele.dispatchEvent(new Event('load'))
+  });
   expect(result.current.ready).toBeTruthy();
   expect(result.current.failed).toBeFalsy();
   expect(useMockScript.ready).toEqual(result.current.ready)
@@ -156,7 +168,7 @@ it('makeScript with hook preload', async (done) => {
 it('makeScript with hook lazyload', async (done) => {
   const scriptId = 'makeScript_with_hook_lazyload';
   const useMockScript = makeScript('mockUrl', {
-    onload: () =>{
+    onLoad: () =>{
       done();
     },
     id: scriptId
@@ -174,7 +186,9 @@ it('makeScript with hook lazyload', async (done) => {
   expect(result.current.failed).toBeFalsy();
   expect(useMockScript.ready).toEqual(result.current.ready)
   expect(useMockScript.failed).toEqual(result.current.failed)
-  act(() => ele.onload());
+  act(() => {
+    ele.dispatchEvent(new Event('load'))
+  });
   expect(result.current.ready).toBeTruthy();
   expect(result.current.failed).toBeFalsy();
   expect(useMockScript.ready).toEqual(result.current.ready)
@@ -184,7 +198,7 @@ it('makeScript with hook lazyload', async (done) => {
 it('makeScript with hook load failed', async (done) => {
   const scriptId = 'makeScript_with_hook_load_failed';
   const useMockScript = makeScript('mockUrl', {
-    onerror: () => {
+    onError: () => {
       done();
     },
     id: scriptId
@@ -201,7 +215,9 @@ it('makeScript with hook load failed', async (done) => {
   expect(result.current.failed).toBeFalsy();
   expect(useMockScript.ready).toEqual(result.current.ready)
   expect(useMockScript.failed).toEqual(result.current.failed)
-  act(() => ele.onerror("load script error"));
+  act(() => {
+    ele.dispatchEvent(new ErrorEvent('error'))
+  });
   expect(result.current.ready).toBeFalsy();
   expect(result.current.failed).toBeTruthy();
   expect(useMockScript.ready).toEqual(result.current.ready)
@@ -211,12 +227,13 @@ it('makeScript with hook load failed', async (done) => {
 it('makeScript with hook load aborted', async (done) => {
   const scriptId = 'makeScript_with_hook_load_aborted';
   const useMockScript = makeScript('mockUrl', {
-    onabort: () => {
+    onAbort: () => {
       done();
     },
     id: scriptId
   });
   let ele = document.querySelector<HTMLScriptElement>(`#${scriptId}`) as any;
+
   expect(ele).toBeNull();
   
   const { result } = renderHook(() => useMockScript());
@@ -229,9 +246,9 @@ it('makeScript with hook load aborted', async (done) => {
   expect(useMockScript.ready).toEqual(result.current.ready)
   expect(useMockScript.failed).toEqual(result.current.failed)
 
-  if (ele) {
-    act(() => ele.onabort(new UIEvent("load script aborted")));
-  }
+  act(() => {
+    ele.dispatchEvent(new UIEvent('abort'))
+  });
   
   expect(result.current.ready).toBeFalsy();
   expect(result.current.failed).toBeTruthy();
@@ -239,8 +256,8 @@ it('makeScript with hook load aborted', async (done) => {
   expect(useMockScript.failed).toEqual(result.current.failed)
 });
 
-it('unload script should set ready to false', () => {
-  const scriptId = 'unload_script_should_set_ready_to_false';
+it('unload script should keep state before unload', () => {
+  const scriptId = 'unload_script_should_keep_state_before_unload';
   const script = makeScript('mockUrl', {
     id: scriptId
   });
@@ -252,8 +269,14 @@ it('unload script should set ready to false', () => {
   ele = document.querySelector(`#${scriptId}`) as any;
   expect(ele).toBeDefined();
   expect(script.ready).toBeFalsy();
-  act(() => ele.onload());
-  expect(script.ready).toBeTruthy();
+  expect(script.failed).toBeFalsy();
   script.unload();
+  act(() => {
+    ele.dispatchEvent(new Event('load'))
+  });
   expect(script.ready).toBeFalsy();
+  act(() => {
+    ele.dispatchEvent(new ErrorEvent('error'))
+  });
+  expect(script.failed).toBeFalsy();
 });
