@@ -186,7 +186,8 @@ const useScript = (url : string, options?: LoadScriptOptions) : {
       setReady(false);
       setFailed(false);
     };
-    // we don't want callback make script reload react-hooks/exhaustive-deps
+    // we don't want callback make script reload
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     url,
     type,
