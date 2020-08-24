@@ -37,9 +37,9 @@ const options = {
   type: 'text/javascript',
   async: true,
   crossOrigin: null,
-  onload: () => console.log('load success'),
-  onerror: (...args) => console.log(args),
-  onabort: (...args) => console.log(args),
+  onLoad: (e: event) => console.log('load success'),
+  onError: (e: ErrorEvent) => console.log(e),
+  onAbort: (e: UIEvent) => console.log(args),
 };
 const { ready, failed } = useScript('https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.js', options);
 ```
