@@ -105,7 +105,7 @@
     "keyboardjs": "2.6.3",
     "lint-staged": "10.2.11",
     "markdown-loader": "5.1.0",
-    "prettier": "2.0.5",
+    "prettier": "2.1.0",
     "raf-stub": "3.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
