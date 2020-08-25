@@ -39,6 +39,7 @@ const useEvent = <T extends UseEventTarget>(
       return;
     }
     if (isListenerType1(target)) {
+      target.removeEventListener(name, handler, options);
       target.addEventListener(name, handler, options);
     } else if (isListenerType2(target)) {
       target.on(name, handler, options);
