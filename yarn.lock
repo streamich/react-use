@@ -10680,10 +10680,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@10.2.12:
-  version "10.2.12"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.2.12.tgz#882c814f539979aa6e854199560d63bbf807542f"
-  integrity sha512-pbnhf37eD1mn1BGWbuqxZ5Brth6R9V5c0XapTUIjAAcUlaNyvhIJKiMn0e3xPL98I3b0pbq3b8zTpgHO0ZzmaQ==
+lint-staged@10.2.13:
+  version "10.2.13"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-10.2.13.tgz#b9c504683470edfc464b7d3fe3845a5a1efcd814"
+  integrity sha512-conwlukNV6aL9SiMWjFtDp5exeDnTMekdNPDZsKGnpfQuHcO0E3L3Bbf58lcR+M7vk6LpCilxDAVks/DDVBYlA==
   dependencies:
     chalk "^4.1.0"
     cli-truncate "^2.1.0"
