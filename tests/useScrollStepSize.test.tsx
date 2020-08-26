@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { render, fireEvent, createEvent, act, screen, waitFor } from '@testing-library/react';
+import { render, fireEvent, createEvent, act, screen } from '@testing-library/react';
 import { useScrollStepSize } from '../src';
 import { replaceRaf } from 'raf-stub';
 
@@ -167,7 +167,9 @@ describe('useScrollStepSize with fixed item height', () => {
 });
 
 describe('useScrollStepSize dynamic', () => {
-  replaceRaf();
+  beforeAll(() => {
+    replaceRaf();
+  });
 
   beforeEach(() => {
     requestAnimationFrame.reset();
@@ -202,34 +204,19 @@ describe('useScrollStepSize dynamic', () => {
 
   it('Should decrement scrollTop on wheel up', async () => {
     makeSut(0)
-
-    let scrollTopOnWheelDownEvent;
-    let scrollTopOnWheelUpEvent;
-
     const scrollContainer = screen.getByTestId('scrollContainer');
 
-    act(() => {
-      fireEvent(scrollContainer, wheelDownEvent(scrollContainer));
-      requestAnimationFrame.step();
-    });
-    let currentScrollTop = await waitFor<HTMLElement>(() => screen.getByTestId('currentValueScrollTop'))
-    scrollTopOnWheelDownEvent = Number(currentScrollTop.textContent)
-    console.log('scrollTopOnWheelDownEvent', scrollTopOnWheelDownEvent)
+    fireEvent(scrollContainer, wheelDownEvent(scrollContainer));
+    act(requestAnimationFrame.step)
+    expect(Number(screen.getByTestId('currentValueScrollTop').textContent)).toBe(40)
 
-    act(() => {
-      fireEvent(scrollContainer, wheelUpEvent(scrollContainer));
-      requestAnimationFrame.step();
-    });
-    currentScrollTop = await waitFor<HTMLElement>(() => screen.getByTestId('currentValueScrollTop'))
-    scrollTopOnWheelUpEvent = Number(currentScrollTop.textContent)
-    console.log('scrollTopOnWheelUpEvent', scrollTopOnWheelUpEvent)
-
-    expect(scrollTopOnWheelDownEvent).toBeGreaterThan(scrollTopOnWheelUpEvent);
-    expect(currentScrollTop.textContent).toBe('0');
+    fireEvent(scrollContainer, wheelUpEvent(scrollContainer));
+    act(requestAnimationFrame.step)
+    expect(Number(screen.getByTestId('currentValueScrollTop').textContent)).toBe(0);
   });
 
   it('Should not set scrollTop to be less than 0', async () => {
-    makeSut();
+    makeSut(0);
 
     const scrollContainer = screen.getByTestId('scrollContainer');
 
@@ -244,7 +231,7 @@ describe('useScrollStepSize dynamic', () => {
   });
 
   it('Should not set scrollTop to be greater than DOM element scrollHeight', async () => {
-    makeSut();
+    makeSut(0);
 
     const scrollContainer = screen.getByTestId('scrollContainer');
 
