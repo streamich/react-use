@@ -20,12 +20,15 @@ const useScrollStepSize = (
     const scrollContainer = ref.current;
     if (scrollContainer) {
       scrollContainer.scrollTop = scrollTop;
-      setChildren(Array.prototype.slice.call(scrollContainer.children))
     }
   }, [ref, scrollTop]);
 
   useEffect(() => {
-  }, [children])
+    const scrollContainer = ref.current;
+    if (scrollContainer) {
+      setChildren(Array.prototype.slice.call(scrollContainer.children))
+    }
+  }, [ref])
 
   useEffect(() => {
     const scrollContainer = ref.current;
@@ -35,21 +38,22 @@ const useScrollStepSize = (
 
       if (isScrollingUp) {
         index = indexChildren > 0 ? indexChildren - 1 : indexChildren;
-        const heightToScroll = scrollStepSize !== 0 ? scrollStepSize : (children[index].clientHeight || 0)
+        const heightToScroll = scrollStepSize === 0 ? children[index].clientHeight : scrollStepSize
 
-        setScrollTop(currentScrollTop => {
-          const hasNotReachBottomScroll = currentScrollTop - heightToScroll >= 0
+        setScrollTop(() => {
+          const hasNotReachBottomScroll = scrollTop - heightToScroll >= 0
           return hasNotReachBottomScroll
-            ? currentScrollTop - heightToScroll
-            : currentScrollTop
+            ? scrollTop - heightToScroll
+            : scrollTop
         });
       } else {
         const hasNotReachEndScroll = scrollContainer!.scrollHeight > scrollContainer!.scrollTop + scrollContainer!.clientHeight
+        const heightToScroll = scrollStepSize === 0 ? children[index].clientHeight : scrollStepSize
 
-        setScrollTop(currentScrollTop => {
+        setScrollTop(() => {
           return hasNotReachEndScroll
-            ? currentScrollTop + (scrollStepSize === 0 ? (children[indexChildren]?.clientHeight || 0) : scrollStepSize)
-            : currentScrollTop
+            ? scrollTop + heightToScroll
+            : scrollTop
         });
         index = hasNotReachEndScroll ? indexChildren + 1 : indexChildren
       }
