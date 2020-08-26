@@ -22,6 +22,7 @@ const DemoFixedItemHeight = () => {
 
     return (
         <>
+            <h4>Items with 40px of height</h4>
             <pre>Scrolltop: {scrollTop}</pre>
             <div ref={scrollRef} style={{ height: '200px', overflow: "auto" }}>
                 {new Array(100).fill(0).map((i, idx) => {
@@ -39,6 +40,7 @@ const DemoDynamicItemHeight = () => {
 
   return (
       <>
+          <h4>Items with dynamic height (between 30px and 90px)</h4>
           <pre>Scrolltop: {scrollTop}</pre>
           <div ref={scrollRef} style={{ height: '200px', overflow: "auto" }}>
               {items.map((i, idx) => {
@@ -55,9 +57,5 @@ const DemoDynamicItemHeight = () => {
 
 storiesOf('Sensors/useScrollStepSize', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useScrollStepSize.md')} />)
-  .add('Demo', () => (
-    <>
-      <DemoFixedItemHeight />
-      <DemoDynamicItemHeight />
-    </>
-  ));
+  .add('Demo Fixed Item Height', () => <DemoFixedItemHeight />)
+  .add('Demo Dynamic Item Height', () => <DemoDynamicItemHeight />);
