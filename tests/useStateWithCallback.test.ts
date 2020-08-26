@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import useCallbackState from '../src/useCallbackState';
+import useStateWithCallback from '../src/useStateWithCallback';
 
-const setUp = (initialState?: number) => renderHook(() => useCallbackState(initialState));
+const setUp = (initialState?: number) => renderHook(() => useStateWithCallback(initialState));
 
 it('should init state and setter', () => {
   const { result } = setUp(0);

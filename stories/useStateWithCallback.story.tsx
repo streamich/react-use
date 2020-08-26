@@ -1,10 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { useCallbackState } from '../src';
+import { useStateWithCallback } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [count, setCount] = useCallbackState(0);
+  const [count, setCount] = useStateWithCallback(0);
 
   return (
     <div>

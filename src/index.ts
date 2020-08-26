@@ -9,7 +9,7 @@ export { default as useAudio } from './useAudio';
 export { default as useBattery } from './useBattery';
 export { default as useBeforeUnload } from './useBeforeUnload';
 export { default as useBoolean } from './useBoolean';
-export { default as useCallbackState } from './useCallbackState';
+export { default as useStateWithCallback } from './useStateWithCallback';
 export { default as useClickAway } from './useClickAway';
 export { default as useCookie } from './useCookie';
 export { default as useCopyToClipboard } from './useCopyToClipboard';
