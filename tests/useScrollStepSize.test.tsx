@@ -17,6 +17,9 @@ const createWheelEvent = (container: HTMLElement, type: 'up' | 'down'): Event =>
   return createEvent.wheel(container, { deltaX: -0, deltaY });
 }
 
+const wheelUpEvent = (container: HTMLElement): Event => createWheelEvent(container, 'up')
+const wheelDownEvent = (container: HTMLElement): Event => createWheelEvent(container, 'down')
+
 type SutTypes = {
   itemHeight: number
 }
@@ -47,13 +50,13 @@ const makeSut = (itemHeight: number = 40): SutTypes => {
       }
     }, [ref]);
 
-    const ItemScroll: React.FC<ItemScrollProps> = ({ index, ...props }) => {
+    const ItemScroll: React.FC<ItemScrollProps> = React.memo(({ index, ...props }) => {
       return (
         <div style={{ height: '40px', border: '1px solid red', boxSizing: 'border-box' }} {...props}>
           Item {index}
         </div>
       );
-    };
+    });
 
     return (
       <>
@@ -97,10 +100,9 @@ describe('useScrollStepSize with fixed item height', () => {
     const { itemHeight } = makeSut()
 
     const scrollContainer = screen.getByTestId('scrollContainer');
-    const wheelDownEvent = createWheelEvent(scrollContainer, 'down')
 
     act(() => {
-      fireEvent(scrollContainer, wheelDownEvent);
+      fireEvent(scrollContainer, wheelDownEvent(scrollContainer));
       requestAnimationFrame.step();
     });
 
@@ -115,17 +117,14 @@ describe('useScrollStepSize with fixed item height', () => {
     let scrollTopOnWheelUpEvent;
 
     const scrollContainer = screen.getByTestId('scrollContainer');
-    const wheelDownEvent = createWheelEvent(scrollContainer, 'down')
-    const wheelUpEvent = createWheelEvent(scrollContainer, 'up')
-
     act(() => {
-      fireEvent(scrollContainer, wheelDownEvent);
+      fireEvent(scrollContainer, wheelDownEvent(scrollContainer));
       requestAnimationFrame.step();
     });
     scrollTopOnWheelDownEvent = Number(screen.getByTestId('currentValueScrollTop').textContent)
 
     act(() => {
-      fireEvent(scrollContainer, wheelUpEvent);
+      fireEvent(scrollContainer, wheelUpEvent(scrollContainer));
       requestAnimationFrame.step();
     });
     scrollTopOnWheelUpEvent = Number(screen.getByTestId('currentValueScrollTop').textContent)
@@ -140,10 +139,9 @@ describe('useScrollStepSize with fixed item height', () => {
     makeSut()
 
     const scrollContainer = screen.getByTestId('scrollContainer');
-    const wheelUpEvent = createWheelEvent(scrollContainer, 'up')
 
     act(() => {
-      fireEvent(scrollContainer, wheelUpEvent);
+      fireEvent(scrollContainer, wheelUpEvent(scrollContainer));
       requestAnimationFrame.step();
     });
 
@@ -156,10 +154,9 @@ describe('useScrollStepSize with fixed item height', () => {
     makeSut()
 
     const scrollContainer = screen.getByTestId('scrollContainer');
-    const wheelUpEvent = createWheelEvent(scrollContainer, 'up')
 
     act(() => {
-      fireEvent(scrollContainer, wheelUpEvent);
+      fireEvent(scrollContainer, wheelUpEvent(scrollContainer));
       requestAnimationFrame.step();
     });
 
@@ -192,10 +189,9 @@ describe('useScrollStepSize dynamic', () => {
     makeSut(0)
 
     const scrollContainer = screen.getByTestId('scrollContainer');
-    const wheelDownEvent = createWheelEvent(scrollContainer, 'down')
 
     act(() => {
-      fireEvent(scrollContainer, wheelDownEvent);
+      fireEvent(scrollContainer, wheelDownEvent(scrollContainer));
       requestAnimationFrame.step();
     });
 
@@ -211,22 +207,22 @@ describe('useScrollStepSize dynamic', () => {
     let scrollTopOnWheelUpEvent;
 
     const scrollContainer = screen.getByTestId('scrollContainer');
-    const wheelDownEvent = createWheelEvent(scrollContainer, 'down')
-    const wheelUpEvent = createWheelEvent(scrollContainer, 'up')
 
     act(() => {
-      fireEvent(scrollContainer, wheelDownEvent);
+      fireEvent(scrollContainer, wheelDownEvent(scrollContainer));
       requestAnimationFrame.step();
     });
     let currentScrollTop = await waitFor<HTMLElement>(() => screen.getByTestId('currentValueScrollTop'))
     scrollTopOnWheelDownEvent = Number(currentScrollTop.textContent)
+    console.log('scrollTopOnWheelDownEvent', scrollTopOnWheelDownEvent)
 
     act(() => {
-      fireEvent(scrollContainer, wheelUpEvent);
+      fireEvent(scrollContainer, wheelUpEvent(scrollContainer));
       requestAnimationFrame.step();
     });
     currentScrollTop = await waitFor<HTMLElement>(() => screen.getByTestId('currentValueScrollTop'))
     scrollTopOnWheelUpEvent = Number(currentScrollTop.textContent)
+    console.log('scrollTopOnWheelUpEvent', scrollTopOnWheelUpEvent)
 
     expect(scrollTopOnWheelDownEvent).toBeGreaterThan(scrollTopOnWheelUpEvent);
     expect(currentScrollTop.textContent).toBe('0');
@@ -236,10 +232,9 @@ describe('useScrollStepSize dynamic', () => {
     makeSut();
 
     const scrollContainer = screen.getByTestId('scrollContainer');
-    const wheelUpEvent = createWheelEvent(scrollContainer, 'up');
 
     act(() => {
-      fireEvent(scrollContainer, wheelUpEvent);
+      fireEvent(scrollContainer, wheelUpEvent(scrollContainer));
       requestAnimationFrame.step();
     });
 
@@ -252,10 +247,9 @@ describe('useScrollStepSize dynamic', () => {
     makeSut();
 
     const scrollContainer = screen.getByTestId('scrollContainer');
-    const wheelUpEvent = createWheelEvent(scrollContainer, 'up');
 
     act(() => {
-      fireEvent(scrollContainer, wheelUpEvent);
+      fireEvent(scrollContainer, wheelUpEvent(scrollContainer));
       requestAnimationFrame.step();
     });
 
