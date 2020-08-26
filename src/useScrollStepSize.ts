@@ -12,7 +12,7 @@ const useScrollStepSize = (
 
   useEffect(() => {
     if (scrollStepSize < 0) {
-      throw new Error(`itemHeight should not be less than 0.`);
+      throw new Error(`Item height should not be less than 0.`);
     }
   }, [scrollStepSize]);
 
@@ -31,27 +31,29 @@ const useScrollStepSize = (
     const scrollContainer = ref.current;
 
     const handleScroll = (isScrollingUp: boolean): void => {
+      let index = indexChildren;
+
       if (isScrollingUp) {
-        const newIndex = indexChildren > 0 ? indexChildren - 1 : indexChildren;
+        index = indexChildren > 0 ? indexChildren - 1 : indexChildren;
+        const heightToScroll = scrollStepSize !== 0 ? scrollStepSize : (children[index].clientHeight || 0)
+
         setScrollTop(currentScrollTop => {
-          if (scrollStepSize !== 0 && currentScrollTop - scrollStepSize >= 0) {
-            return currentScrollTop - scrollStepSize;
-          } else if (scrollStepSize === 0 && currentScrollTop - (children[newIndex].clientHeight || 0) >= 0) {
-            return currentScrollTop - (children[newIndex].clientHeight || 0);
-          }
-          return currentScrollTop;
+          const hasNotReachBottomScroll = currentScrollTop - heightToScroll >= 0
+          return hasNotReachBottomScroll
+            ? currentScrollTop - heightToScroll
+            : currentScrollTop
         });
-        setIndexChildren(newIndex);
       } else {
         const hasNotReachEndScroll = scrollContainer!.scrollHeight > scrollContainer!.scrollTop + scrollContainer!.clientHeight
+
         setScrollTop(currentScrollTop => {
-          if (hasNotReachEndScroll) {
-            return currentScrollTop + (scrollStepSize === 0 ? (children[indexChildren]?.clientHeight || 0) : scrollStepSize);
-          }
-          return currentScrollTop;
+          return hasNotReachEndScroll
+            ? currentScrollTop + (scrollStepSize === 0 ? (children[indexChildren]?.clientHeight || 0) : scrollStepSize)
+            : currentScrollTop
         });
-        setIndexChildren(hasNotReachEndScroll ? indexChildren + 1 : indexChildren)
+        index = hasNotReachEndScroll ? indexChildren + 1 : indexChildren
       }
+      setIndexChildren(index)
     };
 
     const onScroll = (event: Event): boolean => {

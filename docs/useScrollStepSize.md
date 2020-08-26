@@ -2,10 +2,11 @@
 
 React sensor hook that will scroll a DOM element based on the given height.
 
-In case hook has called before the DOM is ready, it will return the default scroll value and it's dispatcher and will cause re-render on first available RAF.
-> _NOTE:_ The height should not be less than zero.
+In case hook has called before the DOM is ready, it will return the default scroll value (0) and it's dispatcher. It will cause re-render on first available RAF.
 
-> **_NOTE:_** DOM element height must be divided by item height.
+_NOTE:_ The height should not be less than zero.
+
+**_NOTE:_** DOM element height must be divided by item height.
 
 ## Usage
 
