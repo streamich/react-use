@@ -37,4 +37,3 @@ const Demo = () => {
 storiesOf('State|useStateWithCallback', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useStateWithCallback.md')} />)
   .add('Demo', () => <Demo />);
-  
