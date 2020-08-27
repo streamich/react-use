@@ -1,6 +1,6 @@
 import { useEffect, Dispatch, SetStateAction, useState } from 'react';
 
-import useRafState from './useRafState';
+import { useRafState } from '.';
 
 const useScrollStepSize = (
   ref: React.RefObject<HTMLElement>,
@@ -8,7 +8,7 @@ const useScrollStepSize = (
 ): [number, Dispatch<SetStateAction<number>>] => {
   const [scrollTop, setScrollTop] = useRafState<number>(0);
   const [children, setChildren] = useState<HTMLElement[]>([]);
-  const [indexChildren, setIndexChildren] = useState<number>(0);
+  const [indexChildren, setIndexChildren] = useRafState<number>(0);
 
   useEffect(() => {
     if (scrollStepSize < 0) {
@@ -33,24 +33,28 @@ const useScrollStepSize = (
   useEffect(() => {
     const scrollContainer = ref.current;
 
-    const handleScroll = (isScrollingUp: boolean): void => {
+    const handleScroll = (isScrollingUp: boolean) => {
+      const scrollContainer = ref.current;
+      if (!scrollContainer) {
+        return
+      }
       let index = indexChildren;
 
       if (isScrollingUp) {
         index = indexChildren > 0 ? indexChildren - 1 : indexChildren;
         const heightToScroll = scrollStepSize === 0 ? children[index].clientHeight : scrollStepSize
 
-        setScrollTop(() => {
+        setScrollTop(scrollTop => {
           const hasNotReachBottomScroll = scrollTop - heightToScroll >= 0
           return hasNotReachBottomScroll
             ? scrollTop - heightToScroll
-            : scrollTop
+            : 0
         });
       } else {
-        const hasNotReachEndScroll = scrollContainer!.scrollHeight > scrollContainer!.scrollTop + scrollContainer!.clientHeight
+        const hasNotReachEndScroll = scrollContainer.scrollHeight > scrollContainer.scrollTop + scrollContainer.clientHeight
         const heightToScroll = scrollStepSize === 0 ? children[index].clientHeight : scrollStepSize
 
-        setScrollTop(() => {
+        setScrollTop(scrollTop => {
           return hasNotReachEndScroll
             ? scrollTop + heightToScroll
             : scrollTop
@@ -93,7 +97,7 @@ const useScrollStepSize = (
         scrollContainer.removeEventListener('wheel', onWheel);
       }
     };
-  }, [ref, scrollTop, setScrollTop, scrollStepSize, indexChildren, children]);
+  }, [ref, scrollTop, scrollStepSize, children, indexChildren]);
 
   return [scrollTop, setScrollTop];
 };

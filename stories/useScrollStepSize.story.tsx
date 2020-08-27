@@ -35,7 +35,7 @@ const DemoFixedItemHeight = () => {
 
 const DemoDynamicItemHeight = () => {
   const scrollRef = React.useRef(null);
-  const [items] = React.useState<number[]>(Array.from({ length: 40}, () => (Math.floor(Math.random() * 60) + 30)))
+  const [items] = React.useState<number[]>(Array.from({ length: 100 }, () => (Math.floor(Math.random() * 60) + 30)))
   const [scrollTop] = useScrollStepSize(scrollRef);
 
   return (

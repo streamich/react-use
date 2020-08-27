@@ -20,6 +20,13 @@ const createWheelEvent = (container: HTMLElement, type: 'up' | 'down'): Event =>
 const wheelUpEvent = (container: HTMLElement): Event => createWheelEvent(container, 'up')
 const wheelDownEvent = (container: HTMLElement): Event => createWheelEvent(container, 'down')
 
+const fireWheelEvent = (nth: number, cbEvent: () => void) => {
+  for (let i = 0; i < nth; i++) {
+    cbEvent()
+    act(requestAnimationFrame.step)
+  }
+}
+
 type SutTypes = {
   itemHeight: number
 }
@@ -112,27 +119,13 @@ describe('useScrollStepSize with fixed item height', () => {
 
   it('Should decrement scrollTop on wheel up', async () => {
     makeSut()
-
-    let scrollTopOnWheelDownEvent;
-    let scrollTopOnWheelUpEvent;
-
     const scrollContainer = screen.getByTestId('scrollContainer');
-    act(() => {
-      fireEvent(scrollContainer, wheelDownEvent(scrollContainer));
-      requestAnimationFrame.step();
-    });
-    scrollTopOnWheelDownEvent = Number(screen.getByTestId('currentValueScrollTop').textContent)
 
-    act(() => {
-      fireEvent(scrollContainer, wheelUpEvent(scrollContainer));
-      requestAnimationFrame.step();
-    });
-    scrollTopOnWheelUpEvent = Number(screen.getByTestId('currentValueScrollTop').textContent)
+    fireWheelEvent(50, () => fireEvent(scrollContainer, wheelDownEvent(scrollContainer)))
+    expect(Number(screen.getByTestId('currentValueScrollTop').textContent)).toBe(50 * 40)
 
-    const currentValueScrollTop = screen.getByTestId('currentValueScrollTop');
-
-    expect(scrollTopOnWheelDownEvent).toBeGreaterThan(scrollTopOnWheelUpEvent);
-    expect(currentValueScrollTop.textContent).toBe('0');
+    fireWheelEvent(50, () => fireEvent(scrollContainer, wheelUpEvent(scrollContainer)))
+    expect(Number(screen.getByTestId('currentValueScrollTop').textContent)).toBe(0);
   });
 
   it('Should not set scrollTop to be less than 0', async () => {
@@ -206,12 +199,10 @@ describe('useScrollStepSize dynamic', () => {
     makeSut(0)
     const scrollContainer = screen.getByTestId('scrollContainer');
 
-    fireEvent(scrollContainer, wheelDownEvent(scrollContainer));
-    act(requestAnimationFrame.step)
-    expect(Number(screen.getByTestId('currentValueScrollTop').textContent)).toBe(40)
+    fireWheelEvent(50, () => fireEvent(scrollContainer, wheelDownEvent(scrollContainer)))
+    expect(Number(screen.getByTestId('currentValueScrollTop').textContent)).toBe(50 * 40)
 
-    fireEvent(scrollContainer, wheelUpEvent(scrollContainer));
-    act(requestAnimationFrame.step)
+    fireWheelEvent(50, () => fireEvent(scrollContainer, wheelUpEvent(scrollContainer)))
     expect(Number(screen.getByTestId('currentValueScrollTop').textContent)).toBe(0);
   });
 
