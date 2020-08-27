@@ -34,7 +34,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useCallbackState', module)
-  .add('Docs', () => <ShowDocs md={require('../docs/useCallbackState.md')} />)
+storiesOf('State|useStateWithCallback', module)
+  .add('Docs', () => <ShowDocs md={require('../docs/useStateWithCallback.md')} />)
   .add('Demo', () => <Demo />);
   
