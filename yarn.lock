@@ -10401,10 +10401,10 @@ jsx-ast-utils@^2.4.1:
     array-includes "^3.1.1"
     object.assign "^4.1.0"
 
-keyboardjs@2.6.3:
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/keyboardjs/-/keyboardjs-2.6.3.tgz#2bf8f68cd986591111eb30673d1d833f85b237c4"
-  integrity sha512-xV0dZq6fER0GM0uPrfIqXlAArhNQgGH44zT11g58gGDxtGdWhyhYC9bFajqYaGd7SstiU3GmWaxMVpr6Fa1UOA==
+keyboardjs@2.6.4:
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/keyboardjs/-/keyboardjs-2.6.4.tgz#28dccd9787c8f37e7c017df2f87294ca21143436"
+  integrity sha512-xDiNwiwH3KUqap++RFJiLAXzbvRB5Yw08xliuceOgLhM1o7g1puKKR9vWy6wp9H/Bi4VP0+SQMpiWXMWWmR6rA==
 
 kind-of@^2.0.1:
   version "2.0.1"
