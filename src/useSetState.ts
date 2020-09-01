@@ -8,7 +8,7 @@ const useSetState = <T extends object>(
     patch => {
       set(prevState => Object.assign({}, prevState, patch instanceof Function ? patch(prevState) : patch));
     },
-    [set]
+    []
   );
 
   return [state, setState];
