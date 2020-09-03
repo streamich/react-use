@@ -66,7 +66,7 @@
     "react-dom": "^16.8.0"
   },
   "devDependencies": {
-    "@babel/core": "7.11.5",
+    "@babel/core": "7.11.6",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
     "@babel/preset-env": "7.11.5",
     "@babel/preset-react": "7.10.4",
