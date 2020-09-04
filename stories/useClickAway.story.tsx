@@ -21,6 +21,35 @@ const Demo = () => {
   );
 };
 
+const RefArrayDemo = () => {
+  const refOne = useRef(null);
+  const refTwo = useRef(null);
+
+  useClickAway<MouseEvent>([refOne, refTwo], action('outside clicked'));
+
+  return (
+    <React.Fragment>
+    <div
+      ref={refOne}
+      style={{
+        width: 200,
+        height: 200,
+        background: 'red',
+      }}
+    />
+    <div
+      ref={refTwo}
+      style={{
+        width: 200,
+        height: 200,
+        background: 'blue',
+      }}
+    />
+    </React.Fragment>
+  );
+};
+
 storiesOf('UI|useClickAway', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useClickAway.md')} />)
-  .add('Demo', () => <Demo />);
+  .add('Demo', () => <Demo />)
+  .add('Ref Array Demo', () => <RefArrayDemo />);
