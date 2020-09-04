@@ -1,10 +1,12 @@
+/* eslint-disable */
 import { useState, useCallback } from "react"
 import useLifecycles from "./useLifecycles"
+import { isClient } from './util';
 
 /**
  * read and write url hash, response to url hash change
  */
-export const useHash = () => {
+const useHashClient = () => {
   const [hash, setHash] = useState(() => window.location.hash)
 
   const onHashChange = useCallback(() => {
@@ -25,3 +27,13 @@ export const useHash = () => {
 
   return [hash, _setHash] as const
 }
+
+/**
+ * return default values when useHash is called from server
+ */
+const useHashServer= () => {
+  console.warn('useHash cannot detect hash value when it is called from server');
+  return ['', () => {}] as const
+};
+
+export const useHash = isClient ? useHashClient : useHashServer;
