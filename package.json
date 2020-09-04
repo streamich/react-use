@@ -1,6 +1,6 @@
 {
   "name": "react-use",
-  "version": "15.3.3",
+  "version": "15.3.4",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -19,7 +19,7 @@
     "lint": "eslint {src,tests}/**/*.{ts,tsx}",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
-    "lint:prettier":"prettier --write src/**/**/*.{ts,tsx}",
+    "lint:prettier": "prettier --write src/**/**/*.{ts,tsx}",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn build:cjs && yarn build:es",
