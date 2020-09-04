@@ -4,13 +4,14 @@ import { useSessionStorage } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [value, setValue] = useSessionStorage('hello-key', 'foo');
+  const [value, setValue, remove] = useSessionStorage('hello-key', 'foo');
 
   return (
     <div>
       <div>Value: {value}</div>
       <button onClick={() => setValue('bar')}>bar</button>
       <button onClick={() => setValue('baz')}>baz</button>
+      <button onClick={() => remove()}>Remove</button>
     </div>
   );
 };
