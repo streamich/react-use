@@ -1,3 +1,10 @@
+## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-04)
+
+
+### Bug Fixes
+
+* useLongPress hook linting fixes. ([479dd99](https://github.com/streamich/react-use/commit/479dd9977bfcc43ccadc58eb93690adee462a16e))
+
 ## [15.3.3](https://github.com/streamich/react-use/compare/v15.3.2...v15.3.3) (2020-07-24)
 
 
