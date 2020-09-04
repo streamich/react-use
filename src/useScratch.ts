@@ -30,7 +30,7 @@ export interface ScratchSensorState {
 }
 
 const useScratch = (params: ScratchSensorParams = {}): [(el: HTMLElement | null) => void, ScratchSensorState] => {
-  const {disabled} = params;
+  const { disabled } = params;
   const paramsRef = useLatest(params);
   const [state, setState] = useState<ScratchSensorState>({ isScratching: false });
   const refState = useRef<ScratchSensorState>(state);
@@ -49,7 +49,7 @@ const useScratch = (params: ScratchSensorParams = {}): [(el: HTMLElement | null)
         const elY = top + window.scrollY;
         const x = docX - elX;
         const y = docY - elY;
-        setState(oldState => {
+        setState((oldState) => {
           const newState = {
             ...oldState,
             dx: x - (oldState.x || 0),
@@ -64,11 +64,11 @@ const useScratch = (params: ScratchSensorParams = {}): [(el: HTMLElement | null)
       });
     };
 
-    const onMouseMove = event => {
+    const onMouseMove = (event) => {
       onMoveEvent(event.pageX, event.pageY);
     };
 
-    const onTouchMove = event => {
+    const onTouchMove = (event) => {
       onMoveEvent(event.changedTouches[0].pageX, event.changedTouches[0].pageY);
     };
 
@@ -122,12 +122,12 @@ const useScratch = (params: ScratchSensorParams = {}): [(el: HTMLElement | null)
       window.addEventListener('touchend', onTouchEnd);
     };
 
-    const onMouseDown = event => {
+    const onMouseDown = (event) => {
       refScratching.current = true;
       startScratching(event.pageX, event.pageY);
     };
 
-    const onTouchStart = event => {
+    const onTouchStart = (event) => {
       refScratching.current = true;
       startScratching(event.changedTouches[0].pageX, event.changedTouches[0].pageY);
     };
@@ -159,13 +159,13 @@ export interface ScratchSensorProps extends ScratchSensorParams {
   children: (state: ScratchSensorState, ref: (el: HTMLElement | null) => void) => React.ReactElement<any>;
 }
 
-export const ScratchSensor: FC<ScratchSensorProps> = props => {
+export const ScratchSensor: FC<ScratchSensorProps> = (props) => {
   const { children, ...params } = props;
   const [ref, state] = useScratch(params);
   const element = render(props, state);
   return cloneElement(element, {
     ...element.props,
-    ref: el => {
+    ref: (el) => {
       if (element.props.ref) {
         if (typeof element.props.ref === 'object') element.props.ref.current = el;
         if (typeof element.props.ref === 'function') element.props.ref(el);

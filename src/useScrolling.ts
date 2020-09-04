@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { RefObject, useEffect, useState } from 'react';
 
 const useScrolling = (ref: RefObject<HTMLElement>): boolean => {

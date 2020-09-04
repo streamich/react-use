@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect } from 'react';
 
 export type VibrationPattern = number | number[];

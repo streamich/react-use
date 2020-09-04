@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Dispatch, useMemo, useRef } from 'react';
 import useUpdate from './useUpdate';
 import { HookState, InitialHookState, resolveHookState } from './util/resolveHookState';

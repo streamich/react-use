@@ -1,8 +1,5 @@
-/* eslint-disable */
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { off, on, isDeepEqual } from './util';
-
-const { useState, useEffect } = React;
 
 export interface BatteryState {
   charging: boolean;

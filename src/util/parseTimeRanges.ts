@@ -1,4 +1,4 @@
-const parseTimeRanges = ranges => {
+const parseTimeRanges = (ranges) => {
   const result: { start: number; end: number }[] = [];
 
   for (let i = 0; i < ranges.length; i++) {
