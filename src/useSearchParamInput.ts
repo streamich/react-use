@@ -15,11 +15,10 @@ function useSearchParamInput(
 
   const { pathname, search } = window.location;
 
-  let params = new URLSearchParams(search);
-  const [value, setValue] = useState<string | null>(defaultValue ?? params.get(key));
+  const [value, setValue] = useState<string | null>(defaultValue ?? new URLSearchParams(search).get(key));
 
   useEffect(() => {
-    params = new URLSearchParams(search);
+    const params = new URLSearchParams(search);
 
     if (value) {
       params.set(key, value);
