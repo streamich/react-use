@@ -4,6 +4,7 @@
   ],
   "automerge": true,
   "pinVersions": false,
+  "ignoreUnstable": true,
   "major": {
     "automerge": false
   },

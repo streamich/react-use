@@ -1,16 +1,21 @@
-import { useCallback, useRef } from 'react';
+import { Dispatch, useMemo, useRef } from 'react';
 import useUpdate from './useUpdate';
+import { HookState, InitialHookState, resolveHookState } from './util/resolveHookState';
 
-const useGetSet = <T>(initialValue: T): [() => T, (value: T) => void] => {
-  const state = useRef(initialValue);
+export default function useGetSet<S>(initialState: InitialHookState<S>): [() => S, Dispatch<HookState<S>>] {
+  const state = useRef(resolveHookState(initialState));
   const update = useUpdate();
-  const get = useCallback(() => state.current, []);
-  const set = useCallback((value: T) => {
-    state.current = value;
-    update();
-  }, []);
 
-  return [get, set];
-};
-
-export default useGetSet;
+  return useMemo(
+    () => [
+      // get
+      () => state.current as S,
+      // set
+      (newState: HookState<S>) => {
+        state.current = resolveHookState(newState, state.current);
+        update();
+      },
+    ],
+    []
+  );
+}

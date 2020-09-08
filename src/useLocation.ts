@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { isClient, off, on } from './util';
 
-const patchHistoryMethod = method => {
+const patchHistoryMethod = (method) => {
+  const history = window.history;
   const original = history[method];
 
-  history[method] = function(state) {
+  history[method] = function (state) {
     const result = original.apply(this, arguments);
     const event = new Event(method.toLowerCase());
 
@@ -42,9 +43,9 @@ const useLocationServer = (): LocationSensorState => ({
 });
 
 const buildState = (trigger: string) => {
-  const { state, length } = history;
+  const { state, length } = window.history;
 
-  const { hash, host, hostname, href, origin, pathname, port, protocol, search } = location;
+  const { hash, host, hostname, href, origin, pathname, port, protocol, search } = window.location;
 
   return {
     trigger,
@@ -84,4 +85,6 @@ const useLocationBrowser = (): LocationSensorState => {
   return state;
 };
 
-export default isClient ? useLocationBrowser : useLocationServer;
+const hasEventConstructor = typeof Event === 'function';
+
+export default isClient && hasEventConstructor ? useLocationBrowser : useLocationServer;

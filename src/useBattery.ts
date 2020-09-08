@@ -1,8 +1,5 @@
-import * as React from 'react';
-import isEqual from 'react-fast-compare';
-import { off, on } from './util';
-
-const { useState, useEffect } = React;
+import { useState, useEffect } from 'react';
+import { off, on, isDeepEqual } from './util';
 
 export interface BatteryState {
   charging: boolean;
@@ -25,7 +22,7 @@ interface NavigatorWithPossibleBattery extends Navigator {
 type UseBatteryState =
   | { isSupported: false } // Battery API is not supported
   | { isSupported: true; fetched: false } // battery API supported but not fetched yet
-  | BatteryState & { isSupported: true; fetched: true }; // battery API supported and fetched
+  | (BatteryState & { isSupported: true; fetched: true }); // battery API supported and fetched
 
 const nav: NavigatorWithPossibleBattery | undefined = typeof navigator === 'object' ? navigator : undefined;
 const isBatteryApiSupported = nav && typeof nav.getBattery === 'function';
@@ -53,7 +50,7 @@ function useBattery(): UseBatteryState {
         dischargingTime: battery.dischargingTime,
         chargingTime: battery.chargingTime,
       };
-      !isEqual(state, newState) && setState(newState);
+      !isDeepEqual(state, newState) && setState(newState);
     };
 
     nav!.getBattery!().then((bat: BatteryManager) => {

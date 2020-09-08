@@ -1,32 +1,35 @@
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
 
 export type ValidityState = [boolean | undefined, ...any[]];
-export type DispatchValidity<V extends ValidityState> = Dispatch<SetStateAction<V>>;
 
-export type Validator<V extends ValidityState, S = any> =
-  | {
-      (state?: S): V;
-      (state?: S, dispatch?: DispatchValidity<V>): void;
-    }
-  | Function;
+export interface StateValidator<V, S> {
+  (state: S): V;
 
-export type UseValidatorReturn<V extends ValidityState> = [V, () => void];
+  (state: S, dispatch: Dispatch<SetStateAction<V>>): void;
+}
 
-export default function useStateValidator<V extends ValidityState, S = any>(
+export type UseStateValidatorReturn<V> = [V, () => void];
+
+export default function useStateValidator<V extends ValidityState, S, I extends V>(
   state: S,
-  validator: Validator<V, S>,
-  initialValidity: V = [undefined] as V
-): UseValidatorReturn<V> {
-  const validatorFn = useRef(validator);
+  validator: StateValidator<V, S>,
+  initialState: I = [undefined] as I
+): UseStateValidatorReturn<V> {
+  const validatorInner = useRef(validator);
+  const stateInner = useRef(state);
 
-  const [validity, setValidity] = useState(initialValidity);
+  validatorInner.current = validator;
+  stateInner.current = state;
+
+  const [validity, setValidity] = useState(initialState as V);
+
   const validate = useCallback(() => {
-    if (validatorFn.current.length === 2) {
-      validatorFn.current(state, setValidity);
+    if (validatorInner.current.length >= 2) {
+      validatorInner.current(stateInner.current, setValidity as Dispatch<SetStateAction<V>>);
     } else {
-      setValidity(validatorFn.current(state));
+      setValidity(validatorInner.current(stateInner.current));
     }
-  }, [state]);
+  }, [setValidity]);
 
   useEffect(() => {
     validate();

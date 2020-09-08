@@ -50,6 +50,6 @@ const [validity, revalidate] = useStateValidator(
 - **`validity`**_`: [boolean|null, ...any[]]`_ result of validity check. First element is strictly nullable boolean, but others can contain arbitrary data;
 - **`revalidate`**_`: ()=>void`_ runs validator once again
 - **`validator`**_`: (state, setValidity?)=>[boolean|null, ...any[]]`_ should return an array suitable for validity state described above;
-    - `states` - current states values as the've been passed to the hook;
+    - `states` - current states values as they've been passed to the hook;
     - `setValidity` - if defined hook will not trigger validity change automatically. Useful for async validators;
 - `initialValidity` - validity value which set when validity is nt calculated yet;

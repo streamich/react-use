@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 const isFocusedElementEditable = () => {
   const { activeElement, body } = document;
@@ -40,8 +40,8 @@ const isTypedCharGood = ({ keyCode, metaKey, ctrlKey, altKey }: KeyboardEvent) =
 };
 
 const useStartTyping = (onStartTyping: (event: KeyboardEvent) => void) => {
-  useLayoutEffect(() => {
-    const keydown = event => {
+  useIsomorphicLayoutEffect(() => {
+    const keydown = (event) => {
       !isFocusedElementEditable() && isTypedCharGood(event) && onStartTyping(event);
     };
 

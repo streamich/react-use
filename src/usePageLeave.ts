@@ -6,7 +6,7 @@ const usePageLeave = (onPageLeave, args = []) => {
       return;
     }
 
-    const handler = event => {
+    const handler = (event) => {
       event = event ? event : (window.event as any);
       const from = event.relatedTarget || event.toElement;
       if (!from || (from as any).nodeName === 'HTML') {
