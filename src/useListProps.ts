@@ -1,10 +1,10 @@
 import { useRef, DependencyList } from 'react'
 
-export default function useListProperties<T, C>(
+export default function useListProps<T, C>(
   creator: (item: T, index: number, items: T[]) => C,
   items: T[],
   deps: DependencyList
-) {
+) : Array<C> {
 	const properties = useRef(items.map(creator));
   const lastItems = useRef(items);
   const lastDeps = useRef(deps);

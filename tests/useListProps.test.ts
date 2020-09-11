@@ -1,13 +1,13 @@
 import { DependencyList } from 'react';
 import { renderHook, } from '@testing-library/react-hooks';
-import useListProperties from '../src/useListProperties';
+import useListProps from '../src/useListProps';
 
 const setUp = <T, C>(
   creator: (item: T, index: number, items: T[]) => C,
   items: T[],
   deps: DependencyList
 ) => renderHook(
-  ({ items, deps }) => useListProperties(creator, items, deps),
+  ({ items, deps }) => useListProps(creator, items, deps),
   {
     initialProps: {
       items,
@@ -18,7 +18,7 @@ const setUp = <T, C>(
 
 const DUMB_ITEMS = [1, 2, 3];
 
-describe('useListProperties', () => {
+describe('useListProps', () => {
 
   it(`should return an array that as same size as items`, () => {
     const { result } = setUp(() => null, DUMB_ITEMS, []);

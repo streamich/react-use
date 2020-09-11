@@ -1,4 +1,4 @@
-# `useListProperties`
+# `useListProps`
 
 React hook that return array of value for each item of a list.
 The value reference change only if the dependencies or the item reference changed.
@@ -8,7 +8,7 @@ It can be used to be sure that props passed to an item of a rendered list doesn'
 
 ```jsx
 import React from 'react';
-import { useListProperties } from 'react-use';
+import { useListProps } from 'react-use';
 
 const Item = React.memo(({
   checked,
@@ -41,8 +41,10 @@ const TodoApp = () => {
     )
   }, [setItems]);
 
-  const handleItemClicks = useListProperties(
-    (item) => () => handleItemClick(item),
+  const listProps = useListProps(
+    (item) => ({
+      onClick: () => handleItemClick(item)
+    }),
     items,
     [handleItemClick]
   );
@@ -55,7 +57,7 @@ const TodoApp = () => {
           <Item
             key={item.label}
             // This reference will change only when `item` or `handleItemClick` reference changed
-            onClick={handleItemClicks[index]}
+            onClick={listProps[index].onClick}
             {...item}
           />
         ))}
@@ -68,13 +70,13 @@ const TodoApp = () => {
 ## Reference
 
 ```ts 
-const properties: C[] = useListProperties<T, C>(
+const props: C[] = useListProps<T, C>(
   creator: (item: T, index: number, items: T[]) => C,
   items: T[],
   deps: React.DependencyList
 );
 ```
-- `properties` - array of result returned by creator
+- `props` - array of result returned by creator
 - `creator` - function that create property for a given item
 - `items` - list of items
 - `deps` - dependencies for every properties creation
