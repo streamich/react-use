@@ -150,6 +150,23 @@ describe(useLocalStorage, () => {
     expect(value!.fizz).toEqual('buzz');
   });
 
+  it('sets localStorage from the function updater with latest state', () => {
+    const { result, rerender } = renderHook(() => useLocalStorage('foo', false));
+
+    const [foo, setFoo] = result.current;
+    act(() => setFoo((state) => !state));
+    rerender();
+
+    const [value] = result.current;
+    expect(value).toEqual(!foo);
+
+    act(() => setFoo((state) => !state));
+    rerender();
+
+    const [secondValue] = result.current;
+    expect(secondValue).toEqual(foo);
+  });
+
   it('rejects nullish or undefined keys', () => {
     const { result } = renderHook(() => useLocalStorage(null as any));
     try {

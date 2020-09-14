@@ -6,6 +6,7 @@ import ShowDocs from './util/ShowDocs';
 const Demo = () => {
   const [value, setValue] = useLocalStorage('hello-key', 'foo');
   const [removableValue, setRemovableValue, remove] = useLocalStorage('removeable-key');
+  const [toggleableValue, setToggleableValue] = useLocalStorage('toggle-key', false);
 
   return (
     <div>
@@ -18,6 +19,10 @@ const Demo = () => {
       <button onClick={() => setRemovableValue('foo')}>foo</button>
       <button onClick={() => setRemovableValue('bar')}>bar</button>
       <button onClick={() => remove()}>Remove</button>
+      <br />
+      <br />
+      <div>Toggleable Value: {toggleableValue.toString()}</div>
+      <button onClick={() => setToggleableValue((old) => !old)}>toggle</button>
     </div>
   );
 };

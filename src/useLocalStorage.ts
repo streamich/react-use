@@ -1,4 +1,5 @@
 import { useState, useCallback, Dispatch, SetStateAction } from 'react';
+import useLatest from './useLatest';
 import { isClient } from './util';
 
 type parserOptions<T> =
@@ -48,10 +49,13 @@ const useLocalStorage = <T>(
   });
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
+  const latestState = useLatest(state);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
     (valOrFunc) => {
       try {
-        const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
+        const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(latestState.current) : valOrFunc;
         if (typeof newState === 'undefined') return;
         let value: string;
 
@@ -70,7 +74,7 @@ const useLocalStorage = <T>(
         // localStorage can throw. Also JSON.stringify can throw.
       }
     },
-    [key, setState]
+    [key, setState, latestState]
   );
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
