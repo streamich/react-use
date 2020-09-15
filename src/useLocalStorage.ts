@@ -56,16 +56,24 @@ const useLocalStorage = <T>(
     (valOrFunc) => {
       try {
         const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(latestState.current) : valOrFunc;
-        if (typeof newState === 'undefined') return;
-        let value: string;
 
-        if (options)
-          if (options.raw)
-            if (typeof newState === 'string') value = newState;
-            else value = JSON.stringify(newState);
-          else if (options.serializer) value = options.serializer(newState);
-          else value = JSON.stringify(newState);
-        else value = JSON.stringify(newState);
+        if (newState === undefined) {
+          return;
+        }
+
+        const getValue = () => {
+          if (options?.raw) {
+            return typeof newState === 'string' ? newState : JSON.stringify(newState);
+          }
+
+          if (options?.serializer) {
+            return options.serializer(newState);
+          }
+
+          return JSON.stringify(newState);
+        };
+
+        const value = getValue();
 
         localStorage.setItem(key, value);
         setState(deserializer(value));
