@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, MutableRefObject, useEffect } from 'react';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 import { isClient } from './util';
 
@@ -20,9 +20,17 @@ const defaultState: UseMeasureRect = {
   right: 0,
 };
 
-const useMeasure = <E extends HTMLElement = HTMLElement>(): UseMeasureResult<E> => {
-  const [element, ref] = useState<E | null>(null);
+function useMeasure<E extends HTMLElement = HTMLElement>(): UseMeasureResult<E>;
+function useMeasure<E extends HTMLElement = HTMLElement>(ref: MutableRefObject<E>): UseMeasureRect;
+function useMeasure<E extends HTMLElement = HTMLElement>(ref?: MutableRefObject<E>): any {
+  const [element, setElement] = useState<E | null>(null);
   const [rect, setRect] = useState<UseMeasureRect>(defaultState);
+
+  useEffect(() => {
+    if (ref) {
+      setElement(ref.current);
+    }
+  }, [ref]);
 
   const observer = useMemo(
     () =>
@@ -43,9 +51,14 @@ const useMeasure = <E extends HTMLElement = HTMLElement>(): UseMeasureResult<E> 
     };
   }, [element]);
 
-  return [ref, rect];
-};
+  // We don't need to return element setter in case we pass ref as an argument
+  if (ref) {
+    return rect;
+  }
 
-const useMeasureMock: typeof useMeasure = () => [() => {}, defaultState];
+  return [setElement, rect];
+}
 
-export default isClient && !!(window as any).ResizeObserver ? useMeasure : useMeasureMock;
+const useMeasureMock = () => [() => {}, defaultState];
+
+export default isClient && !!(window as any).ResizeObserver ? useMeasure : (useMeasureMock as typeof useMeasure);
