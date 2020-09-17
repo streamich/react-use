@@ -52,7 +52,7 @@ describe('useCopyToClipboard', () => {
     expect(state.noUserInteraction).toBe(true);
     expect(state.error).toBeDefined();
 
-    testValue = ''; // emtpy string is also invalid
+    testValue = ''; // empty string is also invalid
     act(() => copyToClipboard(testValue));
     [state, copyToClipboard] = hook.result.current;
 

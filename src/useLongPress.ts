@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useCallback, useRef } from 'react';
 
 interface Options {
@@ -6,15 +5,15 @@ interface Options {
   delay?: number;
 }
 
-const isTouchEvent = (event: Event): event is TouchEvent => {
-  return 'touches' in event;
+const isTouchEvent = (ev: Event): ev is TouchEvent => {
+  return 'touches' in ev;
 };
 
-const preventDefault = (event: Event) => {
-  if (!isTouchEvent(event)) return;
+const preventDefault = (ev: Event) => {
+  if (!isTouchEvent(ev)) return;
 
-  if (event.touches.length < 2 && event.preventDefault) {
-    event.preventDefault();
+  if (ev.touches.length < 2 && ev.preventDefault) {
+    ev.preventDefault();
   }
 };
 
@@ -34,7 +33,7 @@ const useLongPress = (
       }
       timeout.current = setTimeout(() => callback(event), delay);
     },
-    [callback, delay]
+    [callback, delay, isPreventDefault]
   );
 
   const clear = useCallback(() => {
@@ -44,7 +43,7 @@ const useLongPress = (
     if (isPreventDefault && target.current) {
       target.current.removeEventListener('touchend', preventDefault);
     }
-  }, []);
+  }, [isPreventDefault]);
 
   return {
     onMouseDown: (e: any) => start(e),

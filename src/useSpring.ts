@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useMemo, useState } from 'react';
 import { Spring, SpringSystem } from 'rebound';
 
@@ -10,7 +9,7 @@ const useSpring = (targetValue: number = 0, tension: number = 50, friction: numb
   // listener fn will be different on each re-render and wouldn't unsubscribe properly.
   const listener = useMemo(
     () => ({
-      onSpringUpdate: currentSpring => {
+      onSpringUpdate: (currentSpring) => {
         const newValue = currentSpring.getCurrentValue();
         setValue(newValue);
       },

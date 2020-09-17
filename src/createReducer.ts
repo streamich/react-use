@@ -30,7 +30,7 @@ const createReducer = <Action, State>(...middlewares: Middleware<Action, State>[
     const [, setState] = useState(ref.current);
 
     const dispatch = useCallback(
-      action => {
+      (action) => {
         ref.current = reducer(ref.current, action);
         setState(ref.current);
         return action;

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useMemo, useRef } from 'react';
 import useUpdate from './useUpdate';
 import { InitialHookState, ResolvableHookState, resolveHookState } from './util/resolveHookState';
@@ -99,17 +98,17 @@ function useList<T>(initialList: InitialHookState<T[]> = []): [T[], ListActions<
       },
 
       update: (predicate: (a: T, b: T) => boolean, newItem: T) => {
-        actions.set((curr: T[]) => curr.map(item => (predicate(item, newItem) ? newItem : item)));
+        actions.set((curr: T[]) => curr.map((item) => (predicate(item, newItem) ? newItem : item)));
       },
 
       updateFirst: (predicate: (a: T, b: T) => boolean, newItem: T) => {
-        const index = list.current.findIndex(item => predicate(item, newItem));
+        const index = list.current.findIndex((item) => predicate(item, newItem));
 
         index >= 0 && actions.updateAt(index, newItem);
       },
 
       upsert: (predicate: (a: T, b: T) => boolean, newItem: T) => {
-        const index = list.current.findIndex(item => predicate(item, newItem));
+        const index = list.current.findIndex((item) => predicate(item, newItem));
 
         index >= 0 ? actions.updateAt(index, newItem) : actions.push(newItem);
       },

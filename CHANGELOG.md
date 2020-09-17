@@ -1,3 +1,87 @@
+## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-16)
+
+
+### Bug Fixes
+
+* useLongPress hook linting fixes. ([9f3cc3d](https://github.com/streamich/react-use/commit/9f3cc3d33ac96b1b6f981d407ac08068af55f488))
+
+## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-15)
+
+
+### Bug Fixes
+
+* useLongPress hook linting fixes. ([9f3cc3d](https://github.com/streamich/react-use/commit/9f3cc3d33ac96b1b6f981d407ac08068af55f488))
+
+## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-07)
+
+
+### Bug Fixes
+
+* useLongPress hook linting fixes. ([9f3cc3d](https://github.com/streamich/react-use/commit/9f3cc3d33ac96b1b6f981d407ac08068af55f488))
+
+## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-06)
+
+
+### Bug Fixes
+
+* useLongPress hook linting fixes. ([9f3cc3d](https://github.com/streamich/react-use/commit/9f3cc3d33ac96b1b6f981d407ac08068af55f488))
+
+## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-04)
+
+
+### Bug Fixes
+
+* useLongPress hook linting fixes. ([479dd99](https://github.com/streamich/react-use/commit/479dd9977bfcc43ccadc58eb93690adee462a16e))
+
+## [15.3.3](https://github.com/streamich/react-use/compare/v15.3.2...v15.3.3) (2020-07-24)
+
+
+### Bug Fixes
+
+* replace createFactory usages with createElement ([ad29bea](https://github.com/streamich/react-use/commit/ad29bea7b03f46aa697e6623bdf7a17347ace651))
+
+## [15.3.2](https://github.com/streamich/react-use/compare/v15.3.1...v15.3.2) (2020-06-29)
+
+
+### Bug Fixes
+
+* **useFullscreen:** fix typings so [#1205](https://github.com/streamich/react-use/issues/1205) can be merged. ([e6e55a3](https://github.com/streamich/react-use/commit/e6e55a3f94993b621566ac66488fd973e992704f))
+
+## [15.3.1](https://github.com/streamich/react-use/compare/v15.3.0...v15.3.1) (2020-06-29)
+
+
+### Bug Fixes
+
+* **usePrevious:** revert the reworked variant as a fix of [#1315](https://github.com/streamich/react-use/issues/1315) ([a4279eb](https://github.com/streamich/react-use/commit/a4279eb660f6b433ed88e0d90c2bb0b3158d3b00))
+
+# [15.3.0](https://github.com/streamich/react-use/compare/v15.2.5...v15.3.0) (2020-06-19)
+
+
+### Features
+
+* **usePrevious:** reworked the hook, now it is more memory-efficient. ([8c6f467](https://github.com/streamich/react-use/commit/8c6f4675beac9c71e96126dd6f06f455c4e4bf01))
+
+## [15.2.5](https://github.com/streamich/react-use/compare/v15.2.4...v15.2.5) (2020-06-15)
+
+
+### Bug Fixes
+
+* bump react-universal-interface ([1540c1a](https://github.com/streamich/react-use/commit/1540c1ab8f338dfa2f53de16506fbf47803d45ba))
+
+## [15.2.4](https://github.com/streamich/react-use/compare/v15.2.3...v15.2.4) (2020-06-13)
+
+
+### Bug Fixes
+
+*  doesn't unlock the body on unmount ([1ead4ef](https://github.com/streamich/react-use/commit/1ead4efab6c67131e480570b578b0ce803204953))
+
+## [15.2.3](https://github.com/streamich/react-use/compare/v15.2.2...v15.2.3) (2020-06-13)
+
+
+### Bug Fixes
+
+* 🐛 improve how text is dropped in useDrop hook ([b2f46d1](https://github.com/streamich/react-use/commit/b2f46d10f25c5e658bb7f790950a1fd9a4e5e288))
+
 ## [15.2.2](https://github.com/streamich/react-use/compare/v15.2.1...v15.2.2) (2020-06-08)
 
 

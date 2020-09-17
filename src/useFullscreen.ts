@@ -1,10 +1,9 @@
-/* eslint-disable */
 import { RefObject, useState } from 'react';
 import screenfull from 'screenfull';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export interface FullScreenOptions {
-  video?: RefObject<HTMLVideoElement>;
+  video?: RefObject<HTMLVideoElement & { webkitEnterFullscreen?: () => void; webkitExitFullscreen?: () => void }>;
   onClose?: (error?: Error) => void;
 }
 

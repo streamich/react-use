@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
 
 export type ValidityState = [boolean | undefined, ...any[]];

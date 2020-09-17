@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useState, useCallback, Dispatch, SetStateAction } from 'react';
 import { isClient } from './util';
 
@@ -26,8 +25,9 @@ const useLocalStorage = <T>(
     throw new Error('useLocalStorage key may not be falsy');
   }
 
-  const deserializer = options ? (options.raw ? value => value : options.deserializer) : JSON.parse;
+  const deserializer = options ? (options.raw ? (value) => value : options.deserializer) : JSON.parse;
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [state, setState] = useState<T | undefined>(() => {
     try {
       const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
@@ -47,8 +47,9 @@ const useLocalStorage = <T>(
     }
   });
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
-    valOrFunc => {
+    (valOrFunc) => {
       try {
         const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
         if (typeof newState === 'undefined') return;
@@ -72,6 +73,7 @@ const useLocalStorage = <T>(
     [key, setState]
   );
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const remove = useCallback(() => {
     try {
       localStorage.removeItem(key);
