@@ -37,6 +37,6 @@ const Demo: React.FC<any> = () => {
   );
 };
 
-storiesOf('Sensors|useMouse', module)
+storiesOf('Sensors/useMouse', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useMouse.md')} />)
   .add('Demo', () => <Demo />);

@@ -28,6 +28,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Sensors|useEvent', module)
+storiesOf('Sensors/useEvent', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useEvent.md')} />)
   .add('Demo', () => <Demo />);

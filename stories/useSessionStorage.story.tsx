@@ -15,6 +15,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side effects|useSessionStorage', module)
+storiesOf('Side effects/useSessionStorage', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useSessionStorage.md')} />)
   .add('Demo', () => <Demo />);

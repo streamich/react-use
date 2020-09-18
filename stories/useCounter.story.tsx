@@ -35,12 +35,12 @@ const Demo = () => {
       <br />
       <br />
       Initial value: {initialValue}
-      <button onClick={() => setInitialValue(v => ++v)}>Increment</button>
-      <button onClick={() => setInitialValue(v => --v)}>Decrement</button>
+      <button onClick={() => setInitialValue((v) => ++v)}>Increment</button>
+      <button onClick={() => setInitialValue((v) => --v)}>Decrement</button>
     </div>
   );
 };
 
-storiesOf('State|useCounter', module)
+storiesOf('State/useCounter', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useCounter.md')} />)
   .add('Demo', () => <Demo />);

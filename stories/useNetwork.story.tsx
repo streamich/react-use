@@ -9,6 +9,6 @@ const Demo = () => {
   return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
 
-storiesOf('Sensors|useNetwork', module)
+storiesOf('Sensors/useNetwork', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useNetwork.md')} />)
   .add('Demo', () => <Demo />);

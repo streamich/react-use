@@ -46,6 +46,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useMultiStateValidator', module)
+storiesOf('State/useMultiStateValidator', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useMultiStateValidator.md')} />)
   .add('Demo', () => <Demo />);

@@ -17,6 +17,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useRendersCount', module)
+storiesOf('State/useRendersCount', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useRendersCount.md')} />)
   .add('Demo', () => <Demo />);

@@ -9,6 +9,6 @@ const Demo = () => {
   return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
 
-storiesOf('Sensors|useGeolocation', module)
+storiesOf('Sensors/useGeolocation', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useGeolocation.md')} />)
   .add('Demo', () => <Demo />);

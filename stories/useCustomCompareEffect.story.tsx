@@ -33,6 +33,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Lifecycle|useCustomCompareEffect', module)
+storiesOf('Lifecycle/useCustomCompareEffect', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useCustomCompareEffect.md')} />)
   .add('Demo', () => <Demo />);

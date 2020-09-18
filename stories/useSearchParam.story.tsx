@@ -26,6 +26,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Sensors|useSearchParam', module)
+storiesOf('Sensors/useSearchParam', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useSearchParam.md')} />)
   .add('Demo', () => <Demo />);

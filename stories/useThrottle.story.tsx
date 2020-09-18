@@ -35,6 +35,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side effects|useThrottle', module)
+storiesOf('Side effects/useThrottle', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useThrottle.md')} />)
   .add('Demo', () => <Demo />);

@@ -32,6 +32,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side effects|useAsyncFn', module)
+storiesOf('Side effects/useAsyncFn', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useAsyncFn.md')} />)
   .add('Demo', () => <Demo />);

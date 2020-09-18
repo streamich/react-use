@@ -14,6 +14,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Sensors|usePageLeave', module)
+storiesOf('Sensors/usePageLeave', module)
   .add('Docs', () => <ShowDocs md={require('../docs/usePageLeave.md')} />)
   .add('Default', () => <Demo />);
