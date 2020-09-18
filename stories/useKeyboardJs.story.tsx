@@ -22,7 +22,7 @@ const Demo = ({ combo }) => {
   );
 };
 
-storiesOf('Sensors|useKeyboardJs', module)
+storiesOf('Sensors/useKeyboardJs', module)
   .addDecorator(withKnobs)
   .add('Docs', () => <ShowDocs md={require('../docs/useKeyboardJs.md')} />)
   .add('Demo', () => {

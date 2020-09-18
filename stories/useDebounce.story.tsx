@@ -37,6 +37,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side effects|useDebounce', module)
+storiesOf('Side effects/useDebounce', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useDebounce.md')} />)
   .add('Demo', () => <Demo />);

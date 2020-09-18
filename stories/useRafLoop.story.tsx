@@ -9,7 +9,7 @@ const Demo = () => {
   const update = useUpdate();
 
   const [loopStop, loopStart, isActive] = useRafLoop((time) => {
-    setTicks(ticks => ticks + 1);
+    setTicks((ticks) => ticks + 1);
     setLastCall(time);
   });
 
@@ -18,14 +18,18 @@ const Demo = () => {
       <div>RAF triggered: {ticks} (times)</div>
       <div>Last high res timestamp: {lastCall}</div>
       <br />
-      <button onClick={() => {
-        isActive() ? loopStop() : loopStart();
-        update();
-      }}>{isActive() ? 'STOP' : 'START'}</button>
+      <button
+        onClick={() => {
+          isActive() ? loopStop() : loopStart();
+          update();
+        }}
+      >
+        {isActive() ? 'STOP' : 'START'}
+      </button>
     </div>
   );
 };
 
-storiesOf('Side effects|useRafLoop', module)
+storiesOf('Side effects/useRafLoop', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useRafLoop.md')} />)
   .add('Demo', () => <Demo />);

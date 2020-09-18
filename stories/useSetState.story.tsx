@@ -13,7 +13,7 @@ const Demo = () => {
       <button onClick={() => setState({ foo: 'bar' })}>foo</button>
       <button
         onClick={() => {
-          setState(prevState => ({
+          setState((prevState) => ({
             count: prevState.count === undefined ? 0 : prevState.count + 1,
           }));
         }}
@@ -24,6 +24,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useSetState', module)
+storiesOf('State/useSetState', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useSetState.md')} />)
   .add('Demo', () => <Demo />);

@@ -29,7 +29,7 @@ function reducer(state, action) {
 const Demo = ({ initialCount = 1 }) => {
   // Action creator to increment count, wait a second and then reset
   const addAndReset = React.useCallback(() => {
-    return dispatch2 => {
+    return (dispatch2) => {
       dispatch2({ type: 'increment' });
 
       setTimeout(() => {
@@ -52,6 +52,6 @@ const Demo = ({ initialCount = 1 }) => {
   );
 };
 
-storiesOf('State|createReducer', module)
+storiesOf('State/createReducer', module)
   .add('Docs', () => <ShowDocs md={require('../docs/createReducer.md')} />)
   .add('Demo', () => <Demo />);

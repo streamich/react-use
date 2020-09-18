@@ -3,7 +3,7 @@ import * as React from 'react';
 import { createMemo } from '../src';
 import ShowDocs from './util/ShowDocs';
 
-const fibonacci = n => {
+const fibonacci = (n) => {
   if (n === 0) {
     return 0;
   }
@@ -21,6 +21,6 @@ const Demo = () => {
   return <div>fib(10) = {result}</div>;
 };
 
-storiesOf('State|createMemo', module)
+storiesOf('State/createMemo', module)
   .add('Docs', () => <ShowDocs md={require('../docs/createMemo.md')} />)
   .add('Demo', () => <Demo />);

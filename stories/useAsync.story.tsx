@@ -33,7 +33,7 @@ const Demo = ({ delay }) => {
   );
 };
 
-storiesOf('Side effects|useAsync', module)
+storiesOf('Side effects/useAsync', module)
   .addDecorator(withKnobs)
   .add('Docs', () => <ShowDocs md={require('../docs/useAsync.md')} />)
   .add('Demo', () => {

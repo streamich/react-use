@@ -18,7 +18,7 @@ const Demo = () => {
   return (
     <div>
       <div>
-        delay: <input value={delay} onChange={event => setDelay(Number(event.target.value))} />
+        delay: <input value={delay} onChange={(event) => setDelay(Number(event.target.value))} />
       </div>
       <h1>count: {count}</h1>
       <div>
@@ -28,6 +28,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Animation|useInterval', module)
+storiesOf('Animation/useInterval', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useInterval.md')} />)
   .add('Demo', () => <Demo />);

@@ -11,12 +11,12 @@ const Demo = () => {
   return (
     <div>
       <div>User: {user.name}</div>
-      <input onChange={e => setUser({ name: e.target.value })} />
+      <input onChange={(e) => setUser({ name: e.target.value })} />
       <button onClick={() => setUser(null)}>set to null</button>
     </div>
   );
 };
 
-storiesOf('State|useDefault', module)
+storiesOf('State/useDefault', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useDefault.md')} />)
   .add('Demo', () => <Demo />);

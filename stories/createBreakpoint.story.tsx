@@ -21,7 +21,7 @@ const Demo = () => {
   );
 };
 
-storiesOf('sensors|createBreakpoint', module)
+storiesOf('sensors/createBreakpoint', module)
   .addDecorator(withKnobs)
   .add('Docs', () => <ShowDocs md={require('../docs/createBreakpoint.md')} />)
   .add('Demo', () => {

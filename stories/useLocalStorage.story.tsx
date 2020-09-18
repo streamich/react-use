@@ -22,6 +22,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side effects|useLocalStorage', module)
+storiesOf('Side effects/useLocalStorage', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useLocalStorage.md')} />)
   .add('Demo', () => <Demo />);

@@ -26,7 +26,7 @@ const DemoWrong = () => {
   return <button onClick={onClick}>Clicked: {cnt}</button>;
 };
 
-storiesOf('State|useGetSet', module)
+storiesOf('State/useGetSet', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useGetSet.md')} />)
   .add('Demo, 1s delay', () => <Demo />)
   .add('DemoWrong, 1s delay', () => <DemoWrong />);

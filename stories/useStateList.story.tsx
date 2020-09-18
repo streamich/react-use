@@ -29,6 +29,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useStateList', module)
+storiesOf('State/useStateList', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useStateList.md')} />)
   .add('Demo', () => <Demo />);

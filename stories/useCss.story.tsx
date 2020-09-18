@@ -15,6 +15,6 @@ const Demo = () => {
   return <div className={className}>hello</div>;
 };
 
-storiesOf('UI|useCss', module)
+storiesOf('UI/useCss', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useCss.md')} />)
   .add('Demo', () => <Demo />);

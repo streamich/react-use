@@ -38,7 +38,7 @@ const Demo: React.FC<any> = ({ whenHovered, bound }) => {
   );
 };
 
-storiesOf('Sensors|useMouseHovered', module)
+storiesOf('Sensors/useMouseHovered', module)
   .addDecorator(withKnobs)
   .add('Docs', () => <ShowDocs md={require('../docs/useMouse.md')} />)
   .add('Demo', () => {

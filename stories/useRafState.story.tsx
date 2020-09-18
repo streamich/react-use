@@ -26,6 +26,6 @@ const Demo = () => {
   return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
 
-storiesOf('State|useRafState', module)
+storiesOf('State/useRafState', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useRafState.md')} />)
   .add('Demo', () => <Demo />);
