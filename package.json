@@ -96,7 +96,7 @@
     "eslint-plugin-flowtype": "5.2.0",
     "eslint-plugin-import": "2.22.0",
     "eslint-plugin-jsx-a11y": "6.3.1",
-    "eslint-plugin-react": "7.21.0",
+    "eslint-plugin-react": "7.21.1",
     "eslint-plugin-react-hooks": "4.1.2",
     "fork-ts-checker-webpack-plugin": "5.2.0",
     "gh-pages": "3.1.0",
