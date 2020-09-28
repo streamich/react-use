@@ -83,7 +83,7 @@
     "@storybook/react": "6.0.22",
     "@testing-library/react": "11.0.4",
     "@testing-library/react-hooks": "3.4.2",
-    "@types/jest": "26.0.13",
+    "@types/jest": "26.0.14",
     "@types/react": "16.9.11",
     "@typescript-eslint/eslint-plugin": "4.2.0",
     "@typescript-eslint/parser": "4.2.0",
