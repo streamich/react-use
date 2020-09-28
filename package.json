@@ -157,7 +157,7 @@
   },
   "volta": {
     "node": "10.22.1",
-    "yarn": "1.22.5"
+    "yarn": "1.22.7"
   },
   "collective": {
     "type": "opencollective",
