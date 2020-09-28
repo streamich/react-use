@@ -94,7 +94,7 @@
     "eslint": "7.10.0",
     "eslint-config-react-app": "5.2.1",
     "eslint-plugin-flowtype": "5.2.0",
-    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.3.1",
     "eslint-plugin-react": "7.21.2",
     "eslint-plugin-react-hooks": "4.1.2",
