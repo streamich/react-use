@@ -10868,10 +10868,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-markdown-loader@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/markdown-loader/-/markdown-loader-5.1.0.tgz#4efd5006b1514ca966141c661a47e542a9836e6e"
-  integrity sha512-xtQNozLEL+55ZSPTNwro8epZqf1h7HjAZd/69zNe8lbckDiGVHeLQm849bXzocln2pwRK2A/GrW/7MAmwjcFog==
+markdown-loader@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/markdown-loader/-/markdown-loader-5.2.0.tgz#814535790e76b7d861fcf37a16ab03945a64bbc7"
+  integrity sha512-+vAtBlMdmMY3ERSOUIIek/DwCv939nHvoYISUwwTC7q+caVlQmf7KhhMozbfAcgL/7njGjWxhMgI7nLaz9+KRQ==
   dependencies:
     loader-utils "^1.2.3"
     marked "^0.7.0"
