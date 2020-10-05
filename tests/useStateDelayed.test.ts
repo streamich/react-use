@@ -1,4 +1,4 @@
-import { renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
 import useStateDelayed from '../src/useStateDelayed';
 
 const DEFAULT_STATE = 'default state';
@@ -66,5 +66,18 @@ describe('useStateDelayed', () => {
     rerender({ watchInput: true, initialState: INITIAL_STATE, defaultState: DEFAULT_STATE });
     rerender({ watchInput: true, initialState: INITIAL_STATE, defaultState: 'other default state' });
     expect(state).toStrictEqual(DEFAULT_STATE);
+  });
+
+  it('should ignore watchInput chages when state was updated manually by setState', () => {
+    const { result, rerender } = getHook();
+
+    const NEW_SATTE = 'manual state change';
+
+    act(() => {
+      result.current[1](NEW_SATTE);
+    });
+    rerender({ watchInput: true, initialState: INITIAL_STATE, defaultState: DEFAULT_STATE });
+
+    expect(result.current[0]).toStrictEqual(NEW_SATTE);
   });
 });

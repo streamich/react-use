@@ -16,8 +16,9 @@ function useStateDelayed<S>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watchInput, loaded]);
 
-  function updateState(value) {
-    setState(value);
+  function updateState(change) {
+    // update state manunally, don't wait for watchInput to change
+    setState(change);
     setLoaded(true);
   }
 
