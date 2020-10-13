@@ -11,11 +11,15 @@ declare var requestAnimationFrame: {
 describe('useOrientation', () => {
   beforeAll(() => {
     replaceRaf();
+  });
+
+  beforeEach(() => {
     (window.screen.orientation as object) = {
       type: 'landscape-primary',
       angle: 0,
     };
-  });
+    (window.orientation as number) = 0;
+  })
 
   afterEach(() => {
     requestAnimationFrame.reset();
@@ -44,6 +48,13 @@ describe('useOrientation', () => {
     expect(typeof hook.result.current.angle).toBe('number');
   });
 
+  it('should use initial values in case of no parameters', () => {
+    const hook = getHook();
+
+    expect(hook.result.current.type).toBe('landscape-primary');
+    expect(hook.result.current.angle).toBe(0);
+  });
+
   it('should use passed parameters as initial values in case of non-browser use', () => {
     const hook = getHook({
       angle: 90,
@@ -65,4 +76,23 @@ describe('useOrientation', () => {
     expect(hook.result.current.type).toBe('portrait-secondary');
     expect(hook.result.current.angle).toBe(180);
   });
+
+  it('should return window.orientation number if window.screen.orientation is missing', () => {
+    (window.screen.orientation as unknown) = undefined;
+
+    const hook = getHook();
+    
+    expect(hook.result.current.type).toBe('');
+    expect(hook.result.current.angle).toBe(0);
+  });
+
+  it('should return 0 if window.orientation is not a number and if window.screen.orientation is missing', () => {
+    (window.screen.orientation as unknown) = undefined;
+    (window.orientation as unknown) = null;
+    
+    const hook = getHook();
+    
+    expect(hook.result.current.type).toBe('');
+    expect(hook.result.current.angle).toBe(0);
+  })
 });
