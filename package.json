@@ -81,7 +81,7 @@
     "@storybook/addon-notes": "5.3.21",
     "@storybook/addon-options": "5.3.21",
     "@storybook/react": "6.0.26",
-    "@testing-library/react": "11.0.4",
+    "@testing-library/react": "11.1.0",
     "@testing-library/react-hooks": "3.4.2",
     "@types/jest": "26.0.14",
     "@types/react": "16.9.11",
