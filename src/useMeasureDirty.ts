@@ -30,7 +30,9 @@ const useMeasureDirty = (ref: RefObject<HTMLElement>): ContentRect => {
           cancelAnimationFrame(frame.current);
 
           frame.current = requestAnimationFrame(() => {
-            set(entry.contentRect);
+            if (ref.current) {
+              set(entry.contentRect);
+            }
           });
         }
       })
