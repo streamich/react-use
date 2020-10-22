@@ -30,11 +30,13 @@ type AddEventListener<T> = T extends ListenerType1
   ? T['on']
   : never;
 
+export type UseEventOptions<T> = Parameters<AddEventListener<T>>[2];
+
 const useEvent = <T extends UseEventTarget>(
   name: Parameters<AddEventListener<T>>[0],
   handler?: null | undefined | Parameters<AddEventListener<T>>[1],
   target: null | T | Window = defaultTarget,
-  options?: Parameters<AddEventListener<T>>[2]
+  options?: UseEventOptions<T>
 ) => {
   useEffect(() => {
     if (!handler) {
