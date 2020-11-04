@@ -120,7 +120,7 @@
     "rxjs": "6.6.3",
     "semantic-release": "17.2.2",
     "ts-jest": "26.4.3",
-    "ts-loader": "8.0.8",
+    "ts-loader": "8.0.9",
     "ts-node": "9.0.0",
     "typescript": "3.9.7"
   },
