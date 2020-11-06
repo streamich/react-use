@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useState, useMemo, useCallback } from 'react';
 
 export interface StableActions<K> {
@@ -16,12 +15,12 @@ const useSet = <K>(initialSet = new Set<K>()): [Set<K>, Actions<K>] => {
   const [set, setSet] = useState(initialSet);
 
   const stableActions = useMemo<StableActions<K>>(() => {
-    const add = (item: K) => setSet(prevSet => new Set([...Array.from(prevSet), item]));
-    const remove = (item: K) => setSet(prevSet => new Set(Array.from(prevSet).filter(i => i !== item)));
+    const add = (item: K) => setSet((prevSet) => new Set([...Array.from(prevSet), item]));
+    const remove = (item: K) => setSet((prevSet) => new Set(Array.from(prevSet).filter((i) => i !== item)));
     const toggle = (item: K) =>
-      setSet(prevSet =>
+      setSet((prevSet) =>
         prevSet.has(item)
-          ? new Set(Array.from(prevSet).filter(i => i !== item))
+          ? new Set(Array.from(prevSet).filter((i) => i !== item))
           : new Set([...Array.from(prevSet), item])
       );
 
@@ -29,7 +28,7 @@ const useSet = <K>(initialSet = new Set<K>()): [Set<K>, Actions<K>] => {
   }, [setSet]);
 
   const utils = {
-    has: useCallback(item => set.has(item), [set]),
+    has: useCallback((item) => set.has(item), [set]),
     ...stableActions,
   } as Actions<K>;
 

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useCallback, useEffect, useRef } from 'react';
 
 export type UseTimeoutFnReturn = [() => boolean | null, () => void, () => void];

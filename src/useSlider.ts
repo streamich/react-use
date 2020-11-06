@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useRef, RefObject, CSSProperties } from 'react';
 
 import { isClient, off, on } from './util';

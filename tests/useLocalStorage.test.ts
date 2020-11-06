@@ -1,4 +1,3 @@
-/* eslint-disable */
 import useLocalStorage from '../src/useLocalStorage';
 import 'jest-localstorage-mock';
 import { renderHook, act } from '@testing-library/react-hooks';
@@ -33,7 +32,7 @@ describe(useLocalStorage, () => {
   it('does not clobber existing localStorage with initialState', () => {
     localStorage.setItem('foo', '"bar"');
     const { result } = renderHook(() => useLocalStorage('foo', 'buzz'));
-    result.current; // invoke current to make sure things are set
+    expect(result.current).toBeTruthy();
     expect(localStorage.__STORE__.foo).toEqual('"bar"');
   });
 
@@ -143,7 +142,7 @@ describe(useLocalStorage, () => {
     );
 
     const [, setFoo] = result.current;
-    act(() => setFoo(state => ({ ...state!, fizz: 'buzz' })));
+    act(() => setFoo((state) => ({ ...state!, fizz: 'buzz' })));
     rerender();
 
     const [value] = result.current;
@@ -154,7 +153,9 @@ describe(useLocalStorage, () => {
   it('rejects nullish or undefined keys', () => {
     const { result } = renderHook(() => useLocalStorage(null as any));
     try {
-      result.current;
+      (() => {
+        return result.current;
+      })();
       fail('hook should have thrown');
     } catch (e) {
       expect(String(e)).toMatch(/key may not be/i);
@@ -165,8 +166,9 @@ describe(useLocalStorage, () => {
   describe('eslint react-hooks/rules-of-hooks', () => {
     it('memoizes an object between rerenders', () => {
       const { result, rerender } = renderHook(() => useLocalStorage('foo', { ok: true }));
-
-      result.current; // if localStorage isn't set then r1 and r2 will be different
+      (() => {
+        return result.current; // if localStorage isn't set then r1 and r2 will be different
+      })();
       rerender();
       const [r2] = result.current;
       rerender();

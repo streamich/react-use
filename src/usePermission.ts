@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react';
 import { off, on } from './util';
 
@@ -32,7 +31,7 @@ const usePermission = (permissionDesc: PermissionDesc): State => {
   useEffect(() => {
     navigator.permissions
       .query(permissionDesc)
-      .then(status => {
+      .then((status) => {
         permissionStatus = status;
         changeState();
       })
