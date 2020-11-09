@@ -2,7 +2,9 @@ import { useState } from 'react';
 import useEffectOnce from './useEffectOnce';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
-export function createGlobalState<S = any>(initialState?: S) {
+export function createGlobalState<S = any>(): () => [S | undefined, (state: S) => void]
+export function createGlobalState<S = any>(initialState: S): () => [S, (state: S) => void]
+export function createGlobalState<S = any>(initialState?: S): () => [S | undefined, (state: S) => void] {
   const store: { state: S | undefined; setState: (state: S) => void; setters: any[] } = {
     state: initialState,
     setState(state: S) {
@@ -12,7 +14,7 @@ export function createGlobalState<S = any>(initialState?: S) {
     setters: [],
   };
 
-  return (): [S | undefined, (state: S) => void] => {
+  return () => {
     const [globalState, stateSetter] = useState<S | undefined>(store.state);
 
     useEffectOnce(() => () => {
