@@ -5,6 +5,10 @@ import useRafState from './useRafState';
 export interface State {
   x: number;
   y: number;
+  direction: {
+    horizontal: 'up' | 'down' | 'none';
+    vertical: 'left' | 'right' | 'none';
+  }
 }
 
 const useScroll = (ref: RefObject<HTMLElement>): State => {
@@ -17,14 +21,25 @@ const useScroll = (ref: RefObject<HTMLElement>): State => {
   const [state, setState] = useRafState<State>({
     x: 0,
     y: 0,
+    direction: {
+      horizontal: 'none',
+      vertical: 'none'
+    }
+    
   });
 
   useEffect(() => {
     const handler = () => {
+      const horizontal = state.y > ref.current.scrollTop ? 'down' : 'up';
+      const vertical = state.x > ref.current.scrollLeft ? 'left' : 'right'; 
+
       if (ref.current) {
         setState({
           x: ref.current.scrollLeft,
           y: ref.current.scrollTop,
+          direction: {
+            horizontal, vertical
+          }
         });
       }
     };
