@@ -30,16 +30,20 @@ const useScroll = (ref: RefObject<HTMLElement>): State => {
 
   useEffect(() => {
     const handler = () => {
-      let horizontal:'up' | 'down' | 'none' = 'none',
-          vertical:'left' | 'right' | 'none' = 'none'; 
-
-      if(state.y > ref.current.scrollTop) horizontal = 'down';
-      else if(state.y < ref.current.scrollTop) horizontal = 'up';
-
-      if(state.x > ref.current.scrollLeft) vertical = 'left';
-      else if(state.x < ref.current.scrollLeft) vertical = 'right';
-
       if (ref.current) {
+        let horizontal:'up' | 'down' | 'none' = 'none',
+            vertical:'left' | 'right' | 'none' = 'none'; 
+
+        if(ref.current.scrollTop) {
+          if(state.y > ref.current.scrollTop) horizontal = 'down';
+          else if(state.y < ref.current.scrollTop) horizontal = 'up';
+        }
+  
+        if(ref.current.scrollLeft) {
+          if(state.x > ref.current.scrollLeft) vertical = 'left';
+          else if(state.x < ref.current.scrollLeft) vertical = 'right';
+        }
+
         setState({
           x: ref.current.scrollLeft,
           y: ref.current.scrollTop,
