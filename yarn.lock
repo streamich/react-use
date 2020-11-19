@@ -15280,10 +15280,10 @@ select@^1.1.2:
   resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
   integrity sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=
 
-semantic-release@17.2.3:
-  version "17.2.3"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.2.3.tgz#11f10b851d4e75b1015b17515c433049b3df994c"
-  integrity sha512-MY1MlowGQrkOR7+leOD8ICkVOC6i1szbwDODdbJ0UdshtMx8Ms0bhpRQmEEliqYKEb5PLv/dqs6zKKuHT7UxTg==
+semantic-release@17.2.4:
+  version "17.2.4"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.2.4.tgz#b1e18644a5be51a4ee681172fc3c3bb05fe0322a"
+  integrity sha512-NcYFT+duzg+eE57s9lZYRRkxzyiXGvwFdPvS4U+8TYo+vb0UZpQuFi63hFgoLAOF4lo5yj2v79GsG9hDC66EQw==
   dependencies:
     "@semantic-release/commit-analyzer" "^8.0.0"
     "@semantic-release/error" "^2.2.0"
