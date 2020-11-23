@@ -6,12 +6,16 @@
 
   .sb-show-main.sb-main-centered {
     margin: 0;
-    padding: 1rem;
     display: flex;
-    justify-content: center;
     align-items: center;
     min-height: 100vh;
+  }
+
+  .sb-show-main.sb-main-centered #root {
     box-sizing: border-box;
+    margin: auto;
+    padding: 1rem;
+    max-height: 100%; /* Hack for centering correctly in IE11 */
   }
 
   /* Vertical centering fix for IE11 */
