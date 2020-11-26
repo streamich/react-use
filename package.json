@@ -89,7 +89,7 @@
     "@typescript-eslint/parser": "4.8.2",
     "babel-core": "6.26.3",
     "babel-eslint": "10.1.0",
-    "babel-loader": "8.2.1",
+    "babel-loader": "8.2.2",
     "babel-plugin-dynamic-import-node": "2.3.3",
     "eslint": "7.14.0",
     "eslint-config-react-app": "5.2.1",
