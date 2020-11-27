@@ -6,7 +6,7 @@ const { location } = window;
 let mockSearch: string;
 
 beforeEach(() => {
-  delete window.location;
+  delete (window as any).location;
   const { search, ...restLocation } = location;
 
   // @ts-ignore
