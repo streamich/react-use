@@ -45,9 +45,9 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
         setIsFullscreen(false);
       }
       screenfull.on('change', onChange);
-    } else if (video && video.current && video.current.webkitEnterFullscreen) {
-      video.current.webkitEnterFullscreen();
-      video.current.addEventListener('webkitendfullscreen', onWebkitEndFullscreen);
+    } else if (video && video.current && 'webkitEnterFullscreen' in video.current) {
+      (video.current as any).webkitEnterFullscreen();
+      (video.current as any).addEventListener('webkitendfullscreen', onWebkitEndFullscreen);
       setIsFullscreen(true);
     } else {
       onClose();
@@ -61,9 +61,9 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
           screenfull.off('change', onChange);
           screenfull.exit();
         } catch {}
-      } else if (video && video.current && video.current.webkitExitFullscreen) {
-        video.current.removeEventListener('webkitendfullscreen', onWebkitEndFullscreen);
-        video.current.webkitExitFullscreen();
+      } else if (video && video.current && 'webkitExitFullscreen' in video.current) {
+        (video.current as any).removeEventListener('webkitendfullscreen', onWebkitEndFullscreen);
+        (video.current as any).webkitExitFullscreen();
       }
     };
   }, [on, video, ref]);

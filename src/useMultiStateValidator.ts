@@ -7,7 +7,7 @@ export type MultiStateValidator<V extends ValidityState, S extends MultiStateVal
 export function useMultiStateValidator<V extends ValidityState, S extends MultiStateValidatorStates, I extends V>(
   states: S,
   validator: MultiStateValidator<V, S>,
-  initialValidity: I = [undefined] as I
+  initialValidity: I = ([undefined] as unknown) as I
 ): UseStateValidatorReturn<V> {
   if (typeof states !== 'object') {
     throw new Error('states expected to be an object or array, got ' + typeof states);

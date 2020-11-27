@@ -13,7 +13,7 @@ export type UseStateValidatorReturn<V> = [V, () => void];
 export default function useStateValidator<V extends ValidityState, S, I extends V>(
   state: S,
   validator: StateValidator<V, S>,
-  initialState: I = [undefined] as I
+  initialState: I = ([undefined] as unknown) as I
 ): UseStateValidatorReturn<V> {
   const validatorInner = useRef(validator);
   const stateInner = useRef(state);

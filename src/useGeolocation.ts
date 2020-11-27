@@ -10,7 +10,7 @@ export interface GeoLocationSensorState {
   longitude: number | null;
   speed: number | null;
   timestamp: number | null;
-  error?: Error | PositionError;
+  error?: Error | GeolocationPositionError;
 }
 
 const useGeolocation = (options?: PositionOptions): GeoLocationSensorState => {
@@ -43,7 +43,7 @@ const useGeolocation = (options?: PositionOptions): GeoLocationSensorState => {
       });
     }
   };
-  const onEventError = (error: PositionError) =>
+  const onEventError = (error: GeolocationPositionError) =>
     mounted && setState((oldState) => ({ ...oldState, loading: false, error }));
 
   useEffect(() => {
