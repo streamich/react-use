@@ -36,6 +36,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Lifecycle|useShallowCompareEffect', module)
+storiesOf('Lifecycle/useShallowCompareEffect', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useShallowCompareEffect.md')} />)
   .add('Demo', () => <Demo />);

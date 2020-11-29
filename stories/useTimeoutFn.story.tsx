@@ -35,6 +35,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Animation|useTimeoutFn', module)
+storiesOf('Animation/useTimeoutFn', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useTimeoutFn.md')} />)
   .add('Demo', () => <Demo />);

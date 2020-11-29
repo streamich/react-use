@@ -11,6 +11,6 @@ const Demo = () => {
   return <div ref={ref}>{isHovered ? '😁' : '☹️'}</div>;
 };
 
-storiesOf('Sensors|useHoverDirty', module)
+storiesOf('Sensors/useHoverDirty', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useHover.md')} />)
   .add('Demo', () => <Demo />);

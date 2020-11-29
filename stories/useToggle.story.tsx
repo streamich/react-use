@@ -16,6 +16,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useToggle', module)
+storiesOf('State/useToggle', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useToggle.md')} />)
   .add('Demo', () => <Demo />);

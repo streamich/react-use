@@ -70,7 +70,7 @@ const Child = forwardRef(({}, ref: MutableRefObject<HTMLTextAreaElement>) => {
   );
 });
 
-storiesOf('Miscellaneous|useEnsuredForwardedRef', module)
+storiesOf('Miscellaneous/useEnsuredForwardedRef', module)
   .addDecorator(withKnobs)
   .add('Docs', () => <ShowDocs md={require('../docs/useEnsuredForwardedRef.md')} />)
   .add('Demo', () => {

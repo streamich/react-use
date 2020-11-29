@@ -10,6 +10,6 @@ const Demo = () => {
   return <NewTabStory>Title should be "Hello world!"</NewTabStory>;
 };
 
-storiesOf('Side effects|useTitle', module)
+storiesOf('Side effects/useTitle', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useTitle.md')} />)
   .add('Demo', () => <Demo />);

@@ -9,7 +9,7 @@ const Demo = () => {
 
   return (
     <div>
-      <input value={text} onChange={e => setText(e.target.value)} />
+      <input value={text} onChange={(e) => setText(e.target.value)} />
       <button type="button" onClick={() => copyToClipboard(text)}>
         copy text
       </button>
@@ -29,6 +29,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side-effects|useCopyToClipboard', module)
+storiesOf('Side-effects/useCopyToClipboard', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useCopyToClipboard.md')} />)
   .add('Demo', () => <Demo />);

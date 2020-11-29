@@ -17,6 +17,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useFirstMountState', module)
+storiesOf('State/useFirstMountState', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useFirstMountState.md')} />)
   .add('Demo', () => <Demo />);

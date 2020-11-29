@@ -18,6 +18,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useQueue', module)
+storiesOf('State/useQueue', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useQueue.md')} />)
   .add('Demo', () => <Demo />);

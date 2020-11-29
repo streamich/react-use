@@ -53,7 +53,7 @@ const IframeComponent = () => {
   );
 };
 
-storiesOf('Side effects|useLockBodyScroll', module)
+storiesOf('Side effects/useLockBodyScroll', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useLockBodyScroll.md')} />)
   .add('Demo', () => <Demo />)
   .add('Two hooks on page', () => (

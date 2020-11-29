@@ -74,9 +74,7 @@ const Demo = () => {
         <div>Current history</div>
         <div
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(history.history, null, 2)
-              .replace(/\n/g, '<br/>')
-              .replace(/ /g, '&nbsp;'),
+            __html: JSON.stringify(history.history, null, 2).replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;'),
           }}
         />
       </div>
@@ -84,6 +82,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useStateWithHistory', module)
+storiesOf('State/useStateWithHistory', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useStateWithHistory.md')} />)
   .add('Demo', () => <Demo />);

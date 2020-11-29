@@ -13,12 +13,12 @@ const Demo = () => {
 
   return (
     <div>
-      <button onClick={() => setCount(currentCount => currentCount + 1)}>Count: {count}</button>
+      <button onClick={() => setCount((currentCount) => currentCount + 1)}>Count: {count}</button>
       <p>Updated: {didUpdate}</p>
     </div>
   );
 };
 
-storiesOf('Lifecycle|useUpdateEffect', module)
+storiesOf('Lifecycle/useUpdateEffect', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useUpdateEffect.md')} />)
   .add('Demo', () => <Demo />);

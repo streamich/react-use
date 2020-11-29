@@ -12,12 +12,12 @@ const Demo = () => {
       <p>
         Now: {count}, before: {String(prevCount)}
       </p>
-      <button onClick={() => setCount(value => value + 1)}>+</button>
-      <button onClick={() => setCount(value => value - 1)}>-</button>
+      <button onClick={() => setCount((value) => value + 1)}>+</button>
+      <button onClick={() => setCount((value) => value - 1)}>-</button>
     </div>
   );
 };
 
-storiesOf('State|usePrevious', module)
+storiesOf('State/usePrevious', module)
   .add('Docs', () => <ShowDocs md={require('../docs/usePrevious.md')} />)
   .add('Demo', () => <Demo />);

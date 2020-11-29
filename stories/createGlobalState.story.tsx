@@ -1,7 +1,7 @@
-import { storiesOf } from "@storybook/react";
-import React, { FC } from "react";
-import { createGlobalState } from "../src";
-import ShowDocs from "./util/ShowDocs";
+import { storiesOf } from '@storybook/react';
+import React, { FC } from 'react';
+import { createGlobalState } from '../src';
+import ShowDocs from './util/ShowDocs';
 
 const useGlobalValue = createGlobalState<number>(0);
 
@@ -28,6 +28,6 @@ const Demo: FC = () => {
   );
 };
 
-storiesOf("State|createGlobalState", module)
-  .add("Docs", () => <ShowDocs md={require("../docs/createGlobalState.md")} />)
-  .add("Demo", () => <Demo />);
+storiesOf('State/createGlobalState', module)
+  .add('Docs', () => <ShowDocs md={require('../docs/createGlobalState.md')} />)
+  .add('Demo', () => <Demo />);

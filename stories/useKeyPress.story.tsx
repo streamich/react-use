@@ -23,6 +23,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Sensors|useKeyPress', module)
+storiesOf('Sensors/useKeyPress', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useKeyPress.md')} />)
   .add('Demo', () => <Demo />);
