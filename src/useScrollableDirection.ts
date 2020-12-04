@@ -80,7 +80,7 @@ export const useScrollableDirection = (
         }
         if (!options.disabledListeners?.down) {
           isScrollableDown =
-            element.scrollTop + element.clientHeight + (options.offsets?.down ?? 0) < element.scrollHeight; // 600 + 200 < 800 - x
+            element.scrollTop + element.clientHeight + (options.offsets?.down ?? 0) < element.scrollHeight;
         }
         if (!options.disabledListeners?.left) {
           isScrollableLeft = element.scrollLeft - (options.offsets?.left ?? 0) > 0;
