@@ -63,8 +63,8 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^16.8.0  || ^17.0.0",
+    "react-dom": "^16.8.0  || ^17.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.3",
