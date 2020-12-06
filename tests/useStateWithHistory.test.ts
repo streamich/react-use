@@ -52,9 +52,9 @@ describe('useStateWithHistory', () => {
     });
     expect(hook.result.current[0][0]).toBe(321);
     act(() => {
-      hook.result.current[0][1](() => 111);
+      hook.result.current[0][1]((current) => (current ?? 0) + 111);
     });
-    expect(hook.result.current[0][0]).toBe(111);
+    expect(hook.result.current[0][0]).toBe(432);
   });
 
   it('should receive initial history', () => {
