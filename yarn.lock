@@ -3140,10 +3140,10 @@
     lz-string "^1.4.4"
     pretty-format "^26.6.2"
 
-"@testing-library/react-hooks@3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/react-hooks/-/react-hooks-3.6.0.tgz#37e595eb1111e71b39ef0597b390850b9af3660d"
-  integrity sha512-7TbqFN4CqEmfR6bC50XOtXbM3A5sizzEOmcH7IBVdm0oFnqmlkPTnu4sMt9BfepsYDvVpF8Y2CaoMJlfmyLYuQ==
+"@testing-library/react-hooks@3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/react-hooks/-/react-hooks-3.7.0.tgz#6d75c5255ef49bce39b6465bf6b49e2dac84919e"
+  integrity sha512-TwfbY6BWtWIHitjT05sbllyLIProcysC0dF0q1bbDa7OHLC6A6rJOYJwZ13hzfz3O4RtOuInmprBozJRyyo7/g==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@types/testing-library__react-hooks" "^3.4.0"
