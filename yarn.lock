@@ -33,7 +33,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.12.7.tgz#9329b4782a7d6bbd7eef57e11addf91ee3ef1e41"
   integrity sha512-YaxPMGs/XIWtYqrdEOZOCPsVWfEoriXopnsz3/i7apYPXQ3698UFhS6dVT1KN5qOsWmVgw/FOrmQgpRaZayGsw==
 
-"@babel/core@7.12.9":
+"@babel/core@7.12.9", "@babel/core@^7.0.0":
   version "7.12.9"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.12.9.tgz#fd450c4ec10cdbb980e2928b7aa7a28484593fc8"
   integrity sha512-gTXYh3M5wb7FRXQy+FErKFAv90BnlOuNn1QkCK2lREoPAjrQCO49+HVSrFoe5uakFAF5eenS75KbO2vQiLrTMQ==
@@ -2549,16 +2549,16 @@
   dependencies:
     tslib "^1.14.1"
 
-"@shopify/jest-dom-mocks@2.9.3":
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.9.3.tgz#c3e7486b171ea750587fd40eaac9820c719143ed"
-  integrity sha512-PUAQuwKFu7iDsWywUG2Ot5RnSRvnzkj3NyXLWHuj4lT3NRevQjeEP0HjPdRHtcxpQpGJbcFq2O3ww2a7TbAgfQ==
+"@shopify/jest-dom-mocks@2.9.4":
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.9.4.tgz#e26f11f989c570f056437eff9bffd43703fc7950"
+  integrity sha512-GqpbB/nRUGEXH0qCra5mG6YunTV4wHSLHwc6lfoM+RqkgXzilHO46N4Xhug4n25+H5aCeD1YK1tcVc8tHxJ7hw==
   dependencies:
     "@shopify/async" "^2.1.6"
     "@shopify/decorators" "^1.1.13"
-    "@types/fetch-mock" "^6.0.1"
+    "@types/fetch-mock" "^7.3.3"
     "@types/lolex" "^2.1.3"
-    fetch-mock "^9.10.1"
+    fetch-mock "^9.11.0"
     lolex "^2.7.5"
     promise "^8.0.3"
     tslib "^1.14.1"
@@ -3232,10 +3232,10 @@
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
   integrity sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==
 
-"@types/fetch-mock@^6.0.1":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@types/fetch-mock/-/fetch-mock-6.0.5.tgz#acbc6771d43d7ebc1f0a8b7e3d57147618f8eacb"
-  integrity sha512-rV8O2j/TIi0PtFCOlK55JnfKpE8Hm6PKFgrUZY/3FNHw4uBEMHnM+5ZickDO1duOyKxbpY3VES5T4NIwZXvodA==
+"@types/fetch-mock@^7.3.3":
+  version "7.3.3"
+  resolved "https://registry.yarnpkg.com/@types/fetch-mock/-/fetch-mock-7.3.3.tgz#255511d70087b9ae8866704c782c88cc96a0b45b"
+  integrity sha512-NLMbBVQh3yx6dMd5CnVxp9ZBhQYuFzWIlRk0kQbgBfyL75u3wtZyUTuFsK9Wb9G3eIw77yja858j1fQAWqM9Og==
 
 "@types/glob-base@^0.3.0":
   version "0.3.0"
@@ -7834,12 +7834,13 @@ fbjs@^0.8.0:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.18"
 
-fetch-mock@^9.10.1:
-  version "9.10.7"
-  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-9.10.7.tgz#9673717af181e1ecb791cf32315c13580d4571ea"
-  integrity sha512-YkiMHSL8CQ0vlWYpqGvlaZjViFk0Kar9jonPjSvaWoztkeHH6DENqUzBIsffzjVKhwchPI74SZRLRpIsEyNcZQ==
+fetch-mock@^9.11.0:
+  version "9.11.0"
+  resolved "https://registry.yarnpkg.com/fetch-mock/-/fetch-mock-9.11.0.tgz#371c6fb7d45584d2ae4a18ee6824e7ad4b637a3f"
+  integrity sha512-PG1XUv+x7iag5p/iNHD4/jdpxL9FtVSqRMUQhPab4hVDt80T1MH5ehzVrL2IdXO9Q2iBggArFvPqjUbHFuI58Q==
   dependencies:
-    babel-runtime "^6.26.0"
+    "@babel/core" "^7.0.0"
+    "@babel/runtime" "^7.0.0"
     core-js "^3.0.0"
     debug "^4.1.1"
     glob-to-regexp "^0.4.0"
