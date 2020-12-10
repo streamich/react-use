@@ -89,6 +89,7 @@ export { default as useSpeech } from './useSpeech';
 export { default as useStartTyping } from './useStartTyping';
 export { useStateWithHistory } from './useStateWithHistory';
 export { default as useStateList } from './useStateList';
+export { default as useSubscribedLocalStorage } from './useSubscribedLocalStorage';
 export { default as useThrottle } from './useThrottle';
 export { default as useThrottleFn } from './useThrottleFn';
 export { default as useTimeout } from './useTimeout';
