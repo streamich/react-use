@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import useEffectOnce from './useEffectOnce';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
-export function createGlobalState<S = any>(initialState?: S) {
-  const store: { state: S | undefined; setState: (state: S) => void; setters: any[] } = {
-    state: initialState,
-    setState(state: S) {
-      store.state = state;
+export function createGlobalState<S>(initialState: S | (() => S)): () => [S, Dispatch<SetStateAction<S>>];
+export function createGlobalState<S = undefined>(): () => [S | undefined, Dispatch<SetStateAction<S | undefined>>];
+export function createGlobalState<S>(initialState?: S | (() => S)) {
+  const store: { state: S; setState: Dispatch<SetStateAction<S>>; setters: any[] } = {
+    state: typeof initialState === 'function' ? (initialState as any)() : initialState,
+    setState(action: SetStateAction<S>) {
+      store.state = typeof action === 'function' ? (action as any)(store.state) : action;
       store.setters.forEach((setter) => setter(store.state));
     },
     setters: [],
