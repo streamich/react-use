@@ -14,6 +14,7 @@ it('should init set and utils', () => {
     remove: expect.any(Function),
     toggle: expect.any(Function),
     reset: expect.any(Function),
+    clear: expect.any(Function),
   });
 });
 
@@ -143,6 +144,17 @@ it('should reset to initial set provided', () => {
   });
 
   expect(result.current[0]).toEqual(new Set([1]));
+});
+
+it('should clear set to contain an empty set', () => {
+  const { result } = setUp(new Set([1]));
+  const [, utils] = result.current;
+
+  act(() => {
+    utils.clear();
+  });
+
+  expect(result.current[0]).toEqual(new Set([]));
 });
 
 it('should memoized its utils methods', () => {
