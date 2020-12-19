@@ -5,6 +5,7 @@ export interface StableActions<K> {
   remove: (key: K) => void;
   toggle: (key: K) => void;
   reset: () => void;
+  clear: () => void;
 }
 
 export interface Actions<K> extends StableActions<K> {
@@ -24,7 +25,7 @@ const useSet = <K>(initialSet = new Set<K>()): [Set<K>, Actions<K>] => {
           : new Set([...Array.from(prevSet), item])
       );
 
-    return { add, remove, toggle, reset: () => setSet(initialSet) };
+    return { add, remove, toggle, reset: () => setSet(initialSet), clear: () => setSet(new Set<K>()) };
   }, [setSet]);
 
   const utils = {
