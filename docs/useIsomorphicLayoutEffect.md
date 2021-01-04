@@ -36,3 +36,4 @@ If your project uses the `react-hooks/exhaustive-deps` ESLint rule, it's recomme
       }
     ]
   }
+```
