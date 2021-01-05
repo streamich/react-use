@@ -63,25 +63,28 @@ export default function useSessionStorage<T>(
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const set: Dispatch<SetStateAction<T>> = useCallback(
     (valOrFunc) => {
-      try {
-        const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
+      setState((prevState) => {
+        const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(prevState) : valOrFunc;
         if (typeof newState === 'undefined') return;
         let value: string;
 
-        if (options)
-          if (options.raw)
-            if (typeof newState === 'string') value = newState;
+        try {
+          if (options)
+            if (options.raw)
+              if (typeof newState === 'string') value = newState;
+              else value = JSON.stringify(newState);
+            else if (options.serializer) value = options.serializer(newState);
             else value = JSON.stringify(newState);
-          else if (options.serializer) value = options.serializer(newState);
           else value = JSON.stringify(newState);
-        else value = JSON.stringify(newState);
 
-        sessionStorage.setItem(key, value);
-        setState(deserializer(value));
-      } catch {
-        // If user is in private mode or has storage restriction
-        // sessionStorage can throw. Also JSON.stringify can throw.
-      }
+          sessionStorage.setItem(key, value);
+          return deserializer(value);
+        } catch {
+          // If user is in private mode or has storage restriction
+          // sessionStorage can throw. Also JSON.stringify can throw.
+          return prevState;
+        }
+      });
     },
     [key, setState]
   );

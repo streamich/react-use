@@ -150,6 +150,18 @@ describe(useSessionStorage, () => {
     expect(value!.fizz).toEqual('buzz');
   });
 
+  it("function updater doesn't get stale state", () => {
+    const { result, rerender } = renderHook(() => useSessionStorage('foo', false));
+
+    act(() => result.current[1]((state) => !state));
+    rerender();
+    expect(result.current[0]).toEqual(true);
+
+    act(() => result.current[1]((state) => !state));
+    rerender();
+    expect(result.current[0]).toEqual(false);
+  });
+
   it('rejects nullish or undefined keys', () => {
     const { result } = renderHook(() => useSessionStorage(null as any));
     try {
