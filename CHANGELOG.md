@@ -1251,10 +1251,6 @@ anymore.
 * useMeasure() now defaults all values to -1, if they were not set and
 internal implementation heavily refactored.
 * useAsyncFn now keeps hold of old result/error when called multiple times
-* resize-observer-polyfill package is not used with useMeasure() hook
-anymore.
-* useMeasure() now defaults all values to -1, if they were not set and
-internal implementation heavily refactored.
 
 # [14.3.0](https://github.com/streamich/react-use/compare/v14.2.0...v14.3.0) (2020-05-16)
 
