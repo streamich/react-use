@@ -269,4 +269,31 @@ describe(useSessionStorage, () => {
       expect(JSON.parse(value!).fizz).toEqual('bang');
     });
   });
+
+  describe('Options: serializer & deserializer', () => {
+    const opts = {
+      raw: false,
+      serializer: (value: string): string => value.toUpperCase(),
+      deserializer: (value: string): string => value.toLowerCase(),
+    };
+
+    it('uses deserializer for existing value', () => {
+      sessionStorage.setItem('foo', 'BAZ');
+      const { result } = renderHook(() => useSessionStorage('foo', 'initial', opts));
+      const [state] = result.current;
+      expect(state).toEqual('baz');
+    });
+
+    it('uses serializer and deserializer when updating value', () => {
+      const { result, rerender } = renderHook(() => useSessionStorage('foo', 'initial', opts));
+
+      const [, setFoo] = result.current;
+      act(() => setFoo('baz'));
+      rerender();
+
+      const [foo] = result.current;
+      expect(foo).toEqual('baz');
+      expect(sessionStorage.__STORE__.foo).toEqual('BAZ');
+    });
+  });
 });
