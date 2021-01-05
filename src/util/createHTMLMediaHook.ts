@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import useSetState from '../useSetState';
 import parseTimeRanges from './parseTimeRanges';
 
@@ -133,69 +133,72 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => (
   // if one tries to execute another `.play()` or `.pause()` while that
   // promise is resolving. So we prevent that with this lock.
   // See: https://bugs.chromium.org/p/chromium/issues/detail?id=593273
-  let lockPlay: boolean = false;
+  const lockPlay = useRef<boolean>(false);
 
-  const controls = {
-    play: () => {
-      const el = ref.current;
-      if (!el) {
-        return undefined;
-      }
-
-      if (!lockPlay) {
-        const promise = el.play();
-        const isPromise = typeof promise === 'object';
-
-        if (isPromise) {
-          lockPlay = true;
-          const resetLock = () => {
-            lockPlay = false;
-          };
-          promise.then(resetLock, resetLock);
+  const controls = useMemo(
+    () => ({
+      play: () => {
+        const el = ref.current;
+        if (!el) {
+          return undefined;
         }
 
-        return promise;
-      }
-      return undefined;
-    },
-    pause: () => {
-      const el = ref.current;
-      if (el && !lockPlay) {
-        return el.pause();
-      }
-    },
-    seek: (time: number) => {
-      const el = ref.current;
-      if (!el || state.duration === undefined) {
-        return;
-      }
-      time = Math.min(state.duration, Math.max(0, time));
-      el.currentTime = time;
-    },
-    volume: (volume: number) => {
-      const el = ref.current;
-      if (!el) {
-        return;
-      }
-      volume = Math.min(1, Math.max(0, volume));
-      el.volume = volume;
-      setState({ volume });
-    },
-    mute: () => {
-      const el = ref.current;
-      if (!el) {
-        return;
-      }
-      el.muted = true;
-    },
-    unmute: () => {
-      const el = ref.current;
-      if (!el) {
-        return;
-      }
-      el.muted = false;
-    },
-  };
+        if (!lockPlay.current) {
+          const promise = el.play();
+          const isPromise = typeof promise === 'object';
+
+          if (isPromise) {
+            lockPlay.current = true;
+            const resetLock = () => {
+              lockPlay.current = false;
+            };
+            promise.then(resetLock, resetLock);
+          }
+
+          return promise;
+        }
+        return undefined;
+      },
+      pause: () => {
+        const el = ref.current;
+        if (el && !lockPlay.current) {
+          return el.pause();
+        }
+      },
+      seek: (time: number) => {
+        const el = ref.current;
+        if (!el || state.duration === undefined) {
+          return;
+        }
+        time = Math.min(state.duration, Math.max(0, time));
+        el.currentTime = time;
+      },
+      volume: (volume: number) => {
+        const el = ref.current;
+        if (!el) {
+          return;
+        }
+        volume = Math.min(1, Math.max(0, volume));
+        el.volume = volume;
+        setState({ volume });
+      },
+      mute: () => {
+        const el = ref.current;
+        if (!el) {
+          return;
+        }
+        el.muted = true;
+      },
+      unmute: () => {
+        const el = ref.current;
+        if (!el) {
+          return;
+        }
+        el.muted = false;
+      },
+    }),
+    [setState, state.duration]
+  );
 
   useEffect(() => {
     const el = ref.current!;
@@ -229,7 +232,7 @@ const createHTMLMediaHook = (tag: 'audio' | 'video') => (
     if (props.autoPlay && el.paused) {
       controls.play();
     }
-  }, [props.src]);
+  }, [controls, props.autoPlay, props.src, setState]);
 
   return [element, state, controls, ref];
 };

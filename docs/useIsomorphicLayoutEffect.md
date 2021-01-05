@@ -22,3 +22,18 @@ const Demo = ({value}) => {
 ```ts
 useIsomorphicLayoutEffect(effect: EffectCallback, deps?: ReadonlyArray<any> | undefined);
 ```
+
+## eslint-plugin-react-hooks
+
+If your project uses the `react-hooks/exhaustive-deps` ESLint rule, it's recommended to add `useIsomorphicLayoutEffect` to the `additionalHooks` of the rule. Example:
+
+```js
+  rules: {
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: '(useIsomorphicLayoutEffect)'
+      }
+    ]
+  }
+```
