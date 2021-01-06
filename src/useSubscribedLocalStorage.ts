@@ -1,3 +1,4 @@
+// deprecated
 import { useState, useCallback, useEffect, Dispatch, SetStateAction } from 'react';
 import { isClient } from './util';
 
@@ -13,7 +14,7 @@ type parserOptions<T> =
 
 const noop = () => {};
 
-const useLocalStorage = <T>(
+const useSubscribedLocalStorage = <T>(
   key: string,
   initialValue?: T,
   options?: parserOptions<T>
@@ -22,7 +23,7 @@ const useLocalStorage = <T>(
     return [initialValue as T, noop, noop];
   }
   if (!key) {
-    throw new Error('useLocalStorage key may not be falsy');
+    throw new Error('useSubscribedLocalStorage key may not be falsy');
   }
 
   const deserializer = options ? (options.raw ? (value) => value : options.deserializer) : JSON.parse;
@@ -108,4 +109,4 @@ const useLocalStorage = <T>(
   return [state, set, remove];
 };
 
-export default useLocalStorage;
+export default useSubscribedLocalStorage;
