@@ -1,3 +1,10 @@
+## [15.3.6](https://github.com/streamich/react-use/compare/v15.3.5...v15.3.6) (2021-01-07)
+
+
+### Bug Fixes
+
+* Fix issues in tests ([7668ce5](https://github.com/streamich/react-use/commit/7668ce5c5f0f186437907f1c352d3a62e3ae8ba7))
+
 ## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-04)
 
 
