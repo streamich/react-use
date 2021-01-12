@@ -19,7 +19,7 @@ const useSetState = <T extends object>(initialState: T = {} as T): [T, SetStateA
 
     // Call callback parameter
     callBackRef.current?.(state);
-  }, [state]);
+  }, [state, isFirstMount]);
 
   const setState = useCallback(
     (patch: Patch<T>, callback?: Callback<T>) => {
