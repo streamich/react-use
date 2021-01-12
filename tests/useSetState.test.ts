@@ -35,7 +35,7 @@ it('should merge changes into current state when providing function', () => {
 
   act(() => {
     // @ts-ignore
-    setState(prevState => ({ count: prevState.count + 1, someBool: true }));
+    setState((prevState) => ({ count: prevState.count + 1, someBool: true }));
   });
 
   expect(result.current[0]).toEqual({ foo: 'bar', count: 2, someBool: true });
@@ -57,4 +57,15 @@ it('should return a memoized setState callback', () => {
   const [, setState2] = result.current;
 
   expect(setState1).toBe(setState2);
+});
+
+it('should call callback function after render is finished', () => {
+  const { result } = setUp({ test: 'a' });
+  const [, setState] = result.current;
+
+  act(() => {
+    setState({ test: 'b' }, (currentState) => {
+      expect(currentState).toEqual({ test: 'b' });
+    });
+  });
 });
