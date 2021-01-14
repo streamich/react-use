@@ -59,7 +59,7 @@ it('should return a memoized setState callback', () => {
   expect(setState1).toBe(setState2);
 });
 
-it('should call callback function after render is finished', () => {
+it('should call callback function after render is finished, when providing state object', () => {
   const { result } = setUp({ test: 'a' });
   const [, setState] = result.current;
 
@@ -68,4 +68,23 @@ it('should call callback function after render is finished', () => {
       expect(currentState).toEqual({ test: 'b' });
     });
   });
+
+  expect(result.current[0]).toEqual({ test: 'b' });
+});
+
+it('should call callback function after render is finished, when providing function state', () => {
+  const { result } = setUp({ test: 'a', count: 1 });
+  const [, setState] = result.current;
+
+  act(() => {
+    setState(
+      // @ts-ignore
+      (prevState) => ({ test: 'b', count: prevState.count + 1 }),
+      (currentState) => {
+        expect(currentState).toEqual({ test: 'b', count: 2 });
+      }
+    );
+  });
+
+  expect(result.current[0]).toEqual({ test: 'b', count: 2 });
 });
