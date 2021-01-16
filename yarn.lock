@@ -14731,10 +14731,10 @@ select@^1.1.2:
   resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
   integrity sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=
 
-semantic-release@17.3.2:
-  version "17.3.2"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.3.2.tgz#89c793ed64fe00b7bfe1c36bc389fb04855a4df9"
-  integrity sha512-S8ppLzFFeznDXvRGEvltuwpRT7Tb7o3gBIqaVnahi0sAzrxD/WdWZQoHOpwypzTBD7i9gCxZ+RqVpaHa9WFD3w==
+semantic-release@17.3.3:
+  version "17.3.3"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.3.3.tgz#8f3d2909e9570d9053ef195c138d8d15d7fe5815"
+  integrity sha512-StUBghTuh98O0XpDWj5aRLmZwY9zV6gGgbXnw5faon3Br1fRk8r2VSaYozfQTx8o5C8Mtem+a0KWEiTTd4Iylw==
   dependencies:
     "@semantic-release/commit-analyzer" "^8.0.0"
     "@semantic-release/error" "^2.2.0"
