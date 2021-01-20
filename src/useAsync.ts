@@ -10,7 +10,9 @@ export default function useAsync<T extends FnReturningPromise>(fn: T, deps: Depe
   });
 
   useEffect(() => {
-    callback();
+    // catch an error to prevent propagating outside
+    // hook will change own internal state
+    callback().catch(() => {});
   }, [callback]);
 
   return state;
