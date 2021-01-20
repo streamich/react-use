@@ -2655,10 +2655,10 @@
   dependencies:
     tslib "^1.14.1"
 
-"@shopify/jest-dom-mocks@2.10.0":
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.10.0.tgz#c49dcbaa6f75d92d2489685914b6e1a50939d367"
-  integrity sha512-qpMVKX8D/IIXrQuTFp2MJmVm0zHOJ8FQIlgPwCzlIUnnIGcxE0IG0gTR+HaQQVATo8Ak38IfqlcDK4Yu7Noo0Q==
+"@shopify/jest-dom-mocks@2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.11.0.tgz#aeae7d54bdb089d6cbd44efc3a5329f7c20419c6"
+  integrity sha512-2VfIdOsbVF+NfTHVV8Ikxjy5LjpN5OleoyepSM2snLUEzY9uwzBncd/uWYde85V7OXCSy1mwv7d8iTs1psloGw==
   dependencies:
     "@shopify/async" "^2.2.0"
     "@shopify/decorators" "^1.2.0"
