@@ -9,6 +9,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import useAsyncFn, { AsyncState } from '../src/useAsyncFn';
 
 type AdderFn = (a?: number, b?: number) => Promise<number>;
+type RejectFn = () => Promise<string>;
 
 describe('useAsyncFn', () => {
   it('should be defined', () => {
@@ -44,6 +45,38 @@ describe('useAsyncFn', () => {
 
       expect(state.value).toEqual(12);
       expect(result).toEqual(state.value);
+    });
+  });
+
+  describe('the callback promise can be rejected and error is propagated', () => {
+    let hook;
+    const expectedError = new Error('reject value')
+    const rejection: RejectFn = () => Promise.reject(expectedError)
+
+    beforeEach(() => {
+      // NOTE: renderHook isn't good at inferring array types
+      hook = renderHook<{ fn: RejectFn }, [AsyncState<string>, RejectFn]>(({ fn }) => useAsyncFn(fn), {
+        initialProps: { fn: rejection },
+      });
+    });
+
+    it('awaits the error', async () => {
+      expect.assertions(2);
+
+      const [, callback] = hook.result.current;
+      let result;
+      let error;
+
+      await act(async () => {
+        try {
+          result = await callback();
+        } catch (err){
+          error = err
+        }
+      });
+
+      expect(result).not.toBeDefined();
+      expect(error).toBe(expectedError);
     });
   });
 
