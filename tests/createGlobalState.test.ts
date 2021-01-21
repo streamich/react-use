@@ -17,5 +17,10 @@ describe('useGlobalState', () => {
     });
     expect(result1.current[0] === 1);
     expect(result2.current[0] === 1);
+    act(() => {
+      result1.current[1]((prevState) => prevState + 1);
+    });
+    expect(result1.current[0] === 2);
+    expect(result2.current[0] === 2);
   });
 });
