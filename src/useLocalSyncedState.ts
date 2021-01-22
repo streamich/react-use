@@ -5,12 +5,12 @@ type Roles = typeof ROLES[number];
 
 type DataCb<T = any> = (d: T) => void;
 
-type Source = {
+type Connector = {
   onData: <T = any>(key: string, cb: DataCb<T>) => void;
   sendData: <T = any>(key: string, data: T) => void;
 };
 
-function broadcastSource(): Source {
+function createConnector(): Connector {
   const channels: Record<string, BroadcastChannel> = {};
 
   function getChannel(key: string): BroadcastChannel {
@@ -32,7 +32,7 @@ function broadcastSource(): Source {
   return { sendData, onData };
 }
 
-const source = broadcastSource();
+const connector = createConnector();
 
 /**
  * Creates a state that can be synced between contexts on the same browser running on the same machine:
@@ -58,13 +58,13 @@ export function useLocalSyncedState<T = any>(identifier: string, baseValue: T | 
   const isReceiver = role === 'receiver' || role === 'both';
 
   if (isReceiver) {
-    source.onData(identifier, (d) => componentIsMounted.current && setValue(d));
+    connector.onData(identifier, (d) => componentIsMounted.current && setValue(d));
   }
 
   function setData(newVal: T) {
     setValue(newVal);
     if (isSender) {
-      source.sendData(identifier, newVal);
+      connector.sendData(identifier, newVal);
     }
   }
 
