@@ -33,6 +33,8 @@ module.exports = async ({ config, mode }) => {
   config.resolve.enforceExtension = false;
 
   // disable the hint about too big bundle
+  
+  //hiiiii
   config.performance.hints = false;
 
   return config;
