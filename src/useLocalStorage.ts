@@ -1,12 +1,14 @@
-import { useState, useCallback, Dispatch, SetStateAction } from 'react';
+import { useState, useCallback, useRef, useEffect, Dispatch, SetStateAction } from 'react';
 import { isClient } from './util';
 
 type parserOptions<T> =
   | {
       raw: true;
+      sync?: boolean;
     }
   | {
       raw: false;
+      sync?: boolean;
       serializer: (value: T) => string;
       deserializer: (value: string) => T;
     };
@@ -16,7 +18,7 @@ const noop = () => {};
 const useLocalStorage = <T>(
   key: string,
   initialValue?: T,
-  options?: parserOptions<T>
+  _options?: parserOptions<T>
 ): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
   if (!isClient) {
     return [initialValue as T, noop, noop];
@@ -24,6 +26,10 @@ const useLocalStorage = <T>(
   if (!key) {
     throw new Error('useLocalStorage key may not be falsy');
   }
+
+  // ensure options not changed
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { current: options } = useRef(_options);
 
   const deserializer = options ? (options.raw ? (value) => value : options.deserializer) : JSON.parse;
 
@@ -46,6 +52,29 @@ const useLocalStorage = <T>(
       return initialValue;
     }
   });
+
+  if (options?.sync) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      const callback = (e: StorageEvent) => {
+        if (e.key !== key) {
+          return;
+        }
+        if (e.newValue === null) {
+          return remove();
+        }
+        try {
+          setState(deserializer(e.newValue));
+        } catch {
+          setState(undefined);
+        }
+      };
+      window.addEventListener('storage', callback);
+      return () => {
+        window.removeEventListener('storage', callback);
+      };
+    }, [key, setState]);
+  }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
