@@ -47,7 +47,7 @@ const propsList2 = [
 ];
 
 it('should call addEventListener/removeEventListener on mount/unmount', () => {
-  checkOnMountAndUnmount(propsList1[0], 'addEventListener', 'removeEventListener');
+  checkOnMountAndUnmount(propsList1[0], 'addEventListener', 'removeEventListener', true);
 });
 
 it('should call on/off on mount/unmount', () => {
@@ -55,21 +55,30 @@ it('should call on/off on mount/unmount', () => {
 });
 
 it('should call addEventListener/removeEventListener on deps changes', () => {
-  checkOnDepsChanges(propsList1[0], propsList1[1], 'addEventListener', 'removeEventListener');
+  checkOnDepsChanges(propsList1[0], propsList1[1], 'addEventListener', 'removeEventListener', true);
 });
 
 it('should call on/off on deps changes', () => {
   checkOnDepsChanges(propsList2[0], propsList2[1], 'on', 'off');
 });
 
-const checkOnMountAndUnmount = (props: Props, addEventListenerName: string, removeEventListenerName: string) => {
+const checkOnMountAndUnmount = (
+  props: Props,
+  addEventListenerName: string,
+  removeEventListenerName: string,
+  isListener = false
+) => {
   const { unmount } = renderHook((p: Props) => useEvent(p.name, p.handler, p.target, p.options), {
     initialProps: props,
   });
   expect(props.target[addEventListenerName]).toHaveBeenCalledTimes(1);
   expect(props.target[addEventListenerName]).toHaveBeenLastCalledWith(props.name, props.handler, props.options);
+  if (isListener) {
+    expect(props.target[removeEventListenerName]).toHaveBeenCalledTimes(1);
+    expect(props.target[removeEventListenerName]).toHaveBeenLastCalledWith(props.name, props.handler, props.options);
+  }
   unmount();
-  expect(props.target[removeEventListenerName]).toHaveBeenCalledTimes(1);
+  expect(props.target[removeEventListenerName]).toHaveBeenCalledTimes(isListener ? 2  : 1);
   expect(props.target[removeEventListenerName]).toHaveBeenLastCalledWith(props.name, props.handler, props.options);
 };
 
@@ -77,7 +86,8 @@ const checkOnDepsChanges = (
   props1: Props,
   props2: Props,
   addEventListenerName: string,
-  removeEventListenerName: string
+  removeEventListenerName: string,
+  isListener = false
 ) => {
   const { rerender } = renderHook((p: Props) => useEvent(p.name, p.handler, p.target, p.options), {
     initialProps: props1,
@@ -87,31 +97,50 @@ const checkOnDepsChanges = (
 
   // deps are same as previous
   rerender({ name: props1.name, handler: props1.handler, target: props1.target, options: props1.options });
-  expect(props1.target[removeEventListenerName]).not.toHaveBeenCalled();
+  if (!isListener) {
+    expect(props1.target[removeEventListenerName]).not.toHaveBeenCalled();
+  }
 
   // name is different from previous
   rerender({ name: props2.name, handler: props1.handler, target: props1.target, options: props1.options });
-  expect(props1.target[removeEventListenerName]).toHaveBeenCalledTimes(1);
-  expect(props1.target[removeEventListenerName]).toHaveBeenLastCalledWith(props1.name, props1.handler, props1.options);
+  expect(props1.target[removeEventListenerName]).toHaveBeenCalledTimes(isListener ? 3 : 1);
+  isListener ?
+    expect(props1.target[removeEventListenerName])
+      .toHaveBeenLastCalledWith(props2.name, props1.handler, props1.options) :
+    expect(props1.target[removeEventListenerName])
+      .toHaveBeenLastCalledWith(props1.name, props1.handler, props1.options);
+
 
   // handler is different from previous
   rerender({ name: props2.name, handler: props2.handler, target: props1.target, options: props1.options });
-  expect(props1.target[removeEventListenerName]).toHaveBeenCalledTimes(2);
-  expect(props1.target[removeEventListenerName]).toHaveBeenLastCalledWith(props2.name, props1.handler, props1.options);
+  expect(props1.target[removeEventListenerName]).toHaveBeenCalledTimes(isListener ? 5 : 2);
+  isListener ?
+    expect(props1.target[removeEventListenerName])
+      .toHaveBeenLastCalledWith(props2.name, props2.handler, props1.options) :
+    expect(props1.target[removeEventListenerName])
+      .toHaveBeenLastCalledWith(props2.name, props1.handler, props1.options);
 
   // options contents is same as previous
   rerender({ name: props2.name, handler: props2.handler, target: props1.target, options: { a: 'opt1' } });
-  expect(props1.target[removeEventListenerName]).toHaveBeenCalledTimes(2);
+  expect(props1.target[removeEventListenerName]).toHaveBeenCalledTimes(isListener ? 5 : 2);
 
   // options is different from previous
   rerender({ name: props2.name, handler: props2.handler, target: props1.target, options: props2.options });
-  expect(props1.target[removeEventListenerName]).toHaveBeenCalledTimes(3);
-  expect(props1.target[removeEventListenerName]).toHaveBeenLastCalledWith(props2.name, props2.handler, props1.options);
+  expect(props1.target[removeEventListenerName]).toHaveBeenCalledTimes(isListener ? 7 : 3);
+  isListener ?
+    expect(props1.target[removeEventListenerName])
+      .toHaveBeenLastCalledWith(props2.name, props2.handler, props2.options) :
+    expect(props1.target[removeEventListenerName])
+      .toHaveBeenLastCalledWith(props2.name, props2.handler, props1.options);
 
   // target is different from previous
   rerender({ name: props2.name, handler: props2.handler, target: props2.target, options: props2.options });
-  expect(props1.target[removeEventListenerName]).toHaveBeenCalledTimes(4);
-  expect(props1.target[removeEventListenerName]).toHaveBeenLastCalledWith(props2.name, props2.handler, props2.options);
+  expect(props1.target[removeEventListenerName]).toHaveBeenCalledTimes(isListener ? 8 : 4);
+  isListener ?
+    expect(props2.target[removeEventListenerName])
+      .toHaveBeenLastCalledWith(props2.name, props2.handler, props2.options) :
+    expect(props1.target[removeEventListenerName])
+      .toHaveBeenLastCalledWith(props2.name, props2.handler, props2.options);
 
   expect(props2.target[addEventListenerName]).toHaveBeenCalledTimes(1);
   expect(props2.target[addEventListenerName]).toHaveBeenLastCalledWith(props2.name, props2.handler, props2.options);
