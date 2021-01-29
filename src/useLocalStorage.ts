@@ -13,11 +13,17 @@ type parserOptions<T> =
 
 const noop = () => {};
 
-const useLocalStorage = <T>(
+function useLocalStorage<T>(
+  key: string,
+  initialValue: T,
+  options?: parserOptions<T>
+): [T, Dispatch<SetStateAction<T>>, () => void];
+function useLocalStorage<T>(
   key: string,
   initialValue?: T,
   options?: parserOptions<T>
-): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
+): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void];
+function useLocalStorage<T>(key: string, initialValue?: T, options?: parserOptions<T>) {
   if (!isClient) {
     return [initialValue as T, noop, noop];
   }
@@ -85,6 +91,6 @@ const useLocalStorage = <T>(
   }, [key, setState]);
 
   return [state, set, remove];
-};
+}
 
 export default useLocalStorage;
