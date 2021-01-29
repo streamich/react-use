@@ -1,5 +1,5 @@
-import { useState, useCallback, Dispatch, SetStateAction } from 'react';
-import { isClient } from './util';
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { isBrowser, noop } from './misc/util';
 
 type parserOptions<T> =
   | {
@@ -11,14 +11,12 @@ type parserOptions<T> =
       deserializer: (value: string) => T;
     };
 
-const noop = () => {};
-
 const useLocalStorage = <T>(
   key: string,
   initialValue?: T,
   options?: parserOptions<T>
 ): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
-  if (!isClient) {
+  if (!isBrowser) {
     return [initialValue as T, noop, noop];
   }
   if (!key) {

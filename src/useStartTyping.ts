@@ -1,4 +1,5 @@
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
+import { off, on } from './misc/util';
 
 const isFocusedElementEditable = () => {
   const { activeElement, body } = document;
@@ -45,9 +46,9 @@ const useStartTyping = (onStartTyping: (event: KeyboardEvent) => void) => {
       !isFocusedElementEditable() && isTypedCharGood(event) && onStartTyping(event);
     };
 
-    document.addEventListener('keydown', keydown);
+    on(document, 'keydown', keydown);
     return () => {
-      document.removeEventListener('keydown', keydown);
+      off(document, 'keydown', keydown);
     };
   }, []);
 };

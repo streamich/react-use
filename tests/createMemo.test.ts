@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import createMemo from '../src/createMemo';
+import createMemo from '../src/factory/createMemo';
 
 const getDouble = jest.fn((n: number): number => n * 2);
 

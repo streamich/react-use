@@ -1,7 +1,7 @@
 import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
 import { useRef } from 'react';
 import { UseStateHistoryReturn, useStateWithHistory } from '../src/useStateWithHistory';
-import { InitialHookState } from '../src/util/resolveHookState';
+import { IHookStateSetAction } from '../src/misc/hookState';
 
 describe('useStateWithHistory', () => {
   it('should be defined', () => {
@@ -9,7 +9,7 @@ describe('useStateWithHistory', () => {
   });
 
   function getHook<S, I extends S>(
-    initialState?: InitialHookState<S>,
+    initialState?: IHookStateSetAction<S>,
     initialCapacity?: number,
     initialHistory?: I[]
   ): RenderHookResult<{ state?: S; history?: I[]; capacity?: number }, [UseStateHistoryReturn<S | undefined>, number]> {

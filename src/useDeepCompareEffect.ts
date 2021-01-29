@@ -1,6 +1,6 @@
 import { DependencyList, EffectCallback } from 'react';
-import { isDeepEqual } from './util';
 import useCustomCompareEffect from './useCustomCompareEffect';
+import isDeepEqual from './misc/isDeepEqual';
 
 const isPrimitive = (val: any) => val !== Object(val);
 

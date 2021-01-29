@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import useMount from './useMount';
 import useSetState from './useSetState';
+import { isBrowser } from './misc/util';
 
 export interface SpeechState {
   isPlaying: boolean;
@@ -19,8 +20,7 @@ export interface SpeechOptions {
   volume?: number;
 }
 
-const voices =
-  typeof window === 'object' && typeof window.speechSynthesis === 'object' ? window.speechSynthesis.getVoices() : [];
+const voices = isBrowser && typeof window.speechSynthesis === 'object' ? window.speechSynthesis.getVoices() : [];
 
 const useSpeech = (text: string, opts: SpeechOptions = {}): SpeechState => {
   const [state, setState] = useSetState<SpeechState>({

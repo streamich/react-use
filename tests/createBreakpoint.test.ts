@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import createBreakpoint from '../src/createBreakpoint';
+import createBreakpoint from '../src/factory/createBreakpoint';
 
 const useBreakpointA = createBreakpoint();
 const useBreakpointB = createBreakpoint({ mobileM: 350, laptop: 1024, tablet: 768 });

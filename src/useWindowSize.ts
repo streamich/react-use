@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 
 import useRafState from './useRafState';
-import { isClient } from './util';
+import { isBrowser, off, on } from './misc/util';
 
 const useWindowSize = (initialWidth = Infinity, initialHeight = Infinity) => {
   const [state, setState] = useRafState<{ width: number; height: number }>({
-    width: isClient ? window.innerWidth : initialWidth,
-    height: isClient ? window.innerHeight : initialHeight,
+    width: isBrowser ? window.innerWidth : initialWidth,
+    height: isBrowser ? window.innerHeight : initialHeight,
   });
 
   useEffect((): (() => void) | void => {
-    if (isClient) {
+    if (isBrowser) {
       const handler = () => {
         setState({
           width: window.innerWidth,
@@ -18,10 +18,10 @@ const useWindowSize = (initialWidth = Infinity, initialHeight = Infinity) => {
         });
       };
 
-      window.addEventListener('resize', handler);
+      on(window, 'resize', handler);
 
       return () => {
-        window.removeEventListener('resize', handler);
+        off(window, 'resize', handler);
       };
     }
   }, []);

@@ -1,5 +1,6 @@
 import { DependencyList, useMemo } from 'react';
 import useEvent, { UseEventTarget } from './useEvent';
+import { noop } from './misc/util';
 
 export type KeyPredicate = (event: KeyboardEvent) => boolean;
 export type KeyFilter = null | undefined | string | ((event: KeyboardEvent) => boolean);
@@ -11,7 +12,6 @@ export interface UseKeyOptions {
   options?: any;
 }
 
-const noop = () => {};
 const createKeyPredicate = (keyFilter: KeyFilter): KeyPredicate =>
   typeof keyFilter === 'function'
     ? keyFilter

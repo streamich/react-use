@@ -1,4 +1,4 @@
-import { useMemo, useReducer, Reducer } from 'react';
+import { Reducer, useMemo, useReducer } from 'react';
 
 type Action = {
   type: string;
