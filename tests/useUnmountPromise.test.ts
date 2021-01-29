@@ -32,6 +32,19 @@ describe('useUnmountPromise', () => {
     const res = await Promise.race([promise, new Promise(r => setTimeout(() => r('UNMOUNTED'), 20))]);
     expect(res).toBe('UNMOUNTED');
   });
+  
+  it('should resolve promise when component is updated', async () => {
+    const hook = renderHook(() => useUnmountPromise());
+
+    const mounted = hook.result.current;
+    const pRes = mounted(new Promise(r => setTimeout(() => r(25), 10)));
+    
+    hook.rerender();
+    
+    const res = await pRes;
+
+    expect(res).toBe(25);
+  });
 
   it('when component is mounted function should resolve with wrapped promises - 2', async () => {
     const hook = renderHook(() => useUnmountPromise());
