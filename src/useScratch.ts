@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef, FC, cloneElement } from 'react';
+import { cloneElement, FC, useEffect, useRef, useState } from 'react';
 import { render } from 'react-universal-interface';
 import useLatest from './useLatest';
-
-const noop = () => {};
+import { noop, off, on } from './misc/util';
 
 export interface ScratchSensorParams {
   disabled?: boolean;
@@ -81,10 +80,10 @@ const useScratch = (params: ScratchSensorParams = {}): [(el: HTMLElement | null)
       refState.current = { ...refState.current, isScratching: false };
       (paramsRef.current.onScratchEnd || noop)(refState.current);
       setState({ isScratching: false });
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('mouseup', onMouseUp);
-      window.removeEventListener('touchend', onTouchEnd);
+      off(window, 'mousemove', onMouseMove);
+      off(window, 'touchmove', onTouchMove);
+      off(window, 'mouseup', onMouseUp);
+      off(window, 'touchend', onTouchEnd);
     };
 
     onMouseUp = stopScratching;
@@ -116,10 +115,10 @@ const useScratch = (params: ScratchSensorParams = {}): [(el: HTMLElement | null)
       refState.current = newState;
       (paramsRef.current.onScratchStart || noop)(newState);
       setState(newState);
-      window.addEventListener('mousemove', onMouseMove);
-      window.addEventListener('touchmove', onTouchMove);
-      window.addEventListener('mouseup', onMouseUp);
-      window.addEventListener('touchend', onTouchEnd);
+      on(window, 'mousemove', onMouseMove);
+      on(window, 'touchmove', onTouchMove);
+      on(window, 'mouseup', onMouseUp);
+      on(window, 'touchend', onTouchEnd);
     };
 
     const onMouseDown = (event) => {
@@ -132,16 +131,16 @@ const useScratch = (params: ScratchSensorParams = {}): [(el: HTMLElement | null)
       startScratching(event.changedTouches[0].pageX, event.changedTouches[0].pageY);
     };
 
-    el.addEventListener('mousedown', onMouseDown);
-    el.addEventListener('touchstart', onTouchStart);
+    on(el, 'mousedown', onMouseDown);
+    on(el, 'touchstart', onTouchStart);
 
     return () => {
-      el.removeEventListener('mousedown', onMouseDown);
-      el.removeEventListener('touchstart', onTouchStart);
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('mouseup', onMouseUp);
-      window.removeEventListener('touchend', onTouchEnd);
+      off(el, 'mousedown', onMouseDown);
+      off(el, 'touchstart', onTouchStart);
+      off(window, 'mousemove', onMouseMove);
+      off(window, 'touchmove', onTouchMove);
+      off(window, 'mouseup', onMouseUp);
+      off(window, 'touchend', onTouchEnd);
 
       if (refAnimationFrame.current) cancelAnimationFrame(refAnimationFrame.current);
       refAnimationFrame.current = null;

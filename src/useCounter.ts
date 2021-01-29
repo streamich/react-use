@@ -1,17 +1,17 @@
 import { useMemo } from 'react';
 import useGetSet from './useGetSet';
-import { HookState, InitialHookState, resolveHookState } from './util/resolveHookState';
+import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from './misc/hookState';
 
 export interface CounterActions {
   inc: (delta?: number) => void;
   dec: (delta?: number) => void;
   get: () => number;
-  set: (value: HookState<number>) => void;
-  reset: (value?: HookState<number>) => void;
+  set: (value: IHookStateSetAction<number>) => void;
+  reset: (value?: IHookStateSetAction<number>) => void;
 }
 
 export default function useCounter(
-  initialValue: InitialHookState<number> = 0,
+  initialValue: IHookStateInitAction<number> = 0,
   max: number | null = null,
   min: number | null = null
 ): [number, CounterActions] {
@@ -36,7 +36,7 @@ export default function useCounter(
   return [
     get(),
     useMemo(() => {
-      const set = (newState: HookState<number>) => {
+      const set = (newState: IHookStateSetAction<number>) => {
         const prevState = get();
         let rState = resolveHookState(newState, prevState);
 
@@ -55,7 +55,7 @@ export default function useCounter(
       return {
         get,
         set,
-        inc: (delta: HookState<number> = 1) => {
+        inc: (delta: IHookStateSetAction<number> = 1) => {
           const rDelta = resolveHookState(delta, get());
 
           if (typeof rDelta !== 'number') {
@@ -64,7 +64,7 @@ export default function useCounter(
 
           set((num: number) => num + rDelta);
         },
-        dec: (delta: HookState<number> = 1) => {
+        dec: (delta: IHookStateSetAction<number> = 1) => {
           const rDelta = resolveHookState(delta, get());
 
           if (typeof rDelta !== 'number') {
@@ -73,13 +73,14 @@ export default function useCounter(
 
           set((num: number) => num - rDelta);
         },
-        reset: (value: HookState<number> = init) => {
+        reset: (value: IHookStateSetAction<number> = init) => {
           const rValue = resolveHookState(value, get());
 
           if (typeof rValue !== 'number') {
             console.error('value has to be a number or function returning a number, got ' + typeof rValue);
           }
 
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           init = rValue;
           set(rValue);
         },

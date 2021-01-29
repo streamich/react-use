@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import createGlobalState from '../src/createGlobalState';
+import createGlobalState from '../src/factory/createGlobalState';
 
 describe('useGlobalState', () => {
   it('should be defined', () => {

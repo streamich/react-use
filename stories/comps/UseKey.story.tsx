@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import UseKey from '../../src/comps/UseKey';
+import UseKey from '../../src/component/UseKey';
 
 storiesOf('Components/<UseKey>', module).add('Demo', () => (
   <div>

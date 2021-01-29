@@ -1,9 +1,8 @@
 import writeText from 'copy-to-clipboard';
-import { renderHook, act } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 import { useCopyToClipboard } from '../src';
 
 const valueToRaiseMockException = 'fake input causing exception in copy to clipboard';
-
 jest.mock('copy-to-clipboard', () =>
   jest.fn().mockImplementation(input => {
     if (input === valueToRaiseMockException) {
@@ -12,17 +11,21 @@ jest.mock('copy-to-clipboard', () =>
     return true;
   })
 );
-jest.spyOn(global.console, 'error').mockImplementation(() => {});
 
 describe('useCopyToClipboard', () => {
   let hook;
+  let consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {
+  });
+
 
   beforeEach(() => {
     hook = renderHook(() => useCopyToClipboard());
   });
 
+
   afterAll(() => {
-    jest.restoreAllMocks();
+    consoleErrorSpy.mockRestore();
+    jest.unmock('copy-to-clipboard');
   });
 
   it('should be defined ', () => {
@@ -95,7 +98,7 @@ describe('useCopyToClipboard', () => {
     [state, copyToClipboard] = hook.result.current;
 
     expect(writeText).not.toBeCalled();
-    expect(console.error).toBeCalled();
+    expect(consoleErrorSpy).toBeCalled();
     expect(state.value).toBe(testValue);
     expect(state.noUserInteraction).toBe(true);
     expect(state.error).toBeDefined();

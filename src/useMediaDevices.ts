@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import { off, on } from './util';
-
-const noop = () => {};
+import { noop, off, on } from './misc/util';
 
 const useMediaDevices = () => {
   const [state, setState] = useState({});

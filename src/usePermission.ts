@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { off, on } from './util';
+import { noop, off, on } from './misc/util';
 
 type PermissionDesc =
   | PermissionDescriptor
@@ -8,8 +8,6 @@ type PermissionDesc =
   | PushPermissionDescriptor;
 
 type State = PermissionState | '';
-
-const noop = () => {};
 
 const usePermission = (permissionDesc: PermissionDesc): State => {
   let mounted = true;

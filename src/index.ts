@@ -1,7 +1,7 @@
-export { default as createMemo } from './createMemo';
-export { default as createReducerContext } from './createReducerContext';
-export { default as createReducer } from './createReducer';
-export { default as createStateContext } from './createStateContext';
+export { default as createMemo } from './factory/createMemo';
+export { default as createReducerContext } from './factory/createReducerContext';
+export { default as createReducer } from './factory/createReducer';
+export { default as createStateContext } from './factory/createStateContext';
 export { default as useAsync } from './useAsync';
 export { default as useAsyncFn } from './useAsyncFn';
 export { default as useAsyncRetry } from './useAsyncRetry';
@@ -37,7 +37,7 @@ export { default as useIntersection } from './useIntersection';
 export { default as useInterval } from './useInterval';
 export { default as useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 export { default as useKey } from './useKey';
-export { default as createBreakpoint } from './createBreakpoint';
+export { default as createBreakpoint } from './factory/createBreakpoint';
 // not exported because of peer dependency
 // export { default as useKeyboardJs } from './useKeyboardJs';
 export { default as useKeyPress } from './useKeyPress';
@@ -112,5 +112,5 @@ export { default as useMeasure } from './useMeasure';
 export { useRendersCount } from './useRendersCount';
 export { useFirstMountState } from './useFirstMountState';
 export { default as useSet } from './useSet';
-export { createGlobalState } from './createGlobalState';
+export { createGlobalState } from './factory/createGlobalState';
 export { useHash } from './useHash';

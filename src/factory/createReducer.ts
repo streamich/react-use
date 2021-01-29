@@ -1,5 +1,5 @@
 import { MutableRefObject, useCallback, useRef, useState } from 'react';
-import useUpdateEffect from './useUpdateEffect';
+import useUpdateEffect from '../useUpdateEffect';
 
 type Dispatch<Action> = (action: Action) => void;
 

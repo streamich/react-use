@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
-import { off, on, isDeepEqual } from './util';
+import { useEffect, useState } from 'react';
+import { off, on } from './misc/util';
+import isDeepEqual from './misc/isDeepEqual';
 
 export interface BatteryState {
   charging: boolean;

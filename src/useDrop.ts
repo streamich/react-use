@@ -1,4 +1,5 @@
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { noop, off, on } from './misc/util';
 
 export interface DropAreaState {
   over: boolean;
@@ -17,8 +18,6 @@ export interface DropAreaOptions {
   onText?: (text: string, event?) => void;
   onUri?: (url: string, event?) => void;
 }
-
-const noop = () => {};
 
 const createProcess = (options: DropAreaOptions) => (dataTransfer: DataTransfer, event) => {
   const uri = dataTransfer.getData('text/uri-list');
@@ -75,22 +74,22 @@ const useDrop = (options: DropAreaOptions = {}, args = []): DropAreaState => {
       process(event.clipboardData, event);
     };
 
-    document.addEventListener('dragover', onDragOver);
-    document.addEventListener('dragenter', onDragEnter);
-    document.addEventListener('dragleave', onDragLeave);
-    document.addEventListener('dragexit', onDragExit);
-    document.addEventListener('drop', onDrop);
+    on(document, 'dragover', onDragOver);
+    on(document, 'dragenter', onDragEnter);
+    on(document, 'dragleave', onDragLeave);
+    on(document, 'dragexit', onDragExit);
+    on(document, 'drop', onDrop);
     if (onText) {
-      document.addEventListener('paste', onPaste);
+      on(document, 'paste', onPaste);
     }
 
     return () => {
-      document.removeEventListener('dragover', onDragOver);
-      document.removeEventListener('dragenter', onDragEnter);
-      document.removeEventListener('dragleave', onDragLeave);
-      document.removeEventListener('dragexit', onDragExit);
-      document.removeEventListener('drop', onDrop);
-      document.removeEventListener('paste', onPaste);
+      off(document, 'dragover', onDragOver);
+      off(document, 'dragenter', onDragEnter);
+      off(document, 'dragleave', onDragLeave);
+      off(document, 'dragexit', onDragExit);
+      off(document, 'drop', onDrop);
+      off(document, 'paste', onPaste);
     };
   }, [process, ...args]);
 
