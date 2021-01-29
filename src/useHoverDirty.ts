@@ -17,6 +17,7 @@ const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
     if (enabled && ref && ref.current) {
       ref.current.addEventListener('mouseover', onMouseOver);
       ref.current.addEventListener('mouseout', onMouseOut);
+      ref.current.addEventListener('mouseleave', onMouseOut);
     }
 
     // fixes react-hooks/exhaustive-deps warning about stale ref elements
@@ -26,6 +27,7 @@ const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
       if (enabled && current) {
         current.removeEventListener('mouseover', onMouseOver);
         current.removeEventListener('mouseout', onMouseOut);
+        current.removeEventListener('mouseleave', onMouseOut);
       }
     };
   }, [enabled, ref]);
