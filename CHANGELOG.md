@@ -1,3 +1,16 @@
+# [16.0.0](https://github.com/streamich/react-use/compare/v15.3.8...v16.0.0) (2021-01-30)
+
+
+### chore
+
+* refactoring and rearrangement. ([a27f09f](https://github.com/streamich/react-use/commit/a27f09fd367f8b172866b5fcbaf66f9a5a3481bb))
+
+
+### BREAKING CHANGES
+
+* all `create*` factories been moved to `factory` subdirectory and in case direct import should be imported like `react-use/esm/factory/createBreakpoint`
+* `comps` directory renamed to `component`
+
 ## [15.3.8](https://github.com/streamich/react-use/compare/v15.3.7...v15.3.8) (2021-01-08)
 
 
