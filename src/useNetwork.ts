@@ -65,13 +65,13 @@ const useNetwork = (initialState: NetworkState = {}) => {
     on(window, 'offline', onOffline);
     if (connection) {
       on(connection, 'change', onConnectionChange);
-      localSetState({
-        ...state,
-        online: navigator.onLine,
-        since: undefined,
-        ...getConnectionState(),
-      });
     }
+    localSetState({
+      ...state,
+      online: navigator.onLine,
+      since: undefined,
+      ...getConnectionState(),
+    });
 
     return () => {
       off(window, 'online', onOnline);
