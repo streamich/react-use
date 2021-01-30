@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { useCustomCompareEffect } from '../src';
 import { useEffect } from 'react';
-import { isDeepEqual } from '../src/util';
+import isDeepEqual from '../src/misc/isDeepEqual';
 
 let options = { max: 10 };
 const mockEffectNormal = jest.fn();

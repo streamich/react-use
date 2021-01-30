@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
+import { noop } from './misc/util';
 
 export type VibrationPattern = number | number[];
 
 const isVibrationApiSupported = typeof navigator === 'object' && 'vibrate' in navigator;
-
-const useVibrateMock = () => {};
 
 function useVibrate(enabled: boolean = true, pattern: VibrationPattern = [1000, 1000], loop: boolean = true): void {
   useEffect(() => {
@@ -34,4 +33,4 @@ function useVibrate(enabled: boolean = true, pattern: VibrationPattern = [1000, 
   }, [enabled]);
 }
 
-export default isVibrationApiSupported ? useVibrate : useVibrateMock;
+export default isVibrationApiSupported ? useVibrate : noop;

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import useMountedState from './useMountedState';
+import { noop } from './misc/util';
 
 export interface DropAreaState {
   over: boolean;
@@ -19,7 +20,6 @@ export interface DropAreaOptions {
   onUri?: (url: string, event?) => void;
 }
 
-const noop = () => {};
 /*
 const defaultState: DropAreaState = {
   over: false,

@@ -1,4 +1,5 @@
 import { RefObject, useEffect, useRef } from 'react';
+import { isBrowser, off, on } from './misc/util';
 
 export function getClosestBody(el: Element | HTMLElement | HTMLIFrameElement | null): HTMLElement | null {
   if (!el) {
@@ -31,10 +32,7 @@ export interface BodyInfoItem {
 }
 
 const isIosDevice =
-  typeof window !== 'undefined' &&
-  window.navigator &&
-  window.navigator.platform &&
-  /iP(ad|hone|od)/.test(window.navigator.platform);
+  isBrowser && window.navigator && window.navigator.platform && /iP(ad|hone|od)/.test(window.navigator.platform);
 
 const bodies: Map<HTMLElement, BodyInfoItem> = new Map();
 
@@ -54,7 +52,7 @@ export default !doc
           bodies.set(body, { counter: 1, initialOverflow: body.style.overflow });
           if (isIosDevice) {
             if (!documentListenerAdded) {
-              document.addEventListener('touchmove', preventDefault, { passive: false });
+              on(document, 'touchmove', preventDefault, { passive: false });
 
               documentListenerAdded = true;
             }
@@ -75,7 +73,7 @@ export default !doc
               body.ontouchmove = null;
 
               if (documentListenerAdded) {
-                document.removeEventListener('touchmove', preventDefault);
+                off(document, 'touchmove', preventDefault);
                 documentListenerAdded = false;
               }
             } else {

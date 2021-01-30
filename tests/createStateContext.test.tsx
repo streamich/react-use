@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
-import createStateContext from '../src/createStateContext';
+import createStateContext from '../src/factory/createStateContext';
 
 it('should create a hook and a provider', () => {
   const [useSharedNumber, SharedNumberProvider] = createStateContext(0);

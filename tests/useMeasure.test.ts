@@ -30,7 +30,7 @@ it('synchronously sets up ResizeObserver listener', () => {
   };
 
   const { result } = renderHook(() => useMeasure());
-  
+
   act(() => {
     const div = document.createElement('div');
     (result.current[0] as UseMeasureRef)(div);
@@ -50,12 +50,12 @@ it('tracks rectangle of a DOM element', () => {
   };
 
   const { result } = renderHook(() => useMeasure());
-  
+
   act(() => {
     const div = document.createElement('div');
     (result.current[0] as UseMeasureRef)(div);
   });
-  
+
   act(() => {
     listener!([{
       contentRect: {
@@ -94,12 +94,12 @@ it('tracks multiple updates', () => {
   };
 
   const { result } = renderHook(() => useMeasure());
-  
+
   act(() => {
     const div = document.createElement('div');
     (result.current[0] as UseMeasureRef)(div);
   });
-  
+
   act(() => {
     listener!([{
       contentRect: {
@@ -125,7 +125,7 @@ it('tracks multiple updates', () => {
     left: 1,
     right: 1,
   });
-  
+
   act(() => {
     listener!([{
       contentRect: {
@@ -163,7 +163,7 @@ it('calls .disconnect() on ResizeObserver when component unmounts', () => {
   };
 
   const { result, unmount } = renderHook(() => useMeasure());
-  
+
   act(() => {
     const div = document.createElement('div');
     (result.current[0] as UseMeasureRef)(div);
