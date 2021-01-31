@@ -1,3 +1,15 @@
+# [17.0.0](https://github.com/streamich/react-use/compare/v16.1.0...v17.0.0) (2021-01-31)
+
+
+### Features
+
+* refactor the useNetwork hook. ([23037f2](https://github.com/streamich/react-use/commit/23037f207d07604dd2cd7e2cc4ba9475221be780))
+
+
+### BREAKING CHANGES
+
+* `useNetwork` hook renamed to `useNetworkState`.
+
 # [16.1.0](https://github.com/streamich/react-use/compare/v16.0.0...v16.1.0) (2021-01-31)
 
 
