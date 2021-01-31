@@ -1,3 +1,10 @@
+## [17.0.1](https://github.com/streamich/react-use/compare/v17.0.0...v17.0.1) (2021-01-31)
+
+
+### Bug Fixes
+
+* proper definition for isBrowser and isNavigator states. ([a087deb](https://github.com/streamich/react-use/commit/a087deb48e57b1f0a23a2d0a28d0c2d10a640cd6)), closes [#1777](https://github.com/streamich/react-use/issues/1777)
+
 # [17.0.0](https://github.com/streamich/react-use/compare/v16.1.0...v17.0.0) (2021-01-31)
 
 
