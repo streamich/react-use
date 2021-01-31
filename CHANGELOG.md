@@ -1,3 +1,10 @@
+# [16.1.0](https://github.com/streamich/react-use/compare/v16.0.0...v16.1.0) (2021-01-31)
+
+
+### Features
+
+* improve `on` and `off` util functions typing. ([723c588](https://github.com/streamich/react-use/commit/723c588fef6aba9f10ea9f5ea7bc444532519f9a))
+
 # [16.0.0](https://github.com/streamich/react-use/compare/v15.3.8...v16.0.0) (2021-01-30)
 
 
