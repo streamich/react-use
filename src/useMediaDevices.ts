@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { noop, off, on } from './misc/util';
+import { isNavigator, noop, off, on } from './misc/util';
 
 const useMediaDevices = () => {
   const [state, setState] = useState({});
@@ -34,4 +34,4 @@ const useMediaDevices = () => {
 
 const useMediaDevicesMock = () => ({});
 
-export default typeof navigator === 'object' && !!navigator.mediaDevices ? useMediaDevices : useMediaDevicesMock;
+export default isNavigator && !!navigator.mediaDevices ? useMediaDevices : useMediaDevicesMock;
