@@ -173,5 +173,8 @@
     "setupFiles": [
       "<rootDir>/tests/setupTests.ts"
     ]
+  },
+  "engines": {
+    "node": ">=10"
   }
 }
