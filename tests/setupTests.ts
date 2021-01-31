@@ -1,6 +1,12 @@
 import 'jest-localstorage-mock';
+import { isBrowser } from '../src/misc/util';
 
-(window as any).ResizeObserver = class ResizeObserver {
-  observe() {}
-  disconnect() {}
-};
+if (isBrowser) {
+  (window as any).ResizeObserver = class ResizeObserver {
+    observe() {
+    }
+
+    disconnect() {
+    }
+  };
+}

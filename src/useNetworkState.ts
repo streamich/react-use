@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { off, on } from './misc/util';
+import { isNavigator, off, on } from './misc/util';
 import { IHookStateInitAction } from './misc/hookState';
 
 export interface INetworkInformation extends EventTarget {
@@ -69,7 +69,7 @@ export interface IUseNetworkState {
 
 const nav:
   | (Navigator & Partial<Record<'connection' | 'mozConnection' | 'webkitConnection', INetworkInformation>>)
-  | undefined = navigator;
+  | undefined = isNavigator ? navigator : undefined;
 const conn: INetworkInformation | undefined = nav && (nav.connection || nav.mozConnection || nav.webkitConnection);
 
 function getConnectionState(previousState?: IUseNetworkState): IUseNetworkState {

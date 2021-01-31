@@ -14,11 +14,12 @@
   "scripts": {
     "start": "yarn storybook",
     "test": "jest --maxWorkers 2",
+    "test:ssr": "jest --maxWorkers 2 --config ./jest.config.node.ts",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint {src,tests}/**/*.{ts,tsx}",
     "lint:fix": "yarn lint --fix",
-    "lint:types": "tsc --noEmit",
+    "lint:types": "tsc --noEmit ",
     "lint:prettier": "prettier --write src/**/**/*.{ts,tsx}",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
@@ -162,16 +163,5 @@
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/react-use"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "clearMocks": true,
-    "coverageDirectory": "coverage",
-    "testMatch": [
-      "<rootDir>/tests/**/*.test.(ts|tsx)"
-    ],
-    "setupFiles": [
-      "<rootDir>/tests/setupTests.ts"
-    ]
   }
 }
