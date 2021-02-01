@@ -8,7 +8,7 @@ const Demo = () => {
   const [val, setVal] = React.useState('');
   const [debouncedValue, setDebouncedValue] = React.useState('');
 
-  const [, cancel] = useDebounce(
+  const [, cancel, flush] = useDebounce(
     () => {
       setState('Typing stopped');
       setDebouncedValue(val);
@@ -32,6 +32,7 @@ const Demo = () => {
       <div>
         Debounced value: {debouncedValue}
         <button onClick={cancel}>Cancel debounce</button>
+        <button onClick={flush}>Flush debounce</button>
       </div>
     </div>
   );

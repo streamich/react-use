@@ -1,6 +1,6 @@
 # `useTimeout`
 
-Re-renders the component after a specified number of milliseconds.  
+Re-renders the component after a specified number of milliseconds.
 Provides handles to cancel and/or reset the timeout.
 
 ## Usage
@@ -10,12 +10,13 @@ import { useTimeout } from 'react-use';
 
 function TestComponent(props: { ms?: number } = {}) {
   const ms = props.ms || 5000;
-  const [isReady, cancel] = useTimeout(ms);
+  const [isReady, cancel,, flush] = useTimeout(ms);
 
   return (
     <div>
       { isReady() ? 'I\'m reloaded after timeout' : `I will be reloaded after ${ ms / 1000 }s` }
       { isReady() === false ? <button onClick={ cancel }>Cancel</button> : '' }
+      { isReady() === false ? <button onClick={flush}>Flush</button> : '' }
     </div>
   );
 }
@@ -32,7 +33,7 @@ const Demo = () => {
 
 ## Reference
 
-```ts 
+```ts
 const [
     isReady: () => boolean | null,
     cancel: () => void,

@@ -19,13 +19,14 @@ describe('useTimeoutFn', () => {
     expect(useTimeoutFn).toBeDefined();
   });
 
-  it('should return three functions', () => {
+  it('should return four functions', () => {
     const hook = renderHook(() => useTimeoutFn(() => {}, 5));
 
-    expect(hook.result.current.length).toBe(3);
+    expect(hook.result.current.length).toBe(4);
     expect(typeof hook.result.current[0]).toBe('function');
     expect(typeof hook.result.current[1]).toBe('function');
     expect(typeof hook.result.current[2]).toBe('function');
+    expect(typeof hook.result.current[3]).toBe('function');
   });
 
   function getHook(
@@ -103,6 +104,30 @@ describe('useTimeoutFn', () => {
     jest.advanceTimersByTime(5);
 
     expect(spy).toHaveBeenCalledTimes(1);
+    expect(isReady()).toBe(true);
+  });
+
+  it('fourth function should flush timeout', () => {
+    const [spy, hook] = getHook();
+    const [isReady,, reset, flush] = hook.result.current;
+
+    expect(isReady()).toBe(false);
+
+    act(() => {
+      flush();
+    });
+    jest.advanceTimersByTime(5);
+
+    expect(isReady()).toBe(true);
+
+    act(() => {
+      reset();
+    });
+    expect(isReady()).toBe(false);
+
+    jest.advanceTimersByTime(5);
+
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(isReady()).toBe(true);
   });
 

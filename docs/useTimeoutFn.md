@@ -7,7 +7,7 @@ Several thing about it's work:
 - automatically cancel timeout on cancel;
 - automatically reset timeout on delay change;
 - reset function call will cancel previous timeout;
-- timeout will NOT be reset on function change. It will be called within the timeout, you have to reset it on your own when needed. 
+- timeout will NOT be reset on function change. It will be called within the timeout, you have to reset it on your own when needed.
 
 ## Usage
 
@@ -22,7 +22,7 @@ const Demo = () => {
     setState(`called at ${Date.now()}`);
   }
 
-  const [isReady, cancel, reset] = useTimeoutFn(fn, 5000);
+  const [isReady, cancel, reset, flush] = useTimeoutFn(fn, 5000);
   const cancelButtonClick = useCallback(() => {
     if (isReady() === false) {
       cancel();
@@ -32,6 +32,10 @@ const Demo = () => {
       setState('Not called yet');
     }
   }, []);
+  const flushButtonClick = useCallback(() => {
+    flush();
+    setState('flushed');
+  }, []);
 
   const readyState = isReady();
 
@@ -39,6 +43,7 @@ const Demo = () => {
     <div>
       <div>{readyState !== null ? 'Function will be called in 5 seconds' : 'Timer cancelled'}</div>
       <button onClick={cancelButtonClick}> {readyState === false ? 'cancel' : 'restart'} timeout</button>
+      <button onClick={flushButtonClick} disabled={readyState !== false}>flush</button>
       <br />
       <div>Function state: {readyState === false ? 'Pending' : readyState ? 'Called' : 'Cancelled'}</div>
       <div>{state}</div>
@@ -49,7 +54,7 @@ const Demo = () => {
 
 ## Reference
 
-```ts 
+```ts
 const [
     isReady: () => boolean | null,
     cancel: () => void,

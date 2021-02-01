@@ -18,13 +18,14 @@ it('should be defined', () => {
   expect(useTimeout).toBeDefined();
 });
 
-it('should return three functions', () => {
+it('should return four functions', () => {
   const hook = renderHook(() => useTimeout(5));
 
-  expect(hook.result.current.length).toBe(3);
+  expect(hook.result.current.length).toBe(4);
   expect(typeof hook.result.current[0]).toBe('function');
   expect(typeof hook.result.current[1]).toBe('function');
   expect(typeof hook.result.current[2]).toBe('function');
+  expect(typeof hook.result.current[3]).toBe('function');
 });
 
 function getHook(ms: number = 5): [jest.Mock, RenderHookResult<{ delay: number }, UseTimeoutReturn>] {
@@ -114,6 +115,33 @@ it('third function should reset timeout', done => {
 
   hook.waitForNextUpdate().then(() => {
     expect(spy).toHaveBeenCalledTimes(2);
+    expect(isReady()).toBe(true);
+
+    done();
+  });
+  jest.advanceTimersByTime(5);
+});
+
+it('fourth function should flush timeout', done => {
+  const [spy, hook] = getHook();
+  const [isReady,, reset, flush] = hook.result.current;
+
+  expect(isReady()).toBe(false);
+
+  act(() => {
+    flush();
+  });
+  jest.advanceTimersByTime(5);
+
+  expect(isReady()).toBe(true);
+
+  act(() => {
+    reset();
+  });
+  expect(isReady()).toBe(false);
+
+  hook.waitForNextUpdate().then(() => {
+    expect(spy).toHaveBeenCalledTimes(3);
     expect(isReady()).toBe(true);
 
     done();

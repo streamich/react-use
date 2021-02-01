@@ -23,9 +23,10 @@ describe('useDebounce', () => {
   it('should return two functions', () => {
     const hook = renderHook(() => useDebounce(() => {}, 5));
 
-    expect(hook.result.current.length).toBe(2);
+    expect(hook.result.current.length).toBe(3);
     expect(typeof hook.result.current[0]).toBe('function');
     expect(typeof hook.result.current[1]).toBe('function');
+    expect(typeof hook.result.current[2]).toBe('function');
   });
 
   function getHook(
@@ -89,6 +90,22 @@ describe('useDebounce', () => {
 
     expect(spy).not.toHaveBeenCalled();
     expect(isReady()).toBe(null);
+  });
+
+  it('third function should flush debounce', () => {
+    const [spy, hook] = getHook();
+    const [isReady,, flush] = hook.result.current;
+
+    expect(spy).not.toHaveBeenCalled();
+    expect(isReady()).toBe(false);
+
+    act(() => {
+      flush();
+    });
+    jest.advanceTimersByTime(5);
+
+    expect(spy).toHaveBeenCalled();
+    expect(isReady()).toBe(true);
   });
 
   it('should reset timeout on delay change', () => {
