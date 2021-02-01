@@ -1,3 +1,10 @@
+## [17.0.2](https://github.com/streamich/react-use/compare/v17.0.1...v17.0.2) (2021-02-01)
+
+
+### Bug Fixes
+
+* proper definition for `useMeasure` ([1461527](https://github.com/streamich/react-use/commit/1461527ffc55b2a1e3c9dc6a0efc2572b66e5381))
+
 ## [17.0.1](https://github.com/streamich/react-use/compare/v17.0.0...v17.0.1) (2021-01-31)
 
 
