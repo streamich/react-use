@@ -55,6 +55,9 @@ it('should properly update the state based on the createMethods', () => {
     decrement() {
       return { ...state, count: state.count - 1 };
     },
+    add(...nums: number[]) {
+      return { ...state, count: state.count + nums.reduce((total, num) => (total += num), 0) };
+    },
   });
 
   const { result } = renderHook(() => useMethods(createMethods, initialState));
@@ -78,4 +81,19 @@ it('should properly update the state based on the createMethods', () => {
     result.current[1].reset();
   });
   expect(result.current[0].count).toBe(count);
+
+  act(() => {
+    result.current[1].add(1);
+  });
+  expect(result.current[0].count).toBe(count + 1);
+
+  act(() => {
+    result.current[1].add(-1);
+  });
+  expect(result.current[0].count).toBe(count);
+
+  act(() => {
+    result.current[1].add(1, 2);
+  });
+  expect(result.current[0].count).toBe(count + 3);
 });
