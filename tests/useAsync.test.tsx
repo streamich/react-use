@@ -1,7 +1,9 @@
 
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
+import { render, waitFor } from '@testing-library/react';
 import { useCallback } from 'react';
 import useAsync from '../src/useAsync';
+import * as React from 'react';
 
 describe('useAsync', () => {
   it('should be defined', () => {
@@ -174,5 +176,35 @@ describe('useAsync', () => {
         expect(hook.result.current.value).toEqual('counter is 1 and callCount is 2');
       });
     });
+  });
+
+  it('should always be considered loading when value is out of sync', async () => {
+    // This is implemented using react-testing-library's component helper functions
+    // The helper functions for hooks do not support asserting the state between calling a hook and the useEffect
+    // callbacks being called.
+    function Component({inputValue}: {inputValue: string}): React.ReactElement|null {
+      const { value, loading } = useAsync(() => {
+        return Promise.resolve(inputValue);
+      }, [ inputValue ]);
+
+      if (loading) {
+        return null;
+      }
+      // When not loading, expect the value to be based on the inputValue
+      expect(inputValue).toEqual(value);
+      return <span>{value}</span>;
+    }
+
+    const { rerender, container } = render(<Component inputValue="a"/>);
+
+    expect(container.innerHTML).toEqual('');
+    await waitFor(() => expect(container.innerHTML).toEqual('<span>a</span>'));
+
+    act(() => {
+      rerender(<Component inputValue="b"/>);
+    });
+
+    expect(container.innerHTML).toEqual('');
+    await waitFor(() => expect(container.innerHTML).toEqual('<span>b</span>'));
   });
 });
