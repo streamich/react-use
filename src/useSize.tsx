@@ -17,7 +17,10 @@ const useSize = (
   { width = Infinity, height = Infinity }: Partial<State> = {}
 ): [React.ReactElement<any>, State] => {
   if (!isBrowser) {
-    return [typeof element === 'function' ? element({ width, height }) : element, { width, height }];
+    return [
+      typeof element === 'function' ? element({ width, height }) : element,
+      { width, height },
+    ];
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks

@@ -38,7 +38,7 @@ describe('useUnmount', () => {
     const spy = jest.fn();
     const spy2 = jest.fn();
     const spy3 = jest.fn();
-    const hook = renderHook(cb => useUnmount(cb), { initialProps: spy });
+    const hook = renderHook((cb) => useUnmount(cb), { initialProps: spy });
 
     hook.rerender(spy2);
     hook.rerender(spy3);

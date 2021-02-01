@@ -2,7 +2,10 @@ import { useCallback, useEffect, useMemo, useRef } from 'react';
 
 export type RafLoopReturns = [() => void, () => void, () => boolean];
 
-export default function useRafLoop(callback: FrameRequestCallback, initiallyActive = true): RafLoopReturns {
+export default function useRafLoop(
+  callback: FrameRequestCallback,
+  initiallyActive = true
+): RafLoopReturns {
   const raf = useRef<number | null>(null);
   const rafActivity = useRef<boolean>(false);
   const rafCallback = useRef(callback);

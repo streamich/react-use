@@ -5,7 +5,7 @@ const useBreakpointA = createBreakpoint();
 const useBreakpointB = createBreakpoint({ mobileM: 350, laptop: 1024, tablet: 768 });
 
 const originalInnerWidth = window.innerWidth;
-const changeInnerWidth = value =>
+const changeInnerWidth = (value) =>
   Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value });
 const revert = () => changeInnerWidth(originalInnerWidth);
 

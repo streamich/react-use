@@ -28,7 +28,9 @@ export interface ScratchSensorState {
   elY?: number;
 }
 
-const useScratch = (params: ScratchSensorParams = {}): [(el: HTMLElement | null) => void, ScratchSensorState] => {
+const useScratch = (
+  params: ScratchSensorParams = {}
+): [(el: HTMLElement | null) => void, ScratchSensorState] => {
   const { disabled } = params;
   const paramsRef = useLatest(params);
   const [state, setState] = useState<ScratchSensorState>({ isScratching: false });
@@ -155,7 +157,10 @@ const useScratch = (params: ScratchSensorParams = {}): [(el: HTMLElement | null)
 };
 
 export interface ScratchSensorProps extends ScratchSensorParams {
-  children: (state: ScratchSensorState, ref: (el: HTMLElement | null) => void) => React.ReactElement<any>;
+  children: (
+    state: ScratchSensorState,
+    ref: (el: HTMLElement | null) => void
+  ) => React.ReactElement<any>;
 }
 
 export const ScratchSensor: FC<ScratchSensorProps> = (props) => {

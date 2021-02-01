@@ -24,7 +24,7 @@ const Demo = () => {
         return;
       }
 
-      history.back(stepSize);
+      window.history.back(stepSize);
     },
     [history, stepSize]
   );
@@ -35,7 +35,7 @@ const Demo = () => {
         return;
       }
 
-      history.forward(stepSize);
+      window.history.forward(stepSize);
     },
     [history, stepSize]
   );
@@ -60,10 +60,12 @@ const Demo = () => {
         Current state: <span>{state}</span>
       </div>
       <div style={{ marginTop: 8 }}>
-        <button onClick={handleBackClick} disabled={!history.position}>
+        <button onClick={handleBackClick} disabled={!window.history.position}>
           &lt; Back
         </button>
-        <button onClick={handleForwardClick} disabled={history.position >= history.history.length - 1}>
+        <button
+          onClick={handleForwardClick}
+          disabled={window.history.position >= window.history.window.history.length - 1}>
           Forward &gt;
         </button>
         &nbsp; Step size:&nbsp;
@@ -74,7 +76,9 @@ const Demo = () => {
         <div>Current history</div>
         <div
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(history.history, null, 2).replace(/\n/g, '<br/>').replace(/ /g, '&nbsp;'),
+            __html: JSON.stringify(window.history.history, null, 2)
+              .replace(/\n/g, '<br/>')
+              .replace(/ /g, '&nbsp;'),
           }}
         />
       </div>

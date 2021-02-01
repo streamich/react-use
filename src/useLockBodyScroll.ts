@@ -1,7 +1,9 @@
 import { RefObject, useEffect, useRef } from 'react';
 import { isBrowser, off, on } from './misc/util';
 
-export function getClosestBody(el: Element | HTMLElement | HTMLIFrameElement | null): HTMLElement | null {
+export function getClosestBody(
+  el: Element | HTMLElement | HTMLIFrameElement | null
+): HTMLElement | null {
   if (!el) {
     return null;
   } else if (el.tagName === 'BODY') {
@@ -32,7 +34,10 @@ export interface BodyInfoItem {
 }
 
 const isIosDevice =
-  isBrowser && window.navigator && window.navigator.platform && /iP(ad|hone|od)/.test(window.navigator.platform);
+  isBrowser &&
+  window.navigator &&
+  window.navigator.platform &&
+  /iP(ad|hone|od)/.test(window.navigator.platform);
 
 const bodies: Map<HTMLElement, BodyInfoItem> = new Map();
 
@@ -60,7 +65,10 @@ export default !doc
             body.style.overflow = 'hidden';
           }
         } else {
-          bodies.set(body, { counter: bodyInfo.counter + 1, initialOverflow: bodyInfo.initialOverflow });
+          bodies.set(body, {
+            counter: bodyInfo.counter + 1,
+            initialOverflow: bodyInfo.initialOverflow,
+          });
         }
       };
 
@@ -80,7 +88,10 @@ export default !doc
               body.style.overflow = bodyInfo.initialOverflow;
             }
           } else {
-            bodies.set(body, { counter: bodyInfo.counter - 1, initialOverflow: bodyInfo.initialOverflow });
+            bodies.set(body, {
+              counter: bodyInfo.counter - 1,
+              initialOverflow: bodyInfo.initialOverflow,
+            });
           }
         }
       };

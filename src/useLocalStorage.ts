@@ -23,7 +23,11 @@ const useLocalStorage = <T>(
     throw new Error('useLocalStorage key may not be falsy');
   }
 
-  const deserializer = options ? (options.raw ? (value) => value : options.deserializer) : JSON.parse;
+  const deserializer = options
+    ? options.raw
+      ? (value) => value
+      : options.deserializer
+    : JSON.parse;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [state, setState] = useState<T | undefined>(() => {
@@ -49,7 +53,8 @@ const useLocalStorage = <T>(
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
     (valOrFunc) => {
       try {
-        const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
+        const newState =
+          typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
         if (typeof newState === 'undefined') return;
         let value: string;
 

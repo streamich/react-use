@@ -17,7 +17,8 @@ export default function useCounter(
 ): [number, CounterActions] {
   let init = resolveHookState(initialValue);
 
-  typeof init !== 'number' && console.error('initialValue has to be a number, got ' + typeof initialValue);
+  typeof init !== 'number' &&
+    console.error('initialValue has to be a number, got ' + typeof initialValue);
 
   if (typeof min === 'number') {
     init = Math.max(init, min);
@@ -59,7 +60,9 @@ export default function useCounter(
           const rDelta = resolveHookState(delta, get());
 
           if (typeof rDelta !== 'number') {
-            console.error('delta has to be a number or function returning a number, got ' + typeof rDelta);
+            console.error(
+              'delta has to be a number or function returning a number, got ' + typeof rDelta
+            );
           }
 
           set((num: number) => num + rDelta);
@@ -68,7 +71,9 @@ export default function useCounter(
           const rDelta = resolveHookState(delta, get());
 
           if (typeof rDelta !== 'number') {
-            console.error('delta has to be a number or function returning a number, got ' + typeof rDelta);
+            console.error(
+              'delta has to be a number or function returning a number, got ' + typeof rDelta
+            );
           }
 
           set((num: number) => num - rDelta);
@@ -77,7 +82,9 @@ export default function useCounter(
           const rValue = resolveHookState(value, get());
 
           if (typeof rValue !== 'number') {
-            console.error('value has to be a number or function returning a number, got ' + typeof rValue);
+            console.error(
+              'value has to be a number or function returning a number, got ' + typeof rValue
+            );
           }
 
           // eslint-disable-next-line react-hooks/exhaustive-deps

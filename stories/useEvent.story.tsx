@@ -21,7 +21,8 @@ const Demo = () => {
   return (
     <CenterStory>
       <p>
-        Press some keys on your keyboard, <code style={{ color: 'tomato' }}>r</code> key resets the list
+        Press some keys on your keyboard, <code style={{ color: 'tomato' }}>r</code> key resets the
+        list
       </p>
       <pre>{JSON.stringify(list, null, 4)}</pre>
     </CenterStory>

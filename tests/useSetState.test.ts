@@ -35,7 +35,7 @@ it('should merge changes into current state when providing function', () => {
 
   act(() => {
     // @ts-ignore
-    setState(prevState => ({ count: prevState.count + 1, someBool: true }));
+    setState((prevState) => ({ count: prevState.count + 1, someBool: true }));
   });
 
   expect(result.current[0]).toEqual({ foo: 'bar', count: 2, someBool: true });

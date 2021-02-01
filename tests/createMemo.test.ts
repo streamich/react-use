@@ -16,10 +16,13 @@ describe('when using created memo hook', () => {
     useMemoGetDouble = createMemo(getDouble);
   });
 
-  it.each([[1], [3], [5]])('should return same result as original function for argument %d', (val: number) => {
-    const { result } = renderHook(() => useMemoGetDouble(val));
-    expect(result.current).toBe(getDouble(val));
-  });
+  it.each([[1], [3], [5]])(
+    'should return same result as original function for argument %d',
+    (val: number) => {
+      const { result } = renderHook(() => useMemoGetDouble(val));
+      expect(result.current).toBe(getDouble(val));
+    }
+  );
 
   it('should NOT call original function for same arguments', () => {
     let initialValue = 5;

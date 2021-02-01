@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { isBrowser } from './misc/util';
 
-const useSessionStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, (value: T) => void] => {
+const useSessionStorage = <T>(
+  key: string,
+  initialValue?: T,
+  raw?: boolean
+): [T, (value: T) => void] => {
   if (!isBrowser) {
     return [initialValue as T, () => {}];
   }

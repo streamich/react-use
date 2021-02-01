@@ -34,7 +34,7 @@ describe('when using created reducer hook', () => {
 
   // Action creator to increment count, wait a second and then reset
   const addAndReset = () => {
-    return dispatch => {
+    return (dispatch) => {
       dispatch({ type: 'increment' });
 
       setTimeout(() => {

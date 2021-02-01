@@ -11,9 +11,15 @@ export type UseMediatedStateReturn<S = any> = [S, Dispatch<SetStateAction<S>>];
 export function useMediatedState<S = undefined>(
   mediator: StateMediator<S | undefined>
 ): UseMediatedStateReturn<S | undefined>;
-export function useMediatedState<S = any>(mediator: StateMediator<S>, initialState: S): UseMediatedStateReturn<S>;
+export function useMediatedState<S = any>(
+  mediator: StateMediator<S>,
+  initialState: S
+): UseMediatedStateReturn<S>;
 
-export function useMediatedState<S = any>(mediator: StateMediator<S>, initialState?: S): UseMediatedStateReturn<S> {
+export function useMediatedState<S = any>(
+  mediator: StateMediator<S>,
+  initialState?: S
+): UseMediatedStateReturn<S> {
   const mediatorFn = useRef(mediator);
 
   const [state, setMediatedState] = useState<S>(initialState!);

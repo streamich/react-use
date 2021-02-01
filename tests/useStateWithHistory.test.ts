@@ -12,7 +12,10 @@ describe('useStateWithHistory', () => {
     initialState?: IHookStateSetAction<S>,
     initialCapacity?: number,
     initialHistory?: I[]
-  ): RenderHookResult<{ state?: S; history?: I[]; capacity?: number }, [UseStateHistoryReturn<S | undefined>, number]> {
+  ): RenderHookResult<
+    { state?: S; history?: I[]; capacity?: number },
+    [UseStateHistoryReturn<S | undefined>, number]
+  > {
     return renderHook(
       ({ state, history, capacity }) => {
         const renders = useRef(0);

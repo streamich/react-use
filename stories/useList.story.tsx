@@ -4,13 +4,10 @@ import { useList } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [list, { set, push, updateAt, insertAt, update, updateFirst, sort, filter, removeAt, clear, reset }] = useList([
-    1,
-    2,
-    3,
-    4,
-    5,
-  ]);
+  const [
+    list,
+    { set, push, updateAt, insertAt, update, updateFirst, sort, filter, removeAt, clear, reset },
+  ] = useList([1, 2, 3, 4, 5]);
 
   return (
     <div>
@@ -64,11 +61,17 @@ const UpsertDemo = () => {
     <div style={{ display: 'inline-flex', flexDirection: 'column' }}>
       {list.map((item, index) => (
         <div key={item.id}>
-          <input value={item.text} onChange={(e) => upsert(upsertPredicate, { ...item, text: e.target.value })} />
+          <input
+            value={item.text}
+            onChange={(e) => upsert(upsertPredicate, { ...item, text: e.target.value })}
+          />
           <button onClick={() => removeAt(index)}>Remove</button>
         </div>
       ))}
-      <button onClick={() => upsert(upsertPredicate, { id: (list.length + 1).toString(), text: '' })}>Add item</button>
+      <button
+        onClick={() => upsert(upsertPredicate, { id: (list.length + 1).toString(), text: '' })}>
+        Add item
+      </button>
       <button onClick={() => reset()}>Reset</button>
     </div>
   );

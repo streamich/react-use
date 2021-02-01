@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useLocation } from '../src';
 import ShowDocs from './util/ShowDocs';
 
-const go = (page) => history.pushState({}, '', page);
+const go = (page) => window.history.pushState({}, '', page);
 
 const Demo = () => {
   const state = useLocation();

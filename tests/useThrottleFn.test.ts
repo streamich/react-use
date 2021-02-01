@@ -17,8 +17,8 @@ describe('useThrottleFn', () => {
   });
 
   const getHook = <T>(initialProps: T, ms?: number): [Function, RenderHookResult<T, T>] => {
-    const mockFn = jest.fn(props => props);
-    return [mockFn, renderHook(props => useThrottleFn(mockFn, ms, [props]), { initialProps })];
+    const mockFn = jest.fn((props) => props);
+    return [mockFn, renderHook((props) => useThrottleFn(mockFn, ms, [props]), { initialProps })];
   };
 
   it('should return the value that the given function return', () => {
@@ -42,7 +42,7 @@ describe('useThrottleFn', () => {
     expect(jest.getTimerCount()).toBe(1);
   });
 
-  it('should update the value after the given time when arguments change', done => {
+  it('should update the value after the given time when arguments change', (done) => {
     const [fn, hook] = getHook('boo', 100);
 
     expect(hook.result.current).toBe('boo');
@@ -57,7 +57,7 @@ describe('useThrottleFn', () => {
     jest.advanceTimersByTime(100);
   });
 
-  it('should use the default ms value when missing', done => {
+  it('should use the default ms value when missing', (done) => {
     const [fn, hook] = getHook('boo');
 
     expect(hook.result.current).toBe('boo');

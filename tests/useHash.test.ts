@@ -43,12 +43,12 @@ test('returns latest url hash when change the hash with setHash', () => {
 });
 
 it('returns latest url hash when change the hash with "hashchange" event', () => {
-  const {result} = renderHook(() => useHash());
-  const hash = result.current[0]
+  const { result } = renderHook(() => useHash());
+  const hash = result.current[0];
   expect(hash).toBe('#');
   act(() => {
-    window.location.hash = '#abc'
-  })
-  const hash2 = result.current[0]
+    window.location.hash = '#abc';
+  });
+  const hash2 = result.current[0];
   expect(hash2).toBe('#abc');
 });

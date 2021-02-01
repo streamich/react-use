@@ -26,7 +26,10 @@ const defaultState: DropAreaState = {
 };
 */
 
-const createProcess = (options: DropAreaOptions, mounted: boolean) => (dataTransfer: DataTransfer, event) => {
+const createProcess = (options: DropAreaOptions, mounted: boolean) => (
+  dataTransfer: DataTransfer,
+  event
+) => {
   const uri = dataTransfer.getData('text/uri-list');
 
   if (uri) {

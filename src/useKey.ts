@@ -21,7 +21,12 @@ const createKeyPredicate = (keyFilter: KeyFilter): KeyPredicate =>
     ? () => true
     : () => false;
 
-const useKey = (key: KeyFilter, fn: Handler = noop, opts: UseKeyOptions = {}, deps: DependencyList = [key]) => {
+const useKey = (
+  key: KeyFilter,
+  fn: Handler = noop,
+  opts: UseKeyOptions = {},
+  deps: DependencyList = [key]
+) => {
   const { event = 'keydown', target, options } = opts;
   const useMemoHandler = useMemo(() => {
     const predicate: KeyPredicate = createKeyPredicate(key);

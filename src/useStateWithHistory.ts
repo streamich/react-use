@@ -104,7 +104,10 @@ export function useStateWithHistory<S, I extends S>(
         }
 
         innerSetState(() => {
-          historyPosition.current = Math.min(historyPosition.current + amount, history.current.length - 1);
+          historyPosition.current = Math.min(
+            historyPosition.current + amount,
+            history.current.length - 1
+          );
 
           return history.current[historyPosition.current];
         });
