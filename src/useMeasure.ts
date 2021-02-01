@@ -48,4 +48,4 @@ function useMeasure<E extends HTMLElement = HTMLElement>(): UseMeasureResult<E> 
 
 export default isBrowser && typeof (window as any).ResizeObserver !== 'undefined'
   ? useMeasure
-  : () => [noop, defaultState];
+  : () => [noop, defaultState] as const;
