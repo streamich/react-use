@@ -21,6 +21,7 @@ const Demo = () => {
   useKeyPressEvent(']', increment, increment);
   useKeyPressEvent('[', decrement, decrement);
   useKeyPressEvent('r', reset);
+  useKeyPressEvent(' ', reset)
 
   return (
     <div>
