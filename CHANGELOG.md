@@ -1,3 +1,10 @@
+# [17.1.0](https://github.com/streamich/react-use/compare/v17.0.2...v17.1.0) (2021-02-01)
+
+
+### Features
+
+* **prettier:** make prettier a part of eslint. ([b6993a6](https://github.com/streamich/react-use/commit/b6993a6f95a1b493945c03aecc44dafd10870816))
+
 ## [17.0.2](https://github.com/streamich/react-use/compare/v17.0.1...v17.0.2) (2021-02-01)
 
 
