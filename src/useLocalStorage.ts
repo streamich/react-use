@@ -1,93 +1,44 @@
-import { Dispatch, SetStateAction, useCallback, useState } from 'react';
-import { isBrowser, noop } from './misc/util';
+import useStorage, { IUseStorageOptions } from './useStorage';
+import { IHookStateInitialSetter } from './misc/hookState';
 
-type parserOptions<T> =
-  | {
-      raw: true;
-    }
-  | {
-      raw: false;
-      serializer: (value: T) => string;
-      deserializer: (value: string) => T;
-    };
+const hasLocalStorage = typeof localStorage !== 'undefined';
 
-const useLocalStorage = <T>(
-  key: string,
-  initialValue?: T,
-  options?: parserOptions<T>
-): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
-  if (!isBrowser) {
-    return [initialValue as T, noop, noop];
-  }
-  if (!key) {
-    throw new Error('useLocalStorage key may not be falsy');
-  }
-
-  const deserializer = options
-    ? options.raw
-      ? (value) => value
-      : options.deserializer
-    : JSON.parse;
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [state, setState] = useState<T | undefined>(() => {
+export const LocalStorageAdaprer = {
+  get<T extends any | string>(key: string): T | null {
     try {
-      const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
-
-      const localStorageValue = localStorage.getItem(key);
-      if (localStorageValue !== null) {
-        return deserializer(localStorageValue);
-      } else {
-        initialValue && localStorage.setItem(key, serializer(initialValue));
-        return initialValue;
+      if (hasLocalStorage) {
+        return localStorage.getItem(key) as T;
       }
-    } catch {
-      // If user is in private mode or has storage restriction
-      // localStorage can throw. JSON.parse and JSON.stringify
-      // can throw, too.
-      return initialValue;
+
+      return null;
+    } catch (e) {
+      return null;
     }
-  });
+  },
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
-    (valOrFunc) => {
-      try {
-        const newState =
-          typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
-        if (typeof newState === 'undefined') return;
-        let value: string;
+  set(key: string, value: string): boolean {
+    try {
+      localStorage.setItem(key, value);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  },
 
-        if (options)
-          if (options.raw)
-            if (typeof newState === 'string') value = newState;
-            else value = JSON.stringify(newState);
-          else if (options.serializer) value = options.serializer(newState);
-          else value = JSON.stringify(newState);
-        else value = JSON.stringify(newState);
-
-        localStorage.setItem(key, value);
-        setState(deserializer(value));
-      } catch {
-        // If user is in private mode or has storage restriction
-        // localStorage can throw. Also JSON.stringify can throw.
-      }
-    },
-    [key, setState]
-  );
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const remove = useCallback(() => {
+  remove(key: string) {
     try {
       localStorage.removeItem(key);
-      setState(undefined);
-    } catch {
-      // If user is in private mode or has storage restriction
-      // localStorage can throw.
+      return true;
+    } catch (e) {
+      return false;
     }
-  }, [key, setState]);
-
-  return [state, set, remove];
+  },
 };
 
-export default useLocalStorage;
+export default function useLocalStorage<T>(
+  key: string,
+  initialValue?: IHookStateInitialSetter<T>,
+  options: IUseStorageOptions<T> = {}
+) {
+  return useStorage<T>(LocalStorageAdaprer, key, initialValue, options);
+}
