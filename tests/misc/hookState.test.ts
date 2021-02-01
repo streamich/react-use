@@ -25,8 +25,7 @@ describe('resolveHookState', () => {
   });
 
   it('should not pass 2nd parameter to function if it not awaited', () => {
-    const spy = jest.fn(() => {
-    });
+    const spy = jest.fn(() => {});
     /* @ts-expect-error */
     resolveHookState(spy, 123);
     expect(spy).toHaveBeenCalled();

@@ -3,7 +3,9 @@ import { useEffect, useRef } from 'react';
 import useSetState from '../useSetState';
 import parseTimeRanges from '../misc/parseTimeRanges';
 
-export interface HTMLMediaProps extends React.AudioHTMLAttributes<any>, React.VideoHTMLAttributes<any> {
+export interface HTMLMediaProps
+  extends React.AudioHTMLAttributes<any>,
+    React.VideoHTMLAttributes<any> {
   src: string;
 }
 
@@ -33,7 +35,9 @@ type createHTMLMediaHookReturn = [
 ];
 
 export default function createHTMLMediaHook(tag: 'audio' | 'video') {
-  return (elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>): createHTMLMediaHookReturn => {
+  return (
+    elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>
+  ): createHTMLMediaHookReturn => {
     let element: React.ReactElement<any> | undefined;
     let props: HTMLMediaProps;
 

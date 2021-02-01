@@ -8,8 +8,8 @@ const Demo = () => {
 
   return (
     <div>
-      <code>useUnmount()</code> hook can be used to perform side-effects when component unmounts. This component will
-      alert you when it is un-mounted.
+      <code>useUnmount()</code> hook can be used to perform side-effects when component unmounts.
+      This component will alert you when it is un-mounted.
     </div>
   );
 };

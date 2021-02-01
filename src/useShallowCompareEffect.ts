@@ -9,7 +9,9 @@ const shallowEqualDepsList = (prevDeps: DependencyList, nextDeps: DependencyList
 const useShallowCompareEffect = (effect: EffectCallback, deps: DependencyList) => {
   if (process.env.NODE_ENV !== 'production') {
     if (!(deps instanceof Array) || !deps.length) {
-      console.warn('`useShallowCompareEffect` should not be used with no dependencies. Use React.useEffect instead.');
+      console.warn(
+        '`useShallowCompareEffect` should not be used with no dependencies. Use React.useEffect instead.'
+      );
     }
 
     if (deps.every(isPrimitive)) {

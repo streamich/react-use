@@ -41,7 +41,9 @@ const Demo = () => {
           setState3((ev.target.value as unknown) as number);
         }}
       />
-      {isValid !== undefined && <span style={{ marginLeft: 24 }}>{isValid ? 'Valid!' : 'Invalid'}</span>}
+      {isValid !== undefined && (
+        <span style={{ marginLeft: 24 }}>{isValid ? 'Valid!' : 'Invalid'}</span>
+      )}
     </div>
   );
 };

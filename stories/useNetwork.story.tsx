@@ -9,12 +9,14 @@ const Demo = () => {
 
   useEffect(() => {
     console.log(state);
-  }, [state])
+  }, [state]);
 
-  return <div>
-    <div>Since JSON do not output `undefined` fields look the console to see whole the state</div>
-    <pre>{JSON.stringify(state, null, 2)}</pre>
-  </div>;
+  return (
+    <div>
+      <div>Since JSON do not output `undefined` fields look the console to see whole the state</div>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
+    </div>
+  );
 };
 
 storiesOf('Sensors/useNetworkState', module)

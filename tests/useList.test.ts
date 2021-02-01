@@ -281,7 +281,7 @@ describe('useList', () => {
 
       expect(hook.result.current[0]).toBe(1);
       act(() => {
-        filter(val => val % 2 === 1);
+        filter((val) => val % 2 === 1);
       });
       expect(hook.result.current[0]).toBe(2);
       expect(hook.result.current[1][0]).toEqual([1, 3]);

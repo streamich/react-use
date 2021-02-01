@@ -4,11 +4,17 @@ import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 import { noop, off, on } from './misc/util';
 
 export interface FullScreenOptions {
-  video?: RefObject<HTMLVideoElement & { webkitEnterFullscreen?: () => void; webkitExitFullscreen?: () => void }>;
+  video?: RefObject<
+    HTMLVideoElement & { webkitEnterFullscreen?: () => void; webkitExitFullscreen?: () => void }
+  >;
   onClose?: (error?: Error) => void;
 }
 
-const useFullscreen = (ref: RefObject<Element>, enabled: boolean, options: FullScreenOptions = {}): boolean => {
+const useFullscreen = (
+  ref: RefObject<Element>,
+  enabled: boolean,
+  options: FullScreenOptions = {}
+): boolean => {
   const { video, onClose = noop } = options;
   const [isFullscreen, setIsFullscreen] = useState(enabled);
 
