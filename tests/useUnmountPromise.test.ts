@@ -15,10 +15,14 @@ describe('useUnmountPromise', () => {
   it('when component is mounted function should resolve with wrapped promises', async () => {
     const hook = renderHook(() => useUnmountPromise());
 
-    const mounted = hook.result.current;
-    const res = await mounted(new Promise(r => setTimeout(() => r(25), 10)));
+    const res1 = await hook.result.current(new Promise(r => setTimeout(() => r(25), 10)));
+    expect(res1).toBe(25);
 
-    expect(res).toBe(25);
+    // FIXME: Ensure the useEffect() hook has executed before triggering next;
+    // using hook.waitForNextUpdate() doesn't work
+
+    const res2 = await hook.result.current(new Promise(r => setTimeout(() => r(10), 10)));
+    expect(res2).toBe(10);
   });
 
   it('when component is unmounted promise never resolves', async () => {
