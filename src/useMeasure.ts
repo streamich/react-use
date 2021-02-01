@@ -7,7 +7,10 @@ export type UseMeasureRect = Pick<
   'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'
 >;
 export type UseMeasureRef<E extends HTMLElement = HTMLElement> = (element: E) => void;
-export type UseMeasureResult<E extends HTMLElement = HTMLElement> = [UseMeasureRef<E>, UseMeasureRect];
+export type UseMeasureResult<E extends HTMLElement = HTMLElement> = [
+  UseMeasureRef<E>,
+  UseMeasureRect
+];
 
 const defaultState: UseMeasureRect = {
   x: 0,

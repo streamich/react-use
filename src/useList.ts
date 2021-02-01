@@ -117,7 +117,10 @@ function useList<T>(initialList: IHookStateInitAction<T[]> = []): [T[], ListActi
         actions.set((curr: T[]) => curr.slice().sort(compareFn));
       },
 
-      filter: <S extends T>(callbackFn: (value: T, index: number, array: T[]) => value is S, thisArg?: any) => {
+      filter: <S extends T>(
+        callbackFn: (value: T, index: number, array: T[]) => value is S,
+        thisArg?: any
+      ) => {
         actions.set((curr: T[]) => curr.slice().filter(callbackFn, thisArg));
       },
 

@@ -16,8 +16,7 @@ const Demo = () => {
           setState((prevState) => ({
             count: prevState.count === undefined ? 0 : prevState.count + 1,
           }));
-        }}
-      >
+        }}>
         increment
       </button>
     </div>

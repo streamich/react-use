@@ -8,7 +8,15 @@ export interface INetworkInformation extends EventTarget {
   readonly effectiveType: 'slow-2g' | '2g' | '3g' | '4g';
   readonly rtt: number;
   readonly saveData: boolean;
-  readonly type: 'bluetooth' | 'cellular' | 'ethernet' | 'none' | 'wifi' | 'wimax' | 'other' | 'unknown';
+  readonly type:
+    | 'bluetooth'
+    | 'cellular'
+    | 'ethernet'
+    | 'none'
+    | 'wifi'
+    | 'wimax'
+    | 'other'
+    | 'unknown';
 
   onChange: (event: Event) => void;
 }
@@ -68,9 +76,11 @@ export interface IUseNetworkState {
 }
 
 const nav:
-  | (Navigator & Partial<Record<'connection' | 'mozConnection' | 'webkitConnection', INetworkInformation>>)
+  | (Navigator &
+      Partial<Record<'connection' | 'mozConnection' | 'webkitConnection', INetworkInformation>>)
   | undefined = navigator;
-const conn: INetworkInformation | undefined = nav && (nav.connection || nav.mozConnection || nav.webkitConnection);
+const conn: INetworkInformation | undefined =
+  nav && (nav.connection || nav.mozConnection || nav.webkitConnection);
 
 function getConnectionState(previousState?: IUseNetworkState): IUseNetworkState {
   const online = nav?.onLine;
@@ -89,7 +99,9 @@ function getConnectionState(previousState?: IUseNetworkState): IUseNetworkState 
   };
 }
 
-export default function useNetworkState(initialState?: IHookStateInitAction<IUseNetworkState>): IUseNetworkState {
+export default function useNetworkState(
+  initialState?: IHookStateInitAction<IUseNetworkState>
+): IUseNetworkState {
   const [state, setState] = useState(initialState ?? getConnectionState);
 
   useEffect(() => {

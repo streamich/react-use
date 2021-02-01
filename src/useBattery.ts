@@ -25,7 +25,8 @@ type UseBatteryState =
   | { isSupported: true; fetched: false } // battery API supported but not fetched yet
   | (BatteryState & { isSupported: true; fetched: true }); // battery API supported and fetched
 
-const nav: NavigatorWithPossibleBattery | undefined = typeof navigator === 'object' ? navigator : undefined;
+const nav: NavigatorWithPossibleBattery | undefined =
+  typeof navigator === 'object' ? navigator : undefined;
 const isBatteryApiSupported = nav && typeof nav.getBattery === 'function';
 
 function useBatteryMock(): UseBatteryState {

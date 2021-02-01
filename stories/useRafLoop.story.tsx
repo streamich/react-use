@@ -22,8 +22,7 @@ const Demo = () => {
         onClick={() => {
           isActive() ? loopStop() : loopStart();
           update();
-        }}
-      >
+        }}>
         {isActive() ? 'STOP' : 'START'}
       </button>
     </div>

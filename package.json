@@ -16,10 +16,9 @@
     "test": "jest --maxWorkers 2",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint {src,tests}/**/*.{ts,tsx}",
+    "lint": "eslint {src,tests,stories}/**/*.{ts,tsx}",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
-    "lint:prettier": "prettier --write src/**/**/*.{ts,tsx}",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn build:cjs && yarn build:es",
@@ -32,7 +31,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint:types && lint-staged",
+      "pre-commit": "lint-staged",
       "pre-push": "yarn lint && yarn clean && yarn build && yarn test"
     }
   },
@@ -92,10 +91,12 @@
     "babel-loader": "8.2.2",
     "babel-plugin-dynamic-import-node": "2.3.3",
     "eslint": "7.18.0",
+    "eslint-config-prettier": "^7.2.0",
     "eslint-config-react-app": "6.0.0",
     "eslint-plugin-flowtype": "5.2.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "fork-ts-checker-webpack-plugin": "6.1.0",
@@ -106,7 +107,7 @@
     "keyboardjs": "2.6.4",
     "lint-staged": "10.5.3",
     "markdown-loader": "6.0.0",
-    "prettier": "2.2.1",
+    "prettier": "^2.2.1",
     "raf-stub": "3.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
@@ -151,7 +152,6 @@
   "lint-staged": {
     "src/**/**/*.{ts,tsx}": [
       "eslint --fix",
-      "prettier --write",
       "git add"
     ]
   },

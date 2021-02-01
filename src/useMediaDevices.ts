@@ -13,7 +13,12 @@ const useMediaDevices = () => {
         .then((devices) => {
           if (mounted) {
             setState({
-              devices: devices.map(({ deviceId, groupId, kind, label }) => ({ deviceId, groupId, kind, label })),
+              devices: devices.map(({ deviceId, groupId, kind, label }) => ({
+                deviceId,
+                groupId,
+                kind,
+                label,
+              })),
             });
           }
         })
@@ -34,4 +39,6 @@ const useMediaDevices = () => {
 
 const useMediaDevicesMock = () => ({});
 
-export default typeof navigator === 'object' && !!navigator.mediaDevices ? useMediaDevices : useMediaDevicesMock;
+export default typeof navigator === 'object' && !!navigator.mediaDevices
+  ? useMediaDevices
+  : useMediaDevicesMock;

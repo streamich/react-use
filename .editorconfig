@@ -8,7 +8,7 @@ indent_size = 2
 indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
-max_line_length = 120
+max_line_length = 100
 
 [*.{ts, tsx}]
 ij_typescript_enforce_trailing_comma = keep
@@ -24,7 +24,7 @@ ij_typescript_catch_on_new_line = false
 ij_typescript_spaces_within_interpolation_expressions = false
 
 [*.md]
-max_line_length = 120
+max_line_length = 100
 trim_trailing_whitespace = false
 
 [COMMIT_EDITMSG]

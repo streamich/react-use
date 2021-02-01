@@ -24,15 +24,17 @@ describe('useThrottle', () => {
   });
 
   it('should has same value if time is advanced less than the given time', () => {
-    const { result, rerender } = renderHook(props => useThrottle(props, 100), { initialProps: 0 });
+    const { result, rerender } = renderHook((props) => useThrottle(props, 100), {
+      initialProps: 0,
+    });
     expect(result.current).toBe(0);
     rerender(1);
     jest.advanceTimersByTime(50);
     expect(result.current).toBe(0);
   });
 
-  it('should update the value after the given time when prop change', done => {
-    const hook = renderHook(props => useThrottle(props, 100), { initialProps: 0 });
+  it('should update the value after the given time when prop change', (done) => {
+    const hook = renderHook((props) => useThrottle(props, 100), { initialProps: 0 });
     expect(hook.result.current).toBe(0);
     hook.rerender(1);
     expect(hook.result.current).toBe(0);
@@ -43,8 +45,8 @@ describe('useThrottle', () => {
     jest.advanceTimersByTime(100);
   });
 
-  it('should use the default ms value when missing', done => {
-    const hook = renderHook(props => useThrottle(props), { initialProps: 0 });
+  it('should use the default ms value when missing', (done) => {
+    const hook = renderHook((props) => useThrottle(props), { initialProps: 0 });
     expect(hook.result.current).toBe(0);
     hook.rerender(1);
     hook.waitForNextUpdate().then(() => {
@@ -55,14 +57,14 @@ describe('useThrottle', () => {
   });
 
   it('should not update the value after the given time', () => {
-    const hook = renderHook(props => useThrottle(props, 100), { initialProps: 0 });
+    const hook = renderHook((props) => useThrottle(props, 100), { initialProps: 0 });
     expect(hook.result.current).toBe(0);
     jest.advanceTimersByTime(100);
     expect(hook.result.current).toBe(0);
   });
 
   it('should cancel timeout on unmount', () => {
-    const hook = renderHook(props => useThrottle(props, 100), { initialProps: 0 });
+    const hook = renderHook((props) => useThrottle(props, 100), { initialProps: 0 });
     expect(hook.result.current).toBe(0);
     hook.rerender(1);
     hook.unmount();

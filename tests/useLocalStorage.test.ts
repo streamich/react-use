@@ -114,7 +114,9 @@ describe(useLocalStorage, () => {
   });
 
   it('safely sets objects to localStorage', () => {
-    const { result, rerender } = renderHook(() => useLocalStorage<{ ok: any }>('foo', { ok: true }));
+    const { result, rerender } = renderHook(() =>
+      useLocalStorage<{ ok: any }>('foo', { ok: true })
+    );
 
     const [, setFoo] = result.current;
     act(() => setFoo({ ok: 'bar' }));
@@ -125,7 +127,9 @@ describe(useLocalStorage, () => {
   });
 
   it('safely returns objects from updates', () => {
-    const { result, rerender } = renderHook(() => useLocalStorage<{ ok: any }>('foo', { ok: true }));
+    const { result, rerender } = renderHook(() =>
+      useLocalStorage<{ ok: any }>('foo', { ok: true })
+    );
 
     const [, setFoo] = result.current;
     act(() => setFoo({ ok: 'bar' }));
