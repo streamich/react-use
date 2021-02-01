@@ -7,8 +7,8 @@ import ShowDocs from './util/ShowDocs';
 const Demo = () => {
   const [count, setCount] = React.useState(0);
 
-  const increment = () => setCount(currentCount => ++currentCount);
-  const decrement = () => setCount(currentCount => --currentCount);
+  const increment = () => setCount((currentCount) => ++currentCount);
+  const decrement = () => setCount((currentCount) => --currentCount);
   const reset = () => setCount(() => 0);
 
   useKey(']', increment);
@@ -19,7 +19,8 @@ const Demo = () => {
     <CenterStory>
       <style dangerouslySetInnerHTML={{ __html: `code {color: red}` }} />
       <p>
-        Try pressing <code>[</code>, <code>]</code>, and <code>r</code> to see the count incremented and decremented.
+        Try pressing <code>[</code>, <code>]</code>, and <code>r</code> to see the count incremented
+        and decremented.
       </p>
       <p>Count: {count}</p>
     </CenterStory>
@@ -28,7 +29,7 @@ const Demo = () => {
 
 const CounterDemo = () => {
   const [count, setCount] = React.useState(0);
-  const increment = () => setCount(currentCount => ++currentCount);
+  const increment = () => setCount((currentCount) => ++currentCount);
   useKey('ArrowUp', increment);
 
   return <div>Press arrow up: {count}</div>;

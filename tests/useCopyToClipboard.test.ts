@@ -4,7 +4,7 @@ import { useCopyToClipboard } from '../src';
 
 const valueToRaiseMockException = 'fake input causing exception in copy to clipboard';
 jest.mock('copy-to-clipboard', () =>
-  jest.fn().mockImplementation(input => {
+  jest.fn().mockImplementation((input) => {
     if (input === valueToRaiseMockException) {
       throw new Error(input);
     }
@@ -14,14 +14,11 @@ jest.mock('copy-to-clipboard', () =>
 
 describe('useCopyToClipboard', () => {
   let hook;
-  let consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {
-  });
-
+  let consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation(() => {});
 
   beforeEach(() => {
     hook = renderHook(() => useCopyToClipboard());
   });
-
 
   afterAll(() => {
     consoleErrorSpy.mockRestore();

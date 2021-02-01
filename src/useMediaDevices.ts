@@ -13,7 +13,12 @@ const useMediaDevices = () => {
         .then((devices) => {
           if (mounted) {
             setState({
-              devices: devices.map(({ deviceId, groupId, kind, label }) => ({ deviceId, groupId, kind, label })),
+              devices: devices.map(({ deviceId, groupId, kind, label }) => ({
+                deviceId,
+                groupId,
+                kind,
+                label,
+              })),
             });
           }
         })

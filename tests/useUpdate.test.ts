@@ -10,11 +10,13 @@ describe('useUpdate', () => {
     const { result } = renderHook(() => useUpdate());
 
     expect(typeof result.current).toBe('function');
-  })
+  });
 
   it('should re-render component each time returned function is called', () => {
     let renders = 0;
-    const { result: { current: update } } = renderHook(() => {
+    const {
+      result: { current: update },
+    } = renderHook(() => {
       renders++;
       return useUpdate();
     });
@@ -26,7 +28,7 @@ describe('useUpdate', () => {
 
     act(() => update());
     expect(renders).toBe(3);
-  })
+  });
 
   it('should return exact same function in between renders', () => {
     let renders = 0;
@@ -45,7 +47,7 @@ describe('useUpdate', () => {
     act(() => result.current());
     expect(renders).toBe(3);
     expect(initialUpdateFn).toBe(result.current);
-  })
+  });
 
   it('passing the argument to returned function should not affect the use', () => {
     let renders = 0;
@@ -66,5 +68,5 @@ describe('useUpdate', () => {
     act(() => result.current(1));
     expect(renders).toBe(3);
     expect(initialUpdateFn).toBe(result.current);
-  })
+  });
 });

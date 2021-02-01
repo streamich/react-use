@@ -24,7 +24,11 @@ const isListenerType2 = (target: any): target is ListenerType2 => {
   return !!target.on;
 };
 
-type AddEventListener<T> = T extends ListenerType1 ? T['addEventListener'] : T extends ListenerType2 ? T['on'] : never;
+type AddEventListener<T> = T extends ListenerType1
+  ? T['addEventListener']
+  : T extends ListenerType2
+  ? T['on']
+  : never;
 
 const useEvent = <T extends UseEventTarget>(
   name: Parameters<AddEventListener<T>>[0],

@@ -5,7 +5,11 @@ import { off, on } from './misc/util';
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
 const oneMinute = 60e3;
 
-const useIdle = (ms: number = oneMinute, initialState: boolean = false, events: string[] = defaultEvents): boolean => {
+const useIdle = (
+  ms: number = oneMinute,
+  initialState: boolean = false,
+  events: string[] = defaultEvents
+): boolean => {
   const [state, setState] = useState<boolean>(initialState);
 
   useEffect(() => {

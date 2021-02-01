@@ -21,7 +21,9 @@ const Demo = () => {
       <button onClick={() => next()}>next</button>
       <br />
       <input type="text" ref={indexInput} style={{ width: 120 }} />
-      <button onClick={() => setStateAt((indexInput.current!.value as unknown) as number)}>set state by index</button>
+      <button onClick={() => setStateAt((indexInput.current!.value as unknown) as number)}>
+        set state by index
+      </button>
       <br />
       <input type="text" ref={stateInput} style={{ width: 120 }} />
       <button onClick={() => setState(stateInput.current!.value)}> set state by value</button>

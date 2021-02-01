@@ -24,7 +24,9 @@ export type AsyncState<T> =
       value: T;
     };
 
-type StateFromFunctionReturningPromise<T extends FunctionReturningPromise> = AsyncState<PromiseType<ReturnType<T>>>;
+type StateFromFunctionReturningPromise<T extends FunctionReturningPromise> = AsyncState<
+  PromiseType<ReturnType<T>>
+>;
 
 export type AsyncFnReturn<T extends FunctionReturningPromise = FunctionReturningPromise> = [
   StateFromFunctionReturningPromise<T>,
