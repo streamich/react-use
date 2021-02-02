@@ -80,7 +80,7 @@
     "@storybook/addon-notes": "5.3.21",
     "@storybook/addon-options": "5.3.21",
     "@storybook/react": "6.1.16",
-    "@testing-library/react": "11.2.3",
+    "@testing-library/react": "11.2.4",
     "@testing-library/react-hooks": "5.0.3",
     "@types/jest": "26.0.20",
     "@types/js-cookie": "2.2.6",
