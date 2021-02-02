@@ -2212,10 +2212,10 @@
     filter-console "^0.1.1"
     react-error-boundary "^3.1.0"
 
-"@testing-library/react@11.2.3":
-  version "11.2.3"
-  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-11.2.3.tgz#9971ede1c8465a231d7982eeca3c39fc362d5443"
-  integrity sha512-BirBUGPkTW28ULuCwIbYo0y2+0aavHczBT6N9r3LrsswEW3pg25l1wgoE7I8QBIy1upXWkwKpYdWY7NYYP0Bxw==
+"@testing-library/react@11.2.4":
+  version "11.2.4"
+  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-11.2.4.tgz#85e39be292973c49d638df20dcab5a7e73cda2f1"
+  integrity sha512-0j4A3eHc89g6ymLhvDzwIwTCCKf0voO387ACvJvH46YrBUFt1E66PvxSXH/u/kDVhLs8dtSPFCM06Bjo4sUojQ==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
