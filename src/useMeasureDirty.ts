@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, RefObject } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
 export interface ContentRect {

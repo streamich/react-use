@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 export interface StableActions<K> {
   add: (key: K) => void;
@@ -16,7 +16,8 @@ const useSet = <K>(initialSet = new Set<K>()): [Set<K>, Actions<K>] => {
 
   const stableActions = useMemo<StableActions<K>>(() => {
     const add = (item: K) => setSet((prevSet) => new Set([...Array.from(prevSet), item]));
-    const remove = (item: K) => setSet((prevSet) => new Set(Array.from(prevSet).filter((i) => i !== item)));
+    const remove = (item: K) =>
+      setSet((prevSet) => new Set(Array.from(prevSet).filter((i) => i !== item)));
     const toggle = (item: K) =>
       setSet((prevSet) =>
         prevSet.has(item)

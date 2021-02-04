@@ -27,7 +27,9 @@ const Demo = () => {
           <button onClick={() => remove(index)}>Remove</button>
         </div>
       ))}
-      <button onClick={() => upsert({ id: (list.length + 1).toString(), text: '' })}>Add item</button>
+      <button onClick={() => upsert({ id: (list.length + 1).toString(), text: '' })}>
+        Add item
+      </button>
       <button onClick={() => set([])}>Reset</button>
     </div>
   );

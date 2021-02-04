@@ -32,8 +32,7 @@ const Demo = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-        }}
-      >
+        }}>
         <video
           ref={videoRef}
           style={{ width: '70%' }}

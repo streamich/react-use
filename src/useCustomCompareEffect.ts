@@ -11,7 +11,9 @@ const useCustomCompareEffect = <TDeps extends DependencyList>(
 ) => {
   if (process.env.NODE_ENV !== 'production') {
     if (!(deps instanceof Array) || !deps.length) {
-      console.warn('`useCustomCompareEffect` should not be used with no dependencies. Use React.useEffect instead.');
+      console.warn(
+        '`useCustomCompareEffect` should not be used with no dependencies. Use React.useEffect instead.'
+      );
     }
 
     if (deps.every(isPrimitive)) {
@@ -21,7 +23,9 @@ const useCustomCompareEffect = <TDeps extends DependencyList>(
     }
 
     if (typeof depsEqual !== 'function') {
-      console.warn('`useCustomCompareEffect` should be used with depsEqual callback for comparing deps list');
+      console.warn(
+        '`useCustomCompareEffect` should be used with depsEqual callback for comparing deps list'
+      );
     }
   }
 

@@ -187,15 +187,21 @@ describe('should `console.error` on unexpected inputs', () => {
 
     // @ts-ignore
     act(() => inc(false));
-    expect(spy.mock.calls[0][0]).toBe('delta has to be a number or function returning a number, got boolean');
+    expect(spy.mock.calls[0][0]).toBe(
+      'delta has to be a number or function returning a number, got boolean'
+    );
 
     // @ts-ignore
     act(() => dec(false));
-    expect(spy.mock.calls[1][0]).toBe('delta has to be a number or function returning a number, got boolean');
+    expect(spy.mock.calls[1][0]).toBe(
+      'delta has to be a number or function returning a number, got boolean'
+    );
 
     // @ts-ignore
     act(() => reset({}));
-    expect(spy.mock.calls[2][0]).toBe('value has to be a number or function returning a number, got object');
+    expect(spy.mock.calls[2][0]).toBe(
+      'value has to be a number or function returning a number, got object'
+    );
 
     spy.mockRestore();
   });

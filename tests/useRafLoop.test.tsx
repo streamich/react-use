@@ -79,13 +79,13 @@ describe('useRafLoop', () => {
   it('should call the actual callback when it changed', () => {
     const spy1 = jest.fn();
     const spy2 = jest.fn();
-    const hook = renderHook(({cb}) => useRafLoop(cb), { initialProps: {cb: spy1} });
+    const hook = renderHook(({ cb }) => useRafLoop(cb), { initialProps: { cb: spy1 } });
 
     expect(spy1).not.toBeCalled();
     requestAnimationFrame.step(2);
     expect(spy1).toBeCalledTimes(2);
 
-    hook.rerender({cb: spy2});
+    hook.rerender({ cb: spy2 });
 
     requestAnimationFrame.step(2);
     expect(spy1).toBeCalledTimes(2);
