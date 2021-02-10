@@ -1,3 +1,10 @@
+## [17.1.1](https://github.com/streamich/react-use/compare/v17.1.0...v17.1.1) (2021-02-10)
+
+
+### Bug Fixes
+
+* useMountedState should not change state on componentDidUpdate lifecycle ([701b306](https://github.com/streamich/react-use/commit/701b306ed97382cbec73c834f6d3dd7baa58e339))
+
 # [17.1.0](https://github.com/streamich/react-use/compare/v17.0.2...v17.1.0) (2021-02-01)
 
 
