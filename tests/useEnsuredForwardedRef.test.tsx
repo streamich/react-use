@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { RefCallback, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { renderHook } from '@testing-library/react-hooks';
 import TestUtils from 'react-dom/test-utils';
@@ -16,9 +16,9 @@ afterEach(() => {
   container = null!;
 });
 
-test('should return a valid ref with existing forwardedRef', () => {
+test('should return a valid ref with existing forwardedRef (MutableRefObject)', () => {
   const { result } = renderHook(() => {
-    const ref = useRef(null);
+    const ref = useRef<HTMLDivElement>(null);
     const ensuredRef = useEnsuredForwardedRef(ref);
 
     TestUtils.act(() => {
@@ -27,6 +27,31 @@ test('should return a valid ref with existing forwardedRef', () => {
 
     return {
       initialRef: ref,
+      ensuredForwardedRef: ensuredRef,
+    };
+  });
+
+  const { initialRef, ensuredForwardedRef } = result.current;
+
+  expect(ensuredForwardedRef).toStrictEqual(initialRef);
+});
+
+test('should return a valid ref with existing forwardedRef (RefCallback)', () => {
+  const { result } = renderHook(() => {
+    const initialRef = useRef<HTMLDivElement | null>();
+
+    const refCallback: RefCallback<HTMLDivElement> = (instance) => {
+      initialRef.current = instance;
+    };
+
+    const ensuredRef = useEnsuredForwardedRef(refCallback);
+
+    TestUtils.act(() => {
+      ReactDOM.render(<div ref={ensuredRef} />, container);
+    });
+
+    return {
+      initialRef,
       ensuredForwardedRef: ensuredRef,
     };
   });
