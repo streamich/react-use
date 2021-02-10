@@ -1,16 +1,15 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function useMountedState(): () => boolean {
-  const mountedRef = useRef<boolean>(false);
-  const get = useCallback(() => mountedRef.current, []);
+  const [isMounted, setMounted] = useState(false);
+
+  // This would not be necessary but is kept for signature backward-compatibility.
+  const get = useCallback(() => isMounted, [isMounted]);
 
   useEffect(() => {
-    mountedRef.current = true;
-
-    return () => {
-      mountedRef.current = false;
-    };
-  });
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
 
   return get;
 }
