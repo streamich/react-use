@@ -1,22 +1,25 @@
-import { useState, SetStateAction } from 'react';
+import { useState } from 'react';
+import { resolveHookState, IHookStateSetAction } from '../misc/hookState';
 import useEffectOnce from '../useEffectOnce';
 import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
 
 export function createGlobalState<S = any>(
   initialState: S | (() => S)
-): () => [S, (state: SetStateAction<S>) => void];
-export function createGlobalState<S = undefined>(): () => [S, (state: SetStateAction<S>) => void];
+): () => [S, (state: IHookStateSetAction<S>) => void];
+export function createGlobalState<S = undefined>(): () => [
+  S,
+  (state: IHookStateSetAction<S>) => void
+];
 
 export function createGlobalState<S>(initialState?: S) {
   const store: {
     state: S;
-    setState: (state: SetStateAction<S>) => void;
+    setState: (state: IHookStateSetAction<S>) => void;
     setters: any[];
   } = {
     state: initialState instanceof Function ? initialState() : initialState,
-    setState(stateOrFn: SetStateAction<S>) {
-      store.state =
-        stateOrFn instanceof Function ? stateOrFn(this.state || (initialState as S)) : stateOrFn;
+    setState(nextState: IHookStateSetAction<S>) {
+      store.state = resolveHookState(nextState, store.state);
       store.setters.forEach((setter) => setter(store.state));
     },
     setters: [],
