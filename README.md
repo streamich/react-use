@@ -1,4 +1,11 @@
 <div align="center">
+    <a href="https://www.kickstarter.com/projects/aleks-p/multiplayer-collaborative-editing-database">
+       Collaborative editing for your app. <strong>Support on Kickstarter!</strong>
+    </a>
+</div>
+
+
+<div align="center">
   <h1>
     <br/>
     <br/>
