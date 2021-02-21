@@ -15,13 +15,7 @@ export type PollingOptions = {
 };
 export class MaxAttemptsError extends Error {}
 
-type DeepNonNullable<T> = {
-  [P in keyof T]-?: NonNullable<T[P]>;
-};
-
-type Opts = DeepNonNullable<PollingOptions>;
-
-const defaultOptions: Opts = {
+const defaultOptions: Required<PollingOptions> = {
   maxAttempts: 30,
   interval: 2 * 1000,
 };
@@ -31,7 +25,7 @@ const useAsyncPolling = <T>(
   fn: (next: NextFn<T>) => Promise<T>,
   deps: DependencyList = []
 ): AsyncStatePolling<T> => {
-  const opts = { ...defaultOptions, ...options } as Opts;
+  const opts = { ...defaultOptions, ...options } as Required<PollingOptions>;
 
   const [state, callback] = useAsyncFn(fn, deps, {
     loading: true,
