@@ -7,8 +7,6 @@ import useAsyncPolling, { MaxAttemptsError } from '../src/useAsyncPolling';
 import { sleep } from '../src/misc/sleep';
 
 describe('useAsyncPolling', () => {
-  let hook;
-
   function createResolver(responses: string[]) {
     responses = [...responses];
 
