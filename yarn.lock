@@ -33,10 +33,10 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.12.7.tgz#9329b4782a7d6bbd7eef57e11addf91ee3ef1e41"
   integrity sha512-YaxPMGs/XIWtYqrdEOZOCPsVWfEoriXopnsz3/i7apYPXQ3698UFhS6dVT1KN5qOsWmVgw/FOrmQgpRaZayGsw==
 
-"@babel/core@7.13.0":
-  version "7.13.0"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.13.0.tgz#5d61713de310dcfb09258b9fbd081c90623a9548"
-  integrity sha512-aiv4TeB1i0y3E/+be4U4xtb21CvidNbBegcxvVOrM2B5HfKwwCbYdhGbZUtzeV4HkNevRMLx7oSgQ9bjl4WhXw==
+"@babel/core@7.13.1":
+  version "7.13.1"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.13.1.tgz#7ddd027176debe40f13bb88bac0c21218c5b1ecf"
+  integrity sha512-FzeKfFBG2rmFtGiiMdXZPFt/5R5DXubVi82uYhjGX4Msf+pgYQMCFIqFXZWs5vbIYbf14VeBIgdGI03CDOOM1w==
   dependencies:
     "@babel/code-frame" "^7.12.13"
     "@babel/generator" "^7.13.0"
