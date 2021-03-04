@@ -2449,35 +2449,35 @@
     lodash "^4.17.4"
     read-pkg-up "^7.0.0"
 
-"@shopify/async@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@shopify/async/-/async-2.2.1.tgz#2bbd4be6b9f9b94c20c4e33f7d316f25e80bd6f1"
-  integrity sha512-MSiPXEXVBns5yYTQ+i8yDRmSmX5XtXkrGvsdain8cD4W/T2C6fCAz0CrolmmW0UEAs20RPwLMP4JkYH6BVKHkA==
+"@shopify/async@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@shopify/async/-/async-2.2.2.tgz#aecdc25710133f486430e74b534fb069ebf1c1a8"
+  integrity sha512-/CzoanMHKuFPvG5rhTsrvKfvgk4nGu38TSaGoXGJqZBD/SckTyJjMGX+WsexpoIvQf3DdxZrWAe5CHjPEQ2cZQ==
   dependencies:
     tslib "^1.14.1"
 
-"@shopify/decorators@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@shopify/decorators/-/decorators-1.2.1.tgz#566779eab86b34dcd850aee21a726181e526b8ad"
-  integrity sha512-Sw89B6gwL6BtQAGou3a2EJujSnlsmz04VolFBIHV98iG7TvkodHiSjvhyTBd6YCsYtVwsrI8xXXN0C0DvpqaPw==
+"@shopify/decorators@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@shopify/decorators/-/decorators-1.2.2.tgz#50cd54e58078e68af07ad91b62788026f687514d"
+  integrity sha512-VYprJRzg8PmgJ73/GhYAVT0JZX3Um9hg0DrF/8b2f6ofMKrEbBxR3O+46fumYOyfObq0T1wWXa9bAa9C/am4qQ==
   dependencies:
-    "@shopify/function-enhancers" "^1.1.1"
+    "@shopify/function-enhancers" "^1.1.2"
     tslib "^1.14.1"
 
-"@shopify/function-enhancers@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@shopify/function-enhancers/-/function-enhancers-1.1.1.tgz#724d347f981e86d3930ea529863d5b882f2bc41c"
-  integrity sha512-ZRn/khk2CEenyuSFIdWinkEnvd58sX5mw9a/GylnN0SUJlUeMw5F9mqkqatKbA62AdUm3Dc/7zge4Z9WHsveng==
+"@shopify/function-enhancers@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@shopify/function-enhancers/-/function-enhancers-1.1.2.tgz#59e672d4294002a4430b1311164fbbe91f41ff41"
+  integrity sha512-guL5tinqMRxbXbd8Xy0BNJ0vvtTwpfzhMLw3O0WyWXlvpARmInhh9VIjaR+5nqBRN4/cjCj4HsyRNw7JZZGNFA==
   dependencies:
     tslib "^1.14.1"
 
-"@shopify/jest-dom-mocks@2.11.1":
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.11.1.tgz#4c04f4beb051e9330a1b0a2c96406df4f3fe7a30"
-  integrity sha512-OwFPOLwR3zPRrCvAQBHtk0BMlLtP48vNSEmJBmiijW8t83M0Auwt4y2DcDkQ5Axt9xqEvSh8+EABuaKA0F7knA==
+"@shopify/jest-dom-mocks@2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@shopify/jest-dom-mocks/-/jest-dom-mocks-2.11.2.tgz#a1e37b0a4d3bc80587980e5fa97ea03e484ef29e"
+  integrity sha512-yVOtQyH43w14jgXkkGgDQrqygx4nWR7StSJsArmmAqGZTEz9A6klNtYDbRe8eRj47DKzU8coE+lP8uahCxgS/Q==
   dependencies:
-    "@shopify/async" "^2.2.1"
-    "@shopify/decorators" "^1.2.1"
+    "@shopify/async" "^2.2.2"
+    "@shopify/decorators" "^1.2.2"
     "@types/fetch-mock" "^7.3.3"
     "@types/lolex" "^2.1.3"
     fetch-mock "^9.11.0"
