@@ -59,7 +59,7 @@ export const resolver = ({
   return new Response(stream);
 };
 
-function jsDownload(data: Blob, filename: string, mime?: string) {
+export function jsDownload(data: Blob, filename: string, mime?: string) {
   const blobData = [data];
   const blob = new Blob(blobData, {
     type: mime || 'application/octet-stream',
@@ -150,7 +150,7 @@ export default function useDownloader(): TUseDownloader {
 
   const handleDownload = useCallback(
     (downloadUrl, filename) => {
-      function startDownload() {
+      async function startDownload() {
         clearAllStateCallback();
         setError(() => null);
         setIsInProgress(() => true);

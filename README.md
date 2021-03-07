@@ -4,7 +4,6 @@
     </a>
 </div>
 
-
 <div align="center">
   <h1>
     <br/>
@@ -164,6 +163,7 @@
     <br/>
 - [**Miscellaneous**]()
   - [`useEnsuredForwardedRef`](./docs/useEnsuredForwardedRef.md) and [`ensuredForwardRef`](./docs/useEnsuredForwardedRef.md) &mdash; use a React.forwardedRef safely. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-useensuredforwardedref--demo)
+  - [`useDownloader`](./docs/useDownloader.md) &mdash; creates a download handler function with its progress information and cancel ability. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/miscellaneous-usedownloader--demo)
 
 <br />
 <br />
