@@ -1,5 +1,13 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 
+/**
+ * @description Method used to control the ReadableStream and give the important info about the download itself
+ * @param resolverCallbacks Callbacks from useDownloader hook
+ * @param resolverCallbacks.setSize sets the size from the file data
+ * @param resolverCallbacks.setControllerCallback sets the controller in order to be accessed from useDownloader hook
+ * @param resolverCallbacks.setPercentageCallback sets the percentage of a download
+ * @param resolverCallbacks.setErrorCallback sets errors if ocurred
+ */
 export const resolver = ({
   setSize,
   setControllerCallback,
@@ -59,6 +67,12 @@ export const resolver = ({
   return new Response(stream);
 };
 
+/**
+ * @description Method which creates a link and downloads the file into the device
+ * @param data Data to download as Blob
+ * @param filename Filename as string
+ * @param mime Mimetype as string, default 'application/octet-stream'
+ */
 export function jsDownload(data: Blob, filename: string, mime?: string) {
   const blobData = [data];
   const blob = new Blob(blobData, {
@@ -109,6 +123,9 @@ export default function useDownloader(): TUseDownloader {
   const [error, setError] = useState<{ errorMessage: string } | null>(null);
   const [isInProgress, setIsInProgress] = useState(false);
 
+  /**
+   * Controller ref used into the streamer through closeControllerCallback and setControllerCallback
+   */
   const controllerRef = useRef<any | null>(null);
 
   const setPercentageCallback = useCallback(({ loaded, total }) => {
@@ -139,6 +156,9 @@ export default function useDownloader(): TUseDownloader {
     }
   }, []);
 
+  /**
+   * Clears states both when succeeded and errored
+   */
   const clearAllStateCallback = useCallback(() => {
     setControllerCallback(null);
 
@@ -159,6 +179,9 @@ export default function useDownloader(): TUseDownloader {
           () => setElapsed((prevValue) => prevValue + 1),
           debugMode ? 1 : 1000
         );
+        /**
+         * Add callbacks into the resolver which controls size, percentage, error and cancel ability
+         */
         const resolverWithProgress = resolver({
           setSize,
           setControllerCallback,
@@ -172,7 +195,7 @@ export default function useDownloader(): TUseDownloader {
           .then(resolverWithProgress)
           .then((data) => data.blob())
           .then((response) => jsDownload(response, filename))
-          .finally(() => {
+          .then(() => {
             clearAllStateCallback();
 
             return clearInterval(interval);
@@ -190,9 +213,14 @@ export default function useDownloader(): TUseDownloader {
 
               return prevValue;
             });
+
+            return clearInterval(interval);
           });
       }
 
+      /**
+       * Only starts downloading if not in progress already
+       */
       if (!isInProgress) {
         startDownload();
       }
