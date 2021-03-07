@@ -114,3 +114,4 @@ export { useFirstMountState } from './useFirstMountState';
 export { default as useSet } from './useSet';
 export { createGlobalState } from './factory/createGlobalState';
 export { useHash } from './useHash';
+export { default as useDownloader } from './useDownloader';
