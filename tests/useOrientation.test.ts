@@ -1,7 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks';
-import { replaceRaf } from 'raf-stub';
-import useOrientation from '../src/useOrientation';
-import { isClient } from '../src/util';
+import { act, renderHook } from "@testing-library/react-hooks";
+import { replaceRaf } from "raf-stub";
+import useOrientation from "../src/useOrientation";
 
 declare var requestAnimationFrame: {
   reset: () => void;
@@ -55,17 +54,7 @@ describe('useOrientation', () => {
     expect(hook.result.current.angle).toBe(0);
   });
 
-  it('should use passed parameters as initial values in case of non-browser use', () => {
-    const hook = getHook({
-      angle: 90,
-      type: 'portrait-primary'
-    });
-
-    expect(hook.result.current.type).toBe(isClient ? window.screen.orientation.type : 'portrait-primary');
-    expect(hook.result.current.angle).toBe(isClient ? window.screen.orientation.angle : 90);
-  });
-
-  it('should re-render after orientation change on closest RAF', () => {
+  it("should re-render after orientation change on closest RAF", () => {
     const hook = getHook();
 
     act(() => {
