@@ -17,6 +17,6 @@ const Demo = () => {
   return <button {...longPressEvent}>useLongPress</button>;
 };
 
-storiesOf('Sensors|useLongPress', module)
+storiesOf('Sensors/useLongPress', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useLongPress.md')} />)
   .add('Demo', () => <Demo />);

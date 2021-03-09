@@ -1,8 +1,9 @@
-/* eslint-disable */
 import { useCallback, useRef } from 'react';
 import useUpdate from './useUpdate';
 
-const useGetSetState = <T extends object>(initialState: T = {} as T): [() => T, (patch: Partial<T>) => void] => {
+const useGetSetState = <T extends object>(
+  initialState: T = {} as T
+): [() => T, (patch: Partial<T>) => void] => {
   if (process.env.NODE_ENV !== 'production') {
     if (typeof initialState !== 'object') {
       console.error('useGetSetState initial state must be an object.');

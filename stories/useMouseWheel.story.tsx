@@ -4,7 +4,7 @@ import { useMouseWheel } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo: React.FC<any> = () => {
-  const mouseWheel = useMouseWheel()
+  const mouseWheel = useMouseWheel();
   return (
     <>
       <h3>delta Y Scrolled: {mouseWheel}</h3>
@@ -12,6 +12,6 @@ const Demo: React.FC<any> = () => {
   );
 };
 
-storiesOf('Sensors|useMouseWheel', module)
+storiesOf('Sensors/useMouseWheel', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useMouseWheel.md')} />)
   .add('Demo', () => <Demo />);

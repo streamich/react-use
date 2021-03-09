@@ -20,8 +20,7 @@ const Demo: React.FC<any> = ({ whenHovered, bound }) => {
           width: '400px',
           height: '400px',
           backgroundColor: 'whitesmoke',
-        }}
-      >
+        }}>
         <span
           style={{
             position: 'absolute',
@@ -29,8 +28,7 @@ const Demo: React.FC<any> = ({ whenHovered, bound }) => {
             top: `${state.elY}px`,
             pointerEvents: 'none',
             transform: 'scale(4)',
-          }}
-        >
+          }}>
           🐭
         </span>
       </div>
@@ -38,7 +36,7 @@ const Demo: React.FC<any> = ({ whenHovered, bound }) => {
   );
 };
 
-storiesOf('Sensors|useMouseHovered', module)
+storiesOf('Sensors/useMouseHovered', module)
   .addDecorator(withKnobs)
   .add('Docs', () => <ShowDocs md={require('../docs/useMouse.md')} />)
   .add('Demo', () => {

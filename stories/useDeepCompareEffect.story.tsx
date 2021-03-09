@@ -28,6 +28,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Lifecycle|useDeepCompareEffect', module)
+storiesOf('Lifecycle/useDeepCompareEffect', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useDeepCompareEffect.md')} />)
   .add('Demo', () => <Demo />);

@@ -27,14 +27,19 @@ const Demo = () => {
   return (
     <div>
       <div>{readyState !== null ? 'Function will be called in 5 seconds' : 'Timer cancelled'}</div>
-      <button onClick={cancelButtonClick}> {readyState === false ? 'cancel' : 'restart'} timeout</button>
+      <button onClick={cancelButtonClick}>
+        {' '}
+        {readyState === false ? 'cancel' : 'restart'} timeout
+      </button>
       <br />
-      <div>Function state: {readyState === false ? 'Pending' : readyState ? 'Called' : 'Cancelled'}</div>
+      <div>
+        Function state: {readyState === false ? 'Pending' : readyState ? 'Called' : 'Cancelled'}
+      </div>
       <div>{state}</div>
     </div>
   );
 };
 
-storiesOf('Animation|useTimeoutFn', module)
+storiesOf('Animation/useTimeoutFn', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useTimeoutFn.md')} />)
   .add('Demo', () => <Demo />);

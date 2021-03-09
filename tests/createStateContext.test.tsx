@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
-import createStateContext from '../src/createStateContext';
+import createStateContext from '../src/factory/createStateContext';
 
 it('should create a hook and a provider', () => {
   const [useSharedNumber, SharedNumberProvider] = createStateContext(0);
@@ -68,11 +68,15 @@ describe('when using among multiple components', () => {
       </SharedTextProvider>
     );
 
-    expect(baseElement.innerHTML).toBe('<div><p>init</p><p>init</p><button type="button">UPDATE</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>init</p><p>init</p><button type="button">UPDATE</button></div>'
+    );
 
     fireEvent.click(getByText('UPDATE'));
 
-    expect(baseElement.innerHTML).toBe('<div><p>changed</p><p>changed</p><button type="button">UPDATE</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>changed</p><p>changed</p><button type="button">UPDATE</button></div>'
+    );
   });
 
   it('should be in update independently when under different providers', () => {
@@ -88,11 +92,15 @@ describe('when using among multiple components', () => {
       </>
     );
 
-    expect(baseElement.innerHTML).toBe('<div><p>init</p><p>init</p><button type="button">UPDATE</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>init</p><p>init</p><button type="button">UPDATE</button></div>'
+    );
 
     fireEvent.click(getByText('UPDATE'));
 
-    expect(baseElement.innerHTML).toBe('<div><p>init</p><p>changed</p><button type="button">UPDATE</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>init</p><p>changed</p><button type="button">UPDATE</button></div>'
+    );
   });
 
   it('should not update component that do not use the state context', () => {
@@ -112,11 +120,15 @@ describe('when using among multiple components', () => {
       </>
     );
 
-    expect(baseElement.innerHTML).toBe('<div><p>static</p><p>init</p><button type="button">UPDATE</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>static</p><p>init</p><button type="button">UPDATE</button></div>'
+    );
 
     fireEvent.click(getByText('UPDATE'));
 
-    expect(baseElement.innerHTML).toBe('<div><p>static</p><p>changed</p><button type="button">UPDATE</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>static</p><p>changed</p><button type="button">UPDATE</button></div>'
+    );
 
     expect(renderCount).toBe(1);
   });

@@ -6,7 +6,7 @@ import ShowDocs from './util/ShowDocs';
 const Clock: React.FC<{ useInt: typeof useHarmonicIntervalFn }> = ({ useInt }) => {
   const [count, setCount] = React.useState(0);
   useInt(() => {
-    setCount(cnt => cnt + 1);
+    setCount((cnt) => cnt + 1);
   }, 1000);
 
   let m: number | string = Math.floor(count / 60);
@@ -54,7 +54,7 @@ const Demo: React.FC<{ useInt: typeof useHarmonicIntervalFn }> = ({ useInt }) =>
   );
 };
 
-storiesOf('Animation|useHarmonicIntervalFn', module)
+storiesOf('Animation/useHarmonicIntervalFn', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useHarmonicIntervalFn.md')} />)
   .add('Demo', () => (
     <>

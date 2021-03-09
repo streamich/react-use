@@ -16,6 +16,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Sensors|useSize', module)
+storiesOf('Sensors/useSize', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useSize.md')} />)
   .add('Demo', () => <Demo />);

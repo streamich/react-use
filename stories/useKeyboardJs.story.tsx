@@ -12,7 +12,10 @@ const Demo = ({ combo }) => {
     <CenterStory>
       <div style={{ textAlign: 'center' }}>
         Press{' '}
-        <code style={{ color: 'red', background: '#f6f6f6', padding: '3px 6px', borderRadius: '3px' }}>{combo}</code>{' '}
+        <code
+          style={{ color: 'red', background: '#f6f6f6', padding: '3px 6px', borderRadius: '3px' }}>
+          {combo}
+        </code>{' '}
         combo
         <br />
         <br />
@@ -22,7 +25,7 @@ const Demo = ({ combo }) => {
   );
 };
 
-storiesOf('Sensors|useKeyboardJs', module)
+storiesOf('Sensors/useKeyboardJs', module)
   .addDecorator(withKnobs)
   .add('Docs', () => <ShowDocs md={require('../docs/useKeyboardJs.md')} />)
   .add('Demo', () => {

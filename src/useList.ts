@@ -1,13 +1,12 @@
-/* eslint-disable */
 import { useMemo, useRef } from 'react';
 import useUpdate from './useUpdate';
-import { InitialHookState, ResolvableHookState, resolveHookState } from './util/resolveHookState';
+import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from './misc/hookState';
 
 export interface ListActions<T> {
   /**
    * @description Set new list instead old one
    */
-  set: (newList: ResolvableHookState<T[]>) => void;
+  set: (newList: IHookStateSetAction<T[]>) => void;
   /**
    * @description Add item(s) at the end of list
    */
@@ -63,13 +62,13 @@ export interface ListActions<T> {
   reset: () => void;
 }
 
-function useList<T>(initialList: InitialHookState<T[]> = []): [T[], ListActions<T>] {
+function useList<T>(initialList: IHookStateInitAction<T[]> = []): [T[], ListActions<T>] {
   const list = useRef(resolveHookState(initialList));
   const update = useUpdate();
 
   const actions = useMemo<ListActions<T>>(() => {
     const a = {
-      set: (newList: ResolvableHookState<T[]>) => {
+      set: (newList: IHookStateSetAction<T[]>) => {
         list.current = resolveHookState(newList, list.current);
         update();
       },
@@ -99,17 +98,17 @@ function useList<T>(initialList: InitialHookState<T[]> = []): [T[], ListActions<
       },
 
       update: (predicate: (a: T, b: T) => boolean, newItem: T) => {
-        actions.set((curr: T[]) => curr.map(item => (predicate(item, newItem) ? newItem : item)));
+        actions.set((curr: T[]) => curr.map((item) => (predicate(item, newItem) ? newItem : item)));
       },
 
       updateFirst: (predicate: (a: T, b: T) => boolean, newItem: T) => {
-        const index = list.current.findIndex(item => predicate(item, newItem));
+        const index = list.current.findIndex((item) => predicate(item, newItem));
 
         index >= 0 && actions.updateAt(index, newItem);
       },
 
       upsert: (predicate: (a: T, b: T) => boolean, newItem: T) => {
-        const index = list.current.findIndex(item => predicate(item, newItem));
+        const index = list.current.findIndex((item) => predicate(item, newItem));
 
         index >= 0 ? actions.updateAt(index, newItem) : actions.push(newItem);
       },
@@ -118,7 +117,10 @@ function useList<T>(initialList: InitialHookState<T[]> = []): [T[], ListActions<
         actions.set((curr: T[]) => curr.slice().sort(compareFn));
       },
 
-      filter: <S extends T>(callbackFn: (value: T, index: number, array: T[]) => value is S, thisArg?: any) => {
+      filter: <S extends T>(
+        callbackFn: (value: T, index: number, array: T[]) => value is S,
+        thisArg?: any
+      ) => {
         actions.set((curr: T[]) => curr.slice().filter(callbackFn, thisArg));
       },
 

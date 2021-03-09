@@ -11,6 +11,6 @@ const Demo = () => {
   return <button onClick={() => counter$.next(value! + 1)}>Clicked {value} times</button>;
 };
 
-storiesOf('State|useObservable', module)
+storiesOf('State/useObservable', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useObservable.md')} />)
   .add('Demo', () => <Demo />);

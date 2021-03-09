@@ -5,7 +5,7 @@ import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
-  const throttledValue = useThrottleFn(defaultValue => defaultValue, 2000, [value]);
+  const throttledValue = useThrottleFn((defaultValue) => defaultValue, 2000, [value]);
   const [lastThrottledValue, setLastThrottledValue] = React.useState(throttledValue);
   const [count, { inc }] = useCounter();
 
@@ -35,6 +35,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Side effects|useThrottleFn', module)
+storiesOf('Side effects/useThrottleFn', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useThrottle.md')} />)
   .add('Demo', () => <Demo />);

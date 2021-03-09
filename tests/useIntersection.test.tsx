@@ -55,7 +55,9 @@ describe('useIntersection', () => {
       ReactDOM.render(<div ref={targetRef} />, container);
     });
 
-    const { result, rerender } = renderHook(() => useIntersection(targetRef, { root: container, threshold: 0.8 }));
+    const { result, rerender } = renderHook(() =>
+      useIntersection(targetRef, { root: container, threshold: 0.8 })
+    );
 
     const mockIntersectionObserverEntry = {
       boundingClientRect: targetRef.current.getBoundingClientRect(),
@@ -81,7 +83,7 @@ describe('useIntersection', () => {
   it('should return null if IntersectionObserver is not supported', () => {
     targetRef = createRef();
     targetRef.current = document.createElement('div');
-    delete window.IntersectionObserver;
+    delete (window as any).IntersectionObserver;
 
     expect(() => renderHook(() => useIntersection(targetRef, {}))).not.toThrow();
   });
@@ -108,7 +110,9 @@ describe('useIntersection', () => {
       ReactDOM.render(<div ref={targetRef} />, container);
     });
 
-    const { result } = renderHook(() => useIntersection(targetRef, { root: container, threshold: 0.8 }));
+    const { result } = renderHook(() =>
+      useIntersection(targetRef, { root: container, threshold: 0.8 })
+    );
 
     const mockIntersectionObserverEntry = {
       boundingClientRect: targetRef.current.getBoundingClientRect(),

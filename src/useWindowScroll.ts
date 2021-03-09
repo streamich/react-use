@@ -1,6 +1,5 @@
-/* eslint-disable */
 import { useEffect } from 'react';
-import { isClient } from './util';
+import { isBrowser, off, on } from './misc/util';
 
 import useRafState from './useRafState';
 
@@ -11,8 +10,8 @@ export interface State {
 
 const useWindowScroll = (): State => {
   const [state, setState] = useRafState<State>({
-    x: isClient ? window.pageXOffset : 0,
-    y: isClient ? window.pageYOffset : 0,
+    x: isBrowser ? window.pageXOffset : 0,
+    y: isBrowser ? window.pageYOffset : 0,
   });
 
   useEffect(() => {
@@ -23,13 +22,13 @@ const useWindowScroll = (): State => {
       });
     };
 
-    window.addEventListener('scroll', handler, {
+    on(window, 'scroll', handler, {
       capture: false,
       passive: true,
     });
 
     return () => {
-      window.removeEventListener('scroll', handler);
+      off(window, 'scroll', handler);
     };
   }, []);
 

@@ -37,7 +37,7 @@ const Demo = () => {
   return <button onClick={clickHandler}>Click me to throw</button>;
 };
 
-storiesOf('Side effects|useError', module)
+storiesOf('Side effects/useError', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useError.md')} />)
   .add('Demo', () => (
     <ErrorBoundary>

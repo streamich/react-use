@@ -33,6 +33,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useMethods', module)
+storiesOf('State/useMethods', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useMethods.md')} />)
   .add('Demo', () => <Demo />);

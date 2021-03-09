@@ -10,6 +10,6 @@ const Demo = () => {
   return <NewTabStory>Favicon should be the Stack Overflow logo</NewTabStory>;
 };
 
-storiesOf('Side effects|useFavicon', module)
+storiesOf('Side effects/useFavicon', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useFavicon.md')} />)
   .add('Demo', () => <Demo />);

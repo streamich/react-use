@@ -1,13 +1,16 @@
-import { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
-import { isClient } from './util';
+import { isBrowser, noop } from './misc/util';
 
 export type UseMeasureRect = Pick<
   DOMRectReadOnly,
   'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'
 >;
 export type UseMeasureRef<E extends HTMLElement = HTMLElement> = (element: E) => void;
-export type UseMeasureResult<E extends HTMLElement = HTMLElement> = [UseMeasureRef<E>, UseMeasureRect];
+export type UseMeasureResult<E extends HTMLElement = HTMLElement> = [
+  UseMeasureRef<E>,
+  UseMeasureRect
+];
 
 const defaultState: UseMeasureRect = {
   x: 0,
@@ -20,13 +23,13 @@ const defaultState: UseMeasureRect = {
   right: 0,
 };
 
-const useMeasure = <E extends HTMLElement = HTMLElement>(): UseMeasureResult<E> => {
+function useMeasure<E extends HTMLElement = HTMLElement>(): UseMeasureResult<E> {
   const [element, ref] = useState<E | null>(null);
   const [rect, setRect] = useState<UseMeasureRect>(defaultState);
 
   const observer = useMemo(
     () =>
-      new (window as any).ResizeObserver(entries => {
+      new (window as any).ResizeObserver((entries) => {
         if (entries[0]) {
           const { x, y, width, height, top, left, bottom, right } = entries[0].contentRect;
           setRect({ x, y, width, height, top, left, bottom, right });
@@ -44,8 +47,8 @@ const useMeasure = <E extends HTMLElement = HTMLElement>(): UseMeasureResult<E> 
   }, [element]);
 
   return [ref, rect];
-};
+}
 
-const useMeasureMock: typeof useMeasure = () => [() => {}, defaultState];
-
-export default (isClient && !!(window as any).ResizeObserver) ? useMeasure : useMeasureMock;
+export default isBrowser && typeof (window as any).ResizeObserver !== 'undefined'
+  ? useMeasure
+  : ((() => [noop, defaultState]) as typeof useMeasure);

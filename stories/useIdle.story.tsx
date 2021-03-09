@@ -9,12 +9,17 @@ const Demo = () => {
 
   return (
     <div>
-      Idle delay ms: <input type="number" value={idleDelay} onChange={({ target }) => setIdleDelay(+target.value)} />
+      Idle delay ms:{' '}
+      <input
+        type="number"
+        value={idleDelay}
+        onChange={({ target }) => setIdleDelay(+target.value)}
+      />
       <div>User is idle: {isIdle ? 'Yes' : 'No'}</div>
     </div>
   );
 };
 
-storiesOf('Sensors|useIdle', module)
+storiesOf('Sensors/useIdle', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useIdle.md')} />)
   .add('Demo', () => <Demo />);

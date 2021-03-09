@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react';
-import useMountedState from './useMountedState';
+import { useMemo, useState } from "react";
+import { noop } from "./misc/util";
+import useMountedState from "./useMountedState";
 
 export interface DropAreaState {
   over: boolean;
@@ -19,15 +20,17 @@ export interface DropAreaOptions {
   onUri?: (url: string, event?) => void;
 }
 
-const noop = () => { };
 /*
 const defaultState: DropAreaState = {
   over: false,
 };
 */
 
-const createProcess = (options: DropAreaOptions, mounted: boolean) => (dataTransfer: DataTransfer, event) => {
-  const uri = dataTransfer.getData('text/uri-list');
+const createProcess = (options: DropAreaOptions, mounted: boolean) => (
+  dataTransfer: DataTransfer,
+  event
+) => {
+  const uri = dataTransfer.getData("text/uri-list");
 
   if (uri) {
     (options.onUri || noop)(uri, event);
@@ -40,7 +43,7 @@ const createProcess = (options: DropAreaOptions, mounted: boolean) => (dataTrans
   }
 
   if (dataTransfer.items && dataTransfer.items.length) {
-    dataTransfer.items[0].getAsString(text => {
+    dataTransfer.items[0].getAsString((text) => {
       if (mounted) {
         (options.onText || noop)(text, event);
       }
@@ -49,23 +52,23 @@ const createProcess = (options: DropAreaOptions, mounted: boolean) => (dataTrans
 };
 
 const createBond = (process, setOver): DropAreaBond => ({
-  onDragOver: event => {
+  onDragOver: (event) => {
     event.preventDefault();
   },
-  onDragEnter: event => {
+  onDragEnter: (event) => {
     event.preventDefault();
     setOver(true);
   },
   onDragLeave: () => {
     setOver(false);
   },
-  onDrop: event => {
+  onDrop: (event) => {
     event.preventDefault();
     event.persist();
     setOver(false);
     process(event.dataTransfer, event);
   },
-  onPaste: event => {
+  onPaste: (event) => {
     event.persist();
     process(event.clipboardData, event);
   },

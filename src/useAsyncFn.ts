@@ -1,7 +1,6 @@
-/* eslint-disable */
-import { DependencyList, useCallback, useState, useRef } from 'react';
+import { DependencyList, useCallback, useRef, useState } from 'react';
 import useMountedState from './useMountedState';
-import { FnReturningPromise, PromiseType } from './util';
+import { FunctionReturningPromise, PromiseType } from './misc/types';
 
 export type AsyncState<T> =
   | {
@@ -25,30 +24,35 @@ export type AsyncState<T> =
       value: T;
     };
 
-type StateFromFnReturningPromise<T extends FnReturningPromise> = AsyncState<PromiseType<ReturnType<T>>>;
+type StateFromFunctionReturningPromise<T extends FunctionReturningPromise> = AsyncState<
+  PromiseType<ReturnType<T>>
+>;
 
-export type AsyncFnReturn<T extends FnReturningPromise = FnReturningPromise> = [StateFromFnReturningPromise<T>, T];
+export type AsyncFnReturn<T extends FunctionReturningPromise = FunctionReturningPromise> = [
+  StateFromFunctionReturningPromise<T>,
+  T
+];
 
-export default function useAsyncFn<T extends FnReturningPromise>(
+export default function useAsyncFn<T extends FunctionReturningPromise>(
   fn: T,
   deps: DependencyList = [],
-  initialState: StateFromFnReturningPromise<T> = { loading: false }
+  initialState: StateFromFunctionReturningPromise<T> = { loading: false }
 ): AsyncFnReturn<T> {
   const lastCallId = useRef(0);
   const isMounted = useMountedState();
-  const [state, set] = useState<StateFromFnReturningPromise<T>>(initialState);
+  const [state, set] = useState<StateFromFunctionReturningPromise<T>>(initialState);
 
   const callback = useCallback((...args: Parameters<T>): ReturnType<T> => {
     const callId = ++lastCallId.current;
-    set(prevState => ({ ...prevState, loading: true }));
+    set((prevState) => ({ ...prevState, loading: true }));
 
     return fn(...args).then(
-      value => {
+      (value) => {
         isMounted() && callId === lastCallId.current && set({ value, loading: false });
 
         return value;
       },
-      error => {
+      (error) => {
         isMounted() && callId === lastCallId.current && set({ error, loading: false });
 
         return error;

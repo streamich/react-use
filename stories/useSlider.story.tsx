@@ -15,7 +15,13 @@ const Demo = () => {
     <div>
       <div ref={ref} style={{ position: 'relative', background: 'yellow', padding: 4 }}>
         <p style={{ margin: 0, textAlign: 'center' }}>Slide me</p>
-        <div style={{ position: 'absolute', top: 0, left: (100 * state.value) + '%', transform: 'scale(2)' }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 100 * state.value + '%',
+            transform: 'scale(2)',
+          }}>
           {state.isSliding ? '🏂' : '🎿'}
         </div>
       </div>
@@ -30,9 +36,17 @@ const DemoVertical = () => {
 
   return (
     <div>
-      <div ref={ref} style={{ position: 'relative', background: 'yellow', padding: 4, width: 30, height: 400 }}>
+      <div
+        ref={ref}
+        style={{ position: 'relative', background: 'yellow', padding: 4, width: 30, height: 400 }}>
         <p style={{ margin: 0, textAlign: 'center' }}>Slide me</p>
-        <div style={{ position: 'absolute', left: 0, top: (100 * state.value) + '%', transform: 'scale(2)' }}>
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 100 * state.value + '%',
+            transform: 'scale(2)',
+          }}>
           {state.isSliding ? '🏂' : '🎿'}
         </div>
       </div>
@@ -41,7 +55,7 @@ const DemoVertical = () => {
   );
 };
 
-storiesOf('UI|useSlider', module)
+storiesOf('UI/useSlider', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useSlider.md')} />)
   .add('Horizontal', () => <Demo />)
   .add('Vertical', () => <DemoVertical />);

@@ -1,7 +1,7 @@
-/* eslint-disable */
 import { RefObject, useEffect } from 'react';
 
 import useRafState from './useRafState';
+import { off, on } from './misc/util';
 
 export interface State {
   docX: number;
@@ -54,10 +54,10 @@ const useMouse = (ref: RefObject<Element>): State => {
       }
     };
 
-    document.addEventListener('mousemove', moveHandler);
+    on(document, 'mousemove', moveHandler);
 
     return () => {
-      document.removeEventListener('mousemove', moveHandler);
+      off(document, 'mousemove', moveHandler);
     };
   }, [ref]);
 

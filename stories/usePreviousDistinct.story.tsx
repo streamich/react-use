@@ -18,6 +18,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|usePreviousDistinct', module)
+storiesOf('State/usePreviousDistinct', module)
   .add('Docs', () => <ShowDocs md={require('../docs/usePreviousDistinct.md')} />)
   .add('Demo', () => <Demo />);

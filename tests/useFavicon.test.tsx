@@ -45,7 +45,9 @@ describe('useFavicon', () => {
   });
 
   it('should update an existing favicon', () => {
-    const hook = renderHook(props => useFavicon(props), { initialProps: 'https://github.com/streamich/react-use' });
+    const hook = renderHook((props) => useFavicon(props), {
+      initialProps: 'https://github.com/streamich/react-use',
+    });
     const favicon = document.querySelector("link[rel*='icon']") as HTMLLinkElement;
 
     expect(favicon.href).toBe('https://github.com/streamich/react-use');
