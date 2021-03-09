@@ -12,10 +12,10 @@ const defaultState: OrientationState = {
 };
 
 const useOrientation = (initialState: OrientationState = defaultState) => {
-  const screen = window.screen;
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
+    const screen = window.screen;
     let mounted = true;
 
     const onChange = () => {
