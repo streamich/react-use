@@ -1,3 +1,19 @@
+# [17.2.0](https://github.com/streamich/react-use/compare/v17.1.1...v17.2.0) (2021-03-10)
+
+
+### Bug Fixes
+
+* delete isClient ([72f4cb9](https://github.com/streamich/react-use/commit/72f4cb9b405b3729975bca3acb06658ca467d15b))
+* lint issues. ([dc5bbe0](https://github.com/streamich/react-use/commit/dc5bbe0e94d131dda90942ba90c14b200df3f34e))
+* **useOrientation:** handle orientation being 0 ([793b053](https://github.com/streamich/react-use/commit/793b0539f0305e2512e7022c45a5c33b842d24d5))
+* **useOrientation:** update tests to increase coverage ([f9c743f](https://github.com/streamich/react-use/commit/f9c743fa8375ef726d33f85285d4a5af608f9a42))
+* use window inside useEffect ([2f33aa8](https://github.com/streamich/react-use/commit/2f33aa8182c92bf56d49ec3184e6b20f0c0c1e1e))
+
+
+### Features
+
+* **useOrientation:** add tests ([f45cb70](https://github.com/streamich/react-use/commit/f45cb707b52363f1cb1b32a0ebf2fdbdae79b322))
+
 ## [17.1.1](https://github.com/streamich/react-use/compare/v17.1.0...v17.1.1) (2021-02-10)
 
 
