@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { isClient, off, on } from './util';
+import { isBrowser, off, on } from './misc/util';
 
 const patchHistoryMethod = (method) => {
   const history = window.history;
@@ -17,7 +17,7 @@ const patchHistoryMethod = (method) => {
   };
 };
 
-if (isClient) {
+if (isBrowser) {
   patchHistoryMethod('pushState');
   patchHistoryMethod('replaceState');
 }
@@ -87,4 +87,4 @@ const useLocationBrowser = (): LocationSensorState => {
 
 const hasEventConstructor = typeof Event === 'function';
 
-export default isClient && hasEventConstructor ? useLocationBrowser : useLocationServer;
+export default isBrowser && hasEventConstructor ? useLocationBrowser : useLocationServer;

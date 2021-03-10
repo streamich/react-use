@@ -15,7 +15,8 @@ const itemsAreEqual = (a: TestItem, b: TestItem) => {
   return a.id === b.id;
 };
 
-const setUp = (initialList: TestItem[] = []) => renderHook(() => useUpsert<TestItem>(itemsAreEqual, initialList));
+const setUp = (initialList: TestItem[] = []) =>
+  renderHook(() => useUpsert<TestItem>(itemsAreEqual, initialList));
 
 describe('useUpsert', () => {
   describe('initialization', () => {

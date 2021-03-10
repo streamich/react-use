@@ -1,5 +1,5 @@
 import { MutableRefObject, useCallback, useRef, useState } from 'react';
-import useUpdateEffect from './useUpdateEffect';
+import useUpdateEffect from '../useUpdateEffect';
 
 type Dispatch<Action> = (action: Action) => void;
 
@@ -8,7 +8,9 @@ interface Store<Action, State> {
   dispatch: Dispatch<Action>;
 }
 
-type Middleware<Action, State> = (store: Store<Action, State>) => (next: Dispatch<Action>) => (action: Action) => void;
+type Middleware<Action, State> = (
+  store: Store<Action, State>
+) => (next: Dispatch<Action>) => (action: Action) => void;
 
 function composeMiddleware<Action, State>(chain: Middleware<Action, State>[]) {
   return (context: Store<Action, State>, dispatch: Dispatch<Action>) => {

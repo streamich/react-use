@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import useMountedState from './useMountedState';
+import { noop } from './misc/util';
 
 export interface DropAreaState {
   over: boolean;
@@ -19,14 +20,16 @@ export interface DropAreaOptions {
   onUri?: (url: string, event?) => void;
 }
 
-const noop = () => {};
 /*
 const defaultState: DropAreaState = {
   over: false,
 };
 */
 
-const createProcess = (options: DropAreaOptions, mounted: boolean) => (dataTransfer: DataTransfer, event) => {
+const createProcess = (options: DropAreaOptions, mounted: boolean) => (
+  dataTransfer: DataTransfer,
+  event
+) => {
   const uri = dataTransfer.getData('text/uri-list');
 
   if (uri) {

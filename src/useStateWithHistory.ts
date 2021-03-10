@@ -1,6 +1,6 @@
 import { Dispatch, useCallback, useMemo, useRef, useState } from 'react';
 import { useFirstMountState } from './useFirstMountState';
-import { InitialHookState, ResolvableHookState, resolveHookState } from './util/resolveHookState';
+import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from './misc/hookState';
 
 interface HistoryState<S> {
   history: S[];
@@ -11,17 +11,17 @@ interface HistoryState<S> {
   go: (position: number) => void;
 }
 
-export type UseStateHistoryReturn<S> = [S, Dispatch<ResolvableHookState<S>>, HistoryState<S>];
+export type UseStateHistoryReturn<S> = [S, Dispatch<IHookStateSetAction<S>>, HistoryState<S>];
 
 export function useStateWithHistory<S, I extends S>(
-  initialState: InitialHookState<S>,
+  initialState: IHookStateInitAction<S>,
   capacity?: number,
   initialHistory?: I[]
 ): UseStateHistoryReturn<S>;
 export function useStateWithHistory<S = undefined>(): UseStateHistoryReturn<S | undefined>;
 
 export function useStateWithHistory<S, I extends S>(
-  initialState?: InitialHookState<S>,
+  initialState?: IHookStateInitAction<S>,
   capacity: number = 10,
   initialHistory?: I[]
 ): UseStateHistoryReturn<S> {
@@ -55,7 +55,7 @@ export function useStateWithHistory<S, I extends S>(
   }
 
   const setState = useCallback(
-    (newState: ResolvableHookState<S>): void => {
+    (newState: IHookStateSetAction<S>): void => {
       innerSetState((currentState) => {
         newState = resolveHookState(newState);
 
@@ -78,7 +78,7 @@ export function useStateWithHistory<S, I extends S>(
       });
     },
     [state, capacity]
-  ) as Dispatch<ResolvableHookState<S>>;
+  ) as Dispatch<IHookStateSetAction<S>>;
 
   const historyState = useMemo(
     () => ({
@@ -104,7 +104,10 @@ export function useStateWithHistory<S, I extends S>(
         }
 
         innerSetState(() => {
-          historyPosition.current = Math.min(historyPosition.current + amount, history.current.length - 1);
+          historyPosition.current = Math.min(
+            historyPosition.current + amount,
+            history.current.length - 1
+          );
 
           return history.current[historyPosition.current];
         });

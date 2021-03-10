@@ -44,7 +44,7 @@ describe('useRafState', () => {
     expect(result.current[0]).toBe(2);
 
     act(() => {
-      result.current[1](prevState => prevState * 2);
+      result.current[1]((prevState) => prevState * 2);
       requestAnimationFrame.step();
     });
     expect(result.current[0]).toBe(4);
@@ -54,7 +54,7 @@ describe('useRafState', () => {
     const { result } = renderHook(() => useRafState(0));
 
     act(() => {
-      result.current[1](prevState => prevState + 1);
+      result.current[1]((prevState) => prevState + 1);
     });
     expect(result.current[0]).toBe(0);
 
@@ -64,7 +64,7 @@ describe('useRafState', () => {
     expect(result.current[0]).toBe(1);
 
     act(() => {
-      result.current[1](prevState => prevState * 3);
+      result.current[1]((prevState) => prevState * 3);
       requestAnimationFrame.step();
     });
     expect(result.current[0]).toBe(3);

@@ -1,7 +1,9 @@
-import { createElement, createContext, useContext, useState } from 'react';
+import { createContext, createElement, useContext, useState } from 'react';
 
 const createStateContext = <T>(defaultInitialValue: T) => {
-  const context = createContext<[T, React.Dispatch<React.SetStateAction<T>>] | undefined>(undefined);
+  const context = createContext<[T, React.Dispatch<React.SetStateAction<T>>] | undefined>(
+    undefined
+  );
   const providerFactory = (props, children) => createElement(context.Provider, props, children);
 
   const StateProvider: React.FC<{ initialValue?: T }> = ({ children, initialValue }) => {

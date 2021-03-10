@@ -18,8 +18,7 @@ const Demo = () => {
           height: '400px',
           backgroundColor: 'whitesmoke',
           overflow: 'scroll',
-        }}
-      >
+        }}>
         <div style={{ width: '2000px', height: '2000px' }}>Scroll me</div>
       </div>
     </>

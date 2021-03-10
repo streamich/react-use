@@ -1,3 +1,79 @@
+# [17.2.0](https://github.com/streamich/react-use/compare/v17.1.1...v17.2.0) (2021-03-10)
+
+
+### Bug Fixes
+
+* delete isClient ([72f4cb9](https://github.com/streamich/react-use/commit/72f4cb9b405b3729975bca3acb06658ca467d15b))
+* lint issues. ([dc5bbe0](https://github.com/streamich/react-use/commit/dc5bbe0e94d131dda90942ba90c14b200df3f34e))
+* **useOrientation:** handle orientation being 0 ([793b053](https://github.com/streamich/react-use/commit/793b0539f0305e2512e7022c45a5c33b842d24d5))
+* **useOrientation:** update tests to increase coverage ([f9c743f](https://github.com/streamich/react-use/commit/f9c743fa8375ef726d33f85285d4a5af608f9a42))
+* use window inside useEffect ([2f33aa8](https://github.com/streamich/react-use/commit/2f33aa8182c92bf56d49ec3184e6b20f0c0c1e1e))
+
+
+### Features
+
+* **useOrientation:** add tests ([f45cb70](https://github.com/streamich/react-use/commit/f45cb707b52363f1cb1b32a0ebf2fdbdae79b322))
+
+## [17.1.1](https://github.com/streamich/react-use/compare/v17.1.0...v17.1.1) (2021-02-10)
+
+
+### Bug Fixes
+
+* useMountedState should not change state on componentDidUpdate lifecycle ([701b306](https://github.com/streamich/react-use/commit/701b306ed97382cbec73c834f6d3dd7baa58e339))
+
+# [17.1.0](https://github.com/streamich/react-use/compare/v17.0.2...v17.1.0) (2021-02-01)
+
+
+### Features
+
+* **prettier:** make prettier a part of eslint. ([b6993a6](https://github.com/streamich/react-use/commit/b6993a6f95a1b493945c03aecc44dafd10870816))
+
+## [17.0.2](https://github.com/streamich/react-use/compare/v17.0.1...v17.0.2) (2021-02-01)
+
+
+### Bug Fixes
+
+* proper definition for `useMeasure` ([1461527](https://github.com/streamich/react-use/commit/1461527ffc55b2a1e3c9dc6a0efc2572b66e5381))
+
+## [17.0.1](https://github.com/streamich/react-use/compare/v17.0.0...v17.0.1) (2021-01-31)
+
+
+### Bug Fixes
+
+* proper definition for isBrowser and isNavigator states. ([a087deb](https://github.com/streamich/react-use/commit/a087deb48e57b1f0a23a2d0a28d0c2d10a640cd6)), closes [#1777](https://github.com/streamich/react-use/issues/1777)
+
+# [17.0.0](https://github.com/streamich/react-use/compare/v16.1.0...v17.0.0) (2021-01-31)
+
+
+### Features
+
+* refactor the useNetwork hook. ([23037f2](https://github.com/streamich/react-use/commit/23037f207d07604dd2cd7e2cc4ba9475221be780))
+
+
+### BREAKING CHANGES
+
+* `useNetwork` hook renamed to `useNetworkState`.
+
+# [16.1.0](https://github.com/streamich/react-use/compare/v16.0.0...v16.1.0) (2021-01-31)
+
+
+### Features
+
+* improve `on` and `off` util functions typing. ([723c588](https://github.com/streamich/react-use/commit/723c588fef6aba9f10ea9f5ea7bc444532519f9a))
+
+# [16.0.0](https://github.com/streamich/react-use/compare/v15.3.8...v16.0.0) (2021-01-30)
+
+
+### chore
+
+* refactoring and rearrangement. ([a27f09f](https://github.com/streamich/react-use/commit/a27f09fd367f8b172866b5fcbaf66f9a5a3481bb))
+
+
+### BREAKING CHANGES
+
+* all `create*` factories been moved to `factory` subdirectory and in case direct import should be imported like `react-use/esm/factory/createBreakpoint`
+* `comps` directory renamed to `component`
+
 ## [15.3.8](https://github.com/streamich/react-use/compare/v15.3.7...v15.3.8) (2021-01-08)
 
 

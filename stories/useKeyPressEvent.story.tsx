@@ -8,11 +8,11 @@ const Demo = () => {
 
   const increment = () => {
     console.log('INCREMENT');
-    setCount(currentCount => ++currentCount);
+    setCount((currentCount) => ++currentCount);
   };
   const decrement = () => {
     console.log('DECREMENT');
-    setCount(currentCount => --currentCount);
+    setCount((currentCount) => --currentCount);
   };
   const reset = () => setCount(() => 0);
 
@@ -24,7 +24,8 @@ const Demo = () => {
     <div>
       <style dangerouslySetInnerHTML={{ __html: `code {color: red}` }} />
       <p>
-        Try pressing <code>[</code>, <code>]</code>, and <code>r</code> to see the count incremented and decremented.
+        Try pressing <code>[</code>, <code>]</code>, and <code>r</code> to see the count incremented
+        and decremented.
       </p>
       <p>Count: {count}</p>
     </div>
@@ -36,11 +37,11 @@ const DemoKeyboardJs = () => {
 
   const increment = () => {
     console.log('INCREMENT');
-    setCount(currentCount => ++currentCount);
+    setCount((currentCount) => ++currentCount);
   };
   const decrement = () => {
     console.log('DECREMENT');
-    setCount(currentCount => --currentCount);
+    setCount((currentCount) => --currentCount);
   };
   const reset = () => setCount(() => 0);
 
@@ -52,8 +53,8 @@ const DemoKeyboardJs = () => {
     <div>
       <style dangerouslySetInnerHTML={{ __html: `code {color: red}` }} />
       <p>
-        Try pressing <code>q + [</code>, <code>q + ]</code>, and <code>q + r</code> to see the count incremented and
-        decremented.
+        Try pressing <code>q + [</code>, <code>q + ]</code>, and <code>q + r</code> to see the count
+        incremented and decremented.
       </p>
       <p>Count: {count}</p>
     </div>

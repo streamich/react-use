@@ -1,4 +1,11 @@
 <div align="center">
+    <a href="https://www.kickstarter.com/projects/aleks-p/multiplayer-collaborative-editing-database">
+       Collaborative editing for your app. <strong>Support on Kickstarter!</strong>
+    </a>
+</div>
+
+
+<div align="center">
   <h1>
     <br/>
     <br/>
@@ -58,7 +65,7 @@
   - [`useMotion`](./docs/useMotion.md) &mdash; tracks state of device's motion sensor.
   - [`useMouse` and `useMouseHovered`](./docs/useMouse.md) &mdash; tracks state of mouse position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemouse--docs)
   - [`useMouseWheel`](./docs/useMouseWheel.md) &mdash; tracks deltaY of scrolled mouse wheel. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemousewheel--docs)
-  - [`useNetwork`](./docs/useNetwork.md) &mdash; tracks state of user's internet connection.
+  - [`useNetworkState`](./docs/useNetworkState.md) &mdash; tracks the state of browser's network connection. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usenetworkstate--demo)
   - [`useOrientation`](./docs/useOrientation.md) &mdash; tracks state of device's screen orientation.
   - [`usePageLeave`](./docs/usePageLeave.md) &mdash; triggers when mouse leaves page boundaries.
   - [`useScratch`](./docs/useScratch.md) &mdash; tracks mouse click-and-scrub state.

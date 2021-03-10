@@ -10,13 +10,16 @@ describe('useMultiStateValidator', () => {
     expect(useMultiStateValidator).toBeDefined();
   });
 
-  const defaultStatesValidator = (states: number[]) => [states.every(num => !(num % 2))];
+  const defaultStatesValidator = (states: number[]) => [states.every((num) => !(num % 2))];
 
   function getHook(
     fn: MultiStateValidator<any, number[]> = jest.fn(defaultStatesValidator),
     initialStates = [1, 2],
     initialValidity = [false]
-  ): [MultiStateValidator<any, number[]>, RenderHookResult<any, [Function, UseStateValidatorReturn<ValidityState>]>] {
+  ): [
+    MultiStateValidator<any, number[]>,
+    RenderHookResult<any, [Function, UseStateValidatorReturn<ValidityState>]>
+  ] {
     return [
       fn,
       renderHook(
@@ -60,7 +63,9 @@ describe('useMultiStateValidator', () => {
 
   it("should NOT call validator on it's change", () => {
     const [spy, hook] = getHook();
-    const newValidator: MultiStateValidator<any, number[]> = jest.fn(states => [states!.every(num => !!(num % 2))]);
+    const newValidator: MultiStateValidator<any, number[]> = jest.fn((states) => [
+      states!.every((num) => !!(num % 2)),
+    ]);
 
     expect(spy).toHaveBeenCalledTimes(1);
     hook.rerender({ validator: newValidator });
@@ -113,7 +118,7 @@ describe('useMultiStateValidator', () => {
 
   it('if validator expects 2nd parameters it should pass a validity setter there', () => {
     const spy = (jest.fn((states: number[], done) => {
-      done([states.every(num => !!(num % 2))]);
+      done([states.every((num) => !!(num % 2))]);
     }) as unknown) as MultiStateValidator<[boolean], number[]>;
     const [, hook] = getHook(spy, [1, 3]);
     const [, [validity]] = hook.result.current;

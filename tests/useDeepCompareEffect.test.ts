@@ -10,7 +10,9 @@ const mockEffectCallback = jest.fn().mockReturnValue(mockEffectCleanup);
 
 it('should run provided object once', () => {
   const { rerender: rerenderNormal } = renderHook(() => useEffect(mockEffectNormal, [options]));
-  const { rerender: rerenderDeep } = renderHook(() => useDeepCompareEffect(mockEffectDeep, [options]));
+  const { rerender: rerenderDeep } = renderHook(() =>
+    useDeepCompareEffect(mockEffectDeep, [options])
+  );
 
   expect(mockEffectNormal).toHaveBeenCalledTimes(1);
   expect(mockEffectDeep).toHaveBeenCalledTimes(1);
