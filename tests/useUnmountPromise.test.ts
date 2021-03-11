@@ -35,15 +35,15 @@ describe('useUnmountPromise', () => {
     ]);
     expect(res).toBe('UNMOUNTED');
   });
-  
+
   it('should resolve promise when component is updated', async () => {
     const hook = renderHook(() => useUnmountPromise());
 
     const mounted = hook.result.current;
-    const pRes = mounted(new Promise(r => setTimeout(() => r(25), 10)));
-    
+    const pRes = mounted(new Promise((r) => setTimeout(() => r(25), 10)));
+
     hook.rerender();
-    
+
     const res = await pRes;
 
     expect(res).toBe(25);
