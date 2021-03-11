@@ -1,3 +1,12 @@
+## [17.2.1](https://github.com/streamich/react-use/compare/v17.2.0...v17.2.1) (2021-03-11)
+
+
+### Bug Fixes
+
+* lint issues. ([3e8af15](https://github.com/streamich/react-use/commit/3e8af15086135c873d18079a0b92b21da668a2ff))
+* useMeasure type definitions for SVG ([e200f7f](https://github.com/streamich/react-use/commit/e200f7fcbb371a1d794be8d350f9559f940e5760))
+* useUnmountPromise stops on immediate update ([9ff5c09](https://github.com/streamich/react-use/commit/9ff5c09e671c4f07f25f30a60617fca7660e7607))
+
 # [17.2.0](https://github.com/streamich/react-use/compare/v17.1.1...v17.2.0) (2021-03-10)
 
 
