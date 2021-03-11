@@ -102,7 +102,8 @@ describe('useWindowScroll', () => {
     const initialScroll = { x: 1, y: 2 };
     const afterRenderScroll = { x: 2, y: 3 };
     const result = {
-      x: 0, y: 0
+      x: 0,
+      y: 0,
     };
 
     setWindowScroll(initialScroll.x, initialScroll.y);
