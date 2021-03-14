@@ -14,11 +14,11 @@ const Demo = () => {
   const hasJquery = !!(w.$);
   return (
     <div>
-      <span>sript ready: {ready.toString()}</span>
+      <span>script ready: {ready.toString()}</span>
       <br />
       <span>script load failed: {failed.toString()}</span>
       <br />
-      <span>juqery $ mounted: {hasJquery.toString()}</span>
+      <span>jquery $ mounted: {hasJquery.toString()}</span>
     </div>
   );
 };
