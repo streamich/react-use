@@ -23,7 +23,7 @@ const Demo = () => {
       <br />
       <span>script load failed: {failed.toString()}</span>
       <br />
-      <span>juqery $ mounted: {hasJquery.toString()}</span>
+      <span>jquery $ mounted: {hasJquery.toString()}</span>
     </div>
   );
 };
