@@ -1,11 +1,11 @@
-import { useEffect, EffectCallback } from 'react';
+import { useEffect, EffectCallback, DependencyList } from 'react';
 
 const FALSE_DEP_ARRAY = [{}]
 
 export const useConditionalEffect = (
   condition: boolean,
   effect: EffectCallback,
-  dependencies: any[]
+  dependencies: DependencyList | undefined
 ) => {
   useEffect(() => {
     if (condition) {
