@@ -1,5 +1,7 @@
 import { useEffect, EffectCallback } from 'react';
 
+const FALSE_DEP_ARRAY = [{}]
+
 export const useConditionalEffect = (
   condition: boolean,
   effect: EffectCallback,
@@ -10,5 +12,5 @@ export const useConditionalEffect = (
       return effect();
     }
     return undefined;
-  }, [condition, ...dependencies]);
+  }, condition ? dependencies : FALSE_DEP_ARRAY);
 };
