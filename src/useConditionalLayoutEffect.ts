@@ -1,16 +1,12 @@
-import { useLayoutEffect, EffectCallback, DependencyList } from 'react';
+import { useLayoutEffect, EffectCallback, DependencyList } from "react";
 
-const FALSE_DEP_ARRAY = [{}]
+const FALSE_DEP_ARRAY = [{}];
+const NOOP = () => {};
 
 export const useConditionalLayoutEffect = (
   condition: boolean,
   effect: EffectCallback,
   dependencies: DependencyList | undefined
 ) => {
-  useLayoutEffect(() => {
-    if (condition) {
-      return effect();
-    }
-    return undefined;
-  }, condition ? dependencies : FALSE_DEP_ARRAY);
+  useLayoutEffect(condition ? effect : NOOP, condition ? dependencies : FALSE_DEP_ARRAY);
 };

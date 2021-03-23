@@ -1,16 +1,12 @@
-import { useEffect, EffectCallback, DependencyList } from 'react';
+import { useEffect, EffectCallback, DependencyList } from "react";
 
-const FALSE_DEP_ARRAY = [{}]
+const FALSE_DEP_ARRAY = [{}];
+const NOOP = () => {};
 
 export const useConditionalEffect = (
   condition: boolean,
   effect: EffectCallback,
   dependencies: DependencyList | undefined
 ) => {
-  useEffect(() => {
-    if (condition) {
-      return effect();
-    }
-    return undefined;
-  }, condition ? dependencies : FALSE_DEP_ARRAY);
+  useEffect(condition ? effect : NOOP, condition ? dependencies : FALSE_DEP_ARRAY);
 };
