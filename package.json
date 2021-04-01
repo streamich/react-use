@@ -47,7 +47,6 @@
   },
   "homepage": "https://github.com/streamich/react-use#readme",
   "dependencies": {
-    "@types/js-cookie": "^2.2.6",
     "@xobotyi/scrollbar-width": "^1.9.5",
     "copy-to-clipboard": "^3.3.1",
     "fast-deep-equal": "^3.1.3",
@@ -84,6 +83,7 @@
     "@testing-library/react": "11.2.6",
     "@testing-library/react-hooks": "5.1.1",
     "@types/jest": "26.0.22",
+    "@types/js-cookie": "^2.2.6",
     "@types/react": "17.0.0",
     "@typescript-eslint/eslint-plugin": "4.20.0",
     "@typescript-eslint/parser": "4.20.0",
