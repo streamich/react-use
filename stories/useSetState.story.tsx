@@ -19,6 +19,16 @@ const Demo = () => {
         }}>
         increment
       </button>
+
+      <button
+        onClick={() =>
+          setState({ test: 'test text' }, (currentState) => {
+            console.log('call after render', currentState);
+          })
+        }
+      >
+        test
+      </button>
     </div>
   );
 };
