@@ -1,3 +1,10 @@
+## [17.2.3](https://github.com/streamich/react-use/compare/v17.2.2...v17.2.3) (2021-04-06)
+
+
+### Bug Fixes
+
+* lint issues. ([5a5a575](https://github.com/streamich/react-use/commit/5a5a5755bc1f10add9c7a100ea6577ab6d427c0c))
+
 ## [17.2.2](https://github.com/streamich/react-use/compare/v17.2.1...v17.2.2) (2021-04-06)
 
 
