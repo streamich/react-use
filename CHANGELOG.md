@@ -1,3 +1,10 @@
+## [17.2.2](https://github.com/streamich/react-use/compare/v17.2.1...v17.2.2) (2021-04-06)
+
+
+### Bug Fixes
+
+* **useStateWithHistory:** support callback style setState ([fca687d](https://github.com/streamich/react-use/commit/fca687d32c37148dab3072f053109f6c4d3c36ba))
+
 ## [17.2.1](https://github.com/streamich/react-use/compare/v17.2.0...v17.2.1) (2021-03-11)
 
 
