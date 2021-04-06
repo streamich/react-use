@@ -18,4 +18,4 @@ assignees: ''
 - _Browser (vendor and version)_: 
 - _React_: 
 - _`react-use`_: 
-- _Did this worked in the previous package version?_
+- _Did this work in the previous package version?_
