@@ -27,25 +27,20 @@ export interface HTMLMediaControls {
   seek: (time: number) => void;
 }
 
-type createHTMLMediaHookReturn = [
-  React.ReactElement<HTMLMediaProps>,
-  HTMLMediaState,
-  HTMLMediaControls,
-  { current: HTMLAudioElement | null }
-];
+type MediaPropsWithRef<T> = HTMLMediaProps & { ref?: React.MutableRefObject<T | null> };
 
-export default function createHTMLMediaHook(tag: 'audio' | 'video') {
+export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVideoElement>(tag: 'audio' | 'video') {
   return (
     elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>
-  ): createHTMLMediaHookReturn => {
-    let element: React.ReactElement<any> | undefined;
-    let props: HTMLMediaProps;
+) => {
+  let element: React.ReactElement<MediaPropsWithRef<T>> | undefined;
+  let props: MediaPropsWithRef<T>;
 
     if (React.isValidElement(elOrProps)) {
       element = elOrProps;
       props = element.props;
     } else {
-      props = elOrProps as HTMLMediaProps;
+      props = elOrProps;
     }
 
     const [state, setState] = useSetState<HTMLMediaState>({
@@ -56,7 +51,7 @@ export default function createHTMLMediaHook(tag: 'audio' | 'video') {
       muted: false,
       volume: 1,
     });
-    const ref = useRef<HTMLAudioElement | null>(null);
+		const ref = useRef<T | null>(null);
 
     const wrapEvent = (userEvent, proxyEvent?) => {
       return (event) => {
@@ -234,6 +229,6 @@ export default function createHTMLMediaHook(tag: 'audio' | 'video') {
       }
     }, [props.src]);
 
-    return [element, state, controls, ref];
-  };
-}
+		return [element, state, controls, ref] as const;
+  }
+};
