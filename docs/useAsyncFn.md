@@ -9,7 +9,7 @@ function that returns a promise. The state is of the same shape as `useAsync`.
 import {useAsyncFn} from 'react-use';
 
 const Demo = ({url}) => {
-  const [state, fetch] = useAsyncFn(async () => {
+  const [state, doFetch] = useAsyncFn(async () => {
     const response = await fetch(url);
     const result = await response.text();
     return result
@@ -23,7 +23,7 @@ const Demo = ({url}) => {
           ? <div>Error: {state.error.message}</div>
           : <div>Value: {state.value}</div>
       }
-      <button onClick={() => fetch()}>Start loading</button>
+      <button onClick={() => doFetch()}>Start loading</button>
     </div>
   );
 };
