@@ -3,24 +3,18 @@ import { useConditionalLayoutEffect } from '../src';
 
 it('should run the effect when condition is true', () => {
   const effect = jest.fn();
-  renderHook(
-    ({ condition }) => useConditionalLayoutEffect(condition, effect, []),
-    {
-      initialProps: { condition: true },
-    }
-  );
+  renderHook(({ condition }) => useConditionalLayoutEffect(condition, effect, []), {
+    initialProps: { condition: true },
+  });
 
   expect(effect.mock.calls.length).toEqual(1);
 });
 
 it('should not run the effect when condition is false', () => {
   const effect = jest.fn();
-  renderHook(
-    ({ condition }) => useConditionalLayoutEffect(condition, effect, []),
-    {
-      initialProps: { condition: false },
-    }
-  );
+  renderHook(({ condition }) => useConditionalLayoutEffect(condition, effect, []), {
+    initialProps: { condition: false },
+  });
 
   expect(effect.mock.calls.length).toEqual(0);
 });

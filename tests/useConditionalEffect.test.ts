@@ -74,3 +74,31 @@ it('should run the effect when dependencies do not change, but condition flips t
 
   expect(effect.mock.calls.length).toEqual(1);
 });
+
+it("shouldn't complain when dependencies flip to true, and there are two dependencies", () => {
+  const effect = jest.fn();
+  const component = renderHook(
+    ({ condition, dependencies }) => useConditionalEffect(condition, effect, dependencies),
+    {
+      initialProps: { condition: false, dependencies: ['a', 'b'] },
+    }
+  );
+
+  component.rerender({ condition: true, dependencies: ['a', 'b'] });
+
+  expect(effect.mock.calls.length).toEqual(1);
+});
+
+it('undefined dependency array should be ok', () => {
+  const effect = jest.fn();
+  const component = renderHook(
+    ({ condition, dependencies }) => useConditionalEffect(condition, effect, dependencies),
+    {
+      initialProps: { condition: false, dependencies: undefined },
+    }
+  );
+
+  component.rerender({ condition: true, dependencies: undefined });
+
+  expect(effect.mock.calls.length).toEqual(1);
+});

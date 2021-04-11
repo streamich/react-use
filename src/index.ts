@@ -114,5 +114,4 @@ export { useFirstMountState } from './useFirstMountState';
 export { default as useSet } from './useSet';
 export { createGlobalState } from './factory/createGlobalState';
 export { useHash } from './useHash';
-export { useConditionalEffect } from './useConditionalEffect';
-export { useConditionalLayoutEffect } from './useConditionalLayoutEffect';
+export { useConditionalEffect, useConditionalLayoutEffect } from './useConditionalEffect';
