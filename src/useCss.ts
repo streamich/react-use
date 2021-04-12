@@ -20,7 +20,7 @@ const useCss = (css: object): string => {
     const tree = {};
     cssToTree(tree, css, '.' + className, '');
     sheet.diff(tree);
-
+// return value fat fn
     return () => {
       sheet.diff({});
     };
