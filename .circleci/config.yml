@@ -125,7 +125,6 @@ workflows:
   all:
     jobs:
       - all:
-          context: common-env-vars
           filters:
             branches:
               ignore:
@@ -135,14 +134,12 @@ workflows:
   next:
     jobs:
       - next:
-          context: common-env-vars
           filters:
             branches:
               only: next
   master:
     jobs:
       - master:
-          context: common-env-vars
           filters:
             branches:
               only: master
