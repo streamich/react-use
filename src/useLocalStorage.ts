@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { Dispatch, SetStateAction, useCallback, useState, useRef, useLayoutEffect } from 'react';
 import { isBrowser, noop } from './misc/util';
 
 type parserOptions<T> =
@@ -30,7 +30,7 @@ const useLocalStorage = <T>(
     : JSON.parse;
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [state, setState] = useState<T | undefined>(() => {
+  const initializer = useRef((key: string) => {
     try {
       const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
 
@@ -48,6 +48,12 @@ const useLocalStorage = <T>(
       return initialValue;
     }
   });
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [state, setState] = useState<T | undefined>(() => initializer.current(key));
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useLayoutEffect(() => setState(initializer.current(key)), [key]);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(

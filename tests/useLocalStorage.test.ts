@@ -80,6 +80,19 @@ describe(useLocalStorage, () => {
     expect(foo).toEqual('baz');
   });
 
+  it('reinitializes state when key changes', () => {
+    let key = 'foo';
+    const { result, rerender } = renderHook(() => useLocalStorage(key, 'bar'));
+
+    const [, setState] = result.current;
+    act(() => setState('baz'));
+    key = 'bar';
+    rerender();
+
+    const [state] = result.current;
+    expect(state).toEqual('bar');
+  });
+
   /*
   it('keeps multiple hooks accessing the same key in sync', () => {
     localStorage.setItem('foo', 'bar');
