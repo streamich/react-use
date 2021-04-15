@@ -2361,10 +2361,10 @@
     p-retry "^4.0.0"
     url-join "^4.0.0"
 
-"@semantic-release/npm@7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-7.1.0.tgz#27c56ad18bceb97a061f1fc7e54a85dc4c8016d6"
-  integrity sha512-zr9kTlF3/84QE9XH765TwvG0ljysSrxEGPNL1prxpWS9fHD7Pa+58L7pgLQwmw4i1QIkhh9cANvY9l7uldvh5w==
+"@semantic-release/npm@7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-7.1.1.tgz#90a0970f12b963fa846e5cdf896e6c7d996c1a64"
+  integrity sha512-zTYAno1j49XiH+uAVCY47dKOJAagA/MaJb26FFIfNujNHw3GYXk3ygsFa5CSa55xsO0qEMLcsDX3f3ByCg6nZw==
   dependencies:
     "@semantic-release/error" "^2.2.0"
     aggregate-error "^3.0.0"
@@ -2372,7 +2372,7 @@
     fs-extra "^9.0.0"
     lodash "^4.17.15"
     nerf-dart "^1.0.0"
-    normalize-url "^5.0.0"
+    normalize-url "^6.0.0"
     npm "^7.0.0"
     rc "^1.2.8"
     read-pkg "^5.0.0"
@@ -11300,6 +11300,11 @@ normalize-url@^5.0.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-5.3.0.tgz#8959b3cdaa295b61592c1f245dded34b117618dd"
   integrity sha512-9/nOVLYYe/dO/eJeQUNaGUF4m4Z5E7cb9oNTKabH+bNf19mqj60txTcveQxL0GlcWLXCxkOu2/LwL8oW0idIDA==
+
+normalize-url@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-6.0.0.tgz#688ba4251cc46350f5adf4e65e14b7113a752684"
+  integrity sha512-3nv3dKMucKPEXhx/FEtJQR26ksYdyVlLEP9/dYvYwCbLbP6H8ya94IRf+mB93ec+fndv/Ye8SylWfD7jmN6kSA==
 
 npm-audit-report@^1.3.3:
   version "1.3.3"
