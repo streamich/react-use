@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, EffectCallback, DependencyList } from 'react';
 
 const NOOP = () => {};
+const EMPTY_OBJECT = {};
 
 const fakeDeps: {
   [index: number]: undefined[];
@@ -12,7 +13,7 @@ const getFakeDependencyList = (dependencies: DependencyList | undefined) => {
   }
 
   if (fakeDeps[dependencies.length] === undefined) {
-    fakeDeps[dependencies.length] = new Array(dependencies.length);
+    fakeDeps[dependencies.length] = new Array(dependencies.length).fill(EMPTY_OBJECT);
   }
 
   return fakeDeps[dependencies.length];

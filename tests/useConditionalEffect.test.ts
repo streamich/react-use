@@ -90,15 +90,47 @@ it("shouldn't complain when dependencies flip to true, and there are two depende
 });
 
 it('undefined dependency array should be ok', () => {
-  const effect = jest.fn();
+  let clearer = jest.fn();
+  const effect = jest.fn(() => {
+    return clearer;
+  });
   const component = renderHook(
     ({ condition, dependencies }) => useConditionalEffect(condition, effect, dependencies),
     {
       initialProps: { condition: false, dependencies: undefined },
     }
   );
+  expect(effect.mock.calls.length).toEqual(0);
+  expect(clearer.mock.calls.length).toEqual(0);
 
   component.rerender({ condition: true, dependencies: undefined });
-
   expect(effect.mock.calls.length).toEqual(1);
+  expect(clearer.mock.calls.length).toEqual(0);
+
+  component.rerender({ condition: false, dependencies: undefined });
+  expect(effect.mock.calls.length).toEqual(1);
+  expect(clearer.mock.calls.length).toEqual(1);
+});
+
+it('an array of undefineds as dependency array should be ok', () => {
+  let clearer = jest.fn();
+  const effect = jest.fn(() => {
+    return clearer;
+  });
+  const component = renderHook(
+    ({ condition, dependencies }) => useConditionalEffect(condition, effect, dependencies),
+    {
+      initialProps: { condition: false, dependencies: [undefined] },
+    }
+  );
+  expect(effect.mock.calls.length).toEqual(0);
+  expect(clearer.mock.calls.length).toEqual(0);
+
+  component.rerender({ condition: true, dependencies: [undefined] });
+  expect(effect.mock.calls.length).toEqual(1);
+  expect(clearer.mock.calls.length).toEqual(0);
+
+  component.rerender({ condition: false, dependencies: [undefined] });
+  expect(effect.mock.calls.length).toEqual(1);
+  expect(clearer.mock.calls.length).toEqual(1);
 });
