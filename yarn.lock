@@ -7005,10 +7005,10 @@ eslint-module-utils@^2.6.0:
     debug "^2.6.9"
     pkg-dir "^2.0.0"
 
-eslint-plugin-flowtype@5.7.0:
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-5.7.0.tgz#1fe68f9cd16e35bf30e09d4ebacf9cfbfe7a41a4"
-  integrity sha512-6Oa0D6kq3PGwJvivrLNSgeiPN/ftPkRvhbeHWoXUEGQ+ZugerSJvoMDSCc9dZa4R691b/eLXpx8dyMSZM1Tc4w==
+eslint-plugin-flowtype@5.7.1:
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-5.7.1.tgz#16b15d7a981bc0894284a87e71021f523b4fa580"
+  integrity sha512-RsurlNszyKLIHJvw6J4C98ubTTsLlgzL5xYqQ6ZTV5d2E2iHIR744SxoU3o7yQf0HjIe0GwnAIxpD+g0IV+emg==
   dependencies:
     lodash "^4.17.15"
     string-natural-compare "^3.0.1"
