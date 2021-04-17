@@ -1,45 +1,102 @@
-import { useEffect, useState } from 'react';
-import { isBrowser } from './misc/util';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { useState, useCallback, useMemo, Dispatch, SetStateAction } from 'react';
+import { isBrowser, noop } from './misc/util';
 
-const useSessionStorage = <T>(
+type parserOptions<T> =
+  | true
+  | {
+      raw: true;
+    }
+  | {
+      raw: false;
+      serializer: (value: T) => string;
+      deserializer: (value: string) => T;
+    };
+
+export default function useSessionStorage<T>(
+  key: string,
+  initialValue: T,
+  options?: parserOptions<T>
+): [T, Dispatch<SetStateAction<T>>, () => void];
+export default function useSessionStorage<T>(
   key: string,
   initialValue?: T,
-  raw?: boolean
-): [T, (value: T) => void] => {
+  options?: parserOptions<T>
+): [T | undefined, Dispatch<SetStateAction<T>>, () => void];
+export default function useSessionStorage<T>(
+  key: string,
+  initialValue?: T,
+  options?: parserOptions<T>
+): [T | undefined, Dispatch<SetStateAction<T>>, () => void] {
   if (!isBrowser) {
-    return [initialValue as T, () => {}];
+    return [initialValue as T, noop, noop];
+  }
+  if (!key) {
+    throw new Error('useSessionStorage key may not be falsy');
   }
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [state, setState] = useState<T>(() => {
+  const deserializer = useMemo(
+    () => (options ? (options === true || options.raw ? (value: string) => value : options.deserializer) : JSON.parse),
+    [options]
+  );
+
+  const serializer = useMemo(
+    () =>
+      options
+        ? options === true || options.raw
+          ? (value: unknown) => (typeof value === 'string' ? value : JSON.stringify(value))
+          : options.serializer
+        : JSON.stringify,
+    [options]
+  );
+
+  const [state, setState] = useState<T | undefined>(() => {
     try {
       const sessionStorageValue = sessionStorage.getItem(key);
-      if (typeof sessionStorageValue !== 'string') {
-        sessionStorage.setItem(key, raw ? String(initialValue) : JSON.stringify(initialValue));
-        return initialValue;
+      if (sessionStorageValue !== null) {
+        return deserializer(sessionStorageValue);
       } else {
-        return raw ? sessionStorageValue : JSON.parse(sessionStorageValue || 'null');
+        initialValue && sessionStorage.setItem(key, serializer(initialValue));
+        return initialValue;
       }
     } catch {
       // If user is in private mode or has storage restriction
       // sessionStorage can throw. JSON.parse and JSON.stringify
-      // cat throw, too.
+      // can throw, too.
       return initialValue;
     }
   });
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
+  const set: Dispatch<SetStateAction<T>> = useCallback(
+    (valOrFunc) => {
+      setState((prevState) => {
+        const newState = typeof valOrFunc === 'function' ? (valOrFunc as Function)(prevState) : valOrFunc;
+        if (typeof newState === 'undefined') return;
+
+        try {
+          const value = serializer(newState);
+
+          sessionStorage.setItem(key, value);
+          return deserializer(value);
+        } catch {
+          // If user is in private mode or has storage restriction
+          // sessionStorage can throw. Also JSON.stringify can throw.
+          return prevState;
+        }
+      });
+    },
+    [key, serializer, deserializer]
+  );
+
+  const remove = useCallback(() => {
     try {
-      const serializedState = raw ? String(state) : JSON.stringify(state);
-      sessionStorage.setItem(key, serializedState);
+      sessionStorage.removeItem(key);
+      setState(initialValue);
     } catch {
       // If user is in private mode or has storage restriction
-      // sessionStorage can throw. Also JSON.stringify can throw.
+      // sessionStorage can throw.
     }
-  });
+  }, [initialValue, key]);
 
-  return [state, setState];
-};
-
-export default useSessionStorage;
+  return [state, set, remove];
+}

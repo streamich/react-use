@@ -1,60 +1,60 @@
-import useLocalStorage from '../src/useLocalStorage';
+import useSessionStorage from '../src/useSessionStorage';
 import 'jest-localstorage-mock';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-describe(useLocalStorage, () => {
+describe(useSessionStorage, () => {
   afterEach(() => {
-    localStorage.clear();
+    sessionStorage.clear();
     jest.clearAllMocks();
   });
 
-  it('retrieves an existing value from localStorage', () => {
-    localStorage.setItem('foo', '"bar"');
-    const { result } = renderHook(() => useLocalStorage('foo'));
+  it('retrieves an existing value from sessionStorage', () => {
+    sessionStorage.setItem('foo', '"bar"');
+    const { result } = renderHook(() => useSessionStorage('foo'));
     const [state] = result.current;
     expect(state).toEqual('bar');
   });
 
-  it('should return initialValue if localStorage empty and set that to localStorage', () => {
-    const { result } = renderHook(() => useLocalStorage('foo', 'bar'));
+  it('should return initialValue if sessionStorage empty and set that to sessionStorage', () => {
+    const { result } = renderHook(() => useSessionStorage('foo', 'bar'));
     const [state] = result.current;
     expect(state).toEqual('bar');
-    expect(localStorage.__STORE__.foo).toEqual('"bar"');
+    expect(sessionStorage.__STORE__.foo).toEqual('"bar"');
   });
 
   it('prefers existing value over initial state', () => {
-    localStorage.setItem('foo', '"bar"');
-    const { result } = renderHook(() => useLocalStorage('foo', 'baz'));
+    sessionStorage.setItem('foo', '"bar"');
+    const { result } = renderHook(() => useSessionStorage('foo', 'baz'));
     const [state] = result.current;
     expect(state).toEqual('bar');
   });
 
-  it('does not clobber existing localStorage with initialState', () => {
-    localStorage.setItem('foo', '"bar"');
-    const { result } = renderHook(() => useLocalStorage('foo', 'buzz'));
+  it('does not clobber existing sessionStorage with initialState', () => {
+    sessionStorage.setItem('foo', '"bar"');
+    const { result } = renderHook(() => useSessionStorage('foo', 'buzz'));
     expect(result.current).toBeTruthy();
-    expect(localStorage.__STORE__.foo).toEqual('"bar"');
+    expect(sessionStorage.__STORE__.foo).toEqual('"bar"');
   });
 
-  it('correctly updates localStorage', () => {
-    const { result, rerender } = renderHook(() => useLocalStorage('foo', 'bar'));
+  it('correctly updates sessionStorage', () => {
+    const { result, rerender } = renderHook(() => useSessionStorage('foo', 'bar'));
 
     const [, setFoo] = result.current;
     act(() => setFoo('baz'));
     rerender();
 
-    expect(localStorage.__STORE__.foo).toEqual('"baz"');
+    expect(sessionStorage.__STORE__.foo).toEqual('"baz"');
   });
 
-  it('should return undefined if no initialValue provided and localStorage empty', () => {
-    const { result } = renderHook(() => useLocalStorage('some_key'));
+  it('should return undefined if no initialValue provided and sessionStorage empty', () => {
+    const { result } = renderHook(() => useSessionStorage('some_key'));
 
     expect(result.current[0]).toBeUndefined();
   });
 
   it('returns and allows null setting', () => {
-    localStorage.setItem('foo', 'null');
-    const { result, rerender } = renderHook(() => useLocalStorage('foo'));
+    sessionStorage.setItem('foo', 'null');
+    const { result, rerender } = renderHook(() => useSessionStorage('foo'));
     const [foo1, setFoo] = result.current;
     act(() => setFoo(null));
     rerender();
@@ -65,12 +65,12 @@ describe(useLocalStorage, () => {
   });
 
   it('sets initialState if initialState is an object', () => {
-    renderHook(() => useLocalStorage('foo', { bar: true }));
-    expect(localStorage.__STORE__.foo).toEqual('{"bar":true}');
+    renderHook(() => useSessionStorage('foo', { bar: true }));
+    expect(sessionStorage.__STORE__.foo).toEqual('{"bar":true}');
   });
 
   it('correctly and promptly returns a new value', () => {
-    const { result, rerender } = renderHook(() => useLocalStorage('foo', 'bar'));
+    const { result, rerender } = renderHook(() => useSessionStorage('foo', 'bar'));
 
     const [, setFoo] = result.current;
     act(() => setFoo('baz'));
@@ -82,9 +82,9 @@ describe(useLocalStorage, () => {
 
   /*
   it('keeps multiple hooks accessing the same key in sync', () => {
-    localStorage.setItem('foo', 'bar');
-    const { result: r1, rerender: rerender1 } = renderHook(() => useLocalStorage('foo'));
-    const { result: r2, rerender: rerender2 } = renderHook(() => useLocalStorage('foo'));
+    sessionStorage.setItem('foo', 'bar');
+    const { result: r1, rerender: rerender1 } = renderHook(() => useSessionStorage('foo'));
+    const { result: r2, rerender: rerender2 } = renderHook(() => useSessionStorage('foo'));
 
     const [, setFoo] = r1.current;
     act(() => setFoo('potato'));
@@ -100,23 +100,21 @@ describe(useLocalStorage, () => {
   });
   */
 
-  it('parses out objects from localStorage', () => {
-    localStorage.setItem('foo', JSON.stringify({ ok: true }));
-    const { result } = renderHook(() => useLocalStorage<{ ok: boolean }>('foo'));
+  it('parses out objects from sessionStorage', () => {
+    sessionStorage.setItem('foo', JSON.stringify({ ok: true }));
+    const { result } = renderHook(() => useSessionStorage<{ ok: boolean }>('foo'));
     const [foo] = result.current;
     expect(foo!.ok).toEqual(true);
   });
 
-  it('safely initializes objects to localStorage', () => {
-    const { result } = renderHook(() => useLocalStorage<{ ok: boolean }>('foo', { ok: true }));
+  it('safely initializes objects to sessionStorage', () => {
+    const { result } = renderHook(() => useSessionStorage<{ ok: boolean }>('foo', { ok: true }));
     const [foo] = result.current;
     expect(foo!.ok).toEqual(true);
   });
 
-  it('safely sets objects to localStorage', () => {
-    const { result, rerender } = renderHook(() =>
-      useLocalStorage<{ ok: any }>('foo', { ok: true })
-    );
+  it('safely sets objects to sessionStorage', () => {
+    const { result, rerender } = renderHook(() => useSessionStorage<{ ok: any }>('foo', { ok: true }));
 
     const [, setFoo] = result.current;
     act(() => setFoo({ ok: 'bar' }));
@@ -127,9 +125,7 @@ describe(useLocalStorage, () => {
   });
 
   it('safely returns objects from updates', () => {
-    const { result, rerender } = renderHook(() =>
-      useLocalStorage<{ ok: any }>('foo', { ok: true })
-    );
+    const { result, rerender } = renderHook(() => useSessionStorage<{ ok: any }>('foo', { ok: true }));
 
     const [, setFoo] = result.current;
     act(() => setFoo({ ok: 'bar' }));
@@ -140,9 +136,9 @@ describe(useLocalStorage, () => {
     expect(foo!.ok).toEqual('bar');
   });
 
-  it('sets localStorage from the function updater', () => {
+  it('sets sessionStorage from the function updater', () => {
     const { result, rerender } = renderHook(() =>
-      useLocalStorage<{ foo: string; fizz?: string }>('foo', { foo: 'bar' })
+      useSessionStorage<{ foo: string; fizz?: string }>('foo', { foo: 'bar' })
     );
 
     const [, setFoo] = result.current;
@@ -155,7 +151,7 @@ describe(useLocalStorage, () => {
   });
 
   it("function updater doesn't get stale state", () => {
-    const { result, rerender } = renderHook(() => useLocalStorage('foo', false));
+    const { result, rerender } = renderHook(() => useSessionStorage('foo', false));
 
     act(() => result.current[1]((state) => !state));
     rerender();
@@ -167,7 +163,7 @@ describe(useLocalStorage, () => {
   });
 
   it('rejects nullish or undefined keys', () => {
-    const { result } = renderHook(() => useLocalStorage(null as any));
+    const { result } = renderHook(() => useSessionStorage(null as any));
     try {
       (() => {
         return result.current;
@@ -179,9 +175,9 @@ describe(useLocalStorage, () => {
   });
 
   describe('remove', () => {
-    it('removes value from localStorage and restores initialValue', () => {
-      localStorage.setItem('foo', '"bar"');
-      const { result, rerender } = renderHook(() => useLocalStorage('foo', 'initial'));
+    it('removes value from sessionStorage and restores initialValue', () => {
+      sessionStorage.setItem('foo', '"bar"');
+      const { result, rerender } = renderHook(() => useSessionStorage('foo', 'initial'));
       const [, , remove] = result.current;
 
       act(() => remove());
@@ -189,16 +185,16 @@ describe(useLocalStorage, () => {
 
       const [foo] = result.current;
       expect(foo).toEqual('initial');
-      expect(localStorage.__STORE__.foo).toBeUndefined();
+      expect(sessionStorage.__STORE__.foo).toBeUndefined();
     });
   });
 
   /* Enforces proper eslint react-hooks/rules-of-hooks usage */
   describe('eslint react-hooks/rules-of-hooks', () => {
     it('memoizes an object between rerenders', () => {
-      const { result, rerender } = renderHook(() => useLocalStorage('foo', { ok: true }));
+      const { result, rerender } = renderHook(() => useSessionStorage('foo', { ok: true }));
       (() => {
-        return result.current; // if localStorage isn't set then r1 and r2 will be different
+        return result.current; // if sessionStorage isn't set then r1 and r2 will be different
       })();
       rerender();
       const [r2] = result.current;
@@ -207,19 +203,19 @@ describe(useLocalStorage, () => {
       expect(r2).toBe(r3);
     });
 
-    it('memoizes an object immediately if localStorage is already set', () => {
-      localStorage.setItem('foo', JSON.stringify({ ok: true }));
-      const { result, rerender } = renderHook(() => useLocalStorage('foo', { ok: true }));
+    it('memoizes an object immediately if sessionStorage is already set', () => {
+      sessionStorage.setItem('foo', JSON.stringify({ ok: true }));
+      const { result, rerender } = renderHook(() => useSessionStorage('foo', { ok: true }));
 
-      const [r1] = result.current; // if localStorage isn't set then r1 and r2 will be different
+      const [r1] = result.current; // if sessionStorage isn't set then r1 and r2 will be different
       rerender();
       const [r2] = result.current;
       expect(r1).toBe(r2);
     });
 
     it('memoizes the setState function', () => {
-      localStorage.setItem('foo', JSON.stringify({ ok: true }));
-      const { result, rerender } = renderHook(() => useLocalStorage('foo', { ok: true }));
+      sessionStorage.setItem('foo', JSON.stringify({ ok: true }));
+      const { result, rerender } = renderHook(() => useSessionStorage('foo', { ok: true }));
       const [, s1] = result.current;
       rerender();
       const [, s2] = result.current;
@@ -228,16 +224,23 @@ describe(useLocalStorage, () => {
   });
 
   describe('Options: raw', () => {
-    it('returns a string when localStorage is a stringified object', () => {
-      localStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
-      const { result } = renderHook(() => useLocalStorage('foo', null, { raw: true }));
+    it('is backwards compatible with old signature', () => {
+      sessionStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
+      const { result } = renderHook(() => useSessionStorage('foo', null, (true as unknown) as { raw: true }));
+      const [foo] = result.current;
+      expect(typeof foo).toBe('string');
+    });
+
+    it('returns a string when sessionStorage is a stringified object', () => {
+      sessionStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
+      const { result } = renderHook(() => useSessionStorage('foo', null, { raw: true }));
       const [foo] = result.current;
       expect(typeof foo).toBe('string');
     });
 
     it('returns a string after an update', () => {
-      localStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
-      const { result, rerender } = renderHook(() => useLocalStorage('foo', null, { raw: true }));
+      sessionStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
+      const { result, rerender } = renderHook(() => useSessionStorage('foo', null, { raw: true }));
 
       const [, setFoo] = result.current;
 
@@ -253,8 +256,8 @@ describe(useLocalStorage, () => {
     });
 
     it('still forces setState to a string', () => {
-      localStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
-      const { result, rerender } = renderHook(() => useLocalStorage('foo', null, { raw: true }));
+      sessionStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
+      const { result, rerender } = renderHook(() => useSessionStorage('foo', null, { raw: true }));
 
       const [, setFoo] = result.current;
 
@@ -275,14 +278,14 @@ describe(useLocalStorage, () => {
     };
 
     it('uses deserializer for existing value', () => {
-      localStorage.setItem('foo', 'BAZ');
-      const { result } = renderHook(() => useLocalStorage('foo', 'initial', opts));
+      sessionStorage.setItem('foo', 'BAZ');
+      const { result } = renderHook(() => useSessionStorage('foo', 'initial', opts));
       const [state] = result.current;
       expect(state).toEqual('baz');
     });
 
     it('uses serializer and deserializer when updating value', () => {
-      const { result, rerender } = renderHook(() => useLocalStorage('foo', 'initial', opts));
+      const { result, rerender } = renderHook(() => useSessionStorage('foo', 'initial', opts));
 
       const [, setFoo] = result.current;
       act(() => setFoo('baz'));
@@ -290,7 +293,7 @@ describe(useLocalStorage, () => {
 
       const [foo] = result.current;
       expect(foo).toEqual('baz');
-      expect(localStorage.__STORE__.foo).toEqual('BAZ');
+      expect(sessionStorage.__STORE__.foo).toEqual('BAZ');
     });
   });
 });
