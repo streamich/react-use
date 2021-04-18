@@ -9,7 +9,7 @@ import {useSlider} from 'react-use';
 
 const Demo = () => {
   const ref = React.useRef(null);
-  const {isSliding, value, pos, length} = useSlider(ref);
+  const {isSliding, value} = useSlider(ref);
 
   return (
     <div>
