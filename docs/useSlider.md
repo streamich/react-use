@@ -17,7 +17,7 @@ const Demo = () => {
         <p style={{ textAlign: 'center', color: isSliding ? 'red' : 'green' }}>
           {Math.round(state.value * 100)}%
         </p>
-        <div style={{ position: 'absolute', left: pos }}>🎚</div>
+        <div style={{ position: 'absolute', left: value*100 + '%' }}>🎚</div>
       </div>
     </div>
   );
