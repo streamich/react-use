@@ -43,7 +43,7 @@ const useLocalStorage = <T>(
   const initializer = useRef((key: string) => {
     try {
       const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
-      const localStorageValue = localStorage?.getItem(key);
+      const localStorageValue = localStorage.getItem(key);
 
       if (localStorageValue !== null) {
         return deserializer(localStorageValue);
