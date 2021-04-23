@@ -1,3 +1,13 @@
+## [17.2.4](https://github.com/streamich/react-use/compare/v17.2.3...v17.2.4) (2021-04-23)
+
+
+### Bug Fixes
+
+* lint issues. ([66b0f23](https://github.com/streamich/react-use/commit/66b0f235477c5f93807df75a53a84b3c5cd053e5))
+* **useLocalStorage:** reinitialize on key change ([fdd1b23](https://github.com/streamich/react-use/commit/fdd1b23fd7ba6ae30139eeef02c552a8c7d6d333))
+* add generic typing to createHTMLMediaHook. no typecheck problem with ref anymore. ([1f547ef](https://github.com/streamich/react-use/commit/1f547efb12d6cbe7687e86925ad80bd85fac3dfd))
+* add generic typing to createHTMLMediaHook. no typecheck problem with ref anymore. ([ac4dd78](https://github.com/streamich/react-use/commit/ac4dd786f42a2c59bdaaf9ddebe2e830982d7fcc))
+
 ## [17.2.3](https://github.com/streamich/react-use/compare/v17.2.2...v17.2.3) (2021-04-06)
 
 
