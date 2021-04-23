@@ -29,12 +29,12 @@ export interface HTMLMediaControls {
 
 type MediaPropsWithRef<T> = HTMLMediaProps & { ref?: React.MutableRefObject<T | null> };
 
-export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVideoElement>(tag: 'audio' | 'video') {
-  return (
-    elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>
-) => {
-  let element: React.ReactElement<MediaPropsWithRef<T>> | undefined;
-  let props: MediaPropsWithRef<T>;
+export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVideoElement>(
+  tag: 'audio' | 'video'
+) {
+  return (elOrProps: HTMLMediaProps | React.ReactElement<HTMLMediaProps>) => {
+    let element: React.ReactElement<MediaPropsWithRef<T>> | undefined;
+    let props: MediaPropsWithRef<T>;
 
     if (React.isValidElement(elOrProps)) {
       element = elOrProps;
@@ -51,7 +51,7 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
       muted: false,
       volume: 1,
     });
-		const ref = useRef<T | null>(null);
+    const ref = useRef<T | null>(null);
 
     const wrapEvent = (userEvent, proxyEvent?) => {
       return (event) => {
@@ -229,6 +229,6 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
       }
     }, [props.src]);
 
-		return [element, state, controls, ref] as const;
-  }
-};
+    return [element, state, controls, ref] as const;
+  };
+}
