@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
+import useMountedState from './useMountedState';
 import { isBrowser } from './misc/util';
 
 const useMedia = (query: string, defaultState: boolean = false) => {
   const [state, setState] = useState(
     isBrowser ? () => window.matchMedia(query).matches : defaultState
   );
+  const isMounted = useMountedState();
 
   useEffect(() => {
-    let mounted = true;
     const mql = window.matchMedia(query);
     const onChange = () => {
-      if (!mounted) {
+      if (!isMounted()) {
         return;
       }
       setState(!!mql.matches);
@@ -20,7 +21,6 @@ const useMedia = (query: string, defaultState: boolean = false) => {
     setState(mql.matches);
 
     return () => {
-      mounted = false;
       mql.removeListener(onChange);
     };
   }, [query]);

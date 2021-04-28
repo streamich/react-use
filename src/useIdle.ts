@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { throttle } from 'throttle-debounce';
+import useMountedState from './useMountedState';
 import { off, on } from './misc/util';
 
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
@@ -11,13 +12,13 @@ const useIdle = (
   events: string[] = defaultEvents
 ): boolean => {
   const [state, setState] = useState<boolean>(initialState);
+  const isMounted = useMountedState();
 
   useEffect(() => {
-    let mounted = true;
     let timeout: any;
     let localState: boolean = state;
     const set = (newState: boolean) => {
-      if (mounted) {
+      if (isMounted()) {
         localState = newState;
         setState(newState);
       }
@@ -45,8 +46,6 @@ const useIdle = (
     timeout = setTimeout(() => set(true), ms);
 
     return () => {
-      mounted = false;
-
       for (let i = 0; i < events.length; i++) {
         off(window, events[i], onEvent);
       }

@@ -1,23 +1,20 @@
-import { useMemo, useRef } from 'react';
-import useEffectOnce from './useEffectOnce';
+import { useMemo } from 'react';
+import useMountedState from './useMountedState';
 
 export type Race = <P extends Promise<any>, E = any>(promise: P, onError?: (error: E) => void) => P;
 
 const useUnmountPromise = (): Race => {
-  const refUnmounted = useRef(false);
-  useEffectOnce(() => () => {
-    refUnmounted.current = true;
-  });
+  const isMounted = useMountedState();
 
   const wrapper = useMemo(() => {
     const race = <P extends Promise<any>, E>(promise: P, onError?: (error: E) => void) => {
       const newPromise: P = new Promise((resolve, reject) => {
         promise.then(
           (result) => {
-            if (!refUnmounted.current) resolve(result);
+            if (isMounted()) resolve(result);
           },
           (error) => {
-            if (!refUnmounted.current) reject(error);
+            if (isMounted()) reject(error);
             else if (onError) onError(error);
             else console.error('useUnmountPromise', error);
           }

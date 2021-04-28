@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import useMountedState from './useMountedState';
 import { isNavigator, off, on } from './misc/util';
 import isDeepEqual from './misc/isDeepEqual';
 
@@ -34,13 +35,13 @@ function useBatteryMock(): UseBatteryState {
 
 function useBattery(): UseBatteryState {
   const [state, setState] = useState<UseBatteryState>({ isSupported: true, fetched: false });
+  const isMounted = useMountedState();
 
   useEffect(() => {
-    let isMounted = true;
     let battery: BatteryManager | null = null;
 
     const handleChange = () => {
-      if (!isMounted || !battery) {
+      if (!isMounted() || !battery) {
         return;
       }
       const newState: UseBatteryState = {
@@ -55,7 +56,7 @@ function useBattery(): UseBatteryState {
     };
 
     nav!.getBattery!().then((bat: BatteryManager) => {
-      if (!isMounted) {
+      if (!isMounted()) {
         return;
       }
       battery = bat;
@@ -67,7 +68,6 @@ function useBattery(): UseBatteryState {
     });
 
     return () => {
-      isMounted = false;
       if (battery) {
         off(battery, 'chargingchange', handleChange);
         off(battery, 'chargingtimechange', handleChange);

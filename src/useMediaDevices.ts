@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
+import useMountedState from './useMountedState';
 import { isNavigator, noop, off, on } from './misc/util';
 
 const useMediaDevices = () => {
   const [state, setState] = useState({});
+  const isMounted = useMountedState();
 
   useEffect(() => {
-    let mounted = true;
-
     const onChange = () => {
       navigator.mediaDevices
         .enumerateDevices()
         .then((devices) => {
-          if (mounted) {
+          if (isMounted()) {
             setState({
               devices: devices.map(({ deviceId, groupId, kind, label }) => ({
                 deviceId,
@@ -29,7 +29,6 @@ const useMediaDevices = () => {
     onChange();
 
     return () => {
-      mounted = false;
       off(navigator.mediaDevices, 'devicechange', onChange);
     };
   }, []);
