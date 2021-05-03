@@ -100,7 +100,7 @@
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "7.23.2",
     "eslint-plugin-react-hooks": "4.2.0",
-    "fork-ts-checker-webpack-plugin": "6.2.5",
+    "fork-ts-checker-webpack-plugin": "6.2.6",
     "gh-pages": "3.1.0",
     "husky": "6.0.0",
     "jest": "26.6.3",
