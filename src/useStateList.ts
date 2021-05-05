@@ -1,7 +1,7 @@
 import { useMemo, useRef } from 'react';
-import useMountedState from './useMountedState';
-import useUpdate from './useUpdate';
-import useUpdateEffect from './useUpdateEffect';
+import useMountedState from './useMountedState.js';
+import useUpdate from './useUpdate.js';
+import useUpdateEffect from './useUpdateEffect.js';
 
 export interface UseStateListReturn<T> {
   state: T;

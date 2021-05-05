@@ -1,7 +1,7 @@
 import { cloneElement, FC, useEffect, useRef, useState } from 'react';
 import { render } from 'react-universal-interface';
-import useLatest from './useLatest';
-import { noop, off, on } from './misc/util';
+import useLatest from './useLatest.js';
+import { noop, off, on } from './misc/util.js';
 
 export interface ScratchSensorParams {
   disabled?: boolean;

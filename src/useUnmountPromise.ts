@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react';
-import useEffectOnce from './useEffectOnce';
+import useEffectOnce from './useEffectOnce.js';
 
 export type Race = <P extends Promise<any>, E = any>(promise: P, onError?: (error: E) => void) => P;
 

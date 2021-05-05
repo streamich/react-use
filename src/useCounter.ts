@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import useGetSet from './useGetSet';
-import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from './misc/hookState';
+import useGetSet from './useGetSet.js';
+import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from './misc/hookState.js';
 
 export interface CounterActions {
   inc: (delta?: number) => void;

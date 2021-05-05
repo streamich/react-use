@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { off, on } from './misc/util';
+import { off, on } from './misc/util.js';
 
 const usePageLeave = (onPageLeave, args = []) => {
   useEffect(() => {

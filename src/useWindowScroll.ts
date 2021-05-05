@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import { isBrowser, off, on } from './misc/util';
-import useRafState from './useRafState';
+import { isBrowser, off, on } from './misc/util.js';
+import useRafState from './useRafState.js';
 
 export interface State {
   x: number;

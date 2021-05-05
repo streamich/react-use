@@ -1,3 +1,3 @@
-import useNumber from './useCounter';
+import useNumber from './useCounter.js';
 
 export default useNumber;

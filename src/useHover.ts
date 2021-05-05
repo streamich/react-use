@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { noop } from './misc/util';
+import { noop } from './misc/util.js';
 
 const { useState } = React;
 

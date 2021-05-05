@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useKey, { KeyFilter } from './useKey';
+import useKey, { KeyFilter } from './useKey.js';
 
 const useKeyPress = (keyFilter: KeyFilter) => {
   const [state, set] = useState<[boolean, null | KeyboardEvent]>([false, null]);

@@ -3,7 +3,7 @@ import { addon as addonCSSOM, CSSOMAddon } from 'nano-css/addon/cssom';
 import { addon as addonVCSSOM, VCSSOMAddon } from 'nano-css/addon/vcssom';
 import { cssToTree } from 'nano-css/addon/vcssom/cssToTree';
 import { useMemo } from 'react';
-import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect.js';
 
 type Nano = NanoRenderer & CSSOMAddon & VCSSOMAddon;
 const nano = create() as Nano;

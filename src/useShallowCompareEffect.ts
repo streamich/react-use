@@ -1,6 +1,6 @@
 import { DependencyList, EffectCallback } from 'react';
 import { equal as isShallowEqual } from 'fast-shallow-equal';
-import useCustomCompareEffect from './useCustomCompareEffect';
+import useCustomCompareEffect from './useCustomCompareEffect.js';
 
 const isPrimitive = (val: any) => val !== Object(val);
 const shallowEqualDepsList = (prevDeps: DependencyList, nextDeps: DependencyList) =>

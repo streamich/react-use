@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { StateValidator, UseStateValidatorReturn, ValidityState } from './useStateValidator';
+import { StateValidator, UseStateValidatorReturn, ValidityState } from './useStateValidator.js';
 
 export type MultiStateValidatorStates = any[] | { [p: string]: any } | { [p: number]: any };
 export type MultiStateValidator<

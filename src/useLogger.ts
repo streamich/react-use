@@ -1,5 +1,5 @@
-import useEffectOnce from './useEffectOnce';
-import useUpdateEffect from './useUpdateEffect';
+import useEffectOnce from './useEffectOnce.js';
+import useUpdateEffect from './useUpdateEffect.js';
 
 const useLogger = (componentName: string, ...rest) => {
   useEffectOnce(() => {

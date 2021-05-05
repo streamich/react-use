@@ -1,4 +1,4 @@
-import createHTMLMediaHook from './factory/createHTMLMediaHook';
+import createHTMLMediaHook from './factory/createHTMLMediaHook.js';
 
 const useVideo = createHTMLMediaHook<HTMLVideoElement>('video');
 

@@ -1,5 +1,5 @@
-import useTimeoutFn from './useTimeoutFn';
-import useUpdate from './useUpdate';
+import useTimeoutFn from './useTimeoutFn.js';
+import useUpdate from './useUpdate.js';
 
 export type UseTimeoutReturn = [() => boolean | null, () => void, () => void];
 

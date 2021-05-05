@@ -1,3 +1,3 @@
-import useBoolean from './useToggle';
+import useBoolean from './useToggle.js';
 
 export default useBoolean;

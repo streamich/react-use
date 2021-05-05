@@ -1,7 +1,7 @@
 import { useRef } from 'react';
-import useMount from './useMount';
-import useSetState from './useSetState';
-import { isBrowser } from './misc/util';
+import useMount from './useMount.js';
+import useSetState from './useSetState.js';
+import { isBrowser } from './misc/util.js';
 
 export interface SpeechState {
   isPlaying: boolean;

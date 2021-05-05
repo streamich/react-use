@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useFirstMountState } from './useFirstMountState';
+import { useFirstMountState } from './useFirstMountState.js';
 
 export type Predicate<T> = (prev: T | undefined, next: T) => boolean;
 

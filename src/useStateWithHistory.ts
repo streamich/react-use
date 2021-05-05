@@ -1,6 +1,6 @@
 import { Dispatch, useCallback, useMemo, useRef, useState } from 'react';
-import { useFirstMountState } from './useFirstMountState';
-import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from './misc/hookState';
+import { useFirstMountState } from './useFirstMountState.js';
+import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from './misc/hookState.js';
 
 interface HistoryState<S> {
   history: S[];

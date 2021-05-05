@@ -1,7 +1,7 @@
 import { RefObject, useEffect } from 'react';
 
-import useRafState from './useRafState';
-import { off, on } from './misc/util';
+import useRafState from './useRafState.js';
+import { off, on } from './misc/util.js';
 
 export interface State {
   docX: number;

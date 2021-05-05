@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import useUnmount from './useUnmount';
+import useUnmount from './useUnmount.js';
 
 const useThrottleFn = <T, U extends any[]>(fn: (...args: U) => T, ms: number = 200, args: U) => {
   const [state, setState] = useState<T | null>(null);

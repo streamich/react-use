@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useState } from 'react';
-import { off, on } from './misc/util';
+import { off, on } from './misc/util.js';
 
 // kudos: https://usehooks.com/
 const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {

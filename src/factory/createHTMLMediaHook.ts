@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
-import useSetState from '../useSetState';
-import parseTimeRanges from '../misc/parseTimeRanges';
+import useSetState from '../useSetState.js';
+import parseTimeRanges from '../misc/parseTimeRanges.js';
 
 export interface HTMLMediaProps
   extends React.AudioHTMLAttributes<any>,

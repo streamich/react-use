@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
-import { isBrowser, noop } from './misc/util';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect.js';
+import { isBrowser, noop } from './misc/util.js';
 
 export type UseMeasureRect = Pick<
   DOMRectReadOnly,

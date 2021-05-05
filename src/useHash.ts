@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import useLifecycles from './useLifecycles';
-import { off, on } from './misc/util';
+import useLifecycles from './useLifecycles.js';
+import { off, on } from './misc/util.js';
 
 /**
  * read and write url hash, response to url hash change

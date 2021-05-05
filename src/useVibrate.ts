@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { isNavigator, noop } from './misc/util';
+import { isNavigator, noop } from './misc/util.js';
 
 export type VibrationPattern = number | number[];
 

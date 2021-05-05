@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isBrowser, off, on } from './misc/util';
+import { isBrowser, off, on } from './misc/util.js';
 
 const { useState, useEffect, useRef } = React;
 
