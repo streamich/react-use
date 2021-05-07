@@ -84,7 +84,7 @@
     "@testing-library/react": "11.2.6",
     "@testing-library/react-hooks": "5.1.2",
     "@types/jest": "26.0.23",
-    "@types/react": "17.0.0",
+    "@types/react": "17.0.5",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
     "babel-core": "6.26.3",
