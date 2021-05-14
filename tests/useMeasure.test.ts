@@ -1,12 +1,12 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useMeasure, { UseMeasureRef } from '../src/useMeasure';
+import useMeasure from '../src/useMeasure';
 
-it('by default, state defaults every value to -1', () => {
+it('by default, state defaults every value to 0', () => {
   const { result } = renderHook(() => useMeasure());
 
   act(() => {
     const div = document.createElement('div');
-    (result.current[0] as UseMeasureRef)(div);
+    result.current[0](div);
   });
 
   expect(result.current[1]).toMatchObject({
@@ -33,7 +33,7 @@ it('synchronously sets up ResizeObserver listener', () => {
 
   act(() => {
     const div = document.createElement('div');
-    (result.current[0] as UseMeasureRef)(div);
+    result.current[0](div);
   });
 
   expect(typeof listener).toBe('function');
@@ -53,7 +53,7 @@ it('tracks rectangle of a DOM element', () => {
 
   act(() => {
     const div = document.createElement('div');
-    (result.current[0] as UseMeasureRef)(div);
+    result.current[0](div);
   });
 
   act(() => {
@@ -99,7 +99,7 @@ it('tracks multiple updates', () => {
 
   act(() => {
     const div = document.createElement('div');
-    (result.current[0] as UseMeasureRef)(div);
+    result.current[0](div);
   });
 
   act(() => {
@@ -172,7 +172,7 @@ it('calls .disconnect() on ResizeObserver when component unmounts', () => {
 
   act(() => {
     const div = document.createElement('div');
-    (result.current[0] as UseMeasureRef)(div);
+    result.current[0](div);
   });
 
   expect(disconnect).toHaveBeenCalledTimes(0);
@@ -181,3 +181,18 @@ it('calls .disconnect() on ResizeObserver when component unmounts', () => {
 
   expect(disconnect).toHaveBeenCalledTimes(1);
 });
+
+it('ref accepts null value', () => {
+  let observe = jest.fn();
+  (window as any).ResizeObserver = class ResizeObserver {
+    observe = observe;
+  };
+
+  const { result } = renderHook(() => useMeasure());
+
+  act(() => {
+    result.current[0](null);
+  });
+
+  expect(observe).not.toHaveBeenCalled();
+})
