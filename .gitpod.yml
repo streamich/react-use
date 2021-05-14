@@ -1,0 +1,10 @@
+tasks:
+  - name: Storybook
+    init: yarn install && gp sync-done install
+    command: yarn run start
+  - name: Tests
+    init: gp sync-await install
+    command: yarn test:watch
+ports:
+  - port: 6008
+    onOpen: open-preview
