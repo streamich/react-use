@@ -6,6 +6,10 @@ import { off, on } from './misc/util';
 export interface State {
   x: number;
   y: number;
+  direction: {
+    horizontal: 'up' | 'down' | 'none';
+    vertical: 'left' | 'right' | 'none';
+  }
 }
 
 const useScroll = (ref: RefObject<HTMLElement>): State => {
@@ -18,14 +22,35 @@ const useScroll = (ref: RefObject<HTMLElement>): State => {
   const [state, setState] = useRafState<State>({
     x: 0,
     y: 0,
+    direction: {
+      horizontal: 'none',
+      vertical: 'none'
+    }
+    
   });
 
   useEffect(() => {
     const handler = () => {
       if (ref.current) {
+        let horizontal:'up' | 'down' | 'none' = 'none',
+            vertical:'left' | 'right' | 'none' = 'none'; 
+
+        if(ref.current.scrollTop) {
+          if(state.y > ref.current.scrollTop) horizontal = 'down';
+          else if(state.y < ref.current.scrollTop) horizontal = 'up';
+        }
+  
+        if(ref.current.scrollLeft) {
+          if(state.x > ref.current.scrollLeft) vertical = 'left';
+          else if(state.x < ref.current.scrollLeft) vertical = 'right';
+        }
+
         setState({
           x: ref.current.scrollLeft,
           y: ref.current.scrollTop,
+          direction: {
+            horizontal, vertical
+          }
         });
       }
     };
