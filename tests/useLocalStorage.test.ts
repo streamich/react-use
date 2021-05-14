@@ -93,6 +93,14 @@ describe(useLocalStorage, () => {
     expect(state).toEqual('bar');
   });
 
+  it('should initialize only once', () => {
+    const getItemSpy = jest.spyOn(localStorage, 'getItem');
+    renderHook(() => useLocalStorage('foo', 'bar'));
+
+    expect(getItemSpy).toHaveBeenCalledWith('foo');
+    expect(getItemSpy).toHaveBeenCalledTimes(1);
+  });
+
   /*
   it('keeps multiple hooks accessing the same key in sync', () => {
     localStorage.setItem('foo', 'bar');
