@@ -5,13 +5,13 @@ type Action = {
   payload?: any;
 };
 
-type CreateMethods<M, T> = (
+export type CreateMethods<M, T> = (
   state: T
 ) => {
   [P in keyof M]: (payload?: any) => T;
 };
 
-type WrappedMethods<M> = {
+export type WrappedMethods<M> = {
   [P in keyof M]: (...payload: any) => void;
 };
 
