@@ -4,6 +4,7 @@ export { default as createReducer } from './factory/createReducer';
 export { default as createStateContext } from './factory/createStateContext';
 export { default as useAsync } from './useAsync';
 export { default as useAsyncFn } from './useAsyncFn';
+export { default as useAsyncPolling } from './useAsyncPolling';
 export { default as useAsyncRetry } from './useAsyncRetry';
 export { default as useAudio } from './useAudio';
 export { default as useBattery } from './useBattery';
