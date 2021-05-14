@@ -164,6 +164,7 @@
     <br/>
 - [**Miscellaneous**]()
   - [`useEnsuredForwardedRef`](./docs/useEnsuredForwardedRef.md) and [`ensuredForwardRef`](./docs/useEnsuredForwardedRef.md) &mdash; use a React.forwardedRef safely. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-useensuredforwardedref--demo)
+  - [`useUniqueId`](./docs/useUniqueId.md) &mdash; generate a unique ID. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-useuniqueid--demo)
 
 <br />
 <br />
