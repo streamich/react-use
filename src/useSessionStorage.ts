@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, SetStateAction, Dispatch } from 'react';
 import { isBrowser } from './misc/util';
 
 const useSessionStorage = <T>(
   key: string,
   initialValue?: T,
   raw?: boolean
-): [T, (value: T) => void] => {
+): [T, Dispatch<SetStateAction<T>>] => {
   if (!isBrowser) {
     return [initialValue as T, () => {}];
   }
