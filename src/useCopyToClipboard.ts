@@ -1,7 +1,7 @@
 import writeText from 'copy-to-clipboard';
 import { useCallback } from 'react';
-import useMountedState from './useMountedState';
-import useSetState from './useSetState';
+import useMountedState from './useMountedState.js';
+import useSetState from './useSetState.js';
 
 export interface CopyToClipboardState {
   value?: string;

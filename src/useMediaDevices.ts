@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { isNavigator, noop, off, on } from './misc/util';
+import { isNavigator, noop, off, on } from './misc/util.js';
 
 const useMediaDevices = () => {
   const [state, setState] = useState({});

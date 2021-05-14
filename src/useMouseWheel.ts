@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { off, on } from './misc/util';
+import { off, on } from './misc/util.js';
 
 export default () => {
   const [mouseWheelScrolled, setMouseWheelScrolled] = useState(0);

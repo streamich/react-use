@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { isBrowser } from './misc/util';
+import { isBrowser } from './misc/util.js';
 
 const useSessionStorage = <T>(
   key: string,

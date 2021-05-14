@@ -1,5 +1,5 @@
-import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
-import { off, on } from './misc/util';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect.js';
+import { off, on } from './misc/util.js';
 
 const isFocusedElementEditable = () => {
   const { activeElement, body } = document;

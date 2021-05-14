@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from '../misc/hookState';
-import useEffectOnce from '../useEffectOnce';
-import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect';
+import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from '../misc/hookState.js';
+import useEffectOnce from '../useEffectOnce.js';
+import useIsomorphicLayoutEffect from '../useIsomorphicLayoutEffect.js';
 
 export function createGlobalState<S = any>(
   initialState: IHookStateInitAction<S>

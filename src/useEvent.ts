@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { isBrowser, off, on } from './misc/util';
+import { isBrowser, off, on } from './misc/util.js';
 
 export interface ListenerType1 {
   addEventListener(name: string, handler: (event?: any) => void, ...args: any[]);

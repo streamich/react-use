@@ -1,6 +1,6 @@
 import { DependencyList, useCallback, useRef, useState } from 'react';
-import useMountedState from './useMountedState';
-import { FunctionReturningPromise, PromiseType } from './misc/types';
+import useMountedState from './useMountedState.js';
+import { FunctionReturningPromise, PromiseType } from './misc/types.js';
 
 export type AsyncState<T> =
   | {

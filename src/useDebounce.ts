@@ -1,5 +1,5 @@
 import { DependencyList, useEffect } from 'react';
-import useTimeoutFn from './useTimeoutFn';
+import useTimeoutFn from './useTimeoutFn.js';
 
 export type UseDebounceReturn = [() => boolean | null, () => void];
 

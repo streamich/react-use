@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { isBrowser, off, on } from './misc/util';
+import { isBrowser, off, on } from './misc/util.js';
 
 const getValue = (search: string, param: string) => new URLSearchParams(search).get(param);
 

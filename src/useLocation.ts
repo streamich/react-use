@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { isBrowser, off, on } from './misc/util';
+import { isBrowser, off, on } from './misc/util.js';
 
 const patchHistoryMethod = (method) => {
   const history = window.history;

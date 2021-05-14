@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { isNavigator, off, on } from './misc/util';
-import { IHookStateInitAction } from './misc/hookState';
+import { isNavigator, off, on } from './misc/util.js';
+import { IHookStateInitAction } from './misc/hookState.js';
 
 export interface INetworkInformation extends EventTarget {
   readonly downlink: number;

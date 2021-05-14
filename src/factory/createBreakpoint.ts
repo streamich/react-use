@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { isBrowser, off, on } from '../misc/util';
+import { isBrowser, off, on } from '../misc/util.js';
 
 const createBreakpoint = (
   breakpoints: { [name: string]: number } = { laptopL: 1440, laptop: 1024, tablet: 768 }

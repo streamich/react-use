@@ -1,5 +1,5 @@
 import { DependencyList, useCallback, useState } from 'react';
-import useAsync, { AsyncState } from './useAsync';
+import useAsync, { AsyncState } from './useAsync.js';
 
 export type AsyncStateRetry<T> = AsyncState<T> & {
   retry(): void;

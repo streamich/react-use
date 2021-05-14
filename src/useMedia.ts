@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { isBrowser } from './misc/util';
+import { isBrowser } from './misc/util.js';
 
 const useMedia = (query: string, defaultState: boolean = false) => {
   const [state, setState] = useState(

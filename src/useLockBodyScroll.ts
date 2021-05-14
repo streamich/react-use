@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useRef } from 'react';
-import { isBrowser, off, on } from './misc/util';
+import { isBrowser, off, on } from './misc/util.js';
 
 export function getClosestBody(
   el: Element | HTMLElement | HTMLIFrameElement | null

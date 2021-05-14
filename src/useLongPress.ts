@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react';
-import { off, on } from './misc/util';
+import { off, on } from './misc/util.js';
 
 interface Options {
   isPreventDefault?: boolean;

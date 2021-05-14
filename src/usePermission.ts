@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { noop, off, on } from './misc/util';
+import { noop, off, on } from './misc/util.js';
 
 type PermissionDesc =
   | PermissionDescriptor
