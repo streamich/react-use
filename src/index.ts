@@ -25,6 +25,7 @@ export { default as useEnsuredForwardedRef, ensuredForwardRef } from './useEnsur
 export { default as useEvent } from './useEvent';
 export { default as useError } from './useError';
 export { default as useFavicon } from './useFavicon';
+export { default as useFocus } from './useFocus';
 export { default as useFullscreen } from './useFullscreen';
 export { default as useGeolocation } from './useGeolocation';
 export { default as useGetSet } from './useGetSet';
