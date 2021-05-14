@@ -1,6 +1,6 @@
-import useLocalStorage from '../src/useLocalStorage';
+import { act, renderHook } from '@testing-library/react-hooks';
 import 'jest-localstorage-mock';
-import { renderHook, act } from '@testing-library/react-hooks';
+import useLocalStorage from '../src/useLocalStorage';
 
 describe(useLocalStorage, () => {
   afterEach(() => {
@@ -223,11 +223,11 @@ describe(useLocalStorage, () => {
 
     it('returns a string after an update', () => {
       localStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
-      const { result, rerender } = renderHook(() => useLocalStorage('foo', null, { raw: true }));
+      const { result, rerender } = renderHook(() => useLocalStorage<any>('foo', null, { raw: true }));
 
       const [, setFoo] = result.current;
 
-      act(() => setFoo({ fizz: 'bang' } as any));
+      act(() => setFoo({ fizz: 'bang' }));
       rerender();
 
       const [foo] = result.current;
@@ -240,11 +240,11 @@ describe(useLocalStorage, () => {
 
     it('still forces setState to a string', () => {
       localStorage.setItem('foo', JSON.stringify({ fizz: 'buzz' }));
-      const { result, rerender } = renderHook(() => useLocalStorage('foo', null, { raw: true }));
+      const { result, rerender } = renderHook(() => useLocalStorage<any>('foo', null, { raw: true }));
 
       const [, setFoo] = result.current;
 
-      act(() => setFoo({ fizz: 'bang' } as any));
+      act(() => setFoo({ fizz: 'bang' }));
       rerender();
 
       const [value] = result.current;
