@@ -5,10 +5,10 @@ React state hook that tracks a [Set](https://developer.mozilla.org/en-US/docs/We
 ## Usage
 
 ```jsx
-import {useSet} from 'react-use';
+import { useSet } from 'react-use';
 
 const Demo = () => {
-  const [set, { add, has, remove, toggle, reset }] = useSet(new Set(['hello']));
+  const [set, { add, has, remove, toggle, reset, clear }] = useSet(new Set(['hello']));
 
   return (
     <div>
@@ -18,6 +18,7 @@ const Demo = () => {
         Remove 'hello'
       </button>
       <button onClick={() => toggle('hello')}>Toggle hello</button>
+      <button onClick={() => clear()}>Clear</button>
       <pre>{JSON.stringify(Array.from(set), null, 2)}</pre>
     </div>
   );
