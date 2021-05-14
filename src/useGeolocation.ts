@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import useMountedState from './useMountedState';
 
 /**
  * @desc Made compatible with {GeolocationPositionError} and {PositionError} cause
@@ -38,11 +39,11 @@ const useGeolocation = (options?: PositionOptions): GeoLocationSensorState => {
     speed: null,
     timestamp: Date.now(),
   });
-  let mounted = true;
+  const isMounted = useMountedState();
   let watchId: any;
 
   const onEvent = (event: any) => {
-    if (mounted) {
+    if (isMounted()) {
       setState({
         loading: false,
         accuracy: event.coords.accuracy,
@@ -57,14 +58,13 @@ const useGeolocation = (options?: PositionOptions): GeoLocationSensorState => {
     }
   };
   const onEventError = (error: IGeolocationPositionError) =>
-    mounted && setState((oldState) => ({ ...oldState, loading: false, error }));
+    isMounted() && setState((oldState) => ({ ...oldState, loading: false, error }));
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(onEvent, onEventError, options);
     watchId = navigator.geolocation.watchPosition(onEvent, onEventError, options);
 
     return () => {
-      mounted = false;
       navigator.geolocation.clearWatch(watchId);
     };
   }, []);

@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import useMountedState from './useMountedState';
 import { noop, off, on } from './misc/util';
 
 type PermissionDesc =
@@ -10,13 +11,13 @@ type PermissionDesc =
 type State = PermissionState | '';
 
 const usePermission = (permissionDesc: PermissionDesc): State => {
-  let mounted = true;
   let permissionStatus: PermissionStatus | null = null;
 
   const [state, setState] = useState<State>('');
+  const isMounted = useMountedState();
 
   const onChange = () => {
-    if (mounted && permissionStatus) {
+    if (isMounted() && permissionStatus) {
       setState(permissionStatus.state);
     }
   };
@@ -36,7 +37,6 @@ const usePermission = (permissionDesc: PermissionDesc): State => {
       .catch(noop);
 
     return () => {
-      mounted = false;
       permissionStatus && off(permissionStatus, 'change', onChange);
     };
   }, []);

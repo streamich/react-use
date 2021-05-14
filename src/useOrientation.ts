@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import useMountedState from './useMountedState';
 import { off, on } from './misc/util';
 
 export interface OrientationState {
@@ -13,13 +14,13 @@ const defaultState: OrientationState = {
 
 const useOrientation = (initialState: OrientationState = defaultState) => {
   const [state, setState] = useState(initialState);
+  const isMounted = useMountedState();
 
   useEffect(() => {
     const screen = window.screen;
-    let mounted = true;
 
     const onChange = () => {
-      if (mounted) {
+      if (isMounted()) {
         const { orientation } = screen as any;
 
         if (orientation) {
@@ -40,7 +41,6 @@ const useOrientation = (initialState: OrientationState = defaultState) => {
     onChange();
 
     return () => {
-      mounted = false;
       off(window, 'orientationchange', onChange);
     };
   }, []);
