@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react';
-import useMountedState from './useMountedState';
-import { noop } from './misc/util';
+import { useMemo, useState } from "react";
+import { noop } from "./misc/util";
+import useMountedState from "./useMountedState";
 
 export interface DropAreaState {
   over: boolean;
@@ -30,7 +30,7 @@ const createProcess = (options: DropAreaOptions, mounted: boolean) => (
   dataTransfer: DataTransfer,
   event
 ) => {
-  const uri = dataTransfer.getData('text/uri-list');
+  const uri = dataTransfer.getData("text/uri-list");
 
   if (uri) {
     (options.onUri || noop)(uri, event);
@@ -75,10 +75,9 @@ const createBond = (process, setOver): DropAreaBond => ({
 });
 
 const useDropArea = (options: DropAreaOptions = {}): [DropAreaBond, DropAreaState] => {
-  const { onFiles, onText, onUri } = options;
   const isMounted = useMountedState();
   const [over, setOver] = useState<boolean>(false);
-  const process = useMemo(() => createProcess(options, isMounted()), [onFiles, onText, onUri]);
+  const process = useMemo(() => createProcess(options, isMounted()), [isMounted, options]);
   const bond: DropAreaBond = useMemo(() => createBond(process, setOver), [process, setOver]);
 
   return [bond, { over }];
