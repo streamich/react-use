@@ -10,10 +10,6 @@ import { useDevicePixelRatio } from 'react-use';
 const Demo = () => {
   const pixelRatio = useDevicePixelRatio();
 
-  return (
-    <div>
-      <div>pixelRatio: {pixelRatio}</div>
-    </div>
-  );
+  return <div>pixelRatio: {pixelRatio}</div>;
 };
 ```

@@ -6,11 +6,7 @@ import ShowDocs from './util/ShowDocs';
 const Demo = () => {
   const pixelRatio = useDevicePixelRatio();
 
-  return (
-    <div>
-      <div>pixelRatio: {pixelRatio}</div>
-    </div>
-  );
+  return <div>pixelRatio: {pixelRatio}</div>;
 };
 
 storiesOf('Sensors/useDevicePixelRatio', module)
