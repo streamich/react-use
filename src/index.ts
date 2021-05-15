@@ -18,6 +18,7 @@ export { default as useCustomCompareEffect } from './useCustomCompareEffect';
 export { default as useDebounce } from './useDebounce';
 export { default as useDeepCompareEffect } from './useDeepCompareEffect';
 export { default as useDefault } from './useDefault';
+export { default as useDevicePixelRatio } from './useDevicePixelRatio';
 export { default as useDrop } from './useDrop';
 export { default as useDropArea } from './useDropArea';
 export { default as useEffectOnce } from './useEffectOnce';
