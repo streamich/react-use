@@ -8,7 +8,6 @@ describe('useTitle', () => {
 
   it('should update document title', () => {
     const hook = renderHook((props) => useTitle(props), { initialProps: 'My page title' });
-
     expect(document.title).toBe('My page title');
     hook.rerender('My other page title');
     expect(document.title).toBe('My other page title');
@@ -18,8 +17,8 @@ describe('useTitle', () => {
     renderHook((props) => useTitle(props), { initialProps: 'Old Title' });
     expect(document.title).toBe('Old Title');
 
-    const hook = renderHook((props) => useTitle(props.title, { restoreOnUnmount: props.restore }), {
-      initialProps: { title: 'New Title', restore: true },
+    const hook = renderHook((props) => useTitle(props.title), {
+      initialProps: { title: 'New Title' },
     });
     expect(document.title).toBe('New Title');
     hook.unmount();

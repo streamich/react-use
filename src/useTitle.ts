@@ -5,21 +5,23 @@ export interface UseTitleOptions {
 }
 
 const DEFAULT_USE_TITLE_OPTIONS: UseTitleOptions = {
-  restoreOnUnmount: false,
+  restoreOnUnmount: true,
 };
 
 function useTitle(title: string, options: UseTitleOptions = DEFAULT_USE_TITLE_OPTIONS) {
-  const prevTitleRef = useRef(document.title);
-  document.title = title;
+  const orignalTitleRef = useRef(document.title);
   useEffect(() => {
     if (options && options.restoreOnUnmount) {
       return () => {
-        document.title = prevTitleRef.current;
+        document.title = orignalTitleRef.current;
       };
-    } else {
-      return;
     }
+    return;
   }, []);
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
 }
 
-export default typeof document !== 'undefined' ? useTitle : (_title: string) => {};
+export default typeof document !== "undefined" ? useTitle : (_title: string) => {};
