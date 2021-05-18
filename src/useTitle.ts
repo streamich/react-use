@@ -11,9 +11,10 @@ const DEFAULT_USE_TITLE_OPTIONS: UseTitleOptions = {
 function useTitle(title: string, options: UseTitleOptions = DEFAULT_USE_TITLE_OPTIONS) {
   const orignalTitleRef = useRef(document.title);
   useEffect(() => {
+    const originalTitle = orignalTitleRef.current;
     if (options && options.restoreOnUnmount) {
       return () => {
-        document.title = orignalTitleRef.current;
+        document.title = originalTitle;
       };
     }
     return;
@@ -24,4 +25,4 @@ function useTitle(title: string, options: UseTitleOptions = DEFAULT_USE_TITLE_OP
   }, [title]);
 }
 
-export default typeof document !== "undefined" ? useTitle : (_title: string) => {};
+export default typeof document !== 'undefined' ? useTitle : (_title: string) => {};
