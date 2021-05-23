@@ -1,0 +1,546 @@
+{
+  "version-17.2.4/docs": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Getting Started",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-17.2.4/gettingStarted"
+        },
+        {
+          "type": "doc",
+          "id": "version-17.2.4/Usage"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Hooks",
+      "items": [
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Sensors",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-17.2.4/Sensors"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useBattery"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useGeolocation"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useHover"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useHash"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useIdle"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useIntersection"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useKey"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useKeyPress"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useKeyPressEvent"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useKeyboardJs"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useLocation"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useLongPress"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMedia"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMediaDevices"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMotion"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMouse"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMouseWheel"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useNetworkState"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useOrientation"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/usePageLeave"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useScratch"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useScroll"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useScrolling"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useSearchParam"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useStartTyping"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useWindowScroll"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useWindowSize"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMeasure"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useScrollbarWidth"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useSize"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/createBreakpoint"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "UI",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-17.2.4/UI"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useAudio"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useClickAway"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useCss"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useDrop"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useFullscreen"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useSlider"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useSpeech"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useVibrate"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useVideo"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Animations",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-17.2.4/Animations"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useHarmonicIntervalFn"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useInterval"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useRaf"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useSpring"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useTimeout"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useTween"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useUpdate"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useTimeoutFn"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Side-effects",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-17.2.4/Side-effects"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useAsync"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useAsyncFn"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useAsyncRetry"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useBeforeUnload"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useCookie"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useCopyToClipboard"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useDebounce"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useError"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useFavicon"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useLocalStorage"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useLockBodyScroll"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/usePermission"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useRafLoop"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useSessionStorage"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useThrottle"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useThrottleFn"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useTitle"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "Lifecycles",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-17.2.4/Lifecycles"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useEffectOnce"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useEvent"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useLifecycles"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMountedState"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useCustomCompareEffect"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useDeepCompareEffect"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useIsomorphicLayoutEffect"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useLogger"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMount"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/usePromise"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useShallowCompareEffect"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useUnmount"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useUnmountPromise"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useUpdateEffect"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "state",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-17.2.4/State"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/createMemo"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/createReducer"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/createReducerContext"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/createStateContext"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useDefault"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useGetSet"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useGetSetState"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useLatest"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useObservable"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/usePrevious"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/usePreviousDistinct"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useRafState"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useSetState"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useStateList"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useToggle"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useCounter"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useList"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/createGlobalState"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useFirstMountState"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMap"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMediatedState"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMethods"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useMultiStateValidator"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useQueue"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useRendersCount"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useSet"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useStateValidator"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useStateWithHistory"
+            },
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useUpsert"
+            }
+          ]
+        },
+        {
+          "collapsed": true,
+          "type": "category",
+          "label": "miscellaneous",
+          "items": [
+            {
+              "type": "doc",
+              "id": "version-17.2.4/useEnsuredForwardedRef"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Contribute",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-17.2.4/CONTRIBUTING"
+        }
+      ]
+    }
+  ]
+}
