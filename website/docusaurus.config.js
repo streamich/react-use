@@ -6,13 +6,15 @@ module.exports = {
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   // baseUrl: '/react-use/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
   favicon: 'img/logo.ico',
   organizationName: 'streamich',
   projectName: 'react-use',
+  onBrokenLinks: 'ignore',
   themeConfig: {
+    hideableSidebar: true,
     navbar: {
+      hideOnScroll: true,
       title: 'react-use',
       logo: {
         alt: 'react-use Logo',
