@@ -3588,16 +3588,15 @@
     lz-string "^1.4.4"
     pretty-format "^26.6.2"
 
-"@testing-library/react-hooks@5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@testing-library/react-hooks/-/react-hooks-5.1.2.tgz#36e359d992bb652a9885c6fa9aa394639cbe8dd3"
-  integrity sha512-jwhtDYZ5gQUIX8cmVCVdtwNvuF5EiCOWjokRlTV+o/V0GdtRZDykUllL1OXq5PS4+J33wGLNQeeWzEHcWrH7tg==
+"@testing-library/react-hooks@7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/react-hooks/-/react-hooks-7.0.0.tgz#dd6d37a7e018f147a3b9153137f10e013be8472b"
+  integrity sha512-WFBGH8DWdIGGBHt6PBtQPe2v4Kbj9vQ1sQ9qLBTmwn1PNggngint4MTE/IiWCYhPbyTW3oc/7X62DObMn/AjQQ==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@types/react" ">=16.9.0"
     "@types/react-dom" ">=16.9.0"
     "@types/react-test-renderer" ">=16.9.0"
-    filter-console "^0.1.1"
     react-error-boundary "^3.1.0"
 
 "@testing-library/react@11.2.6":
@@ -3607,6 +3606,13 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
+
+"@testing-library/user-event@^13.1.9":
+  version "13.1.9"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.1.9.tgz#29e49a42659ac3c1023565ff56819e0153a82e99"
+  integrity sha512-NZr0zL2TMOs2qk+dNlqrAdbaRW5dAmYwd1yuQ4r7HpkVEOj0MWuUjDWwKhcLd/atdBy8ZSMHSKp+kXSQe47ezg==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -7881,11 +7887,6 @@ fill-range@^7.0.1:
   integrity sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==
   dependencies:
     to-regex-range "^5.0.1"
-
-filter-console@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/filter-console/-/filter-console-0.1.1.tgz#6242be28982bba7415bcc6db74a79f4a294fa67c"
-  integrity sha512-zrXoV1Uaz52DqPs+qEwNJWJFAWZpYJ47UNmpN9q4j+/EYsz85uV0DC9k8tRND5kYmoVzL0W+Y75q4Rg8sRJCdg==
 
 finalhandler@~1.1.2:
   version "1.1.2"
