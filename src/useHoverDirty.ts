@@ -24,7 +24,7 @@ const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
     const { current } = ref;
 
     return () => {
-      if (enabled && current) {
+      if (current) {
         off(current, 'mouseover', onMouseOver);
         off(current, 'mouseout', onMouseOut);
       }
