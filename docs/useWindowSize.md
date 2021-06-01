@@ -2,14 +2,13 @@
 
 React sensor hook that tracks dimensions of the browser window.
 
-
 ## Usage
 
 ```jsx
-import {useWindowSize} from 'react-use';
+import { useWindowSize } from "react-use";
 
 const Demo = () => {
-  const {width, height} = useWindowSize();
+  const { width, height } = useWindowSize();
 
   return (
     <div>
