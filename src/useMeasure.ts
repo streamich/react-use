@@ -28,7 +28,8 @@ function useMeasure<E extends Element = Element>(): UseMeasureResult<E> {
     () =>
       new (window as any).ResizeObserver((entries) => {
         if (entries[0]) {
-          const { x, y, width, height, top, left, bottom, right } = entries[0].contentRect;
+          const { x, y, width, height, top, left, bottom, right } =
+            entries[0].target.getBoundingClientRect();
           setRect({ x, y, width, height, top, left, bottom, right });
         }
       }),
