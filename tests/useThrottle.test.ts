@@ -72,4 +72,22 @@ describe('useThrottle', () => {
     jest.advanceTimersByTime(100);
     expect(hook.result.current).toBe(0);
   });
+
+  it('should handle function values', () => {
+    const { result } = renderHook((props) => useThrottle(props, 100), { initialProps: () => 0 });
+    expect(result.current).toBe(0);
+  });
+
+  it('should handle function value updates', (done) => {
+    const hook = renderHook((props) => useThrottle(props, 100), { initialProps: () => 0 });
+    expect(hook.result.current).toBe(0);
+
+    hook.rerender(() => 1);
+    expect(hook.result.current).toBe(0);
+    hook.waitForNextUpdate().then(() => {
+      expect(hook.result.current).toBe(1);
+      done();
+    });
+    jest.advanceTimersByTime(100);
+  });
 });
