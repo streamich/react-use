@@ -4,11 +4,6 @@ import { FunctionReturningPromise, PromiseType } from './misc/types';
 
 export type AsyncState<T> =
   | {
-      loading: boolean;
-      error?: undefined;
-      value?: undefined;
-    }
-  | {
       loading: true;
       error?: Error | undefined;
       value?: T;
@@ -22,6 +17,11 @@ export type AsyncState<T> =
       loading: false;
       error?: undefined;
       value: T;
+    }
+  | {
+      loading: boolean;
+      error?: undefined;
+      value?: undefined;
     };
 
 type StateFromFunctionReturningPromise<T extends FunctionReturningPromise> = AsyncState<
