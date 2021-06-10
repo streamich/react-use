@@ -26,7 +26,7 @@ export function createGlobalState<S>(initialState?: S) {
   };
 
   return () => {
-    const [globalState, stateSetter] = useState<S | undefined>(store.state);
+    const [, stateSetter] = useState<S | undefined>(store.state);
 
     useEffectOnce(() => () => {
       store.setters = store.setters.filter((setter) => setter !== stateSetter);
@@ -38,7 +38,7 @@ export function createGlobalState<S>(initialState?: S) {
       }
     });
 
-    return [globalState, store.setState];
+    return [store.state, store.setState];
   };
 }
 

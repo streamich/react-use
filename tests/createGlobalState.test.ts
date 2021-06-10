@@ -6,6 +6,19 @@ describe('useGlobalState', () => {
     expect(createGlobalState).toBeDefined();
   });
 
+  it('does not mix two different global states', () => {
+    const states = {
+      1: createGlobalState(1),
+      2: createGlobalState(2),
+    };
+    const useSharedState = (id) => states[id]();
+
+    const { result: result, rerender } = renderHook((id) => useSharedState(id), { initialProps: 1 });
+    expect(result.current[0]).toBe(1);
+    rerender(2);
+    expect(result.current[0]).toBe(2);
+  });
+
   it('both components should be updated', () => {
     const useGlobalValue = createGlobalState(0);
     const { result: result1 } = renderHook(() => useGlobalValue());
