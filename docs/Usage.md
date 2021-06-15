@@ -16,10 +16,19 @@ Depending on your bundler you might run into a missing dependency error with ES6
 
 ```json
 [
-  "import", {
-    "libraryName": "react-use",
-    "libraryDirectory": "lib",
-    "camel2DashComponentName": false
-  }
-]
+      'import',
+      {
+        libraryName: 'react-use',
+        camel2DashComponentName: false,
+        customName(/** @type {string} */ name) {
+          const libraryDirectory = name.startsWith('Use')
+            ? 'lib/component'
+            : name.startsWith('create')
+            ? 'lib/factory'
+            : 'lib'
+          return `react-use/${libraryDirectory}/${name}`
+        }
+      },
+      'import-react-use'
+    ]
 ```
