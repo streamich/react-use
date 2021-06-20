@@ -44,8 +44,10 @@ export default function useStateList<T>(stateSet: T[] = []): UseStateListReturn<
         // in case of negative index it will start counting from the right, so -17 will bring us to 4th element
         index.current =
           newIndex >= 0
-            ? newIndex % stateSet.length
-            : stateSet.length + (newIndex % stateSet.length);
+          ? newIndex % stateSet.length
+          : newIndex === -1
+          ? stateSet.length - 1
+          : stateSet.length + (newIndex % stateSet.length);
         update();
       },
       setState: (state: T) => {
