@@ -19,6 +19,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State/useLoading', module)
+storiesOf('UI/useLoading', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useLoading.md')} />)
   .add('Demo', () => <Demo />);
