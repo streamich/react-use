@@ -1,43 +1,35 @@
 import { useEffect, useState } from 'react';
 import { noop, off, on } from './misc/util';
 
-type PermissionDesc =
-  | PermissionDescriptor
-  | DevicePermissionDescriptor
-  | MidiPermissionDescriptor
-  | PushPermissionDescriptor;
+export type IState = PermissionState | '';
 
-type State = PermissionState | '';
-
-const usePermission = (permissionDesc: PermissionDesc): State => {
-  let mounted = true;
-  let permissionStatus: PermissionStatus | null = null;
-
-  const [state, setState] = useState<State>('');
-
-  const onChange = () => {
-    if (mounted && permissionStatus) {
-      setState(permissionStatus.state);
-    }
-  };
-
-  const changeState = () => {
-    onChange();
-    on(permissionStatus, 'change', onChange);
-  };
+const usePermission = (permissionDesc: PermissionDescriptor): IState => {
+  const [state, setState] = useState<IState>('');
 
   useEffect(() => {
+    let mounted = true;
+    let permissionStatus: PermissionStatus | null = null;
+
+    const onChange = () => {
+      if (!mounted) {
+        return;
+      }
+      setState(() => permissionStatus?.state ?? '');
+    };
+
     navigator.permissions
       .query(permissionDesc)
       .then((status) => {
         permissionStatus = status;
-        changeState();
+        on(permissionStatus, 'change', onChange);
+        onChange();
       })
       .catch(noop);
 
     return () => {
-      mounted = false;
       permissionStatus && off(permissionStatus, 'change', onChange);
+      mounted = false;
+      permissionStatus = null;
     };
   }, []);
 

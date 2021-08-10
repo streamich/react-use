@@ -1,54 +1,90 @@
-import { useRef } from 'react';
-import useMount from './useMount';
-import useSetState from './useSetState';
-import { isBrowser } from './misc/util';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-export interface SpeechState {
-  isPlaying: boolean;
+type SpeechOptions = {
   lang: string;
-  voice: SpeechSynthesisVoice;
+  voice?: SpeechSynthesisVoice;
   rate: number;
   pitch: number;
   volume: number;
+};
+
+export type ISpeechOptions = Partial<SpeechOptions>;
+
+export type VoiceInfo = Pick<SpeechSynthesisVoice, 'lang' | 'name'>;
+
+export type ISpeechState = SpeechOptions & {
+  isPlaying: boolean;
+  status: string;
+  voiceInfo: VoiceInfo;
+};
+
+enum Status {
+  init,
+  play,
+  pause,
+  end,
 }
 
-export interface SpeechOptions {
-  lang?: string;
-  voice?: SpeechSynthesisVoice;
-  rate?: number;
-  pitch?: number;
-  volume?: number;
-}
-
-const voices =
-  isBrowser && typeof window.speechSynthesis === 'object' ? window.speechSynthesis.getVoices() : [];
-
-const useSpeech = (text: string, opts: SpeechOptions = {}): SpeechState => {
-  const [state, setState] = useSetState<SpeechState>({
-    isPlaying: false,
-    lang: opts.lang || 'default',
-    voice: opts.voice || voices[0],
-    rate: opts.rate || 1,
-    pitch: opts.pitch || 1,
-    volume: opts.volume || 1,
+const useSpeech = (text: string, options: ISpeechOptions): ISpeechState => {
+  let mounted = useRef<boolean>(false);
+  const [state, setState] = useState<ISpeechState>(() => {
+    const { lang = 'default', name = '' } = options.voice || {};
+    return {
+      isPlaying: false,
+      status: Status[Status.init],
+      lang: options.lang || 'default',
+      voiceInfo: { lang, name },
+      rate: options.rate || 1,
+      pitch: options.pitch || 1,
+      volume: options.volume || 1,
+    };
   });
 
-  const uterranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const handlePlay = useCallback(() => {
+    if (!mounted.current) {
+      return;
+    }
+    setState((preState) => {
+      return { ...preState, isPlaying: true, status: Status[Status.play] };
+    });
+  }, []);
 
-  useMount(() => {
+  const handlePause = useCallback(() => {
+    if (!mounted.current) {
+      return;
+    }
+    setState((preState) => {
+      return { ...preState, isPlaying: false, status: Status[Status.pause] };
+    });
+  }, []);
+
+  const handleEnd = useCallback(() => {
+    if (!mounted.current) {
+      return;
+    }
+    setState((preState) => {
+      return { ...preState, isPlaying: false, status: Status[Status.end] };
+    });
+  }, []);
+
+  useEffect(() => {
+    mounted.current = true;
     const utterance = new SpeechSynthesisUtterance(text);
-    opts.lang && (utterance.lang = opts.lang);
-    opts.voice && (utterance.voice = opts.voice);
-    utterance.rate = opts.rate || 1;
-    utterance.pitch = opts.pitch || 1;
-    utterance.volume = opts.volume || 1;
-    utterance.onstart = () => setState({ isPlaying: true });
-    utterance.onresume = () => setState({ isPlaying: true });
-    utterance.onend = () => setState({ isPlaying: false });
-    utterance.onpause = () => setState({ isPlaying: false });
-    uterranceRef.current = utterance;
-    window.speechSynthesis.speak(uterranceRef.current);
-  });
+    options.lang && (utterance.lang = options.lang);
+    options.voice && (utterance.voice = options.voice);
+    utterance.rate = options.rate || 1;
+    utterance.pitch = options.pitch || 1;
+    utterance.volume = options.volume || 1;
+    utterance.onstart = handlePlay;
+    utterance.onpause = handlePause;
+    utterance.onresume = handlePlay;
+    utterance.onend = handleEnd;
+    window.speechSynthesis.speak(utterance);
+
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
 
   return state;
 };
