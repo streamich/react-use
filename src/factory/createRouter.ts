@@ -1,5 +1,4 @@
-/* eslint-disable */
-import * as React from 'react';
+import React from 'react';
 
 export interface RouterProviderProps {
   route: string;
@@ -14,7 +13,7 @@ const createRouter = () => {
 
   // not sure if this supposed to be unused, ignoring ts error for now
   // @ts-ignore
-  const Router: React.SFC<RouterProviderProps> = props => {
+  const Router: React.SFC<RouterProviderProps> = (props) => {
     const { route, fullRoute, parent, children } = props;
 
     if (process.env.NODE_ENV !== 'production') {

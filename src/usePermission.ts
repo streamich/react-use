@@ -1,6 +1,5 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react';
-import { off, on } from './util';
+import { noop, off, on } from './misc/util';
 
 type PermissionDesc =
   | PermissionDescriptor
@@ -9,8 +8,6 @@ type PermissionDesc =
   | PushPermissionDescriptor;
 
 type State = PermissionState | '';
-
-const noop = () => {};
 
 const usePermission = (permissionDesc: PermissionDesc): State => {
   let mounted = true;
@@ -32,7 +29,7 @@ const usePermission = (permissionDesc: PermissionDesc): State => {
   useEffect(() => {
     navigator.permissions
       .query(permissionDesc)
-      .then(status => {
+      .then((status) => {
         permissionStatus = status;
         changeState();
       })

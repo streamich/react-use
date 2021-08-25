@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import { replaceRaf } from 'raf-stub';
 import useWindowSize from '../src/useWindowSize';
-import { isClient } from '../src/util';
+import { isBrowser } from '../src/misc/util';
 
 declare var requestAnimationFrame: {
   reset: () => void;
@@ -46,8 +46,8 @@ describe('useWindowSize', () => {
   it('should use passed parameters as initial values in case of non-browser use', () => {
     const hook = getHook(1, 1);
 
-    expect(hook.result.current.height).toBe(isClient ? window.innerHeight : 1);
-    expect(hook.result.current.width).toBe(isClient ? window.innerWidth : 1);
+    expect(hook.result.current.height).toBe(isBrowser ? window.innerHeight : 1);
+    expect(hook.result.current.width).toBe(isBrowser ? window.innerWidth : 1);
   });
 
   it('should re-render after height change on closest RAF', () => {

@@ -18,7 +18,7 @@ const DemoInner = ({ promise }) => {
 const Demo = () => {
   const [mounted, toggleMounted] = useBoolean(true);
   const [num, { inc }] = useNumber();
-  const promise = new Promise(r => setTimeout(() => r(num), 1_000));
+  const promise = new Promise((r) => setTimeout(() => r(num), 1_000));
 
   return (
     <div>
@@ -31,6 +31,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Lifecycle|usePromise', module)
+storiesOf('Lifecycle/usePromise', module)
   .add('Docs', () => <ShowDocs md={require('../docs/usePromise.md')} />)
   .add('Demo', () => <Demo />);

@@ -1,7 +1,9 @@
-/* eslint-disable */
 import { RefObject, useEffect, useRef } from 'react';
+import { isBrowser, off, on } from './misc/util';
 
-export function getClosestBody(el: Element | HTMLElement | HTMLIFrameElement | null): HTMLElement | null {
+export function getClosestBody(
+  el: Element | HTMLElement | HTMLIFrameElement | null
+): HTMLElement | null {
   if (!el) {
     return null;
   } else if (el.tagName === 'BODY') {
@@ -32,7 +34,7 @@ export interface BodyInfoItem {
 }
 
 const isIosDevice =
-  typeof window !== 'undefined' &&
+  isBrowser &&
   window.navigator &&
   window.navigator.platform &&
   /iP(ad|hone|od)/.test(window.navigator.platform);
@@ -46,15 +48,16 @@ let documentListenerAdded = false;
 export default !doc
   ? function useLockBodyMock(_locked: boolean = true, _elementRef?: RefObject<HTMLElement>) {}
   : function useLockBody(locked: boolean = true, elementRef?: RefObject<HTMLElement>) {
-      elementRef = elementRef || useRef(doc!.body);
+      const bodyRef = useRef(doc!.body);
+      elementRef = elementRef || bodyRef;
 
-      const lock = body => {
+      const lock = (body) => {
         const bodyInfo = bodies.get(body);
         if (!bodyInfo) {
           bodies.set(body, { counter: 1, initialOverflow: body.style.overflow });
           if (isIosDevice) {
             if (!documentListenerAdded) {
-              document.addEventListener('touchmove', preventDefault, { passive: false });
+              on(document, 'touchmove', preventDefault, { passive: false });
 
               documentListenerAdded = true;
             }
@@ -62,11 +65,14 @@ export default !doc
             body.style.overflow = 'hidden';
           }
         } else {
-          bodies.set(body, { counter: bodyInfo.counter + 1, initialOverflow: bodyInfo.initialOverflow });
+          bodies.set(body, {
+            counter: bodyInfo.counter + 1,
+            initialOverflow: bodyInfo.initialOverflow,
+          });
         }
       };
 
-      const unlock = body => {
+      const unlock = (body) => {
         const bodyInfo = bodies.get(body);
         if (bodyInfo) {
           if (bodyInfo.counter === 1) {
@@ -75,14 +81,17 @@ export default !doc
               body.ontouchmove = null;
 
               if (documentListenerAdded) {
-                document.removeEventListener('touchmove', preventDefault);
+                off(document, 'touchmove', preventDefault);
                 documentListenerAdded = false;
               }
             } else {
               body.style.overflow = bodyInfo.initialOverflow;
             }
           } else {
-            bodies.set(body, { counter: bodyInfo.counter - 1, initialOverflow: bodyInfo.initialOverflow });
+            bodies.set(body, {
+              counter: bodyInfo.counter - 1,
+              initialOverflow: bodyInfo.initialOverflow,
+            });
           }
         }
       };

@@ -15,6 +15,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('UI|useVibrate', module)
+storiesOf('UI/useVibrate', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useVibrate.md')} />)
   .add('Demo', () => <Demo />);

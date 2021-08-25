@@ -1,14 +1,19 @@
-/* eslint-disable */
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { StateValidator, UseStateValidatorReturn, ValidityState } from './useStateValidator';
 
 export type MultiStateValidatorStates = any[] | { [p: string]: any } | { [p: number]: any };
-export type MultiStateValidator<V extends ValidityState, S extends MultiStateValidatorStates> = StateValidator<V, S>;
+export type MultiStateValidator<
+  V extends ValidityState,
+  S extends MultiStateValidatorStates
+> = StateValidator<V, S>;
 
-export function useMultiStateValidator<V extends ValidityState, S extends MultiStateValidatorStates, I extends V>(
+export function useMultiStateValidator<
+  V extends ValidityState,
+  S extends MultiStateValidatorStates
+>(
   states: S,
   validator: MultiStateValidator<V, S>,
-  initialValidity: I = [undefined] as I
+  initialValidity: V = [undefined] as V
 ): UseStateValidatorReturn<V> {
   if (typeof states !== 'object') {
     throw new Error('states expected to be an object or array, got ' + typeof states);

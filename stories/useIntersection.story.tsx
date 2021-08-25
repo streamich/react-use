@@ -28,8 +28,7 @@ const Demo = () => {
         height: '400px',
         backgroundColor: 'whitesmoke',
         overflow: 'scroll',
-      }}
-    >
+      }}>
       Scroll me
       <Spacer />
       <div
@@ -39,8 +38,7 @@ const Demo = () => {
           height: '100px',
           padding: '20px',
           backgroundColor: 'palegreen',
-        }}
-      >
+        }}>
         {intersection && intersection.intersectionRatio < 1 ? 'Obscured' : 'Fully in view'}
       </div>
       <Spacer />

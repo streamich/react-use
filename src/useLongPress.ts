@@ -1,20 +1,20 @@
-/* eslint-disable */
 import { useCallback, useRef } from 'react';
+import { off, on } from './misc/util';
 
 interface Options {
   isPreventDefault?: boolean;
   delay?: number;
 }
 
-const isTouchEvent = (event: Event): event is TouchEvent => {
-  return 'touches' in event;
+const isTouchEvent = (ev: Event): ev is TouchEvent => {
+  return 'touches' in ev;
 };
 
-const preventDefault = (event: Event) => {
-  if (!isTouchEvent(event)) return;
+const preventDefault = (ev: Event) => {
+  if (!isTouchEvent(ev)) return;
 
-  if (event.touches.length < 2 && event.preventDefault) {
-    event.preventDefault();
+  if (ev.touches.length < 2 && ev.preventDefault) {
+    ev.preventDefault();
   }
 };
 
@@ -29,12 +29,12 @@ const useLongPress = (
     (event: TouchEvent | MouseEvent) => {
       // prevent ghost click on mobile devices
       if (isPreventDefault && event.target) {
-        event.target.addEventListener('touchend', preventDefault, { passive: false });
+        on(event.target, 'touchend', preventDefault, { passive: false });
         target.current = event.target;
       }
       timeout.current = setTimeout(() => callback(event), delay);
     },
-    [callback, delay]
+    [callback, delay, isPreventDefault]
   );
 
   const clear = useCallback(() => {
@@ -42,9 +42,9 @@ const useLongPress = (
     timeout.current && clearTimeout(timeout.current);
 
     if (isPreventDefault && target.current) {
-      target.current.removeEventListener('touchend', preventDefault);
+      off(target.current, 'touchend', preventDefault);
     }
-  }, []);
+  }, [isPreventDefault]);
 
   return {
     onMouseDown: (e: any) => start(e),

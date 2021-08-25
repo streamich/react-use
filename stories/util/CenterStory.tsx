@@ -8,8 +8,7 @@ export const CenterStory = ({ children }) => (
       alignItems: 'center',
       maxWidth: '400px',
       margin: '40px auto',
-    }}
-  >
+    }}>
     <div style={{ width: '100%' }}>{children}</div>
   </div>
 );

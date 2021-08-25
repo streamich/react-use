@@ -1,4 +1,3 @@
-/* eslint-disable */
 import writeText from 'copy-to-clipboard';
 import { useCallback } from 'react';
 import useMountedState from './useMountedState';
@@ -18,7 +17,7 @@ const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] =
     noUserInteraction: true,
   });
 
-  const copyToClipboard = useCallback(value => {
+  const copyToClipboard = useCallback((value) => {
     if (!isMounted()) {
       return;
     }
@@ -27,7 +26,9 @@ const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] =
     try {
       // only strings and numbers casted to strings can be copied to clipboard
       if (typeof value !== 'string' && typeof value !== 'number') {
-        const error = new Error(`Cannot copy typeof ${typeof value} to clipboard, must be a string`);
+        const error = new Error(
+          `Cannot copy typeof ${typeof value} to clipboard, must be a string`
+        );
         if (process.env.NODE_ENV === 'development') console.error(error);
         setState({
           value,

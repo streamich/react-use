@@ -21,6 +21,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('UI|useClickAway', module)
+storiesOf('UI/useClickAway', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useClickAway.md')} />)
   .add('Demo', () => <Demo />);

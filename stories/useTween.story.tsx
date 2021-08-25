@@ -9,6 +9,6 @@ const Demo = () => {
   return <div>Tween: {t}</div>;
 };
 
-storiesOf('Animation|useTween', module)
+storiesOf('Animation/useTween', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useTween.md')} />)
   .add('Demo', () => <Demo />);

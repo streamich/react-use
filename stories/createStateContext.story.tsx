@@ -12,7 +12,7 @@ const ComponentA = () => {
     <p>
       Component A:
       <br />
-      <input type="text" value={text} onInput={ev => setText(ev.currentTarget.value)} />
+      <input type="text" value={text} onInput={(ev) => setText(ev.currentTarget.value)} />
     </p>
   );
 };
@@ -23,7 +23,7 @@ const ComponentB = () => {
     <p>
       Component B:
       <br />
-      <input type="text" value={text} onInput={ev => setText(ev.currentTarget.value)} />
+      <input type="text" value={text} onInput={(ev) => setText(ev.currentTarget.value)} />
     </p>
   );
 };
@@ -38,6 +38,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|createStateContext', module)
+storiesOf('State/createStateContext', module)
   .add('Docs', () => <ShowDocs md={require('../docs/createStateContext.md')} />)
   .add('Demo', () => <Demo />);

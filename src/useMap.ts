@@ -1,5 +1,4 @@
-/* eslint-disable */
-import { useState, useMemo, useCallback } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 export interface StableActions<T extends object> {
   set: <K extends keyof T>(key: K, value: T[K]) => void;
@@ -18,7 +17,7 @@ const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>
   const stableActions = useMemo<StableActions<T>>(
     () => ({
       set: (key, entry) => {
-        set(prevMap => ({
+        set((prevMap) => ({
           ...prevMap,
           [key]: entry,
         }));
@@ -26,8 +25,8 @@ const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>
       setAll: (newMap: T) => {
         set(newMap);
       },
-      remove: key => {
-        set(prevMap => {
+      remove: (key) => {
+        set((prevMap) => {
           const { [key]: omit, ...rest } = prevMap;
           return rest as T;
         });
@@ -38,7 +37,7 @@ const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>
   );
 
   const utils = {
-    get: useCallback(key => map[key], [map]),
+    get: useCallback((key) => map[key], [map]),
     ...stableActions,
   } as Actions<T>;
 

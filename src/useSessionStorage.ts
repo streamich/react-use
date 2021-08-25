@@ -1,12 +1,16 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react';
-import { isClient } from './util';
+import { isBrowser } from './misc/util';
 
-const useSessionStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, (value: T) => void] => {
-  if (!isClient) {
+const useSessionStorage = <T>(
+  key: string,
+  initialValue?: T,
+  raw?: boolean
+): [T, (value: T) => void] => {
+  if (!isBrowser) {
     return [initialValue as T, () => {}];
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [state, setState] = useState<T>(() => {
     try {
       const sessionStorageValue = sessionStorage.getItem(key);
@@ -24,6 +28,7 @@ const useSessionStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T,
     }
   });
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     try {
       const serializedState = raw ? String(state) : JSON.stringify(state);

@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect } from 'react';
+import { isBrowser } from './misc/util';
 
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect;
 
 export default useIsomorphicLayoutEffect;

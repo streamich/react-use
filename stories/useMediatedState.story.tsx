@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useMediatedState } from '../src/useMediatedState';
 import ShowDocs from './util/ShowDocs';
 
-const inputMediator = s => s.replace(/[\s]+/g, ' ');
+const inputMediator = (s) => s.replace(/[\s]+/g, ' ');
 const Demo = () => {
   const [state, setState] = useMediatedState(inputMediator, '');
 
@@ -23,6 +23,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useMediatedState', module)
+storiesOf('State/useMediatedState', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useMediatedState.md')} />)
   .add('Demo', () => <Demo />);

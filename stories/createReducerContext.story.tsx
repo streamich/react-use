@@ -61,6 +61,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|createReducerContext', module)
+storiesOf('State/createReducerContext', module)
   .add('Docs', () => <ShowDocs md={require('../docs/createReducerContext.md')} />)
   .add('Demo', () => <Demo />);

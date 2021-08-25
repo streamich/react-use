@@ -34,7 +34,7 @@ const Demo = ({ delay }) => {
   );
 };
 
-storiesOf('Side effects|useAsyncRetry', module)
+storiesOf('Side effects/useAsyncRetry', module)
   .addDecorator(withKnobs)
   .add('Docs', () => <ShowDocs md={require('../docs/useAsyncRetry.md')} />)
   .add('Demo', () => {

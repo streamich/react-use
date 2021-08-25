@@ -11,6 +11,6 @@ const Demo = () => {
   return null;
 };
 
-storiesOf('Lifecycle|useLifecycles', module)
+storiesOf('Lifecycle/useLifecycles', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useLifecycles.md')} />)
   .add('Demo', () => <Demo />);

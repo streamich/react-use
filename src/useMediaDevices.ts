@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import { off, on } from './util';
-
-const noop = () => {};
+import { isNavigator, noop, off, on } from './misc/util';
 
 const useMediaDevices = () => {
   const [state, setState] = useState({});
@@ -12,10 +10,15 @@ const useMediaDevices = () => {
     const onChange = () => {
       navigator.mediaDevices
         .enumerateDevices()
-        .then(devices => {
+        .then((devices) => {
           if (mounted) {
             setState({
-              devices: devices.map(({ deviceId, groupId, kind, label }) => ({ deviceId, groupId, kind, label })),
+              devices: devices.map(({ deviceId, groupId, kind, label }) => ({
+                deviceId,
+                groupId,
+                kind,
+                label,
+              })),
             });
           }
         })
@@ -36,4 +39,4 @@ const useMediaDevices = () => {
 
 const useMediaDevicesMock = () => ({});
 
-export default typeof navigator === 'object' && !!navigator.mediaDevices ? useMediaDevices : useMediaDevicesMock;
+export default isNavigator && !!navigator.mediaDevices ? useMediaDevices : useMediaDevicesMock;

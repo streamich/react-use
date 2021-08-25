@@ -1,5 +1,17 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react';
+
+/**
+ * @desc Made compatible with {GeolocationPositionError} and {PositionError} cause
+ * PositionError been renamed to GeolocationPositionError in typescript 4.1.x and making
+ * own compatible interface is most easiest way to avoid errors.
+ */
+export interface IGeolocationPositionError {
+  readonly code: number;
+  readonly message: string;
+  readonly PERMISSION_DENIED: number;
+  readonly POSITION_UNAVAILABLE: number;
+  readonly TIMEOUT: number;
+}
 
 export interface GeoLocationSensorState {
   loading: boolean;
@@ -11,7 +23,7 @@ export interface GeoLocationSensorState {
   longitude: number | null;
   speed: number | null;
   timestamp: number | null;
-  error?: Error | PositionError;
+  error?: Error | IGeolocationPositionError;
 }
 
 const useGeolocation = (options?: PositionOptions): GeoLocationSensorState => {
@@ -44,8 +56,8 @@ const useGeolocation = (options?: PositionOptions): GeoLocationSensorState => {
       });
     }
   };
-  const onEventError = (error: PositionError) =>
-    mounted && setState(oldState => ({ ...oldState, loading: false, error }));
+  const onEventError = (error: IGeolocationPositionError) =>
+    mounted && setState((oldState) => ({ ...oldState, loading: false, error }));
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(onEvent, onEventError, options);

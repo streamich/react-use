@@ -1,8 +1,7 @@
 import * as React from 'react';
+import { noop } from './misc/util';
 
 const { useState } = React;
-
-const noop = () => {};
 
 export type Element = ((state: boolean) => React.ReactElement<any>) | React.ReactElement<any>;
 

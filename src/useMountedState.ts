@@ -10,7 +10,7 @@ export default function useMountedState(): () => boolean {
     return () => {
       mountedRef.current = false;
     };
-  });
+  }, []);
 
   return get;
 }

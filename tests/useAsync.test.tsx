@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { renderHook } from '@testing-library/react-hooks';
 import { useCallback } from 'react';
 import useAsync from '../src/useAsync';
@@ -13,7 +12,7 @@ describe('useAsync', () => {
     let callCount = 0;
 
     const resolver = async () => {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         callCount++;
 
         const wait = setTimeout(() => {
@@ -107,7 +106,7 @@ describe('useAsync', () => {
         return 'new value';
       };
 
-      beforeEach(done => {
+      beforeEach((done) => {
         callCount = 0;
 
         hook = renderHook(({ fn }) => useAsync(fn, [fn]), {
@@ -138,12 +137,12 @@ describe('useAsync', () => {
       let callCount = 0;
       let hook;
 
-      const staticFunction = async counter => {
+      const staticFunction = async (counter) => {
         callCount++;
         return `counter is ${counter} and callCount is ${callCount}`;
       };
 
-      beforeEach(done => {
+      beforeEach((done) => {
         callCount = 0;
         hook = renderHook(
           ({ fn, counter }) => {

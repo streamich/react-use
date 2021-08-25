@@ -14,6 +14,6 @@ const Demo = () => {
   return <button onClick={onClick}>Clicked: {get().cnt}</button>;
 };
 
-storiesOf('State|useGetSetState', module)
+storiesOf('State/useGetSetState', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useGetSetState.md')} />)
   .add('Demo', () => <Demo />);

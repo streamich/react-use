@@ -30,7 +30,7 @@ const DemoFunc = () => {
   );
 };
 
-storiesOf('Side effects|useBeforeUnload', module)
+storiesOf('Side effects/useBeforeUnload', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useBeforeUnload.md')} />)
   .add('Demo (boolean)', () => <DemoBool />)
   .add('Demo (function)', () => <DemoFunc />);

@@ -6,7 +6,7 @@ it('should have initialState value as the returned state value', () => {
     count: 10,
   };
 
-  const createMethods = state => ({
+  const createMethods = (state) => ({
     doStuff: () => state,
   });
 
@@ -20,7 +20,7 @@ it('should return wrappedMethods object containing all the methods defined in cr
     count: 10,
   };
 
-  const createMethods = state => ({
+  const createMethods = (state) => ({
     reset() {
       return initialState;
     },
@@ -45,7 +45,7 @@ it('should properly update the state based on the createMethods', () => {
     count,
   };
 
-  const createMethods = state => ({
+  const createMethods = (state) => ({
     reset() {
       return initialState;
     },

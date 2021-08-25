@@ -1,11 +1,11 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import createBreakpoint from '../src/createBreakpoint';
+import createBreakpoint from '../src/factory/createBreakpoint';
 
 const useBreakpointA = createBreakpoint();
 const useBreakpointB = createBreakpoint({ mobileM: 350, laptop: 1024, tablet: 768 });
 
 const originalInnerWidth = window.innerWidth;
-const changeInnerWidth = value =>
+const changeInnerWidth = (value) =>
   Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value });
 const revert = () => changeInnerWidth(originalInnerWidth);
 

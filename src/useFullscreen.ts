@@ -1,22 +1,25 @@
-/* eslint-disable */
 import { RefObject, useState } from 'react';
 import screenfull from 'screenfull';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
+import { noop, off, on } from './misc/util';
 
 export interface FullScreenOptions {
-  video?: RefObject<HTMLVideoElement & { webkitEnterFullscreen?: () => void; webkitExitFullscreen?: () => void; }>;
+  video?: RefObject<
+    HTMLVideoElement & { webkitEnterFullscreen?: () => void; webkitExitFullscreen?: () => void }
+  >;
   onClose?: (error?: Error) => void;
 }
 
-const noop = () => {
-};
-
-const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreenOptions = {}): boolean => {
+const useFullscreen = (
+  ref: RefObject<Element>,
+  enabled: boolean,
+  options: FullScreenOptions = {}
+): boolean => {
   const { video, onClose = noop } = options;
-  const [isFullscreen, setIsFullscreen] = useState(on);
+  const [isFullscreen, setIsFullscreen] = useState(enabled);
 
   useIsomorphicLayoutEffect(() => {
-    if (!on) {
+    if (!enabled) {
       return;
     }
     if (!ref.current) {
@@ -24,7 +27,9 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
     }
 
     const onWebkitEndFullscreen = () => {
-      video!.current!.removeEventListener('webkitendfullscreen', onWebkitEndFullscreen);
+      if (video?.current) {
+        off(video.current, 'webkitendfullscreen', onWebkitEndFullscreen);
+      }
       onClose();
     };
 
@@ -49,7 +54,7 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
       screenfull.on('change', onChange);
     } else if (video && video.current && video.current.webkitEnterFullscreen) {
       video.current.webkitEnterFullscreen();
-      video.current.addEventListener('webkitendfullscreen', onWebkitEndFullscreen);
+      on(video.current, 'webkitendfullscreen', onWebkitEndFullscreen);
       setIsFullscreen(true);
     } else {
       onClose();
@@ -62,14 +67,13 @@ const useFullscreen = (ref: RefObject<Element>, on: boolean, options: FullScreen
         try {
           screenfull.off('change', onChange);
           screenfull.exit();
-        } catch {
-        }
+        } catch {}
       } else if (video && video.current && video.current.webkitExitFullscreen) {
-        video.current.removeEventListener('webkitendfullscreen', onWebkitEndFullscreen);
+        off(video.current, 'webkitendfullscreen', onWebkitEndFullscreen);
         video.current.webkitExitFullscreen();
       }
     };
-  }, [on, video, ref]);
+  }, [enabled, video, ref]);
 
   return isFullscreen;
 };

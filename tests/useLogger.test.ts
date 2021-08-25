@@ -27,7 +27,8 @@ describe('useLogger', () => {
 
   it('should log updates as props change', () => {
     const { rerender } = renderHook(
-      ({ componentName, props }: { componentName: string; props: any }) => useLogger(componentName, props),
+      ({ componentName, props }: { componentName: string; props: any }) =>
+        useLogger(componentName, props),
       {
         initialProps: { componentName: 'Test', props: { one: 1 } },
       }
