@@ -64,9 +64,12 @@ render tree, for example:
   "duration": 425.952625,
   "paused": false,
   "muted": false,
-  "volume": 1
+  "volume": 1,
+  "playing": true
 }
 ```
+
+`playing`: The audio is being played and is affected by the network. If it starts to buffer audio, it will be false
 
 `controls` is a list collection of methods that allow you to control the
 playback of the audio, it has the following interface:

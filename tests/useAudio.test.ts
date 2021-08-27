@@ -23,6 +23,7 @@ it('should init audio and utils', () => {
   // Test state value
   expect(state.time).toBe(0);
   expect(state.paused).toBe(true);
+  expect(state.playing).toBe(false);
   expect(state.muted).toBe(false);
   expect(state.volume).toBe(1);
 
