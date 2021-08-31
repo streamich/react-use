@@ -17,7 +17,7 @@
     "test:ssr": "jest --maxWorkers 2 --config ./jest.config.node.ts",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint {src,tests,stories}/**/*.{ts,tsx}",
+    "lint": "eslint \"{src,tests,stories}/**/*.{ts,tsx}\"",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
     "build:cjs": "tsc",
