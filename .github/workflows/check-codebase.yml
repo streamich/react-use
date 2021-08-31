@@ -72,12 +72,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest]
         node: [12, 14, 16]
         exclude:
           - os: macos-latest
-            node: 12
-          - os: windows-latest
             node: 12
     steps:
       - name: Check out repository
