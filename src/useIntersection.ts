@@ -4,10 +4,8 @@ const useIntersection = (
   ref: RefObject<HTMLElement>,
   options: IntersectionObserverInit
 ): IntersectionObserverEntry | null => {
-  const [
-    intersectionObserverEntry,
-    setIntersectionObserverEntry,
-  ] = useState<IntersectionObserverEntry | null>(null);
+  const [intersectionObserverEntry, setIntersectionObserverEntry] =
+    useState<IntersectionObserverEntry | null>(null);
 
   useEffect(() => {
     if (ref.current && typeof IntersectionObserver === 'function') {

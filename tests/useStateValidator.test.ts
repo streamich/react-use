@@ -85,9 +85,9 @@ describe('useStateValidator', () => {
 
   it('if validator expects 2nd parameter it should pass a validity setter there', () => {
     const [spy, hook] = getHook(
-      (jest.fn((state, setValidity): void => {
+      jest.fn((state, setValidity): void => {
         setValidity([state % 2 === 0]);
-      }) as unknown) as StateValidator<[boolean], number>
+      }) as unknown as StateValidator<[boolean], number>
     );
     let [setState, [[isValid]]] = hook.result.current;
 

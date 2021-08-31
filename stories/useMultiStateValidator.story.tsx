@@ -20,7 +20,7 @@ const Demo = () => {
         max="10"
         value={state1}
         onChange={(ev: React.ChangeEvent<HTMLInputElement>) => {
-          setState1((ev.target.value as unknown) as number);
+          setState1(ev.target.value as unknown as number);
         }}
       />
       <input
@@ -29,7 +29,7 @@ const Demo = () => {
         max="10"
         value={state2}
         onChange={(ev: React.ChangeEvent<HTMLInputElement>) => {
-          setState2((ev.target.value as unknown) as number);
+          setState2(ev.target.value as unknown as number);
         }}
       />
       <input
@@ -38,7 +38,7 @@ const Demo = () => {
         max="10"
         value={state3}
         onChange={(ev: React.ChangeEvent<HTMLInputElement>) => {
-          setState3((ev.target.value as unknown) as number);
+          setState3(ev.target.value as unknown as number);
         }}
       />
       {isValid !== undefined && (

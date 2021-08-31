@@ -18,7 +18,7 @@ const Demo = () => {
         max="10"
         value={state}
         onChange={(ev: React.ChangeEvent<HTMLInputElement>) => {
-          setState((ev.target.value as unknown) as number);
+          setState(ev.target.value as unknown as number);
         }}
       />
       {isValid !== undefined && <span>{isValid ? 'Valid!' : 'Invalid'}</span>}

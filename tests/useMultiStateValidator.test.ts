@@ -117,9 +117,9 @@ describe('useMultiStateValidator', () => {
   });
 
   it('if validator expects 2nd parameters it should pass a validity setter there', () => {
-    const spy = (jest.fn((states: number[], done) => {
+    const spy = jest.fn((states: number[], done) => {
       done([states.every((num) => !!(num % 2))]);
-    }) as unknown) as MultiStateValidator<[boolean], number[]>;
+    }) as unknown as MultiStateValidator<[boolean], number[]>;
     const [, hook] = getHook(spy, [1, 3]);
     const [, [validity]] = hook.result.current;
 
