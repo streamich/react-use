@@ -1,3 +1,10 @@
+## [17.3.1](https://github.com/streamich/react-use/compare/v17.3.0...v17.3.1) (2021-08-31)
+
+
+### Performance Improvements
+
+* ⚡️ change title only if it changed ([51ef8d9](https://github.com/streamich/react-use/commit/51ef8d99bad31186ec5420d8b729748507c8a1bf))
+
 # [17.3.0](https://github.com/streamich/react-use/compare/v17.2.4...v17.3.0) (2021-08-31)
 
 
