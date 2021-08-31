@@ -4,7 +4,6 @@
     </a>
 </div>
 
-
 <div align="center">
   <h1>
     <br/>
@@ -72,6 +71,7 @@
   - [`useScroll`](./docs/useScroll.md) &mdash; tracks an HTML element's scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usescroll--docs)
   - [`useScrolling`](./docs/useScrolling.md) &mdash; tracks whether HTML element is scrolling.
   - [`useStartTyping`](./docs/useStartTyping.md) &mdash; detects when user starts typing.
+  - [`useWakeLock`](./docs/useWakeLock.md) &mdash; Keeps screen on using system wake lock.
   - [`useWindowScroll`](./docs/useWindowScroll.md) &mdash; tracks `Window` scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usewindowscroll--docs)
   - [`useWindowSize`](./docs/useWindowSize.md) &mdash; tracks `Window` dimensions. [![][img-demo]](https://codesandbox.io/s/m7ln22668)
   - [`useMeasure`](./docs/useMeasure.md) and [`useSize`](./docs/useSize.md) &mdash; tracks an HTML element's dimensions. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemeasure--demo)
