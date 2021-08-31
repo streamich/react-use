@@ -57,9 +57,9 @@ describe('useMediatedState', () => {
   });
 
   it('if mediator expects 2 args, second should be a function setting the state', () => {
-    const spy = (jest.fn((newState: number, setState: Dispatch<SetStateAction<number>>): void => {
+    const spy = jest.fn((newState: number, setState: Dispatch<SetStateAction<number>>): void => {
       setState(newState * 2);
-    }) as unknown) as StateMediator<number>;
+    }) as unknown as StateMediator<number>;
     const [, hook] = getHook(1, spy);
 
     act(() => hook.result.current[1](3));
