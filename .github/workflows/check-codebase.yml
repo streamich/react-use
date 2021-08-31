@@ -43,7 +43,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Run build:storybook
-        run: storybook:build
+        run: yarn storybook:build
 
   lint:
     name: Linting
