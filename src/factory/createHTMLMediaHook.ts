@@ -16,6 +16,7 @@ export interface HTMLMediaState {
   muted: boolean;
   time: number;
   volume: number;
+  playing: boolean;
 }
 
 export interface HTMLMediaControls {
@@ -50,6 +51,7 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
       paused: true,
       muted: false,
       volume: 1,
+      playing: false
     });
     const ref = useRef<T | null>(null);
 
@@ -64,7 +66,9 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
     };
 
     const onPlay = () => setState({ paused: false });
-    const onPause = () => setState({ paused: true });
+    const onPlaying = () => setState({ playing: true });
+    const onWaiting = () => setState({ playing: false });
+    const onPause = () => setState({ paused: true, playing: false });
     const onVolumeChange = () => {
       const el = ref.current;
       if (!el) {
@@ -107,6 +111,8 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
         ...props,
         ref,
         onPlay: wrapEvent(props.onPlay, onPlay),
+        onPlaying: wrapEvent(props.onPlaying, onPlaying),
+        onWaiting: wrapEvent(props.onWaiting, onWaiting),
         onPause: wrapEvent(props.onPause, onPause),
         onVolumeChange: wrapEvent(props.onVolumeChange, onVolumeChange),
         onDurationChange: wrapEvent(props.onDurationChange, onDurationChange),
@@ -119,6 +125,8 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
         ...props,
         ref,
         onPlay: wrapEvent(props.onPlay, onPlay),
+        onPlaying: wrapEvent(props.onPlaying, onPlaying),
+        onWaiting: wrapEvent(props.onWaiting, onWaiting),
         onPause: wrapEvent(props.onPause, onPause),
         onVolumeChange: wrapEvent(props.onVolumeChange, onVolumeChange),
         onDurationChange: wrapEvent(props.onDurationChange, onDurationChange),
