@@ -2,9 +2,7 @@ import { useState } from 'react';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export interface Observable<T> {
-  subscribe: (
-    listener: (value: T) => void
-  ) => {
+  subscribe: (listener: (value: T) => void) => {
     unsubscribe: () => void;
   };
 }

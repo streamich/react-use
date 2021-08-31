@@ -51,7 +51,7 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
       paused: true,
       muted: false,
       volume: 1,
-      playing: false
+      playing: false,
     });
     const ref = useRef<T | null>(null);
 

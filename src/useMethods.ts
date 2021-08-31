@@ -5,9 +5,7 @@ type Action = {
   payload?: any;
 };
 
-type CreateMethods<M, T> = (
-  state: T
-) => {
+type CreateMethods<M, T> = (state: T) => {
   [P in keyof M]: (payload?: any) => T;
 };
 

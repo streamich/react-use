@@ -26,30 +26,28 @@ const defaultState: DropAreaState = {
 };
 */
 
-const createProcess = (options: DropAreaOptions, mounted: boolean) => (
-  dataTransfer: DataTransfer,
-  event
-) => {
-  const uri = dataTransfer.getData('text/uri-list');
+const createProcess =
+  (options: DropAreaOptions, mounted: boolean) => (dataTransfer: DataTransfer, event) => {
+    const uri = dataTransfer.getData('text/uri-list');
 
-  if (uri) {
-    (options.onUri || noop)(uri, event);
-    return;
-  }
+    if (uri) {
+      (options.onUri || noop)(uri, event);
+      return;
+    }
 
-  if (dataTransfer.files && dataTransfer.files.length) {
-    (options.onFiles || noop)(Array.from(dataTransfer.files), event);
-    return;
-  }
+    if (dataTransfer.files && dataTransfer.files.length) {
+      (options.onFiles || noop)(Array.from(dataTransfer.files), event);
+      return;
+    }
 
-  if (dataTransfer.items && dataTransfer.items.length) {
-    dataTransfer.items[0].getAsString((text) => {
-      if (mounted) {
-        (options.onText || noop)(text, event);
-      }
-    });
-  }
-};
+    if (dataTransfer.items && dataTransfer.items.length) {
+      dataTransfer.items[0].getAsString((text) => {
+        if (mounted) {
+          (options.onText || noop)(text, event);
+        }
+      });
+    }
+  };
 
 const createBond = (process, setOver): DropAreaBond => ({
   onDragOver: (event) => {
