@@ -10,7 +10,9 @@ const DEFAULT_USE_TITLE_OPTIONS: UseTitleOptions = {
 
 function useTitle(title: string, options: UseTitleOptions = DEFAULT_USE_TITLE_OPTIONS) {
   const prevTitleRef = useRef(document.title);
-  document.title = title;
+
+  if (document.title !== title) document.title = title;
+
   useEffect(() => {
     if (options && options.restoreOnUnmount) {
       return () => {
