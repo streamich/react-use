@@ -7,9 +7,9 @@ interface ExtendedExperimentalPermissions extends Permissions {
   query(permissionDesc: IPermissionDescriptor): ReturnType<Permissions['query']>;
 }
 
-interface ExperimentalDevicePermissionDescriptor {
-  name: 'camera' | 'microphone' | 'speaker';
-  deviceId?: string;
+interface ExperimentalPushPermissionDescriptor {
+  name: 'push';
+  userVisibleOnly?: boolean;
 }
 
 interface ExperimentalMidiPermissionDescriptor {
@@ -17,12 +17,12 @@ interface ExperimentalMidiPermissionDescriptor {
   sysex?: boolean;
 }
 
-interface ExperimentalPushPermissionDescriptor {
-  name: 'push';
-  userVisibleOnly?: boolean;
+interface ExperimentalDevicePermissionDescriptor {
+  name: 'camera' | 'microphone' | 'speaker';
+  deviceId?: string;
 }
 
-type IPermissionDescriptor =
+export type IPermissionDescriptor =
   | PermissionDescriptor
   | ExperimentalDevicePermissionDescriptor
   | ExperimentalMidiPermissionDescriptor
