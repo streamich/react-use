@@ -123,7 +123,7 @@
     "semantic-release": "17.4.7",
     "ts-jest": "26.5.6",
     "ts-loader": "9.2.5",
-    "ts-node": "9.1.1",
+    "ts-node": "10.2.1",
     "typescript": "4.1.5"
   },
   "config": {
