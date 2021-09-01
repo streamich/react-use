@@ -3,10 +3,6 @@ import { noop, off, on } from './misc/util';
 
 export type IState = PermissionState | '';
 
-interface ExtendedExperimentalPermissions extends Permissions {
-  query(permissionDesc: ExtendedPermissionDescriptor): ReturnType<Permissions['query']>;
-}
-
 interface ExperimentalPushPermissionDescriptor {
   name: 'push';
   userVisibleOnly?: boolean;
@@ -42,8 +38,8 @@ const usePermission = (permissionDesc: ExtendedPermissionDescriptor): IState => 
       setState(() => permissionStatus?.state ?? '');
     };
 
-    (navigator.permissions as ExtendedExperimentalPermissions)
-      .query(permissionDesc)
+    navigator.permissions
+      .query(permissionDesc as PermissionDescriptor)
       .then((status) => {
         permissionStatus = status;
         on(permissionStatus, 'change', onChange);
