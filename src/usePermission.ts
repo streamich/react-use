@@ -4,7 +4,7 @@ import { noop, off, on } from './misc/util';
 export type IState = PermissionState | '';
 
 interface ExtendedExperimentalPermissions extends Permissions {
-  query(permissionDesc: IPermissionDescriptor): ReturnType<Permissions['query']>;
+  query(permissionDesc: ExtendedPermissionDescriptor): ReturnType<Permissions['query']>;
 }
 
 interface ExperimentalPushPermissionDescriptor {
@@ -22,13 +22,13 @@ interface ExperimentalDevicePermissionDescriptor {
   deviceId?: string;
 }
 
-export type IPermissionDescriptor =
+export type ExtendedPermissionDescriptor =
   | PermissionDescriptor
   | ExperimentalDevicePermissionDescriptor
   | ExperimentalMidiPermissionDescriptor
   | ExperimentalPushPermissionDescriptor;
 
-const usePermission = (permissionDesc: IPermissionDescriptor): IState => {
+const usePermission = (permissionDesc: ExtendedPermissionDescriptor): IState => {
   const [state, setState] = useState<IState>('');
 
   useEffect(() => {
