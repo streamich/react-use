@@ -3,28 +3,31 @@ import { noop, off, on } from './misc/util';
 
 export type IState = PermissionState | '';
 
-interface IPushPermissionDescriptor extends PermissionDescriptor {
-  name: 'push';
-  userVisibleOnly?: boolean;
+interface ExtendedExperimentalPermissions extends Permissions {
+  query(permissionDesc: IPermissionDescriptor): ReturnType<Permissions['query']>;
 }
 
-interface IMidiPermissionDescriptor extends PermissionDescriptor {
-  name: 'midi';
-  sysex?: boolean;
-}
-
-interface IDevicePermissionDescriptor extends PermissionDescriptor {
+interface ExperimentalDevicePermissionDescriptor {
   name: 'camera' | 'microphone' | 'speaker';
   deviceId?: string;
 }
 
-export type IPermissionDescriptor =
-  | PermissionDescriptor
-  | IPushPermissionDescriptor
-  | IMidiPermissionDescriptor
-  | IDevicePermissionDescriptor;
+interface ExperimentalMidiPermissionDescriptor {
+  name: 'midi';
+  sysex?: boolean;
+}
 
-// const usePermission = <T extends PermissionDescriptor>(permissionDesc: T): IState => {
+interface ExperimentalPushPermissionDescriptor {
+  name: 'push';
+  userVisibleOnly?: boolean;
+}
+
+type IPermissionDescriptor =
+  | PermissionDescriptor
+  | ExperimentalDevicePermissionDescriptor
+  | ExperimentalMidiPermissionDescriptor
+  | ExperimentalPushPermissionDescriptor;
+
 const usePermission = (permissionDesc: IPermissionDescriptor): IState => {
   const [state, setState] = useState<IState>('');
 
@@ -39,7 +42,7 @@ const usePermission = (permissionDesc: IPermissionDescriptor): IState => {
       setState(() => permissionStatus?.state ?? '');
     };
 
-    navigator.permissions
+    (navigator.permissions as ExtendedExperimentalPermissions)
       .query(permissionDesc)
       .then((status) => {
         permissionStatus = status;
