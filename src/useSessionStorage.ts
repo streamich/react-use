@@ -23,7 +23,7 @@ const useSessionStorage = <T>(
     } catch {
       // If user is in private mode or has storage restriction
       // sessionStorage can throw. JSON.parse and JSON.stringify
-      // cat throw, too.
+      // can throw, too.
       return initialValue;
     }
   });
