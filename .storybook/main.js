@@ -1,7 +1,3 @@
-const path = require("path");
-
-const basedir = path.join(__dirname, "..");
-
 module.exports = {
   stories: ["../stories/**/*.story.tsx"],
   addons: [
