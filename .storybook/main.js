@@ -1,6 +1,4 @@
 const path = require("path");
-const { compilerOptions } = require("../tsconfig.json");
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const basedir = path.join(__dirname, "..");
 
@@ -14,11 +12,6 @@ module.exports = {
   ],
   typescript: {
     check: true,
-    reactDocgenTypescriptOptions: {
-      compilerOptions: {
-        ...compilerOptions,
-      },
-    },
   },
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
