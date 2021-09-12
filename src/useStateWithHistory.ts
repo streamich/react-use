@@ -132,3 +132,5 @@ export function useStateWithHistory<S, I extends S>(
 
   return [state, setState, historyState];
 }
+
+export default useStateWithHistory;

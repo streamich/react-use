@@ -19,3 +19,5 @@ export function useScrollbarWidth(): number | undefined {
 
   return sbw;
 }
+
+export default useScrollbarWidth;
