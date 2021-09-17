@@ -8427,12 +8427,12 @@ eslint-module-utils@^2.6.2:
     debug "^3.2.7"
     pkg-dir "^2.0.0"
 
-eslint-plugin-flowtype@5.10.0:
-  version "5.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-5.10.0.tgz#7764cc63940f215bf3f0bd2d9a1293b2b9b2b4bb"
-  integrity sha512-vcz32f+7TP+kvTUyMXZmCnNujBQZDNmcqPImw8b9PZ+16w1Qdm6ryRuYZYVaG9xRqqmAPr2Cs9FAX5gN+x/bjw==
+eslint-plugin-flowtype@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-6.0.1.tgz#894f73f4351b43c2f0655bb658c7c74a6102ebcb"
+  integrity sha512-bRtkurwKUzWEROqnOzy5CRKnath0rNBpviqOXX9GqwYRyzZ0quPiXUaiRDdWNdW4zSjkBABrHBye3bhHgyFXEw==
   dependencies:
-    lodash "^4.17.15"
+    lodash "^4.17.21"
     string-natural-compare "^3.0.1"
 
 eslint-plugin-import@2.24.2:
