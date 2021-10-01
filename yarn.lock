@@ -15831,10 +15831,10 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.3.0.tgz#39fe4f3461dc1e50be1475b2b85a0a88c1e938c6"
-  integrity sha512-p2yuGIg9S1epc3vrjKf6iVb3RCaAYjYskkO+jHIaV0IjOPlJop4UnodOoFb2xeNwlguqLYvGw1b1McillYb5Gw==
+rxjs@7.3.1:
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.3.1.tgz#cc375521f9e238b474fe552b0b9fd1be33d08099"
+  integrity sha512-vNenx7gqjPyeKpRnM6S5Ksm/oFTRijWWzYlRON04KaehZ3YjDwEmVjGUGo0TKWVjeNXOujVRlh0K1drUbcdPkw==
   dependencies:
     tslib "~2.1.0"
 
