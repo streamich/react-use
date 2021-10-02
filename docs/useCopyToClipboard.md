@@ -5,6 +5,8 @@ Copy text to a user's clipboard.
 ## Usage
 
 ```jsx
+import { useCopyToClipboard } from 'react-use';
+
 const Demo = () => {
   const [text, setText] = React.useState('');
   const [state, copyToClipboard] = useCopyToClipboard();
