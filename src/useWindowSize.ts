@@ -24,7 +24,7 @@ const useWindowSize = (initialWidth = Infinity, initialHeight = Infinity) => {
         off(window, 'resize', handler);
       };
     }
-  }, []);
+  }, [setState]);
 
   return state;
 };
