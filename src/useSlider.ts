@@ -133,7 +133,7 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
     } else {
       return undefined;
     }
-  }, [ref, options.vertical]);
+  }, [isMounted, setState, ref, options]);
 
   return state;
 };
