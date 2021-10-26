@@ -8575,10 +8575,10 @@ eslint-module-utils@^2.7.0:
     find-up "^2.1.0"
     pkg-dir "^2.0.0"
 
-eslint-plugin-flowtype@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-7.0.0.tgz#da07684b5f0caf7c42ed013c2d0c04dbaf2960f4"
-  integrity sha512-kW3eipG2Vth6e0apYqmFs05IHhFklJJNokYNiNEO5AIjm7H29oTDybYNB2bMULUYcf7iX7Wf3GdRhfBORKcT1g==
+eslint-plugin-flowtype@8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-8.0.2.tgz#67693c873a804a6e69ae3716601963489472d382"
+  integrity sha512-Ka2OvOqUQTcs7qCtPtnngSCN7r4H7IqEjzHtN4RLth3naDPjAnSoGDdKlbNMrkp6C3fp9e8CvgzJ3mvt5v5/NA==
   dependencies:
     lodash "^4.17.21"
     string-natural-compare "^3.0.1"
