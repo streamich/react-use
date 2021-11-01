@@ -6,6 +6,7 @@ const getValue = (search: string, param: string) => new URLSearchParams(search).
 
 export type UseQueryParam = (param: string) => string | null;
 
+// Make sure to patch
 tryPatchHistoryMethod();
 
 const useSearchParam: UseQueryParam = (param) => {

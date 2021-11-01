@@ -16,6 +16,7 @@ export interface LocationSensorState {
   search?: string;
 }
 
+// Make sure to patch
 tryPatchHistoryMethod();
 
 const useLocationServer = (): LocationSensorState => ({

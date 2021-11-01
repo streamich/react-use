@@ -1,5 +1,6 @@
 import { isBrowser } from './util';
 
+// This flag ensures patch happens only once
 let isPatched: true | false = false;
 
 const patchHistoryMethod = (method) => {
