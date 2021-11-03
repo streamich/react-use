@@ -56,7 +56,7 @@
     "nano-css": "^5.3.1",
     "react-universal-interface": "^0.6.2",
     "resize-observer-polyfill": "^1.5.1",
-    "screenfull": "^5.1.0",
+    "screenfull": "^6.0.0",
     "set-harmonic-interval": "^1.0.1",
     "throttle-debounce": "^3.0.1",
     "ts-easing": "^0.2.0",
