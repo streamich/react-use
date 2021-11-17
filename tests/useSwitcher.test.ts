@@ -46,26 +46,4 @@ describe(`useSwitcher`, () => {
 
     expect(result.current.isSwitchedOn).toBe(false);
   });
-
-  it('set 1', () => {
-    const { result } = setUp(true);
-    expect(result.current.isSwitchedOn).toBe(true);
-
-    act(() => {
-      result.current.setIsSwitchedOn(true);
-    });
-
-    expect(result.current.isSwitchedOn).toBe(true);
-  });
-
-  it('set 2', () => {
-    const { result } = setUp(false);
-    expect(result.current.isSwitchedOn).toBe(false);
-
-    act(() => {
-      result.current.setIsSwitchedOn(true);
-    });
-
-    expect(result.current.isSwitchedOn).toBe(true);
-  });
 });

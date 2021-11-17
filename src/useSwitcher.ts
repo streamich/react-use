@@ -10,5 +10,5 @@ export const useSwitcher = (isDefaultSwitchedOn = false) => {
   const switchOff = useCallback(() => setIsSwitchedOn(false), []);
   const toggleSwitcher = useCallback(() => setIsSwitchedOn((v) => !v), []);
 
-  return { isSwitchedOn, setIsSwitchedOn, switchOn, switchOff, toggleSwitcher };
+  return { isSwitchedOn, switchOn, switchOff, toggleSwitcher };
 };
