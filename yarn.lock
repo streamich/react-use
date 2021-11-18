@@ -15253,10 +15253,10 @@ react-sizeme@^3.0.1:
     shallowequal "^1.1.0"
     throttle-debounce "^3.0.1"
 
-react-spring@9.3.0:
-  version "9.3.0"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.3.0.tgz#4d71eecbfd4f0823bf67e5943d2b0fb77f3e26ad"
-  integrity sha512-zxhMUCM4ha22724q1CshmbzKUfqdUp2HyA4P72+A0xVF/9bgaFuMukI8C8/Rjfdqw6sGg3hZNvmY9Z8n4cqWmg==
+react-spring@9.3.1:
+  version "9.3.1"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.3.1.tgz#5f9587d42a524c8bfeb870458d32755ceee9801a"
+  integrity sha512-YbWcG+LiiyMi4RnBrMudVj2Rqnt2yEozeISkW5Hm2SOss+uDS4CpVjLuwdFAwczw99FSPrRfyAlGjEx3HvOWiw==
   dependencies:
     "@react-spring/core" "~9.3.0"
     "@react-spring/konva" "~9.3.0"
