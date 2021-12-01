@@ -1,6 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Webpack App</title><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_parent"><style>:not(.sb-show-main) > #root,
-  :not(.sb-show-main) > #docs-root,
-  :not(.sb-show-preparing-story) > .sb-preparing-story,
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Webpack App</title><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_parent"><style>:not(.sb-show-preparing-story) > .sb-preparing-story,
   :not(.sb-show-preparing-docs) > .sb-preparing-docs,
   :not(.sb-show-nopreview) > .sb-nopreview,
   :not(.sb-show-errordisplay) > .sb-errordisplay {
@@ -98,6 +96,203 @@
 
   .sb-errordisplay pre {
     white-space: pre-wrap;
+  }
+
+  @-webkit-keyframes sb-rotate360 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes sb-rotate360 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes sb-glow {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+  @keyframes sb-glow {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  /* We display the preparing loaders *over* the rendering story */
+  .sb-preparing-story,
+  .sb-preparing-docs {
+    background-color: white;
+  }
+
+  .sb-loader {
+    -webkit-animation: sb-rotate360 0.7s linear infinite;
+    animation: sb-rotate360 0.7s linear infinite;
+    border-color: rgba(97, 97, 97, 0.29);
+    border-radius: 50%;
+    border-style: solid;
+    border-top-color: #646464;
+    border-width: 2px;
+    display: inline-block;
+    height: 32px;
+    left: 50%;
+    margin-left: -16px;
+    margin-top: -16px;
+    mix-blend-mode: difference;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    transition: all 200ms ease-out;
+    vertical-align: top;
+    width: 32px;
+    z-index: 4;
+  }
+
+  .sb-previewBlock {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0;
+    margin: 25px auto 40px;
+    max-width: 600px;
+  }
+
+  .sb-previewBlock_header {
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 -1px 0 0 inset;
+    display: flex;
+    gap: 14px;
+    height: 40px;
+    padding: 0 12px;
+  }
+
+  .sb-previewBlock_icon {
+    -webkit-animation: sb-glow 1.5s ease-in-out infinite;
+    animation: sb-glow 1.5s ease-in-out infinite;
+    background: #e6e6e6;
+    height: 14px;
+    width: 14px;
+  }
+  .sb-previewBlock_icon:last-child {
+    margin-left: auto;
+  }
+
+  .sb-previewBlock_body {
+    -webkit-animation: sb-glow 1.5s ease-in-out infinite;
+    animation: sb-glow 1.5s ease-in-out infinite;
+    height: 182px;
+    position: relative;
+  }
+
+  .sb-argstableBlock {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 25px auto 40px;
+    max-width: 600px;
+    text-align: left;
+    width: 100%;
+  }
+  .sb-argstableBlock th:first-of-type,
+  .sb-argstableBlock td:first-of-type {
+    padding-left: 20px;
+  }
+  .sb-argstableBlock th:nth-of-type(2),
+  .sb-argstableBlock td:nth-of-type(2) {
+    width: 35%;
+  }
+  .sb-argstableBlock th:nth-of-type(3),
+  .sb-argstableBlock td:nth-of-type(3) {
+    width: 15%;
+  }
+  .sb-argstableBlock th:laste-of-type,
+  .sb-argstableBlock td:laste-of-type {
+    width: 25%;
+    padding-right: 20px;
+  }
+  .sb-argstableBlock th span,
+  .sb-argstableBlock td span {
+    -webkit-animation: sb-glow 1.5s ease-in-out infinite;
+    animation: sb-glow 1.5s ease-in-out infinite;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    box-shadow: none;
+    color: transparent;
+  }
+  .sb-argstableBlock th {
+    padding: 10px 15px;
+  }
+
+  .sb-argstableBlock-body {
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 1px, rgba(0, 0, 0, 0.065) 0 0 0 1px;
+  }
+  .sb-argstableBlock-body tr {
+    background: transparent;
+    overflow: hidden;
+  }
+  .sb-argstableBlock-body tr:not(:first-child) {
+    border-top: 1px solid #e6e6e6;
+  }
+  .sb-argstableBlock-body tr:first-child td:first-child {
+    border-top-left-radius: 4px;
+  }
+  .sb-argstableBlock-body tr:first-child td:last-child {
+    border-top-right-radius: 4px;
+  }
+  .sb-argstableBlock-body tr:last-child td:first-child {
+    border-bottom-left-radius: 4px;
+  }
+  .sb-argstableBlock-body tr:last-child td:last-child {
+    border-bottom-right-radius: 4px;
+  }
+  .sb-argstableBlock-body td {
+    background: #fff;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    vertical-align: top;
+  }
+  .sb-argstableBlock-body td:not(:first-of-type) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .sb-argstableBlock-body button {
+    -webkit-animation: sb-glow 1.5s ease-in-out infinite;
+    animation: sb-glow 1.5s ease-in-out infinite;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    color: transparent;
+    display: inline;
+    font-size: 12px;
+    line-height: 1;
+    padding: 10px 16px;
+  }
+
+  .sb-argstableBlock-summary {
+    margin-top: 4px;
+  }
+
+  .sb-argstableBlock-code {
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 2px 5px;
   }</style><script>/* globals window */
   /* eslint-disable no-underscore-dangle */
   try {
@@ -132,199 +327,7 @@
   };</script><style>#root[hidden],
       #docs-root[hidden] {
         display: none !important;
-      }</style></head><body><style>@-webkit-keyframes rotate360 {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  @keyframes rotate360 {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  @-webkit-keyframes glow {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.4;
-    }
-  }
-  @keyframes glow {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.4;
-    }
-  }
-  .isLoading {
-    cursor: progress;
-  }
-
-  .loader {
-    -webkit-animation: rotate360 0.7s linear infinite;
-    animation: rotate360 0.7s linear infinite;
-    border-color: rgba(97, 97, 97, 0.29);
-    border-radius: 50%;
-    border-style: solid;
-    border-top-color: #646464;
-    border-width: 2px;
-    display: inline-block;
-    height: 32px;
-    left: 50%;
-    margin-left: -16px;
-    margin-top: -16px;
-    mix-blend-mode: difference;
-    overflow: hidden;
-    position: absolute;
-    top: 50%;
-    transition: all 200ms ease-out;
-    vertical-align: top;
-    width: 32px;
-    z-index: 4;
-  }
-
-  .previewBlock {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0;
-    margin: 25px auto 40px;
-    max-width: 600px;
-  }
-
-  .previewBlock_header {
-    align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 -1px 0 0 inset;
-    display: flex;
-    gap: 14px;
-    height: 40px;
-    padding: 0 12px;
-  }
-
-  .previewBlock_icon {
-    -webkit-animation: glow 1.5s ease-in-out infinite;
-    animation: glow 1.5s ease-in-out infinite;
-    background: #e6e6e6;
-    height: 14px;
-    width: 14px;
-  }
-  .previewBlock_icon:last-child {
-    margin-left: auto;
-  }
-
-  .previewBlock_body {
-    -webkit-animation: glow 1.5s ease-in-out infinite;
-    animation: glow 1.5s ease-in-out infinite;
-    height: 182px;
-    position: relative;
-  }
-
-  .argstableBlock {
-    border-collapse: collapse;
-    border-spacing: 0;
-    font-size: 13px;
-    line-height: 20px;
-    margin: 25px auto 40px;
-    max-width: 600px;
-    text-align: left;
-    width: 100%;
-  }
-  .argstableBlock th:first-of-type,
-  .argstableBlock td:first-of-type {
-    padding-left: 20px;
-  }
-  .argstableBlock th:nth-of-type(2),
-  .argstableBlock td:nth-of-type(2) {
-    width: 35%;
-  }
-  .argstableBlock th:nth-of-type(3),
-  .argstableBlock td:nth-of-type(3) {
-    width: 15%;
-  }
-  .argstableBlock th:laste-of-type,
-  .argstableBlock td:laste-of-type {
-    width: 25%;
-    padding-right: 20px;
-  }
-  .argstableBlock th span,
-  .argstableBlock td span {
-    -webkit-animation: glow 1.5s ease-in-out infinite;
-    animation: glow 1.5s ease-in-out infinite;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 0;
-    box-shadow: none;
-    color: transparent;
-  }
-  .argstableBlock th {
-    padding: 10px 15px;
-  }
-
-  .argstableBlock-body {
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 1px, rgba(0, 0, 0, 0.065) 0 0 0 1px;
-  }
-  .argstableBlock-body tr {
-    background: transparent;
-    overflow: hidden;
-  }
-  .argstableBlock-body tr:not(:first-child) {
-    border-top: 1px solid #e6e6e6;
-  }
-  .argstableBlock-body tr:first-child td:first-child {
-    border-top-left-radius: 4px;
-  }
-  .argstableBlock-body tr:first-child td:last-child {
-    border-top-right-radius: 4px;
-  }
-  .argstableBlock-body tr:last-child td:first-child {
-    border-bottom-left-radius: 4px;
-  }
-  .argstableBlock-body tr:last-child td:last-child {
-    border-bottom-right-radius: 4px;
-  }
-  .argstableBlock-body td {
-    background: #fff;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    vertical-align: top;
-  }
-  .argstableBlock-body td:not(:first-of-type) {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  .argstableBlock-body button {
-    -webkit-animation: glow 1.5s ease-in-out infinite;
-    animation: glow 1.5s ease-in-out infinite;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-    color: transparent;
-    display: inline;
-    font-size: 12px;
-    line-height: 1;
-    padding: 10px 16px;
-  }
-
-  .argstableBlock-summary {
-    margin-top: 4px;
-  }
-
-  .argstableBlock-code {
-    margin-right: 4px;
-    margin-bottom: 4px;
-    padding: 2px 5px;
-  }</style><div class="sb-preparing-story sb-wrapper"><div class="loader"></div></div><div class="sb-preparing-docs sb-wrapper"><div class="previewBlock"><div class="previewBlock_header"><div class="previewBlock_icon"></div><div class="previewBlock_icon"></div><div class="previewBlock_icon"></div><div class="previewBlock_icon"></div></div><div class="previewBlock_body"><div class="loader"></div></div></div><table aria-hidden="true" class="argstableBlock"><thead class="argstableBlock-head"><tr><th><span>Name</span></th><th><span>Description</span></th><th><span>Default</span></th><th><span>Control</span></th></tr></thead><tbody class="argstableBlock-body"><tr><td><span>propertyName</span><span title="Required">*</span></td><td><div><span>This is a short description</span></div><div class="argstableBlock-summary"><div><span class="argstableBlock-code">summary</span></div></div></td><td><div><span class="argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr><tr><td><span>propertyName</span><span>*</span></td><td><div><span>This is a short description</span></div><div class="argstableBlock-summary"><div><span class="argstableBlock-code">summary</span></div></div></td><td><div><span class="argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr><tr><td><span>propertyName</span><span>*</span></td><td><div><span>This is a short description</span></div><div class="argstableBlock-summary"><div><span class="argstableBlock-code">summary</span></div></div></td><td><div><span class="argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr></tbody></table></div><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><pre id="error-message" class="sb-heading"></pre><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="root"></div><div id="docs-root"></div><script>window['CONFIG_TYPE'] = "PRODUCTION";
+      }</style></head><body><div class="sb-preparing-story sb-wrapper"><div class="sb-loader"></div></div><div class="sb-preparing-docs sb-wrapper"><div class="sb-previewBlock"><div class="sb-previewBlock_header"><div class="sb-previewBlock_icon"></div><div class="sb-previewBlock_icon"></div><div class="sb-previewBlock_icon"></div><div class="sb-previewBlock_icon"></div></div><div class="sb-previewBlock_body"><div class="sb-loader"></div></div></div><table aria-hidden="true" class="sb-argstableBlock"><thead class="sb-argstableBlock-head"><tr><th><span>Name</span></th><th><span>Description</span></th><th><span>Default</span></th><th><span>Control</span></th></tr></thead><tbody class="sb-argstableBlock-body"><tr><td><span>propertyName</span><span title="Required">*</span></td><td><div><span>This is a short description</span></div><div class="sb-argstableBlock-summary"><div><span class="sb-argstableBlock-code">summary</span></div></div></td><td><div><span class="sb-argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr><tr><td><span>propertyName</span><span>*</span></td><td><div><span>This is a short description</span></div><div class="sb-argstableBlock-summary"><div><span class="sb-argstableBlock-code">summary</span></div></div></td><td><div><span class="sb-argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr><tr><td><span>propertyName</span><span>*</span></td><td><div><span>This is a short description</span></div><div class="sb-argstableBlock-summary"><div><span class="sb-argstableBlock-code">summary</span></div></div></td><td><div><span class="sb-argstableBlock-code">defaultValue</span></div></td><td><button>Set string</button></td></tr></tbody></table></div><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><pre id="error-message" class="sb-heading"></pre><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="root"></div><div id="docs-root"></div><script>window['CONFIG_TYPE'] = "PRODUCTION";
           
       
           
