@@ -15177,10 +15177,10 @@ react-focus-lock@^2.1.0:
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
-react-frame-component@5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/react-frame-component/-/react-frame-component-5.2.0.tgz#59f6bb03dfca9049d63020655956ba57cf62cf3e"
-  integrity sha512-MAfczN/pZusARFrch+CsXvwY1FWhlu4BKN6pzqIX+vtu71UZbeviMe1Cy77gGAQIa/VkZyrrgCv6FjoRphLIwA==
+react-frame-component@5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/react-frame-component/-/react-frame-component-5.2.1.tgz#6bd5ec73ef7d720f57ee8f259546ed926a941267"
+  integrity sha512-nrSh1OZuHlX69eWqJPiUkPT9S6/wxc4PpJV+vOQ4pHQQ8XmIsIT+utWT+nX32ZfANHZuKONA7JsWMUGT36CqaQ==
 
 react-helmet-async@^1.0.2:
   version "1.0.7"
