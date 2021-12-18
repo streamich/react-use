@@ -59,8 +59,6 @@ function useMeasure<E extends Element = Element>(ref?: MutableRefObject<E>): any
   return [setElement, rect];
 }
 
-const useMeasureMock = () => [() => {}, defaultState];
-
 export default isBrowser && typeof (window as any).ResizeObserver !== 'undefined'
   ? useMeasure
   : ((() => [noop, defaultState]) as typeof useMeasure);
