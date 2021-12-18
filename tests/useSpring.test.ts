@@ -32,15 +32,15 @@ const mockCreateSpring: Spring = jest.fn().mockImplementation(() => {
   };
 
   return {
-    setCurrentValue: val => {
+    setCurrentValue: (val) => {
       currentValue = val;
       mockSetCurrentValue(val);
     },
-    addListener: newListener => {
+    addListener: (newListener) => {
       springListener = newListener;
       mockAddListener(newListener);
     },
-    setEndValue: val => {
+    setEndValue: (val) => {
       endValue = val;
       mockSetEndValue(val);
     },

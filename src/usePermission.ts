@@ -1,47 +1,59 @@
 import { useEffect, useState } from 'react';
-import { off, on } from './util';
+import { noop, off, on } from './misc/util';
 
-type PermissionDesc =
+export type IState = PermissionState | '';
+
+interface IPushPermissionDescriptor extends PermissionDescriptor {
+  name: 'push';
+  userVisibleOnly?: boolean;
+}
+
+interface IMidiPermissionDescriptor extends PermissionDescriptor {
+  name: 'midi';
+  sysex?: boolean;
+}
+
+interface IDevicePermissionDescriptor extends PermissionDescriptor {
+  name: 'camera' | 'microphone' | 'speaker';
+  deviceId?: string;
+}
+
+export type IPermissionDescriptor =
   | PermissionDescriptor
-  | DevicePermissionDescriptor
-  | MidiPermissionDescriptor
-  | PushPermissionDescriptor;
+  | IPushPermissionDescriptor
+  | IMidiPermissionDescriptor
+  | IDevicePermissionDescriptor;
 
-type State = PermissionState | '';
-
-const noop = () => {};
-
-const usePermission = (permissionDesc: PermissionDesc): State => {
-  let mounted = true;
-  let permissionStatus: PermissionStatus | null = null;
-
-  const [state, setState] = useState<State>('');
-
-  const onChange = () => {
-    if (mounted && permissionStatus) {
-      setState(permissionStatus.state);
-    }
-  };
-
-  const changeState = () => {
-    onChange();
-    on(permissionStatus, 'change', onChange);
-  };
+// const usePermission = <T extends PermissionDescriptor>(permissionDesc: T): IState => {
+const usePermission = (permissionDesc: IPermissionDescriptor): IState => {
+  const [state, setState] = useState<IState>('');
 
   useEffect(() => {
+    let mounted = true;
+    let permissionStatus: PermissionStatus | null = null;
+
+    const onChange = () => {
+      if (!mounted) {
+        return;
+      }
+      setState(() => permissionStatus?.state ?? '');
+    };
+
     navigator.permissions
       .query(permissionDesc)
       .then((status) => {
         permissionStatus = status;
-        changeState();
+        on(permissionStatus, 'change', onChange);
+        onChange();
       })
       .catch(noop);
 
     return () => {
-      mounted = false;
       permissionStatus && off(permissionStatus, 'change', onChange);
+      mounted = false;
+      permissionStatus = null;
     };
-  }, []);
+  }, [permissionDesc]);
 
   return state;
 };

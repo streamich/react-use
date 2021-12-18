@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useCounter, useLogger } from '../src';
 import ShowDocs from './util/ShowDocs';
 
-const Demo = props => {
+const Demo = (props) => {
   const [state, { inc }] = useCounter(0);
 
   useLogger('Demo', props, state);
@@ -17,7 +17,7 @@ const Demo = props => {
   );
 };
 
-storiesOf('Lifecycle|useLogger', module)
+storiesOf('Lifecycle/useLogger', module)
   .addDecorator(withKnobs)
   .add('Docs', () => <ShowDocs md={require('../docs/useLogger.md')} />)
   .add('Demo', () => {

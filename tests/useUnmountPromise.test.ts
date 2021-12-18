@@ -16,7 +16,7 @@ describe('useUnmountPromise', () => {
     const hook = renderHook(() => useUnmountPromise());
 
     const mounted = hook.result.current;
-    const res = await mounted(new Promise(r => setTimeout(() => r(25), 10)));
+    const res = await mounted(new Promise((r) => setTimeout(() => r(25), 10)));
 
     expect(res).toBe(25);
   });
@@ -25,23 +25,42 @@ describe('useUnmountPromise', () => {
     const hook = renderHook(() => useUnmountPromise());
 
     const mounted = hook.result.current;
-    const promise = mounted(new Promise(r => setTimeout(() => r(25), 10)));
+    const promise = mounted(new Promise((r) => setTimeout(() => r(25), 10)));
 
     hook.unmount();
 
-    const res = await Promise.race([promise, new Promise(r => setTimeout(() => r('UNMOUNTED'), 20))]);
+    const res = await Promise.race([
+      promise,
+      new Promise((r) => setTimeout(() => r('UNMOUNTED'), 20)),
+    ]);
     expect(res).toBe('UNMOUNTED');
+  });
+
+  it('should resolve promise when component is updated', async () => {
+    const hook = renderHook(() => useUnmountPromise());
+
+    const mounted = hook.result.current;
+    const pRes = mounted(new Promise((r) => setTimeout(() => r(25), 10)));
+
+    hook.rerender();
+
+    const res = await pRes;
+
+    expect(res).toBe(25);
   });
 
   it('when component is mounted function should resolve with wrapped promises - 2', async () => {
     const hook = renderHook(() => useUnmountPromise());
 
     const mounted = hook.result.current;
-    const promise = mounted(new Promise(r => setTimeout(() => r(25), 10)));
+    const promise = mounted(new Promise((r) => setTimeout(() => r(25), 10)));
 
     // hook.unmount();
 
-    const res = await Promise.race([promise, new Promise(r => setTimeout(() => r('UNMOUNTED'), 20))]);
+    const res = await Promise.race([
+      promise,
+      new Promise((r) => setTimeout(() => r('UNMOUNTED'), 20)),
+    ]);
     expect(res).toBe(25);
   });
 
@@ -66,10 +85,13 @@ describe('useUnmountPromise', () => {
 
         const mounted = hook.result.current;
         const onError = jest.fn();
-        const promise = mounted(new Promise((r, reject) => setTimeout(() => reject(r), 10)), onError);
+        const promise = mounted(
+          new Promise((r, reject) => setTimeout(() => reject(r), 10)),
+          onError
+        );
 
         hook.unmount();
-        await Promise.race([promise, new Promise(r => setTimeout(r, 20))]);
+        await Promise.race([promise, new Promise((r) => setTimeout(r, 20))]);
 
         expect(onError).toHaveBeenCalledTimes(1);
         expect(typeof onError.mock.calls[0][0]).toBe('function');

@@ -18,12 +18,12 @@ const Demo = () => {
       </div>
       <div>Edit hash: </div>
       <div>
-        <input style={{ width: '100%' }} value={hash} onChange={e => setHash(e.target.value)} />
+        <input style={{ width: '100%' }} value={hash} onChange={(e) => setHash(e.target.value)} />
       </div>
     </div>
   );
 };
 
-storiesOf('Sensors|useHash', module)
+storiesOf('Sensors/useHash', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useHash.md')} />)
   .add('Demo', () => <Demo />);

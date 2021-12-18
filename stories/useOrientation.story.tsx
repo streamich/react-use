@@ -9,6 +9,6 @@ const Demo = () => {
   return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
 
-storiesOf('Sensors|useOrientation', module)
+storiesOf('Sensors/useOrientation', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useOrientation.md')} />)
   .add('Demo', () => <Demo />);

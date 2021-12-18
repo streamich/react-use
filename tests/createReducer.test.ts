@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import createReducer from '../src/createReducer';
+import createReducer from '../src/factory/createReducer';
 
 it('should init reducer hook function', () => {
   const useSomeReducer = createReducer();
@@ -34,7 +34,7 @@ describe('when using created reducer hook', () => {
 
   // Action creator to increment count, wait a second and then reset
   const addAndReset = () => {
-    return dispatch => {
+    return (dispatch) => {
       dispatch({ type: 'increment' });
 
       setTimeout(() => {

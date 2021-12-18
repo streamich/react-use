@@ -1,14 +1,24 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { useNetwork } from '../src';
+import { useEffect } from 'react';
+import { useNetworkState } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const state = useNetwork();
+  const state = useNetworkState();
 
-  return <pre>{JSON.stringify(state, null, 2)}</pre>;
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
+
+  return (
+    <div>
+      <div>Since JSON do not output `undefined` fields look the console to see whole the state</div>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
+    </div>
+  );
 };
 
-storiesOf('Sensors|useNetwork', module)
-  .add('Docs', () => <ShowDocs md={require('../docs/useNetwork.md')} />)
+storiesOf('Sensors/useNetworkState', module)
+  .add('Docs', () => <ShowDocs md={require('../docs/useNetworkState.md')} />)
   .add('Demo', () => <Demo />);

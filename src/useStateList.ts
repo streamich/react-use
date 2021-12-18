@@ -42,7 +42,10 @@ export default function useStateList<T>(stateSet: T[] = []): UseStateListReturn<
         // it gives the ability to travel through the left and right borders.
         // 4ex: if list contains 5 elements, attempt to set index 9 will bring use to 5th element
         // in case of negative index it will start counting from the right, so -17 will bring us to 4th element
-        index.current = newIndex >= 0 ? newIndex % stateSet.length : stateSet.length + (newIndex % stateSet.length);
+        index.current =
+          newIndex >= 0
+            ? newIndex % stateSet.length
+            : stateSet.length + (newIndex % stateSet.length);
         update();
       },
       setState: (state: T) => {

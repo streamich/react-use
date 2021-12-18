@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
-import { isClient } from './util';
+import { isBrowser } from './misc/util';
 
-const useSessionStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T, (value: T) => void] => {
-  if (!isClient) {
+const useSessionStorage = <T>(
+  key: string,
+  initialValue?: T,
+  raw?: boolean
+): [T, (value: T) => void] => {
+  if (!isBrowser) {
     return [initialValue as T, () => {}];
   }
 
@@ -19,7 +23,7 @@ const useSessionStorage = <T>(key: string, initialValue?: T, raw?: boolean): [T,
     } catch {
       // If user is in private mode or has storage restriction
       // sessionStorage can throw. JSON.parse and JSON.stringify
-      // cat throw, too.
+      // can throw, too.
       return initialValue;
     }
   });

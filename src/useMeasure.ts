@@ -1,13 +1,13 @@
-import { useState, useMemo, MutableRefObject, useEffect } from 'react';
+import { useMemo, useState, MutableRefObject, useEffect } from 'react';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
-import { isClient } from './util';
+import { isBrowser, noop } from './misc/util';
 
 export type UseMeasureRect = Pick<
   DOMRectReadOnly,
   'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'
 >;
-export type UseMeasureRef<E extends HTMLElement = HTMLElement> = (element: E) => void;
-export type UseMeasureResult<E extends HTMLElement = HTMLElement> = [UseMeasureRef<E>, UseMeasureRect];
+export type UseMeasureRef<E extends Element = Element> = (element: E) => void;
+export type UseMeasureResult<E extends Element = Element> = [UseMeasureRef<E>, UseMeasureRect];
 
 const defaultState: UseMeasureRect = {
   x: 0,
@@ -20,9 +20,9 @@ const defaultState: UseMeasureRect = {
   right: 0,
 };
 
-function useMeasure<E extends HTMLElement = HTMLElement>(): UseMeasureResult<E>;
-function useMeasure<E extends HTMLElement = HTMLElement>(ref: MutableRefObject<E>): UseMeasureRect;
-function useMeasure<E extends HTMLElement = HTMLElement>(ref?: MutableRefObject<E>): any {
+function useMeasure<E extends Element = Element>(): UseMeasureResult<E>;
+function useMeasure<E extends Element = Element>(ref: MutableRefObject<E>): UseMeasureRect;
+function useMeasure<E extends Element = Element>(ref?: MutableRefObject<E>): any {
   const [element, setElement] = useState<E | null>(null);
   const [rect, setRect] = useState<UseMeasureRect>(defaultState);
 
@@ -61,4 +61,6 @@ function useMeasure<E extends HTMLElement = HTMLElement>(ref?: MutableRefObject<
 
 const useMeasureMock = () => [() => {}, defaultState];
 
-export default isClient && !!(window as any).ResizeObserver ? useMeasure : (useMeasureMock as typeof useMeasure);
+export default isBrowser && typeof (window as any).ResizeObserver !== 'undefined'
+  ? useMeasure
+  : ((() => [noop, defaultState]) as typeof useMeasure);

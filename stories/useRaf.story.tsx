@@ -9,6 +9,6 @@ const Demo = () => {
   return <div>Elapsed: {frames}</div>;
 };
 
-storiesOf('Animation|useRaf', module)
+storiesOf('Animation/useRaf', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useRaf.md')} />)
   .add('Demo', () => <Demo />);

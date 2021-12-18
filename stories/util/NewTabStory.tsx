@@ -8,7 +8,7 @@ const NewTabStory = ({ children }) => {
   return (
     <p>
       This story should be{' '}
-      <a href={window.location.href} target="_blank" title="Open in new tab">
+      <a href={window.location.href} target="_blank" title="Open in new tab" rel="noreferrer">
         opened in a new tab
       </a>
       .

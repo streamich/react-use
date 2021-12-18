@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import useMountedState from './useMountedState';
+import { noop } from './misc/util';
 
 export interface DropAreaState {
   over: boolean;
@@ -19,34 +20,34 @@ export interface DropAreaOptions {
   onUri?: (url: string, event?) => void;
 }
 
-const noop = () => {};
 /*
 const defaultState: DropAreaState = {
   over: false,
 };
 */
 
-const createProcess = (options: DropAreaOptions, mounted: boolean) => (dataTransfer: DataTransfer, event) => {
-  const uri = dataTransfer.getData('text/uri-list');
+const createProcess =
+  (options: DropAreaOptions, mounted: boolean) => (dataTransfer: DataTransfer, event) => {
+    const uri = dataTransfer.getData('text/uri-list');
 
-  if (uri) {
-    (options.onUri || noop)(uri, event);
-    return;
-  }
+    if (uri) {
+      (options.onUri || noop)(uri, event);
+      return;
+    }
 
-  if (dataTransfer.files && dataTransfer.files.length) {
-    (options.onFiles || noop)(Array.from(dataTransfer.files), event);
-    return;
-  }
+    if (dataTransfer.files && dataTransfer.files.length) {
+      (options.onFiles || noop)(Array.from(dataTransfer.files), event);
+      return;
+    }
 
-  if (dataTransfer.items && dataTransfer.items.length) {
-    dataTransfer.items[0].getAsString((text) => {
-      if (mounted) {
-        (options.onText || noop)(text, event);
-      }
-    });
-  }
-};
+    if (dataTransfer.items && dataTransfer.items.length) {
+      dataTransfer.items[0].getAsString((text) => {
+        if (mounted) {
+          (options.onText || noop)(text, event);
+        }
+      });
+    }
+  };
 
 const createBond = (process, setOver): DropAreaBond => ({
   onDragOver: (event) => {

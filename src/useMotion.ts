@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { off, on } from './util';
+import { off, on } from './misc/util';
 
 export interface MotionSensorState {
   acceleration: {

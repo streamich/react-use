@@ -10,7 +10,7 @@ describe('useMediatedState', () => {
 
   function getHook(
     initialState: number = 2,
-    fn: StateMediator<number> = jest.fn(newState => newState / 2)
+    fn: StateMediator<number> = jest.fn((newState) => newState / 2)
   ): [jest.Mock | StateMediator, RenderHookResult<any, UseMediatedStateReturn<number>>] {
     return [fn, renderHook(() => useMediatedState<number>(fn, initialState))];
   }
@@ -45,7 +45,7 @@ describe('useMediatedState', () => {
 
   it('mediator should receive setState argument as first argument', () => {
     let val;
-    const spy = jest.fn(newState => {
+    const spy = jest.fn((newState) => {
       val = newState;
       return newState * 2;
     });
@@ -57,9 +57,9 @@ describe('useMediatedState', () => {
   });
 
   it('if mediator expects 2 args, second should be a function setting the state', () => {
-    const spy = (jest.fn((newState: number, setState: Dispatch<SetStateAction<number>>): void => {
+    const spy = jest.fn((newState: number, setState: Dispatch<SetStateAction<number>>): void => {
       setState(newState * 2);
-    }) as unknown) as StateMediator<number>;
+    }) as unknown as StateMediator<number>;
     const [, hook] = getHook(1, spy);
 
     act(() => hook.result.current[1](3));

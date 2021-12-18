@@ -1,12 +1,15 @@
 import { useEffect } from 'react';
+import { isNavigator, noop } from './misc/util';
 
 export type VibrationPattern = number | number[];
 
-const isVibrationApiSupported = typeof navigator === 'object' && 'vibrate' in navigator;
+const isVibrationApiSupported = isNavigator && 'vibrate' in navigator;
 
-const useVibrateMock = () => {};
-
-function useVibrate(enabled: boolean = true, pattern: VibrationPattern = [1000, 1000], loop: boolean = true): void {
+function useVibrate(
+  enabled: boolean = true,
+  pattern: VibrationPattern = [1000, 1000],
+  loop: boolean = true
+): void {
   useEffect(() => {
     let interval;
 
@@ -14,7 +17,8 @@ function useVibrate(enabled: boolean = true, pattern: VibrationPattern = [1000, 
       navigator.vibrate(pattern);
 
       if (loop) {
-        const duration = pattern instanceof Array ? pattern.reduce((a, b) => a + b) : (pattern as number);
+        const duration =
+          pattern instanceof Array ? pattern.reduce((a, b) => a + b) : (pattern as number);
 
         interval = setInterval(() => {
           navigator.vibrate(pattern);
@@ -34,4 +38,4 @@ function useVibrate(enabled: boolean = true, pattern: VibrationPattern = [1000, 
   }, [enabled]);
 }
 
-export default isVibrationApiSupported ? useVibrate : useVibrateMock;
+export default isVibrationApiSupported ? useVibrate : noop;

@@ -1,30 +1,151 @@
-## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-16)
+## [17.3.1](https://github.com/streamich/react-use/compare/v17.3.0...v17.3.1) (2021-08-31)
+
+
+### Performance Improvements
+
+* ⚡️ change title only if it changed ([51ef8d9](https://github.com/streamich/react-use/commit/51ef8d99bad31186ec5420d8b729748507c8a1bf))
+
+# [17.3.0](https://github.com/streamich/react-use/compare/v17.2.4...v17.3.0) (2021-08-31)
 
 
 ### Bug Fixes
 
-* useLongPress hook linting fixes. ([9f3cc3d](https://github.com/streamich/react-use/commit/9f3cc3d33ac96b1b6f981d407ac08068af55f488))
-
-## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-15)
+* do not re-render unncessarily in useAsyncFn hook ([fa3ba25](https://github.com/streamich/react-use/commit/fa3ba2520ede6866b599f6df55fdfa6395058cd2))
 
 
-### Bug Fixes
+### Features
 
-* useLongPress hook linting fixes. ([9f3cc3d](https://github.com/streamich/react-use/commit/9f3cc3d33ac96b1b6f981d407ac08068af55f488))
+* useAudio add playing state ([3203610](https://github.com/streamich/react-use/commit/3203610efdcb8e1fe3c6a17ea19e41bacbeb851b))
 
-## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-07)
+## [17.2.4](https://github.com/streamich/react-use/compare/v17.2.3...v17.2.4) (2021-04-23)
 
 
 ### Bug Fixes
 
-* useLongPress hook linting fixes. ([9f3cc3d](https://github.com/streamich/react-use/commit/9f3cc3d33ac96b1b6f981d407ac08068af55f488))
+* lint issues. ([66b0f23](https://github.com/streamich/react-use/commit/66b0f235477c5f93807df75a53a84b3c5cd053e5))
+* **useLocalStorage:** reinitialize on key change ([fdd1b23](https://github.com/streamich/react-use/commit/fdd1b23fd7ba6ae30139eeef02c552a8c7d6d333))
+* add generic typing to createHTMLMediaHook. no typecheck problem with ref anymore. ([1f547ef](https://github.com/streamich/react-use/commit/1f547efb12d6cbe7687e86925ad80bd85fac3dfd))
+* add generic typing to createHTMLMediaHook. no typecheck problem with ref anymore. ([ac4dd78](https://github.com/streamich/react-use/commit/ac4dd786f42a2c59bdaaf9ddebe2e830982d7fcc))
 
-## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-06)
+## [17.2.3](https://github.com/streamich/react-use/compare/v17.2.2...v17.2.3) (2021-04-06)
 
 
 ### Bug Fixes
 
-* useLongPress hook linting fixes. ([9f3cc3d](https://github.com/streamich/react-use/commit/9f3cc3d33ac96b1b6f981d407ac08068af55f488))
+* lint issues. ([5a5a575](https://github.com/streamich/react-use/commit/5a5a5755bc1f10add9c7a100ea6577ab6d427c0c))
+
+## [17.2.2](https://github.com/streamich/react-use/compare/v17.2.1...v17.2.2) (2021-04-06)
+
+
+### Bug Fixes
+
+* **useStateWithHistory:** support callback style setState ([fca687d](https://github.com/streamich/react-use/commit/fca687d32c37148dab3072f053109f6c4d3c36ba))
+
+## [17.2.1](https://github.com/streamich/react-use/compare/v17.2.0...v17.2.1) (2021-03-11)
+
+
+### Bug Fixes
+
+* lint issues. ([3e8af15](https://github.com/streamich/react-use/commit/3e8af15086135c873d18079a0b92b21da668a2ff))
+* useMeasure type definitions for SVG ([e200f7f](https://github.com/streamich/react-use/commit/e200f7fcbb371a1d794be8d350f9559f940e5760))
+* useUnmountPromise stops on immediate update ([9ff5c09](https://github.com/streamich/react-use/commit/9ff5c09e671c4f07f25f30a60617fca7660e7607))
+
+# [17.2.0](https://github.com/streamich/react-use/compare/v17.1.1...v17.2.0) (2021-03-10)
+
+
+### Bug Fixes
+
+* delete isClient ([72f4cb9](https://github.com/streamich/react-use/commit/72f4cb9b405b3729975bca3acb06658ca467d15b))
+* lint issues. ([dc5bbe0](https://github.com/streamich/react-use/commit/dc5bbe0e94d131dda90942ba90c14b200df3f34e))
+* **useOrientation:** handle orientation being 0 ([793b053](https://github.com/streamich/react-use/commit/793b0539f0305e2512e7022c45a5c33b842d24d5))
+* **useOrientation:** update tests to increase coverage ([f9c743f](https://github.com/streamich/react-use/commit/f9c743fa8375ef726d33f85285d4a5af608f9a42))
+* use window inside useEffect ([2f33aa8](https://github.com/streamich/react-use/commit/2f33aa8182c92bf56d49ec3184e6b20f0c0c1e1e))
+
+
+### Features
+
+* **useOrientation:** add tests ([f45cb70](https://github.com/streamich/react-use/commit/f45cb707b52363f1cb1b32a0ebf2fdbdae79b322))
+
+## [17.1.1](https://github.com/streamich/react-use/compare/v17.1.0...v17.1.1) (2021-02-10)
+
+
+### Bug Fixes
+
+* useMountedState should not change state on componentDidUpdate lifecycle ([701b306](https://github.com/streamich/react-use/commit/701b306ed97382cbec73c834f6d3dd7baa58e339))
+
+# [17.1.0](https://github.com/streamich/react-use/compare/v17.0.2...v17.1.0) (2021-02-01)
+
+
+### Features
+
+* **prettier:** make prettier a part of eslint. ([b6993a6](https://github.com/streamich/react-use/commit/b6993a6f95a1b493945c03aecc44dafd10870816))
+
+## [17.0.2](https://github.com/streamich/react-use/compare/v17.0.1...v17.0.2) (2021-02-01)
+
+
+### Bug Fixes
+
+* proper definition for `useMeasure` ([1461527](https://github.com/streamich/react-use/commit/1461527ffc55b2a1e3c9dc6a0efc2572b66e5381))
+
+## [17.0.1](https://github.com/streamich/react-use/compare/v17.0.0...v17.0.1) (2021-01-31)
+
+
+### Bug Fixes
+
+* proper definition for isBrowser and isNavigator states. ([a087deb](https://github.com/streamich/react-use/commit/a087deb48e57b1f0a23a2d0a28d0c2d10a640cd6)), closes [#1777](https://github.com/streamich/react-use/issues/1777)
+
+# [17.0.0](https://github.com/streamich/react-use/compare/v16.1.0...v17.0.0) (2021-01-31)
+
+
+### Features
+
+* refactor the useNetwork hook. ([23037f2](https://github.com/streamich/react-use/commit/23037f207d07604dd2cd7e2cc4ba9475221be780))
+
+
+### BREAKING CHANGES
+
+* `useNetwork` hook renamed to `useNetworkState`.
+
+# [16.1.0](https://github.com/streamich/react-use/compare/v16.0.0...v16.1.0) (2021-01-31)
+
+
+### Features
+
+* improve `on` and `off` util functions typing. ([723c588](https://github.com/streamich/react-use/commit/723c588fef6aba9f10ea9f5ea7bc444532519f9a))
+
+# [16.0.0](https://github.com/streamich/react-use/compare/v15.3.8...v16.0.0) (2021-01-30)
+
+
+### chore
+
+* refactoring and rearrangement. ([a27f09f](https://github.com/streamich/react-use/commit/a27f09fd367f8b172866b5fcbaf66f9a5a3481bb))
+
+
+### BREAKING CHANGES
+
+* all `create*` factories been moved to `factory` subdirectory and in case direct import should be imported like `react-use/esm/factory/createBreakpoint`
+* `comps` directory renamed to `component`
+
+## [15.3.8](https://github.com/streamich/react-use/compare/v15.3.7...v15.3.8) (2021-01-08)
+
+
+### Bug Fixes
+
+* improve useStateValidator and useMultiStateValidator typings. ([acff81d](https://github.com/streamich/react-use/commit/acff81d99abdbbefcc2985297ee01c3cda9ef4c9))
+
+## [15.3.7](https://github.com/streamich/react-use/compare/v15.3.6...v15.3.7) (2021-01-08)
+
+
+### Bug Fixes
+
+* [#1646](https://github.com/streamich/react-use/issues/1646) ([ebc7094](https://github.com/streamich/react-use/commit/ebc7094bbc156be57b3de855c6984c1d056cf0e6))
+
+## [15.3.6](https://github.com/streamich/react-use/compare/v15.3.5...v15.3.6) (2021-01-07)
+
+
+### Bug Fixes
+
+* Fix issues in tests ([7668ce5](https://github.com/streamich/react-use/commit/7668ce5c5f0f186437907f1c352d3a62e3ae8ba7))
 
 ## [15.3.4](https://github.com/streamich/react-use/compare/v15.3.3...v15.3.4) (2020-09-04)
 

@@ -80,6 +80,19 @@ describe(useLocalStorage, () => {
     expect(foo).toEqual('baz');
   });
 
+  it('reinitializes state when key changes', () => {
+    let key = 'foo';
+    const { result, rerender } = renderHook(() => useLocalStorage(key, 'bar'));
+
+    const [, setState] = result.current;
+    act(() => setState('baz'));
+    key = 'bar';
+    rerender();
+
+    const [state] = result.current;
+    expect(state).toEqual('bar');
+  });
+
   /*
   it('keeps multiple hooks accessing the same key in sync', () => {
     localStorage.setItem('foo', 'bar');
@@ -114,7 +127,9 @@ describe(useLocalStorage, () => {
   });
 
   it('safely sets objects to localStorage', () => {
-    const { result, rerender } = renderHook(() => useLocalStorage<{ ok: any }>('foo', { ok: true }));
+    const { result, rerender } = renderHook(() =>
+      useLocalStorage<{ ok: any }>('foo', { ok: true })
+    );
 
     const [, setFoo] = result.current;
     act(() => setFoo({ ok: 'bar' }));
@@ -125,7 +140,9 @@ describe(useLocalStorage, () => {
   });
 
   it('safely returns objects from updates', () => {
-    const { result, rerender } = renderHook(() => useLocalStorage<{ ok: any }>('foo', { ok: true }));
+    const { result, rerender } = renderHook(() =>
+      useLocalStorage<{ ok: any }>('foo', { ok: true })
+    );
 
     const [, setFoo] = result.current;
     act(() => setFoo({ ok: 'bar' }));

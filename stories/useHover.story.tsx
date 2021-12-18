@@ -15,6 +15,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('Sensors|useHover', module)
+storiesOf('Sensors/useHover', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useHover.md')} />)
   .add('Demo', () => <Demo />);

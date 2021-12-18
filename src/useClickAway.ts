@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useRef } from 'react';
-import { off, on } from './util';
+import { off, on } from './misc/util';
 
 const defaultEvents = ['mousedown', 'touchstart'];
 

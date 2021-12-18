@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
-import createReducerContext from '../src/createReducerContext';
+import createReducerContext from '../src/factory/createReducerContext';
 
 type Action = 'increment' | 'decrement';
 
@@ -26,12 +26,16 @@ describe('when using created hook', () => {
   it('should throw out of a provider', () => {
     const [useSharedNumber] = createReducerContext(reducer, 0);
     const { result } = renderHook(() => useSharedNumber());
-    expect(result.error).toEqual(new Error('useReducerContext must be used inside a ReducerProvider.'));
+    expect(result.error).toEqual(
+      new Error('useReducerContext must be used inside a ReducerProvider.')
+    );
   });
 
   const setUp = () => {
     const [useSharedNumber, SharedNumberProvider] = createReducerContext(reducer, 0);
-    const wrapper: React.FC = ({ children }) => <SharedNumberProvider>{children}</SharedNumberProvider>;
+    const wrapper: React.FC = ({ children }) => (
+      <SharedNumberProvider>{children}</SharedNumberProvider>
+    );
     return renderHook(() => useSharedNumber(), { wrapper });
   };
 
@@ -81,11 +85,15 @@ describe('when using among multiple components', () => {
       </SharedNumberProvider>
     );
 
-    expect(baseElement.innerHTML).toBe('<div><p>0</p><p>0</p><button type="button">INCREMENT</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>0</p><p>0</p><button type="button">INCREMENT</button></div>'
+    );
 
     fireEvent.click(getByText('INCREMENT'));
 
-    expect(baseElement.innerHTML).toBe('<div><p>1</p><p>1</p><button type="button">INCREMENT</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>1</p><p>1</p><button type="button">INCREMENT</button></div>'
+    );
   });
 
   it('should be in update independently when under different providers', () => {
@@ -101,11 +109,15 @@ describe('when using among multiple components', () => {
       </>
     );
 
-    expect(baseElement.innerHTML).toBe('<div><p>0</p><p>0</p><button type="button">INCREMENT</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>0</p><p>0</p><button type="button">INCREMENT</button></div>'
+    );
 
     fireEvent.click(getByText('INCREMENT'));
 
-    expect(baseElement.innerHTML).toBe('<div><p>0</p><p>1</p><button type="button">INCREMENT</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>0</p><p>1</p><button type="button">INCREMENT</button></div>'
+    );
   });
 
   it('should not update component that do not use the state context', () => {
@@ -125,11 +137,15 @@ describe('when using among multiple components', () => {
       </>
     );
 
-    expect(baseElement.innerHTML).toBe('<div><p>static</p><p>0</p><button type="button">INCREMENT</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>static</p><p>0</p><button type="button">INCREMENT</button></div>'
+    );
 
     fireEvent.click(getByText('INCREMENT'));
 
-    expect(baseElement.innerHTML).toBe('<div><p>static</p><p>1</p><button type="button">INCREMENT</button></div>');
+    expect(baseElement.innerHTML).toBe(
+      '<div><p>static</p><p>1</p><button type="button">INCREMENT</button></div>'
+    );
 
     expect(renderCount).toBe(1);
   });

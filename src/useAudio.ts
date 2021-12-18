@@ -1,5 +1,4 @@
-import createHTMLMediaHook from './util/createHTMLMediaHook';
+import createHTMLMediaHook from './factory/createHTMLMediaHook';
 
-const useAudio = createHTMLMediaHook('audio');
-
+const useAudio = createHTMLMediaHook<HTMLAudioElement>('audio');
 export default useAudio;

@@ -1,17 +1,17 @@
 import { Dispatch, useMemo, useRef } from 'react';
 import useUpdate from './useUpdate';
-import { HookState, InitialHookState, resolveHookState } from './util/resolveHookState';
+import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from './misc/hookState';
 
-export default function useGetSet<S>(initialState: InitialHookState<S>): [() => S, Dispatch<HookState<S>>] {
+export default function useGetSet<S>(
+  initialState: IHookStateInitAction<S>
+): [get: () => S, set: Dispatch<IHookStateSetAction<S>>] {
   const state = useRef(resolveHookState(initialState));
   const update = useUpdate();
 
   return useMemo(
     () => [
-      // get
       () => state.current as S,
-      // set
-      (newState: HookState<S>) => {
+      (newState: IHookStateSetAction<S>) => {
         state.current = resolveHookState(newState, state.current);
         update();
       },

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, RefObject } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
 export interface ContentRect {
@@ -30,7 +30,9 @@ const useMeasureDirty = (ref: RefObject<HTMLElement>): ContentRect => {
           cancelAnimationFrame(frame.current);
 
           frame.current = requestAnimationFrame(() => {
-            set(entry.contentRect);
+            if (ref.current) {
+              set(entry.contentRect);
+            }
           });
         }
       })

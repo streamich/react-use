@@ -8,7 +8,9 @@ const Demo = () => {
 
   return (
     <div>
-      {sbw === undefined ? `DOM is not ready yet, SBW detection delayed` : `Browser's scrollbar width is ${sbw}px`}
+      {sbw === undefined
+        ? `DOM is not ready yet, SBW detection delayed`
+        : `Browser's scrollbar width is ${sbw}px`}
     </div>
   );
 };

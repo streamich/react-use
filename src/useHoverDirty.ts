@@ -1,4 +1,5 @@
 import { RefObject, useEffect, useState } from 'react';
+import { off, on } from './misc/util';
 
 // kudos: https://usehooks.com/
 const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
@@ -15,8 +16,8 @@ const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
     const onMouseOut = () => setValue(false);
 
     if (enabled && ref && ref.current) {
-      ref.current.addEventListener('mouseover', onMouseOver);
-      ref.current.addEventListener('mouseout', onMouseOut);
+      on(ref.current, 'mouseover', onMouseOver);
+      on(ref.current, 'mouseout', onMouseOut);
     }
 
     // fixes react-hooks/exhaustive-deps warning about stale ref elements
@@ -24,8 +25,8 @@ const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
 
     return () => {
       if (enabled && current) {
-        current.removeEventListener('mouseover', onMouseOver);
-        current.removeEventListener('mouseout', onMouseOut);
+        off(current, 'mouseover', onMouseOver);
+        off(current, 'mouseout', onMouseOut);
       }
     };
   }, [enabled, ref]);

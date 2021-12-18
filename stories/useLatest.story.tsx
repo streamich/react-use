@@ -23,6 +23,6 @@ const Demo = () => {
   );
 };
 
-storiesOf('State|useLatest', module)
+storiesOf('State/useLatest', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useLatest.md')} />)
   .add('Demo', () => <Demo />);
