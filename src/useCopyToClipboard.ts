@@ -62,7 +62,7 @@ const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] =
         noUserInteraction,
       });
     }
-  }, []);
+  }, [isMounted, setState]);
 
   return [state, copyToClipboard];
 };
