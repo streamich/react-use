@@ -1,3 +1,10 @@
+## [17.3.2](https://github.com/streamich/react-use/compare/v17.3.1...v17.3.2) (2021-12-30)
+
+
+### Bug Fixes
+
+* useMedia SSR hydration bug with defaultState ([#2216](https://github.com/streamich/react-use/issues/2216)) ([5c01189](https://github.com/streamich/react-use/commit/5c0118941280bb265ca7813afb987f89c8c97a17))
+
 ## [17.3.1](https://github.com/streamich/react-use/compare/v17.3.0...v17.3.1) (2021-08-31)
 
 
