@@ -32,3 +32,5 @@ export const useHash = () => {
 
   return [hash, _setHash] as const;
 };
+
+export default useHash;

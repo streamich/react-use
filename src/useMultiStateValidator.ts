@@ -39,3 +39,5 @@ export function useMultiStateValidator<
 
   return [validity, validate];
 }
+
+export default useMultiStateValidator;

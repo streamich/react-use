@@ -36,3 +36,5 @@ export function useMediatedState<S = any>(
 
   return [state, setState];
 }
+
+export default useMediatedState;
