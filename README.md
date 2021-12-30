@@ -77,6 +77,7 @@
   - [`useMeasure`](./docs/useMeasure.md) and [`useSize`](./docs/useSize.md) &mdash; tracks an HTML element's dimensions. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usemeasure--demo)
   - [`createBreakpoint`](./docs/createBreakpoint.md) &mdash; tracks `innerWidth`
   - [`useScrollbarWidth`](./docs/useScrollbarWidth.md) &mdash; detects browser's native scrollbars width. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usescrollbarwidth--demo)
+  - [`useFocus`](./docs/useFocus.md) &mdash; tracks focus state of some element.
     <br/>
     <br/>
 - [**UI**](./docs/UI.md)
