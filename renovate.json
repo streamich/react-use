@@ -11,5 +11,11 @@
   "devDependencies": {
     "automerge": true,
     "pinVersions": true
-  }
+  },
+  "packageRules": [
+    {
+      "matchPackageNames": ["ts-loader"],
+      "allowedVersions": "< 9.0.0"
+    }
+  ]
 }
