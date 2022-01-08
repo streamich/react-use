@@ -79,7 +79,7 @@ const useLocalStorage = <T>(
         // localStorage can throw. Also JSON.stringify can throw.
       }
     },
-    [key, setState]
+    [key, setState, state]
   );
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
