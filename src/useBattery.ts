@@ -9,12 +9,9 @@ export interface BatteryState {
   level: number;
 }
 
-interface BatteryManager extends Readonly<BatteryState>, EventTarget {
-  onchargingchange: () => void;
-  onchargingtimechange: () => void;
-  ondischargingtimechange: () => void;
-  onlevelchange: () => void;
-}
+type BatteryManager = {
+  [Property in keyof BatteryState as `on${Property}change`]: () => void
+} & BatteryState & EventTarget
 
 interface NavigatorWithPossibleBattery extends Navigator {
   getBattery?: () => Promise<BatteryManager>;
@@ -37,42 +34,44 @@ function useBattery(): UseBatteryState {
 
   useEffect(() => {
     let isMounted = true;
-    let battery: BatteryManager | null = null;
+    let savedBatteryManager: BatteryManager | null = null;
 
-    const handleChange = () => {
-      if (!isMounted || !battery) {
+    const handleChange = (e) => {
+      if (!isMounted || !savedBatteryManager) {
         return;
       }
+
+      const target: BatteryState = e.target
       const newState: UseBatteryState = {
         isSupported: true,
         fetched: true,
-        level: battery.level,
-        charging: battery.charging,
-        dischargingTime: battery.dischargingTime,
-        chargingTime: battery.chargingTime,
+        level: target.level,
+        charging: target.charging,
+        dischargingTime: target.dischargingTime,
+        chargingTime: target.chargingTime,
       };
       !isDeepEqual(state, newState) && setState(newState);
     };
 
-    nav!.getBattery!().then((bat: BatteryManager) => {
+    nav!.getBattery!().then((batteryManager: BatteryManager) => {
       if (!isMounted) {
         return;
       }
-      battery = bat;
-      on(battery, 'chargingchange', handleChange);
-      on(battery, 'chargingtimechange', handleChange);
-      on(battery, 'dischargingtimechange', handleChange);
-      on(battery, 'levelchange', handleChange);
-      handleChange();
+      savedBatteryManager = batteryManager;
+      on(savedBatteryManager, 'chargingchange', handleChange);
+      on(savedBatteryManager, 'chargingtimechange', handleChange);
+      on(savedBatteryManager, 'dischargingtimechange', handleChange);
+      on(savedBatteryManager, 'levelchange', handleChange);
+      handleChange({ target: savedBatteryManager });
     });
 
     return () => {
       isMounted = false;
-      if (battery) {
-        off(battery, 'chargingchange', handleChange);
-        off(battery, 'chargingtimechange', handleChange);
-        off(battery, 'dischargingtimechange', handleChange);
-        off(battery, 'levelchange', handleChange);
+      if (savedBatteryManager) {
+        off(savedBatteryManager, 'chargingchange', handleChange);
+        off(savedBatteryManager, 'chargingtimechange', handleChange);
+        off(savedBatteryManager, 'dischargingtimechange', handleChange);
+        off(savedBatteryManager, 'levelchange', handleChange);
       }
     };
   }, []);
