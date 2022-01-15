@@ -1,39 +1,53 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useState, useMemo } from 'react';
 
-export interface StableActions<K> {
-  add: (key: K) => void;
-  remove: (key: K) => void;
-  toggle: (key: K) => void;
-  reset: () => void;
-}
+const cast = <TValue>(value: TValue) => (Array.isArray(value) ? value : [value]);
 
-export interface Actions<K> extends StableActions<K> {
-  has: (key: K) => boolean;
-}
+const useSet = <TValue>(initialValue: TValue) => {
+  const [state, setState] = useState(new Set<TValue>(cast(initialValue)));
 
-const useSet = <K>(initialSet = new Set<K>()): [Set<K>, Actions<K>] => {
-  const [set, setSet] = useState(initialSet);
+  const constantHandlers = useMemo(
+    () => ({
+      add(value: TValue) {
+        setState(state.add(value));
+      },
+      clear() {
+        state.clear();
+        setState(state);
+      },
+      delete(value: TValue) {
+        if (state.delete(value)) {
+          setState(state);
+        }
+      },
+    }),
+    [state]
+  );
 
-  const stableActions = useMemo<StableActions<K>>(() => {
-    const add = (item: K) => setSet((prevSet) => new Set([...Array.from(prevSet), item]));
-    const remove = (item: K) =>
-      setSet((prevSet) => new Set(Array.from(prevSet).filter((i) => i !== item)));
-    const toggle = (item: K) =>
-      setSet((prevSet) =>
-        prevSet.has(item)
-          ? new Set(Array.from(prevSet).filter((i) => i !== item))
-          : new Set([...Array.from(prevSet), item])
-      );
+  const customHandlers = useMemo(
+    () => ({
+      reset() {
+        setState(new Set(cast(initialValue)));
+      },
+      toggle(value: TValue) {
+        if (state.has(value)) {
+          constantHandlers.delete(value);
+          return;
+        }
+        constantHandlers.add(value);
+      },
+    }),
+    [state, initialValue, constantHandlers]
+  );
 
-    return { add, remove, toggle, reset: () => setSet(initialSet) };
-  }, [setSet]);
+  const handlers = useMemo(
+    () => ({
+      ...customHandlers,
+      ...constantHandlers,
+    }),
+    [constantHandlers, customHandlers]
+  );
 
-  const utils = {
-    has: useCallback((item) => set.has(item), [set]),
-    ...stableActions,
-  } as Actions<K>;
-
-  return [set, utils];
+  return [state, handlers] as const;
 };
 
 export default useSet;

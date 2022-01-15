@@ -19,7 +19,7 @@ export function resolveHookState<S, C extends S>(
   nextState: IHookStateResolvable<S>,
   currentState?: C
 ): S {
-  if (typeof nextState === 'function') {
+  if (typeof nextState === "function") {
     return nextState.length ? (nextState as Function)(currentState) : (nextState as Function)();
   }
 
