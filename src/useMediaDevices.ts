@@ -1,28 +1,31 @@
 import { useEffect, useState } from 'react';
-import { isNavigator, noop, off, on } from './misc/util';
+import { isNavigator, off, on } from './misc/util';
+
+interface State {
+  devices: Omit<MediaDeviceInfo, 'toJSON'>[];
+}
 
 const useMediaDevices = () => {
-  const [state, setState] = useState({});
+  const [state, setState] = useState<State>({ devices: [] });
 
   useEffect(() => {
     let mounted = true;
 
-    const onChange = () => {
-      navigator.mediaDevices
-        .enumerateDevices()
-        .then((devices) => {
-          if (mounted) {
-            setState({
-              devices: devices.map(({ deviceId, groupId, kind, label }) => ({
-                deviceId,
-                groupId,
-                kind,
-                label,
-              })),
-            });
-          }
-        })
-        .catch(noop);
+    const onChange = async () => {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+
+        if (mounted) {
+          setState({
+            devices: devices.map(({ deviceId, groupId, kind, label }) => ({
+              deviceId,
+              groupId,
+              kind,
+              label,
+            })),
+          });
+        }
+      } catch (err) {}
     };
 
     on(navigator.mediaDevices, 'devicechange', onChange);
@@ -37,6 +40,6 @@ const useMediaDevices = () => {
   return state;
 };
 
-const useMediaDevicesMock = () => ({});
+const useMediaDevicesMock = (): State => ({ devices: [] });
 
 export default isNavigator && !!navigator.mediaDevices ? useMediaDevices : useMediaDevicesMock;
