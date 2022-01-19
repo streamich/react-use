@@ -1,47 +1,61 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
-export interface StableActions<T extends object> {
-  set: <K extends keyof T>(key: K, value: T[K]) => void;
-  setAll: (newMap: T) => void;
-  remove: <K extends keyof T>(key: K) => void;
-  reset: () => void;
-}
+const createMap = <TValue>(value: TValue): Map<keyof TValue, any> =>
+  Object.keys(value).reduce((acc, key) => {
+    acc.set(key, value[key]);
 
-export interface Actions<T extends object> extends StableActions<T> {
-  get: <K extends keyof T>(key: K) => T[K];
-}
+    return acc;
+  }, new Map());
 
-const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>] => {
-  const [map, set] = useState<T>(initialMap);
+const useMap = <TValue extends object = any>(initialValue: TValue) => {
+  const [map, set] = useState<Map<keyof TValue, any>>(() => createMap(initialValue));
 
-  const stableActions = useMemo<StableActions<T>>(
+  const constantHandlers = useMemo(
     () => ({
-      set: (key, entry) => {
-        set((prevMap) => ({
-          ...prevMap,
-          [key]: entry,
-        }));
+      set(key: keyof TValue, value: any) {
+        set(map.set(key, value));
       },
-      setAll: (newMap: T) => {
-        set(newMap);
+      remove(key: keyof TValue) {
+        if (map.delete(key)) {
+          set(map);
+        }
       },
-      remove: (key) => {
-        set((prevMap) => {
-          const { [key]: omit, ...rest } = prevMap;
-          return rest as T;
-        });
+      reset() {
+        set(createMap(initialValue));
       },
-      reset: () => set(initialMap),
+      replace(key1: keyof TValue, key2: keyof TValue) {
+        const value1 = map.get(key1);
+        const value2 = map.get(key2);
+
+        if (value1 && value2) {
+          map.set(key1, value2);
+          map.set(key2, value1);
+
+          set(map);
+        }
+      },
     }),
-    [set]
+    [set, map, initialValue]
   );
 
-  const utils = {
-    get: useCallback((key) => map[key], [map]),
-    ...stableActions,
-  } as Actions<T>;
+  const customHandlers = useMemo(
+    () => ({
+      setAll(newValue: TValue) {
+        set(createMap(newValue));
+      },
+    }),
+    []
+  );
 
-  return [map, utils];
+  const handlers = useMemo(
+    () => ({
+      ...constantHandlers,
+      ...customHandlers,
+    }),
+    [constantHandlers, customHandlers]
+  );
+
+  return [map, handlers] as const;
 };
 
 export default useMap;
