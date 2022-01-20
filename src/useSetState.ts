@@ -1,16 +1,15 @@
 import { useCallback, useState } from 'react';
 
-const useSetState = <T extends object>(
-  initialState: T = {} as T
-): [T, (patch: Partial<T> | ((prevState: T) => Partial<T>)) => void] => {
-  const [state, set] = useState<T>(initialState);
-  const setState = useCallback((patch) => {
-    set((prevState) =>
-      Object.assign({}, prevState, patch instanceof Function ? patch(prevState) : patch)
-    );
+import { IHookStateInitAction, IHookStateSetAction, resolveHookState } from './misc/hookState';
+
+const useSetState = <T>(initialState: IHookStateInitAction<T> | {} = {}) => {
+  const [state, set] = useState(initialState);
+
+  const setState = useCallback((patch: IHookStateSetAction<T | {}>) => {
+    set((prevState) => ({ ...prevState, ...resolveHookState(patch, prevState) }));
   }, []);
 
-  return [state, setState];
+  return [state, setState] as const;
 };
 
 export default useSetState;
