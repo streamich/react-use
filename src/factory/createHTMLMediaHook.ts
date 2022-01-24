@@ -5,7 +5,7 @@ import parseTimeRanges from '../misc/parseTimeRanges';
 
 export interface HTMLMediaProps
   extends React.AudioHTMLAttributes<any>,
-  React.VideoHTMLAttributes<any> {
+    React.VideoHTMLAttributes<any> {
   src: string;
 }
 
@@ -216,14 +216,14 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
           if (tag === 'audio') {
             console.error(
               'useAudio() ref to <audio> element is empty at mount. ' +
-              'It seem you have not rendered the audio element, which it ' +
-              'returns as the first argument const [audio] = useAudio(...).'
+                'It seem you have not rendered the audio element, which it ' +
+                'returns as the first argument const [audio] = useAudio(...).'
             );
           } else if (tag === 'video') {
             console.error(
               'useVideo() ref to <video> element is empty at mount. ' +
-              'It seem you have not rendered the video element, which it ' +
-              'returns as the first argument const [video] = useVideo(...).'
+                'It seem you have not rendered the video element, which it ' +
+                'returns as the first argument const [video] = useVideo(...).'
             );
           }
         }
