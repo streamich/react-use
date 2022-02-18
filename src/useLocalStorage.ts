@@ -13,6 +13,16 @@ type parserOptions<T> =
 
 function useLocalStorage<T>(
   key: string,
+  initialValue: T,
+  options?: parserOptions<T>
+): [T, Dispatch<SetStateAction<T>>, () => void];
+function useLocalStorage<T = undefined>(
+  key: string,
+  initialValue?: T,
+  options?: parserOptions<T>
+): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void];
+function useLocalStorage<T>(
+  key: string,
   initialValue?: T,
   options?: parserOptions<T>
 ): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] {
