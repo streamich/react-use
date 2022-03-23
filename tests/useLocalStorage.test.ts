@@ -251,5 +251,18 @@ describe(useLocalStorage, () => {
 
       expect(JSON.parse(value!).fizz).toEqual('bang');
     });
+
+    // ? better name for the test
+    it('updates state if local storage value changes not by the direct hook set method', () => {
+      const { result, rerender } = renderHook(() =>
+        useLocalStorage('fizz', JSON.stringify({ fizz: 'bebop' }), { raw: true })
+      );
+
+      localStorage.setItem('fizz', JSON.stringify({ fizz: 'bang' }));
+      rerender();
+
+      const [value] = result.current;
+      expect(JSON.parse(value!).fizz).toEqual('bang');
+    });
   });
 });
