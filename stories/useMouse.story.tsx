@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useMouse } from '../src';
 import ShowDocs from './util/ShowDocs';
 
-const Demo: React.FC<any> = () => {
+const Demo = () => {
   const ref = React.useRef(null);
   const state = useMouse(ref);
 
