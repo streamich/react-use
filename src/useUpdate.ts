@@ -1,9 +1,9 @@
 import { useReducer } from 'react';
 
-const updateReducer = (num: number): number => (num + 1) % 1_000_000;
+const updateReducer = (bool: boolean): boolean => !bool;
 
 export default function useUpdate(): () => void {
-  const [, update] = useReducer(updateReducer, 0);
+  const [, update] = useReducer(updateReducer, false);
 
   return update;
 }
