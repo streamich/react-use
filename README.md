@@ -1,11 +1,4 @@
 <div align="center">
-    <a href="https://www.kickstarter.com/projects/aleks-p/multiplayer-collaborative-editing-database">
-       Collaborative editing for your app. <strong>Support on Kickstarter!</strong>
-    </a>
-</div>
-
-
-<div align="center">
   <h1>
     <br/>
     <br/>
@@ -129,8 +122,8 @@
   - [`useMount`](./docs/useMount.md) &mdash; calls `mount` callbacks.
   - [`useUnmount`](./docs/useUnmount.md) &mdash; calls `unmount` callbacks.
   - [`useUpdateEffect`](./docs/useUpdateEffect.md) &mdash; run an `effect` only on updates.
-  - [`useIsomorphicLayoutEffect`](./docs/useIsomorphicLayoutEffect.md) &mdash; `useLayoutEffect` that does not show warning when server-side rendering.
-  - [`useDeepCompareEffect`](./docs/useDeepCompareEffect.md), [`useShallowCompareEffect`](./docs/useShallowCompareEffect.md), and [`useCustomCompareEffect`](./docs/useCustomCompareEffect.md) &mdash; run an `effect` depending on deep comparison of its dependencies
+  - [`useIsomorphicLayoutEffect`](./docs/useIsomorphicLayoutEffect.md) &mdash; `useLayoutEffect` that that works on server.
+  - [`useDeepCompareEffect`](./docs/useDeepCompareEffect.md), [`useShallowCompareEffect`](./docs/useShallowCompareEffect.md), and [`useCustomCompareEffect`](./docs/useCustomCompareEffect.md)
     <br/>
     <br/>
 - [**State**](./docs/State.md)
