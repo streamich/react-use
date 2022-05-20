@@ -16,22 +16,8 @@ const useSize = (
   element: Element,
   { width = Infinity, height = Infinity }: Partial<State> = {}
 ): [React.ReactElement<any>, State] => {
-  if (!isBrowser) {
-    return [
-      typeof element === 'function' ? element({ width, height }) : element,
-      { width, height },
-    ];
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [state, setState] = useState<State>({ width, height });
 
-  if (typeof element === 'function') {
-    element = element(state);
-  }
-
-  const style = element.props.style || {};
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const ref = useRef<HTMLIFrameElement | null>(null);
   let window: Window | null = null;
   const setSize = () => {
@@ -50,7 +36,6 @@ const useSize = (
     DRAF(setSize);
   };
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const iframe: HTMLIFrameElement | null = ref.current;
 
@@ -78,6 +63,19 @@ const useSize = (
       }
     };
   }, []);
+
+  if (!isBrowser) {
+    return [
+      typeof element === 'function' ? element({ width, height }) : element,
+      { width, height },
+    ];
+  }
+
+  if (typeof element === 'function') {
+    element = element(state);
+  }
+
+  const style = element.props.style || {};
 
   style.position = 'relative';
 
