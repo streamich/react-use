@@ -1,3 +1,10 @@
+# [17.4.0](https://github.com/streamich/react-use/compare/v17.3.3...v17.4.0) (2022-05-20)
+
+
+### Features
+
+* add usePinchZoom sensor hook ([3e042cb](https://github.com/streamich/react-use/commit/3e042cb2f3022349a53199b5cc5c380e3ebd9975))
+
 ## [17.3.3](https://github.com/streamich/react-use/compare/v17.3.2...v17.3.3) (2022-05-20)
 
 
