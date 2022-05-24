@@ -12,11 +12,17 @@ export interface State {
   height: number;
 }
 
-const useSize = (
+const useSizeBrowser = (
   element: Element,
   { width = Infinity, height = Infinity }: Partial<State> = {}
 ): [React.ReactElement<any>, State] => {
   const [state, setState] = useState<State>({ width, height });
+
+  if (typeof element === 'function') {
+    element = element(state);
+  }
+
+  const style = element.props.style || {};
 
   const ref = useRef<HTMLIFrameElement | null>(null);
   let window: Window | null = null;
@@ -64,19 +70,6 @@ const useSize = (
     };
   }, []);
 
-  if (!isBrowser) {
-    return [
-      typeof element === 'function' ? element({ width, height }) : element,
-      { width, height },
-    ];
-  }
-
-  if (typeof element === 'function') {
-    element = element(state);
-  }
-
-  const style = element.props.style || {};
-
   style.position = 'relative';
 
   const sized = React.cloneElement(
@@ -102,5 +95,14 @@ const useSize = (
 
   return [sized, state];
 };
+
+const useSizeServer = (
+  element: Element,
+  { width = Infinity, height = Infinity }: Partial<State> = {}
+): [React.ReactElement<any>, State] => {
+  return [typeof element === 'function' ? element({ width, height }) : element, { width, height }];
+};
+
+const useSize = isBrowser ? useSizeBrowser : useSizeServer;
 
 export default useSize;
