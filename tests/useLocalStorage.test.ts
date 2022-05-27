@@ -251,5 +251,35 @@ describe(useLocalStorage, () => {
 
       expect(JSON.parse(value!).fizz).toEqual('bang');
     });
+
+    it('watch out for state loss', () => {
+      const initialValue = {
+        foo: undefined,
+        bar: undefined
+      };
+
+      const { result, rerender } = renderHook(() => useLocalStorage(
+        "my-key",
+        initialValue
+      ));
+
+      const [, firstSetValue] = result.current as any;
+
+      const fooFirstValue = new Date().toISOString();
+      act(() => firstSetValue((prevValue) => ({ ...prevValue, foo: fooFirstValue } as any)));
+      rerender();
+
+      const [{ foo, bar }, secondSetValue] = result.current as any;
+      expect(foo).toBe(fooFirstValue);
+      expect(bar).toBeUndefined();
+
+      const barFirstValue = new Date().toISOString();
+      act(() => secondSetValue((prevValue) => ({ ...prevValue, bar: barFirstValue } as any)));
+      rerender();
+
+      const [{ foo: newFoo, bar: newBar }] = result.current as any;
+      expect(newFoo).toBe(fooFirstValue);
+      expect(newBar).toBe(barFirstValue);
+    })
   });
 });
