@@ -4,13 +4,13 @@ import useLatest from './useLatest';
 
 type parserOptions<T> =
   | {
-    raw: true;
-  }
+      raw: true;
+    }
   | {
-    raw: false;
-    serializer: (value: T) => string;
-    deserializer: (value: string) => T;
-  };
+      raw: false;
+      serializer: (value: T) => string;
+      deserializer: (value: string) => T;
+    };
 
 const useLocalStorage = <T>(
   key: string,
@@ -52,7 +52,8 @@ const useLocalStorage = <T>(
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [state, setState] = useState<T | undefined>(() => initializer.current(key));
-  const latest = useLatest(state)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const latest = useLatest(state);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useLayoutEffect(() => setState(initializer.current(key)), [key]);

@@ -255,13 +255,10 @@ describe(useLocalStorage, () => {
     it('watch out for state loss', () => {
       const initialValue = {
         foo: undefined,
-        bar: undefined
+        bar: undefined,
       };
 
-      const { result, rerender } = renderHook(() => useLocalStorage(
-        "my-key",
-        initialValue
-      ));
+      const { result, rerender } = renderHook(() => useLocalStorage('my-key', initialValue));
 
       const [, firstSetValue] = result.current as any;
 
@@ -280,6 +277,6 @@ describe(useLocalStorage, () => {
       const [{ foo: newFoo, bar: newBar }] = result.current as any;
       expect(newFoo).toBe(fooFirstValue);
       expect(newBar).toBe(barFirstValue);
-    })
+    });
   });
 });
