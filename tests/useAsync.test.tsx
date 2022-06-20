@@ -6,6 +6,68 @@ describe('useAsync', () => {
   it('should be defined', () => {
     expect(useAsync).toBeDefined();
   });
+  
+  describe('Correct behaviour with syncronous functions', () => {
+    it('Returns sync on first mount', async () => {
+      /** Initially, return sync: */
+      const initialFn = jest.fn().mockReturnValue('sync-return')
+
+      const hook = renderHook(({ fn, deps }) => useAsync(fn, deps), {
+        initialProps: {
+          fn: initialFn,
+          deps: [initialFn],
+        },
+      })
+
+      /** Should be loaded, with value already present: */
+      expect(hook.result.current.loading).toEqual(false)
+      expect(hook.result.current.value).toEqual('sync-return')
+      expect(initialFn).toBeCalledTimes(1)
+
+      /** Now, change the deps & refresh the fn reference.
+       *  Make sure the new function is called, not the old one
+       */
+      const newFunction = jest.fn().mockReturnValue('sync-return-2')
+      hook.rerender({ fn: newFunction, deps: [newFunction] })
+      /** Note: we don't await  here, because the fn is syncronous */
+
+      expect(hook.result.current.loading).toEqual(false)
+      expect(hook.result.current.value).toEqual('sync-return-2')
+      expect(initialFn).toBeCalledTimes(1)
+      expect(newFunction).toBeCalledTimes(1)
+
+      /** Now change to a async function */
+      const asyncFunction = jest.fn().mockResolvedValue('async-return-3')
+      hook.rerender({ fn: asyncFunction, deps: [asyncFunction] })
+
+      /** Before awaiting the result, assert the results: */
+      expect(hook.result.current.loading).toEqual(true)
+      expect(hook.result.current.value).toEqual(undefined)
+      expect(initialFn).toBeCalledTimes(1)
+      expect(newFunction).toBeCalledTimes(1)
+      expect(newFunction).toBeCalledTimes(1)
+
+      /** Now await & check the output: */
+      await hook.waitForNextUpdate()
+      expect(hook.result.current.loading).toEqual(false)
+      expect(hook.result.current.value).toEqual('async-return-3')
+      expect(initialFn).toBeCalledTimes(1)
+      expect(newFunction).toBeCalledTimes(1)
+      expect(newFunction).toBeCalledTimes(1)
+
+      /** Now change to a sync function that throws an error: */
+      const err = new Error('test-error')
+      const syncThrowingFn = jest.fn().mockImplementation(() => {
+        throw err
+      })
+      hook.rerender({ fn: syncThrowingFn, deps: [syncThrowingFn] })
+      /** Note: we don't await  here, because the fn is syncronous */
+
+      expect(hook.result.current.loading).toEqual(false)
+      expect(hook.result.current.value).toEqual(undefined)
+      expect(hook.result.current.error).toEqual(err)
+    })
+  })
 
   describe('a success', () => {
     let hook;
