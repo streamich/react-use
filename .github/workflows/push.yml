@@ -1,0 +1,97 @@
+name: On Push
+
+on: [ push ]
+
+jobs:
+  audit:
+    name: Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@main
+      - run: yarn audit
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@main
+      - uses: actions/cache@main
+        id: cache-modules
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - uses: actions/cache@main
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-global
+      - run: yarn install --frozen-lockfile
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Lint with ESLint
+        run: yarn lint
+
+      - name: Lint with TSC
+        if: ${{ always() }}
+        run: yarn lint:types
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ macos-latest, ubuntu-latest ]
+        node: [ 12, 14, 16 ]
+        exclude:
+          - os: macos-latest
+            node: 12
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@main
+      - uses: actions/cache@main
+        id: cache-modules
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - uses: actions/cache@main
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-global
+      - run: yarn install --frozen-lockfile
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: yarn test
+      - run: yarn build
+
+  publish-gpr:
+    name: Publish Version
+    needs: [ test, lint ]
+    runs-on: ubuntu-latest
+    if: "contains(github.ref, 'main') && !contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@main
+      - run: git fetch --tags
+      - uses: actions/cache@main
+        id: cache-modules
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+      - uses: actions/cache@main
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-global
+      - run: yarn install --frozen-lockfile
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: yarn build
+      - run: npx auto shipit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

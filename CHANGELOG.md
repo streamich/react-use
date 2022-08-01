@@ -1,3 +1,26 @@
+# [17.4.0](https://github.com/streamich/react-use/compare/v17.3.3...v17.4.0) (2022-05-20)
+
+
+### Features
+
+* add usePinchZoom sensor hook ([3e042cb](https://github.com/streamich/react-use/commit/3e042cb2f3022349a53199b5cc5c380e3ebd9975))
+
+## [17.3.3](https://github.com/streamich/react-use/compare/v17.3.2...v17.3.3) (2022-05-20)
+
+
+### Bug Fixes
+
+* bump React peer dependency version ([532e865](https://github.com/streamich/react-use/commit/532e8653a50d39dd439d9664d4813a1d7a5b4f3c))
+* resolve [#2319](https://github.com/streamich/react-use/issues/2319) ([4884b2c](https://github.com/streamich/react-use/commit/4884b2c74085e0841af7c36cca34e16d698d1b4c))
+* resolve @types/react@18 break change, React.FC ([20b7817](https://github.com/streamich/react-use/commit/20b78178d0033cc2e0c2a904e413b20ee864c816))
+
+## [17.3.2](https://github.com/streamich/react-use/compare/v17.3.1...v17.3.2) (2021-12-30)
+
+
+### Bug Fixes
+
+* useMedia SSR hydration bug with defaultState ([#2216](https://github.com/streamich/react-use/issues/2216)) ([5c01189](https://github.com/streamich/react-use/commit/5c0118941280bb265ca7813afb987f89c8c97a17))
+
 ## [17.3.1](https://github.com/streamich/react-use/compare/v17.3.0...v17.3.1) (2021-08-31)
 
 

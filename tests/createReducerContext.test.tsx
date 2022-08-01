@@ -33,7 +33,7 @@ describe('when using created hook', () => {
 
   const setUp = () => {
     const [useSharedNumber, SharedNumberProvider] = createReducerContext(reducer, 0);
-    const wrapper: React.FC = ({ children }) => (
+    const wrapper = ({ children }: { children?: React.ReactNode }) => (
       <SharedNumberProvider>{children}</SharedNumberProvider>
     );
     return renderHook(() => useSharedNumber(), { wrapper });
