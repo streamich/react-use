@@ -59,21 +59,22 @@ const useLocalStorage = <T>(
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
     (valOrFunc) => {
       try {
-        const newState =
-          typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
-        if (typeof newState === 'undefined') return;
-        let value: string;
+        set((oldValue) => {
+          const newState =
+            typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
+          if (typeof newState === 'undefined') return;
+          let value: string;
 
-        if (options)
-          if (options.raw)
-            if (typeof newState === 'string') value = newState;
+          if (options)
+            if (options.raw)
+              if (typeof newState === 'string') value = newState;
+              else value = JSON.stringify(newState);
+            else if (options.serializer) value = options.serializer(newState);
             else value = JSON.stringify(newState);
-          else if (options.serializer) value = options.serializer(newState);
           else value = JSON.stringify(newState);
-        else value = JSON.stringify(newState);
 
-        localStorage.setItem(key, value);
-        setState(deserializer(value));
+          localStorage.setItem(key, value);
+        });
       } catch {
         // If user is in private mode or has storage restriction
         // localStorage can throw. Also JSON.stringify can throw.
