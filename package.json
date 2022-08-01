@@ -1,5 +1,5 @@
 {
-  "name": "react-use",
+  "name": "@opencreek/react-use",
   "version": "17.4.0",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
@@ -40,12 +40,12 @@
   "license": "Unlicense",
   "repository": {
     "type": "git",
-    "url": "https://github.com/streamich/react-use"
+    "url": "https://github.com/opencreek/react-use"
   },
   "bugs": {
-    "url": "https://github.com/streamich/react-use/issues"
+    "url": "https://github.com/opencreek/react-use/issues"
   },
-  "homepage": "https://github.com/streamich/react-use#readme",
+  "homepage": "https://github.com/opencreek/react-use#readme",
   "dependencies": {
     "@types/js-cookie": "^2.2.6",
     "@xobotyi/scrollbar-width": "^1.9.5",
