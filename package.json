@@ -161,6 +161,10 @@
     "node": "14.18.2",
     "yarn": "1.22.17"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/react-use"
