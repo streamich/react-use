@@ -1,0 +1,45 @@
+name: Pull Request
+
+on:
+    pull_request:
+        types: [opened, synchronize]
+
+jobs:
+    check-version-increase:
+        name: Check version tag
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@main
+            - uses: actions/setup-node@main
+            - run: npx auto pr-check --url https://github.com/$GITHUB_REPOSITORY
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    publish-canary:
+        name: Publish a Canary version
+        needs: check-version-increase
+        runs-on: ubuntu-latest
+        if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+        steps:
+            - uses: actions/checkout@main
+            - uses: actions/setup-node@main
+            - uses: actions/cache@main
+              id: cache-modules
+              with:
+                  path: "**/node_modules"
+                  key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+            - uses: actions/cache@main
+              if: steps.cache-modules.outputs.cache-hit != 'true'
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-global
+            - run: yarn install --frozen-lockfile
+              if: steps.cache-modules.outputs.cache-hit != 'true'
+              env:
+                  NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+            - run: yarn build
+            - run: npx auto shipit
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
