@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    "npm",
+    "released"
+  ],
+  "owner": "opencreek",
+  "repo": "react-use",
+  "name": "Opencreek-bot",
+  "email": "oss@opencreek.tech"
+}
