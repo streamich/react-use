@@ -1,6 +1,6 @@
 {
   "name": "@opencreek/react-use",
-  "version": "17.5.2",
+  "version": "17.5.7",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
   "module": "esm/index.js",
