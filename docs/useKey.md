@@ -5,10 +5,11 @@ React UI sensor hook that executes a `handler` when a keyboard key is used.
 ## Usage
 
 ```jsx
+import React from 'react';
 import {useKey} from 'react-use';
 
 const Demo = () => {
-  const [count, set] = useState(0);
+  const [count, set] = React.useState(0);
   const increment = () => set(count => ++count);
   useKey('ArrowUp', increment);
 

@@ -5,7 +5,6 @@ Tracks component's renders count including the first render.
 ## Usage
 
 ```jsx
-import * as React from 'react';
 import { useRendersCount } from "react-use";  
 
 const Demo = () => {

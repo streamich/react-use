@@ -7,7 +7,7 @@ The third argument is the array of values that the throttle depends on, in the s
 ## Usage
 
 ```jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { useThrottleFn } from 'react-use';
 
 const Demo = () => {

@@ -6,15 +6,15 @@ Supports forward and backward iterations and arbitrary position set.
 ## Usage
 
 ```tsx
-import { useStateList } from 'react-use';
-import { useRef } from 'react';
+import React from 'react';
+import {useStateList} from 'react-use';
 
 const stateSet = ['first', 'second', 'third', 'fourth', 'fifth'];
 
 const Demo = () => {
   const { state, prev, next, setStateAt, setState, currentIndex } = useStateList(stateSet);
-  const indexInput = useRef<HTMLInputElement>(null);
-  const stateInput = useRef<HTMLInputElement>(null);
+  const indexInput = React.useRef<HTMLInputElement>(null);
+  const stateInput = React.useRef<HTMLInputElement>(null);
 
   return (
     <div>

@@ -5,10 +5,11 @@ Display an element full-screen, optional fallback for fullscreen video on iOS.
 ## Usage
 
 ```jsx
+import React from 'react';
 import {useFullscreen, useToggle} from 'react-use';
 
 const Demo = () => {
-  const ref = useRef(null)
+  const ref = React.useRef(null);
   const [show, toggle] = useToggle(false);
   const isFullscreen = useFullscreen(ref, show, {onClose: () => toggle(false)});
 

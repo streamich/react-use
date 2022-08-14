@@ -6,13 +6,14 @@ and a callback to delete the `cookie.`
 ## Usage
 
 ```jsx
+import React from 'react';
 import { useCookie } from "react-use";
 
 const Demo = () => {
   const [value, updateCookie, deleteCookie] = useCookie("my-cookie");
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = React.useState(1);
 
-  useEffect(() => {
+  React.useEffect(() => {
     deleteCookie();
   }, []);
 

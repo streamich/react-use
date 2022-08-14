@@ -4,7 +4,7 @@ Each time any of given states changes - validator function is invoked.
 
 ## Usage
 ```tsx
-import * as React from 'react';
+import React from 'react';
 import { useMultiStateValidator } from 'react-use';
 
 const DemoStateValidator = (s: number[]) => [s.every((num: number) => !(num % 2))] as [boolean];

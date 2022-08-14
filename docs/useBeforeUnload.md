@@ -30,11 +30,12 @@ Note: Since every `dirtyFn` change registers a new callback, you should use
 if your test value changes often.
 
 ```jsx
+import React from 'react';
 import {useBeforeUnload} from 'react-use';
 
 const Demo = () => {
   const [dirty, toggleDirty] = useToggle(false);
-  const dirtyFn = useCallback(() => {
+  const dirtyFn = React.useCallback(() => {
     return dirty;
   }, [dirty]);
   useBeforeUnload(dirtyFn, 'You have unsaved changes, are you sure?');

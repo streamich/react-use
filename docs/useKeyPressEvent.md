@@ -8,11 +8,11 @@ if you press and hold a key, it will fire `keydown` callback only once.
 ## Usage
 
 ```jsx
-import React, { useState } from React;
-import {useKeyPressEvent} from 'react-use';
+import React from 'react';
+import { useKeyPressEvent } from 'react-use';
 
 const Demo = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = React.useState(0);
 
   const increment = () => setCount(count => ++count);
   const decrement = () => setCount(count => --count);

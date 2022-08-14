@@ -8,7 +8,7 @@ Additionally hook provides methods to start/stop loop and check current state.
 ## Usage
 
 ```jsx
-import * as React from 'react';
+import React from 'react';
 import { useRafLoop, useUpdate } from 'react-use';
 
 const Demo = () => {

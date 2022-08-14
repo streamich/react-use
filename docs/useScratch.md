@@ -5,6 +5,7 @@ React sensor hook that tracks state of mouse "scrubs" (or "scratches").
 ## Usage
 
 ```tsx
+import React from 'react';
 import useScratch from 'react-use/lib/useScratch';
 
 const Demo = () => {

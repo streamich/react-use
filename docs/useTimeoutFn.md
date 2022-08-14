@@ -12,7 +12,7 @@ Several thing about it's work:
 ## Usage
 
 ```jsx
-import * as React from 'react';
+import React from 'react';
 import { useTimeoutFn } from 'react-use';
 
 const Demo = () => {
@@ -23,7 +23,7 @@ const Demo = () => {
   }
 
   const [isReady, cancel, reset] = useTimeoutFn(fn, 5000);
-  const cancelButtonClick = useCallback(() => {
+  const cancelButtonClick = React.useCallback(() => {
     if (isReady() === false) {
       cancel();
       setState(`cancelled`);

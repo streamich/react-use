@@ -5,7 +5,7 @@ A declarative interval hook based on [Dan Abramov's article on overreacted.io](h
 ## Usage
 
 ```jsx
-import * as React from 'react';
+import React from 'react';
 import {useInterval} from 'react-use';
 
 const Demo = () => {

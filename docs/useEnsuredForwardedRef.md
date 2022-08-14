@@ -9,6 +9,7 @@ This hook is useful in this specific case, it will __ensure__ that you get a val
 ## Usage
 
 ```jsx
+import React from 'react';
 import {ensuredForwardRef} from 'react-use';
 
 const Demo = () => {
@@ -18,7 +19,7 @@ const Demo = () => {
 };
 
 const Child = ensuredForwardRef((props, ref) => {
-  useEffect(() => {
+  React.useEffect(() => {
     console.log(ref.current.getBoundingClientRect())
   }, [])
 
@@ -31,6 +32,7 @@ const Child = ensuredForwardRef((props, ref) => {
 ## Alternative usage
 
 ```jsx
+import React from 'react';
 import {useEnsuredForwardedRef} from 'react-use';
 
 const Demo = () => {
@@ -44,7 +46,7 @@ const Child = React.forwardRef((props, ref) => {
   const ensuredForwardRef = useEnsuredForwardedRef(ref);
   // ensuredForwardRef will always be a valid reference.
 
-  useEffect(() => {
+  React.useEffect(() => {
     console.log(ensuredForwardRef.current.getBoundingClientRect())
   }, [])
 

@@ -5,6 +5,7 @@ React sensor hook that keeps track of whether the user is scrolling or not.
 ## Usage
 
 ```jsx
+import React from 'react';
 import { useScrolling } from "react-use";
 
 const Demo = () => {

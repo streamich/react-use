@@ -5,6 +5,7 @@ React state hook that returns the previous state as described in the [React hook
 ## Usage
 
 ```jsx
+import React from 'react';
 import {usePrevious} from 'react-use';
 
 const Demo = () => {

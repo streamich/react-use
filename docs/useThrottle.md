@@ -5,7 +5,6 @@ React hooks that throttle.
 ## Usage
 
 ```jsx
-import React, { useState } from 'react';
 import { useThrottle, useThrottleFn } from 'react-use';
 
 const Demo = ({value}) => {

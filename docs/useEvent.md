@@ -6,12 +6,13 @@ React sensor hook that subscribes a `handler` to events.
 ## Usage
 
 ```jsx
+import React from 'react';
 import {useEvent, useList} from 'react-use';
 
 const Demo = () => {
   const [list, {push, clear}] = useList();
 
-  const onKeyDown = useCallback(({key}) => {
+  const onKeyDown = React.useCallback(({key}) => {
     if (key === 'r') clear();
     push(key);
   }, []);

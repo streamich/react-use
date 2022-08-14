@@ -28,6 +28,7 @@ const Demo = () => {
 You can also provide a way of identifying the value as unique. By default, a strict equals is used.
 
 ```jsx
+import React from 'react';
 import {usePreviousDistinct} from 'react-use';
 
 const Demo = () => {

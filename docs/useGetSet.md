@@ -31,8 +31,10 @@ If you would do this example in a naive way using regular `useState`
 hook, the counter would not increment correctly if you click fast multiple times.
 
 ```jsx
+import React from 'react';
+
 const DemoWrong = () => {
-  const [cnt, set] = useState(0);
+  const [cnt, set] = React.useState(0);
   const onClick = () => {
     setTimeout(() => {
       set(cnt + 1)

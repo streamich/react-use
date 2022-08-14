@@ -5,6 +5,7 @@ React sensor hook that re-renders when the scroll position in a DOM element chan
 ## Usage
 
 ```jsx
+import React from 'react';
 import {useScroll} from 'react-use';
 
 const Demo = () => {

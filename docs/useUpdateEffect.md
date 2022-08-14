@@ -6,7 +6,7 @@ React effect hook that ignores the first invocation (e.g. on mount). The signatu
 ## Usage
 
 ```jsx
-import React from 'react'
+import React from 'react';
 import {useUpdateEffect} from 'react-use';
 
 const Demo = () => {
