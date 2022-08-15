@@ -23,7 +23,7 @@ const Demo = () => {
 
 #### State interface:
 
-```typescript
+```ts
 interface IUseNetworkState {
   /**
    * @desc Whether browser connected to the network or not.
@@ -72,6 +72,6 @@ interface IUseNetworkState {
 
 #### Call signature
 
-```typescript
+```ts
 function useNetworkState(initialState?: IUseNetworkState | (() => IUseNetworkState)): IUseNetworkState;
 ```

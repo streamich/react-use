@@ -4,7 +4,7 @@ Tracks component's renders count including the first render.
 
 ## Usage
 
-```typescript jsx
+```jsx
 import * as React from 'react';
 import { useRendersCount } from "react-use";  
 
@@ -24,6 +24,6 @@ const Demo = () => {
 
 ## Reference
 
-```typescript
+```ts
 const rendersCount: number = useRendersCount();
 ```

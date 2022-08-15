@@ -20,6 +20,6 @@ const Demo = () => {
 
 ## Reference
 
-```typescript
+```ts
 const sbw: number | undefined = useScrollbarWidth();
 ```

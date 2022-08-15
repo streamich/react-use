@@ -24,6 +24,6 @@ const Demo = () => {
 
 ## Reference
 
-```typescript
+```ts
 const isFirstMount: boolean = useFirstMountState();
 ```
