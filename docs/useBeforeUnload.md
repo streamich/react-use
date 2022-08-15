@@ -8,7 +8,7 @@ React side-effect hook that shows browser alert when user try to reload or close
 ### Boolean check
 
 ```jsx
-import {useBeforeUnload} from 'react-use';
+import {useBeforeUnload, useToggle} from 'react-use';
 
 const Demo = () => {
   const [dirty, toggleDirty] = useToggle(false);
@@ -31,7 +31,7 @@ if your test value changes often.
 
 ```jsx
 import React from 'react';
-import {useBeforeUnload} from 'react-use';
+import {useBeforeUnload, useToggle} from 'react-use';
 
 const Demo = () => {
   const [dirty, toggleDirty] = useToggle(false);

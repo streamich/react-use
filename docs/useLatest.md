@@ -8,6 +8,7 @@ This is mostly useful to get access to the latest value of some props or state i
 
 ```jsx
 import React from 'react';
+import {useLatest} from 'react-use';
 
 const Demo = () => {
   const [count, setCount] = React.useState(0);

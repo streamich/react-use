@@ -8,6 +8,7 @@ The third argument is the array of values that the debounce depends on, in the s
 
 ```jsx
 import React from 'react';
+import {useDebounce} from 'react-use';
 
 const Demo = () => {
   const [state, setState] = React.useState('Typing stopped');

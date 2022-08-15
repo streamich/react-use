@@ -5,7 +5,7 @@ React UI hook to provide physical feedback with device vibration hardware using 
 ## Usage
 
 ```jsx
-import {useVibrate} from 'react-use';
+import {useToggle, useVibrate} from 'react-use';
 
 const Demo = () => {
   const [vibrating, toggleVibrating] = useToggle(false);

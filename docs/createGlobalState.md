@@ -6,6 +6,7 @@ A React hook that creates a globally shared state.
 
 ```tsx
 import React from 'react';
+import {createGlobalState} from 'react-use';
 
 const useGlobalValue = createGlobalState<number>(0);
 
@@ -37,6 +38,7 @@ It also allows initializing the state with a function and using a function in th
 
 ```tsx
 import React from 'react';
+import { createGlobalState } from 'react-use';
 
 const useGlobalValue = createGlobalState<number>(() => 0);
 

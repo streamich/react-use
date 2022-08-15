@@ -6,6 +6,7 @@ React sensor hook that tracks the changes in pointer touch events and detects va
 
 ```jsx
 import React from 'react';
+import {usePinchZoom} from 'react-use';
 
 const Demo = () => {
   const [scale, setState] = React.useState(1);

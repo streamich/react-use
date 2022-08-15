@@ -5,7 +5,7 @@ React sensor hook that tracks browser's location hash.
 ## Usage
 
 ```jsx
-import {useHash} from 'react-use';
+import {useHash, useMount} from 'react-use';
 
 const Demo = () => {
   const [hash, setHash] = useHash();
