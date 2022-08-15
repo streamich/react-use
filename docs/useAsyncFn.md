@@ -30,7 +30,7 @@ const Demo = ({url}) => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useAsyncFn<Result, Args>(fn, deps?: any[], initialState?: AsyncState<Result>);
 ```

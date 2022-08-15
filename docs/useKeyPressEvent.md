@@ -35,7 +35,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useKeyPressEvent('<key>', keydown);
 useKeyPressEvent('<key>', keydown, keyup);

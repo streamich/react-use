@@ -30,7 +30,7 @@ const Demo = ({url}) => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useAsyncRetry(fn, args?: any[]);
 ```

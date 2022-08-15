@@ -25,7 +25,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useCustomCompareEffect(effect: () => void | (() => void | undefined), deps: any[], depsEqual: (prevDeps: any[], nextDeps: any[]) => boolean);
 ```

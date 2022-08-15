@@ -36,7 +36,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const { state, currentIndex, prev, next, setStateAt, setState } = useStateList<T>(stateSet: T[] = []);
 ```

@@ -24,7 +24,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useSize(element, initialSize);
 ```

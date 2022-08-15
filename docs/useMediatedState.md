@@ -26,6 +26,7 @@ const Demo = () => {
 ```
 
 ## Reference
+<!-- eslint-skip -->
 ```ts
 const [state, setState] = useMediatedState<S=any>(
   mediator: StateMediator<S>,

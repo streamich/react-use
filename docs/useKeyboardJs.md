@@ -35,7 +35,7 @@ yarn add keyboardjs
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useKeyboardJs(combination: string | string[]): [isPressed: boolean, event?: KeyboardEvent]
 ```

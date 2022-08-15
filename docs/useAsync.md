@@ -29,7 +29,7 @@ const Demo = ({url}) => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useAsync(fn, args?: any[]);
 ```

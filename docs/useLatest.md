@@ -31,7 +31,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const latestState = useLatest = <T>(state: T): MutableRefObject<T>;
 ```

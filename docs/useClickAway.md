@@ -27,7 +27,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useClickAway(ref, onMouseEvent)
 useClickAway(ref, onMouseEvent, ['click'])

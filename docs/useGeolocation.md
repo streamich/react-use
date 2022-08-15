@@ -19,7 +19,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useGeolocation(options: PositionOptions)
 ```

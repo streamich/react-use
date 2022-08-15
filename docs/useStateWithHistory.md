@@ -5,7 +5,7 @@ Stores defined amount of previous state values and provides handles to travel th
 ## Usage
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const [state, setState, stateHistory] = useStateWithHistory<S = undefined>(
   initialState?: S | (()=>S),

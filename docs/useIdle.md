@@ -21,7 +21,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useIdle(ms, initialState);
 ```

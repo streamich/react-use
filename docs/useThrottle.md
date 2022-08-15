@@ -21,7 +21,7 @@ const Demo = ({value}) => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useThrottle(value, ms?: number);
 useThrottleFn(fn, ms, args);

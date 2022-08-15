@@ -22,7 +22,7 @@ const Demo = () => {
 ```
 
 #### State interface:
-
+<!-- eslint-skip -->
 ```ts
 interface IUseNetworkState {
   /**
@@ -71,7 +71,7 @@ interface IUseNetworkState {
 ```
 
 #### Call signature
-
+<!-- eslint-skip -->
 ```ts
 function useNetworkState(initialState?: IUseNetworkState | (() => IUseNetworkState)): IUseNetworkState;
 ```

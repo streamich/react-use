@@ -48,7 +48,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts 
 const [ current, { inc, dec, get, set, reset } ] = useCounter(initial: number, max: number | null = null, min: number | null = null);
 ```

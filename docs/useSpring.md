@@ -37,7 +37,7 @@ yarn add rebound
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 const currentValue = useSpring(targetValue);
 const currentValue = useSpring(targetValue, tension, friction);

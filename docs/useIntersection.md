@@ -27,7 +27,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useIntersection(
   ref: RefObject<HTMLElement>,

@@ -19,7 +19,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useMedia(query: string, defaultState: boolean = false): boolean;
 ```

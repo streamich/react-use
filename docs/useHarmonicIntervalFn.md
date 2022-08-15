@@ -8,7 +8,7 @@ all at the same time.
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useHarmonicIntervalFn(fn, delay?: number)
 ```

@@ -25,7 +25,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const prevState = usePrevious = <T>(state: T): T;
 ```

@@ -48,7 +48,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts 
 const [
     isReady: () => boolean | null,

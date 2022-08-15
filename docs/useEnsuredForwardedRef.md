@@ -57,7 +57,7 @@ const Child = React.forwardRef((props, ref) => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 ensuredForwardRef<T, P = {}>(Component: RefForwardingComponent<T, P>): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>>;
 

@@ -20,7 +20,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useTween(easing?: string, ms?: number, delay?: number): number
 ```

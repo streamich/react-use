@@ -34,7 +34,7 @@ const Demo = () => {
 
 
 ## Examples
-
+<!-- eslint-skip -->
 ```js
 useEvent('keydown', handler)
 useEvent('scroll', handler, window, {capture: true})

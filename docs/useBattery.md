@@ -46,7 +46,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const {isSupported, level, charging, dischargingTime, chargingTime} = useBattery();
 ```

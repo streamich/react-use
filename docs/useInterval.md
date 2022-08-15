@@ -35,7 +35,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useInterval(callback, delay?: number)
 ```

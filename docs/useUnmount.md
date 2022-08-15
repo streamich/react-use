@@ -14,7 +14,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useUnmount(fn: () => void | undefined);
 ```

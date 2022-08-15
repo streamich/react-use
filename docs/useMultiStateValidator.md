@@ -39,6 +39,7 @@ const Demo = () => {
 ```
 
 ## Reference
+<!-- eslint-skip -->
 ```ts 
 const [validity, revalidate] = useStateValidator(
   state: any[] | { [p: string]: any } | { [p: number]: any },

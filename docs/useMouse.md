@@ -28,7 +28,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useMouse(ref);
 useMouseHovered(ref, {bound: false, whenHovered: false});

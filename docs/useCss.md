@@ -29,7 +29,7 @@ const Demo = () => {
 
 
 ## Examples
-
+<!-- eslint-skip -->
 ```js
 const className = useCss({
   color: 'tomato',

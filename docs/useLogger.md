@@ -22,7 +22,7 @@ Demo unmounted
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useLogger(componentName: string, ...rest);
 ```

@@ -22,7 +22,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const rendersCount: number = useRendersCount();
 ```

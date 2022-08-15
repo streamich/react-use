@@ -22,7 +22,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useRaf(ms?: number, delay?: number): number;
 ```

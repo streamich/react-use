@@ -37,7 +37,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```jsx
 const [audio, state, controls, ref] = useAudio(props);
 const [audio, state, controls] = useAudio(<audio {...props}/>);
@@ -45,7 +45,7 @@ const [audio, state, controls] = useAudio(<audio {...props}/>);
 
 `audio` is React's `<audio>` element that you have to insert somewhere in your
 render tree, for example:
-
+<!-- eslint-skip -->
 ```jsx
 <div>{audio}</div>
 ```

@@ -21,7 +21,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useVibrate(
   enabled: boolean = true,

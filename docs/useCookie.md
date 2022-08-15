@@ -34,7 +34,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const [value, updateCookie, deleteCookie] = useCookie(cookieName: string);
 ```

@@ -18,7 +18,7 @@ const Demo = ({value}) => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useIsomorphicLayoutEffect(effect: EffectCallback, deps?: ReadonlyArray<any> | undefined);
 ```

@@ -27,7 +27,7 @@ const Demo = () => {
 
 
 ## Examples
-
+<!-- eslint-skip -->
 ```js
 const isPressed = useKeyPress('a');
 

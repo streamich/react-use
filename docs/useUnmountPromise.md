@@ -23,7 +23,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const mounted = useUnmountPromise();
 

@@ -33,7 +33,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 const [state, setState] = useSetState({cnt: 0});
 

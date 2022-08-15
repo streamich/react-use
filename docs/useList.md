@@ -33,6 +33,7 @@ const Demo = () => {
 ```
 
 ## Reference
+<!-- eslint-skip -->
 ```ts
 import {useList} from "react-use";
 

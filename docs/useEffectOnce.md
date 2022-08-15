@@ -21,7 +21,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useEffectOnce(effect: EffectCallback);
 ```

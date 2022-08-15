@@ -36,7 +36,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const [stopLoop, startLoop, isActive] = useRafLoop(callback: FrameRequestCallback, initiallyActive = true);
 ```

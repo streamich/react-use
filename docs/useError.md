@@ -6,6 +6,7 @@ React side-effect hook that returns an error dispatcher.
 
 ```jsx
 import { useError } from 'react-use';
+import ErrorBoundary from 'src/.../ErrorBoundary';
 
 const Demo = () => {
   const dispatchError = useError();
@@ -26,7 +27,7 @@ const App = () => (
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 const dispatchError = useError();
 ```

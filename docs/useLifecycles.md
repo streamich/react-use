@@ -17,7 +17,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useLifecycles(mount, unmount);
 ```

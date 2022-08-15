@@ -21,7 +21,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useScrolling(ref: RefObject<HTMLElement>);
 ```

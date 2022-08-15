@@ -47,7 +47,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```jsx
 const [useSharedState, SharedStateProvider] = createStateContext(initialValue);
 

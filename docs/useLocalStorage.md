@@ -22,7 +22,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useLocalStorage(key);
 useLocalStorage(key, initialValue);

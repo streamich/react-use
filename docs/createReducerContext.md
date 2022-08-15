@@ -70,7 +70,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```jsx
 const [useSharedState, SharedStateProvider] = createReducerContext(reducer, initialState);
 

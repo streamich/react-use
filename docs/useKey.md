@@ -31,14 +31,14 @@ import UseKey from 'react-use/lib/component/UseKey';
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useKey(filter, handler, options?, deps?)
 ```
 
 
 ## Examples
-
+<!-- eslint-skip -->
 ```js
 useKey('a', () => alert('"a" pressed'));
 

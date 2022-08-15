@@ -25,7 +25,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 const [{value, error, noUserInteraction}, copyToClipboard] = useCopyToClipboard();
 ```

@@ -23,7 +23,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 useSessionStorage(key);
 useSessionStorage(key, initialValue);

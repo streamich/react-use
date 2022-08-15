@@ -24,7 +24,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useFullscreen(ref, show, {onClose})
 ```

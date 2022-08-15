@@ -22,7 +22,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const isFirstMount: boolean = useFirstMountState();
 ```

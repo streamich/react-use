@@ -36,7 +36,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```jsx
 const [video, state, controls, ref] = useVideo(props);
 const [video, state, controls, ref] = useVideo(<video {...props}/>);
@@ -44,7 +44,7 @@ const [video, state, controls, ref] = useVideo(<video {...props}/>);
 
 `video` is React's `<video>` element that you have to insert somewhere in your
 render tree, for example:
-
+<!-- eslint-skip -->
 ```jsx
 <div>{video}</div>
 ```

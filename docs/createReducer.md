@@ -58,7 +58,7 @@ const Demo = ({ initialCount = 1 }) => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 const useMiddlewareReducer = createReducer(...middlewares);
 ```

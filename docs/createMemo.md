@@ -30,7 +30,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 const useMemoFn = createMemo(fn);
 ```

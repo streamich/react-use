@@ -44,7 +44,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 const prevState = usePreviousDistinct = <T>(state: T, compare?: (prev: T | undefined, next: T) => boolean): T;
 ```

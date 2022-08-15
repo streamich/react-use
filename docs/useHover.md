@@ -32,7 +32,7 @@ const Demo = () => {
 
 
 ## Reference
-
+<!-- eslint-skip -->
 ```js
 const [newReactElement, isHovering] = useHover(reactElement);
 const [newReactElement, isHovering] = useHover((isHovering) => reactElement);

@@ -28,7 +28,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useLockBodyScroll(locked: boolean = true, elementRef?: RefObject<HTMLElement>);
 ```

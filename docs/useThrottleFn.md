@@ -43,7 +43,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useThrottleFn(fn, ms: number, args: any[]);
 ```

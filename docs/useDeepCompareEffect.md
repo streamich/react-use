@@ -24,7 +24,7 @@ const Demo = () => {
 ```
 
 ## Reference
-
+<!-- eslint-skip -->
 ```ts
 useDeepCompareEffect(effect: () => void | (() => void | undefined), deps: any[]);
 ```
