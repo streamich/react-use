@@ -3,7 +3,7 @@
 Each time given state changes - validator function is invoked.
 
 ## Usage
-```ts 
+```tsx
 import * as React from 'react';
 import { useCallback } from 'react';
 import { useStateValidator } from 'react-use';

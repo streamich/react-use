@@ -14,7 +14,7 @@ import {useToggle} from 'react-use'
 
 Depending on your bundler you might run into a missing dependency error with ES6 named import statements. Some hooks require you to install peer dependencies so we recommend using individual imports. If you want the best of both worlds you can transform the named import statements to individual import statements with [`babel-plugin-import`](https://github.com/ant-design/babel-plugin-import) by adding the following config to your `.babelrc` file:
 
-```json
+```js
 [
       'import',
       {

@@ -5,7 +5,7 @@ Supports forward and backward iterations and arbitrary position set.
 
 ## Usage
 
-```jsx
+```tsx
 import { useStateList } from 'react-use';
 import { useRef } from 'react';
 

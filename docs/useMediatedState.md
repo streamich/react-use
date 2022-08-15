@@ -3,7 +3,7 @@
 A lot like the standard `useState`, but with mediation process.
 
 ## Usage
-```ts
+```tsx
 import * as React from 'react';
 import { useMediatedState } from '../useMediatedState';
 

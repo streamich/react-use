@@ -5,7 +5,7 @@ Provides handles to cancel and/or reset the timeout.
 
 ## Usage
 
-```jsx
+```tsx
 import { useTimeout } from 'react-use';
 
 function TestComponent(props: { ms?: number } = {}) {

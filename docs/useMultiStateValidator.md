@@ -3,7 +3,7 @@
 Each time any of given states changes - validator function is invoked.  
 
 ## Usage
-```ts 
+```tsx
 import * as React from 'react';
 import { useMultiStateValidator } from 'react-use';
 
