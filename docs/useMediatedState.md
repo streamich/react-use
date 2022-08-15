@@ -5,7 +5,7 @@ A lot like the standard `useState`, but with mediation process.
 ## Usage
 ```tsx
 import React from 'react';
-import { useMediatedState } from '../useMediatedState';
+import { useMediatedState } from 'react-use';
 
 const inputMediator = s => s.replace(/[\s]+/g, ' ');
 const Demo = () => {

@@ -9,6 +9,10 @@ A life-cycle hook that provides a higher order promise that does not resolve if 
 import React from 'react';
 import useUnmountPromise from 'react-use/lib/useUnmountPromise';
 
+const someFunction = () => {
+  // do something...
+};
+
 const Demo = () => {
   const mounted = useUnmountPromise();
   React.useEffect(async () => {

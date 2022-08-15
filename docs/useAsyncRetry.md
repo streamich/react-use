@@ -16,13 +16,14 @@ const Demo = ({url}) => {
 
   return (
     <div>
-      {state.loading
-        ? <div>Loading...</div>
-        : state.error
-          ? <div>Error: {state.error.message}</div>
-          : <div>Value: {state.value}</div>
-      }
-      {!loading && <button onClick={() => state.retry()}>Start loading</button>}
+      {state.loading ? (
+        <div>Loading...</div>
+      ) : state.error ? (
+        <div>Error: {state.error.message}</div>
+      ) : (
+        <div>Value: {state.value}</div>
+      )}
+      {!state.loading && <button onClick={() => state.retry()}>Start loading</button>}
     </div>
   );
 };

@@ -10,10 +10,17 @@ Superset of [`useList`](./useList.md). Provides an additional method to upsert (
 ```jsx
 import {useUpsert} from 'react-use';
 
+interface DemoType {
+  // some types
+}
+
 const Demo = () => {
   const comparisonFunction = (a: DemoType, b: DemoType) => {
     return a.id === b.id;
   };
+  const initialItems = [
+    /* some items */
+  ];
   const [list, { set, upsert, remove }] = useUpsert(comparisonFunction, initialItems);
 
   return (

@@ -33,13 +33,11 @@ import {usePreviousDistinct} from 'react-use';
 
 const Demo = () => {
   const [str, setStr] = React.useState("something_lowercase");
-  const [unrelatedCount] = React.useState(0);
   const prevStr = usePreviousDistinct(str, (prev, next) => (prev && prev.toUpperCase()) === next.toUpperCase());
 
   return (
     <p>
-      Now: {count}, before: {prevCount}
-      Unrelated: {unrelatedCount}
+      Now: {str}, before: {prevStr}
     </p>
   );
 };

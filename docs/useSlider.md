@@ -16,7 +16,7 @@ const Demo = () => {
     <div>
       <div ref={ref} style={{ position: 'relative' }}>
         <p style={{ textAlign: 'center', color: isSliding ? 'red' : 'green' }}>
-          {Math.round(state.value * 100)}%
+          {Math.round(value * 100)}%
         </p>
         <div style={{ position: 'absolute', left: pos }}>🎚</div>
       </div>
