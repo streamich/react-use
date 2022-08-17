@@ -14,6 +14,8 @@ module.exports = {
         'jsx-a11y/alt-text': 'off',
         'no-restricted-globals': 'off',
         'no-undef': 'warn',
+        'react-hooks/exhaustive-deps': 'off',
+        'react-hooks/rules-of-hooks': 'off',
       },
     },
   ],
