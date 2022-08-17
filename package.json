@@ -20,6 +20,8 @@
     "lint": "eslint \"{src,tests,stories}/**/*.{ts,tsx}\" \"docs/*.md\"",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
+    "format": "prettier --check \"{src,tests,stories}/**/*.{ts,tsx}\" \"docs/*.md\"",
+    "format:fix": "prettier --write \"{src,tests,stories}/**/*.{ts,tsx}\" \"docs/*.md\"",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn build:cjs && yarn build:es",
@@ -33,7 +35,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && yarn clean && yarn build && yarn test"
+      "pre-push": "yarn lint && yarn format && yarn clean && yarn build && yarn test"
     }
   },
   "author": "@streamich",
@@ -92,12 +94,10 @@
     "babel-loader": "8.2.3",
     "babel-plugin-dynamic-import-node": "2.3.3",
     "eslint": "8.4.1",
-    "eslint-config-prettier": "8.3.0",
     "eslint-config-react-app": "6.0.0",
     "eslint-plugin-flowtype": "8.0.3",
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-markdown": "^3.0.0",
     "eslint-plugin-react": "7.27.1",
     "eslint-plugin-react-hooks": "4.3.0",
@@ -154,10 +154,12 @@
   "lint-staged": {
     "src/**/**/*.{ts,tsx}": [
       "eslint --fix",
+      "prettier --write",
       "git add"
     ],
     "docs/*.md": [
       "eslint --fix",
+      "prettier --write",
       "git add"
     ]
   },
