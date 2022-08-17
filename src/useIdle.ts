@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { throttle } from 'throttle-debounce';
 import { off, on } from './misc/util';
 
-const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
+const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'touchmove', 'wheel'];
 const oneMinute = 60e3;
 
 const useIdle = (
