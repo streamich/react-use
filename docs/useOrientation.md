@@ -6,8 +6,8 @@ Returns state in the following shape
 
 ```json
 {
-  angle: 0,
-  type: 'landscape-primary'
+  "angle": 0,
+  "type": "landscape-primary"
 }
 ```
 
