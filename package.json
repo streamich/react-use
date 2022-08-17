@@ -17,7 +17,7 @@
     "test:ssr": "jest --maxWorkers 2 --config ./jest.config.node.ts",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint \"{src,tests,stories}/**/*.{ts,tsx}\"",
+    "lint": "eslint \"{src,tests,stories}/**/*.{ts,tsx}\" \"docs/*.md\"",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
     "build:cjs": "tsc",
@@ -98,6 +98,7 @@
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-markdown": "^3.0.0",
     "eslint-plugin-react": "7.27.1",
     "eslint-plugin-react-hooks": "4.3.0",
     "fork-ts-checker-webpack-plugin": "6.5.0",
@@ -152,6 +153,10 @@
   },
   "lint-staged": {
     "src/**/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "docs/*.md": [
       "eslint --fix",
       "git add"
     ]

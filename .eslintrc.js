@@ -1,6 +1,21 @@
 module.exports = {
-  extends: ['react-app', 'prettier'],
+  extends: ['react-app', 'prettier', 'plugin:markdown/recommended'],
   plugins: ['prettier'],
+  overrides: [
+    {
+      files: ['**/*.md'],
+      processor: 'markdown/markdown',
+    },
+    {
+      files: ['docs/*.md/*.{js,jsx,ts,tsx,json}'],
+      rules: {
+        '@typescript-eslint/no-unused-vars': 'off',
+        'jsx-a11y/alt-text': 'off',
+        'no-restricted-globals': 'off',
+        'no-undef': 'warn',
+      },
+    },
+  ],
   rules: {
     'prettier/prettier': [
       'error',
