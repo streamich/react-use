@@ -152,7 +152,7 @@
     ]
   },
   "lint-staged": {
-    "src/**/**/*.{ts,tsx}": [
+    "{src,tests,stories}/**/*.{ts,tsx}": [
       "eslint --fix",
       "prettier --write",
       "git add"
