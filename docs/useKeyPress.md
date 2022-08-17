@@ -3,11 +3,10 @@
 React UI sensor hook that detects when the user is pressing a specific
 key on their keyboard.
 
-
 ## Usage
 
 ```jsx
-import {useKeyPress} from 'react-use';
+import { useKeyPress } from 'react-use';
 
 const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
@@ -16,18 +15,22 @@ const Demo = () => {
   for (const key of keys) states.push(useKeyPress(key)[0]);
 
   return (
-    <div style={{textAlign: 'center'}}>
+    <div style={{ textAlign: 'center' }}>
       Try pressing numbers
       <br />
-      {states.reduce((s, pressed, index) => s + (pressed ? (s ? ' + ' : '') + keys[index] : ''), '')}
+      {states.reduce(
+        (s, pressed, index) => s + (pressed ? (s ? ' + ' : '') + keys[index] : ''),
+        ''
+      )}
     </div>
   );
 };
 ```
 
-
 ## Examples
+
 <!-- eslint-skip -->
+
 ```js
 const isPressed = useKeyPress('a');
 

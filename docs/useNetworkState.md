@@ -8,21 +8,19 @@ connection.
 ## Usage
 
 ```jsx
-import {useNetworkState} from 'react-use';
+import { useNetworkState } from 'react-use';
 
 const Demo = () => {
   const state = useNetworkState();
 
-  return (
-    <pre>
-      {JSON.stringify(state, null, 2)}
-    </pre>
-  );
+  return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
 ```
 
 #### State interface:
+
 <!-- eslint-skip -->
+
 ```ts
 interface IUseNetworkState {
   /**
@@ -66,12 +64,25 @@ interface IUseNetworkState {
   /**
    * @desc The type of connection a device is using to communicate with the network.
    */
-  type: 'bluetooth' | 'cellular' | 'ethernet' | 'none' | 'wifi' | 'wimax' | 'other' | 'unknown' | undefined;
+  type:
+    | 'bluetooth'
+    | 'cellular'
+    | 'ethernet'
+    | 'none'
+    | 'wifi'
+    | 'wimax'
+    | 'other'
+    | 'unknown'
+    | undefined;
 }
 ```
 
 #### Call signature
+
 <!-- eslint-skip -->
+
 ```ts
-function useNetworkState(initialState?: IUseNetworkState | (() => IUseNetworkState)): IUseNetworkState;
+function useNetworkState(
+  initialState?: IUseNetworkState | (() => IUseNetworkState)
+): IUseNetworkState;
 ```

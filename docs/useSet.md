@@ -5,7 +5,7 @@ React state hook that tracks a [Set](https://developer.mozilla.org/en-US/docs/We
 ## Usage
 
 ```jsx
-import {useSet} from 'react-use';
+import { useSet } from 'react-use';
 
 const Demo = () => {
   const [set, { add, has, remove, toggle, reset }] = useSet(new Set(['hello']));

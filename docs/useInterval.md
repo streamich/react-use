@@ -6,7 +6,7 @@ A declarative interval hook based on [Dan Abramov's article on overreacted.io](h
 
 ```jsx
 import React from 'react';
-import {useBoolean, useInterval} from 'react-use';
+import { useBoolean, useInterval } from 'react-use';
 
 const Demo = () => {
   const [count, setCount] = React.useState(0);
@@ -23,7 +23,7 @@ const Demo = () => {
   return (
     <div>
       <div>
-        delay: <input value={delay} onChange={event => setDelay(Number(event.target.value))} />
+        delay: <input value={delay} onChange={(event) => setDelay(Number(event.target.value))} />
       </div>
       <h1>count: {count}</h1>
       <div>
@@ -35,7 +35,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```js
 useInterval(callback, delay?: number)
 ```

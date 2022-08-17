@@ -3,26 +3,22 @@
 React animation hook that forces component to re-render on each `requestAnimationFrame`,
 returns percentage of time elapsed.
 
-
 ## Usage
 
 ```jsx
-import {useRaf} from 'react-use';
+import { useRaf } from 'react-use';
 
 const Demo = () => {
   const elapsed = useRaf(5000, 1000);
 
-  return (
-    <div>
-      Elapsed: {elapsed}
-    </div>
-  );
+  return <div>Elapsed: {elapsed}</div>;
 };
 ```
 
-
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useRaf(ms?: number, delay?: number): number;
 ```

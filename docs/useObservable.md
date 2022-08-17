@@ -2,21 +2,16 @@
 
 React state hook that tracks the latest value of an `Observable`.
 
-
 ## Usage
 
 ```jsx
-import {useObservable} from 'react-use';
-import {BehaviorSubject} from 'rxjs';
+import { useObservable } from 'react-use';
+import { BehaviorSubject } from 'rxjs';
 
 const counter$ = new BehaviorSubject(0);
 const Demo = () => {
   const value = useObservable(counter$, 0);
 
-  return (
-    <button onClick={() => counter$.next(value + 1)}>
-      Clicked {value} times
-    </button>
-  );
+  return <button onClick={() => counter$.next(value + 1)}>Clicked {value} times</button>;
 };
 ```

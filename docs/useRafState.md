@@ -5,7 +5,7 @@ React state hook that only updates state in the callback of [`requestAnimationFr
 ## Usage
 
 ```jsx
-import {useRafState, useMount} from 'react-use';
+import { useRafState, useMount } from 'react-use';
 
 const Demo = () => {
   const [state, setState] = useRafState({

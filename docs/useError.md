@@ -27,7 +27,9 @@ const App = () => (
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```js
 const dispatchError = useError();
 ```

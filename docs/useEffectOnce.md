@@ -5,15 +5,15 @@ React lifecycle hook that runs an effect only once.
 ## Usage
 
 ```jsx
-import {useEffectOnce} from 'react-use';
+import { useEffectOnce } from 'react-use';
 
 const Demo = () => {
   useEffectOnce(() => {
-    console.log('Running effect once on mount')
+    console.log('Running effect once on mount');
 
     return () => {
-      console.log('Running clean-up of effect on unmount')
-    }
+      console.log('Running clean-up of effect on unmount');
+    };
   });
 
   return null;
@@ -21,7 +21,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```js
 useEffectOnce(effect: EffectCallback);
 ```

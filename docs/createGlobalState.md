@@ -6,7 +6,7 @@ A React hook that creates a globally shared state.
 
 ```tsx
 import React from 'react';
-import {createGlobalState} from 'react-use';
+import { createGlobalState } from 'react-use';
 
 const useGlobalValue = createGlobalState<number>(0);
 
@@ -45,13 +45,13 @@ const useGlobalValue = createGlobalState<number>(() => 0);
 const CompA: React.FC = () => {
   const [value, setValue] = useGlobalValue();
 
-  return <button onClick={() => setValue(value => value + 1)}>+</button>;
+  return <button onClick={() => setValue((value) => value + 1)}>+</button>;
 };
 
 const CompB: React.FC = () => {
   const [value, setValue] = useGlobalValue();
 
-  return <button onClick={() => setValue(value => value - 1)}>-</button>;
+  return <button onClick={() => setValue((value) => value - 1)}>-</button>;
 };
 
 const Demo: React.FC = () => {

@@ -5,10 +5,10 @@ React sensor hook that re-renders on window scroll.
 ## Usage
 
 ```jsx
-import {useWindowScroll} from 'react-use';
+import { useWindowScroll } from 'react-use';
 
 const Demo = () => {
-  const {x, y} = useWindowScroll();
+  const { x, y } = useWindowScroll();
 
   return (
     <div>

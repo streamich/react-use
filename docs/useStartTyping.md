@@ -6,7 +6,7 @@ to focus default input field on the page.
 ## Usage
 
 ```jsx
-import {useStartTyping} from 'react-use';
+import { useStartTyping } from 'react-use';
 
 const Demo = () => {
   useStartTyping(() => alert('Started typing...'));

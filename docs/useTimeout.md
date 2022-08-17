@@ -14,8 +14,8 @@ function TestComponent(props: { ms?: number } = {}) {
 
   return (
     <div>
-      { isReady() ? 'I\'m reloaded after timeout' : `I will be reloaded after ${ ms / 1000 }s` }
-      { isReady() === false ? <button onClick={ cancel }>Cancel</button> : '' }
+      {isReady() ? "I'm reloaded after timeout" : `I will be reloaded after ${ms / 1000}s`}
+      {isReady() === false ? <button onClick={cancel}>Cancel</button> : ''}
     </div>
   );
 }
@@ -24,15 +24,17 @@ const Demo = () => {
   return (
     <div>
       <TestComponent />
-      <TestComponent ms={ 10000 } />
+      <TestComponent ms={10000} />
     </div>
   );
 };
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
-```ts 
+
+```ts
 const [
     isReady: () => boolean | null,
     cancel: () => void,
@@ -41,8 +43,8 @@ const [
 ```
 
 - **`isReady`**_` :()=>boolean|null`_ - function returning current timeout state:
-    - `false` - pending re-render
-    - `true` - re-render performed
-    - `null` - re-render cancelled
+  - `false` - pending re-render
+  - `true` - re-render performed
+  - `null` - re-render cancelled
 - **`cancel`**_` :()=>void`_ - cancel the timeout (component will not be re-rendered)
 - **`reset`**_` :()=>void`_ - reset the timeout

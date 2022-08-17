@@ -7,7 +7,7 @@ React hooks that throttle.
 ```jsx
 import { useThrottle, useThrottleFn } from 'react-use';
 
-const Demo = ({value}) => {
+const Demo = ({ value }) => {
   const throttledValue = useThrottle(value);
   // const throttledValue = useThrottleFn(value => value, 200, [value]);
 
@@ -21,7 +21,9 @@ const Demo = ({value}) => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useThrottle(value, ms?: number);
 useThrottleFn(fn, ms, args);

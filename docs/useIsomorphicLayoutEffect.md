@@ -5,20 +5,21 @@
 ## Usage
 
 ```jsx
-import {useIsomorphicLayoutEffect} from 'react-use';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
-const Demo = ({value}) => {
+const Demo = ({ value }) => {
   useIsomorphicLayoutEffect(() => {
-    window.console.log(value)
+    window.console.log(value);
   }, [value]);
 
   return null;
 };
 ```
 
-
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useIsomorphicLayoutEffect(effect: EffectCallback, deps?: ReadonlyArray<any> | undefined);
 ```

@@ -6,11 +6,11 @@ React sensor hook that re-renders when the scroll position in a DOM element chan
 
 ```jsx
 import React from 'react';
-import {useScroll} from 'react-use';
+import { useScroll } from 'react-use';
 
 const Demo = () => {
   const scrollRef = React.useRef(null);
-  const {x, y} = useScroll(scrollRef);
+  const { x, y } = useScroll(scrollRef);
 
   return (
     <div ref={scrollRef}>
@@ -22,7 +22,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useScroll(ref: RefObject<HTMLElement>);
 ```

@@ -19,7 +19,7 @@ const ComponentA = () => {
     <p>
       Component A:
       <br />
-      <input type="text" value={text} onInput={ev => setText(ev.target.value)} />
+      <input type="text" value={text} onInput={(ev) => setText(ev.target.value)} />
     </p>
   );
 };
@@ -30,7 +30,7 @@ const ComponentB = () => {
     <p>
       Component B:
       <br />
-      <input type="text" value={text} onInput={ev => setText(ev.target.value)} />
+      <input type="text" value={text} onInput={(ev) => setText(ev.target.value)} />
     </p>
   );
 };
@@ -47,22 +47,22 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```jsx
 const [useSharedState, SharedStateProvider] = createStateContext(initialValue);
 
 // In wrapper
 const Wrapper = ({ children }) => (
   // You can override the initial value for each Provider
-  <SharedStateProvider initialValue={overrideInitialValue}>
-    { children }
-  </SharedStateProvider>
-)
+  <SharedStateProvider initialValue={overrideInitialValue}>{children}</SharedStateProvider>
+);
 
 // In a component
 const Component = () => {
   const [sharedState, setSharedState] = useSharedState();
 
   // ...
-}
+};
 ```

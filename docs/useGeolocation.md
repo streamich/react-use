@@ -5,21 +5,19 @@ React sensor hook that tracks user's geographic location. This hook accepts [pos
 ## Usage
 
 ```jsx
-import {useGeolocation} from 'react-use';
+import { useGeolocation } from 'react-use';
 
 const Demo = () => {
   const state = useGeolocation();
 
-  return (
-    <pre>
-      {JSON.stringify(state, null, 2)}
-    </pre>
-  );
+  return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useGeolocation(options: PositionOptions)
 ```

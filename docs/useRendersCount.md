@@ -5,7 +5,7 @@ Tracks component's renders count including the first render.
 ## Usage
 
 ```jsx
-import {useRendersCount, useUpdate} from 'react-use';
+import { useRendersCount, useUpdate } from 'react-use';
 
 const Demo = () => {
   const update = useUpdate();
@@ -22,7 +22,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 const rendersCount: number = useRendersCount();
 ```

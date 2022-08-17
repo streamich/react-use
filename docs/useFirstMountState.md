@@ -5,7 +5,7 @@ Returns `true` if component is just mounted (on first render) and `false` otherw
 ## Usage
 
 ```jsx
-import {useFirstMountState, useUpdate} from 'react-use';
+import { useFirstMountState, useUpdate } from 'react-use';
 
 const Demo = () => {
   const isFirstMount = useFirstMountState();
@@ -22,7 +22,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 const isFirstMount: boolean = useFirstMountState();
 ```

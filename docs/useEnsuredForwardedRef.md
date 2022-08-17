@@ -4,28 +4,24 @@ React hook to use a ForwardedRef safely.
 
 In some scenarios, you may need to use a _ref_ from inside and outside a component. If that's the case, you should use `React.forwardRef` to pass it through the child component. This is useful when you only want to forward that _ref_ and expose an internal `HTMLelement` to a parent component, for example. However, if you need to manipulate that reference inside a child's lifecycle hook... things get complicated, since you can't always ensure that the _ref_ is being sent by the parent component and if it is not, you will get `undefined` instead of a valid _ref_.
 
-This hook is useful in this specific case, it will __ensure__ that you get a valid reference on the other side.
+This hook is useful in this specific case, it will **ensure** that you get a valid reference on the other side.
 
 ## Usage
 
 ```jsx
 import React from 'react';
-import {ensuredForwardRef} from 'react-use';
+import { ensuredForwardRef } from 'react-use';
 
 const Demo = () => {
-  return (
-    <Child />
-  );
+  return <Child />;
 };
 
 const Child = ensuredForwardRef((props, ref) => {
   React.useEffect(() => {
-    console.log(ref.current.getBoundingClientRect())
-  }, [])
+    console.log(ref.current.getBoundingClientRect());
+  }, []);
 
-  return (
-    <div ref={ref} />
-  );
+  return <div ref={ref} />;
 });
 ```
 
@@ -33,12 +29,10 @@ const Child = ensuredForwardRef((props, ref) => {
 
 ```jsx
 import React from 'react';
-import {useEnsuredForwardedRef} from 'react-use';
+import { useEnsuredForwardedRef } from 'react-use';
 
 const Demo = () => {
-  return (
-    <Child />
-  );
+  return <Child />;
 };
 
 const Child = React.forwardRef((props, ref) => {
@@ -47,17 +41,17 @@ const Child = React.forwardRef((props, ref) => {
   // ensuredForwardRef will always be a valid reference.
 
   React.useEffect(() => {
-    console.log(ensuredForwardRef.current.getBoundingClientRect())
-  }, [])
+    console.log(ensuredForwardRef.current.getBoundingClientRect());
+  }, []);
 
-  return (
-    <div ref={ensuredForwardRef} />
-  );
+  return <div ref={ensuredForwardRef} />;
 });
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 ensuredForwardRef<T, P = {}>(Component: RefForwardingComponent<T, P>): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>>;
 

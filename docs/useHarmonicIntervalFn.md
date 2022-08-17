@@ -6,9 +6,10 @@ at the same time.
 For example, this allows you to create ticking clocks on the page which re-render second counter
 all at the same time.
 
-
 ## Reference
+
 <!-- eslint-skip -->
+
 ```js
 useHarmonicIntervalFn(fn, delay?: number)
 ```

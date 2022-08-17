@@ -8,7 +8,7 @@ The third argument is the array of values that the debounce depends on, in the s
 
 ```jsx
 import React from 'react';
-import {useDebounce} from 'react-use';
+import { useDebounce } from 'react-use';
 
 const Demo = () => {
   const [state, setState] = React.useState('Typing stopped');
@@ -46,7 +46,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 const [
     isReady: () => boolean | null,
@@ -58,7 +60,7 @@ const [
 - **`ms`**_`: number`_ - delay in milliseconds;
 - **`deps`**_`: DependencyList`_ - array of values that the debounce depends on, in the same manner as useEffect;
 - **`isReady`**_`: ()=>boolean|null`_ - function returning current debounce state:
-    - `false` - pending
-    - `true` - called
-    - `null` - cancelled
+  - `false` - pending
+  - `true` - called
+  - `null` - cancelled
 - **`cancel`**_`: ()=>void`_ - cancel the debounce

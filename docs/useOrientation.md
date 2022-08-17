@@ -11,19 +11,14 @@ Returns state in the following shape
 }
 ```
 
-
 ## Usage
 
 ```jsx
-import {useOrientation} from 'react-use';
+import { useOrientation } from 'react-use';
 
 const Demo = () => {
   const state = useOrientation();
 
-  return (
-    <pre>
-      {JSON.stringify(state, null, 2)}
-    </pre>
-  );
+  return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
 ```

@@ -2,8 +2,7 @@
 
 A life-cycle hook that provides a higher order promise that does not resolve if component un-mounts.
 
-
-## Usage 
+## Usage
 
 ```ts
 import React from 'react';
@@ -21,9 +20,10 @@ const Demo = () => {
 };
 ```
 
-
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 const mounted = useUnmountPromise();
 

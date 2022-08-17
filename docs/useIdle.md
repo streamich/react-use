@@ -2,11 +2,10 @@
 
 React sensor hook that tracks if user on the page is idle.
 
-
 ## Usage
 
 ```jsx
-import {useIdle} from 'react-use';
+import { useIdle } from 'react-use';
 
 const Demo = () => {
   const isIdle = useIdle(3e3);
@@ -19,9 +18,10 @@ const Demo = () => {
 };
 ```
 
-
 ## Reference
+
 <!-- eslint-skip -->
+
 ```js
 useIdle(ms, initialState);
 ```

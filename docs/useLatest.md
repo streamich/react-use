@@ -8,7 +8,7 @@ This is mostly useful to get access to the latest value of some props or state i
 
 ```jsx
 import React from 'react';
-import {useLatest} from 'react-use';
+import { useLatest } from 'react-use';
 
 const Demo = () => {
   const [count, setCount] = React.useState(0);
@@ -31,7 +31,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 const latestState = useLatest = <T>(state: T): MutableRefObject<T>;
 ```

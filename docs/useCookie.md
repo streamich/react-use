@@ -7,10 +7,10 @@ and a callback to delete the `cookie.`
 
 ```jsx
 import React from 'react';
-import { useCookie } from "react-use";
+import { useCookie } from 'react-use';
 
 const Demo = () => {
-  const [value, updateCookie, deleteCookie] = useCookie("my-cookie");
+  const [value, updateCookie, deleteCookie] = useCookie('my-cookie');
   const [counter, setCounter] = React.useState(1);
 
   React.useEffect(() => {
@@ -19,7 +19,7 @@ const Demo = () => {
 
   const updateCookieHandler = () => {
     updateCookie(`my-awesome-cookie-${counter}`);
-    setCounter(c => c + 1);
+    setCounter((c) => c + 1);
   };
 
   return (
@@ -34,7 +34,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 const [value, updateCookie, deleteCookie] = useCookie(cookieName: string);
 ```

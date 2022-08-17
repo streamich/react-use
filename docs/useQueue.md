@@ -2,7 +2,6 @@
 
 React state hook implements simple FIFO queue.
 
-
 ## Usage
 
 ```jsx

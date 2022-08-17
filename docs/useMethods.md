@@ -39,7 +39,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```js
 const [state, methods] = useMethods(createMethods, initialState);
 ```

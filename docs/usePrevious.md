@@ -6,7 +6,7 @@ React state hook that returns the previous state as described in the [React hook
 
 ```jsx
 import React from 'react';
-import {usePrevious} from 'react-use';
+import { usePrevious } from 'react-use';
 
 const Demo = () => {
   const [count, setCount] = React.useState(0);
@@ -25,7 +25,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 const prevState = usePrevious = <T>(state: T): T;
 ```

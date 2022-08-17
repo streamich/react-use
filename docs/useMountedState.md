@@ -10,7 +10,7 @@ Returns a function that will return `true` if component mounted and `false` othe
 
 ```jsx
 import React from 'react';
-import {useMountedState} from 'react-use';
+import { useMountedState } from 'react-use';
 
 const Demo = () => {
   const isMounted = useMountedState();

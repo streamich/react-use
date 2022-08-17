@@ -4,11 +4,10 @@ React UI hook that changes [CSS dynamically][gen-5]. Works like "virtual CSS" &m
 it re-renders only CSS rules that change. It is different from inline styles, because
 you can use media queries and pseudo selectors.
 
-
 ## Usage
 
 ```jsx
-import {useCss} from 'react-use';
+import { useCss } from 'react-use';
 
 const Demo = () => {
   const className = useCss({
@@ -19,17 +18,14 @@ const Demo = () => {
     },
   });
 
-  return (
-    <div className={className}>
-      Hover me!
-    </div>
-  );
+  return <div className={className}>Hover me!</div>;
 };
 ```
 
-
 ## Examples
+
 <!-- eslint-skip -->
+
 ```js
 const className = useCss({
   color: 'tomato',
@@ -53,7 +49,7 @@ const className = useCss({
     color: 'orange',
     '&:hover': {
       color: 'red',
-    }
+    },
   },
 });
 ```

@@ -5,9 +5,9 @@ Uses `useAsync` with an additional `retry` method to easily retry/refresh the as
 ## Usage
 
 ```jsx
-import {useAsyncRetry} from 'react-use';
+import { useAsyncRetry } from 'react-use';
 
-const Demo = ({url}) => {
+const Demo = ({ url }) => {
   const state = useAsyncRetry(async () => {
     const response = await fetch(url);
     const result = await response.text();
@@ -30,7 +30,9 @@ const Demo = ({url}) => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useAsyncRetry(fn, args?: any[]);
 ```

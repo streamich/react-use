@@ -5,7 +5,7 @@ React lifecycle hook that calls a function after the component is mounted. Use `
 ## Usage
 
 ```jsx
-import {useMount} from 'react-use';
+import { useMount } from 'react-use';
 
 const Demo = () => {
   useMount(() => alert('MOUNTED'));
@@ -14,7 +14,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useMount(fn: () => void);
 ```

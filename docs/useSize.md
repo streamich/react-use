@@ -5,11 +5,11 @@ React sensor hook that tracks size of an HTML element.
 ## Usage
 
 ```jsx
-import {useSize} from 'react-use';
+import { useSize } from 'react-use';
 
 const Demo = () => {
-  const [sized, {width, height}] = useSize(
-    ({width}) => <div style={{background: 'red'}}>Size me up! ({width}px)</div>,
+  const [sized, { width, height }] = useSize(
+    ({ width }) => <div style={{ background: 'red' }}>Size me up! ({width}px)</div>,
     { width: 100, height: 100 }
   );
 
@@ -24,7 +24,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```js
 useSize(element, initialSize);
 ```

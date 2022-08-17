@@ -7,7 +7,7 @@ distinct value
 ## Usage
 
 ```jsx
-import {usePreviousDistinct, useCounter} from 'react-use';
+import { usePreviousDistinct, useCounter } from 'react-use';
 
 const Demo = () => {
   const [count, { inc: relatedInc }] = useCounter(0);
@@ -29,11 +29,14 @@ You can also provide a way of identifying the value as unique. By default, a str
 
 ```jsx
 import React from 'react';
-import {usePreviousDistinct} from 'react-use';
+import { usePreviousDistinct } from 'react-use';
 
 const Demo = () => {
-  const [str, setStr] = React.useState("something_lowercase");
-  const prevStr = usePreviousDistinct(str, (prev, next) => (prev && prev.toUpperCase()) === next.toUpperCase());
+  const [str, setStr] = React.useState('something_lowercase');
+  const prevStr = usePreviousDistinct(
+    str,
+    (prev, next) => (prev && prev.toUpperCase()) === next.toUpperCase()
+  );
 
   return (
     <p>
@@ -44,7 +47,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 const prevState = usePreviousDistinct = <T>(state: T, compare?: (prev: T | undefined, next: T) => boolean): T;
 ```

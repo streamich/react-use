@@ -5,14 +5,14 @@ A modified useEffect hook that is using shallow comparison on each of its depend
 ## Usage
 
 ```jsx
-import {useCounter, useShallowCompareEffect} from 'react-use';
+import { useCounter, useShallowCompareEffect } from 'react-use';
 
 const Demo = () => {
-  const [count, {inc: inc}] = useCounter(0);
+  const [count, { inc }] = useCounter(0);
   const options = { step: 2 };
 
   useShallowCompareEffect(() => {
-    inc(options.step)
+    inc(options.step);
   }, [options]);
 
   return (
@@ -24,7 +24,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useShallowCompareEffect(effect: () => void | (() => void | undefined), deps: any[]);
 ```

@@ -3,14 +3,13 @@
 React Lifecycle hook that returns a helper function for wrapping promises.
 Promises wrapped with this function will resolve only when component is mounted.
 
-
 ## Usage
 
 ```jsx
 import React from 'react';
-import {usePromise} from 'react-use';
+import { usePromise } from 'react-use';
 
-const Demo = ({promise}) => {
+const Demo = ({ promise }) => {
   const mounted = usePromise();
   const [value, setValue] = React.useState();
 

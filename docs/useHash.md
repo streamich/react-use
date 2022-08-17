@@ -5,7 +5,7 @@ React sensor hook that tracks browser's location hash.
 ## Usage
 
 ```jsx
-import {useHash, useMount} from 'react-use';
+import { useHash, useMount } from 'react-use';
 
 const Demo = () => {
   const [hash, setHash] = useHash();
@@ -22,7 +22,7 @@ const Demo = () => {
       </div>
       <div>Edit hash: </div>
       <div>
-        <input style={{ width: '100%' }} value={hash} onChange={e => setHash(e.target.value)} />
+        <input style={{ width: '100%' }} value={hash} onChange={(e) => setHash(e.target.value)} />
       </div>
     </div>
   );

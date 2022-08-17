@@ -6,23 +6,24 @@ function that returns a promise. The state is of the same shape as `useAsync`.
 ## Usage
 
 ```jsx
-import {useAsyncFn} from 'react-use';
+import { useAsyncFn } from 'react-use';
 
-const Demo = ({url}) => {
+const Demo = ({ url }) => {
   const [state, doFetch] = useAsyncFn(async () => {
     const response = await fetch(url);
     const result = await response.text();
-    return result
+    return result;
   }, [url]);
 
   return (
     <div>
-      {state.loading
-        ? <div>Loading...</div>
-        : state.error
-          ? <div>Error: {state.error.message}</div>
-          : <div>Value: {state.value}</div>
-      }
+      {state.loading ? (
+        <div>Loading...</div>
+      ) : state.error ? (
+        <div>Error: {state.error.message}</div>
+      ) : (
+        <div>Value: {state.value}</div>
+      )}
       <button onClick={() => doFetch()}>Start loading</button>
     </div>
   );
@@ -30,7 +31,9 @@ const Demo = ({url}) => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useAsyncFn<Result, Args>(fn, deps?: any[], initialState?: AsyncState<Result>);
 ```

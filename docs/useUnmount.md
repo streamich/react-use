@@ -5,7 +5,7 @@ React lifecycle hook that calls a function when the component will unmount. Use 
 ## Usage
 
 ```jsx
-import {useUnmount} from 'react-use';
+import { useUnmount } from 'react-use';
 
 const Demo = () => {
   useUnmount(() => alert('UNMOUNTED'));
@@ -14,7 +14,9 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useUnmount(fn: () => void | undefined);
 ```

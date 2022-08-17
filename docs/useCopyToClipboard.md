@@ -6,7 +6,7 @@ Copy text to a user's clipboard.
 
 ```jsx
 import React from 'react';
-import {useCopyToClipboard} from 'react-use';
+import { useCopyToClipboard } from 'react-use';
 
 const Demo = () => {
   const [text, setText] = React.useState('');
@@ -14,20 +14,26 @@ const Demo = () => {
 
   return (
     <div>
-      <input value={text} onChange={e => setText(e.target.value)} />
-      <button type="button" onClick={() => copyToClipboard(text)}>copy text</button>
-      {state.error
-        ? <p>Unable to copy value: {state.error.message}</p>
-        : state.value && <p>Copied {state.value}</p>}
+      <input value={text} onChange={(e) => setText(e.target.value)} />
+      <button type="button" onClick={() => copyToClipboard(text)}>
+        copy text
+      </button>
+      {state.error ? (
+        <p>Unable to copy value: {state.error.message}</p>
+      ) : (
+        state.value && <p>Copied {state.value}</p>
+      )}
     </div>
-  )
-}
+  );
+};
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```js
-const [{value, error, noUserInteraction}, copyToClipboard] = useCopyToClipboard();
+const [{ value, error, noUserInteraction }, copyToClipboard] = useCopyToClipboard();
 ```
 
 - `value` &mdash; value that was copied to clipboard, undefined when nothing was copied.

@@ -3,11 +3,12 @@
 Calls given function after specified amount of milliseconds.
 
 Several thing about it's work:
+
 - does not re-render component;
 - automatically cancel timeout on cancel;
 - automatically reset timeout on delay change;
 - reset function call will cancel previous timeout;
-- timeout will NOT be reset on function change. It will be called within the timeout, you have to reset it on your own when needed. 
+- timeout will NOT be reset on function change. It will be called within the timeout, you have to reset it on your own when needed.
 
 ## Usage
 
@@ -38,9 +39,14 @@ const Demo = () => {
   return (
     <div>
       <div>{readyState !== null ? 'Function will be called in 5 seconds' : 'Timer cancelled'}</div>
-      <button onClick={cancelButtonClick}> {readyState === false ? 'cancel' : 'restart'} timeout</button>
+      <button onClick={cancelButtonClick}>
+        {' '}
+        {readyState === false ? 'cancel' : 'restart'} timeout
+      </button>
       <br />
-      <div>Function state: {readyState === false ? 'Pending' : readyState ? 'Called' : 'Cancelled'}</div>
+      <div>
+        Function state: {readyState === false ? 'Pending' : readyState ? 'Called' : 'Cancelled'}
+      </div>
       <div>{state}</div>
     </div>
   );
@@ -48,8 +54,10 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
-```ts 
+
+```ts
 const [
     isReady: () => boolean | null,
     cancel: () => void,
@@ -60,9 +68,8 @@ const [
 - **`fn`**_`: Function`_ - function that will be called;
 - **`ms`**_`: number`_ - delay in milliseconds;
 - **`isReady`**_`: ()=>boolean|null`_ - function returning current timeout state:
-    - `false` - pending
-    - `true` - called
-    - `null` - cancelled
+  - `false` - pending
+  - `true` - called
+  - `null` - cancelled
 - **`cancel`**_`: ()=>void`_ - cancel the timeout
 - **`reset`**_`: ()=>void`_ - reset the timeout
-

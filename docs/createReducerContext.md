@@ -70,22 +70,22 @@ const Demo = () => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```jsx
 const [useSharedState, SharedStateProvider] = createReducerContext(reducer, initialState);
 
 // In wrapper
 const Wrapper = ({ children }) => (
   // You can override the initial state for each Provider
-  <SharedStateProvider initialState={overrideInitialState}>
-    { children }
-  </SharedStateProvider>
-)
+  <SharedStateProvider initialState={overrideInitialState}>{children}</SharedStateProvider>
+);
 
 // In a component
 const Component = () => {
   const [sharedState, dispatch] = useSharedState();
 
   // ...
-}
+};
 ```

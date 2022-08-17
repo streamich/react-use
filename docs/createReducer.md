@@ -30,7 +30,7 @@ function reducer(state, action) {
 const Demo = ({ initialCount = 1 }) => {
   // Action creator to increment count, wait a second and then reset
   const addAndReset = React.useCallback(() => {
-    return dispatch => {
+    return (dispatch) => {
       dispatch({ type: 'increment' });
 
       setTimeout(() => {
@@ -45,9 +45,7 @@ const Demo = ({ initialCount = 1 }) => {
     <div>
       <p>count: {state.count}</p>
       <button onClick={() => dispatch(addAndReset())}>Add and reset</button>
-      <button
-        onClick={() => dispatch({ type: 'reset', payload: { count: initialCount }})}
-      >
+      <button onClick={() => dispatch({ type: 'reset', payload: { count: initialCount } })}>
         Reset
       </button>
       <button onClick={() => dispatch({ type: 'increment' })}>+</button>
@@ -58,7 +56,9 @@ const Demo = ({ initialCount = 1 }) => {
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```js
 const useMiddlewareReducer = createReducer(...middlewares);
 ```

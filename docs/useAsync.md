@@ -6,30 +6,33 @@ a promise;
 ## Usage
 
 ```jsx
-import {useAsync} from 'react-use';
+import { useAsync } from 'react-use';
 
-const Demo = ({url}) => {
+const Demo = ({ url }) => {
   const state = useAsync(async () => {
     const response = await fetch(url);
     const result = await response.text();
-    return result
+    return result;
   }, [url]);
 
   return (
     <div>
-      {state.loading
-        ? <div>Loading...</div>
-        : state.error
-          ? <div>Error: {state.error.message}</div>
-          : <div>Value: {state.value}</div>
-      }
+      {state.loading ? (
+        <div>Loading...</div>
+      ) : state.error ? (
+        <div>Error: {state.error.message}</div>
+      ) : (
+        <div>Value: {state.value}</div>
+      )}
     </div>
   );
 };
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useAsync(fn, args?: any[]);
 ```

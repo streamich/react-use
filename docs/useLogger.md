@@ -5,7 +5,7 @@ React lifecycle hook that console logs parameters as component transitions throu
 ## Usage
 
 ```jsx
-import {useLogger} from 'react-use';
+import { useLogger } from 'react-use';
 
 const Demo = (props) => {
   useLogger('Demo', props);
@@ -22,7 +22,9 @@ Demo unmounted
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```js
 useLogger(componentName: string, ...rest);
 ```

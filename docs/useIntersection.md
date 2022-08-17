@@ -13,21 +13,21 @@ const Demo = () => {
   const intersection = useIntersection(intersectionRef, {
     root: null,
     rootMargin: '0px',
-    threshold: 1
+    threshold: 1,
   });
 
   return (
     <div ref={intersectionRef}>
-      {intersection && intersection.intersectionRatio < 1
-        ? 'Obscured'
-        : 'Fully in view'}
+      {intersection && intersection.intersectionRatio < 1 ? 'Obscured' : 'Fully in view'}
     </div>
   );
 };
 ```
 
 ## Reference
+
 <!-- eslint-skip -->
+
 ```ts
 useIntersection(
   ref: RefObject<HTMLElement>,
