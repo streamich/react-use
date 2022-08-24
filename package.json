@@ -58,7 +58,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "screenfull": "^5.1.0",
     "set-harmonic-interval": "^1.0.1",
-    "throttle-debounce": "^3.0.1",
+    "throttle-debounce": "^5.0.0",
     "ts-easing": "^0.2.0",
     "tslib": "^2.1.0"
   },
