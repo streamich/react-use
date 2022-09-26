@@ -1,10 +1,10 @@
-import { storiesOf } from "@storybook/react";
-import * as React from "react";
-import { useInputState } from "../src";
-import ShowDocs from "./util/ShowDocs";
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
+import { useInputState } from '../src';
+import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [name, setName] = useInputState("");
+  const [name, setName] = useInputState('');
   return (
     <label>
       Name
@@ -13,6 +13,6 @@ const Demo = () => {
   );
 };
 
-storiesOf("State/useInputState", module)
-  .add("Docs", () => <ShowDocs md={require("../docs/useInputState.md")} />)
-  .add("Demo", () => <Demo />);
+storiesOf('State/useInputState', module)
+  .add('Docs', () => <ShowDocs md={require('../docs/useInputState.md')} />)
+  .add('Demo', () => <Demo />);
