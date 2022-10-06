@@ -18,11 +18,16 @@ interface IDevicePermissionDescriptor extends PermissionDescriptor {
   deviceId?: string;
 }
 
+interface IClipboardPermissionDescriptor extends PermissionDescriptor {
+  name: 'clipboard-read' | 'clipboard-write';
+}
+
 export type IPermissionDescriptor =
   | PermissionDescriptor
   | IPushPermissionDescriptor
   | IMidiPermissionDescriptor
-  | IDevicePermissionDescriptor;
+  | IDevicePermissionDescriptor
+  | IClipboardPermissionDescriptor;
 
 // const usePermission = <T extends PermissionDescriptor>(permissionDesc: T): IState => {
 const usePermission = (permissionDesc: IPermissionDescriptor): IState => {
