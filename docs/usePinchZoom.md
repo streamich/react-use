@@ -1,11 +1,11 @@
-# `usePinchZoon`
+# `usePinchZoom`
 
 React sensor hook that tracks the changes in pointer touch events and detects value of pinch difference and tell if user is zooming in or out.
 
 ## Usage
 
 ```jsx
-import { usePinchZoon } from "react-use";
+import { usePinchZoom } from "react-use";
 
 const Demo = () => {
   const [scale, setState] = useState(1);
