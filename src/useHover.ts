@@ -1,21 +1,22 @@
 import * as React from 'react';
-import { noop } from './misc/util';
 
 const { useState } = React;
 
-export type Element = ((state: boolean) => React.ReactElement<any>) | React.ReactElement<any>;
+export type Element = ((state: boolean) => React.ReactElement) | React.ReactElement;
 
-const useHover = (element: Element): [React.ReactElement<any>, boolean] => {
+const useHover = (element: Element) => {
   const [state, setState] = useState(false);
 
-  const onMouseEnter = (originalOnMouseEnter?: any) => (event: any) => {
-    (originalOnMouseEnter || noop)(event);
-    setState(true);
-  };
-  const onMouseLeave = (originalOnMouseLeave?: any) => (event: any) => {
-    (originalOnMouseLeave || noop)(event);
-    setState(false);
-  };
+  const onMouseEnter =
+    (originalOnMouseEnter?: React.MouseEventHandler) => (event: React.MouseEvent) => {
+      originalOnMouseEnter?.(event);
+      setState(true);
+    };
+  const onMouseLeave =
+    (originalOnMouseLeave?: React.MouseEventHandler) => (event: React.MouseEvent) => {
+      originalOnMouseLeave?.(event);
+      setState(false);
+    };
 
   if (typeof element === 'function') {
     element = element(state);
@@ -26,7 +27,7 @@ const useHover = (element: Element): [React.ReactElement<any>, boolean] => {
     onMouseLeave: onMouseLeave(element.props.onMouseLeave),
   });
 
-  return [el, state];
+  return [el, state] as const;
 };
 
 export default useHover;
