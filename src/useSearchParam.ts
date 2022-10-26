@@ -6,10 +6,12 @@ const getValue = (search: string, param: string) => new URLSearchParams(search).
 export type UseQueryParam = (param: string) => string | null;
 
 const useSearchParam: UseQueryParam = (param) => {
-  const location = window.location;
-  const [value, setValue] = useState<string | null>(() => getValue(location.search, param));
+  const [value, setValue] = useState<string | null>(() => null);
 
   useEffect(() => {
+    const location = window.location;
+    setValue(getValue(location.search, param))
+    
     const onChange = () => {
       setValue(getValue(location.search, param));
     };
