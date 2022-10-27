@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { isBrowser, off, on } from './misc/util';
+import { off, on } from './misc/util';
 
 const getValue = (search: string, param: string) => new URLSearchParams(search).get(param);
 
@@ -30,6 +30,4 @@ const useSearchParam: UseQueryParam = (param) => {
   return value;
 };
 
-const useSearchParamServer = () => null;
-
-export default isBrowser ? useSearchParam : useSearchParamServer;
+export default useSearchParam;
