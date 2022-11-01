@@ -2,6 +2,7 @@ import { RefObject, useEffect } from 'react';
 
 import useRafState from './useRafState';
 import { off, on } from './misc/util';
+import { validateRefArgument } from './misc/validators';
 
 export interface State {
   docX: number;
@@ -16,9 +17,7 @@ export interface State {
 
 const useMouse = (ref: RefObject<Element>): State => {
   if (process.env.NODE_ENV === 'development') {
-    if (typeof ref !== 'object' || typeof ref.current === 'undefined') {
-      console.error('useMouse expects a single ref argument.');
-    }
+    validateRefArgument(useMouse, ref);
   }
 
   const [state, setState] = useRafState<State>({
