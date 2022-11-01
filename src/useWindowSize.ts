@@ -4,9 +4,9 @@ import useRafState from './useRafState';
 import { isBrowser, off, on } from './misc/util';
 
 interface Options {
-  initialWidth?: number,
-  initialHeight?: number,
-  skip?: boolean,
+  initialWidth?: number;
+  initialHeight?: number;
+  skip?: boolean;
 }
 
 const useWindowSize = ({

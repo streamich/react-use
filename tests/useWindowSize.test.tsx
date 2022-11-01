@@ -24,10 +24,7 @@ describe('useWindowSize', () => {
   type Props = Parameters<typeof useWindowSize>[0];
   type Result = ReturnType<typeof useWindowSize>;
   function getHook(opts: Props = {}) {
-    return renderHook<Props, Result>(
-      (opts) => useWindowSize(opts),
-      { initialProps: opts },
-    );
+    return renderHook<Props, Result>((opts) => useWindowSize(opts), { initialProps: opts });
   }
 
   function triggerResize(dimension: 'width' | 'height', value: number) {
