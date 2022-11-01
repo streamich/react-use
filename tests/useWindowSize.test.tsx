@@ -21,8 +21,13 @@ describe('useWindowSize', () => {
     expect(useWindowSize).toBeDefined();
   });
 
-  function getHook(...args) {
-    return renderHook(() => useWindowSize(...args));
+  type Props = Parameters<typeof useWindowSize>[0];
+  type Result = ReturnType<typeof useWindowSize>;
+  function getHook(opts: Props = {}) {
+    return renderHook<Props, Result>(
+      (opts) => useWindowSize(opts),
+      { initialProps: opts },
+    );
   }
 
   function triggerResize(dimension: 'width' | 'height', value: number) {
@@ -44,7 +49,10 @@ describe('useWindowSize', () => {
   });
 
   it('should use passed parameters as initial values in case of non-browser use', () => {
-    const hook = getHook(1, 1);
+    const hook = getHook({
+      initialHeight: 1,
+      initialWidth: 1,
+    });
 
     expect(hook.result.current.height).toBe(isBrowser ? window.innerHeight : 1);
     expect(hook.result.current.width).toBe(isBrowser ? window.innerWidth : 1);
@@ -84,5 +92,51 @@ describe('useWindowSize', () => {
     });
 
     expect(hook.result.current.width).toBe(2048);
+  });
+
+  it('should not re-render after height change when skip option is `true`', () => {
+    const hook = getHook();
+
+    act(() => {
+      triggerResize('height', 360);
+      requestAnimationFrame.step();
+    });
+
+    expect(hook.result.current.height).toBe(360);
+
+    hook.rerender({
+      skip: true,
+    });
+
+    act(() => {
+      triggerResize('height', 2048);
+      requestAnimationFrame.step();
+    });
+
+    expect(hook.result.current.height).toBe(360);
+  });
+
+  it('should not re-render after width change when skip option is `true`', () => {
+    const hook = getHook({
+      initialHeight: 1,
+      initialWidth: 1,
+      skip: false,
+    });
+
+    act(() => {
+      triggerResize('width', 360);
+      requestAnimationFrame.step();
+    });
+
+    hook.rerender({
+      skip: true,
+    });
+
+    act(() => {
+      triggerResize('width', 2048);
+      requestAnimationFrame.step();
+    });
+
+    expect(hook.result.current.width).toBe(360);
   });
 });
