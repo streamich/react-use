@@ -70,6 +70,16 @@ describe('useStateWithHistory', () => {
     expect(hook.result.current[0][2].history).toEqual([1, 2, 3, 1]);
   });
 
+  it('should push initial state from fn to initial history if no initial history empty', () => {
+    const hook = getHook(() => 1);
+    expect(hook.result.current[0][2].history).toEqual([1]);
+  });
+
+  it('should push initial state from fn to initial history if last element not equals it', () => {
+    const hook = getHook(() => 4, undefined, [1, 2, 3]);
+    expect(hook.result.current[0][2].history).toEqual([1, 2, 3, 4]);
+  });
+
   it('should crop initial history in case it exceeds capacity', () => {
     const hook = getHook(10, 5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     expect(hook.result.current[0][2].history).toEqual([6, 7, 8, 9, 10]);
