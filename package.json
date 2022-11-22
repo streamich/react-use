@@ -99,7 +99,7 @@
     "eslint-plugin-jsx-a11y": "6.6.1",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-react": "7.31.11",
-    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-react-hooks": "4.6.0",
     "fork-ts-checker-webpack-plugin": "6.5.2",
     "gh-pages": "3.2.3",
     "husky": "7.0.4",
