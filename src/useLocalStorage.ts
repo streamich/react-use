@@ -72,8 +72,8 @@ const useLocalStorage = <T>(
           else value = JSON.stringify(newState);
         else value = JSON.stringify(newState);
 
-        localStorage.setItem(key, value);
         setState(deserializer(value));
+        localStorage.setItem(key, value);
       } catch {
         // If user is in private mode or has storage restriction
         // localStorage can throw. Also JSON.stringify can throw.
@@ -85,8 +85,8 @@ const useLocalStorage = <T>(
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const remove = useCallback(() => {
     try {
-      localStorage.removeItem(key);
       setState(undefined);
+      localStorage.removeItem(key);
     } catch {
       // If user is in private mode or has storage restriction
       // localStorage can throw.
