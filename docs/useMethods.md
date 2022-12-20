@@ -40,9 +40,12 @@ const Demo = () => {
 
 ## Reference
 
-```js
-const [state, methods] = useMethods(createMethods, initialState);
+```ts
+const [state, methods] = useMethods<M, T>(createMethods: CreateMethods<M, T>, initialState: T);
+const [state, methods] = useMethods<M, T, I>(createMethods: CreateMethods<M, T>, initArg: I, init: (arg: I) => T);
 ```
 
 - `createMethods` &mdash; function that takes current state and return an object containing methods that return updated state.
 - `initialState` &mdash; initial value of the state.
+- `initArg` &mdash; argument passed to `init` to perform lazy initialization
+- `init` &mdash; function which takes `initArg` as argument and returns initial state
