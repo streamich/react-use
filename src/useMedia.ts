@@ -28,15 +28,20 @@ const useMedia = (query: string, defaultState?: boolean) => {
     let mounted = true;
     const mql = window.matchMedia(query);
 
-    mql.onchange = (e) => {
+    const onChange = () => {
       if (!mounted) return;
-      setState(e.matches);
+      setState(!!mql.matches);
     };
+
+    if (mql?.addEventListener) mql.addEventListener('change', onChange);
+    else mql.addListener(onChange);
 
     setState(mql.matches);
 
     return () => {
       mounted = false;
+      if (mql?.removeEventListener) mql.removeEventListener('change', onChange);
+      else mql.removeListener(onChange);
     };
   }, [query]);
 
