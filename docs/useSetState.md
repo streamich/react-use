@@ -39,6 +39,6 @@ const [state, setState] = useSetState({cnt: 0});
 
 setState({cnt: state.cnt + 1});
 setState((prevState) => ({
-  cnt: prevState + 1,
+  cnt: prevState.cnt + 1,
 }));
 ```
