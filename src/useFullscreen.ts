@@ -44,14 +44,16 @@ const useFullscreen = (
     };
 
     if (screenfull.isEnabled) {
-      try {
-        screenfull.request(ref.current);
-        setIsFullscreen(true);
-      } catch (error) {
-        onClose(error);
-        setIsFullscreen(false);
-      }
-      screenfull.on('change', onChange);
+      (async () => {
+        try {
+          await screenfull.request(ref.current);
+          setIsFullscreen(true);
+        } catch (error) {
+          onClose(error);
+          setIsFullscreen(false);
+        }
+        screenfull.on('change', onChange);
+      })();
     } else if (video && video.current && video.current.webkitEnterFullscreen) {
       video.current.webkitEnterFullscreen();
       on(video.current, 'webkitendfullscreen', onWebkitEndFullscreen);
