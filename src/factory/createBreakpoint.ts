@@ -15,7 +15,7 @@ const createBreakpoint =
       return () => {
         off(window, 'resize', setSideScreen);
       };
-    });
+    }, []);
     const sortedBreakpoints = useMemo(
       () => Object.entries(breakpoints).sort((a, b) => (a[1] >= b[1] ? 1 : -1)),
       [breakpoints]
