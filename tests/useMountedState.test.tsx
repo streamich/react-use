@@ -9,7 +9,7 @@ describe('useMountedState', () => {
   it('should return a function', () => {
     const hook = renderHook(() => useMountedState(), { initialProps: false });
 
-    expect(typeof hook.result.current).toEqual('function');
+    expect(typeof hook.result.current).toBe('function');
   });
 
   it('should return true if component is mounted', () => {
