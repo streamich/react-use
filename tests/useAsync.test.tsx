@@ -32,7 +32,7 @@ describe('useAsync', () => {
     });
 
     it('initially starts loading', async () => {
-      expect(hook.result.current.loading).toEqual(true);
+      expect(hook.result.current.loading).toBe(true);
       await hook.waitForNextUpdate();
     });
 
@@ -42,10 +42,10 @@ describe('useAsync', () => {
       hook.rerender({ fn: resolver });
       await hook.waitForNextUpdate();
 
-      expect(callCount).toEqual(1);
+      expect(callCount).toBe(1);
       expect(hook.result.current.loading).toBeFalsy();
-      expect(hook.result.current.value).toEqual('yay');
-      expect(hook.result.current.error).toEqual(undefined);
+      expect(hook.result.current.value).toBe('yay');
+      expect(hook.result.current.error).toBe(undefined);
     });
   });
 
@@ -84,10 +84,10 @@ describe('useAsync', () => {
       hook.rerender({ fn: rejection });
       await hook.waitForNextUpdate();
 
-      expect(callCount).toEqual(1);
+      expect(callCount).toBe(1);
       expect(hook.result.current.loading).toBeFalsy();
-      expect(hook.result.current.error).toEqual('yay');
-      expect(hook.result.current.value).toEqual(undefined);
+      expect(hook.result.current.error).toBe('yay');
+      expect(hook.result.current.value).toBe(undefined);
     });
   });
 
@@ -117,19 +117,19 @@ describe('useAsync', () => {
       });
 
       it('renders the first value', () => {
-        expect(hook.result.current.value).toEqual('value');
+        expect(hook.result.current.value).toBe('value');
       });
 
       it('renders a different value when deps change', async () => {
         expect.assertions(3);
 
-        expect(callCount).toEqual(1);
+        expect(callCount).toBe(1);
 
         hook.rerender({ fn: differentFn }); // change the fn to initiate new request
         await hook.waitForNextUpdate();
 
-        expect(callCount).toEqual(2);
-        expect(hook.result.current.value).toEqual('new value');
+        expect(callCount).toBe(2);
+        expect(hook.result.current.value).toBe('new value');
       });
     });
 
@@ -161,7 +161,7 @@ describe('useAsync', () => {
       });
 
       it('initial renders the first passed pargs', () => {
-        expect(hook.result.current.value).toEqual('counter is 0 and callCount is 1');
+        expect(hook.result.current.value).toBe('counter is 0 and callCount is 1');
       });
 
       it('renders a different value when deps change', async () => {
@@ -170,7 +170,7 @@ describe('useAsync', () => {
         hook.rerender({ fn: staticFunction, counter: 1 });
         await hook.waitForNextUpdate();
 
-        expect(hook.result.current.value).toEqual('counter is 1 and callCount is 2');
+        expect(hook.result.current.value).toBe('counter is 1 and callCount is 2');
       });
     });
   });

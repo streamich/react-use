@@ -28,7 +28,7 @@ describe('when using created hook', () => {
     const { result } = setUp();
     const [sharedText, setSharedText] = result.current;
 
-    expect(sharedText).toEqual('init');
+    expect(sharedText).toBe('init');
     expect(setSharedText).toBeInstanceOf(Function);
   });
 
@@ -40,7 +40,7 @@ describe('when using created hook', () => {
 
     const [sharedText] = result.current;
 
-    expect(sharedText).toEqual('changed');
+    expect(sharedText).toBe('changed');
   });
 });
 

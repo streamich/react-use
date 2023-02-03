@@ -77,7 +77,7 @@ describe('useIntersection', () => {
     targetRef.current = document.createElement('div');
     rerender();
 
-    expect(result.current).toEqual(null);
+    expect(result.current).toBe(null);
   });
 
   it('should return null if IntersectionObserver is not supported', () => {
