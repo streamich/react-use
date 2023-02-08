@@ -26,6 +26,7 @@ const useThrottleFn = <T, U extends any[]>(fn: (...args: U) => T, ms: number = 2
 
   useUnmount(() => {
     timeout.current && clearTimeout(timeout.current);
+    timeout.current = undefined;
   });
 
   return state;
