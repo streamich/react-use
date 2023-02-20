@@ -37,5 +37,5 @@ const Demo = () => {
 ## Reference
 
 ```js
-useInterval(callback, delay?: number)
+useInterval(callback, delay?: number | null)
 ```
