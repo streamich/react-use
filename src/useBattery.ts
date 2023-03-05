@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
+import { deepEqual } from 'fast-equals';
 import { isNavigator, off, on } from './misc/util';
-import isDeepEqual from './misc/isDeepEqual';
 
 export interface BatteryState {
   charging: boolean;
@@ -51,7 +51,7 @@ function useBattery(): UseBatteryState {
         dischargingTime: battery.dischargingTime,
         chargingTime: battery.chargingTime,
       };
-      !isDeepEqual(state, newState) && setState(newState);
+      !deepEqual(state, newState) && setState(newState);
     };
 
     nav!.getBattery!().then((bat: BatteryManager) => {

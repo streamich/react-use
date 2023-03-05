@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+import { deepEqual } from 'fast-equals';
 import { useCounter, useCustomCompareEffect } from '../src';
 import ShowDocs from './util/ShowDocs';
-import isDeepEqual from '../src/misc/isDeepEqual';
 
 const Demo = () => {
   const [countNormal, { inc: incNormal }] = useCounter(0);
@@ -22,7 +22,7 @@ const Demo = () => {
       }
     },
     [options],
-    (prevDeps, nextDeps) => isDeepEqual(prevDeps, nextDeps)
+    (prevDeps, nextDeps) => deepEqual(prevDeps, nextDeps)
   );
 
   return (
