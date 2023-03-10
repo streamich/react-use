@@ -41,3 +41,25 @@ it('should init audio and utils', () => {
   controls.volume(0.5);
   expect(ref.current.volume).toBe(0.5);
 });
+
+it('should use same controls', () => {
+  global.console.error = jest.fn();
+
+  const MOCK_AUDIO_SRC = 'MOCK_AUDIO_SRC';
+  const MOCK_AUTO_PLAY_STATE = true;
+  const { result, rerender } = setUp(MOCK_AUDIO_SRC, MOCK_AUTO_PLAY_STATE);
+
+  const initialControls = result.current[2];
+
+  rerender();
+  expect(result.all.length).toBe(2);
+
+  const subsequentControls = result.current[2];
+  expect(initialControls).toBe(subsequentControls);
+  expect(initialControls.play).toBe(subsequentControls.play);
+  expect(initialControls.pause).toBe(subsequentControls.pause);
+  expect(initialControls.seek).toBe(subsequentControls.seek);
+  expect(initialControls.volume).toBe(subsequentControls.volume);
+  expect(initialControls.mute).toBe(subsequentControls.mute);
+  expect(initialControls.unmute).toBe(subsequentControls.unmute);
+});
