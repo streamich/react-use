@@ -36,20 +36,22 @@ export default class CreatePagenation {
             [sizeKey]: this.pageSize,
         });
         const updateFunc = this.updateFunc;
-        const that = this;
+        // const that = this;
         this.loading = true;
-        this.request(newParams).then((res) => {
+        
+        const thenFunc = (res: any): void => {
             const data = typeof dataKey === 'function' ? dataKey(res) : res[dataKey];
             const pageSize = res[currentKey] || this.pageSize;
             const current = res[sizeKey] || this.current;
             const total = (typeof totalKey === 'function' ? totalKey(res) : res[totalKey]) || this.total;
-            that.data = data;
-            that.pageSize = pageSize;
-            that.current = current;
-            that.total = total;
-            that.loading = false;
+            this.data = data;
+            this.pageSize = pageSize;
+            this.current = current;
+            this.total = total;
+            this.loading = false;
             updateFunc();
-        });
+        }
+        this.request(newParams).then(thenFunc);
         updateFunc();
     }
 
