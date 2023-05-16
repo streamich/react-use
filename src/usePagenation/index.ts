@@ -1,19 +1,19 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import CreatePagenation from './createPagenation';
 
-interface options {
-    dataKey?: String;
-    currentKey?: String;
-    sizeKey?: String;
-    totalKey?: String;
-    defaultCurrent?: String;
-    defaultPageSize?: String;
-    isAutostart?: Boolean;
+interface Options {
+    dataKey?: string;
+    currentKey?: string;
+    sizeKey?: string;
+    totalKey?: string;
+    defaultCurrent?: string;
+    defaultPageSize?: string;
+    isAutostart?: boolean;
 }
 
 
 
-export default function usePagenation(request: (params: any) => Promise<any>, opts: options) {
+export default function usePagenation(request: (params: any) => Promise<any>, opts: Options) {
     const pagenation: null | any = useRef(null);
     const [, update] = useState(0);
 

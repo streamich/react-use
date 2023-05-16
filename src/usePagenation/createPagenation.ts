@@ -1,23 +1,23 @@
 
 
-interface pagenation {
-    current: Number;
-    pageSize: Number;
-    total: Number;
-    data: Array<any> | null;
-    onChange: Function;
-    run: Function;
+interface Pagenation {
+    current: number;
+    pageSize: number;
+    total: number;
+    data: any[] | null;
+    onChange: any;
+    run: any;
 }
 
 export default class CreatePagenation {
-    current: Number;
-    pageSize: Number;
-    total: Number;
+    current: number;
+    pageSize: number;
+    total: number;
     request: (params: any) => Promise<any>;
     options: any;
-    updateFunc: Function;
-    data: Array<any> | null;
-    loading: Boolean;
+    updateFunc: any;
+    data: any[] | null;
+    loading: boolean;
     constructor({ request, options = {}, updateFunc }: any) {
         this.current = options.defaultcurrent || 1;
         this.pageSize = options.defaultPageSize || 20;
@@ -29,7 +29,7 @@ export default class CreatePagenation {
         this.loading = false;
     }
 
-    getData: Function = (params: any = {}) => {
+    getData = (params: any = {}) => {
         const { dataKey = 'data', currentKey = 'size', sizeKey = 'page', totalKey = 'total' } = this.options;
         const newParams: any = Object.assign(params, {
             [currentKey]: this.current,
@@ -53,7 +53,7 @@ export default class CreatePagenation {
         updateFunc();
     }
 
-    reset: Function = (): void => {
+    reset = (): void => {
         const { defaultcurrent, defaultPageSize } = this.options;
         this.current = defaultcurrent || 1;
         this.pageSize = defaultPageSize || 20;
@@ -62,7 +62,7 @@ export default class CreatePagenation {
         this.updateFunc();
     }
 
-    onChange: Function = (current: Number, pageSize: Number) => {
+    onChange = (current: number, pageSize: number) => {
         const isUpdate = this.current !== current || this.pageSize !== pageSize;
         this.current = current;
         this.pageSize = pageSize;
@@ -70,7 +70,7 @@ export default class CreatePagenation {
             this.getData();
         }
     }
-    getPagenation: Function = (): pagenation => {
+    getPagenation = (): Pagenation => {
         const pagenation = {
             current: this.current,
             pageSize: this.pageSize,
