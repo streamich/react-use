@@ -1,6 +1,6 @@
-# `useTitle`
+# `usePagenation`
 
-## Usage
+## pagenation
 
 ```jsx
 import {usePagenation} from 'react-use';
