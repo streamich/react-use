@@ -1,12 +1,12 @@
-# `usePagenation`
+# `usePagination`
 
-## pagenation
+## pagination
 
 ```jsx
-import {usePagenation} from 'react-use';
+import {usePagination} from 'react-use';
 
 const Demo = () => {
- const pagenation = usePagenation(async (params: any) => {
+ const pagination = usePagination(async (params: any) => {
         console.log(params); // curent 1, pageSize 20,
         const res = await queryData(params);
 
@@ -16,7 +16,7 @@ const Demo = () => {
 ```
 
 ```jsx
-import {usePagenation} from 'react-use';
+import {usePagination} from 'react-use';
 const data = [
     {
         name: '小明',
@@ -31,21 +31,21 @@ const data = [
 ];
 
 const Demo = () => {
-    const pagenation = usePagenation(queryData, {});
+    const pagination = usePagination(queryData, {});
     function queryData() {
         return new Promise((resolve) => {
             setTimeout(resolve, 3000, {total: 2, data});
         });
     }
     function change() {
-        pagenation.onChange(2, 40);
+        pagination.onChange(2, 40);
     }
     return <div>
-        <Button onClick={() => pagenation.run()}>click</Button>
+        <Button onClick={() => pagination.run()}>click</Button>
         <Button onClick={change}>change</Button>
-        {pagenation.loading === true ? <div>loading....</div> : null}
-        <span>current: {pagenation.current}</span>
-        <span>pageSize: {pagenation.pageSize}</span>
+        {pagination.loading === true ? <div>loading....</div> : null}
+        <span>current: {pagination.current}</span>
+        <span>pageSize: {pagination.pageSize}</span>
     </div>
 };
 

@@ -1,9 +1,9 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import {usePagenation} from '../src';
+import {usePagination} from '../src';
 
 
 
-describe('usePagenation Test', () => {
+describe('usePagination Test', () => {
     let hook, params;
     const data = [
         {
@@ -28,13 +28,13 @@ describe('usePagenation Test', () => {
     };
 
     beforeEach(() => {
-        hook = renderHook(({ fn }) => usePagenation(fn, {isAutostart: false}), {
+        hook = renderHook(({ fn }) => usePagination(fn, {isAutostart: false}), {
             initialProps: {
                 fn: query,
             },
         });
     });
-    describe('pagenation Test', () => {
+    describe('pagination Test', () => {
         it('current', () => {
             expect(hook.result.current.current).toBe(1);
         });
@@ -83,6 +83,16 @@ describe('usePagenation Test', () => {
             expect(hook.result.current.current).toBe(2);
             expect(hook.result.current.pageSize).toBe(40);
             expect(hook.result.current.total).toBe(2);
+        });
+
+        it('reset', () => {
+            const { reset } = hook.result.current;
+            act(() => {
+                reset();
+            });
+            expect(hook.result.current.current).toBe(1);
+            expect(hook.result.current.pageSize).toBe(20);
+            expect(hook.result.current.total).toBe(0);
         });
     })
 });
