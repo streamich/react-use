@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-export function useWorker(worker: Worker) {
-  const [data, setData] = useState<any>();
+export function useWorker<T = any>(worker: Worker) {
+  const [data, setData] = useState<T>();
   const [error, setError] = useState<Error>();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {

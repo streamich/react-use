@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useWorker } from '../src';
 
 const Demo = () => {
-  const { instance, data, error, isLoading } = useWorker(new Worker('./worker.js'));
+  const { instance, data, error, isLoading } = useWorker<string>(new Worker('./worker.js'));
 
   useEffect(() => {
     instance.postMessage('hello');
