@@ -116,3 +116,4 @@ export { default as useSet } from './useSet';
 export { createGlobalState } from './factory/createGlobalState';
 export { useHash } from './useHash';
 export { useWorker } from './useWorker';
+export { useOptimisticState } from './useOptimisticState';
