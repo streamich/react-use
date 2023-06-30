@@ -1,10 +1,10 @@
-import { useRef, useState, MutableRefObject } from "react";
-import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
-import { isBrowser } from "./misc/util";
+import { useRef, useState, MutableRefObject } from 'react';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
+import { isBrowser } from './misc/util';
 
 export type UseMeasureRect = Pick<
   DOMRectReadOnly,
-  "x" | "y" | "top" | "left" | "right" | "bottom" | "height" | "width"
+  'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'
 >;
 export type UseMeasureRef<E extends Element = Element> = MutableRefObject<E | null>;
 export type UseMeasureResult<E extends Element = Element> = [UseMeasureRef<E>, UseMeasureRect];
@@ -43,6 +43,6 @@ function useMeasure<E extends Element = Element>(): UseMeasureResult<E> {
   return [ref, rect];
 }
 
-export default isBrowser && typeof (window as any).ResizeObserver !== "undefined"
+export default isBrowser && typeof (window as any).ResizeObserver !== 'undefined'
   ? useMeasure
   : ((() => [defaultRef, defaultState]) as typeof useMeasure);
