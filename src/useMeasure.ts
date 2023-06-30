@@ -1,14 +1,15 @@
-import { useMemo, useState } from 'react';
-import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
-import { isBrowser, noop } from './misc/util';
+import { useRef, useState, MutableRefObject, RefObject, useMemo } from "react";
+import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
+import { isBrowser } from "./misc/util";
 
 export type UseMeasureRect = Pick<
   DOMRectReadOnly,
-  'x' | 'y' | 'top' | 'left' | 'right' | 'bottom' | 'height' | 'width'
+  "x" | "y" | "top" | "left" | "right" | "bottom" | "height" | "width"
 >;
-export type UseMeasureRef<E extends Element = Element> = (element: E) => void;
+export type UseMeasureRef<E extends Element = Element> = MutableRefObject<E| null>;
 export type UseMeasureResult<E extends Element = Element> = [UseMeasureRef<E>, UseMeasureRect];
 
+const defaultRef = { current: null };
 const defaultState: UseMeasureRect = {
   x: 0,
   y: 0,
@@ -21,31 +22,27 @@ const defaultState: UseMeasureRect = {
 };
 
 function useMeasure<E extends Element = Element>(): UseMeasureResult<E> {
-  const [element, ref] = useState<E | null>(null);
+  const ref = useRef<E | null>(null);
   const [rect, setRect] = useState<UseMeasureRect>(defaultState);
 
-  const observer = useMemo(
-    () =>
-      new (window as any).ResizeObserver((entries) => {
-        if (entries[0]) {
-          const { x, y, width, height, top, left, bottom, right } = entries[0].contentRect;
-          setRect({ x, y, width, height, top, left, bottom, right });
-        }
-      }),
-    []
-  );
-
   useIsomorphicLayoutEffect(() => {
-    if (!element) return;
-    observer.observe(element);
+    if (!ref.current) return;
+
+    const observer = new (window as any).ResizeObserver((entries) => {
+      if (entries[0]) {
+        const { x, y, width, height, top, left, bottom, right } = entries[0].contentRect;
+        setRect({ x, y, width, height, top, left, bottom, right });
+      }
+    });
+    observer.observe(ref.current);
     return () => {
       observer.disconnect();
     };
-  }, [element]);
+  }, []);
 
   return [ref, rect];
 }
 
-export default isBrowser && typeof (window as any).ResizeObserver !== 'undefined'
+export default isBrowser && typeof (window as any).ResizeObserver !== "undefined"
   ? useMeasure
-  : ((() => [noop, defaultState]) as typeof useMeasure);
+  : ((() => [defaultRef, defaultState]) as typeof useMeasure);
