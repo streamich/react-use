@@ -1,4 +1,4 @@
-import { useRef, useState, MutableRefObject, RefObject, useMemo } from "react";
+import { useRef, useState, MutableRefObject } from "react";
 import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
 import { isBrowser } from "./misc/util";
 
@@ -6,7 +6,7 @@ export type UseMeasureRect = Pick<
   DOMRectReadOnly,
   "x" | "y" | "top" | "left" | "right" | "bottom" | "height" | "width"
 >;
-export type UseMeasureRef<E extends Element = Element> = MutableRefObject<E| null>;
+export type UseMeasureRef<E extends Element = Element> = MutableRefObject<E | null>;
 export type UseMeasureResult<E extends Element = Element> = [UseMeasureRef<E>, UseMeasureRect];
 
 const defaultRef = { current: null };
