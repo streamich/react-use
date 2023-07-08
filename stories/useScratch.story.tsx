@@ -5,7 +5,6 @@ import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [ref, state] = useScratch();
-
   const blockStyle: React.CSSProperties = {
     position: 'relative',
     width: 400,
@@ -32,6 +31,9 @@ const Demo = () => {
     pointerEvents: 'none',
     userSelect: 'none',
   };
+
+  console.log(useScratch());
+  console.log(rectangleStyle);
 
   return (
     <div ref={ref} style={blockStyle}>

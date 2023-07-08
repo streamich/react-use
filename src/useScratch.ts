@@ -73,6 +73,10 @@ const useScratch = (
       onMoveEvent(event.changedTouches[0].pageX, event.changedTouches[0].pageY);
     };
 
+    const onPointerUp = () => {
+      stopScratching();
+    }
+
     let onMouseUp;
     let onTouchEnd;
 
@@ -86,9 +90,10 @@ const useScratch = (
       off(window, 'touchmove', onTouchMove);
       off(window, 'mouseup', onMouseUp);
       off(window, 'touchend', onTouchEnd);
+      off(window, 'pointerup', onPointerUp);
     };
 
-    onMouseUp = stopScratching;
+    //onMouseUp = stopScratching;
     onTouchEnd = stopScratching;
 
     const startScratching = (docX, docY) => {
@@ -121,6 +126,7 @@ const useScratch = (
       on(window, 'touchmove', onTouchMove);
       on(window, 'mouseup', onMouseUp);
       on(window, 'touchend', onTouchEnd);
+      on(window, 'pointerup', onPointerUp);
     };
 
     const onMouseDown = (event) => {
@@ -143,6 +149,7 @@ const useScratch = (
       off(window, 'touchmove', onTouchMove);
       off(window, 'mouseup', onMouseUp);
       off(window, 'touchend', onTouchEnd);
+      off(window, 'pointerup', onPointerUp);
 
       if (refAnimationFrame.current) cancelAnimationFrame(refAnimationFrame.current);
       refAnimationFrame.current = null;
