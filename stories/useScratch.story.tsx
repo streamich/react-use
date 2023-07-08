@@ -5,6 +5,7 @@ import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [ref, state] = useScratch();
+
   const blockStyle: React.CSSProperties = {
     position: 'relative',
     width: 400,
