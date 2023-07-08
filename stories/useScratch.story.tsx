@@ -32,9 +32,6 @@ const Demo = () => {
     userSelect: 'none',
   };
 
-  console.log(useScratch());
-  console.log(rectangleStyle);
-
   return (
     <div ref={ref} style={blockStyle}>
       <pre style={preStyle}>{JSON.stringify(state, null, 4)}</pre>
