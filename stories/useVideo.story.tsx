@@ -5,7 +5,7 @@ import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
   const [video, state, controls, ref] = useVideo(
-    <video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" autoPlay={true} />
+    <video src="https://www.w3schools.com/tags/mov_bbb.mp4" autoPlay={true} />
   );
 
   return (
