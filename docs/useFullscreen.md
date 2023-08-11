@@ -16,7 +16,7 @@ const Demo = () => {
     <div ref={ref} style={{backgroundColor: 'white'}}>
       <div>{isFullscreen ? 'Fullscreen' : 'Not fullscreen'}</div>
       <button onClick={() => toggle()}>Toggle</button>
-      <video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" autoPlay />
+      <video src="https://www.w3schools.com/tags/mov_bbb.mp4" autoPlay />
     </div>
   );
 };
