@@ -25,7 +25,7 @@ const useClickAway = <E extends Event = Event>(
      *
      *  document       shadowDom          target
      *    |                |                 |
-     *    |- on(document) -|-  on(rootNode) -|
+     *    |- on(document) -|-  on(shadowRoot) -|
      */
     const handler = (event) => {
       !el.contains(event.target) &&
