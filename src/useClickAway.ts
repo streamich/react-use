@@ -23,8 +23,8 @@ const useClickAway = <E extends Event = Event>(
      * When events are captured outside the component, events that occur in shadow DOM will target the host element
      * so additional event listeners need to be added for shadowDom
      *
-     *  document       shadowDom          target
-     *    |                |                 |
+     *  document       shadowDom            target
+     *    |                |                   |
      *    |- on(document) -|-  on(shadowRoot) -|
      */
     const handler = (event) => {
