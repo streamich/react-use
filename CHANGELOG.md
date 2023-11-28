@@ -1,3 +1,10 @@
+## [17.4.1](https://github.com/streamich/react-use/compare/v17.4.0...v17.4.1) (2023-11-28)
+
+
+### Bug Fixes
+
+* 🐛 bump nano-css version ([812952b](https://github.com/streamich/react-use/commit/812952bb9ff004a844ec4285ad6c65d39597b11c))
+
 # [17.4.0](https://github.com/streamich/react-use/compare/v17.3.3...v17.4.0) (2022-05-20)
 
 
