@@ -1,3 +1,10 @@
+## [17.4.2](https://github.com/streamich/react-use/compare/v17.4.1...v17.4.2) (2023-12-01)
+
+
+### Bug Fixes
+
+* correct peer dependencies ([d770587](https://github.com/streamich/react-use/commit/d77058729654397b68b251e8211bf0edc0b4ed50))
+
 ## [17.4.1](https://github.com/streamich/react-use/compare/v17.4.0...v17.4.1) (2023-11-28)
 
 
