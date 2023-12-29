@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction, useCallback, useState, useRef, useLayoutEffect } from 'react';
+import { Dispatch, SetStateAction, useCallback, useState, useRef } from 'react';
+import useUpdateEffect from './useUpdateEffect';
 import { isBrowser, noop } from './misc/util';
 
 type parserOptions<T> =
@@ -53,7 +54,7 @@ const useLocalStorage = <T>(
   const [state, setState] = useState<T | undefined>(() => initializer.current(key));
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  useLayoutEffect(() => setState(initializer.current(key)), [key]);
+  useUpdateEffect(() => setState(initializer.current(key)), [key]);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
