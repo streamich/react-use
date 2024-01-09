@@ -27,19 +27,21 @@ const useMedia = (query: string, defaultState?: boolean) => {
   useEffect(() => {
     let mounted = true;
     const mql = window.matchMedia(query);
+
     const onChange = () => {
-      if (!mounted) {
-        return;
-      }
+      if (!mounted) return;
       setState(!!mql.matches);
     };
 
-    mql.addListener(onChange);
+    if (mql?.addEventListener) mql.addEventListener('change', onChange);
+    else mql.addListener(onChange);
+
     setState(mql.matches);
 
     return () => {
       mounted = false;
-      mql.removeListener(onChange);
+      if (mql?.removeEventListener) mql.removeEventListener('change', onChange);
+      else mql.removeListener(onChange);
     };
   }, [query]);
 
