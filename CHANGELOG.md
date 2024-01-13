@@ -1,3 +1,10 @@
+## [17.4.3](https://github.com/streamich/react-use/compare/v17.4.2...v17.4.3) (2024-01-13)
+
+
+### Bug Fixes
+
+* update useMedia hook to use recommended approach of MDN ([e7379f0](https://github.com/streamich/react-use/commit/e7379f088787cbf9274c1fc21d36061f04855e4c))
+
 ## [17.4.2](https://github.com/streamich/react-use/compare/v17.4.1...v17.4.2) (2023-12-01)
 
 
