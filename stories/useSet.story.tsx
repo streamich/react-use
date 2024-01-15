@@ -4,12 +4,13 @@ import { useSet } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const [set, { add, has, remove, reset, toggle }] = useSet(new Set(['hello']));
+  const [set, { add, has, remove, reset, clear, toggle }] = useSet(new Set(['hello']));
 
   return (
     <div>
       <button onClick={() => add(String(Date.now()))}>Add</button>
       <button onClick={() => reset()}>Reset</button>
+      <button onClick={() => clear()}>Clear</button>
       <button onClick={() => remove('hello')} disabled={!has('hello')}>
         Remove 'hello'
       </button>
