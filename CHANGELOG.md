@@ -1,3 +1,10 @@
+## [17.4.4](https://github.com/streamich/react-use/compare/v17.4.3...v17.4.4) (2024-01-21)
+
+
+### Bug Fixes
+
+* typo in example ([0534648](https://github.com/streamich/react-use/commit/05346481a15a321b13838eead0bda3024b0d163f))
+
 ## [17.4.3](https://github.com/streamich/react-use/compare/v17.4.2...v17.4.3) (2024-01-13)
 
 
