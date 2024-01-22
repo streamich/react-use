@@ -1,3 +1,12 @@
+# [17.5.0](https://github.com/streamich/react-use/compare/v17.4.4...v17.5.0) (2024-01-22)
+
+
+### Features
+
+* add `isFirst` and `isLast` methods to `useStateList` hook ([ac64414](https://github.com/streamich/react-use/commit/ac64414bea4c8afadfb382da9fea44ee89b41e2d))
+* **pencil:** add isFirst and isLast return value to 'useStateList' ([75218e4](https://github.com/streamich/react-use/commit/75218e45dfdcdc6ea193e278cb97ceee98c00f1b))
+* **pencil:** fix with yarn lint:fix ([6a9dde5](https://github.com/streamich/react-use/commit/6a9dde596ae25c0dd2fa97b0cf354143fbc5b5ff))
+
 ## [17.4.4](https://github.com/streamich/react-use/compare/v17.4.3...v17.4.4) (2024-01-21)
 
 
