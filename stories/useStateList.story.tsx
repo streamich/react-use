@@ -7,7 +7,8 @@ import ShowDocs from './util/ShowDocs';
 const stateSet = ['first', 'second', 'third', 'fourth', 'fifth'];
 
 const Demo = () => {
-  const { state, prev, next, setStateAt, setState, currentIndex, isFirst, isLast } = useStateList(stateSet);
+  const { state, prev, next, setStateAt, setState, currentIndex, isFirst, isLast } =
+    useStateList(stateSet);
   const indexInput = useRef<HTMLInputElement>(null);
   const stateInput = useRef<HTMLInputElement>(null);
 
