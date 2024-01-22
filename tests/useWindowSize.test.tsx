@@ -44,7 +44,7 @@ describe('useWindowSize', () => {
   });
 
   it('should use passed parameters as initial values in case of non-browser use', () => {
-    const hook = getHook(1, 1);
+    const hook = getHook({ initialWidth: 1, initialHeight: 1 });
 
     expect(hook.result.current.height).toBe(isBrowser ? window.innerHeight : 1);
     expect(hook.result.current.width).toBe(isBrowser ? window.innerWidth : 1);
@@ -84,5 +84,46 @@ describe('useWindowSize', () => {
     });
 
     expect(hook.result.current.width).toBe(2048);
+  });
+
+  it('should run onChange function on re-render', () => {
+    let testValue = false;
+
+    getHook({
+      onChange: () => {
+        testValue = true;
+      },
+    });
+
+    act(() => {
+      triggerResize('height', 2048);
+      requestAnimationFrame.step();
+    });
+
+    expect(testValue).toBe(true);
+  });
+
+  it('should provide right size value for onChange function', () => {
+    let size = { width: Infinity, height: Infinity };
+
+    const hook = getHook({
+      onChange: ({ width, height }) => {
+        size = { width, height };
+      },
+    });
+
+    act(() => {
+      triggerResize('height', 2048);
+      requestAnimationFrame.step();
+    });
+
+    act(() => {
+      triggerResize('width', 2048);
+      requestAnimationFrame.step();
+    });
+
+    expect(hook.result.current.height).toBe(2048);
+    expect(hook.result.current.width).toBe(2048);
+    expect(size).toEqual(hook.result.current);
   });
 });
