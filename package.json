@@ -93,7 +93,7 @@
     "babel-plugin-dynamic-import-node": "2.3.3",
     "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-config-react-app": "6.0.0",
+    "eslint-config-react-app": "7.0.1",
     "eslint-plugin-flowtype": "8.0.3",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsx-a11y": "6.6.1",
