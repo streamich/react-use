@@ -1,15 +1,12 @@
-import { Dispatch, SetStateAction, useCallback, useState, useRef, useLayoutEffect } from 'react';
+import { Dispatch, SetStateAction, useCallback, useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { isBrowser, noop } from './misc/util';
 
-type parserOptions<T> =
-  | {
-      raw: true;
-    }
-  | {
-      raw: false;
-      serializer: (value: T) => string;
-      deserializer: (value: string) => T;
-    };
+type parserOptions<T> = {
+  raw?: boolean;
+  ssr?: boolean;
+  serializer?: (value: T) => string;
+  deserializer?: (value: string) => T;
+};
 
 const useLocalStorage = <T>(
   key: string,
@@ -24,7 +21,7 @@ const useLocalStorage = <T>(
   }
 
   const deserializer = options
-    ? options.raw
+    ? options?.raw || !options?.deserializer
       ? (value) => value
       : options.deserializer
     : JSON.parse;
@@ -32,7 +29,11 @@ const useLocalStorage = <T>(
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const initializer = useRef((key: string) => {
     try {
-      const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
+      const serializer = options
+        ? options.raw || !options?.serializer
+          ? String
+          : options.serializer
+        : JSON.stringify;
 
       const localStorageValue = localStorage.getItem(key);
       if (localStorageValue !== null) {
@@ -50,7 +51,16 @@ const useLocalStorage = <T>(
   });
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [state, setState] = useState<T | undefined>(() => initializer.current(key));
+  const [state, setState] = useState<T | undefined>(
+    options?.ssr ? initialValue : () => initializer.current(key)
+  );
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (options?.ssr) {
+      setState(() => initializer.current(key));
+    }
+  }, [key, setState, options?.ssr]);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useLayoutEffect(() => setState(initializer.current(key)), [key]);
