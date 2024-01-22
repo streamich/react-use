@@ -1,7 +1,7 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 import { useHash } from '../src/useHash';
 
-(global as any).window = Object.create(window);
+// (global as any).window = Object.create(window);
 let mockHash = '#';
 const mockLocation = {};
 Object.defineProperty(mockLocation, 'hash', {

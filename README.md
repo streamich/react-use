@@ -71,6 +71,7 @@
   - [`createBreakpoint`](./docs/createBreakpoint.md) &mdash; tracks `innerWidth`
   - [`useScrollbarWidth`](./docs/useScrollbarWidth.md) &mdash; detects browser's native scrollbars width. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usescrollbarwidth--demo)
   - [`usePinchZoom`](./docs/usePinchZoom.md) &mdash; tracks pointer events to detect pinch zoom in and out status. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usePinchZoom--demo)
+  - [`useWorker`](./docs/useWorker.md) &mdash; tracks Web Worker state. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-useWorker--demo)
     <br/>
     <br/>
 - [**UI**](./docs/UI.md)
