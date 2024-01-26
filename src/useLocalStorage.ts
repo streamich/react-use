@@ -23,6 +23,8 @@ const useLocalStorage = <T>(
     throw new Error('useLocalStorage key may not be falsy');
   }
 
+  const localStorageValue = localStorage.getItem(key); // current local storage value on every hook render
+
   const deserializer = options
     ? options.raw
       ? (value) => value
@@ -49,11 +51,42 @@ const useLocalStorage = <T>(
     }
   });
 
+  // * DRY
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const getValue = useCallback(
+    (state: T) => {
+      let value: string;
+
+      if (options)
+        if (options.raw)
+          if (typeof state === 'string') value = state;
+          else value = JSON.stringify(state);
+        else if (options.serializer) value = options.serializer(state);
+        else value = JSON.stringify(state);
+      else value = JSON.stringify(state);
+
+      return value;
+    },
+    [options]
+  );
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [state, setState] = useState<T | undefined>(() => initializer.current(key));
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useLayoutEffect(() => setState(initializer.current(key)), [key]);
+
+  // * separate effect to handle possible local storage value change
+  // * in some other "context" (e.g. other component changing the same "key"...)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useLayoutEffect(() => {
+    if (localStorageValue) {
+      const currentStateValue = state ? getValue(state) : undefined;
+      if (currentStateValue !== localStorageValue) {
+        setState(deserializer(localStorageValue));
+      }
+    }
+  }, [localStorageValue]);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
@@ -62,16 +95,9 @@ const useLocalStorage = <T>(
         const newState =
           typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
         if (typeof newState === 'undefined') return;
-        let value: string;
 
-        if (options)
-          if (options.raw)
-            if (typeof newState === 'string') value = newState;
-            else value = JSON.stringify(newState);
-          else if (options.serializer) value = options.serializer(newState);
-          else value = JSON.stringify(newState);
-        else value = JSON.stringify(newState);
-
+        // * DRY
+        const value = getValue(newState);
         localStorage.setItem(key, value);
         setState(deserializer(value));
       } catch {
