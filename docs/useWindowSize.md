@@ -19,3 +19,14 @@ const Demo = () => {
   );
 };
 ```
+
+## Options
+
+**`initialWidth`**
+Fallback width, used when `window` global is `undefined`. For example, this will be used during a server render.
+
+**`initialHeight`**
+Fallback height, used when `window` global is `undefined`. For example, this will be used during a server render.
+
+**`skip`**
+If `true`, changes to window dimensions will be ignored.
