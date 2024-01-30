@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { isBrowser, off, on } from './misc/util';
 
 export interface ListenerType1 {
@@ -38,7 +38,7 @@ const useEvent = <T extends UseEventTarget>(
   target: null | T | Window = defaultTarget,
   options?: UseEventOptions<T>
 ) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!handler) {
       return;
     }
