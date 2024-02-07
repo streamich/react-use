@@ -1,12 +1,20 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useMeasure, { UseMeasureRef } from '../src/useMeasure';
+import { render } from '@testing-library/react';
+
+import useMeasure from '../src/useMeasure';
+import React, { useEffect } from 'react';
+
+const TestComponent = () => {
+  const [ref] = useMeasure<HTMLDivElement>();
+  return <div ref={ref} />;
+};
 
 it('by default, state defaults every value to -1', () => {
   const { result } = renderHook(() => useMeasure());
 
   act(() => {
     const div = document.createElement('div');
-    (result.current[0] as UseMeasureRef)(div);
+    result.current[0].current = div;
   });
 
   expect(result.current[1]).toMatchObject({
@@ -29,12 +37,7 @@ it('synchronously sets up ResizeObserver listener', () => {
     disconnect() {}
   };
 
-  const { result } = renderHook(() => useMeasure());
-
-  act(() => {
-    const div = document.createElement('div');
-    (result.current[0] as UseMeasureRef)(div);
-  });
+  render(<TestComponent />);
 
   expect(typeof listener).toBe('function');
 });
@@ -49,31 +52,34 @@ it('tracks rectangle of a DOM element', () => {
     disconnect() {}
   };
 
-  const { result } = renderHook(() => useMeasure());
+  let currentMeasure: any = null;
+  const TestComponent = () => {
+    const [ref, measure] = useMeasure<HTMLDivElement>();
+    useEffect(() => {
+      currentMeasure = measure;
+    }, [measure]);
+    return <div ref={ref} />;
+  };
 
-  act(() => {
-    const div = document.createElement('div');
-    (result.current[0] as UseMeasureRef)(div);
-  });
+  const rendered = render(<TestComponent />);
 
-  act(() => {
-    listener!([
-      {
-        contentRect: {
-          x: 1,
-          y: 2,
-          width: 200,
-          height: 200,
-          top: 100,
-          bottom: 0,
-          left: 100,
-          right: 0,
-        },
+  listener!([
+    {
+      contentRect: {
+        x: 1,
+        y: 2,
+        width: 200,
+        height: 200,
+        top: 100,
+        bottom: 0,
+        left: 100,
+        right: 0,
       },
-    ]);
-  });
+    },
+  ]);
+  rendered.rerender(<TestComponent />);
 
-  expect(result.current[1]).toMatchObject({
+  expect(currentMeasure).toMatchObject({
     x: 1,
     y: 2,
     width: 200,
@@ -95,31 +101,33 @@ it('tracks multiple updates', () => {
     disconnect() {}
   };
 
-  const { result } = renderHook(() => useMeasure());
+  let currentMeasure: any = null;
+  const TestComponent = () => {
+    const [ref, measure] = useMeasure<HTMLDivElement>();
+    useEffect(() => {
+      currentMeasure = measure;
+    }, [measure]);
+    return <div ref={ref} />;
+  };
+  const rendered = render(<TestComponent />);
 
-  act(() => {
-    const div = document.createElement('div');
-    (result.current[0] as UseMeasureRef)(div);
-  });
-
-  act(() => {
-    listener!([
-      {
-        contentRect: {
-          x: 1,
-          y: 1,
-          width: 1,
-          height: 1,
-          top: 1,
-          bottom: 1,
-          left: 1,
-          right: 1,
-        },
+  listener!([
+    {
+      contentRect: {
+        x: 1,
+        y: 1,
+        width: 1,
+        height: 1,
+        top: 1,
+        bottom: 1,
+        left: 1,
+        right: 1,
       },
-    ]);
-  });
+    },
+  ]);
+  rendered.rerender(<TestComponent />);
 
-  expect(result.current[1]).toMatchObject({
+  expect(currentMeasure).toMatchObject({
     x: 1,
     y: 1,
     width: 1,
@@ -130,24 +138,23 @@ it('tracks multiple updates', () => {
     right: 1,
   });
 
-  act(() => {
-    listener!([
-      {
-        contentRect: {
-          x: 2,
-          y: 2,
-          width: 2,
-          height: 2,
-          top: 2,
-          bottom: 2,
-          left: 2,
-          right: 2,
-        },
+  listener!([
+    {
+      contentRect: {
+        x: 2,
+        y: 2,
+        width: 2,
+        height: 2,
+        top: 2,
+        bottom: 2,
+        left: 2,
+        right: 2,
       },
-    ]);
-  });
+    },
+  ]);
+  rendered.rerender(<TestComponent />);
 
-  expect(result.current[1]).toMatchObject({
+  expect(currentMeasure).toMatchObject({
     x: 2,
     y: 2,
     width: 2,
@@ -168,16 +175,11 @@ it('calls .disconnect() on ResizeObserver when component unmounts', () => {
     }
   };
 
-  const { result, unmount } = renderHook(() => useMeasure());
-
-  act(() => {
-    const div = document.createElement('div');
-    (result.current[0] as UseMeasureRef)(div);
-  });
+  const rendered = render(<TestComponent />);
 
   expect(disconnect).toHaveBeenCalledTimes(0);
 
-  unmount();
+  rendered.unmount();
 
   expect(disconnect).toHaveBeenCalledTimes(1);
 });
