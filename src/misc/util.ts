@@ -1,3 +1,7 @@
+const is = (value1: any, value2: any) =>
+  (value1 === value2 && (value1 !== 0 || 1 / value1 === 1 / value2)) ||
+  (value1 !== value1 && value2 !== value2);
+
 export const noop = () => {};
 
 export function on<T extends Window | Document | HTMLElement | EventTarget>(
@@ -21,3 +25,6 @@ export function off<T extends Window | Document | HTMLElement | EventTarget>(
 export const isBrowser = typeof window !== 'undefined';
 
 export const isNavigator = typeof navigator !== 'undefined';
+
+export const objectIs = typeof Object.is === 'function' ? Object.is : is;
+

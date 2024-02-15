@@ -60,7 +60,8 @@
     "set-harmonic-interval": "^1.0.1",
     "throttle-debounce": "^3.0.1",
     "ts-easing": "^0.2.0",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "use-sync-external-store": "^1.2.0"
   },
   "peerDependencies": {
     "react": "*",
@@ -85,6 +86,7 @@
     "@testing-library/react-hooks": "7.0.2",
     "@types/jest": "27.5.2",
     "@types/react": "17.0.0",
+    "@types/use-sync-external-store": "^0.0.3",
     "@typescript-eslint/eslint-plugin": "5.6.0",
     "@typescript-eslint/parser": "5.6.0",
     "babel-core": "6.26.3",
