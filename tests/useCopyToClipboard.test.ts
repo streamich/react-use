@@ -41,6 +41,19 @@ describe('useCopyToClipboard', () => {
     expect(state.error).not.toBeDefined();
   });
 
+  it('should pass given options to copy to clipboard', () => {
+    const testValue = 'test';
+    const testOptions = {
+      debug: true,
+    }
+    let [, copyToClipboard] = hook.result.current;
+    act(() => copyToClipboard(testValue, testOptions));
+    [, copyToClipboard] = hook.result.current;
+
+    expect(writeText).toBeCalled();
+    expect(writeText).toBeCalledWith(testValue, testOptions);
+  });
+
   it('should not call writeText if passed an invalid input and set state', () => {
     let testValue = {}; // invalid value
     let [state, copyToClipboard] = hook.result.current;
@@ -67,7 +80,7 @@ describe('useCopyToClipboard', () => {
     act(() => copyToClipboard(valueToRaiseMockException));
     [state, copyToClipboard] = hook.result.current;
 
-    expect(writeText).toBeCalledWith(valueToRaiseMockException);
+    expect(writeText).toBeCalledWith(valueToRaiseMockException, {});
     expect(state.value).toBe(valueToRaiseMockException);
     expect(state.noUserInteraction).not.toBeDefined();
     expect(state.error).toStrictEqual(new Error(valueToRaiseMockException));
