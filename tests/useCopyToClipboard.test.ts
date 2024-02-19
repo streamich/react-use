@@ -45,7 +45,7 @@ describe('useCopyToClipboard', () => {
     const testValue = 'test';
     const testOptions = {
       debug: true,
-    }
+    };
     let [, copyToClipboard] = hook.result.current;
     act(() => copyToClipboard(testValue, testOptions));
     [, copyToClipboard] = hook.result.current;
