@@ -9,7 +9,7 @@ export interface CopyToClipboardState {
   error?: Error;
 }
 
-const useCopyToClipboard = (): [CopyToClipboardState, (value: string, options?: any) => void] => {
+const useCopyToClipboard = (): [CopyToClipboardState, (value: string, options?: object) => void] => {
   const isMounted = useMountedState();
   const [state, setState] = useSetState<CopyToClipboardState>({
     value: undefined,
