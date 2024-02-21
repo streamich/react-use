@@ -9,7 +9,9 @@ export interface CopyToClipboardState {
   error?: Error;
 }
 
-const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] => {
+type mimeType = 'text/html' | 'text/plain'
+
+const useCopyToClipboard = (mimeType: mimeType = 'text/plain'): [CopyToClipboardState, (value: string) => void] => {
   const isMounted = useMountedState();
   const [state, setState] = useSetState<CopyToClipboardState>({
     value: undefined,
@@ -49,7 +51,9 @@ const useCopyToClipboard = (): [CopyToClipboardState, (value: string) => void] =
         return;
       }
       normalizedValue = value.toString();
-      noUserInteraction = writeText(normalizedValue);
+      noUserInteraction = writeText(normalizedValue, {
+        format: mimeType,
+      });
       setState({
         value: normalizedValue,
         error: undefined,
