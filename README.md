@@ -107,6 +107,7 @@
   - [`useLockBodyScroll`](./docs/useLockBodyScroll.md) &mdash; lock scrolling of the body element.
   - [`useRafLoop`](./docs/useRafLoop.md) &mdash; calls given function inside the RAF loop.
   - [`useSessionStorage`](./docs/useSessionStorage.md) &mdash; manages a value in `sessionStorage`.
+  - [`useSignallingEffect`](./docs/useSignallingEffect.md) &mdash; idiomatic side-effect cancellation with `AbortSignal`.
   - [`useThrottle` and `useThrottleFn`](./docs/useThrottle.md) &mdash; throttles a function. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/side-effects-usethrottle--demo)
   - [`useTitle`](./docs/useTitle.md) &mdash; sets title of the page.
   - [`usePermission`](./docs/usePermission.md) &mdash; query permission status for browser APIs.
