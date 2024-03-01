@@ -8,7 +8,8 @@ React side-effect hook to query permission status of browser APIs.
 import {usePermission} from 'react-use';
 
 const Demo = () => {
-  const state = usePermission({ name: 'microphone' });
+  // type PermissionName = "geolocation" | "notifications" | "persistent-storage" | "push" | "screen-wake-lock" | "xr-spatial-tracking";
+  const state = usePermission({ name: 'notifications' });
 
   return (
     <pre>

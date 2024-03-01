@@ -4,7 +4,8 @@ import { usePermission } from '../src';
 import ShowDocs from './util/ShowDocs';
 
 const Demo = () => {
-  const state = usePermission({ name: 'microphone' });
+  // type PermissionName = "geolocation" | "notifications" | "persistent-storage" | "push" | "screen-wake-lock" | "xr-spatial-tracking";
+  const state = usePermission({ name: 'notifications' });
 
   return <pre>{JSON.stringify(state, null, 2)}</pre>;
 };
