@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
 
-const useInterval = (callback: Function, delay?: number | null) => {
-  const savedCallback = useRef<Function>(() => {});
+type Callback = () => VoidFunction | void;
+
+const useInterval = (callback: Callback, delay?: number | null) => {
+  const savedCallback = useRef<Callback>(() => {});
 
   useEffect(() => {
     savedCallback.current = callback;
@@ -9,8 +11,17 @@ const useInterval = (callback: Function, delay?: number | null) => {
 
   useEffect(() => {
     if (delay !== null) {
-      const interval = setInterval(() => savedCallback.current(), delay || 0);
-      return () => clearInterval(interval);
+      let cleanup: VoidFunction | void;
+
+      const interval = setInterval(() => {
+        if (cleanup) cleanup();
+        cleanup = savedCallback.current();
+      }, delay || 0);
+
+      return () => {
+        if (cleanup) cleanup();
+        clearInterval(interval);
+      };
     }
 
     return undefined;

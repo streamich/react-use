@@ -112,3 +112,35 @@ it('should clear pending interval when delay is updated', () => {
   expect(clearInterval).toHaveBeenCalledTimes(1);
   expect(jest.getTimerCount()).toBe(initialTimerCount);
 });
+
+it('should call cleanup function on unmount', () => {
+  const cleanup = jest.fn();
+  const { unmount } = renderHook(() => useInterval(() => cleanup, 200));
+
+  expect(cleanup).not.toHaveBeenCalled();
+  jest.advanceTimersByTime(200);
+  unmount();
+  expect(cleanup).toHaveBeenCalledTimes(1);
+});
+
+it('should not call cleanup function if interval never fires', () => {
+  const cleanup = jest.fn();
+  const { unmount } = renderHook(() => useInterval(() => cleanup, 200));
+
+  expect(cleanup).not.toHaveBeenCalled();
+  unmount();
+  expect(cleanup).not.toHaveBeenCalled();
+});
+
+it('should call cleanup function on each interval', () => {
+  const cleanup = jest.fn();
+  const { unmount } = renderHook(() => useInterval(() => cleanup, 200));
+
+  expect(cleanup).not.toHaveBeenCalled();
+
+  // fast-forward until 5 timers should be executed (that's 4 cleanup calls)
+  jest.advanceTimersToNextTimer(5);
+  expect(cleanup).toHaveBeenCalledTimes(4);
+  unmount();
+  expect(cleanup).toHaveBeenCalledTimes(5);
+});

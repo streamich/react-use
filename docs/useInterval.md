@@ -1,6 +1,10 @@
 # `useInterval`
 
-A declarative interval hook based on [Dan Abramov's article on overreacted.io](https://overreacted.io/making-setinterval-declarative-with-react-hooks). The interval can be paused by setting the delay to `null`.
+A declarative interval hook based on [Dan Abramov's article on overreacted.io](https://overreacted.io/making-setinterval-declarative-with-react-hooks).
+
+The interval can be paused by setting the delay to `null`.
+When the delay changes, the interval is reset.
+You may also return a cleanup function from the callback, which is called between intervals and on unmount, much like `useEffect`.
 
 ## Usage
 
