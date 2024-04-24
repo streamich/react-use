@@ -1,27 +1,6 @@
 import { useEffect, useState } from 'react';
 import { isBrowser, off, on } from './misc/util';
 
-const patchHistoryMethod = (method) => {
-  const history = window.history;
-  const original = history[method];
-
-  history[method] = function (state) {
-    const result = original.apply(this, arguments);
-    const event = new Event(method.toLowerCase());
-
-    (event as any).state = state;
-
-    window.dispatchEvent(event);
-
-    return result;
-  };
-};
-
-if (isBrowser) {
-  patchHistoryMethod('pushState');
-  patchHistoryMethod('replaceState');
-}
-
 export interface LocationSensorState {
   trigger: string;
   state?: any;
