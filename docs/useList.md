@@ -53,7 +53,7 @@ const [list, {
 }] = useList(array: any[] | ()=> any[]);
 ```
 
-- **`list`**_`: T{}`_ &mdash; current list;
+- **`list`**_`: T[]`_ &mdash; current list;
 - **`set`**_`: (list: T[]) => void;`_ &mdash; Set new list instead old one;
 - **`push`**_`: (...items: T[]) => void;`_ &mdash; Add item(s) at the end of list;
 - **`updateAt`**_`: (index: number, item: T) => void;`_ &mdash; Replace item at given position. If item at given position not exists it will be set;
