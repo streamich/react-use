@@ -12,7 +12,7 @@ export interface Actions<K> extends StableActions<K> {
   has: (key: K) => boolean;
 }
 
-const useSet = <K>(initialSet = new Set<K>()): [Set<K>, Actions<K>] => {
+const useSet = <K>(initialSet: Set<K> | (() => Set<K> = new Set<K>()): [Set<K>, Actions<K>] => {
   const [set, setSet] = useState(initialSet);
 
   const stableActions = useMemo<StableActions<K>>(() => {
