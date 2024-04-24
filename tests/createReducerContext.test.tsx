@@ -43,7 +43,7 @@ describe('when using created hook', () => {
     const { result } = setUp();
     const [sharedNumber, updateSharedNumber] = result.current;
 
-    expect(sharedNumber).toEqual(0);
+    expect(sharedNumber).toBe(0);
     expect(updateSharedNumber).toBeInstanceOf(Function);
   });
 
@@ -55,7 +55,7 @@ describe('when using created hook', () => {
 
     const [sharedNumber] = result.current;
 
-    expect(sharedNumber).toEqual(1);
+    expect(sharedNumber).toBe(1);
   });
 });
 
