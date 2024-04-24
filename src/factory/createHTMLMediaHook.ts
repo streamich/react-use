@@ -95,7 +95,12 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
       if (!el) {
         return;
       }
-      setState({ time: el.currentTime });
+      const { currentTime: time, duration, buffered } = el
+      setState({
+        time,
+        duration,
+        buffered: parseTimeRanges(buffered),
+      });
     };
     const onProgress = () => {
       const el = ref.current;
