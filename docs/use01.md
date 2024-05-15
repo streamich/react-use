@@ -1,4 +1,4 @@
-# `useToggle`
+# `use01`
 
 React state hook that tracks value of a number which can be only equal to `0` or `1`.
 
