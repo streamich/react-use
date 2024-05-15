@@ -1,0 +1,15 @@
+printWidth: 100
+tabWidth: 2
+semi: true
+singleQuote: true
+trailingComma: 'es5'
+bracketSameLine: false
+arrowParens: 'always'
+singleAttributePerLine: true
+proseWrap: never
+semicolons: true
+quoteProps: 'as-needed'
+jsxSingleQuote: false
+bracketSpacing: true
+jsxBracketSameLine: true
+endOfLine: 'lf'
