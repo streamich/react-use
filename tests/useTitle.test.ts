@@ -34,7 +34,7 @@ describe('useTitle', () => {
       initialProps: { title: 'New title', restore: true },
     });
 
-    hook.rerender({ title: 'Newer title', 'restore': true });
+    hook.rerender({ title: 'Newer title', restore: true });
 
     expect(document.title).toBe('Newer title');
     hook.unmount();
