@@ -19,7 +19,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -37,7 +37,7 @@ jobs:
   #     - name: Setup node
   #       uses: actions/setup-node@v1
   #       with:
-  #         node-version: 18
+  #         node-version: 20
 
   #     - name: Install dependencies
   #       run: yarn install --frozen-lockfile
@@ -55,7 +55,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -73,7 +73,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest]
-        node: [18, 20]
+        node: [20, 22]
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
