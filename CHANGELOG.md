@@ -1,3 +1,10 @@
+## [17.5.1](https://github.com/streamich/react-use/compare/v17.5.0...v17.5.1) (2024-07-20)
+
+
+### Bug Fixes
+
+* 🐛 bump nano-css dependency ([adfb337](https://github.com/streamich/react-use/commit/adfb337d5b11427798afc5a21c6ebdaa76212182))
+
 # [17.5.0](https://github.com/streamich/react-use/compare/v17.4.4...v17.5.0) (2024-01-22)
 
 
