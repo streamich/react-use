@@ -1,12 +1,11 @@
 import { RefObject, useEffect, useState } from 'react';
 import { off, on } from './misc/util';
+import { validateRefArgument } from './misc/validators';
 
 // kudos: https://usehooks.com/
 const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
   if (process.env.NODE_ENV === 'development') {
-    if (typeof ref !== 'object' || typeof ref.current === 'undefined') {
-      console.error('useHoverDirty expects a single ref argument.');
-    }
+    validateRefArgument(useHoverDirty, ref);
   }
 
   const [value, setValue] = useState(false);
