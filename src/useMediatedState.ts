@@ -1,4 +1,6 @@
-import { Dispatch, SetStateAction, useCallback, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useCallback, useRef } from 'react';
+import { IHookStateInitAction, resolveHookState } from './misc/hookState';
+import useGetSet from './useGetSet';
 
 export interface StateMediator<S = any> {
   (newState: any): S;
@@ -13,26 +15,27 @@ export function useMediatedState<S = undefined>(
 ): UseMediatedStateReturn<S | undefined>;
 export function useMediatedState<S = any>(
   mediator: StateMediator<S>,
-  initialState: S
+  initialState: IHookStateInitAction<S>
 ): UseMediatedStateReturn<S>;
 
 export function useMediatedState<S = any>(
   mediator: StateMediator<S>,
-  initialState?: S
+  initialState?: IHookStateInitAction<S>
 ): UseMediatedStateReturn<S> {
   const mediatorFn = useRef(mediator);
 
-  const [state, setMediatedState] = useState<S>(initialState!);
+  const [get, set] = useGetSet<S>(initialState!);
   const setState = useCallback(
     (newState: any) => {
+      const resolvedState = resolveHookState(newState, get());
       if (mediatorFn.current.length === 2) {
-        mediatorFn.current(newState, setMediatedState);
+        mediatorFn.current(resolvedState, set);
       } else {
-        setMediatedState(mediatorFn.current(newState));
+        set(mediatorFn.current(resolvedState));
       }
     },
-    [state]
+    [get, set]
   );
 
-  return [state, setState];
+  return [get(), setState];
 }

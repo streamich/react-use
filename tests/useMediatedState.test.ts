@@ -9,7 +9,7 @@ describe('useMediatedState', () => {
   });
 
   function getHook(
-    initialState: number = 2,
+    initialState: number | (() => number) = 2,
     fn: StateMediator<number> = jest.fn((newState) => newState / 2)
   ): [jest.Mock | StateMediator, RenderHookResult<any, UseMediatedStateReturn<number>>] {
     return [fn, renderHook(() => useMediatedState<number>(fn, initialState))];
@@ -64,5 +64,22 @@ describe('useMediatedState', () => {
 
     act(() => hook.result.current[1](3));
     expect(hook.result.current[0]).toBe(6);
+  });
+
+  it('should resolve initial state defined as initializer function', () => {
+    const [spy, hook] = getHook(() => 2);
+
+    expect(hook.result.current[0]).toBe(2);
+    expect(spy).toHaveBeenCalledTimes(0);
+  });
+
+  it('setState should execute updater function and pass the result to mediator', () => {
+    const [spy, hook] = getHook();
+    const [, setState] = hook.result.current;
+
+    act(() => setState((prev) => prev + 4));
+    expect(hook.result.current[0]).toBe(3);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenLastCalledWith(6);
   });
 });
