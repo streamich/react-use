@@ -12,8 +12,16 @@ addonVCSSOM(nano);
 
 let counter = 0;
 
+export const resetCssCounter = () => {
+  counter = 0;
+}
+
+const useClassName = (): string => {
+  return useMemo(() => `react-use-css-${(counter++).toString(36)}`, []);
+}
+
 const useCss = (css: object): string => {
-  const className = useMemo(() => 'react-use-css-' + (counter++).toString(36), []);
+  const className = useClassName();
   const sheet = useMemo(() => new nano.VSheet(), []);
 
   useIsomorphicLayoutEffect(() => {
@@ -29,4 +37,4 @@ const useCss = (css: object): string => {
   return className;
 };
 
-export default useCss;
+export default typeof window !== 'undefined' ? useCss : useClassName;
