@@ -13,12 +13,8 @@ export const useHash = () => {
   }, []);
 
   useLifecycles(
-    () => {
-      on(window, 'hashchange', onHashChange);
-    },
-    () => {
-      off(window, 'hashchange', onHashChange);
-    }
+    useCallback( () => on(window, 'hashchange', onHashChange), []),
+    useCallback( () => off(window, 'hashchange', onHashChange), [])
   );
 
   const _setHash = useCallback(
