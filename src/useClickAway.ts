@@ -17,7 +17,8 @@ const useClickAway = <E extends Event = Event>(
   useEffect(() => {
     const handler = (event) => {
       const refArray = Array.isArray(refs) ? refs : [refs];
-      if (refArray.every(ref => ref.current && !ref.current.contains(event.target))) {
+      const existingRefs = refArray.filter((ref) => Boolean(ref?.current)); // Filter out null refs
+      if (existingRefs.every(ref => ref.current && !ref.current.contains(event.target))) {
         savedCallback.current(event);
       }
     };
