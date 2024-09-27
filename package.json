@@ -3,7 +3,19 @@
   "version": "17.5.1",
   "description": "Collection of React Hooks",
   "main": "lib/index.js",
-  "module": "esm/index.js",
+  "module": "esm/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./esm/index.mjs",
+      "require": "./lib/index.js"
+    },
+    "./*": {
+      "types": "./lib/*.d.ts",
+      "import": "./esm/*.mjs",
+      "require": "./lib/*.js"
+    }
+  },
   "sideEffects": false,
   "files": [
     "lib/",
@@ -21,7 +33,7 @@
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
     "build:cjs": "tsc",
-    "build:es": "tsc -m esNext --outDir esm",
+    "build:es": "tsup --format esm --out-dir esm --clean src",
     "build": "yarn build:cjs && yarn build:es",
     "clean": "rimraf lib storybook-static esm",
     "storybook": "start-storybook -p 6008",
@@ -81,6 +93,7 @@
     "@storybook/addon-notes": "5.3.21",
     "@storybook/addon-options": "5.3.21",
     "@storybook/react": "6.4.9",
+    "@swc/core": "^1.7.26",
     "@testing-library/react": "12.1.2",
     "@testing-library/react-hooks": "7.0.2",
     "@types/jest": "27.5.2",
@@ -124,6 +137,7 @@
     "ts-jest": "26.5.6",
     "ts-loader": "8.4.0",
     "ts-node": "10.9.2",
+    "tsup": "^8.3.0",
     "typescript": "4.1.5"
   },
   "config": {
