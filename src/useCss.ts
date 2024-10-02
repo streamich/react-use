@@ -1,7 +1,7 @@
 import { create, NanoRenderer } from 'nano-css';
-import { addon as addonCSSOM, CSSOMAddon } from 'nano-css/addon/cssom';
-import { addon as addonVCSSOM, VCSSOMAddon } from 'nano-css/addon/vcssom';
-import { cssToTree } from 'nano-css/addon/vcssom/cssToTree';
+import { addon as addonCSSOM, CSSOMAddon } from 'nano-css/addon/cssom.js';
+import { addon as addonVCSSOM, VCSSOMAddon } from 'nano-css/addon/vcssom.js';
+import { cssToTree } from 'nano-css/addon/vcssom/cssToTree.js';
 import { useMemo } from 'react';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
