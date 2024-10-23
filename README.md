@@ -26,7 +26,7 @@
       <img src="https://img.shields.io/badge/demos-🚀-yellow.svg" alt="demos" />
     </a>
     <br />
-    Collection of essential <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.</em>
+    Collection of essential <a href="https://react.dev/reference/react/hooks">React Hooks</a>.</em>
     <em>Port of</em> <a href="https://github.com/streamich/libreact"><code>libreact</code></a>.
     <br />
     Translations: <a href="https://github.com/zenghongtu/react-use-chinese/blob/master/README.md">🇨🇳 汉语</a>
