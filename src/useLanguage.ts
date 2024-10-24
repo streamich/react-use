@@ -29,6 +29,6 @@ function useLanguage() {
   return [lang, setLang] as const;
 }
 
-export default typeof isDocument
+export default isDocument
   ? useLanguage
   : () => ['', (_action: SetStateAction<string>) => {}] as const;
