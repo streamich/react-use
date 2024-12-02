@@ -3,7 +3,17 @@ import { useEffect } from 'react';
 import useRafState from './useRafState';
 import { isBrowser, off, on } from './misc/util';
 
-const useWindowSize = (initialWidth = Infinity, initialHeight = Infinity) => {
+interface Options {
+  initialWidth?: number;
+  initialHeight?: number;
+  onChange?: (width: number, height: number) => void;
+}
+
+const useWindowSize = ({
+  initialWidth = Infinity,
+  initialHeight = Infinity,
+  onChange,
+}: Options = {}) => {
   const [state, setState] = useRafState<{ width: number; height: number }>({
     width: isBrowser ? window.innerWidth : initialWidth,
     height: isBrowser ? window.innerHeight : initialHeight,
@@ -12,10 +22,15 @@ const useWindowSize = (initialWidth = Infinity, initialHeight = Infinity) => {
   useEffect((): (() => void) | void => {
     if (isBrowser) {
       const handler = () => {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
         setState({
           width: window.innerWidth,
           height: window.innerHeight,
         });
+
+        if (onChange) onChange(width, height);
       };
 
       on(window, 'resize', handler);
