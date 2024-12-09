@@ -1,3 +1,11 @@
+# [17.6.0](https://github.com/streamich/react-use/compare/v17.5.1...v17.6.0) (2024-12-09)
+
+
+### Features
+
+* add onChange callback to useWindowSize ([ea656f7](https://github.com/streamich/react-use/commit/ea656f7e751b8366360ce2aa8238057bbbc1251a))
+* add onChange callback to useWindowSize ([3eb531a](https://github.com/streamich/react-use/commit/3eb531ac9e9e04641df29aafbd2677869cdcb085))
+
 ## [17.5.1](https://github.com/streamich/react-use/compare/v17.5.0...v17.5.1) (2024-07-20)
 
 
