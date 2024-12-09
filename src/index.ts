@@ -42,6 +42,7 @@ export { default as createBreakpoint } from './factory/createBreakpoint';
 // export { default as useKeyboardJs } from './useKeyboardJs';
 export { default as useKeyPress } from './useKeyPress';
 export { default as useKeyPressEvent } from './useKeyPressEvent';
+export { default as useLanguage } from './useLanguage';
 export { default as useLatest } from './useLatest';
 export { default as useLifecycles } from './useLifecycles';
 export { default as useList } from './useList';
