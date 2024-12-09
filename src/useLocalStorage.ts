@@ -11,11 +11,21 @@ type parserOptions<T> =
       deserializer: (value: string) => T;
     };
 
-const useLocalStorage = <T>(
+function useLocalStorage<T>(
+  key: string,
+  initialValue: T,
+  options?: parserOptions<T>
+): [T, Dispatch<SetStateAction<T>>, () => void];
+function useLocalStorage<T>(
+  key: string,
+  initialValue?: undefined,
+  options?: parserOptions<T>
+): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void];
+function useLocalStorage<T>(
   key: string,
   initialValue?: T,
   options?: parserOptions<T>
-): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
+): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] {
   if (!isBrowser) {
     return [initialValue as T, noop, noop];
   }
@@ -94,6 +104,6 @@ const useLocalStorage = <T>(
   }, [key, setState]);
 
   return [state, set, remove];
-};
+}
 
 export default useLocalStorage;
