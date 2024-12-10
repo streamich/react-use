@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { noop, off, on } from './misc/util';
 
-export type IState = PermissionState | '';
+export type IState = PermissionState | 'unavailable' | '';
 
 interface IPushPermissionDescriptor extends PermissionDescriptor {
   name: 'push';
@@ -39,14 +39,18 @@ const usePermission = (permissionDesc: IPermissionDescriptor): IState => {
       setState(() => permissionStatus?.state ?? '');
     };
 
-    navigator.permissions
-      .query(permissionDesc)
-      .then((status) => {
-        permissionStatus = status;
-        on(permissionStatus, 'change', onChange);
-        onChange();
-      })
-      .catch(noop);
+    if ('permissions' in navigator) {
+      navigator.permissions
+        .query(permissionDesc)
+        .then((status) => {
+          permissionStatus = status;
+          on(permissionStatus, 'change', onChange);
+          onChange();
+        })
+        .catch(noop);
+    } else {
+      setState('unavailable');
+    }
 
     return () => {
       permissionStatus && off(permissionStatus, 'change', onChange);
