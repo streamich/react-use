@@ -43,6 +43,8 @@ export { default as createBreakpoint } from './factory/createBreakpoint';
 export { default as useKeyPress } from './useKeyPress';
 export { default as useKeyPressEvent } from './useKeyPressEvent';
 export { default as useLatest } from './useLatest';
+export { default as useLatestRef } from './useLatestRef';
+export { default as useLayoutLatestRef } from './useLayoutLatestRef';
 export { default as useLifecycles } from './useLifecycles';
 export { default as useList } from './useList';
 export { default as useLocalStorage } from './useLocalStorage';
