@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import { renderHook as renderHookSSR } from '@testing-library/react-hooks/server';
 import { useMedia } from '../src';
 

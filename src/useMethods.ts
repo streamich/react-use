@@ -24,7 +24,7 @@ const useMethods = <M, T>(
     [createMethods]
   );
 
-  const [state, dispatch] = useReducer<Reducer<T, Action>>(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const wrappedMethods: WrappedMethods<M> = useMemo(() => {
     const actionTypes = Object.keys(createMethods(initialState));

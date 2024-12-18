@@ -1,4 +1,4 @@
-import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { act, renderHook, RenderHookResult } from '@testing-library/react';
 import { useState } from 'react';
 import { MultiStateValidator, useMultiStateValidator } from '../src/useMultiStateValidator';
 import { UseStateValidatorReturn, ValidityState } from '../src/useStateValidator';

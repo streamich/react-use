@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import useLogger from '../src/useLogger';
 
 const logSpy = jest.spyOn(global.console, 'log').mockImplementation(() => {});

@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import useAudio from '../src/useAudio';
 const setUp = (
   src: string = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',

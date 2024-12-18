@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import { useCustomCompareEffect } from '../src';
 import { useEffect } from 'react';
 import isDeepEqual from '../src/misc/isDeepEqual';

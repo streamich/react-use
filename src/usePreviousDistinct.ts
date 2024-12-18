@@ -9,7 +9,7 @@ export default function usePreviousDistinct<T>(
   value: T,
   compare: Predicate<T> = strictEquals
 ): T | undefined {
-  const prevRef = useRef<T>();
+  const prevRef = useRef<T>(undefined);
   const curRef = useRef<T>(value);
   const isFirstMount = useFirstMountState();
 

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import TestUtils from 'react-dom/test-utils';
 import { ensuredForwardRef, useEnsuredForwardedRef } from '../src';
 

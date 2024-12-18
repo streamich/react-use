@@ -1,4 +1,4 @@
-import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { act, renderHook, RenderHookResult } from '@testing-library/react';
 import { useRef } from 'react';
 import { UseStateHistoryReturn, useStateWithHistory } from '../src/useStateWithHistory';
 import { IHookStateSetAction } from '../src/misc/hookState';

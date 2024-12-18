@@ -4,7 +4,7 @@ import { off, on } from './misc/util';
 export default () => {
   const [mouseWheelScrolled, setMouseWheelScrolled] = useState(0);
   useEffect(() => {
-    const updateScroll = (e: MouseWheelEvent) => {
+    const updateScroll = (e: WheelEvent) => {
       setMouseWheelScrolled(e.deltaY + mouseWheelScrolled);
     };
     on(window, 'wheel', updateScroll, false);

@@ -1,4 +1,4 @@
-import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { act, renderHook, RenderHookResult } from '@testing-library/react';
 import { useTimeoutFn } from '../src';
 import { UseTimeoutFnReturn } from '../src/useTimeoutFn';
 

@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import useSet from '../src/useSet';
 
 const setUp = <K>(initialSet?: Set<K>) => renderHook(() => useSet(initialSet));

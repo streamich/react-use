@@ -5,7 +5,7 @@
 // does not automatically invoke the function
 // and it can take arguments.
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import useAsyncFn, { AsyncState } from '../src/useAsyncFn';
 
 type AdderFn = (a?: number, b?: number) => Promise<number>;

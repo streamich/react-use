@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import { easing } from 'ts-easing';
 import * as useRaf from '../src/useRaf';
 import useTween from '../src/useTween';

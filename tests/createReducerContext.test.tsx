@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import createReducerContext from '../src/factory/createReducerContext';
 
 type Action = 'increment' | 'decrement';
