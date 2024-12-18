@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import TestRenderer from 'react-test-renderer';
 import { intersectionObserver } from '@shopify/jest-dom-mocks';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import { useIntersection } from '../src';
 
 beforeEach(() => {

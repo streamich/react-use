@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import useFavicon from '../src/useFavicon';
 
 afterEach(() => {

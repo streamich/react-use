@@ -1,4 +1,4 @@
-import { renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { renderHook, RenderHookResult } from '@testing-library/react';
 import { useThrottleFn } from '../src';
 
 describe('useThrottleFn', () => {

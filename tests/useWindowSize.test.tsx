@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import { replaceRaf } from 'raf-stub';
 import useWindowSize from '../src/useWindowSize';
 import { isBrowser } from '../src/misc/util';

@@ -1,6 +1,6 @@
 import useLocalStorage from '../src/useLocalStorage';
 import 'jest-localstorage-mock';
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 
 describe(useLocalStorage, () => {
   afterEach(() => {

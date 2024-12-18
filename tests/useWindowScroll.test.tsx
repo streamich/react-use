@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { render, act as reactAct } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import { replaceRaf } from 'raf-stub';
 
 import useWindowScroll from '../src/useWindowScroll';

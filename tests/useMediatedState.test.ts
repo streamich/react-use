@@ -1,4 +1,4 @@
-import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { act, renderHook, RenderHookResult } from '@testing-library/react';
 import { Dispatch, SetStateAction } from 'react';
 import { useMediatedState } from '../src';
 import { StateMediator, UseMediatedStateReturn } from '../src/useMediatedState';
