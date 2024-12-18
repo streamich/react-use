@@ -81,10 +81,10 @@
     "@storybook/addon-notes": "5.3.21",
     "@storybook/addon-options": "5.3.21",
     "@storybook/react": "6.4.9",
-    "@testing-library/react": "12.1.2",
-    "@testing-library/react-hooks": "7.0.2",
+    "@testing-library/react": "16.1.0",
+    "@testing-library/react-hooks": "8.0.1",
     "@types/jest": "27.5.2",
-    "@types/react": "17.0.0",
+    "@types/react": "19.0.1",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "babel-core": "6.26.3",
@@ -110,8 +110,8 @@
     "markdown-loader": "6.0.0",
     "prettier": "2.3.0",
     "raf-stub": "3.0.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-frame-component": "5.2.7",
     "react-spring": "9.7.4",
     "react-test-renderer": "17.0.2",
@@ -124,7 +124,7 @@
     "ts-jest": "26.5.6",
     "ts-loader": "8.4.0",
     "ts-node": "10.9.2",
-    "typescript": "4.1.5"
+    "typescript": "5.7.2"
   },
   "config": {
     "commitizen": {
