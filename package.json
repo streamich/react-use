@@ -60,7 +60,7 @@
     "set-harmonic-interval": "^1.0.1",
     "throttle-debounce": "^3.0.1",
     "ts-easing": "^0.2.0",
-    "tslib": "^2.1.0"
+    "tslib": "^2.8.1"
   },
   "peerDependencies": {
     "react": "*",

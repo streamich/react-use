@@ -1,10 +1,10 @@
-import { Reducer, useReducer } from 'react';
+import { useReducer, ActionDispatch } from 'react';
 
-const toggleReducer = (state: boolean, nextValue?: any) =>
+const toggleReducer = (state: any, nextValue?: any) =>
   typeof nextValue === 'boolean' ? nextValue : !state;
 
-const useToggle = (initialValue: boolean): [boolean, (nextValue?: any) => void] => {
-  return useReducer<Reducer<boolean, any>>(toggleReducer, initialValue);
+const useToggle = (initialValue: boolean): [boolean, ActionDispatch<any>] => {
+  return useReducer(toggleReducer, initialValue);
 };
 
 export default useToggle;
