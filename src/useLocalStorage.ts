@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useCallback, useState, useRef, useLayoutEffect } from 'react';
 import { isBrowser, noop } from './misc/util';
+import useEvent from './useEvent';
 
 type parserOptions<T> =
   | {
@@ -16,13 +17,6 @@ const useLocalStorage = <T>(
   initialValue?: T,
   options?: parserOptions<T>
 ): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
-  if (!isBrowser) {
-    return [initialValue as T, noop, noop];
-  }
-  if (!key) {
-    throw new Error('useLocalStorage key may not be falsy');
-  }
-
   const deserializer = options
     ? options.raw
       ? (value) => value
@@ -92,6 +86,25 @@ const useLocalStorage = <T>(
       // localStorage can throw.
     }
   }, [key, setState]);
+
+  const handleStorageChange = useCallback(
+    (event: StorageEvent | CustomEvent) => {
+      if ((event as StorageEvent)?.key && (event as StorageEvent).key !== key) {
+        return;
+      }
+      set(initializer.current(key));
+    },
+    [key, initializer]
+  );
+
+  useEvent('storage', handleStorageChange);
+
+  if (!isBrowser) {
+    return [initialValue as T, noop, noop];
+  }
+  if (!key) {
+    throw new Error('useLocalStorage key may not be falsy');
+  }
 
   return [state, set, remove];
 };
