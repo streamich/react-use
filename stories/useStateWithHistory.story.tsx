@@ -9,6 +9,7 @@ const Demo = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [stepSize, { set: setStepSize }] = useCounter(1, 3, 1);
+  const [position, { set: setPosition }] = useCounter(0, null, 0);
 
   const handleFormSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
@@ -24,7 +25,7 @@ const Demo = () => {
         return;
       }
 
-      window.history.back(stepSize);
+      history.back(stepSize);
     },
     [history, stepSize]
   );
@@ -35,7 +36,7 @@ const Demo = () => {
         return;
       }
 
-      window.history.forward(stepSize);
+      history.forward(stepSize);
     },
     [history, stepSize]
   );
@@ -45,6 +46,20 @@ const Demo = () => {
       setStepSize((e.currentTarget.value as any) * 1);
     },
     [stepSize]
+  );
+
+  const handleGoClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      history.go(position);
+    },
+    [history, position]
+  );
+
+  const handlePositionChange = useCallback(
+    (e: React.FormEvent<HTMLInputElement>) => {
+      setPosition((e.currentTarget.value as any) * 1);
+    },
+    [position]
   );
 
   return (
@@ -60,23 +75,28 @@ const Demo = () => {
         Current state: <span>{state}</span>
       </div>
       <div style={{ marginTop: 8 }}>
-        <button onClick={handleBackClick} disabled={!window.history.position}>
+        <button onClick={handleBackClick} disabled={!history.position}>
           &lt; Back
         </button>
         <button
           onClick={handleForwardClick}
-          disabled={window.history.position >= window.history.window.history.length - 1}>
+          disabled={history.position >= history.history.length - 1}>
           Forward &gt;
         </button>
         &nbsp; Step size:&nbsp;
         <input type="number" value={stepSize} min={1} max={3} onChange={handleStepSizeChange} />
+      </div>
+      <div style={{ marginTop: 8 }}>
+        <button onClick={handleGoClick}>Go to</button>
+        &nbsp; Position:&nbsp;
+        <input type="number" value={position} onChange={handlePositionChange} />
       </div>
 
       <div style={{ marginTop: 8 }}>
         <div>Current history</div>
         <div
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(window.history.history, null, 2)
+            __html: JSON.stringify(history.history, null, 2)
               .replace(/\n/g, '<br/>')
               .replace(/ /g, '&nbsp;'),
           }}
