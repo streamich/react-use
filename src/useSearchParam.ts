@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { isBrowser, off, on } from './misc/util';
+import tryPatchHistoryMethod from './misc/patchHistoryMethod';
 
 const getValue = (search: string, param: string) => new URLSearchParams(search).get(param);
 
 export type UseQueryParam = (param: string) => string | null;
+
+// Make sure to patch
+tryPatchHistoryMethod();
 
 const useSearchParam: UseQueryParam = (param) => {
   const location = window.location;
