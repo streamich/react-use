@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useCallback, useState, useRef, useLayoutEffect } from 'react';
+import useEvent from './useEvent';
 import { isBrowser, noop } from './misc/util';
 
 type parserOptions<T> =
@@ -92,6 +93,26 @@ const useLocalStorage = <T>(
       // localStorage can throw.
     }
   }, [key, setState]);
+  
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const storageEventHandler = useCallback(({key: eventKey, newValue}: StorageEvent) => {
+    if (eventKey === key) {
+      if (newValue === null) {
+        setState(undefined);
+      } else {
+        try {
+          setState(deserializer(newValue));
+        } catch {
+          // If user is in private mode or has storage restriction
+          // localStorage can throw. Also JSON.parse can throw.
+          setState(undefined);
+        }
+      }
+    }
+  }, [key]);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEvent('storage', storageEventHandler);
 
   return [state, set, remove];
 };
