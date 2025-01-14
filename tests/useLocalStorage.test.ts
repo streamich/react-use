@@ -3,6 +3,8 @@ import 'jest-localstorage-mock';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 describe(useLocalStorage, () => {
+  let consoleWarningSpy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+
   afterEach(() => {
     localStorage.clear();
     jest.clearAllMocks();
@@ -44,6 +46,34 @@ describe(useLocalStorage, () => {
     rerender();
 
     expect(localStorage.__STORE__.foo).toEqual('"baz"');
+  });
+
+  it('safeSet will not update a value if it already exists localStorage', () => {
+    const { result, rerender } = renderHook(() => useLocalStorage('some_unused_key'));
+
+    const [, , , safeSet] = result.current;
+    act(() => safeSet('foo'));
+    rerender();
+
+    expect(localStorage.__STORE__.some_unused_key).toEqual('"foo"');
+
+    act(() => safeSet('bar'));
+    rerender();
+
+    expect(localStorage.__STORE__.some_unused_key).toEqual('"foo"');
+  });
+
+  it('safeSet will warn if you are trying to update a value that already exists localStorage', () => {
+    const { result, rerender } = renderHook(() => useLocalStorage('some_unused_key'));
+
+    const [, , , safeSet] = result.current;
+    act(() => safeSet('foo'));
+    rerender();
+
+    act(() => safeSet('bar'));
+    rerender();
+
+    expect(consoleWarningSpy).toBeCalled();
   });
 
   it('should return undefined if no initialValue provided and localStorage empty', () => {
