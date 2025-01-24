@@ -13,6 +13,7 @@ export type UseMeasureResult<E extends Element = Element> = [
   E | null
 ];
 type UseMeasureParams = {
+  // @ts-ignore [ResizeObserverOptions is not defined in resize-observer-polyfill]
   observerOptions?: ResizeObserverOptions;
 };
 
