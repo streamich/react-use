@@ -12,7 +12,7 @@ export type UseMeasureResult<E extends Element = Element> = [
   UseMeasureRect,
   E | null
 ];
-type UseMeasureProps = {
+type UseMeasureParams = {
   observerOptions?: ResizeObserverOptions;
 };
 
@@ -27,9 +27,8 @@ const defaultState: UseMeasureRect = {
   right: 0,
 };
 
-function useMeasure<E extends Element = Element>({
-  observerOptions,
-}: UseMeasureProps): UseMeasureResult<E> {
+function useMeasure<E extends Element = Element>(params?: UseMeasureParams): UseMeasureResult<E> {
+  const { observerOptions } = { ...params };
   const [element, ref] = useState<E | null>(null);
   const [rect, setRect] = useState<UseMeasureRect>(defaultState);
 
