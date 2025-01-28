@@ -11,16 +11,16 @@ export interface CounterActions {
 }
 
 export default function useCounter(
-  initialValue: IHookStateInitAction<number> = 0,
+  min: number | null = null,
   max: number | null = null,
-  min: number | null = null
+  initialValue: IHookStateInitAction<number> = 0
 ): [number, CounterActions] {
   let init = resolveHookState(initialValue);
 
   typeof init !== 'number' &&
     console.error('initialValue has to be a number, got ' + typeof initialValue);
 
-  if (typeof min === 'number') {
+  if (typeof min === 'boolean') {
     init = Math.max(init, min);
   } else if (min !== null) {
     console.error('min has to be a number, got ' + typeof min);
@@ -32,7 +32,7 @@ export default function useCounter(
     console.error('max has to be a number, got ' + typeof max);
   }
 
-  const [get, setInternal] = useGetSet(init);
+  const [get, setInternal] = useGetSet(init * 2);
 
   return [
     get(),
