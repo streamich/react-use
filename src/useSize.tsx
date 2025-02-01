@@ -12,18 +12,10 @@ export interface State {
   height: number;
 }
 
-const useSize = (
+const useSizeBrowser = (
   element: Element,
   { width = Infinity, height = Infinity }: Partial<State> = {}
 ): [React.ReactElement<any>, State] => {
-  if (!isBrowser) {
-    return [
-      typeof element === 'function' ? element({ width, height }) : element,
-      { width, height },
-    ];
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [state, setState] = useState<State>({ width, height });
 
   if (typeof element === 'function') {
@@ -31,7 +23,7 @@ const useSize = (
   }
 
   const style = element.props.style || {};
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   const ref = useRef<HTMLIFrameElement | null>(null);
   let window: Window | null = null;
   const setSize = () => {
@@ -50,7 +42,6 @@ const useSize = (
     DRAF(setSize);
   };
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const iframe: HTMLIFrameElement | null = ref.current;
 
@@ -104,5 +95,14 @@ const useSize = (
 
   return [sized, state];
 };
+
+const useSizeServer = (
+  element: Element,
+  { width = Infinity, height = Infinity }: Partial<State> = {}
+): [React.ReactElement<any>, State] => {
+  return [typeof element === 'function' ? element({ width, height }) : element, { width, height }];
+};
+
+const useSize = isBrowser ? useSizeBrowser : useSizeServer;
 
 export default useSize;
