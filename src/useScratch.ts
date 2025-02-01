@@ -51,16 +51,22 @@ const useScratch = (
         const x = docX - elX;
         const y = docY - elY;
         setState((oldState) => {
-          const newState = {
-            ...oldState,
-            dx: x - (oldState.x || 0),
-            dy: y - (oldState.y || 0),
-            end: Date.now(),
-            isScratching: true,
-          };
-          refState.current = newState;
-          (paramsRef.current.onScratch || noop)(newState);
-          return newState;
+          if (refScratching.current) {
+            const newState = {
+              ...oldState,
+              dx: x - (oldState.x || 0),
+              dy: y - (oldState.y || 0),
+              end: Date.now(),
+              isScratching: true,
+            };
+            refState.current = newState;
+            (paramsRef.current.onScratch || noop)(newState);
+            return newState;
+          } else {
+            return {
+              isScratching: false,
+            };
+          }
         });
       });
     };
