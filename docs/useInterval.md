@@ -1,6 +1,10 @@
 # `useInterval`
 
-A declarative interval hook based on [Dan Abramov's article on overreacted.io](https://overreacted.io/making-setinterval-declarative-with-react-hooks). The interval can be paused by setting the delay to `null`.
+A declarative interval hook based on [Dan Abramov's article on overreacted.io](https://overreacted.io/making-setinterval-declarative-with-react-hooks).
+
+The interval can be paused by setting the delay to `null`.
+
+Passing `undefined` (or any other falsy value than `null`) as the delay effectively sets the interval to zero, i.e. "as fast as possible".
 
 ## Usage
 
