@@ -7,6 +7,8 @@ In case hook been called before DOM ready, it will return `undefined` and will c
 ## Usage
 
 ```jsx
+import { useScrollbarWidth } from "react-use";
+
 const Demo = () => {
   const sbw = useScrollbarWidth();
 
