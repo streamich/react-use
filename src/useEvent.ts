@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { isBrowser, off, on } from './misc/util';
+import { isBrowser } from './misc/util';
 
 export interface ListenerType1 {
   addEventListener(name: string, handler: (event?: any) => void, ...args: any[]);
@@ -46,13 +46,13 @@ const useEvent = <T extends UseEventTarget>(
       return;
     }
     if (isListenerType1(target)) {
-      on(target, name, handler, options);
+      target.addEventListener(name, handler, options);
     } else if (isListenerType2(target)) {
       target.on(name, handler, options);
     }
     return () => {
       if (isListenerType1(target)) {
-        off(target, name, handler, options);
+        target.removeEventListener(name, handler, options);
       } else if (isListenerType2(target)) {
         target.off(name, handler, options);
       }

@@ -17,7 +17,7 @@ const createReducerContext = <R extends React.Reducer<any, any>>(
     children?: React.ReactNode;
     initialState?: React.ReducerState<R>;
   }) => {
-    const state = useReducer<React.ReducerState<R>, [ReducerAction<R>]>(
+    const state = useReducer(
       reducer,
       initialState !== undefined ? initialState : defaultInitialState
     );

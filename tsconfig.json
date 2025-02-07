@@ -15,6 +15,7 @@
     "noImplicitReturns": true,
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
+    // "useUnknownInCatchVariables": false, // requires a lot of changes/casting
     "outDir": "lib",
     "lib": [
       "es2018",
