@@ -22,8 +22,8 @@ const useLongPress = (
   callback: (e: TouchEvent | MouseEvent) => void,
   { isPreventDefault = true, delay = 300 }: Options = {}
 ) => {
-  const timeout = useRef<ReturnType<typeof setTimeout>>();
-  const target = useRef<EventTarget>();
+  const timeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const target = useRef<EventTarget | undefined>(undefined);
 
   const start = useCallback(
     (event: TouchEvent | MouseEvent) => {

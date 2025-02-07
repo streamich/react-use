@@ -1,13 +1,13 @@
 import { createContext, createElement, useContext, useReducer } from 'react';
 
+type ReducerAction<T> = T extends React.Reducer<any, infer A> ? A : never;
+
 const createReducerContext = <R extends React.Reducer<any, any>>(
   reducer: R,
   defaultInitialState: React.ReducerState<R>
 ) => {
   const context =
-    createContext<[React.ReducerState<R>, React.Dispatch<React.ReducerAction<R>>] | undefined>(
-      undefined
-    );
+    createContext<[React.ReducerState<R>, React.Dispatch<ReducerAction<R>>] | undefined>(undefined);
   const providerFactory = (props, children) => createElement(context.Provider, props, children);
 
   const ReducerProvider = ({
@@ -17,7 +17,7 @@ const createReducerContext = <R extends React.Reducer<any, any>>(
     children?: React.ReactNode;
     initialState?: React.ReducerState<R>;
   }) => {
-    const state = useReducer<R>(
+    const state = useReducer<React.ReducerState<R>, [ReducerAction<R>]>(
       reducer,
       initialState !== undefined ? initialState : defaultInitialState
     );
