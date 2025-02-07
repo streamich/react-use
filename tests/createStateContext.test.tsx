@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import createStateContext from '../src/factory/createStateContext';
 
 it('should create a hook and a provider', () => {
@@ -12,8 +12,16 @@ it('should create a hook and a provider', () => {
 describe('when using created hook', () => {
   it('should throw out of a provider', () => {
     const [useSharedText] = createStateContext('init');
-    const { result } = renderHook(() => useSharedText());
-    expect(result.error).toEqual(new Error('useStateContext must be used inside a StateProvider.'));
+    let error: Error | undefined;
+    renderHook(() => useSharedText(), {
+      wrapper: class extends React.Component<{ children: React.ReactNode }> {
+        componentDidCatch(err: Error) {
+          error = err;
+        }
+        render = () => this.props.children;
+      },
+    });
+    expect(error).toEqual(new Error('useStateContext must be used inside a StateProvider.'));
   });
 
   const setUp = () => {

@@ -1,5 +1,5 @@
-import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
-import { useState } from 'react';
+import { act, renderHook, RenderHookOptions, RenderHookResult } from '@testing-library/react';
+import { Component, useState } from 'react';
 import { MultiStateValidator, useMultiStateValidator } from '../src/useMultiStateValidator';
 import { UseStateValidatorReturn, ValidityState } from '../src/useStateValidator';
 
@@ -15,10 +15,11 @@ describe('useMultiStateValidator', () => {
   function getHook(
     fn: MultiStateValidator<any, number[]> = jest.fn(defaultStatesValidator),
     initialStates = [1, 2],
-    initialValidity = [false]
+    initialValidity = [false],
+    wrapper?: RenderHookOptions<{ children: React.ReactNode }>['wrapper']
   ): [
     MultiStateValidator<any, number[]>,
-    RenderHookResult<any, [Function, UseStateValidatorReturn<ValidityState>]>
+    RenderHookResult<[Function, UseStateValidatorReturn<ValidityState>], any>
   ] {
     return [
       fn,
@@ -29,6 +30,7 @@ describe('useMultiStateValidator', () => {
           return [setStates, useMultiStateValidator(states, validator, initValidity)];
         },
         {
+          wrapper,
           initialProps: {
             initStates: initialStates,
             initValidity: initialValidity,
@@ -74,11 +76,22 @@ describe('useMultiStateValidator', () => {
 
   it('should throw if states is not an object', () => {
     expect(() => {
-      // @ts-ignore
-      const [, hook] = getHook(defaultStatesValidator, 123);
+      let error: Error | undefined;
+      getHook(
+        defaultStatesValidator,
+        // @ts-ignore
+        123,
+        undefined,
+        class extends Component<{ children: any }> {
+          componentDidCatch(err: Error) {
+            error = err;
+          }
+          render = () => this.props.children;
+        }
+      );
 
-      if (hook.result.error) {
-        throw hook.result.error;
+      if (error) {
+        throw error;
       }
     }).toThrowError('states expected to be an object or array, got number');
   });

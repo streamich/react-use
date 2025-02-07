@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import { Subject } from 'rxjs';
 import * as useIsomorphicLayoutEffect from '../src/useIsomorphicLayoutEffect';
 import useObservable, { Observable } from '../src/useObservable';

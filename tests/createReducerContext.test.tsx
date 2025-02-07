@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import createReducerContext from '../src/factory/createReducerContext';
 
 type Action = 'increment' | 'decrement';
@@ -25,10 +25,16 @@ it('should create a hook and a provider', () => {
 describe('when using created hook', () => {
   it('should throw out of a provider', () => {
     const [useSharedNumber] = createReducerContext(reducer, 0);
-    const { result } = renderHook(() => useSharedNumber());
-    expect(result.error).toEqual(
-      new Error('useReducerContext must be used inside a ReducerProvider.')
-    );
+    let error: Error | undefined;
+    renderHook(() => useSharedNumber(), {
+      wrapper: class extends React.Component<React.PropsWithChildren> {
+        componentDidCatch(err) {
+          error = err;
+        }
+        render = () => this.props.children;
+      },
+    });
+    expect(error).toEqual(new Error('useReducerContext must be used inside a ReducerProvider.'));
   });
 
   const setUp = () => {

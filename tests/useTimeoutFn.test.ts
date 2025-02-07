@@ -1,4 +1,4 @@
-import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { act, renderHook, RenderHookResult } from '@testing-library/react';
 import { useTimeoutFn } from '../src';
 import { UseTimeoutFnReturn } from '../src/useTimeoutFn';
 
@@ -31,7 +31,7 @@ describe('useTimeoutFn', () => {
   function getHook(
     ms: number = 5,
     fn: Function = jest.fn()
-  ): [Function, RenderHookResult<{ delay: number; cb: Function }, UseTimeoutFnReturn>] {
+  ): [Function, RenderHookResult<UseTimeoutFnReturn, { delay: number; cb: Function }>] {
     return [
       fn,
       renderHook(({ delay = 5, cb }) => useTimeoutFn(cb, delay), {

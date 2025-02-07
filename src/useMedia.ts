@@ -22,6 +22,7 @@ const getInitialState = (query: string, defaultState?: boolean) => {
 };
 
 const useMedia = (query: string, defaultState?: boolean) => {
+  // TODO: refactor this to use `React#useSyncExternalStore`
   const [state, setState] = useState(getInitialState(query, defaultState));
 
   useEffect(() => {

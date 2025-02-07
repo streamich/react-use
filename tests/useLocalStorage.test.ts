@@ -1,6 +1,7 @@
 import useLocalStorage from '../src/useLocalStorage';
 import 'jest-localstorage-mock';
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
+import * as React from 'react';
 
 describe(useLocalStorage, () => {
   afterEach(() => {
@@ -168,15 +169,16 @@ describe(useLocalStorage, () => {
   });
 
   it('rejects nullish or undefined keys', () => {
-    const { result } = renderHook(() => useLocalStorage(null as any));
-    try {
-      (() => {
-        return result.current;
-      })();
-      fail('hook should have thrown');
-    } catch (e) {
-      expect(String(e)).toMatch(/key may not be/i);
-    }
+    let error: Error | undefined;
+    renderHook(() => useLocalStorage(null as any), {
+      wrapper: class extends React.Component<{ children: any }> {
+        componentDidCatch(err: Error) {
+          error = err;
+        }
+        render = () => this.props.children;
+      },
+    });
+    expect(String(error)).toMatch(/key may not be/i);
   });
 
   /* Enforces proper eslint react-hooks/rules-of-hooks usage */

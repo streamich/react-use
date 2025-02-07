@@ -1,5 +1,5 @@
-import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
-import { useRef } from 'react';
+import { act, renderHook, RenderHookResult, RenderHookOptions } from '@testing-library/react';
+import React, { useRef } from 'react';
 import { UseStateHistoryReturn, useStateWithHistory } from '../src/useStateWithHistory';
 import { IHookStateSetAction } from '../src/misc/hookState';
 
@@ -11,10 +11,11 @@ describe('useStateWithHistory', () => {
   function getHook<S, I extends S>(
     initialState?: IHookStateSetAction<S>,
     initialCapacity?: number,
-    initialHistory?: I[]
+    initialHistory?: I[],
+    wrapper?: RenderHookOptions<{ children: React.ReactNode }>['wrapper']
   ): RenderHookResult<
-    { state?: S; history?: I[]; capacity?: number },
-    [UseStateHistoryReturn<S | undefined>, number]
+    [UseStateHistoryReturn<S | undefined>, number],
+    { state?: S; history?: I[]; capacity?: number }
   > {
     return renderHook(
       ({ state, history, capacity }) => {
@@ -23,6 +24,7 @@ describe('useStateWithHistory', () => {
         return [useStateWithHistory(state, capacity, history), renders.current];
       },
       {
+        wrapper,
         initialProps: {
           state: initialState,
           history: initialHistory,
@@ -334,10 +336,17 @@ describe('useStateWithHistory', () => {
   });
 
   it('should throw if capacity is 0 or negative', () => {
-    let hook = getHook(3, -1);
-    expect(hook.result.error).toEqual(new Error(`Capacity has to be greater than 1, got '-1'`));
+    let error: Error | undefined;
+    class Wrapper extends React.Component<{ children: any }> {
+      componentDidCatch(err) {
+        error = err;
+      }
+      render = () => this.props.children;
+    }
+    getHook(3, -1, undefined, Wrapper);
+    expect(error).toEqual(new Error(`Capacity has to be greater than 1, got '-1'`));
 
-    hook = getHook(3, 0);
-    expect(hook.result.error).toEqual(new Error(`Capacity has to be greater than 1, got '0'`));
+    getHook(3, 0, undefined, Wrapper);
+    expect(error).toEqual(new Error(`Capacity has to be greater than 1, got '0'`));
   });
 });

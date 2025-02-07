@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 import { useHash } from '../src/useHash';
 
 (global as any).window = Object.create(window);

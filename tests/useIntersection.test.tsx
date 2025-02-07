@@ -1,10 +1,10 @@
 import React, { createRef } from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
+import ReactDOM from 'react-dom/client';
 import TestRenderer from 'react-test-renderer';
 import { intersectionObserver } from '@shopify/jest-dom-mocks';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import { useIntersection } from '../src';
+import { act } from '@testing-library/react';
 
 beforeEach(() => {
   intersectionObserver.mock();
@@ -27,9 +27,9 @@ describe('useIntersection', () => {
   });
 
   it('should setup an IntersectionObserver targeting the ref element and using the options provided', () => {
-    TestUtils.act(() => {
+    act(() => {
       targetRef = createRef();
-      ReactDOM.render(<div ref={targetRef} />, container);
+      ReactDOM.createRoot(container).render(<div ref={targetRef} />);
     });
 
     expect(intersectionObserver.observers).toHaveLength(0);
@@ -50,9 +50,9 @@ describe('useIntersection', () => {
   });
 
   it('should reset an intersectionObserverEntry when the ref changes', () => {
-    TestUtils.act(() => {
+    act(() => {
       targetRef = createRef();
-      ReactDOM.render(<div ref={targetRef} />, container);
+      ReactDOM.createRoot(container).render(<div ref={targetRef} />);
     });
 
     const { result, rerender } = renderHook(() =>
@@ -105,9 +105,9 @@ describe('useIntersection', () => {
   });
 
   it('should return the first IntersectionObserverEntry when the IntersectionObserver registers an intersection', () => {
-    TestUtils.act(() => {
+    act(() => {
       targetRef = createRef();
-      ReactDOM.render(<div ref={targetRef} />, container);
+      ReactDOM.createRoot(container).render(<div ref={targetRef} />);
     });
 
     const { result } = renderHook(() =>
@@ -132,14 +132,13 @@ describe('useIntersection', () => {
 
   it('should setup a new IntersectionObserver when the ref changes', () => {
     let newRef;
-    TestUtils.act(() => {
+    act(() => {
       targetRef = createRef();
       newRef = createRef();
-      ReactDOM.render(
+      ReactDOM.createRoot(container).render(
         <div ref={targetRef}>
           <span ref={newRef} />
-        </div>,
-        container
+        </div>
       );
     });
 
@@ -158,9 +157,9 @@ describe('useIntersection', () => {
   });
 
   it('should setup a new IntersectionObserver when the options change', () => {
-    TestUtils.act(() => {
+    act(() => {
       targetRef = createRef();
-      ReactDOM.render(<div ref={targetRef} />, container);
+      ReactDOM.createRoot(container).render(<div ref={targetRef} />);
     });
 
     const initialObserverOptions = { root: null as HTMLElement | null, threshold: 0.8 };

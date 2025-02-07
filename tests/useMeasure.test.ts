@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 import useMeasure, { UseMeasureRef } from '../src/useMeasure';
 
 it('by default, state defaults every value to -1', () => {

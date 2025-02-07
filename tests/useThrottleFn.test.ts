@@ -1,4 +1,4 @@
-import { renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { renderHook, RenderHookResult, waitFor } from '@testing-library/react';
 import { useThrottleFn } from '../src';
 
 describe('useThrottleFn', () => {
@@ -42,32 +42,30 @@ describe('useThrottleFn', () => {
     expect(jest.getTimerCount()).toBe(1);
   });
 
-  it('should update the value after the given time when arguments change', (done) => {
+  it('should update the value after the given time when arguments change', async () => {
     const [fn, hook] = getHook('boo', 100);
 
     expect(hook.result.current).toBe('boo');
     expect(fn).toHaveBeenCalledTimes(1);
 
     hook.rerender('foo');
-    hook.waitForNextUpdate().then(() => {
+    await waitFor(() => {
       expect(hook.result.current).toBe('foo');
       expect(fn).toHaveBeenCalledTimes(2);
-      done();
     });
     jest.advanceTimersByTime(100);
   });
 
-  it('should use the default ms value when missing', (done) => {
+  it('should use the default ms value when missing', async () => {
     const [fn, hook] = getHook('boo');
 
     expect(hook.result.current).toBe('boo');
     expect(fn).toHaveBeenCalledTimes(1);
 
     hook.rerender('foo');
-    hook.waitForNextUpdate().then(() => {
+    await waitFor(() => {
       expect(hook.result.current).toBe('foo');
       expect(fn).toHaveBeenCalledTimes(2);
-      done();
     });
     jest.advanceTimersByTime(200);
   });

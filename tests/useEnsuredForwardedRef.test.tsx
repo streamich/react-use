@@ -1,74 +1,57 @@
 import React, { useRef } from 'react';
-import ReactDOM from 'react-dom';
-import { renderHook } from '@testing-library/react-hooks';
-import TestUtils from 'react-dom/test-utils';
+import { render, waitFor } from '@testing-library/react';
 import { ensuredForwardRef, useEnsuredForwardedRef } from '../src';
 
-let container: HTMLDivElement;
-
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  document.body.removeChild(container);
-  container = null!;
-});
-
 test('should return a valid ref with existing forwardedRef', () => {
-  const { result } = renderHook(() => {
+  let initialRef: React.MutableRefObject<HTMLDivElement | null> | undefined;
+  let ensuredForwardedRef: React.MutableRefObject<HTMLDivElement | null> | undefined;
+  const Component = () => {
     const ref = useRef(null);
     const ensuredRef = useEnsuredForwardedRef(ref);
+    React.useLayoutEffect(() => {
+      initialRef = ref;
+      ensuredForwardedRef = ensuredRef;
+    }, []);
+    return <div ref={ensuredRef} />;
+  };
 
-    TestUtils.act(() => {
-      ReactDOM.render(<div ref={ensuredRef} />, container);
-    });
-
-    return {
-      initialRef: ref,
-      ensuredForwardedRef: ensuredRef,
-    };
-  });
-
-  const { initialRef, ensuredForwardedRef } = result.current;
+  render(<Component />);
 
   expect(ensuredForwardedRef).toStrictEqual(initialRef);
 });
 
 test('should return a valid ref when the forwarded ref is undefined', () => {
-  const { result } = renderHook(() => {
+  let ensuredRef: React.MutableRefObject<HTMLDivElement> | undefined;
+  const Component = () => {
     const ref = useEnsuredForwardedRef<HTMLDivElement>(undefined!);
+    React.useLayoutEffect(() => {
+      ensuredRef = ref;
+    }, []);
+    return <div id="test_id" ref={ref} />;
+  };
 
-    TestUtils.act(() => {
-      ReactDOM.render(<div id="test_id" ref={ref} />, container);
-    });
+  render(<Component />);
 
-    return { ensuredRef: ref };
-  });
-
-  const { ensuredRef } = result.current;
-
-  expect(ensuredRef.current.id).toBe('test_id');
+  expect(ensuredRef?.current?.id).toBe('test_id');
 });
 
-test('should return a valid ref when using the wrapper function style', () => {
-  const { result } = renderHook(() => {
-    const initialRef = useRef<HTMLDivElement | null>(null);
-
-    const WrappedComponent = ensuredForwardRef<HTMLDivElement>((_props, ref) => {
-      return <div id="test_id" ref={ref} />;
-    });
-
-    TestUtils.act(() => {
-      ReactDOM.render(<WrappedComponent ref={initialRef} />, container);
-    });
-
-    return { initialRef };
+test('should return a valid ref when using the wrapper function style', async () => {
+  const WrappedComponent = ensuredForwardRef<HTMLDivElement>((_props, ref) => {
+    return <div id="test_id" ref={ref} />;
   });
 
-  const { initialRef } = result.current;
+  let initialRef: React.MutableRefObject<HTMLDivElement | null> | undefined;
+  const Component = () => {
+    const ref = useRef<HTMLDivElement | null>(null);
+    React.useLayoutEffect(() => {
+      initialRef = ref;
+    }, []);
+    return <WrappedComponent ref={ref} />;
+  };
 
-  expect(initialRef.current).toBeTruthy();
-  expect(initialRef.current?.id).toBe('test_id');
+  render(<Component />);
+  await waitFor(() => {
+    expect(initialRef?.current).toBeTruthy();
+  });
+  expect(initialRef?.current?.id).toBe('test_id');
 });

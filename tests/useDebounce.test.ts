@@ -1,4 +1,4 @@
-import { act, renderHook, RenderHookResult } from '@testing-library/react-hooks';
+import { act, renderHook, RenderHookResult } from '@testing-library/react';
 import { DependencyList } from 'react';
 import { UseDebounceReturn } from '../src/useDebounce';
 import { useDebounce } from '../src';
@@ -31,7 +31,7 @@ describe('useDebounce', () => {
   function getHook(
     ms: number = 5,
     dep: DependencyList = []
-  ): [jest.Mock, RenderHookResult<{ delay: number; deps: DependencyList }, UseDebounceReturn>] {
+  ): [jest.Mock, RenderHookResult<UseDebounceReturn, { delay: number; deps: DependencyList }>] {
     const spy = jest.fn();
     return [
       spy,

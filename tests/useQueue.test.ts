@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import useQueue from '../src/useQueue';
 
 const setUp = (initialQueue?: any[]) => renderHook(() => useQueue(initialQueue));

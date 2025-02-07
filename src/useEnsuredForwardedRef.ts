@@ -1,11 +1,10 @@
 import {
   forwardRef,
   ForwardRefExoticComponent,
+  ForwardRefRenderFunction,
   MutableRefObject,
-  PropsWithChildren,
   PropsWithoutRef,
   RefAttributes,
-  RefForwardingComponent,
   useEffect,
   useRef,
 } from 'react';
@@ -26,10 +25,10 @@ export default function useEnsuredForwardedRef<T>(
 }
 
 export function ensuredForwardRef<T, P = {}>(
-  Component: RefForwardingComponent<T, P>
+  Component: ForwardRefRenderFunction<T, P>
 ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>> {
-  return forwardRef((props: PropsWithChildren<P>, ref) => {
+  return forwardRef((props: PropsWithoutRef<P>, ref) => {
     const ensuredRef = useEnsuredForwardedRef(ref as MutableRefObject<T>);
-    return Component(props, ensuredRef);
+    return Component(props as P, ensuredRef);
   });
 }

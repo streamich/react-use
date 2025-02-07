@@ -5,8 +5,8 @@
 // does not automatically invoke the function
 // and it can take arguments.
 
-import { act, renderHook } from '@testing-library/react-hooks';
-import useAsyncFn, { AsyncState } from '../src/useAsyncFn';
+import { act, renderHook, RenderHookResult, waitFor } from '@testing-library/react';
+import useAsyncFn from '../src/useAsyncFn';
 
 type AdderFn = (a?: number, b?: number) => Promise<number>;
 
@@ -16,19 +16,16 @@ describe('useAsyncFn', () => {
   });
 
   describe('the callback can be awaited and return the value', () => {
-    let hook;
+    let hook: RenderHookResult<ReturnType<typeof useAsyncFn>, { fn: AdderFn }>;
     const adder: AdderFn = async (a?: number, b?: number): Promise<number> => {
       return (a || 0) + (b || 0);
     };
 
     beforeEach(() => {
       // NOTE: renderHook isn't good at inferring array types
-      hook = renderHook<{ fn: AdderFn }, [AsyncState<number>, AdderFn]>(
-        ({ fn }) => useAsyncFn(fn),
-        {
-          initialProps: { fn: adder },
-        }
-      );
+      hook = renderHook(({ fn }) => useAsyncFn(fn), {
+        initialProps: { fn: adder },
+      });
     });
 
     it('awaits the result', async () => {
@@ -51,7 +48,7 @@ describe('useAsyncFn', () => {
   });
 
   describe('args can be passed to the function', () => {
-    let hook;
+    let hook: RenderHookResult<ReturnType<typeof useAsyncFn>, { fn: AdderFn }>;
     let callCount = 0;
     const adder = async (a?: number, b?: number): Promise<number> => {
       callCount++;
@@ -60,14 +57,11 @@ describe('useAsyncFn', () => {
 
     beforeEach(() => {
       // NOTE: renderHook isn't good at inferring array types
-      hook = renderHook<{ fn: AdderFn }, [AsyncState<number>, AdderFn]>(
-        ({ fn }) => useAsyncFn(fn),
-        {
-          initialProps: {
-            fn: adder,
-          },
-        }
-      );
+      hook = renderHook(({ fn }) => useAsyncFn(fn), {
+        initialProps: {
+          fn: adder,
+        },
+      });
     });
 
     it('initially does not have a value', () => {
@@ -89,11 +83,11 @@ describe('useAsyncFn', () => {
           callback(2, 7);
         });
         hook.rerender({ fn: adder });
-        await hook.waitForNextUpdate();
 
+        await waitFor(() => {
+          expect(callCount).toEqual(1);
+        });
         const [state] = hook.result.current;
-
-        expect(callCount).toEqual(1);
         expect(state.loading).toEqual(false);
         expect(state.error).toEqual(undefined);
         expect(state.value).toEqual(9);
@@ -114,10 +108,7 @@ describe('useAsyncFn', () => {
       );
     };
 
-    const hook = renderHook<
-      { fn: () => Promise<number> },
-      [AsyncState<number>, () => Promise<number>]
-    >(({ fn }) => useAsyncFn(fn, [fn]), {
+    const hook = renderHook(({ fn }) => useAsyncFn(fn, [fn]), {
       initialProps: { fn: delayedFunction1 },
     });
     act(() => {
@@ -133,18 +124,16 @@ describe('useAsyncFn', () => {
       queuedPromises[1].resolve();
       queuedPromises[0].resolve();
     });
-    await hook.waitForNextUpdate();
-    expect(hook.result.current[0]).toEqual({ loading: false, value: 2 });
+    await waitFor(() => {
+      expect(hook.result.current[0]).toEqual({ loading: false, value: 2 });
+    });
   });
 
   it('should keeping value of initialState when loading', async () => {
     const fetch = async () => 'new state';
     const initialState = { loading: false, value: 'init state' };
 
-    const hook = renderHook<
-      { fn: () => Promise<string> },
-      [AsyncState<string>, () => Promise<string>]
-    >(({ fn }) => useAsyncFn(fn, [fn], initialState), {
+    const hook = renderHook(({ fn }) => useAsyncFn(fn, [fn], initialState), {
       initialProps: { fn: fetch },
     });
 
@@ -159,8 +148,9 @@ describe('useAsyncFn', () => {
     expect(hook.result.current[0].loading).toBe(true);
     expect(hook.result.current[0].value).toBe('init state');
 
-    await hook.waitForNextUpdate();
-    expect(hook.result.current[0].loading).toBe(false);
-    expect(hook.result.current[0].value).toBe('new state');
+    await waitFor(() => {
+      expect(hook.result.current[0].loading).toBe(false);
+      expect(hook.result.current[0].value).toBe('new state');
+    });
   });
 });

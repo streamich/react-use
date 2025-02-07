@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@testing-library/react';
 import useThrottle from '../src/useThrottle';
 
 describe('useThrottle', () => {
@@ -33,27 +33,23 @@ describe('useThrottle', () => {
     expect(result.current).toBe(0);
   });
 
-  it('should update the value after the given time when prop change', (done) => {
+  it('should update the value after the given time when prop change', async () => {
     const hook = renderHook((props) => useThrottle(props, 100), { initialProps: 0 });
     expect(hook.result.current).toBe(0);
     hook.rerender(1);
     expect(hook.result.current).toBe(0);
-    hook.waitForNextUpdate().then(() => {
+    await waitFor(() => {
       expect(hook.result.current).toBe(1);
-      done();
     });
-    jest.advanceTimersByTime(100);
   });
 
-  it('should use the default ms value when missing', (done) => {
+  it('should use the default ms value when missing', async () => {
     const hook = renderHook((props) => useThrottle(props), { initialProps: 0 });
     expect(hook.result.current).toBe(0);
     hook.rerender(1);
-    hook.waitForNextUpdate().then(() => {
+    await waitFor(() => {
       expect(hook.result.current).toBe(1);
-      done();
     });
-    jest.advanceTimersByTime(200);
   });
 
   it('should not update the value after the given time', () => {

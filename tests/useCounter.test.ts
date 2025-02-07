@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import useCounter from '../src/useCounter';
 
 const setUp = (initialValue?: number, max: number | null = null, min: number | null = null) =>

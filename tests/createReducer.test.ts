@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import createReducer from '../src/factory/createReducer';
