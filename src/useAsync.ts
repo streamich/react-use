@@ -14,7 +14,8 @@ export default function useAsync<T extends FunctionReturningPromise>(
 
   useEffect(() => {
     callback();
-  }, [callback]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps); // Only re-run the effect when the deps change
 
   return state;
 }
