@@ -21,8 +21,8 @@ describe('useWindowSize', () => {
     expect(useWindowSize).toBeDefined();
   });
 
-  function getHook(...args) {
-    return renderHook(() => useWindowSize(...args));
+  function getHook(options?: any) {
+    return renderHook(() => useWindowSize(options));
   }
 
   function triggerResize(dimension: 'width' | 'height', value: number) {
@@ -44,7 +44,7 @@ describe('useWindowSize', () => {
   });
 
   it('should use passed parameters as initial values in case of non-browser use', () => {
-    const hook = getHook(1, 1);
+    const hook = getHook({ initialWidth: 1, initialHeight: 1 });
 
     expect(hook.result.current.height).toBe(isBrowser ? window.innerHeight : 1);
     expect(hook.result.current.width).toBe(isBrowser ? window.innerWidth : 1);
@@ -84,5 +84,28 @@ describe('useWindowSize', () => {
     });
 
     expect(hook.result.current.width).toBe(2048);
+  });
+
+  it('should call onChange callback on window resize', () => {
+    const onChange = jest.fn();
+    getHook({ onChange });
+
+    act(() => {
+      triggerResize('width', 720);
+      triggerResize('height', 480);
+      requestAnimationFrame.step();
+    });
+
+    expect(onChange).toHaveBeenCalledWith(720, 480);
+    expect(onChange).toHaveBeenCalledTimes(2);
+
+    act(() => {
+      triggerResize('width', 1920);
+      triggerResize('height', 1080);
+      requestAnimationFrame.step();
+    });
+
+    expect(onChange).toHaveBeenCalledWith(1920, 1080);
+    expect(onChange).toHaveBeenCalledTimes(4);
   });
 });

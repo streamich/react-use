@@ -19,3 +19,18 @@ const Demo = () => {
   );
 };
 ```
+
+## Reference
+
+```js
+useWindowSize(options);
+```
+
+- `initialWidth` — Initial width value for non-browser environments.
+- `initialHeight` — Initial height value for non-browser environments.
+- `onChange` — Callback function triggered when the window size changes.
+
+## Related hooks
+
+- [useSize](./useSize.md)
+- [useMeasure](./useMeasure.md)

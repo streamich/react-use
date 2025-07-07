@@ -4,8 +4,8 @@ import { useMedia } from '../src';
 
 const createMockMediaMatcher = (matches: Record<string, boolean>) => (qs: string) => ({
   matches: matches[qs] ?? false,
-  addListener: () => {},
-  removeListener: () => {},
+  addEventListener: () => {},
+  removeEventListener: () => {},
 });
 
 describe('useMedia', () => {

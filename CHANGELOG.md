@@ -1,3 +1,55 @@
+# [17.6.0](https://github.com/streamich/react-use/compare/v17.5.1...v17.6.0) (2024-12-09)
+
+
+### Features
+
+* add onChange callback to useWindowSize ([ea656f7](https://github.com/streamich/react-use/commit/ea656f7e751b8366360ce2aa8238057bbbc1251a))
+* add onChange callback to useWindowSize ([3eb531a](https://github.com/streamich/react-use/commit/3eb531ac9e9e04641df29aafbd2677869cdcb085))
+
+## [17.5.1](https://github.com/streamich/react-use/compare/v17.5.0...v17.5.1) (2024-07-20)
+
+
+### Bug Fixes
+
+* 🐛 bump nano-css dependency ([adfb337](https://github.com/streamich/react-use/commit/adfb337d5b11427798afc5a21c6ebdaa76212182))
+
+# [17.5.0](https://github.com/streamich/react-use/compare/v17.4.4...v17.5.0) (2024-01-22)
+
+
+### Features
+
+* add `isFirst` and `isLast` methods to `useStateList` hook ([ac64414](https://github.com/streamich/react-use/commit/ac64414bea4c8afadfb382da9fea44ee89b41e2d))
+* **pencil:** add isFirst and isLast return value to 'useStateList' ([75218e4](https://github.com/streamich/react-use/commit/75218e45dfdcdc6ea193e278cb97ceee98c00f1b))
+* **pencil:** fix with yarn lint:fix ([6a9dde5](https://github.com/streamich/react-use/commit/6a9dde596ae25c0dd2fa97b0cf354143fbc5b5ff))
+
+## [17.4.4](https://github.com/streamich/react-use/compare/v17.4.3...v17.4.4) (2024-01-21)
+
+
+### Bug Fixes
+
+* typo in example ([0534648](https://github.com/streamich/react-use/commit/05346481a15a321b13838eead0bda3024b0d163f))
+
+## [17.4.3](https://github.com/streamich/react-use/compare/v17.4.2...v17.4.3) (2024-01-13)
+
+
+### Bug Fixes
+
+* update useMedia hook to use recommended approach of MDN ([e7379f0](https://github.com/streamich/react-use/commit/e7379f088787cbf9274c1fc21d36061f04855e4c))
+
+## [17.4.2](https://github.com/streamich/react-use/compare/v17.4.1...v17.4.2) (2023-12-01)
+
+
+### Bug Fixes
+
+* correct peer dependencies ([d770587](https://github.com/streamich/react-use/commit/d77058729654397b68b251e8211bf0edc0b4ed50))
+
+## [17.4.1](https://github.com/streamich/react-use/compare/v17.4.0...v17.4.1) (2023-11-28)
+
+
+### Bug Fixes
+
+* 🐛 bump nano-css version ([812952b](https://github.com/streamich/react-use/commit/812952bb9ff004a844ec4285ad6c65d39597b11c))
+
 # v17.5.7 (Thu Aug 04 2022)
 
 #### 🐛 Bug Fix
