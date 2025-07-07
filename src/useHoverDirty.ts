@@ -2,7 +2,7 @@ import { RefObject, useEffect, useState } from 'react';
 import { off, on } from './misc/util';
 
 // kudos: https://usehooks.com/
-const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
+const useHoverDirty = (ref: RefObject<Element> | null, enabled: boolean = true) => {
   if (process.env.NODE_ENV === 'development') {
     if (typeof ref !== 'object' || typeof ref.current === 'undefined') {
       console.error('useHoverDirty expects a single ref argument.');
@@ -21,7 +21,7 @@ const useHoverDirty = (ref: RefObject<Element>, enabled: boolean = true) => {
     }
 
     // fixes react-hooks/exhaustive-deps warning about stale ref elements
-    const { current } = ref;
+    const current = ref?.current;
 
     return () => {
       if (enabled && current) {
