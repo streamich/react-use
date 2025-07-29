@@ -1,0 +1,133 @@
+diff --git a/node_modules/nano-css/addon/vcssom.js b/node_modules/nano-css/addon/vcssom.js
+index 2b3f690..41298db 100644
+--- a/node_modules/nano-css/addon/vcssom.js
++++ b/node_modules/nano-css/addon/vcssom.js
+@@ -12,42 +12,59 @@ exports.addon = function (renderer) {
+ 
+     var kebab = renderer.kebab;
+ 
+-    function VRule (selector, prelude) {
++    // VRule represents a single CSS rule with selector and prelude.
++    function VRule(selector, prelude) {
+         this.rule = renderer.createRule(selector, prelude);
+         this.decl = {};
+     }
++
++    // Diff compares the old and new declarations and applies changes.
+     VRule.prototype.diff = function (newDecl) {
+         var oldDecl = this.decl;
+         var style = this.rule.style;
+         var property;
+-        for (property in oldDecl)
++
++        // Remove old properties that are no longer in newDecl.
++        for (property in oldDecl) {
+             if (newDecl[property] === undefined)
+                 style.removeProperty(property);
+-        for (property in newDecl)
+-            if (newDecl[property] !== oldDecl[property])
+-                style.setProperty(kebab(property), newDecl[property]);
++        }
++
++        // Apply new properties or update the value if it's different.
++        for (property in newDecl) {
++            var newValue = newDecl[property];
++            var oldValue = oldDecl[property];
++
++            // Check if the new value includes !important
++            var isImportantNew = typeof newValue === 'string' && newValue.includes('!important');
++            var isImportantOld = typeof oldValue === 'string' && oldValue.includes('!important');
++
++            // If the value or !important status has changed, update the style
++            if (newValue !== oldValue || isImportantNew !== isImportantOld) {
++                const value = isImportantNew ? newValue.replace('!important', '').trim() : newValue;
++                style.setProperty(kebab(property), value, isImportantNew ? 'important' : '');
++            }
++        }
++
++        // Save the new declarations
+         this.decl = newDecl;
+     };
++
++    // Delete the rule from the stylesheet.
+     VRule.prototype.del = function () {
+         removeRule(this.rule);
+     };
+ 
+-    function VSheet () {
+-        /**
+-         * {
+-         *   '<at-rule-prelude>': {
+-         *     '<selector>': {
+-         *       color: 'red
+-         *     }
+-         *   }
+-         * }
+-         */
+-        this.tree = {};
++    // VSheet represents a collection of CSS rules (possibly with media queries).
++    function VSheet() {
++        this.tree = {}; // Store rules in a tree structure.
+     }
++
++    // Diff compares the old and new tree and applies changes.
+     VSheet.prototype.diff = function (newTree) {
+         var oldTree = this.tree;
+ 
+-        // Remove media queries not present in new tree.
++        // Remove media queries that are no longer in the new tree.
+         for (var prelude in oldTree) {
+             if (newTree[prelude] === undefined) {
+                 var rules = oldTree[prelude];
+@@ -56,42 +73,45 @@ exports.addon = function (renderer) {
+             }
+         }
+ 
++        // Process new media queries and rules.
+         for (var prelude in newTree) {
+             if (oldTree[prelude] === undefined) {
+-                // Whole media query is new.
++                // Entire media query is new.
+                 for (var selector in newTree[prelude]) {
+                     var rule = new VRule(selector, prelude);
+                     rule.diff(newTree[prelude][selector]);
+                     newTree[prelude][selector] = rule;
+                 }
+             } else {
+-                // Old tree already has rules with this media query.
++                // Old tree has existing media queries for this prelude.
+                 var oldRules = oldTree[prelude];
+                 var newRules = newTree[prelude];
+ 
+-                // Remove rules not present in new tree.
++                // Remove rules that no longer exist in the new tree.
+                 for (var selector in oldRules)
+                     if (!newRules[selector])
+                         oldRules[selector].del();
+ 
+-                // Apply new rules.
++                // Apply new or updated rules.
+                 for (var selector in newRules) {
+                     var rule = oldRules[selector];
+                     if (rule) {
+-                        rule.diff(newRules[selector]);
++                        rule.diff(newRules[selector]); // Update existing rule.
+                         newRules[selector] = rule;
+                     } else {
+                         rule = new VRule(selector, prelude);
+-                        rule.diff(newRules[selector]);
++                        rule.diff(newRules[selector]); // Add new rule.
+                         newRules[selector] = rule;
+                     }
+                 }
+             }
+         }
+ 
++        // Save the new tree.
+         this.tree = newTree;
+     };
+ 
++    // Add VRule and VSheet to renderer for usage in the addon.
+     renderer.VRule = VRule;
+     renderer.VSheet = VSheet;
+ };
