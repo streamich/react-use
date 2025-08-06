@@ -27,6 +27,9 @@ export { default as useError } from './useError';
 export { default as useFavicon } from './useFavicon';
 export { default as useFullscreen } from './useFullscreen';
 export { default as useGeolocation } from './useGeolocation';
+export * from './useGeolocation';
+export type { GeoLocationSensorState } from './useGeolocation';
+
 export { default as useGetSet } from './useGetSet';
 export { default as useGetSetState } from './useGetSetState';
 export { default as useHarmonicIntervalFn } from './useHarmonicIntervalFn';
