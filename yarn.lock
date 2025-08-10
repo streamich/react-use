@@ -8732,10 +8732,10 @@ escodegen@^1.14.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-prettier@8.10.0:
-  version "8.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.10.0.tgz#3a06a662130807e2502fc3ff8b4143d8a0658e11"
-  integrity sha512-SM8AMJdeQqRYT9O9zguiruQZaN7+z+E4eAP9oiLNGKMtomwaB1E9dcgUD6ZAn/eQAb52USbvezbiljfZUhbJcg==
+eslint-config-prettier@8.10.2:
+  version "8.10.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.10.2.tgz#0642e53625ebc62c31c24726b0f050df6bd97a2e"
+  integrity sha512-/IGJ6+Dka158JnP5n5YFMOszjDWrXggGz1LaK/guZq9vZTmniaKlHcsscvkAhn9y4U+BU3JuUdYvtAMcv30y4A==
 
 eslint-config-react-app@6.0.0:
   version "6.0.0"

@@ -92,7 +92,7 @@
     "babel-loader": "8.3.0",
     "babel-plugin-dynamic-import-node": "2.3.3",
     "eslint": "8.57.1",
-    "eslint-config-prettier": "8.10.0",
+    "eslint-config-prettier": "8.10.2",
     "eslint-config-react-app": "6.0.0",
     "eslint-plugin-flowtype": "8.0.3",
     "eslint-plugin-import": "2.29.1",
