@@ -16,6 +16,23 @@ const Demo = () => {
   );
 };
 
+const DemoObserverOptions = () => {
+  const [ref, state] = useMeasure({ observerOptions: { box: 'border-box' } });
+
+  return (
+    <>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
+      <div ref={ref} style={{ background: 'red' }}>
+        resize me
+      </div>
+    </>
+  );
+};
+
 storiesOf('Sensors/useMeasure', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useMeasure.md')} />)
   .add('Demo', () => <Demo />);
+
+storiesOf('Sensors/useMeasure', module)
+  .add('Docs', () => <ShowDocs md={require('../docs/useMeasure.md')} />)
+  .add('DemoObserverOptions', () => <DemoObserverOptions />);
