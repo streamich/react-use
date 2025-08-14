@@ -6,9 +6,19 @@ describe('useStateList', () => {
     expect(useStateList).toBeDefined();
   });
 
-  function getHook(list: any[] = ['a', 'b', 'c']) {
-    return renderHook(({ states }) => useStateList(states), { initialProps: { states: list } });
-  }
+  function getHook(list: any[] = ['a', 'b', 'c'], defaultCurrentIndex?: number) {
+  return renderHook(
+    ({ states, index }) =>
+      typeof index === 'number'
+        ? useStateList(states, index)
+        : useStateList(states),
+    {
+      initialProps: defaultCurrentIndex !== undefined
+        ? { states: list, index: defaultCurrentIndex }
+        : { states: list }
+    }
+  );
+}
 
   it('should return an object containing `state`, `next` and `prev`', () => {
     const res = getHook().result.current;
@@ -38,6 +48,12 @@ describe('useStateList', () => {
     act(() => hook.result.current.setStateAt(2));
 
     expect(hook.result.current.isLast).toBe(true);
+  });
+
+  it('should initialize with the provided default index', () => {
+    const hook = getHook(['a', 'b', 'c'], 1);
+    expect(hook.result.current.state).toBe('b');
+    expect(hook.result.current.currentIndex).toBe(1);
   });
 
   describe('setState()', () => {
