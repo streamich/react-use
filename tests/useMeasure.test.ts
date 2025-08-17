@@ -59,15 +59,17 @@ it('tracks rectangle of a DOM element', () => {
   act(() => {
     listener!([
       {
-        contentRect: {
-          x: 1,
-          y: 2,
-          width: 200,
-          height: 200,
-          top: 100,
-          bottom: 0,
-          left: 100,
-          right: 0,
+        target: {
+          getBoundingClientRect: () => ({
+            x: 1,
+            y: 2,
+            width: 200,
+            height: 200,
+            top: 100,
+            bottom: 0,
+            left: 100,
+            right: 0,
+          }),
         },
       },
     ]);
@@ -105,15 +107,17 @@ it('tracks multiple updates', () => {
   act(() => {
     listener!([
       {
-        contentRect: {
-          x: 1,
-          y: 1,
-          width: 1,
-          height: 1,
-          top: 1,
-          bottom: 1,
-          left: 1,
-          right: 1,
+        target: {
+          getBoundingClientRect: () => ({
+            x: 1,
+            y: 1,
+            width: 1,
+            height: 1,
+            top: 1,
+            bottom: 1,
+            left: 1,
+            right: 1,
+          }),
         },
       },
     ]);
@@ -133,15 +137,17 @@ it('tracks multiple updates', () => {
   act(() => {
     listener!([
       {
-        contentRect: {
-          x: 2,
-          y: 2,
-          width: 2,
-          height: 2,
-          top: 2,
-          bottom: 2,
-          left: 2,
-          right: 2,
+        target: {
+          getBoundingClientRect: () => ({
+            x: 2,
+            y: 2,
+            width: 2,
+            height: 2,
+            top: 2,
+            bottom: 2,
+            left: 2,
+            right: 2,
+          }),
         },
       },
     ]);
