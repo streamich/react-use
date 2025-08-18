@@ -6,9 +6,9 @@ const setUp = (initialQueue?: any[]) => renderHook(() => useQueue(initialQueue))
 it('takes initial state', () => {
   const { result } = setUp([1, 2, 3]);
   const { first, last, size } = result.current;
-  expect(first).toEqual(1);
-  expect(last).toEqual(3);
-  expect(size).toEqual(3);
+  expect(first).toBe(1);
+  expect(last).toBe(3);
+  expect(size).toBe(3);
 });
 
 it('appends new member', () => {
@@ -17,9 +17,9 @@ it('appends new member', () => {
     result.current.add(3);
   });
   const { first, last, size } = result.current;
-  expect(first).toEqual(1);
-  expect(last).toEqual(3);
-  expect(size).toEqual(3);
+  expect(first).toBe(1);
+  expect(last).toBe(3);
+  expect(size).toBe(3);
 });
 
 it('pops oldest member', () => {
@@ -28,6 +28,6 @@ it('pops oldest member', () => {
     result.current.remove();
   });
   const { first, size } = result.current;
-  expect(first).toEqual(2);
-  expect(size).toEqual(1);
+  expect(first).toBe(2);
+  expect(size).toBe(1);
 });
