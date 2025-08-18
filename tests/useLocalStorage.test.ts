@@ -29,6 +29,16 @@ describe(useLocalStorage, () => {
     expect(state).toEqual('bar');
   });
 
+  it('prefers initial state when ssr option is passed', () => {
+    localStorage.setItem('foo', '"bar"');
+    const { result } = renderHook(() => useLocalStorage('foo', 'baz', { ssr: true }));
+    const [firstSeenResult] = result.all;
+    if (firstSeenResult instanceof Error) throw firstSeenResult;
+
+    const [firstSeenState] = firstSeenResult;
+    expect(firstSeenState).toEqual('baz');
+  });
+
   it('does not clobber existing localStorage with initialState', () => {
     localStorage.setItem('foo', '"bar"');
     const { result } = renderHook(() => useLocalStorage('foo', 'buzz'));
