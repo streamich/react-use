@@ -127,6 +127,7 @@
     <br/>
     <br/>
 - [**State**](./docs/State.md)
+
   - [`createMemo`](./docs/createMemo.md) &mdash; factory of memoized hooks.
   - [`createReducer`](./docs/createReducer.md) &mdash; factory of reducer hooks with custom middleware.
   - [`createReducerContext`](./docs/createReducerContext.md) and [`createStateContext`](./docs/createStateContext.md) &mdash; factory of hooks for a sharing state between components.
@@ -154,8 +155,10 @@
   - [`useRendersCount`](./docs/useRendersCount.md) &mdash; count component renders. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-userenderscount--demo)
   - [`createGlobalState`](./docs/createGlobalState.md) &mdash; cross component shared state.[![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-createglobalstate--demo)
   - [`useMethods`](./docs/useMethods.md) &mdash; neat alternative to `useReducer`. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-usemethods--demo)
+  - [`useObjectArray`](./docs/useObjectArray.md) &mdash; React custom hook that manages an array of objects with various utility functions such as add, update, clear, set.
     <br/>
     <br/>
+
 - [**Miscellaneous**]()
   - [`useEnsuredForwardedRef`](./docs/useEnsuredForwardedRef.md) and [`ensuredForwardRef`](./docs/useEnsuredForwardedRef.md) &mdash; use a React.forwardedRef safely. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-useensuredforwardedref--demo)
 
