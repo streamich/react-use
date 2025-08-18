@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
+import useRafState from './useRafState';
 import { off, on } from './misc/util';
 
 export default () => {
-  const [mouseWheelScrolled, setMouseWheelScrolled] = useState(0);
+  const [mouseWheelScrolled, setMouseWheelScrolled] = useRafState(0);
   useEffect(() => {
     const updateScroll = (e: MouseWheelEvent) => {
       setMouseWheelScrolled(e.deltaY + mouseWheelScrolled);
