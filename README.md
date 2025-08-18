@@ -154,6 +154,7 @@
   - [`useRendersCount`](./docs/useRendersCount.md) &mdash; count component renders. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-userenderscount--demo)
   - [`createGlobalState`](./docs/createGlobalState.md) &mdash; cross component shared state.[![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-createglobalstate--demo)
   - [`useMethods`](./docs/useMethods.md) &mdash; neat alternative to `useReducer`. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-usemethods--demo)
+  - [`useMaxlength`](./docs/useMaxlength.md) &mdash; handles the max-length property of an input or textarea or any other use case where a max-length is needed [![][img-demo]](https://streamich.github.io/react-use/?path=/story/state-usemaxlength--demo)
     <br/>
     <br/>
 - [**Miscellaneous**]()
