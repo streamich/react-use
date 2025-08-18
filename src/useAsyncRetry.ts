@@ -1,4 +1,4 @@
-import { DependencyList, useCallback, useState } from 'react';
+import { DependencyList, useCallback, useState, useMemo } from 'react';
 import useAsync, { AsyncState } from './useAsync';
 
 export type AsyncStateRetry<T> = AsyncState<T> & {
@@ -24,7 +24,10 @@ const useAsyncRetry = <T>(fn: () => Promise<T>, deps: DependencyList = []) => {
     setAttempt((currentAttempt) => currentAttempt + 1);
   }, [...deps, stateLoading]);
 
-  return { ...state, retry };
+  return useMemo(() => {
+    ...state,
+    retry
+  }, [state, retry]);
 };
 
 export default useAsyncRetry;
