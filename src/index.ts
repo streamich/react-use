@@ -13,7 +13,7 @@ export { default as useClickAway } from './useClickAway';
 export { default as useCookie } from './useCookie';
 export { default as useCopyToClipboard } from './useCopyToClipboard';
 export { default as useCounter } from './useCounter';
-export { default as useCss } from './useCss';
+export { default as useCss, resetCssCounter } from './useCss';
 export { default as useCustomCompareEffect } from './useCustomCompareEffect';
 export { default as useDebounce } from './useDebounce';
 export { default as useDeepCompareEffect } from './useDeepCompareEffect';
