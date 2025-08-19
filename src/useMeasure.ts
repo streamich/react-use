@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, MutableRefObject, useEffect } from 'react';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 import { isBrowser, noop } from './misc/util';
 
@@ -20,9 +20,17 @@ const defaultState: UseMeasureRect = {
   right: 0,
 };
 
-function useMeasure<E extends Element = Element>(): UseMeasureResult<E> {
-  const [element, ref] = useState<E | null>(null);
+function useMeasure<E extends Element = Element>(): UseMeasureResult<E>;
+function useMeasure<E extends Element = Element>(ref: MutableRefObject<E>): UseMeasureRect;
+function useMeasure<E extends Element = Element>(ref?: MutableRefObject<E>): any {
+  const [element, setElement] = useState<E | null>(null);
   const [rect, setRect] = useState<UseMeasureRect>(defaultState);
+
+  useEffect(() => {
+    if (ref) {
+      setElement(ref.current);
+    }
+  }, [ref]);
 
   const observer = useMemo(
     () =>
@@ -43,7 +51,12 @@ function useMeasure<E extends Element = Element>(): UseMeasureResult<E> {
     };
   }, [element]);
 
-  return [ref, rect];
+  // We don't need to return element setter in case we pass ref as an argument
+  if (ref) {
+    return rect;
+  }
+
+  return [setElement, rect];
 }
 
 export default isBrowser && typeof (window as any).ResizeObserver !== 'undefined'
