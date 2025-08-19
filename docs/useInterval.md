@@ -6,7 +6,7 @@ A declarative interval hook based on [Dan Abramov's article on overreacted.io](h
 
 ```jsx
 import * as React from 'react';
-import {useInterval} from 'react-use';
+import {useInterval, useBoolean} from 'react-use';
 
 const Demo = () => {
   const [count, setCount] = React.useState(0);
