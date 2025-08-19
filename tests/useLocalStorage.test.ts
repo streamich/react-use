@@ -167,6 +167,27 @@ describe(useLocalStorage, () => {
     expect(value!.fizz).toEqual('buzz');
   });
 
+  it("sets localStorage from the function updater multiple times", () => {
+    const { result, rerender } = renderHook(() =>
+      useLocalStorage<{ foo: string; fizz?: string; fizz2?: string }>("foo", { foo: "bar" })
+    );
+
+    let [, setFoo] = result.current;
+    act(() => setFoo((state) => ({ ...state!, fizz: "buzz" })));
+    rerender();
+
+    // set another value in the state to ensure both values remain set
+    [, setFoo] = result.current;
+    act(() => setFoo((state) => ({ ...state!, fizz2: "buzz2" })));
+    rerender();
+
+    const [value] = result.current;
+    console.log({ value });
+    expect(value!.foo).toEqual("bar");
+    expect(value!.fizz2).toEqual("buzz2");
+    expect(value!.fizz).toEqual("buzz");
+  });
+  
   it('rejects nullish or undefined keys', () => {
     const { result } = renderHook(() => useLocalStorage(null as any));
     try {
