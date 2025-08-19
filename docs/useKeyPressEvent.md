@@ -18,7 +18,7 @@ const Demo = () => {
   const decrement = () => setCount(count => --count);
   const reset = () => setCount(count => 0);
 
-  useKeyPressEvent(']', increment, increment);
+  useKeyPressEvent(']', increment);
   useKeyPressEvent('[', decrement, decrement);
   useKeyPressEvent('r', reset);
 
