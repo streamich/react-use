@@ -1,8 +1,8 @@
 # `useTimeoutFn`
 
-Calls given function after specified amount of milliseconds.
+Calls a given function after a specified amount of milliseconds.
 
-Several thing about it's work:
+Several thing about its work:
 - does not re-render component;
 - automatically cancel timeout on cancel;
 - automatically reset timeout on delay change;
@@ -23,7 +23,7 @@ const Demo = () => {
   }
 
   const [isReady, cancel, reset] = useTimeoutFn(fn, 5000);
-  const cancelButtonClick = useCallback(() => {
+  const cancelButtonClick = React.useCallback(() => {
     if (isReady() === false) {
       cancel();
       setState(`cancelled`);
