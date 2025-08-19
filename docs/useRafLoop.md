@@ -5,6 +5,8 @@ Loop stops automatically on component unmount.
 
 Additionally hook provides methods to start/stop loop and check current state.
 
+See `useRafEffect` for a comparison of the different `rAF` hooks.
+
 ## Usage
 
 ```jsx
