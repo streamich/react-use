@@ -25,6 +25,12 @@ Thanks for being willing to contribute 🙌 If you contribute to this project, y
 > can make all of your pull request branches based on this `master` branch.
 > Whenever you want to update your version of `master`, do a regular `git pull`.
 
+## Online one-click setup for contributing
+
+Contribute to react-use using a fully featured online development environment that will automatically: clone the repo, install the dependencies, start the webserver and run the tests in watch mode.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+
 ## Development
 
 This library is a collection of React hooks so a proposal for a new hook will need to utilize the [React Hooks API](https://reactjs.org/docs/hooks-reference.html) internally to be taken into consideration.
