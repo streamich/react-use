@@ -46,7 +46,7 @@ const useWindowSize = ({
         off(window, 'resize', handler);
       };
     }
-  }, []);
+  }, [setState]);
 
   // Return the current window size (width and height)
   return state;
