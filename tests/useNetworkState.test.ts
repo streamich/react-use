@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { useNetworkState } from '../src';
 
-//ToDo: improve tests
+// TODO: Add comprehensive tests for network state changes, offline/online events, and network information properties
 describe(`useNetworkState`, () => {
   it('should be defined', () => {
     expect(useNetworkState).toBeDefined();

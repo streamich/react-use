@@ -70,4 +70,4 @@ const [list, {
 
 ## Related hooks
 
-- [useUpsert](./useUpsert.md)
+<!-- useUpsert is deprecated and its functionality is now available in useList's upsert method -->
