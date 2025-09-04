@@ -79,3 +79,28 @@ it('should properly update the state based on the createMethods', () => {
   });
   expect(result.current[0].count).toBe(count);
 });
+
+it('should not update the returned methods reference when initialState changes', () => {
+  const initialState = {
+    count: 10,
+  };
+
+  const createMethods = () => ({
+    reset() {
+      return initialState;
+    },
+  });
+
+  const { result, rerender } = renderHook(
+    ({ initialState }) => useMethods(createMethods, initialState),
+    {
+      initialProps: { initialState },
+    }
+  );
+
+  const [, firstMethodsReference] = result.current;
+  rerender({ initialState: { count: 20 } });
+  const [, methodsReferenceAfterRerender] = result.current;
+
+  expect(firstMethodsReference).toBe(methodsReferenceAfterRerender);
+});

@@ -26,14 +26,20 @@ const useMethods = <M, T>(
 
   const [state, dispatch] = useReducer<Reducer<T, Action>>(reducer, initialState);
 
-  const wrappedMethods: WrappedMethods<M> = useMemo(() => {
-    const actionTypes = Object.keys(createMethods(initialState));
+  const wrappedMethods: WrappedMethods<M> = useMemo(
+    () => {
+      const actionTypes = Object.keys(createMethods(initialState));
 
-    return actionTypes.reduce((acc, type) => {
-      acc[type] = (...payload) => dispatch({ type, payload });
-      return acc;
-    }, {} as WrappedMethods<M>);
-  }, [createMethods, initialState]);
+      return actionTypes.reduce((acc, type) => {
+        acc[type] = (...payload) => dispatch({ type, payload });
+        return acc;
+      }, {} as WrappedMethods<M>);
+    },
+    // Do not track `initialState` as it's supposed to be used only once.
+    // See https://github.com/streamich/react-use/issues/1286
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [createMethods]
+  );
 
   return [state, wrappedMethods];
 };
