@@ -30,7 +30,8 @@ export function useStateWithHistory<S, I extends S>(
   }
 
   const isFirstMount = useFirstMountState();
-  const [state, innerSetState] = useState<S>(initialState as S);
+  const [state, innerSetState] = useState<S>(resolveHookState(initialState) as S);
+
   const history = useRef<S[]>((initialHistory ?? []) as S[]);
   const historyPosition = useRef(0);
 
@@ -38,8 +39,8 @@ export function useStateWithHistory<S, I extends S>(
   if (isFirstMount) {
     if (history.current.length) {
       // if last element of history !== initial - push initial to history
-      if (history.current[history.current.length - 1] !== initialState) {
-        history.current.push(initialState as I);
+      if (history.current[history.current.length - 1] !== state) {
+        history.current.push(state as I);
       }
 
       // if initial history bigger that capacity - crop the first elements out
@@ -48,7 +49,7 @@ export function useStateWithHistory<S, I extends S>(
       }
     } else {
       // initiate the history with initial state
-      history.current.push(initialState as I);
+      history.current.push(state);
     }
 
     historyPosition.current = history.current.length && history.current.length - 1;
