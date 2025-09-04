@@ -2,6 +2,7 @@
   "name": "react-use",
   "version": "17.6.0",
   "description": "Collection of React Hooks",
+  "type": "module",
   "main": "lib/index.js",
   "module": "esm/index.js",
   "sideEffects": false,
