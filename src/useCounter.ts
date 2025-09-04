@@ -87,7 +87,6 @@ export default function useCounter(
             );
           }
 
-          // eslint-disable-next-line react-hooks/exhaustive-deps
           init = rValue;
           set(rValue);
         },
