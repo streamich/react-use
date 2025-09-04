@@ -4,6 +4,8 @@ React state hook that returns the latest state as described in the [React hooks 
 
 This is mostly useful to get access to the latest value of some props or state inside an asynchronous callback, instead of that value at the time the callback was created from.
 
+Note: This hook updates the ref value during rendering, and is therefore potentially unsafe. Use `useLatestRef()` if you want to safely access the latest value. For more information, see "Pitfall" section of [React `useRef()` docs](https://react.dev/reference/react/useRef).
+
 ## Usage
 
 ```jsx
