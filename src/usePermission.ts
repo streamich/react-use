@@ -3,29 +3,28 @@ import { noop, off, on } from './misc/util';
 
 export type IState = PermissionState | '';
 
-interface IPushPermissionDescriptor extends PermissionDescriptor {
+interface ExperimentalPushPermissionDescriptor {
   name: 'push';
   userVisibleOnly?: boolean;
 }
 
-interface IMidiPermissionDescriptor extends PermissionDescriptor {
+interface ExperimentalMidiPermissionDescriptor {
   name: 'midi';
   sysex?: boolean;
 }
 
-interface IDevicePermissionDescriptor extends PermissionDescriptor {
+interface ExperimentalDevicePermissionDescriptor {
   name: 'camera' | 'microphone' | 'speaker';
   deviceId?: string;
 }
 
-export type IPermissionDescriptor =
+export type ExtendedPermissionDescriptor =
   | PermissionDescriptor
-  | IPushPermissionDescriptor
-  | IMidiPermissionDescriptor
-  | IDevicePermissionDescriptor;
+  | ExperimentalDevicePermissionDescriptor
+  | ExperimentalMidiPermissionDescriptor
+  | ExperimentalPushPermissionDescriptor;
 
-// const usePermission = <T extends PermissionDescriptor>(permissionDesc: T): IState => {
-const usePermission = (permissionDesc: IPermissionDescriptor): IState => {
+const usePermission = (permissionDesc: ExtendedPermissionDescriptor): IState => {
   const [state, setState] = useState<IState>('');
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const usePermission = (permissionDesc: IPermissionDescriptor): IState => {
     };
 
     navigator.permissions
-      .query(permissionDesc)
+      .query(permissionDesc as PermissionDescriptor)
       .then((status) => {
         permissionStatus = status;
         on(permissionStatus, 'change', onChange);
