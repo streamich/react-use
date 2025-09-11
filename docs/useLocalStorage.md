@@ -32,6 +32,7 @@ useLocalStorage(key, initialValue, {
   serializer: (value: T) => string,
   deserializer: (value: string) => T,
 });
+useLocalStorage(key, { ssr: true });
 ```
 
 - `key` &mdash; `localStorage` key to manage.
@@ -39,3 +40,4 @@ useLocalStorage(key, initialValue, {
 - `raw` &mdash; boolean, if set to `true`, hook will not attempt to JSON serialize stored values.
 - `serializer` &mdash; custom serializer (defaults to `JSON.stringify`)
 - `deserializer` &mdash; custom deserializer (defaults to `JSON.parse`)
+- `ssr` boolean indicates whether to preserve intial value to match server side rendering
