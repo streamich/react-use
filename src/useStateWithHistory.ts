@@ -54,24 +54,40 @@ export function useStateWithHistory<S, I extends S>(
     historyPosition.current = history.current.length && history.current.length - 1;
   }
 
+  function once<T extends any[]>(fn: (...args: T) => void): (...args: T) => void {
+    let called = false;
+    let result: ReturnType<typeof fn>;
+  
+    return function(...args: T): void {
+      if (!called) {
+        called = true;
+        result = fn.apply(null, args);
+      }
+      return result;
+    };
+  }
+
   const setState = useCallback(
     (newState: IHookStateSetAction<S>): void => {
+      const setStateSideEffect = once(() => {
+        // if current position is not the last - pop element to the right
+        if (historyPosition.current < history.current.length - 1) {
+          history.current = history.current.slice(0, historyPosition.current + 1);
+        }
+
+        historyPosition.current = history.current.push(newState as I) - 1;
+
+        // if capacity is reached - shift first elements
+        if (history.current.length > capacity) {
+          history.current = history.current.slice(history.current.length - capacity);
+        }
+      })
       innerSetState((currentState) => {
         newState = resolveHookState(newState, currentState);
 
         // is state has changed
         if (newState !== currentState) {
-          // if current position is not the last - pop element to the right
-          if (historyPosition.current < history.current.length - 1) {
-            history.current = history.current.slice(0, historyPosition.current + 1);
-          }
-
-          historyPosition.current = history.current.push(newState as I) - 1;
-
-          // if capacity is reached - shift first elements
-          if (history.current.length > capacity) {
-            history.current = history.current.slice(history.current.length - capacity);
-          }
+          setStateSideEffect()
         }
 
         return newState;
