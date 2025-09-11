@@ -7,9 +7,13 @@ export interface Observable<T> {
   };
 }
 
-function useObservable<T>(observable$: Observable<T>): T | undefined;
-function useObservable<T>(observable$: Observable<T>, initialValue: T): T;
-function useObservable<T>(observable$: Observable<T>, initialValue?: T): T | undefined {
+type TypeOrFnReturnsType<T> = T | (() => T);
+type ObservableOrFn<T> = TypeOrFnReturnsType<Observable<T>>
+
+function useObservable<T>(observableOrFn: ObservableOrFn<T>): T | undefined;
+function useObservable<T>(observableOrFn: ObservableOrFn<T>, initialValue: T): T;
+function useObservable<T>(observableOrFn: ObservableOrFn<T>, initialValue?: T): T | undefined {
+  const [observable$] = useState<Observable<T>>(observableOrFn);
   const [value, update] = useState<T | undefined>(initialValue);
 
   useIsomorphicLayoutEffect(() => {
