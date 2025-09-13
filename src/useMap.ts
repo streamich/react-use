@@ -5,19 +5,16 @@ export interface StableActions<T extends object> {
   setAll: (newMap: T) => void;
   remove: <K extends keyof T>(key: K) => void;
   reset: () => void;
-  clear: () => void;
 }
 
 export interface Actions<T extends object> extends StableActions<T> {
   get: <K extends keyof T>(key: K) => T[K];
-  has: <K extends keyof T>(key: K) => boolean;
 }
 
 const useMap = <T extends Record<string, any> = Record<string, any>>(
   initialMap: T = {} as T
 ): [T, Actions<T>] => {
-  // Keep the canonical object in a ref; re-render via counter
-  const initialRef = useRef<T>(structuredClone ? structuredClone(initialMap) : { ...(initialMap as any) });
+  const initialRef = useRef<T>({ ...(initialMap as any) });
   const ref = useRef<T>({ ...(initialMap as any) });
   const [, force] = useReducer((c: number) => c + 1, 0);
 
@@ -43,28 +40,14 @@ const useMap = <T extends Record<string, any> = Record<string, any>>(
     force();
   }, []);
 
-  const clear = useCallback(() => {
-    ref.current = {} as T;
-    force();
-  }, []);
-
   const get = useCallback(<K extends keyof T>(key: K): T[K] => ref.current[key], []);
-  const has = useCallback(<K extends keyof T>(key: K) => key in ref.current, []);
 
-  const stableActions = useMemo<Actions<T>>(
-    () => ({
-      set: setKey,
-      setAll,
-      remove,
-      reset,
-      clear,
-      get,
-      has,
-    }),
-    [setKey, setAll, remove, reset, clear, get, has]
+  const utils = useMemo<Actions<T>>(
+    () => ({ set: setKey, setAll, remove, reset, get }),
+    [setKey, setAll, remove, reset, get]
   );
 
-  return [ref.current, stableActions];
+  return [ref.current, utils];
 };
 
 export default useMap;
