@@ -15,9 +15,14 @@ const useLocalStorage = <T>(
   key: string,
   initialValue?: T,
   options?: parserOptions<T>
-): [T | undefined, Dispatch<SetStateAction<T | undefined>>, () => void] => {
+): [
+  T | undefined,
+  Dispatch<SetStateAction<T | undefined>>,
+  () => void,
+  Dispatch<SetStateAction<T | undefined>>
+] => {
   if (!isBrowser) {
-    return [initialValue as T, noop, noop];
+    return [initialValue as T, noop, noop, noop];
   }
   if (!key) {
     throw new Error('useLocalStorage key may not be falsy');
@@ -83,6 +88,20 @@ const useLocalStorage = <T>(
   );
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
+  const safeSet: Dispatch<SetStateAction<T | undefined>> = useCallback(
+    (valOrFunc) => {
+      if (localStorage.getItem(key)) {
+        console.warn(
+          `You are attempting to set a key that is already in use, the action has been prevented. To remove this warning, use set`
+        );
+        return;
+      }
+      set(valOrFunc);
+    },
+    [key, setState]
+  );
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const remove = useCallback(() => {
     try {
       localStorage.removeItem(key);
@@ -93,7 +112,7 @@ const useLocalStorage = <T>(
     }
   }, [key, setState]);
 
-  return [state, set, remove];
+  return [state, set, remove, safeSet];
 };
 
 export default useLocalStorage;
