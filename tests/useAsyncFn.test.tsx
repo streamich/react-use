@@ -163,4 +163,42 @@ describe('useAsyncFn', () => {
     expect(hook.result.current[0].loading).toBe(false);
     expect(hook.result.current[0].value).toBe('new state');
   });
+
+  it('should change loading state when initial loading is true', async () => {
+    const fetch = async () => 'new state';
+    const initialState = { loading: true, value: 'init state' };
+
+    const hook = renderHook<
+      { fn: () => Promise<string> },
+      [AsyncState<string>, () => Promise<string>]
+    >(({ fn }) => useAsyncFn(fn, [], initialState), {
+      initialProps: { fn: fetch },
+    });
+
+    const [state, callback] = hook.result.current;
+    expect(state.loading).toBe(true);
+    expect(state.value).toBe('init state');
+
+    act(() => {
+      callback();
+    });
+
+    expect(hook.result.current[0].loading).toBe(true);
+    expect(hook.result.current[0].value).toBe('init state');
+
+    await hook.waitForNextUpdate();
+    expect(hook.result.current[0].loading).toBe(false);
+    expect(hook.result.current[0].value).toBe('new state');
+
+    act(() => {
+      callback();
+    });
+
+    expect(hook.result.current[0].loading).toBe(true);
+    expect(hook.result.current[0].value).toBe('new state');
+
+    await hook.waitForNextUpdate();
+    expect(hook.result.current[0].loading).toBe(false);
+    expect(hook.result.current[0].value).toBe('new state');
+  });
 });
