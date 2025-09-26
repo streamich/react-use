@@ -5,8 +5,7 @@ Returns `true` if component is just mounted (on first render) and `false` otherw
 ## Usage
 
 ```typescript jsx
-import * as React from 'react';
-import { useFirstMountState } from 'react-use';
+import { useFirstMountState, useUpdate } from 'react-use';
 
 const Demo = () => {
   const isFirstMount = useFirstMountState();
