@@ -21,6 +21,7 @@ export { default as useDefault } from './useDefault';
 export { default as useDrop } from './useDrop';
 export { default as useDropArea } from './useDropArea';
 export { default as useEffectOnce } from './useEffectOnce';
+export { default as useSignallingEffect } from './useSignallingEffect';
 export { default as useEnsuredForwardedRef, ensuredForwardRef } from './useEnsuredForwardedRef';
 export { default as useEvent } from './useEvent';
 export { default as useError } from './useError';
