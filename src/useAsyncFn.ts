@@ -57,8 +57,6 @@ export default function useAsyncFn<T extends FunctionReturningPromise>(
       },
       (error) => {
         isMounted() && callId === lastCallId.current && set({ error, loading: false });
-
-        return error;
       }
     ) as ReturnType<T>;
   }, deps);
