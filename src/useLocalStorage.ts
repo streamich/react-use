@@ -1,5 +1,13 @@
-import { Dispatch, SetStateAction, useCallback, useState, useRef, useLayoutEffect } from 'react';
-import { isBrowser, noop } from './misc/util';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useState,
+  useRef,
+  useLayoutEffect,
+  useEffect,
+} from 'react';
+import { isBrowser, noop, off, on } from './misc/util';
 
 type parserOptions<T> =
   | {
@@ -10,7 +18,8 @@ type parserOptions<T> =
       serializer: (value: T) => string;
       deserializer: (value: string) => T;
     };
-
+const STORAGE_EVENT = 'local-storage-change';
+const storageLinsters = new Map<string, Set<(value: any) => void>>();
 const useLocalStorage = <T>(
   key: string,
   initialValue?: T,
@@ -74,6 +83,9 @@ const useLocalStorage = <T>(
 
         localStorage.setItem(key, value);
         setState(deserializer(value));
+
+        storageLinsters.get(key)?.forEach((listener) => listener(newState));
+        window.dispatchEvent(new CustomEvent(STORAGE_EVENT, { detail: { key, newValue: value } }));
       } catch {
         // If user is in private mode or has storage restriction
         // localStorage can throw. Also JSON.stringify can throw.
@@ -87,11 +99,41 @@ const useLocalStorage = <T>(
     try {
       localStorage.removeItem(key);
       setState(undefined);
+
+      storageLinsters.get(key)?.forEach((listener) => listener(undefined));
+      window.dispatchEvent(new CustomEvent(STORAGE_EVENT, { detail: { key, newValue: null } }));
     } catch {
       // If user is in private mode or has storage restriction
       // localStorage can throw.
     }
   }, [key, setState]);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    const handleStorageChange = (e: CustomEvent) => {
+      if (e instanceof StorageEvent && e.key === key) {
+        const newValue = e.newValue ? deserializer(e.newValue) : undefined;
+        setState(newValue);
+      } else if (e instanceof CustomEvent && e.detail?.key === key) {
+        const newValue = e.detail.newValue ? deserializer(e.detail.newValue) : undefined;
+        setState(newValue);
+      }
+    };
+
+    on(window, 'storage', handleStorageChange);
+    on(window, STORAGE_EVENT, handleStorageChange);
+
+    if (!storageLinsters.has(key)) {
+      storageLinsters.set(key, new Set());
+    }
+    storageLinsters.get(key)!.add(handleStorageChange);
+
+    return () => {
+      off(window, 'storage', handleStorageChange);
+      off(window, STORAGE_EVENT, handleStorageChange);
+      storageLinsters.get(key)?.delete(handleStorageChange);
+    };
+  }, [key, deserializer]);
 
   return [state, set, remove];
 };
