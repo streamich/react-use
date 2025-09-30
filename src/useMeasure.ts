@@ -36,7 +36,7 @@ function useMeasure<E extends Element = Element>(): UseMeasureResult<E> {
   );
 
   useIsomorphicLayoutEffect(() => {
-    if (!element) return;
+    if (!element || typeof element.getBoundingClientRect !== "function") return;
     observer.observe(element);
     return () => {
       observer.disconnect();
