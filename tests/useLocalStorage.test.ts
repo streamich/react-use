@@ -12,28 +12,28 @@ describe(useLocalStorage, () => {
     localStorage.setItem('foo', '"bar"');
     const { result } = renderHook(() => useLocalStorage('foo'));
     const [state] = result.current;
-    expect(state).toEqual('bar');
+    expect(state).toBe('bar');
   });
 
   it('should return initialValue if localStorage empty and set that to localStorage', () => {
     const { result } = renderHook(() => useLocalStorage('foo', 'bar'));
     const [state] = result.current;
-    expect(state).toEqual('bar');
-    expect(localStorage.__STORE__.foo).toEqual('"bar"');
+    expect(state).toBe('bar');
+    expect(localStorage.__STORE__.foo).toBe('"bar"');
   });
 
   it('prefers existing value over initial state', () => {
     localStorage.setItem('foo', '"bar"');
     const { result } = renderHook(() => useLocalStorage('foo', 'baz'));
     const [state] = result.current;
-    expect(state).toEqual('bar');
+    expect(state).toBe('bar');
   });
 
   it('does not clobber existing localStorage with initialState', () => {
     localStorage.setItem('foo', '"bar"');
     const { result } = renderHook(() => useLocalStorage('foo', 'buzz'));
     expect(result.current).toBeTruthy();
-    expect(localStorage.__STORE__.foo).toEqual('"bar"');
+    expect(localStorage.__STORE__.foo).toBe('"bar"');
   });
 
   it('correctly updates localStorage', () => {
@@ -43,7 +43,7 @@ describe(useLocalStorage, () => {
     act(() => setFoo('baz'));
     rerender();
 
-    expect(localStorage.__STORE__.foo).toEqual('"baz"');
+    expect(localStorage.__STORE__.foo).toBe('"baz"');
   });
 
   it('should return undefined if no initialValue provided and localStorage empty', () => {
@@ -60,13 +60,13 @@ describe(useLocalStorage, () => {
     rerender();
 
     const [foo2] = result.current;
-    expect(foo1).toEqual(null);
-    expect(foo2).toEqual(null);
+    expect(foo1).toBe(null);
+    expect(foo2).toBe(null);
   });
 
   it('sets initialState if initialState is an object', () => {
     renderHook(() => useLocalStorage('foo', { bar: true }));
-    expect(localStorage.__STORE__.foo).toEqual('{"bar":true}');
+    expect(localStorage.__STORE__.foo).toBe('{"bar":true}');
   });
 
   it('correctly and promptly returns a new value', () => {
@@ -77,7 +77,7 @@ describe(useLocalStorage, () => {
     rerender();
 
     const [foo] = result.current;
-    expect(foo).toEqual('baz');
+    expect(foo).toBe('baz');
   });
 
   it('reinitializes state when key changes', () => {
@@ -90,7 +90,7 @@ describe(useLocalStorage, () => {
     rerender();
 
     const [state] = result.current;
-    expect(state).toEqual('bar');
+    expect(state).toBe('bar');
   });
 
   /*
@@ -108,8 +108,8 @@ describe(useLocalStorage, () => {
     const [val2] = r2.current;
 
     expect(val1).toEqual(val2);
-    expect(val1).toEqual('potato');
-    expect(val2).toEqual('potato');
+    expect(val1).toBe('potato');
+    expect(val2).toBe('potato');
   });
   */
 
@@ -117,13 +117,13 @@ describe(useLocalStorage, () => {
     localStorage.setItem('foo', JSON.stringify({ ok: true }));
     const { result } = renderHook(() => useLocalStorage<{ ok: boolean }>('foo'));
     const [foo] = result.current;
-    expect(foo!.ok).toEqual(true);
+    expect(foo!.ok).toBe(true);
   });
 
   it('safely initializes objects to localStorage', () => {
     const { result } = renderHook(() => useLocalStorage<{ ok: boolean }>('foo', { ok: true }));
     const [foo] = result.current;
-    expect(foo!.ok).toEqual(true);
+    expect(foo!.ok).toBe(true);
   });
 
   it('safely sets objects to localStorage', () => {
@@ -136,7 +136,7 @@ describe(useLocalStorage, () => {
     rerender();
 
     const [foo] = result.current;
-    expect(foo!.ok).toEqual('bar');
+    expect(foo!.ok).toBe('bar');
   });
 
   it('safely returns objects from updates', () => {
@@ -150,7 +150,7 @@ describe(useLocalStorage, () => {
 
     const [foo] = result.current;
     expect(foo).toBeInstanceOf(Object);
-    expect(foo!.ok).toEqual('bar');
+    expect(foo!.ok).toBe('bar');
   });
 
   it('sets localStorage from the function updater', () => {
@@ -163,8 +163,8 @@ describe(useLocalStorage, () => {
     rerender();
 
     const [value] = result.current;
-    expect(value!.foo).toEqual('bar');
-    expect(value!.fizz).toEqual('buzz');
+    expect(value!.foo).toBe('bar');
+    expect(value!.fizz).toBe('buzz');
   });
 
   it('rejects nullish or undefined keys', () => {
@@ -235,7 +235,7 @@ describe(useLocalStorage, () => {
 
       expect(JSON.parse(foo!)).toBeInstanceOf(Object);
 
-      // expect(JSON.parse(foo!).fizz).toEqual('bang');
+      // expect(JSON.parse(foo!).fizz).toBe('bang');
     });
 
     it('still forces setState to a string', () => {
@@ -249,7 +249,7 @@ describe(useLocalStorage, () => {
 
       const [value] = result.current;
 
-      expect(JSON.parse(value!).fizz).toEqual('bang');
+      expect(JSON.parse(value!).fizz).toBe('bang');
     });
   });
 });

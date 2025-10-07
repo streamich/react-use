@@ -41,12 +41,12 @@ describe('useAsyncFn', () => {
         result = await callback(5, 7);
       });
 
-      expect(result).toEqual(12);
+      expect(result).toBe(12);
 
       const [state] = hook.result.current;
 
-      expect(state.value).toEqual(12);
-      expect(result).toEqual(state.value);
+      expect(state.value).toBe(12);
+      expect(result).toBe(state.value);
     });
   });
 
@@ -73,10 +73,10 @@ describe('useAsyncFn', () => {
     it('initially does not have a value', () => {
       const [state] = hook.result.current;
 
-      expect(state.value).toEqual(undefined);
-      expect(state.loading).toEqual(false);
-      expect(state.error).toEqual(undefined);
-      expect(callCount).toEqual(0);
+      expect(state.value).toBe(undefined);
+      expect(state.loading).toBe(false);
+      expect(state.error).toBe(undefined);
+      expect(callCount).toBe(0);
     });
 
     describe('when invoked', () => {
@@ -93,10 +93,10 @@ describe('useAsyncFn', () => {
 
         const [state] = hook.result.current;
 
-        expect(callCount).toEqual(1);
-        expect(state.loading).toEqual(false);
-        expect(state.error).toEqual(undefined);
-        expect(state.value).toEqual(9);
+        expect(callCount).toBe(1);
+        expect(state.loading).toBe(false);
+        expect(state.error).toBe(undefined);
+        expect(state.value).toBe(9);
       });
     });
   });
