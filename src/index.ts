@@ -114,4 +114,5 @@ export { useRendersCount } from './useRendersCount';
 export { useFirstMountState } from './useFirstMountState';
 export { default as useSet } from './useSet';
 export { createGlobalState } from './factory/createGlobalState';
+export { useLoading } from './useLoading';
 export { useHash } from './useHash';
