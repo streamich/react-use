@@ -160,6 +160,9 @@ describe(useLocalStorage, () => {
 
     const [, setFoo] = result.current;
     act(() => setFoo((state) => ({ ...state!, fizz: 'buzz' })));
+    // We re-run an additional setFoo to ensure the internal state is updated as part of the callback
+    const [, updatedSetFoo] = result.current;
+    act(() => updatedSetFoo((state) => ({ ...state!, foo: 'bar' })));
     rerender();
 
     const [value] = result.current;
