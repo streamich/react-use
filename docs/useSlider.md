@@ -9,7 +9,7 @@ import {useSlider} from 'react-use';
 
 const Demo = () => {
   const ref = React.useRef(null);
-  const {isSliding, value, pos, length} = useSlider(ref);
+  const {isSliding, value} = useSlider(ref);
 
   return (
     <div>
@@ -17,7 +17,7 @@ const Demo = () => {
         <p style={{ textAlign: 'center', color: isSliding ? 'red' : 'green' }}>
           {Math.round(value * 100)}%
         </p>
-        <div style={{ position: 'absolute', left: pos }}>🎚</div>
+        <div style={{ position: 'absolute', left: value * 100 + '%' }}>🎚</div>
       </div>
     </div>
   );
