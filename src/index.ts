@@ -57,6 +57,7 @@ export { useMediatedState } from './useMediatedState';
 export { default as useMethods } from './useMethods';
 export { default as useMotion } from './useMotion';
 export { default as useMount } from './useMount';
+export { default as useWillMount } from './useWillMount';
 export { default as useMountedState } from './useMountedState';
 export { default as useMouse } from './useMouse';
 export { default as useMouseHovered } from './useMouseHovered';

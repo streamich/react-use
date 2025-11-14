@@ -120,6 +120,7 @@
   - [`usePromise`](./docs/usePromise.md) &mdash; resolves promise only while component is mounted.
   - [`useLogger`](./docs/useLogger.md) &mdash; logs in console as component goes through life-cycles.
   - [`useMount`](./docs/useMount.md) &mdash; calls `mount` callbacks.
+  - [`useWillMount`](./docs/useWillMount.md) &mdash; calls `willMount` callbacks.
   - [`useUnmount`](./docs/useUnmount.md) &mdash; calls `unmount` callbacks.
   - [`useUpdateEffect`](./docs/useUpdateEffect.md) &mdash; run an `effect` only on updates.
   - [`useIsomorphicLayoutEffect`](./docs/useIsomorphicLayoutEffect.md) &mdash; `useLayoutEffect` that that works on server.
