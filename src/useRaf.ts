@@ -5,13 +5,12 @@ const useRaf = (ms: number = 1e12, delay: number = 0): number => {
   const [elapsed, set] = useState<number>(0);
 
   useIsomorphicLayoutEffect(() => {
-    let raf;
-    let timerStop;
-    let start;
+    let raf: number;
+    let timerStop: ReturnType<typeof setTimeout>;
+    let start: number;
 
-    const onFrame = () => {
-      const time = Math.min(1, (Date.now() - start) / ms);
-      set(time);
+    const onFrame = (time: number) => {
+      set(Math.min(1, (time - start) / ms));
       loop();
     };
     const loop = () => {
@@ -22,7 +21,7 @@ const useRaf = (ms: number = 1e12, delay: number = 0): number => {
         cancelAnimationFrame(raf);
         set(1);
       }, ms);
-      start = Date.now();
+      start = performance.now();
       loop();
     };
     const timerDelay = setTimeout(onStart, delay);
