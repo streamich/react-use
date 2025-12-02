@@ -10,7 +10,7 @@ const useIntersection = (
   useEffect(() => {
     if (ref.current && typeof IntersectionObserver === 'function') {
       const handler = (entries: IntersectionObserverEntry[]) => {
-        setIntersectionObserverEntry(entries[0]);
+        setIntersectionObserverEntry(entries[entries.length - 1]); // sometimes, IntersectionObserver returns multiple entries, in that case, only the latest in the list contains the latest state
       };
 
       const observer = new IntersectionObserver(handler, options);
