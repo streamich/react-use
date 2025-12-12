@@ -181,3 +181,17 @@ it('calls .disconnect() on ResizeObserver when component unmounts', () => {
 
   expect(disconnect).toHaveBeenCalledTimes(1);
 });
+
+it('returns only rect when ref is passed as an argument', () => {
+  const div = document.createElement('div');
+  const { result } = renderHook(() => useMeasure({ current: div }));
+
+  expect(result.current).toMatchObject({
+    width: 0,
+    height: 0,
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  });
+})

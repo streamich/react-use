@@ -12,7 +12,25 @@ const Demo = () => {
 
   return (
     <div ref={ref}>
-      <div>x: {x}</div>	
+      <div>x: {x}</div>
+      <div>y: {y}</div>
+      <div>width: {width}</div>
+      <div>height: {height}</div>
+      <div>top: {top}</div>
+      <div>right: {right}</div>
+      <div>bottom: {bottom}</div>
+      <div>left: {left}</div>
+    </div>
+  );
+};
+
+const DemoWithCustomRef = () => {
+  const elementRef = useRef();
+  const { x, y, width, height, top, right, bottom, left } = useMeasure(elementRef);
+
+  return (
+    <div ref={elementRef}>
+      <div>x: {x}</div>
       <div>y: {y}</div>
       <div>width: {width}</div>
       <div>height: {height}</div>
@@ -25,9 +43,9 @@ const Demo = () => {
 };
 ```
 
-This hook uses [`ResizeObserver` API][resize-observer], if you want to support 
-legacy browsers, consider installing [`resize-observer-polyfill`][resize-observer-polyfill] 
-before running your app. 
+This hook uses [`ResizeObserver` API][resize-observer], if you want to support
+legacy browsers, consider installing [`resize-observer-polyfill`][resize-observer-polyfill]
+before running your app.
 
 ```js
 if (!window.ResizeObserver) {
