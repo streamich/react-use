@@ -1,18 +1,18 @@
-import { renderHook } from "@testing-library/react-hooks";
-import * as useTween from "../src/useTween";
-import useInterpolations from "../src/useInterpolations";
+import { renderHook } from '@testing-library/react-hooks';
+import * as useTween from '../src/useTween';
+import useInterpolations from '../src/useInterpolations';
 
 let spyUseTween;
 
 beforeEach(() => {
-  spyUseTween = jest.spyOn(useTween, "default").mockReturnValue(0.5);
+  spyUseTween = jest.spyOn(useTween, 'default').mockReturnValue(0.5);
 });
 
 afterEach(() => {
   jest.restoreAllMocks();
 });
 
-it("should interpolate map values with default parameters", () => {
+it('should interpolate map values with default parameters', () => {
   const { result } = renderHook(() =>
     useInterpolations({
       left: [0, 100],
@@ -25,17 +25,17 @@ it("should interpolate map values with default parameters", () => {
   expect(result.current.top).toBe(100);
   expect(result.current.opacity).toBe(0.5);
   expect(spyUseTween).toHaveBeenCalledTimes(1);
-  expect(spyUseTween).toHaveBeenCalledWith("inCirc", 200, 0);
+  expect(spyUseTween).toHaveBeenCalledWith('inCirc', 200, 0);
 });
 
-it("should interpolate map values with custom parameters", () => {
+it('should interpolate map values with custom parameters', () => {
   const { result } = renderHook(() =>
     useInterpolations(
       {
         x: [10, 20],
         y: [-5, 5],
       },
-      "outCirc",
+      'outCirc',
       500,
       100
     )
@@ -44,10 +44,10 @@ it("should interpolate map values with custom parameters", () => {
   expect(result.current.x).toBe(15);
   expect(result.current.y).toBe(0);
   expect(spyUseTween).toHaveBeenCalledTimes(1);
-  expect(spyUseTween).toHaveBeenCalledWith("outCirc", 500, 100);
+  expect(spyUseTween).toHaveBeenCalledWith('outCirc', 500, 100);
 });
 
-it("should interpolate at t=0", () => {
+it('should interpolate at t=0', () => {
   spyUseTween.mockReturnValue(0);
 
   const { result } = renderHook(() =>
@@ -61,7 +61,7 @@ it("should interpolate at t=0", () => {
   expect(result.current.top).toBe(20);
 });
 
-it("should interpolate at t=1", () => {
+it('should interpolate at t=1', () => {
   spyUseTween.mockReturnValue(1);
 
   const { result } = renderHook(() =>
@@ -75,12 +75,12 @@ it("should interpolate at t=1", () => {
   expect(result.current.top).toBe(80);
 });
 
-describe("when invalid map is provided", () => {
+describe('when invalid map is provided', () => {
   beforeEach(() => {
-    jest.spyOn(console, "error").mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
-  it("should log an error when map is not an object", () => {
+  it('should log an error when map is not an object', () => {
     const { result } = renderHook(() =>
       useInterpolations(null as unknown as Record<string, readonly [number, number]>)
     );
@@ -92,7 +92,7 @@ describe("when invalid map is provided", () => {
     );
   });
 
-  it("should log an error when map value is not a tuple", () => {
+  it('should log an error when map value is not a tuple', () => {
     const { result } = renderHook(() =>
       useInterpolations({
         left: [10] as unknown as readonly [number, number],
@@ -106,10 +106,10 @@ describe("when invalid map is provided", () => {
     );
   });
 
-  it("should log an error when map value contains non-numbers", () => {
+  it('should log an error when map value contains non-numbers', () => {
     const { result } = renderHook(() =>
       useInterpolations({
-        left: ["0", 100] as unknown as readonly [number, number],
+        left: ['0', 100] as unknown as readonly [number, number],
       })
     );
 
@@ -120,7 +120,7 @@ describe("when invalid map is provided", () => {
     );
   });
 
-  it("should log an error when map value contains non-finite numbers", () => {
+  it('should log an error when map value contains non-finite numbers', () => {
     const { result } = renderHook(() =>
       useInterpolations({
         left: [0, Infinity],

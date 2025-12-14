@@ -1,14 +1,13 @@
-import { useMemo } from "react";
-import useTween from "./useTween";
+import { useMemo } from 'react';
+import useTween from './useTween';
 
 export type InterpolationMap = Record<string, readonly [number, number]>;
 
 const formatMapEntryValue = (value: unknown): string => {
+  // Best-effort stringify for dev error logs; avoids throwing on circular structures.
   try {
     const json = JSON.stringify(value);
-    if (typeof json === "string") {
-      return json;
-    }
+    return json;
   } catch {
     // ignore
   }
@@ -18,21 +17,23 @@ const formatMapEntryValue = (value: unknown): string => {
 
 const useInterpolations = <T extends InterpolationMap>(
   map: T,
-  easingName: string = "inCirc",
+  easingName: string = 'inCirc',
   ms: number = 200,
   delay: number = 0
 ): { [K in keyof T]: number } => {
   const t = useTween(easingName, ms, delay);
 
   return useMemo(() => {
-    if (process.env.NODE_ENV !== "production") {
-      if (!map || typeof map !== "object") {
+    if (process.env.NODE_ENV !== 'production') {
+      if (!map || typeof map !== 'object') {
         console.error('useInterpolations() expected "map" to be an object.');
         return {} as { [K in keyof T]: number };
       }
+    }
 
-      const keys = Object.keys(map) as Array<keyof T>;
+    const keys = Object.keys(map) as Array<keyof T>;
 
+    if (process.env.NODE_ENV !== 'production') {
       for (const key of keys) {
         const value = map[key];
         const keyString = String(key);
@@ -43,7 +44,7 @@ const useInterpolations = <T extends InterpolationMap>(
           );
           return {} as { [K in keyof T]: number };
         }
-        if (typeof value[0] !== "number" || typeof value[1] !== "number") {
+        if (typeof value[0] !== 'number' || typeof value[1] !== 'number') {
           console.error(
             `useInterpolations() expected map["${keyString}"] to contain numbers, got [${typeof value[0]}, ${typeof value[1]}].`
           );
@@ -59,7 +60,6 @@ const useInterpolations = <T extends InterpolationMap>(
     }
 
     const result = {} as { [K in keyof T]: number };
-    const keys = Object.keys(map) as Array<keyof T>;
     for (const key of keys) {
       const [start, end] = map[key];
       result[key] = start + (end - start) * t;
