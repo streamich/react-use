@@ -95,6 +95,7 @@ export { default as useTimeout } from './useTimeout';
 export { default as useTimeoutFn } from './useTimeoutFn';
 export { default as useTitle } from './useTitle';
 export { default as useToggle } from './useToggle';
+export { default as useInterpolations } from './useInterpolations';
 export { default as useTween } from './useTween';
 export { default as useUnmount } from './useUnmount';
 export { default as useUnmountPromise } from './useUnmountPromise';

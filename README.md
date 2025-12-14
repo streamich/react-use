@@ -88,6 +88,7 @@
 - [**Animations**](./docs/Animations.md)
   - [`useRaf`](./docs/useRaf.md) &mdash; re-renders component on each `requestAnimationFrame`.
   - [`useInterval`](./docs/useInterval.md) and [`useHarmonicIntervalFn`](./docs/useHarmonicIntervalFn.md) &mdash; re-renders component on a set interval using `setInterval`.
+  - [`useInterpolations`](./docs/useInterpolations.md) &mdash; interpolates a map of numeric values over time.
   - [`useSpring`](./docs/useSpring.md) &mdash; interpolates number over time according to spring dynamics.
   - [`useTimeout`](./docs/useTimeout.md) &mdash; re-renders component after a timeout.
   - [`useTimeoutFn`](./docs/useTimeoutFn.md) &mdash; calls given function after a timeout. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/animation-usetimeoutfn--demo)
