@@ -23,6 +23,15 @@ const Demo = () => {
 };
 ```
 
+## When to Use
+
+This hook is handy when:
+- Your dependencies might be `undefined` or an object (common with optional props/config)
+- You need to compare objects by their values, not just references
+- You're mixing primitives and objects in your dependency array
+
+Works fine with any dependency types - primitives, objects, or a mix of both.
+
 ## Reference
 
 ```ts
