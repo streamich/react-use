@@ -84,6 +84,7 @@ export { default as useShallowCompareEffect } from './useShallowCompareEffect';
 export { default as useSize } from './useSize';
 export { default as useSlider } from './useSlider';
 export { default as useSpeech } from './useSpeech';
+export { default as useResetState } from './useResetState';
 // not exported because of peer dependency
 // export { default as useSpring } from './useSpring';
 export { default as useStartTyping } from './useStartTyping';
