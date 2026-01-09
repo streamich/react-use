@@ -63,6 +63,7 @@
   - [`usePageLeave`](./docs/usePageLeave.md) &mdash; triggers when mouse leaves page boundaries.
   - [`useScratch`](./docs/useScratch.md) &mdash; tracks mouse click-and-scrub state.
   - [`useScroll`](./docs/useScroll.md) &mdash; tracks an HTML element's scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usescroll--docs)
+  - [`useScrollHeight`](./docs/useScrollHeight.md) &mdash; tracks and return scroll height of a given block. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usescrollheight--docs)
   - [`useScrolling`](./docs/useScrolling.md) &mdash; tracks whether HTML element is scrolling.
   - [`useStartTyping`](./docs/useStartTyping.md) &mdash; detects when user starts typing.
   - [`useWindowScroll`](./docs/useWindowScroll.md) &mdash; tracks `Window` scroll position. [![][img-demo]](https://streamich.github.io/react-use/?path=/story/sensors-usewindowscroll--docs)
