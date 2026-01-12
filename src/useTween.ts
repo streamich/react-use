@@ -1,5 +1,5 @@
 import { easing } from 'ts-easing';
-import useRaf from './useRaf';
+import useRaf from './useRaf.js';
 
 export type Easing = (t: number) => number;
 

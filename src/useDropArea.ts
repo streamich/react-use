@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import useMountedState from './useMountedState';
-import { noop } from './misc/util';
+import useMountedState from './useMountedState.js';
+import { noop } from './misc/util.js';
 
 export interface DropAreaState {
   over: boolean;

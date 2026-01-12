@@ -1,6 +1,6 @@
 import { DependencyList, useMemo } from 'react';
-import useEvent, { UseEventOptions, UseEventTarget } from './useEvent';
-import { noop } from './misc/util';
+import useEvent, { UseEventOptions, UseEventTarget } from './useEvent.js';
+import { noop } from './misc/util.js';
 
 export type KeyPredicate = (event: KeyboardEvent) => boolean;
 export type KeyFilter = null | undefined | string | ((event: KeyboardEvent) => boolean);

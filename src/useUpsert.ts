@@ -1,5 +1,5 @@
-import useList, { ListActions } from './useList';
-import { IHookStateInitAction } from './misc/hookState';
+import useList, { ListActions } from './useList.js';
+import { IHookStateInitAction } from './misc/hookState.js';
 
 export interface UpsertListActions<T> extends Omit<ListActions<T>, 'upsert'> {
   upsert: (newItem: T) => void;

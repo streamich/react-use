@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react';
-import useUpdate from './useUpdate';
+import useUpdate from './useUpdate.js';
 
 const useGetSetState = <T extends object>(
   initialState: T = {} as T

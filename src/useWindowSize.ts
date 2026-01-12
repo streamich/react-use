@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import useRafState from './useRafState';
-import { isBrowser, off, on } from './misc/util';
+import useRafState from './useRafState.js';
+import { isBrowser, off, on } from './misc/util.js';
 
 // Define the type for options that can be passed to the hook
 interface Options {

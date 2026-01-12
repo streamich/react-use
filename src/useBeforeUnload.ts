@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import { off, on } from './misc/util';
+import { off, on } from './misc/util.js';
 
 const useBeforeUnload = (enabled: boolean | (() => boolean) = true, message?: string) => {
   const handler = useCallback(
