@@ -56,6 +56,11 @@ export default function useAsyncFn<T extends FunctionReturningPromise>(
         return value;
       },
       (error) => {
+
+        if (process.env.NODE_ENV !== 'production') {
+          console.warn(error)
+        }
+
         isMounted() && callId === lastCallId.current && set({ error, loading: false });
 
         return error;
