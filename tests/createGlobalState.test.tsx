@@ -1,5 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks';
-import createGlobalState from '../src/factory/createGlobalState';
+import { act, renderHook, render } from '@testing-library/react';
+import React from 'react';
+import createGlobalState from 'src/hooks/createGlobalState';
 
 describe('useGlobalState', () => {
   it('should be defined', () => {
@@ -69,6 +70,23 @@ describe('useGlobalState', () => {
       // @ts-expect-error this case it checks correctly, hence the comment
       result1.current[1]((value) => 1);
     });
+  });
+
+  it('should set ref correctly', async () => {
+    const useGlobalValue = createGlobalState<Element>();
+    const CheckComponent = ({ stateValue1 }) => {
+      const [stateValue2] = useGlobalValue();
+      return <>{String(stateValue2 !== undefined && stateValue2 === stateValue1)}</>;
+    };
+
+    const WrapperComponent = () => {
+      const [stateValue, setStateValue] = useGlobalValue();
+      return <div ref={setStateValue}>
+        <CheckComponent stateValue1={stateValue} />
+      </div>;
+    };
+    const { findByText } = render(<WrapperComponent />);
+    expect(await findByText('true')).toBeDefined();
   });
 
   it('initializes with function', () => {
