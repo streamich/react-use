@@ -25,6 +25,21 @@ module.exports = async ({ config, mode }) => {
         },
       },
     },
+    // Transpile react-draggable to handle optional chaining syntax
+    {
+      test: /\.js$/,
+      include: /node_modules[\\/]react-draggable/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+          plugins: [
+            '@babel/plugin-transform-optional-chaining',
+            '@babel/plugin-transform-nullish-coalescing-operator',
+          ],
+        },
+      },
+    },
   );
 
   config.plugins.push(new ForkTsCheckerWebpackPlugin());

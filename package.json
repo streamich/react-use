@@ -24,8 +24,8 @@
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn build:cjs && yarn build:es",
     "clean": "rimraf lib storybook-static esm",
-    "storybook": "start-storybook -p 6008",
-    "storybook:build": "build-storybook",
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6008",
+    "storybook:build": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
     "storybook:upload": "gh-pages -d storybook-static --git \"$(which git)\"",
     "storybook:clean": "rimraf storybook-static",
     "release": "semantic-release"
@@ -69,6 +69,8 @@
   "devDependencies": {
     "@babel/core": "7.28.3",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.28.6",
+    "@babel/plugin-transform-optional-chaining": "^7.28.6",
     "@babel/preset-env": "7.28.3",
     "@babel/preset-react": "7.27.1",
     "@babel/preset-typescript": "7.27.1",
@@ -155,6 +157,9 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "resolutions": {
+    "react-draggable": "4.4.5"
   },
   "volta": {
     "node": "14.21.3",

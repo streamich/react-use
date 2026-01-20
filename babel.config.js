@@ -11,6 +11,10 @@ module.exports = {
     "@babel/preset-react",
     "@babel/preset-typescript"
   ],
+  plugins: [
+    "@babel/plugin-transform-optional-chaining",
+    "@babel/plugin-transform-nullish-coalescing-operator"
+  ],
   env: {
     test: {
       plugins: ['dynamic-import-node']
