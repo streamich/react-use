@@ -8,14 +8,21 @@ React side-effect hook that manages a single `localStorage` key.
 import { useLocalStorage } from 'react-use';
 
 const Demo = () => {
-  const [value, setValue, remove] = useLocalStorage('my-key', 'foo');
+  const [value, setValue] = useLocalStorage('my-key', 'foo');
 
   return (
     <div>
       <div>Value: {value}</div>
-      <button onClick={() => setValue('bar')}>bar</button>
-      <button onClick={() => setValue('baz')}>baz</button>
-      <button onClick={() => remove()}>Remove</button>
+      <button onClick={() => setValue(prev => {
+        // You can use the `prev` value here to determine the new value
+        if (prev === 'foo') {
+          return 'bar';
+        } else {
+          return 'foo';
+        }
+      })}>
+        Toggle Value
+      </button>
     </div>
   );
 };
