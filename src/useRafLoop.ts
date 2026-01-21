@@ -36,9 +36,8 @@ export default function useRafLoop(
           }
         },
         (): boolean => rafActivity.current, // isActive
-        // eslint-disable-next-line react-hooks/exhaustive-deps
       ] as RafLoopReturns,
-    []
+    [step]
   );
 
   useEffect(() => {
@@ -47,8 +46,7 @@ export default function useRafLoop(
     }
 
     return result[0];
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initiallyActive, result]);
 
   return result;
 }
