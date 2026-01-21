@@ -1,4 +1,4 @@
-# `useStateHistory`
+# `useStateWithHistory`
 
 Stores defined amount of previous state values and provides handles to travel through them.
 
