@@ -12,7 +12,7 @@ const Demo = ({url}) => {
   const [state, doFetch] = useAsyncFn(async () => {
     const response = await fetch(url);
     const result = await response.text();
-    return result
+    return result;
   }, [url]);
 
   return (
