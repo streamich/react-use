@@ -106,6 +106,7 @@ export { default as useVideo } from './useVideo';
 export { default as useStateValidator } from './useStateValidator';
 export { useScrollbarWidth } from './useScrollbarWidth';
 export { useMultiStateValidator } from './useMultiStateValidator';
+export { default as useWindowFocus } from './useWindowFocus';
 export { default as useWindowScroll } from './useWindowScroll';
 export { default as useWindowSize } from './useWindowSize';
 export { default as useMeasure } from './useMeasure';
