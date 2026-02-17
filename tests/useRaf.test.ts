@@ -121,7 +121,8 @@ it('should return always 1 after corresponding ms reached', () => {
 });
 
 it('should wait until delay reached to start calculating elapsed percentage', () => {
-  const { result } = renderHook(() => useRaf(undefined, 500));
+  const customMs = 2000;
+  const { result } = renderHook(() => useRaf(customMs, 500));
 
   expect(result.current).toBe(0);
 
@@ -137,8 +138,36 @@ it('should wait until delay reached to start calculating elapsed percentage', ()
 
   act(() => {
     jest.advanceTimersByTime(1); // fast-forward exactly to custom delay
+    // After delay is reached, onStart fires and begins the rAF loop.
+    // Step one animation frame to see elapsed progress.
+    spyDateNow.mockImplementationOnce(() => fixedStart + customMs * 0.5);
+    requestAnimationFrame.step();
   });
   expect(result.current).not.toBe(0);
+});
+
+it('should not immediately complete when ms exceeds setTimeout max (issue #779)', () => {
+  // setTimeout fires immediately if delay > 2^31-1 (2147483647ms).
+  // With the default ms=1e12, the stop timer must NOT fire immediately.
+  const { result } = renderHook(() => useRaf());
+
+  // After starting (run the delay timer), elapsed should still be 0
+  // because no animation frames have run yet.
+  act(() => {
+    jest.runOnlyPendingTimers(); // start after delay=0
+  });
+
+  // If the bug is present, the stop setTimeout(cb, 1e12) fires immediately
+  // and sets elapsed to 1. With the fix, it should still be 0.
+  expect(result.current).toBe(0);
+
+  // Stepping one frame with a small time elapsed should give a tiny fraction, not 1
+  act(() => {
+    spyDateNow.mockImplementationOnce(() => fixedStart + 100);
+    requestAnimationFrame.step();
+  });
+  expect(result.current).toBeGreaterThan(0);
+  expect(result.current).toBeLessThan(1);
 });
 
 it('should clear pending timers on unmount', () => {
