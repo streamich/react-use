@@ -20,6 +20,7 @@ const useScrolling = (ref: RefObject<HTMLElement>): boolean => {
 
       on(ref.current, 'scroll', handleScroll, false);
       return () => {
+        clearTimeout(scrollingTimeout);
         if (ref.current) {
           off(ref.current, 'scroll', handleScroll, false);
         }
