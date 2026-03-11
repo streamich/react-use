@@ -16,5 +16,5 @@ const Demo = () => {
 };
 
 storiesOf('Sensors/useScrollbarWidth', module)
-  .add('Docs', () => <ShowDocs md={require('../docs/useScroll.md')} />)
+  .add('Docs', () => <ShowDocs md={require('../docs/useScrollbarWidth.md')} />)
   .add('Demo', () => <Demo />);
