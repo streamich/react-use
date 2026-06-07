@@ -16,6 +16,9 @@ const useOrientation = (initialState: OrientationState = defaultState) => {
 
   useEffect(() => {
     const screen = window.screen;
+    const orientation = screen.orientation as
+      | (ScreenOrientation & EventTarget)
+      | undefined;
     let mounted = true;
 
     const onChange = () => {
@@ -36,12 +39,20 @@ const useOrientation = (initialState: OrientationState = defaultState) => {
       }
     };
 
-    on(window, 'orientationchange', onChange);
+    if (orientation?.addEventListener) {
+      on(orientation, 'change', onChange);
+    } else {
+      on(window, 'orientationchange', onChange);
+    }
     onChange();
 
     return () => {
       mounted = false;
-      off(window, 'orientationchange', onChange);
+      if (orientation?.removeEventListener) {
+        off(orientation, 'change', onChange);
+      } else {
+        off(window, 'orientationchange', onChange);
+      }
     };
   }, []);
 
