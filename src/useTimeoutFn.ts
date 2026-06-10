@@ -5,7 +5,8 @@ export type UseTimeoutFnReturn = [() => boolean | null, () => void, () => void];
 export default function useTimeoutFn(fn: Function, ms: number = 0): UseTimeoutFnReturn {
   const ready = useRef<boolean | null>(false);
   const timeout = useRef<ReturnType<typeof setTimeout>>();
-  const callback = useRef(fn);
+  const callback = useRef<Function>();
+  callback.current = fn;
 
   const isReady = useCallback(() => ready.current, []);
 
@@ -15,6 +16,8 @@ export default function useTimeoutFn(fn: Function, ms: number = 0): UseTimeoutFn
 
     timeout.current = setTimeout(() => {
       ready.current = true;
+      // We know better than TypeScript that the callback is always available here
+      // @ts-ignore
       callback.current();
     }, ms);
   }, [ms]);
@@ -23,11 +26,6 @@ export default function useTimeoutFn(fn: Function, ms: number = 0): UseTimeoutFn
     ready.current = null;
     timeout.current && clearTimeout(timeout.current);
   }, []);
-
-  // update ref when function changes
-  useEffect(() => {
-    callback.current = fn;
-  }, [fn]);
 
   // set on mount, clear on unmount
   useEffect(() => {
