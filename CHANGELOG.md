@@ -1,3 +1,10 @@
+## [17.6.1](https://github.com/streamich/react-use/compare/v17.6.0...v17.6.1) (2026-06-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency js-cookie to v3 ([c0349d9](https://github.com/streamich/react-use/commit/c0349d93be68db192f72293f8d9d0bbaf01d9829))
+
 # [17.6.0](https://github.com/streamich/react-use/compare/v17.5.1...v17.6.0) (2024-12-09)
 
 
