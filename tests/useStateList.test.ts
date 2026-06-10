@@ -20,11 +20,24 @@ describe('useStateList', () => {
       next: expect.any(Function),
       setStateAt: expect.any(Function),
       setState: expect.any(Function),
+      isFirst: expect.any(Boolean),
+      isLast: expect.any(Boolean),
     });
   });
 
   it('should return the first state on init', () => {
     expect(getHook().result.current.state).toBe('a');
+  });
+
+  it('should return isFirst on init', () => {
+    expect(getHook().result.current.isFirst).toBe(true);
+  });
+
+  it('should return isLast when on last state', () => {
+    const hook = getHook();
+    act(() => hook.result.current.setStateAt(2));
+
+    expect(hook.result.current.isLast).toBe(true);
   });
 
   describe('setState()', () => {

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useMouseWheel } from '../src';
 import ShowDocs from './util/ShowDocs';
 
-const Demo: React.FC<any> = () => {
+const Demo = () => {
   const mouseWheel = useMouseWheel();
   return (
     <>

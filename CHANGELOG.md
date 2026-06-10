@@ -1,3 +1,78 @@
+# [17.6.0](https://github.com/streamich/react-use/compare/v17.5.1...v17.6.0) (2024-12-09)
+
+
+### Features
+
+* add onChange callback to useWindowSize ([ea656f7](https://github.com/streamich/react-use/commit/ea656f7e751b8366360ce2aa8238057bbbc1251a))
+* add onChange callback to useWindowSize ([3eb531a](https://github.com/streamich/react-use/commit/3eb531ac9e9e04641df29aafbd2677869cdcb085))
+
+## [17.5.1](https://github.com/streamich/react-use/compare/v17.5.0...v17.5.1) (2024-07-20)
+
+
+### Bug Fixes
+
+* 🐛 bump nano-css dependency ([adfb337](https://github.com/streamich/react-use/commit/adfb337d5b11427798afc5a21c6ebdaa76212182))
+
+# [17.5.0](https://github.com/streamich/react-use/compare/v17.4.4...v17.5.0) (2024-01-22)
+
+
+### Features
+
+* add `isFirst` and `isLast` methods to `useStateList` hook ([ac64414](https://github.com/streamich/react-use/commit/ac64414bea4c8afadfb382da9fea44ee89b41e2d))
+* **pencil:** add isFirst and isLast return value to 'useStateList' ([75218e4](https://github.com/streamich/react-use/commit/75218e45dfdcdc6ea193e278cb97ceee98c00f1b))
+* **pencil:** fix with yarn lint:fix ([6a9dde5](https://github.com/streamich/react-use/commit/6a9dde596ae25c0dd2fa97b0cf354143fbc5b5ff))
+
+## [17.4.4](https://github.com/streamich/react-use/compare/v17.4.3...v17.4.4) (2024-01-21)
+
+
+### Bug Fixes
+
+* typo in example ([0534648](https://github.com/streamich/react-use/commit/05346481a15a321b13838eead0bda3024b0d163f))
+
+## [17.4.3](https://github.com/streamich/react-use/compare/v17.4.2...v17.4.3) (2024-01-13)
+
+
+### Bug Fixes
+
+* update useMedia hook to use recommended approach of MDN ([e7379f0](https://github.com/streamich/react-use/commit/e7379f088787cbf9274c1fc21d36061f04855e4c))
+
+## [17.4.2](https://github.com/streamich/react-use/compare/v17.4.1...v17.4.2) (2023-12-01)
+
+
+### Bug Fixes
+
+* correct peer dependencies ([d770587](https://github.com/streamich/react-use/commit/d77058729654397b68b251e8211bf0edc0b4ed50))
+
+## [17.4.1](https://github.com/streamich/react-use/compare/v17.4.0...v17.4.1) (2023-11-28)
+
+
+### Bug Fixes
+
+* 🐛 bump nano-css version ([812952b](https://github.com/streamich/react-use/commit/812952bb9ff004a844ec4285ad6c65d39597b11c))
+
+# [17.4.0](https://github.com/streamich/react-use/compare/v17.3.3...v17.4.0) (2022-05-20)
+
+
+### Features
+
+* add usePinchZoom sensor hook ([3e042cb](https://github.com/streamich/react-use/commit/3e042cb2f3022349a53199b5cc5c380e3ebd9975))
+
+## [17.3.3](https://github.com/streamich/react-use/compare/v17.3.2...v17.3.3) (2022-05-20)
+
+
+### Bug Fixes
+
+* bump React peer dependency version ([532e865](https://github.com/streamich/react-use/commit/532e8653a50d39dd439d9664d4813a1d7a5b4f3c))
+* resolve [#2319](https://github.com/streamich/react-use/issues/2319) ([4884b2c](https://github.com/streamich/react-use/commit/4884b2c74085e0841af7c36cca34e16d698d1b4c))
+* resolve @types/react@18 break change, React.FC ([20b7817](https://github.com/streamich/react-use/commit/20b78178d0033cc2e0c2a904e413b20ee864c816))
+
+## [17.3.2](https://github.com/streamich/react-use/compare/v17.3.1...v17.3.2) (2021-12-30)
+
+
+### Bug Fixes
+
+* useMedia SSR hydration bug with defaultState ([#2216](https://github.com/streamich/react-use/issues/2216)) ([5c01189](https://github.com/streamich/react-use/commit/5c0118941280bb265ca7813afb987f89c8c97a17))
+
 ## [17.3.1](https://github.com/streamich/react-use/compare/v17.3.0...v17.3.1) (2021-08-31)
 
 

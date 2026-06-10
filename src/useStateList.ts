@@ -10,6 +10,8 @@ export interface UseStateListReturn<T> {
   setState: (state: T) => void;
   next: () => void;
   prev: () => void;
+  isFirst: boolean;
+  isLast: boolean;
 }
 
 export default function useStateList<T>(stateSet: T[] = []): UseStateListReturn<T> {
@@ -68,6 +70,8 @@ export default function useStateList<T>(stateSet: T[] = []): UseStateListReturn<
   return {
     state: stateSet[index.current],
     currentIndex: index.current,
+    isFirst: index.current === 0,
+    isLast: index.current === stateSet.length - 1,
     ...actions,
   };
 }
