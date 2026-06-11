@@ -13,10 +13,10 @@ describe('useOrientation', () => {
   });
 
   beforeEach(() => {
-    (window.screen.orientation as object) = {
+    (window.screen.orientation as unknown) = Object.assign(new EventTarget(), {
       type: 'landscape-primary',
       angle: 0,
-    };
+    });
     (window.orientation as number) = 0;
   });
 
@@ -32,9 +32,15 @@ describe('useOrientation', () => {
     return renderHook(() => useOrientation(...args));
   }
 
-  function triggerOrientation(type: string, angle: number) {
+  function triggerScreenOrientation(type: string, angle: number) {
     (window.screen.orientation.type as string) = type;
     (window.screen.orientation.angle as number) = angle;
+
+    (window.screen.orientation as EventTarget).dispatchEvent(new Event('change'));
+  }
+
+  function triggerWindowOrientation(angle: number) {
+    (window.orientation as number) = angle;
 
     window.dispatchEvent(new Event('orientationchange'));
   }
@@ -55,10 +61,24 @@ describe('useOrientation', () => {
   });
 
   it('should re-render after orientation change on closest RAF', () => {
+    (window.screen.orientation as unknown) = undefined;
+
     const hook = getHook();
 
     act(() => {
-      triggerOrientation('portrait-secondary', 180);
+      triggerWindowOrientation(180);
+      requestAnimationFrame.step();
+    });
+
+    expect(hook.result.current.type).toBe('');
+    expect(hook.result.current.angle).toBe(180);
+  });
+
+  it('should re-render after screen.orientation change', () => {
+    const hook = getHook();
+
+    act(() => {
+      triggerScreenOrientation('portrait-secondary', 180);
       requestAnimationFrame.step();
     });
 
