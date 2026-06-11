@@ -19,13 +19,14 @@ const useLocalStorage = <T>(
   if (!isBrowser) {
     return [initialValue as T, noop, noop];
   }
+
   if (!key) {
     throw new Error('useLocalStorage key may not be falsy');
   }
 
   const deserializer = options
     ? options.raw
-      ? (value) => value
+      ? (value: string) => value
       : options.deserializer
     : JSON.parse;
 
@@ -79,7 +80,8 @@ const useLocalStorage = <T>(
         // localStorage can throw. Also JSON.stringify can throw.
       }
     },
-    [key, setState]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [key, setState, state]
   );
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
