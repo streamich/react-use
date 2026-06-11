@@ -13,26 +13,40 @@ export interface Actions<K> extends StableActions<K> {
 }
 
 const useSet = <K>(initialSet = new Set<K>()): [Set<K>, Actions<K>] => {
-  const [set, setSet] = useState(initialSet);
+  const [set, setSet] = useState(() => new Set(initialSet));
 
-  const stableActions = useMemo<StableActions<K>>(() => {
-    const add = (item: K) => setSet((prevSet) => new Set([...Array.from(prevSet), item]));
-    const remove = (item: K) =>
-      setSet((prevSet) => new Set(Array.from(prevSet).filter((i) => i !== item)));
-    const toggle = (item: K) =>
-      setSet((prevSet) =>
-        prevSet.has(item)
-          ? new Set(Array.from(prevSet).filter((i) => i !== item))
-          : new Set([...Array.from(prevSet), item])
-      );
+  const stableActions = useMemo<StableActions<K>>(
+    () => ({
+      add: (item: K) =>
+        setSet((prev) => {
+          if (prev.has(item)) return prev;
+          const next = new Set(prev);
+          next.add(item);
+          return next;
+        }),
+      remove: (item: K) =>
+        setSet((prev) => {
+          if (!prev.has(item)) return prev;
+          const next = new Set(prev);
+          next.delete(item);
+          return next;
+        }),
+      toggle: (item: K) =>
+        setSet((prev) => {
+          const next = new Set(prev);
+          prev.has(item) ? next.delete(item) : next.add(item);
+          return next;
+        }),
+      reset: () => setSet(new Set(initialSet)),
+      clear: () => setSet((prev) => (prev.size === 0 ? prev : new Set())),
+    }),
+    [initialSet]
+  );
 
-    return { add, remove, toggle, reset: () => setSet(initialSet), clear: () => setSet(new Set()) };
-  }, [setSet]);
+  const has = useCallback((item: K) => set.has(item), [set]);
 
-  const utils = {
-    has: useCallback((item) => set.has(item), [set]),
-    ...stableActions,
-  } as Actions<K>;
+  // Memoize the entire utils object to maintain stable reference
+  const utils = useMemo<Actions<K>>(() => ({ has, ...stableActions }), [has, stableActions]);
 
   return [set, utils];
 };

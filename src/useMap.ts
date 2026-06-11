@@ -12,34 +12,35 @@ export interface Actions<T extends object> extends StableActions<T> {
 }
 
 const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>] => {
-  const [map, set] = useState<T>(initialMap);
+  const [map, setMap] = useState<T>(() => ({ ...initialMap }));
 
   const stableActions = useMemo<StableActions<T>>(
     () => ({
-      set: (key, entry) => {
-        set((prevMap) => ({
-          ...prevMap,
-          [key]: entry,
-        }));
-      },
-      setAll: (newMap: T) => {
-        set(newMap);
-      },
-      remove: (key) => {
-        set((prevMap) => {
-          const { [key]: omit, ...rest } = prevMap;
+      set: <K extends keyof T>(key: K, value: T[K]) =>
+        setMap((prev) => {
+          // Use Object.is for correct NaN handling
+          if (Object.is(prev[key], value)) return prev;
+          return {
+            ...prev,
+            [key]: value,
+          };
+        }),
+      setAll: (newMap: T) => setMap(newMap),
+      remove: <K extends keyof T>(key: K) =>
+        setMap((prev) => {
+          if (!(key in prev)) return prev;
+          const { [key]: omit, ...rest } = prev;
           return rest as T;
-        });
-      },
-      reset: () => set(initialMap),
+        }),
+      reset: () => setMap({ ...initialMap }),
     }),
-    [set]
+    [initialMap]
   );
 
-  const utils = {
-    get: useCallback((key) => map[key], [map]),
-    ...stableActions,
-  } as Actions<T>;
+  const get = useCallback(<K extends keyof T>(key: K): T[K] => map[key], [map]);
+
+  // Memoize the entire utils object to maintain stable reference
+  const utils = useMemo<Actions<T>>(() => ({ get, ...stableActions }), [get, stableActions]);
 
   return [map, utils];
 };
