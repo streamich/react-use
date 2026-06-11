@@ -1,9 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
 import { isBrowser, off, on } from '../misc/util';
 
-const createBreakpoint =
-  (breakpoints: { [name: string]: number } = { laptopL: 1440, laptop: 1024, tablet: 768 }) =>
-  () => {
+export type BreakpointSelectors = { [name: string]: number };
+export const defaultBreakpoints = { laptopL: 1440, laptop: 1024, tablet: 768 };
+export type DefaultBreakpoints = typeof defaultBreakpoints;
+export type DefaultBreakpointKeys = keyof DefaultBreakpoints;
+
+function createBreakpoint(): () => DefaultBreakpointKeys;
+function createBreakpoint<T extends BreakpointSelectors>(breakpoints: T): () => keyof T;
+function createBreakpoint(breakpoints = defaultBreakpoints) {
+  const useBreakpoint = () => {
     const [screen, setScreen] = useState(isBrowser ? window.innerWidth : 0);
 
     useEffect(() => {
@@ -27,7 +33,11 @@ const createBreakpoint =
         return acc;
       }
     }, sortedBreakpoints[0][0]);
+
     return result;
   };
+
+  return useBreakpoint;
+}
 
 export default createBreakpoint;
