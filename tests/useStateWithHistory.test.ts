@@ -172,6 +172,12 @@ describe('useStateWithHistory', () => {
       });
       expect(hook.result.current[0][0]).toBe(1);
     });
+
+    it('should not contain function as initial state', () => {
+      let hook = getHook(() => 1, 3);
+
+      expect(hook.result.current[0][2].history[0]).toEqual(1);
+    });
   });
 
   describe('history.forward()', () => {
