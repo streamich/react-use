@@ -9,6 +9,17 @@
     <br />
     <br />
     <br />
+
+    What is React-use?
+React-use is a community-built toolbox of ready-made building blocks for React apps. Normally, React developers write small functions called hooks to handle things like saving data, tracking user actions, or responding to browser events. React-use gives you a huge collection of these hooks out of the box—so instead of reinventing the wheel, you can plug in reliable, reusable logic right away.
+With React-use, you can:
+- Save and load values from local storage without extra code
+- Detect when a user is online or offline
+- Handle button presses, mouse hovers, or key events easily
+- Manage timers, async calls, and other common patterns
+
+Think of it as a Swiss Army knife for React development: it saves time and makes your code cleaner and easier to maintain.
+
   </h1>
   <sup>
     <br />
