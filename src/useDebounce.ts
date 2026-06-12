@@ -2,9 +2,10 @@ import { DependencyList, useEffect } from 'react';
 import useTimeoutFn from './useTimeoutFn';
 
 export type UseDebounceReturn = [() => boolean | null, () => void];
+export type UseDebounceFn = () => void;
 
 export default function useDebounce(
-  fn: Function,
+  fn: UseDebounceFn,
   ms: number = 0,
   deps: DependencyList = []
 ): UseDebounceReturn {
