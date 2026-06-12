@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useReducer, useRef } from 'react';
 
 export interface StableActions<T extends object> {
   set: <K extends keyof T>(key: K, value: T[K]) => void;
@@ -11,37 +11,43 @@ export interface Actions<T extends object> extends StableActions<T> {
   get: <K extends keyof T>(key: K) => T[K];
 }
 
-const useMap = <T extends object = any>(initialMap: T = {} as T): [T, Actions<T>] => {
-  const [map, set] = useState<T>(initialMap);
+const useMap = <T extends Record<string, any> = Record<string, any>>(
+  initialMap: T = {} as T
+): [T, Actions<T>] => {
+  const initialRef = useRef<T>({ ...(initialMap as any) });
+  const ref = useRef<T>({ ...(initialMap as any) });
+  const [, force] = useReducer((c: number) => c + 1, 0);
 
-  const stableActions = useMemo<StableActions<T>>(
-    () => ({
-      set: (key, entry) => {
-        set((prevMap) => ({
-          ...prevMap,
-          [key]: entry,
-        }));
-      },
-      setAll: (newMap: T) => {
-        set(newMap);
-      },
-      remove: (key) => {
-        set((prevMap) => {
-          const { [key]: omit, ...rest } = prevMap;
-          return rest as T;
-        });
-      },
-      reset: () => set(initialMap),
-    }),
-    [set]
+  const setKey = useCallback(<K extends keyof T>(key: K, value: T[K]) => {
+    (ref.current as any)[key] = value;
+    force();
+  }, []);
+
+  const setAll = useCallback((newMap: T) => {
+    ref.current = { ...(newMap as any) };
+    force();
+  }, []);
+
+  const remove = useCallback(<K extends keyof T>(key: K) => {
+    if (key in ref.current) {
+      delete (ref.current as any)[key];
+      force();
+    }
+  }, []);
+
+  const reset = useCallback(() => {
+    ref.current = { ...(initialRef.current as any) };
+    force();
+  }, []);
+
+  const get = useCallback(<K extends keyof T>(key: K): T[K] => ref.current[key], []);
+
+  const utils = useMemo<Actions<T>>(
+    () => ({ set: setKey, setAll, remove, reset, get }),
+    [setKey, setAll, remove, reset, get]
   );
 
-  const utils = {
-    get: useCallback((key) => map[key], [map]),
-    ...stableActions,
-  } as Actions<T>;
-
-  return [map, utils];
+  return [ref.current, utils];
 };
 
 export default useMap;
