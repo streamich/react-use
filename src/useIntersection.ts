@@ -22,7 +22,7 @@ const useIntersection = (
       };
     }
     return () => {};
-  }, [ref.current, options.threshold, options.root, options.rootMargin]);
+  }, [ref.current, options.threshold.toString(), options.root, options.rootMargin]);
 
   return intersectionObserverEntry;
 };
