@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useCallback, useState, useRef, useLayoutEffect } from 'react';
-import { isBrowser, noop } from './misc/util';
+import { isBrowser, noop } from './misc/util.js';
 
 type parserOptions<T> =
   | {

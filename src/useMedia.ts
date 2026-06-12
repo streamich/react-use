@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { isBrowser } from './misc/util';
+import { isBrowser } from './misc/util.js';
 
 const getInitialState = (query: string, defaultState?: boolean) => {
   // Prevent a React hydration mismatch when a default value is provided by not defaulting to window.matchMedia(query).matches.

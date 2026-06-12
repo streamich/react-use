@@ -1,7 +1,7 @@
 import { CSSProperties, RefObject, useEffect, useRef } from 'react';
-import { isBrowser, noop, off, on } from './misc/util';
-import useMountedState from './useMountedState';
-import useSetState from './useSetState';
+import { isBrowser, noop, off, on } from './misc/util.js';
+import useMountedState from './useMountedState.js';
+import useSetState from './useSetState.js';
 
 export interface State {
   isSliding: boolean;

@@ -1,6 +1,6 @@
-import { Handler, KeyFilter } from './useKey';
-import useKeyPressDefault from './useKeyPress';
-import useUpdateEffect from './useUpdateEffect';
+import { Handler, KeyFilter } from './useKey.js';
+import useKeyPressDefault from './useKeyPress.js';
+import useUpdateEffect from './useUpdateEffect.js';
 
 const useKeyPressEvent = (
   key: string | KeyFilter,

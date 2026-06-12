@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { noop, off, on } from './misc/util';
+import { noop, off, on } from './misc/util.js';
 
 export interface DropAreaState {
   over: boolean;

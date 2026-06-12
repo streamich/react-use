@@ -1,7 +1,7 @@
 import { RefObject, useState } from 'react';
 import screenfull from 'screenfull';
-import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
-import { noop, off, on } from './misc/util';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect.js';
+import { noop, off, on } from './misc/util.js';
 
 export interface FullScreenOptions {
   video?: RefObject<
