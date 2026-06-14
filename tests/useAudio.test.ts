@@ -41,3 +41,25 @@ it('should init audio and utils', () => {
   controls.volume(0.5);
   expect(ref.current.volume).toBe(0.5);
 });
+
+it('should keep play lock across rerenders', () => {
+  const { result, rerender } = setUp();
+  const [, , controls, ref] = result.current;
+  const audio = document.createElement('audio');
+  const play = jest.fn(() => new Promise<void>(() => {}));
+  const pause = jest.fn();
+
+  Object.defineProperties(audio, {
+    play: { value: play },
+    pause: { value: pause },
+  });
+
+  ref.current = audio;
+  controls.play();
+
+  rerender();
+  result.current[2].pause();
+
+  expect(play).toHaveBeenCalledTimes(1);
+  expect(pause).not.toHaveBeenCalled();
+});

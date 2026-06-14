@@ -139,7 +139,7 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
     // if one tries to execute another `.play()` or `.pause()` while that
     // promise is resolving. So we prevent that with this lock.
     // See: https://bugs.chromium.org/p/chromium/issues/detail?id=593273
-    let lockPlay: boolean = false;
+    const lockPlay = useRef<boolean>(false);
 
     const controls = {
       play: () => {
@@ -148,14 +148,14 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
           return undefined;
         }
 
-        if (!lockPlay) {
+        if (!lockPlay.current) {
           const promise = el.play();
           const isPromise = typeof promise === 'object';
 
           if (isPromise) {
-            lockPlay = true;
+            lockPlay.current = true;
             const resetLock = () => {
-              lockPlay = false;
+              lockPlay.current = false;
             };
             promise.then(resetLock, resetLock);
           }
@@ -166,7 +166,7 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
       },
       pause: () => {
         const el = ref.current;
-        if (el && !lockPlay) {
+        if (el && !lockPlay.current) {
           return el.pause();
         }
       },
