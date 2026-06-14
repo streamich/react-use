@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback, useMemo } from 'react';
 import useSetState from '../useSetState';
 import parseTimeRanges from '../misc/parseTimeRanges';
 
@@ -54,6 +54,96 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
       playing: false,
     });
     const ref = useRef<T | null>(null);
+
+    // Some browsers return `Promise` on `.play()` and may throw errors
+    // if one tries to execute another `.play()` or `.pause()` while that
+    // promise is resolving. So we prevent that with this lock.
+    // See: https://bugs.chromium.org/p/chromium/issues/detail?id=593273
+    let lockPlayRef = useRef(false);
+
+    const playCallback = useCallback(() => {
+      const el = ref.current;
+      if (!el) {
+        return undefined;
+      }
+
+      if (!lockPlayRef.current) {
+        const promise = el.play();
+        const isPromise = typeof promise === 'object';
+
+        if (isPromise) {
+          lockPlayRef.current = true;
+          const resetLock = () => {
+            lockPlayRef.current = false;
+          };
+          promise.then(resetLock, resetLock);
+        }
+
+        return promise;
+      }
+      return undefined;
+    }, [ref]);
+
+    const pauseCallback = useCallback(() => {
+      const el = ref.current;
+      if (el && !lockPlayRef.current) {
+        return el.pause();
+      }
+    }, [ref]);
+
+    const duration = state.duration;
+    const seekCallback = useCallback(
+      (time: number) => {
+        const el = ref.current;
+        if (!el || duration === undefined) {
+          return;
+        }
+        time = Math.min(duration, Math.max(0, time));
+        el.currentTime = time;
+      },
+      [ref, duration]
+    );
+
+    const volumeCallback = useCallback(
+      (volume: number) => {
+        const el = ref.current;
+        if (!el) {
+          return;
+        }
+        volume = Math.min(1, Math.max(0, volume));
+        el.volume = volume;
+        setState({ volume });
+      },
+      [ref, setState]
+    );
+
+    const muteCallback = useCallback(() => {
+      const el = ref.current;
+      if (!el) {
+        return;
+      }
+      el.muted = true;
+    }, [ref]);
+
+    const unmuteCallback = useCallback(() => {
+      const el = ref.current;
+      if (!el) {
+        return;
+      }
+      el.muted = false;
+    }, [ref]);
+
+    const controls = useMemo(
+      () => ({
+        play: playCallback,
+        pause: pauseCallback,
+        seek: seekCallback,
+        volume: volumeCallback,
+        mute: muteCallback,
+        unmute: unmuteCallback,
+      }),
+      [playCallback, pauseCallback, seekCallback, volumeCallback, muteCallback, unmuteCallback]
+    );
 
     const wrapEvent = (userEvent, proxyEvent?) => {
       return (event) => {
@@ -134,74 +224,6 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
         onProgress: wrapEvent(props.onProgress, onProgress),
       } as any); // TODO: fix this typing.
     }
-
-    // Some browsers return `Promise` on `.play()` and may throw errors
-    // if one tries to execute another `.play()` or `.pause()` while that
-    // promise is resolving. So we prevent that with this lock.
-    // See: https://bugs.chromium.org/p/chromium/issues/detail?id=593273
-    let lockPlay: boolean = false;
-
-    const controls = {
-      play: () => {
-        const el = ref.current;
-        if (!el) {
-          return undefined;
-        }
-
-        if (!lockPlay) {
-          const promise = el.play();
-          const isPromise = typeof promise === 'object';
-
-          if (isPromise) {
-            lockPlay = true;
-            const resetLock = () => {
-              lockPlay = false;
-            };
-            promise.then(resetLock, resetLock);
-          }
-
-          return promise;
-        }
-        return undefined;
-      },
-      pause: () => {
-        const el = ref.current;
-        if (el && !lockPlay) {
-          return el.pause();
-        }
-      },
-      seek: (time: number) => {
-        const el = ref.current;
-        if (!el || state.duration === undefined) {
-          return;
-        }
-        time = Math.min(state.duration, Math.max(0, time));
-        el.currentTime = time;
-      },
-      volume: (volume: number) => {
-        const el = ref.current;
-        if (!el) {
-          return;
-        }
-        volume = Math.min(1, Math.max(0, volume));
-        el.volume = volume;
-        setState({ volume });
-      },
-      mute: () => {
-        const el = ref.current;
-        if (!el) {
-          return;
-        }
-        el.muted = true;
-      },
-      unmute: () => {
-        const el = ref.current;
-        if (!el) {
-          return;
-        }
-        el.muted = false;
-      },
-    };
 
     useEffect(() => {
       const el = ref.current!;
