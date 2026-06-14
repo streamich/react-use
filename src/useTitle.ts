@@ -14,14 +14,15 @@ function useTitle(title: string, options: UseTitleOptions = DEFAULT_USE_TITLE_OP
   if (document.title !== title) document.title = title;
 
   useEffect(() => {
+    const curTitleRef = prevTitleRef.current;
     if (options && options.restoreOnUnmount) {
       return () => {
-        document.title = prevTitleRef.current;
+        document.title = curTitleRef;
       };
     } else {
       return;
     }
-  }, []);
+  }, [options]);
 }
 
 export default typeof document !== 'undefined' ? useTitle : (_title: string) => {};
