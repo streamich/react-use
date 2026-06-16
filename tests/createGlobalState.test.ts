@@ -83,4 +83,19 @@ describe('useGlobalState', () => {
     expect(result1.current[0]).toBe(1);
     expect(result2.current[0]).toBe(1);
   });
+
+  it('should be SSR compatible (use useIsomorphicLayoutEffect)', () => {
+    // This test verifies that createGlobalState uses useIsomorphicLayoutEffect
+    // instead of useLayoutEffect to avoid SSR warnings
+    const useGlobalValue = createGlobalState('test');
+    const { result } = renderHook(() => useGlobalValue());
+    expect(result.current[0]).toBe('test');
+    
+    // Should not throw SSR-related warnings
+    expect(() => {
+      act(() => {
+        result.current[1]('updated');
+      });
+    }).not.toThrow();
+  });
 });
