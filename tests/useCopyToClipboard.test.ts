@@ -41,6 +41,23 @@ describe('useCopyToClipboard', () => {
     expect(state.error).not.toBeDefined();
   });
 
+  it('should reset state if reset function called', () => {
+    const testValue = 'test';
+    let [state, copyToClipboard, reset] = hook.result.current;
+    act(() => copyToClipboard(testValue));
+
+    [state, copyToClipboard, reset] = hook.result.current;
+    expect(writeText).toBeCalled();
+    expect(state.value).toBe(testValue);
+
+    act(() => reset());
+    [state, copyToClipboard, reset] = hook.result.current;
+
+    expect(state.value).not.toBeDefined();
+    expect(state.noUserInteraction).toBe(true);
+    expect(state.error).not.toBeDefined();
+  });
+
   it('should not call writeText if passed an invalid input and set state', () => {
     let testValue = {}; // invalid value
     let [state, copyToClipboard] = hook.result.current;
