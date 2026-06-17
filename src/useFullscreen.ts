@@ -11,7 +11,7 @@ export interface FullScreenOptions {
 }
 
 const useFullscreen = (
-  ref: RefObject<Element>,
+  ref: RefObject<HTMLElement | null>,
   enabled: boolean,
   options: FullScreenOptions = {}
 ): boolean => {
@@ -48,7 +48,7 @@ const useFullscreen = (
         screenfull.request(ref.current);
         setIsFullscreen(true);
       } catch (error) {
-        onClose(error);
+        onClose(error as Error);
         setIsFullscreen(false);
       }
       screenfull.on('change', onChange);
