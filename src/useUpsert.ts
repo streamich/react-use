@@ -12,6 +12,13 @@ export default function useUpsert<T>(
   predicate: (a: T, b: T) => boolean,
   initialList: IHookStateInitAction<T[]> = []
 ): [T[], UpsertListActions<T>] {
+  if (process.env.NODE_ENV !== 'production') {
+    console.warn(
+      'useUpsert is deprecated and will be removed in a future version. ' +
+      'Use useList hook\'s upsert action instead. ' +
+      'See: https://github.com/streamich/react-use/blob/master/docs/useUpsert.md'
+    );
+  }
   const [list, listActions] = useList(initialList);
 
   return [
