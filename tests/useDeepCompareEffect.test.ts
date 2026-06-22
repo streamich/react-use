@@ -39,3 +39,29 @@ it('should run clean-up provided on unmount', () => {
   unmount();
   expect(mockEffectCleanup).toHaveBeenCalledTimes(1);
 });
+
+it('should not throw when comparing null-prototype objects', () => {
+  const mockEffect = jest.fn();
+  const createNullProtoDep = (value: number) => {
+    const dep = Object.create(null);
+    dep.value = value;
+    return dep;
+  };
+
+  let dep = createNullProtoDep(1);
+  const { rerender, result } = renderHook(() => useDeepCompareEffect(mockEffect, [dep]));
+  expect(result.error).toBeUndefined();
+  expect(mockEffect).toHaveBeenCalledTimes(1);
+
+  // Same shape -> comparison must not throw and the effect must not re-run.
+  dep = createNullProtoDep(1);
+  rerender();
+  expect(result.error).toBeUndefined();
+  expect(mockEffect).toHaveBeenCalledTimes(1);
+
+  // Different value -> comparison must not throw and the effect should re-run.
+  dep = createNullProtoDep(2);
+  rerender();
+  expect(result.error).toBeUndefined();
+  expect(mockEffect).toHaveBeenCalledTimes(2);
+});
