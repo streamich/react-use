@@ -36,13 +36,11 @@ const useGeolocation = (options?: PositionOptions): GeoLocationSensorState => {
     latitude: null,
     longitude: null,
     speed: null,
-    timestamp: Date.now(),
+    timestamp: null,
   });
-  let mounted = true;
-  let watchId: any;
 
-  const onEvent = (event: any) => {
-    if (mounted) {
+  useEffect(() => {
+    const onEvent = (event: any) => {
       setState({
         loading: false,
         accuracy: event.coords.accuracy,
@@ -54,17 +52,14 @@ const useGeolocation = (options?: PositionOptions): GeoLocationSensorState => {
         speed: event.coords.speed,
         timestamp: event.timestamp,
       });
-    }
-  };
-  const onEventError = (error: IGeolocationPositionError) =>
-    mounted && setState((oldState) => ({ ...oldState, loading: false, error }));
+    };
+    const onEventError = (error: IGeolocationPositionError) =>
+      setState((oldState) => ({ ...oldState, loading: false, error }));
 
-  useEffect(() => {
     navigator.geolocation.getCurrentPosition(onEvent, onEventError, options);
-    watchId = navigator.geolocation.watchPosition(onEvent, onEventError, options);
+    let watchId = navigator.geolocation.watchPosition(onEvent, onEventError, options);
 
     return () => {
-      mounted = false;
       navigator.geolocation.clearWatch(watchId);
     };
   }, []);
