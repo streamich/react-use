@@ -29,11 +29,11 @@ const Demo = () => {
 ```ts
 const [state, setState] = useMediatedState<S=any>(
   mediator: StateMediator<S>,
-  initialState?: S
+  initialState?: S | (() => S)
 );
 ```
 
 > Initial state will be set as-is.
 
 In case mediator expects 2 arguments it will receive the `setState` function as second argument, it is useful for async mediators.  
->This hook will not cancel previous mediation when new one been invoked, you have to handle it yourself._
+>This hook will not cancel previous mediation when new one been invoked, you have to handle it yourself.
