@@ -9,6 +9,7 @@ export interface State {
 }
 
 export interface Options {
+  initialValue?: number;
   onScrub: (value: number) => void;
   onScrubStart: () => void;
   onScrubStop: (value: number) => void;
@@ -24,7 +25,7 @@ const useSlider = (ref: RefObject<HTMLElement>, options: Partial<Options> = {}):
   const frame = useRef(0);
   const [state, setState] = useSetState<State>({
     isSliding: false,
-    value: 0,
+    value: options.initialValue ?? 0,
   });
 
   valueRef.current = state.value;
