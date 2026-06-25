@@ -30,14 +30,14 @@ export interface ScratchSensorState {
 
 const useScratch = (
   params: ScratchSensorParams = {}
-): [(el: HTMLElement | null) => void, ScratchSensorState] => {
+): [(el: HTMLElement | SVGElement | null) => void, ScratchSensorState] => {
   const { disabled } = params;
   const paramsRef = useLatest(params);
   const [state, setState] = useState<ScratchSensorState>({ isScratching: false });
   const refState = useRef<ScratchSensorState>(state);
   const refScratching = useRef<boolean>(false);
   const refAnimationFrame = useRef<any>(null);
-  const [el, setEl] = useState<HTMLElement | null>(null);
+  const [el, setEl] = useState<HTMLElement | SVGElement | null>(null);
   useEffect(() => {
     if (disabled) return;
     if (!el) return;
@@ -93,9 +93,13 @@ const useScratch = (
 
     const startScratching = (docX, docY) => {
       if (!refScratching.current) return;
-      const { left, top } = el.getBoundingClientRect();
+      const { left, top, bottom, right } = el.getBoundingClientRect();
       const elX = left + window.scrollX;
       const elY = top + window.scrollY;
+      // Use offsetWidth/offsetHeight when available, fall back to
+      // approximating from boundingClientRect otherwise.
+      const elW = (el as HTMLElement)?.offsetWidth ?? right - left;
+      const elH = (el as HTMLElement)?.offsetHeight ?? bottom - top;
       const x = docX - elX;
       const y = docY - elY;
       const time = Date.now();
@@ -109,8 +113,8 @@ const useScratch = (
         y,
         dx: 0,
         dy: 0,
-        elH: el.offsetHeight,
-        elW: el.offsetWidth,
+        elH,
+        elW,
         elX,
         elY,
       };
@@ -159,8 +163,8 @@ const useScratch = (
 export interface ScratchSensorProps extends ScratchSensorParams {
   children: (
     state: ScratchSensorState,
-    ref: (el: HTMLElement | null) => void
-  ) => React.ReactElement<any>;
+    ref: (el: HTMLElement | SVGElement | null) => void
+  ) => React.ReactElement;
 }
 
 export const ScratchSensor: FC<ScratchSensorProps> = (props) => {
