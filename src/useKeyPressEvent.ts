@@ -1,21 +1,13 @@
-import { Handler, KeyFilter } from './useKey';
-import useKeyPressDefault from './useKeyPress';
-import useUpdateEffect from './useUpdateEffect';
+import useKeyDefault, { Handler, KeyFilter } from './useKey';
 
 const useKeyPressEvent = (
-  key: string | KeyFilter,
+  key: KeyFilter,
   keydown?: Handler | null | undefined,
   keyup?: Handler | null | undefined,
-  useKeyPress = useKeyPressDefault
+  useKey = useKeyDefault
 ) => {
-  const [pressed, event] = useKeyPress(key);
-  useUpdateEffect(() => {
-    if (!pressed && keyup) {
-      keyup(event!);
-    } else if (pressed && keydown) {
-      keydown(event!);
-    }
-  }, [pressed]);
+  useKey(key, (event) => keydown?.(event), { event: 'keydown' });
+  useKey(key, (event) => keyup?.(event), { event: 'keyup' });
 };
 
 export default useKeyPressEvent;
