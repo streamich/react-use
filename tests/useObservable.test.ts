@@ -3,12 +3,19 @@ import { Subject } from 'rxjs';
 import * as useIsomorphicLayoutEffect from '../src/useIsomorphicLayoutEffect';
 import useObservable, { Observable } from '../src/useObservable';
 
-const setUp = (observable: Observable<any>, initialValue?: any) =>
+const setUp = (observable: Observable<any> | (() => Observable<any>), initialValue?: any) =>
   renderHook(() => useObservable(observable, initialValue));
 
 it('should init to initial value provided', () => {
   const subject$ = new Subject();
   const { result } = setUp(subject$, 123);
+
+  expect(result.current).toBe(123);
+});
+
+it('should init to initial value provided, passing function', () => {
+  const subject$ = new Subject();
+  const { result } = setUp(() => subject$, 123);
 
   expect(result.current).toBe(123);
 });
@@ -53,6 +60,26 @@ it('should subscribe to observable only once', () => {
   expect(spy).not.toHaveBeenCalled();
 
   setUp(subject$, 123);
+
+  expect(spy).toHaveBeenCalledTimes(1);
+
+  act(() => {
+    subject$.next('a');
+  });
+
+  act(() => {
+    subject$.next('b');
+  });
+
+  expect(spy).toHaveBeenCalledTimes(1);
+});
+
+it('should subscribe to observable only once, passing function', () => {
+  const subject$ = new Subject();
+  const spy = jest.spyOn(subject$, 'subscribe');
+  expect(spy).not.toHaveBeenCalled();
+
+  setUp(() => subject$, 123);
 
   expect(spy).toHaveBeenCalledTimes(1);
 
