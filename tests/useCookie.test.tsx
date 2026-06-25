@@ -60,7 +60,7 @@ it('should delete the cookie on call to deleteCookie', () => {
 
   expect(result.current[0]).toBeNull();
   expect(spy).toHaveBeenCalledTimes(1);
-  expect(spy).toHaveBeenLastCalledWith(cookieName);
+  expect(spy).toHaveBeenLastCalledWith(cookieName, undefined);
 
   // cleanup
   spy.mockRestore();

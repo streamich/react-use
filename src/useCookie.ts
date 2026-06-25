@@ -3,7 +3,11 @@ import Cookies from 'js-cookie';
 
 const useCookie = (
   cookieName: string
-): [string | null, (newValue: string, options?: Cookies.CookieAttributes) => void, () => void] => {
+): [
+  string | null,
+  (newValue: string, options?: Cookies.CookieAttributes) => void,
+  (options?: Cookies.CookieAttributes) => void
+] => {
   const [value, setValue] = useState<string | null>(() => Cookies.get(cookieName) || null);
 
   const updateCookie = useCallback(
@@ -14,10 +18,13 @@ const useCookie = (
     [cookieName]
   );
 
-  const deleteCookie = useCallback(() => {
-    Cookies.remove(cookieName);
-    setValue(null);
-  }, [cookieName]);
+  const deleteCookie = useCallback(
+    (options?: Cookies.CookieAttributes) => {
+      Cookies.remove(cookieName, options);
+      setValue(null);
+    },
+    [cookieName]
+  );
 
   return [value, updateCookie, deleteCookie];
 };
