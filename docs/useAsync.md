@@ -1,7 +1,9 @@
 # `useAsync`
 
 React hook that resolves an `async` function or a function that returns
-a promise;
+a promise. 
+
+If the function returns a value synchronously, `useAsync` will also return the value synchronously.
 
 ## Usage
 
