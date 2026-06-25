@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useCallback, useState, useRef, useLayoutEffect } from 'react';
 import { isBrowser, noop } from './misc/util';
+import useLatest from './useLatest';
 
 type parserOptions<T> =
   | {
@@ -51,6 +52,8 @@ const useLocalStorage = <T>(
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [state, setState] = useState<T | undefined>(() => initializer.current(key));
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const latest = useLatest(state);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useLayoutEffect(() => setState(initializer.current(key)), [key]);
@@ -60,7 +63,7 @@ const useLocalStorage = <T>(
     (valOrFunc) => {
       try {
         const newState =
-          typeof valOrFunc === 'function' ? (valOrFunc as Function)(state) : valOrFunc;
+          typeof valOrFunc === 'function' ? (valOrFunc as Function)(latest.current) : valOrFunc;
         if (typeof newState === 'undefined') return;
         let value: string;
 
