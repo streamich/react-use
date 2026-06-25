@@ -3,6 +3,7 @@
 React animation hook that forces component to re-render on each `requestAnimationFrame`,
 returns percentage of time elapsed.
 
+See `useRafEffect` for a comparison of the different `rAF` hooks.
 
 ## Usage
 
