@@ -1,6 +1,6 @@
 # `useGetSetState`
 
-A mix of `useGetSet` and `useGetSetState`.
+A mix of `useGetSet` and `useSetState`.
 
 
 ## Usage
