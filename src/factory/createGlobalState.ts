@@ -35,6 +35,7 @@ export function createGlobalState<S>(initialState?: S) {
     useIsomorphicLayoutEffect(() => {
       if (!store.setters.includes(stateSetter)) {
         store.setters.push(stateSetter);
+        storeSetter(store.state);
       }
     });
 
