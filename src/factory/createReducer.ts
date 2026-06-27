@@ -1,7 +1,7 @@
 import { MutableRefObject, useCallback, useRef, useState } from 'react';
 import useUpdateEffect from '../useUpdateEffect';
 
-type Dispatch<Action> = (action: Action) => void;
+type Dispatch<Action> = (action: Action) => Action;
 
 interface Store<Action, State> {
   getState: () => State;
