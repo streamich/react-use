@@ -1,5 +1,9 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useHash } from '../src/useHash';
+import { isServer } from '../src/misc/isServer';
+
+jest.mock('../src/misc/isServer');
+const mockIsServer = isServer as jest.MockedFunction<typeof isServer>;
 
 (global as any).window = Object.create(window);
 let mockHash = '#';
@@ -18,7 +22,18 @@ Object.defineProperty(window, 'location', {
 });
 
 beforeEach(() => {
+  mockIsServer.mockReturnValue(false);
   window.location.hash = '#';
+});
+
+test('returns an empty hash when rendered on the server', () => {
+  mockIsServer.mockReturnValue(true);
+  window.location.hash = '#abc';
+
+  const { result } = renderHook(() => useHash());
+
+  const hash = result.current[0];
+  expect(hash).toBe('');
 });
 
 test('returns current url hash', () => {
