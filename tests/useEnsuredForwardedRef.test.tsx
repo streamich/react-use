@@ -72,3 +72,24 @@ test('should return a valid ref when using the wrapper function style', () => {
   expect(initialRef.current).toBeTruthy();
   expect(initialRef.current?.id).toBe('test_id');
 });
+
+test('should call callback refs when using the wrapper function style', () => {
+  const callbackRef = jest.fn();
+
+  const WrappedComponent = ensuredForwardRef<HTMLDivElement>((_props, ref) => {
+    return <div id="test_id" ref={ref} />;
+  });
+
+  TestUtils.act(() => {
+    ReactDOM.render(<WrappedComponent ref={callbackRef} />, container);
+  });
+
+  expect(callbackRef).toHaveBeenLastCalledWith(expect.any(HTMLDivElement));
+  expect(callbackRef.mock.calls[0][0].id).toBe('test_id');
+
+  TestUtils.act(() => {
+    ReactDOM.unmountComponentAtNode(container);
+  });
+
+  expect(callbackRef).toHaveBeenLastCalledWith(null);
+});
