@@ -181,3 +181,79 @@ it('calls .disconnect() on ResizeObserver when component unmounts', () => {
 
   expect(disconnect).toHaveBeenCalledTimes(1);
 });
+
+it('tracks rectangle of an element passed via options.ref', () => {
+  let listener: ((rect: any) => void) | undefined = undefined;
+  const observed: Element[] = [];
+  (window as any).ResizeObserver = class ResizeObserver {
+    constructor(ls) {
+      listener = ls;
+    }
+    observe(el: Element) {
+      observed.push(el);
+    }
+    disconnect() {}
+  };
+
+  const div = document.createElement('div');
+  const externalRef = { current: div as Element | null };
+
+  const { result } = renderHook(() => useMeasure({ ref: externalRef }));
+
+  expect(observed).toContain(div);
+  expect(result.current[1]).toMatchObject({ width: 0, height: 0 });
+
+  act(() => {
+    listener!([
+      {
+        contentRect: {
+          x: 3,
+          y: 4,
+          width: 300,
+          height: 150,
+          top: 30,
+          bottom: 40,
+          left: 50,
+          right: 60,
+        },
+      },
+    ]);
+  });
+
+  expect(result.current[1]).toMatchObject({
+    x: 3,
+    y: 4,
+    width: 300,
+    height: 150,
+    top: 30,
+    bottom: 40,
+    left: 50,
+    right: 60,
+  });
+});
+
+it('observes a new element when options.ref.current changes', () => {
+  const observed: Element[] = [];
+  (window as any).ResizeObserver = class ResizeObserver {
+    constructor() {}
+    observe(el: Element) {
+      observed.push(el);
+    }
+    disconnect() {}
+  };
+
+  const divA = document.createElement('div');
+  const divB = document.createElement('div');
+  const externalRef = { current: divA as Element | null };
+
+  const { rerender } = renderHook(({ ref }) => useMeasure({ ref }), {
+    initialProps: { ref: externalRef },
+  });
+
+  expect(observed).toEqual([divA]);
+
+  externalRef.current = divB;
+  rerender({ ref: externalRef });
+
+  expect(observed).toEqual([divA, divB]);
+});
