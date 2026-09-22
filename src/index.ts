@@ -2,6 +2,7 @@ export { default as createMemo } from './factory/createMemo';
 export { default as createReducerContext } from './factory/createReducerContext';
 export { default as createReducer } from './factory/createReducer';
 export { default as createStateContext } from './factory/createStateContext';
+export { default as useAllSearchParam } from './useAllSearchParam';
 export { default as useAsync } from './useAsync';
 export { default as useAsyncFn } from './useAsyncFn';
 export { default as useAsyncRetry } from './useAsyncRetry';
