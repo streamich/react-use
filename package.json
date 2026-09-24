@@ -63,8 +63,14 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
+    "@types/react": "*",
     "react": "*",
     "react-dom": "*"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@babel/core": "7.28.3",
