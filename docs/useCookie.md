@@ -3,6 +3,9 @@
 React hook that returns the current value of a `cookie`, a callback to update the `cookie`
 and a callback to delete the `cookie.`
 
+When `cookieName` changes, the returned value updates to the new cookie's value, or `null`
+if it does not exist. The update and delete callbacks also operate on the new cookie.
+
 ## Usage
 
 ```jsx
