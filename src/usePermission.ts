@@ -42,6 +42,9 @@ const usePermission = (permissionDesc: IPermissionDescriptor): IState => {
     navigator.permissions
       .query(permissionDesc)
       .then((status) => {
+        if (!mounted) {
+          return;
+        }
         permissionStatus = status;
         on(permissionStatus, 'change', onChange);
         onChange();
