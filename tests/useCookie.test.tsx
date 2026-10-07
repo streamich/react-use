@@ -1,8 +1,35 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import Cookies from 'js-cookie';
-import { useCookie } from '../src';
+import useCookie from '../src/useCookie';
 
 const setup = (cookieName: string) => renderHook(() => useCookie(cookieName));
+
+it('should preserve an existing cookie with an empty value', () => {
+  const cookieName = 'empty-cookie';
+  Cookies.set(cookieName, '');
+
+  const { result, unmount } = setup(cookieName);
+
+  expect(result.current[0]).toBe('');
+  unmount();
+  Cookies.remove(cookieName);
+});
+
+it('should preserve an empty value after updating and remounting', () => {
+  const cookieName = 'empty-updated-cookie';
+  const { result, unmount } = setup(cookieName);
+
+  act(() => {
+    result.current[1]('');
+  });
+  expect(result.current[0]).toBe('');
+  unmount();
+
+  const remounted = setup(cookieName);
+  expect(remounted.result.current[0]).toBe('');
+  remounted.unmount();
+  Cookies.remove(cookieName);
+});
 
 it('should have initial value of null if no cookie exists', () => {
   const { result } = setup('some-cookie');

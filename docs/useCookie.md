@@ -34,6 +34,9 @@ const Demo = () => {
 
 ## Reference
 
+The returned value is `null` when the cookie does not exist. An existing cookie with
+an empty value is returned as an empty string (`''`).
+
 ```ts
 const [value, updateCookie, deleteCookie] = useCookie(cookieName: string);
 ```
