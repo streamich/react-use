@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 const useCookie = (
   cookieName: string
 ): [string | null, (newValue: string, options?: Cookies.CookieAttributes) => void, () => void] => {
-  const [value, setValue] = useState<string | null>(() => Cookies.get(cookieName) || null);
+  const [value, setValue] = useState<string | null>(() => Cookies.get(cookieName) ?? null);
 
   const updateCookie = useCallback(
     (newValue: string, options?: Cookies.CookieAttributes) => {
