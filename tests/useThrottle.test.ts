@@ -1,4 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
+import * as useUnmountModule from '../src/useUnmount';
 import useThrottle from '../src/useThrottle';
 
 describe('useThrottle', () => {
@@ -61,6 +62,43 @@ describe('useThrottle', () => {
     expect(hook.result.current).toBe(0);
     jest.advanceTimersByTime(100);
     expect(hook.result.current).toBe(0);
+  });
+
+  it('resumes updates after a StrictMode-like effect cleanup', () => {
+    // React 17 is used by this test suite, so manually replay the cleanup
+    // that React 18 StrictMode invokes before restarting mounted effects.
+    const originalUseUnmount = useUnmountModule.default;
+    let replayCleanup: (() => any) | undefined;
+    const spy = jest.spyOn(useUnmountModule, 'default').mockImplementation((fn) => {
+      replayCleanup = fn;
+      originalUseUnmount(fn);
+    });
+
+    try {
+      const hook = renderHook((value) => useThrottle(value, 100), { initialProps: 0 });
+      expect(jest.getTimerCount()).toBe(1);
+
+      act(() => {
+        if (!replayCleanup) {
+          throw new Error('Unmount cleanup was not registered');
+        }
+        replayCleanup();
+      });
+      expect(jest.getTimerCount()).toBe(0);
+
+      hook.rerender(1);
+      expect(hook.result.current).toBe(1);
+      expect(jest.getTimerCount()).toBe(1);
+
+      hook.rerender(2);
+      act(() => {
+        jest.advanceTimersByTime(100);
+      });
+      expect(hook.result.current).toBe(2);
+      hook.unmount();
+    } finally {
+      spy.mockRestore();
+    }
   });
 
   it('should cancel timeout on unmount', () => {
