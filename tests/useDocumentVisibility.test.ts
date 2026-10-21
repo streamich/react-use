@@ -1,14 +1,20 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import useDocumentVisibility from '../src/useDocumentVisibility';
 
-describe('useDocumentVisibility', () => {
-  const originalVisibilityState = document.visibilityState;
+type VisibilityState = 'visible' | 'hidden';
 
+const setVisibilityState = (state: VisibilityState) => {
+  Object.defineProperty(document, 'visibilityState', {
+    configurable: true,
+    value: state,
+  });
+  document.dispatchEvent(new Event('visibilitychange'));
+};
+
+describe('useDocumentVisibility', () => {
   afterEach(() => {
-    Object.defineProperty(document, 'visibilityState', {
-      configurable: true,
-      value: originalVisibilityState,
-    });
+    // Remove the own-property override so the native getter is used again
+    delete (document as { visibilityState?: VisibilityState }).visibilityState;
   });
 
   it('should be defined', () => {
@@ -34,37 +40,35 @@ describe('useDocumentVisibility', () => {
   });
 
   it('should return true when document becomes visible', () => {
-    const { result } = renderHook(() => useDocumentVisibility(true));
+    const { result } = renderHook(() => useDocumentVisibility(false));
 
     act(() => {
-      Object.defineProperty(document, 'visibilityState', {
-        configurable: true,
-        value: 'visible',
-      });
-      document.dispatchEvent(new Event('visibilitychange'));
+      setVisibilityState('visible');
     });
 
     expect(result.current).toBe(true);
   });
 
   it('should return false when document becomes hidden', () => {
+    const { result } = renderHook(() => useDocumentVisibility(true));
+
+    act(() => {
+      setVisibilityState('hidden');
+    });
+
+    expect(result.current).toBe(false);
+  });
+
+  it('should track multiple visibility changes', () => {
     const { result } = renderHook(() => useDocumentVisibility());
 
     act(() => {
-      Object.defineProperty(document, 'visibilityState', {
-        configurable: true,
-        value: 'visible',
-      });
-      document.dispatchEvent(new Event('visibilitychange'));
+      setVisibilityState('visible');
     });
     expect(result.current).toBe(true);
 
     act(() => {
-      Object.defineProperty(document, 'visibilityState', {
-        configurable: true,
-        value: 'hidden',
-      });
-      document.dispatchEvent(new Event('visibilitychange'));
+      setVisibilityState('hidden');
     });
     expect(result.current).toBe(false);
   });
@@ -79,14 +83,31 @@ describe('useDocumentVisibility', () => {
     addEventListenerSpy.mockRestore();
   });
 
-  it('should remove event listener on unmount', () => {
+  it('should remove the same event listener on unmount', () => {
+    const addEventListenerSpy = jest.spyOn(document, 'addEventListener');
     const removeEventListenerSpy = jest.spyOn(document, 'removeEventListener');
 
     const { unmount } = renderHook(() => useDocumentVisibility());
+    const handler = addEventListenerSpy.mock.calls.find(
+      ([type]) => type === 'visibilitychange'
+    )?.[1];
+
     unmount();
 
-    expect(removeEventListenerSpy).toHaveBeenCalledWith('visibilitychange', expect.any(Function));
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('visibilitychange', handler);
 
+    addEventListenerSpy.mockRestore();
     removeEventListenerSpy.mockRestore();
+  });
+
+  it('should stop updating after unmount', () => {
+    const { result, unmount } = renderHook(() => useDocumentVisibility());
+
+    unmount();
+    act(() => {
+      setVisibilityState('visible');
+    });
+
+    expect(result.current).toBe(false);
   });
 });
