@@ -66,12 +66,14 @@ export function useStateWithHistory<S, I extends S>(
             history.current = history.current.slice(0, historyPosition.current + 1);
           }
 
-          historyPosition.current = history.current.push(newState as I) - 1;
+          history.current.push(newState as I);
 
           // if capacity is reached - shift first elements
           if (history.current.length > capacity) {
             history.current = history.current.slice(history.current.length - capacity);
           }
+
+          historyPosition.current = history.current.length - 1;
         }
 
         return newState;
