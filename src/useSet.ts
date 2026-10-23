@@ -18,13 +18,21 @@ const useSet = <K>(initialSet = new Set<K>()): [Set<K>, Actions<K>] => {
   const stableActions = useMemo<StableActions<K>>(() => {
     const add = (item: K) => setSet((prevSet) => new Set([...Array.from(prevSet), item]));
     const remove = (item: K) =>
-      setSet((prevSet) => new Set(Array.from(prevSet).filter((i) => i !== item)));
+      setSet((prevSet) => {
+        const nextSet = new Set(prevSet);
+        nextSet.delete(item);
+        return nextSet;
+      });
     const toggle = (item: K) =>
-      setSet((prevSet) =>
-        prevSet.has(item)
-          ? new Set(Array.from(prevSet).filter((i) => i !== item))
-          : new Set([...Array.from(prevSet), item])
-      );
+      setSet((prevSet) => {
+        const nextSet = new Set(prevSet);
+        if (nextSet.has(item)) {
+          nextSet.delete(item);
+        } else {
+          nextSet.add(item);
+        }
+        return nextSet;
+      });
 
     return { add, remove, toggle, reset: () => setSet(initialSet), clear: () => setSet(new Set()) };
   }, [setSet]);

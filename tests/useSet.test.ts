@@ -96,6 +96,47 @@ it('should remove existing key', () => {
   expect(result.current[0]).toEqual(new Set([1]));
 });
 
+it.each(['remove', 'toggle'] as const)(
+  'should %s NaN without mutating the previous set',
+  (action) => {
+    const initialSet = new Set([NaN, 1]);
+    const { result } = setUp(initialSet);
+    const previousSet = result.current[0];
+
+    act(() => {
+      result.current[1][action](NaN);
+    });
+
+    expect(result.current[0]).toEqual(new Set([1]));
+    expect(result.current[1].has(NaN)).toBe(false);
+    expect(result.current[0]).not.toBe(previousSet);
+    expect(previousSet).toEqual(new Set([NaN, 1]));
+    expect(initialSet).toEqual(new Set([NaN, 1]));
+
+    act(() => {
+      result.current[1].reset();
+    });
+
+    expect(result.current[0]).toEqual(new Set([NaN, 1]));
+  }
+);
+
+it('should toggle NaN on and off', () => {
+  const { result } = setUp(new Set<number>());
+
+  act(() => {
+    result.current[1].toggle(NaN);
+  });
+
+  expect(result.current[1].has(NaN)).toBe(true);
+
+  act(() => {
+    result.current[1].toggle(NaN);
+  });
+
+  expect(result.current[0].size).toBe(0);
+});
+
 it('should remove an existing key on toggle', () => {
   const { result } = setUp(new Set([1, 2]));
   const [, utils] = result.current;
