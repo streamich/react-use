@@ -106,6 +106,81 @@ describe('useStateWithHistory', () => {
     expect(hook.result.current[0][2].history).toEqual([5, 111, 321]);
   });
 
+  it('should keep the position at the newest entry when history reaches capacity', () => {
+    const { result } = getHook(0, 3);
+
+    for (let value = 1; value <= 5; value++) {
+      act(() => {
+        result.current[0][1](value);
+      });
+
+      const [state, , history] = result.current[0];
+      expect(history.position).toBe(history.history.length - 1);
+      expect(history.history[history.position]).toBe(state);
+    }
+
+    expect(result.current[0][2].history).toEqual([3, 4, 5]);
+
+    act(() => {
+      result.current[0][2].back();
+    });
+    expect(result.current[0][0]).toBe(4);
+    expect(result.current[0][2].position).toBe(1);
+
+    act(() => {
+      result.current[0][2].forward();
+    });
+    expect(result.current[0][0]).toBe(5);
+    expect(result.current[0][2].position).toBe(2);
+  });
+
+  it('should keep a single-entry history at position zero after setting state', () => {
+    const { result } = getHook(0, 1);
+
+    act(() => {
+      result.current[0][1](1);
+    });
+
+    expect(result.current[0][2].history).toEqual([1]);
+    expect(result.current[0][2].position).toBe(0);
+
+    act(() => {
+      result.current[0][1](1);
+    });
+    expect(result.current[0][2].history).toEqual([1]);
+    expect(result.current[0][2].position).toBe(0);
+
+    act(() => {
+      result.current[0][2].back();
+    });
+    expect(result.current[0][0]).toBe(1);
+    expect(result.current[0][2].position).toBe(0);
+  });
+
+  it('should allow navigation after reducing capacity and setting state', () => {
+    const { result, rerender } = getHook(5, 5, [1, 2, 3, 4, 5]);
+    rerender({ state: 5, capacity: 2 });
+
+    act(() => {
+      result.current[0][1](6);
+    });
+
+    expect(result.current[0][2].history).toEqual([5, 6]);
+    expect(result.current[0][2].position).toBe(1);
+
+    act(() => {
+      result.current[0][2].back();
+    });
+    expect(result.current[0][0]).toBe(5);
+    expect(result.current[0][2].position).toBe(0);
+
+    act(() => {
+      result.current[0][2].forward();
+    });
+    expect(result.current[0][0]).toBe(6);
+    expect(result.current[0][2].position).toBe(1);
+  });
+
   describe('history.back()', () => {
     it('should cause rerender', () => {
       const hook = getHook(5, 5, [1, 2, 3, 4, 5]);
