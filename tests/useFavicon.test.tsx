@@ -2,10 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import useFavicon from '../src/useFavicon';
 
 afterEach(() => {
-  const favicon = document.querySelector("link[rel*='icon']");
-  if (favicon) {
-    favicon.remove();
-  }
+  document.querySelectorAll("link[rel*='icon']").forEach((link) => link.remove());
 });
 
 describe('useFavicon', () => {
@@ -54,4 +51,43 @@ describe('useFavicon', () => {
     hook.rerender('https://en.wikipedia.org/wiki/Favicon');
     expect(favicon.href).toBe('https://en.wikipedia.org/wiki/Favicon');
   });
+
+  it.each(['apple-touch-icon', 'mask-icon'])(
+    'should leave %s links unchanged when creating a favicon',
+    (rel) => {
+      const link = document.createElement('link');
+      link.rel = rel;
+      link.href = 'https://example.com/special-icon.png';
+      document.head.appendChild(link);
+
+      renderHook(() => useFavicon('https://example.com/favicon.ico'));
+
+      expect(link.rel).toBe(rel);
+      expect(link.href).toBe('https://example.com/special-icon.png');
+      expect(document.querySelector<HTMLLinkElement>('link[rel~="icon"]')!.href).toBe(
+        'https://example.com/favicon.ico'
+      );
+    }
+  );
+
+  it.each(['icon', 'shortcut icon'])(
+    'should find an existing %s link after an Apple touch icon',
+    (rel) => {
+      const touchIcon = document.createElement('link');
+      touchIcon.rel = 'apple-touch-icon';
+      touchIcon.href = 'https://example.com/touch.png';
+      const favicon = document.createElement('link');
+      favicon.rel = rel;
+      favicon.href = 'https://example.com/old.ico';
+      document.head.appendChild(touchIcon);
+      document.head.appendChild(favicon);
+
+      renderHook(() => useFavicon('https://example.com/new.ico'));
+
+      expect(favicon.href).toBe('https://example.com/new.ico');
+      expect(touchIcon.href).toBe('https://example.com/touch.png');
+      expect(touchIcon.rel).toBe('apple-touch-icon');
+      expect(document.querySelectorAll('link[rel~="icon"]')).toHaveLength(1);
+    }
+  );
 });

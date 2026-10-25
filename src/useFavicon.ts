@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const useFavicon = (href: string) => {
   useEffect(() => {
     const link: HTMLLinkElement =
-      document.querySelector("link[rel*='icon']") || document.createElement('link');
+      document.querySelector("link[rel~='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
     link.rel = 'shortcut icon';
     link.href = href;
