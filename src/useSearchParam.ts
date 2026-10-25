@@ -14,6 +14,8 @@ const useSearchParam: UseQueryParam = (param) => {
       setValue(getValue(location.search, param));
     };
 
+    onChange();
+
     on(window, 'popstate', onChange);
     on(window, 'pushstate', onChange);
     on(window, 'replacestate', onChange);
@@ -23,7 +25,7 @@ const useSearchParam: UseQueryParam = (param) => {
       off(window, 'pushstate', onChange);
       off(window, 'replacestate', onChange);
     };
-  }, []);
+  }, [param]);
 
   return value;
 };

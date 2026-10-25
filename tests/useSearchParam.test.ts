@@ -35,6 +35,38 @@ it('returns null if search param not found', () => {
   expect(result.current).toBe(null);
 });
 
+it('reads the new parameter when its name changes', () => {
+  mockSearch = 'foo=bar&baz=quux';
+  const { result, rerender } = renderHook(({ param }) => useSearchParam(param), {
+    initialProps: { param: 'foo' },
+  });
+
+  rerender({ param: 'baz' });
+  expect(result.current).toBe('quux');
+
+  rerender({ param: 'missing' });
+  expect(result.current).toBe(null);
+});
+
+it.each(['popstate', 'pushstate', 'replacestate'])(
+  'tracks the new parameter on %s after its name changes',
+  (event) => {
+    mockSearch = 'foo=bar&baz=quux';
+    const { result, rerender, unmount } = renderHook(({ param }) => useSearchParam(param), {
+      initialProps: { param: 'foo' },
+    });
+
+    rerender({ param: 'baz' });
+    act(() => {
+      mockSearch = 'foo=1&baz=2';
+      window.dispatchEvent(new Event(event));
+    });
+
+    expect(result.current).toBe('2');
+    unmount();
+  }
+);
+
 it('tracks the latest search param value', () => {
   mockSearch = 'foo=bar&baz=quux';
 
