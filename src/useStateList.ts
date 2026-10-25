@@ -47,7 +47,7 @@ export default function useStateList<T>(stateSet: T[] = []): UseStateListReturn<
         index.current =
           newIndex >= 0
             ? newIndex % stateSet.length
-            : stateSet.length + (newIndex % stateSet.length);
+            : (stateSet.length + (newIndex % stateSet.length)) % stateSet.length;
         update();
       },
       setState: (state: T) => {

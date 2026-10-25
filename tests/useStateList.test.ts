@@ -73,6 +73,16 @@ describe('useStateList', () => {
   });
 
   describe('setStateAt()', () => {
+    it('should not rerender when setting the current index', () => {
+      const hook = getHook();
+      const renders = hook.result.all.length;
+
+      act(() => hook.result.current.setStateAt(0));
+
+      expect(hook.result.current.state).toBe('a');
+      expect(hook.result.all).toHaveLength(renders);
+    });
+
     it('should set state by it`s index in states list', () => {
       const hook = getHook();
 
@@ -109,6 +119,17 @@ describe('useStateList', () => {
       act(() => hook.result.current.setStateAt(-17));
       expect(hook.result.current.state).toBe('b');
     });
+
+    it.each([-3, -6, -9])('should wrap index %i to the first state', (index) => {
+      const hook = getHook();
+
+      act(() => hook.result.current.setStateAt(index));
+
+      expect(hook.result.current.currentIndex).toBe(0);
+      expect(hook.result.current.state).toBe('a');
+      expect(hook.result.current.isFirst).toBe(true);
+      expect(hook.result.current.isLast).toBe(false);
+    });
   });
 
   describe('next()', () => {
@@ -143,6 +164,17 @@ describe('useStateList', () => {
   });
 
   describe('prev()', () => {
+    it('should keep the only state selected', () => {
+      const hook = getHook(['only']);
+
+      act(() => hook.result.current.prev());
+
+      expect(hook.result.current.currentIndex).toBe(0);
+      expect(hook.result.current.state).toBe('only');
+      expect(hook.result.current.isFirst).toBe(true);
+      expect(hook.result.current.isLast).toBe(true);
+    });
+
     it('on overflow should switch to last element (should be cycled)', () => {
       const hook = getHook();
 
@@ -177,6 +209,15 @@ describe('useStateList', () => {
   });
 
   describe('with empty states list', () => {
+    it('should use an empty list by default and reject unknown states', () => {
+      const hook = renderHook(() => useStateList());
+
+      expect(hook.result.current.state).toBeUndefined();
+      expect(() => hook.result.current.setState('a')).toThrow(
+        "State 'a' is not a valid state (does not exist in state list)"
+      );
+    });
+
     it('should have `undefined` state', () => {
       expect(getHook([]).result.current.state).toBe(undefined);
     });

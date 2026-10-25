@@ -49,6 +49,7 @@ If `stateSet` changed, became shorter than before and `currentIndex` left in shr
 - **`next()`**_`: void`_ &mdash; switches state to the next one. If last element selected it will switch to the first one;
 - **`setStateAt(newIndex: number)`**_`: void`_ &mdash; set the arbitrary state by index. Indexes are looped, and can be negative.  
   _4ex:_ if list contains 5 elements, attempt to set index 9 will bring use to the 5th element, in case of negative index it will start counting from the right, so -17 will bring us to the 4th element.
+  Negative multiples of the list length wrap to the first element, so `setStateAt(-5)` selects index `0` in a five-element list.
 - **`setState(state: T)`**_`: void`_ &mdash; set the arbitrary state value that exists in `stateSet`. _In case new state does not exists in `stateSet` an Error will be thrown._
 - **`isFirst`**_`: boolean`_ &mdash; `true` if current state is the first one.
 - **`isLast`**_`: boolean`_ &mdash; `true` if current state is the last one.
