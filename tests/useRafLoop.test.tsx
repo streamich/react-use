@@ -93,6 +93,40 @@ describe('useRafLoop', () => {
   });
 
   describe('returned methods', () => {
+    it('should keep one loop when restarting from the callback', () => {
+      const spy = jest.fn(() => {
+        if (spy.mock.calls.length === 1) {
+          hook.result.current[0]();
+          hook.result.current[1]();
+        }
+      });
+      const hook = renderHook(() => useRafLoop(spy));
+
+      requestAnimationFrame.step();
+      expect(spy).toBeCalledTimes(1);
+      requestAnimationFrame.step(3);
+      expect(spy).toBeCalledTimes(4);
+
+      hook.result.current[0]();
+      requestAnimationFrame.step();
+      expect(spy).toBeCalledTimes(4);
+    });
+
+    it('should cancel the pending frame when stopped from the callback', () => {
+      const spy = jest.fn(() => {
+        if (spy.mock.calls.length === 1) {
+          hook.result.current[0]();
+        }
+      });
+      const hook = renderHook(() => useRafLoop(spy));
+
+      requestAnimationFrame.step();
+      expect(hook.result.current[2]()).toBe(false);
+      hook.result.current[1]();
+      requestAnimationFrame.step(3);
+      expect(spy).toBeCalledTimes(4);
+    });
+
     it('stop method should stop the loop', () => {
       const spy = jest.fn();
       const hook = renderHook(() => useRafLoop(spy), { initialProps: false });

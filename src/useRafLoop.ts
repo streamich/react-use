@@ -13,8 +13,8 @@ export default function useRafLoop(
 
   const step = useCallback((time: number) => {
     if (rafActivity.current) {
-      rafCallback.current(time);
       raf.current = requestAnimationFrame(step);
+      rafCallback.current(time);
     }
   }, []);
 
