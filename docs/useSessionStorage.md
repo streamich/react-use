@@ -2,6 +2,10 @@
 
 React side-effect hook that manages a single `sessionStorage` key.
 
+Each hook instance maintains its own state. When instances share a key, changing one
+instance's value persists that value; rerendering an instance whose state is unchanged
+leaves the stored value intact.
+
 
 ## Usage
 
