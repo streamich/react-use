@@ -226,6 +226,8 @@ export default function createHTMLMediaHook<T extends HTMLAudioElement | HTMLVid
       }
 
       setState({
+        duration: el.readyState >= el.HAVE_METADATA ? el.duration : 0,
+        buffered: parseTimeRanges(el.buffered),
         volume: el.volume,
         muted: el.muted,
         paused: el.paused,

@@ -71,6 +71,10 @@ render tree, for example:
 
 `playing`: The audio is being played and is affected by the network. If it starts to buffer audio, it will be false
 
+`duration` and `buffered` are read from the rendered audio element on mount and when
+`src` changes, including metadata loaded before React attaches its event handlers.
+`duration` remains `0` until metadata is available.
+
 `controls` is a list collection of methods that allow you to control the
 playback of the audio, it has the following interface:
 

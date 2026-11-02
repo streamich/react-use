@@ -67,6 +67,10 @@ render tree, for example:
 }
 ```
 
+`duration` and `buffered` are read from the rendered video element on mount and when
+`src` changes, including metadata loaded before React attaches its event handlers.
+`duration` remains `0` until metadata is available.
+
 `controls` is a list collection of methods that allow you to control the
 playback of the video, it has the following interface:
 
