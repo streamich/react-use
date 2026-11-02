@@ -37,7 +37,7 @@ const useSessionStorage = <T>(
       // If user is in private mode or has storage restriction
       // sessionStorage can throw. Also JSON.stringify can throw.
     }
-  });
+  }, [key, raw, state]);
 
   return [state, setState];
 };
