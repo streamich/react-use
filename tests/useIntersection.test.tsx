@@ -4,7 +4,7 @@ import TestUtils from 'react-dom/test-utils';
 import TestRenderer from 'react-test-renderer';
 import { intersectionObserver } from '@shopify/jest-dom-mocks';
 import { renderHook } from '@testing-library/react-hooks';
-import { useIntersection } from '../src';
+import useIntersection from '../src/useIntersection';
 
 beforeEach(() => {
   intersectionObserver.mock();
@@ -43,10 +43,48 @@ describe('useIntersection', () => {
   });
 
   it('should return null if a ref without a current value is provided', () => {
-    targetRef = createRef();
+    const emptyRef = createRef<HTMLDivElement>();
 
-    const { result } = renderHook(() => useIntersection(targetRef, { root: null, threshold: 1 }));
+    const { result } = renderHook(() => useIntersection(emptyRef, { root: null, threshold: 1 }));
     expect(result.current).toBe(null);
+  });
+
+  it('should accept a ref initialized with null', () => {
+    const { result } = renderHook(() => {
+      const ref = React.useRef(null);
+      return useIntersection(ref, {});
+    });
+
+    expect(result.current).toBe(null);
+    expect(intersectionObserver.observers).toHaveLength(0);
+  });
+
+  it('should observe and disconnect an explicitly nullable element ref', () => {
+    const { result, rerender, unmount } = renderHook(() => {
+      const ref = React.useRef<HTMLDivElement | null>(null);
+      const entry = useIntersection(ref, {});
+      return { ref, entry };
+    });
+    const element = document.createElement('div');
+
+    expect(result.current.entry).toBe(null);
+    expect(intersectionObserver.observers).toHaveLength(0);
+
+    result.current.ref.current = element;
+    rerender();
+
+    expect(intersectionObserver.observers).toHaveLength(1);
+    expect(intersectionObserver.observers[0].target).toBe(element);
+
+    result.current.ref.current = null;
+    rerender();
+
+    expect(result.current.entry).toBe(null);
+    expect(IntersectionObserver.prototype.disconnect).toHaveBeenCalledTimes(1);
+
+    unmount();
+
+    expect(IntersectionObserver.prototype.disconnect).toHaveBeenCalledTimes(1);
   });
 
   it('should reset an intersectionObserverEntry when the ref changes', () => {
