@@ -3,6 +3,10 @@
 Hook factory, receives a function to be memoized, returns a memoized React hook,
 which receives the same arguments and returns the same result as the original function.
 
+Arguments are compared individually using `Object.is`. The result is recalculated
+when an argument changes or the number of arguments changes. Each hook instance
+keeps its own memoized result.
+
 
 ## Usage
 
@@ -25,6 +29,18 @@ const Demo = () => {
       fib(10) = {result}
     </div>
   );
+};
+```
+
+Functions with optional or rest parameters can receive a different number of
+arguments on each render:
+
+```jsx
+const useMemoSum = createMemo((...values) => values.reduce((sum, value) => sum + value, 0));
+
+const Demo = ({ values }) => {
+  const total = useMemoSum(...values);
+  return <div>{total}</div>;
 };
 ```
 
