@@ -5,8 +5,10 @@ const useScrolling = (ref: RefObject<HTMLElement>): boolean => {
   const [scrolling, setScrolling] = useState<boolean>(false);
 
   useEffect(() => {
-    if (ref.current) {
-      let scrollingTimeout;
+    const element = ref.current;
+
+    if (element) {
+      let scrollingTimeout: ReturnType<typeof setTimeout>;
 
       const handleScrollEnd = () => {
         setScrolling(false);
@@ -18,11 +20,10 @@ const useScrolling = (ref: RefObject<HTMLElement>): boolean => {
         scrollingTimeout = setTimeout(() => handleScrollEnd(), 150);
       };
 
-      on(ref.current, 'scroll', handleScroll, false);
+      on(element, 'scroll', handleScroll, false);
       return () => {
-        if (ref.current) {
-          off(ref.current, 'scroll', handleScroll, false);
-        }
+        clearTimeout(scrollingTimeout);
+        off(element, 'scroll', handleScroll, false);
       };
     }
     return () => {};

@@ -2,6 +2,9 @@
 
 React sensor hook that keeps track of whether the user is scrolling or not.
 
+The value returns to `false` 150ms after the last scroll event. Pending timeouts and
+the scroll listener are cleaned up when the component unmounts or the ref object changes.
+
 ## Usage
 
 ```jsx
