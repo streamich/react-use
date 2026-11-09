@@ -16,17 +16,44 @@ const useSet = <K>(initialSet = new Set<K>()): [Set<K>, Actions<K>] => {
   const [set, setSet] = useState(initialSet);
 
   const stableActions = useMemo<StableActions<K>>(() => {
-    const add = (item: K) => setSet((prevSet) => new Set([...Array.from(prevSet), item]));
-    const remove = (item: K) =>
-      setSet((prevSet) => new Set(Array.from(prevSet).filter((i) => i !== item)));
-    const toggle = (item: K) =>
-      setSet((prevSet) =>
-        prevSet.has(item)
-          ? new Set(Array.from(prevSet).filter((i) => i !== item))
-          : new Set([...Array.from(prevSet), item])
-      );
+    const add = (item: K) =>
+      setSet((prevSet) => {
+        if (prevSet.has(item)) return prevSet;
 
-    return { add, remove, toggle, reset: () => setSet(initialSet), clear: () => setSet(new Set()) };
+        const newSet = new Set(prevSet);
+        newSet.add(item);
+        return newSet;
+      });
+
+    const remove = (item: K) =>
+      setSet((prevSet) => {
+        if (!prevSet.has(item)) return prevSet;
+
+        const newSet = new Set(prevSet);
+        newSet.delete(item);
+        return newSet;
+      });
+
+    const toggle = (item: K) =>
+      setSet((prevSet) => {
+        const newSet = new Set(prevSet);
+        if (newSet.has(item)) {
+          newSet.delete(item);
+        } else {
+          newSet.add(item);
+        }
+        return newSet;
+      });
+
+    const reset = () => setSet(initialSet);
+
+    const clear = () =>
+      setSet((prevSet) => {
+        if (prevSet.size === 0) return prevSet;
+        return new Set();
+      });
+
+    return { add, remove, toggle, reset, clear };
   }, [setSet]);
 
   const utils = {

@@ -76,6 +76,7 @@ it('should add a new key', () => {
 
 it('should work if setting existing key', () => {
   const { result } = setUp(new Set(['oldKey']));
+  const initialSet = result.current[0];
   const [, utils] = result.current;
 
   act(() => {
@@ -83,6 +84,7 @@ it('should work if setting existing key', () => {
   });
 
   expect(result.current[0]).toEqual(new Set(['oldKey']));
+  expect(result.current[0]).toBe(initialSet);
 });
 
 it('should remove existing key', () => {
@@ -120,6 +122,7 @@ it('should add a new key on toggle', () => {
 
 it('should do nothing if removing non-existing key', () => {
   const { result } = setUp(new Set(['a', 'b']));
+  const initialSet = result.current[0];
   const [, utils] = result.current;
 
   act(() => {
@@ -127,6 +130,7 @@ it('should do nothing if removing non-existing key', () => {
   });
 
   expect(result.current[0]).toEqual(new Set(['a', 'b']));
+  expect(result.current[0]).toBe(initialSet);
 });
 
 it('should reset to initial set provided', () => {
