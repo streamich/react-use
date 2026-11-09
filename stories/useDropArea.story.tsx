@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useDropArea } from '../src';
 import ShowDocs from './util/ShowDocs';
 
-const Demo = () => {
+const Demo = ({ children }: { children?: React.ReactNode }) => {
   const [bond, state] = useDropArea({
     onFiles: action('onFiles'),
     onUri: action('onUri'),
@@ -30,7 +30,7 @@ const Demo = () => {
   return (
     <div>
       <div {...bond} style={style}>
-        Drop here
+        {children || 'Drop here'}
       </div>
       <div style={{ maxWidth: 300, margin: '0 auto' }}>
         <ul style={{ margin: 0, padding: '10px 18px' }}>
@@ -53,4 +53,11 @@ const Demo = () => {
 
 storiesOf('UI/useDropArea', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useDrop.md')} />)
-  .add('Default', () => <Demo />);
+  .add('Default', () => <Demo />)
+  .add('With children', () => (
+    <Demo>
+      <div style={{ padding: 50, lineHeight: '100px', background: 'rgba(0, 0, 0, 0.05)' }}>
+        Drag over this child
+      </div>
+    </Demo>
+  ));

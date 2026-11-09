@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { MutableRefObject, useMemo, useRef, useState } from 'react';
 import useMountedState from './useMountedState';
 import { noop } from './misc/util';
 
@@ -49,20 +49,25 @@ const createProcess =
     }
   };
 
-const createBond = (process, setOver): DropAreaBond => ({
+const createBond = (process, setOver, dragDepth: MutableRefObject<number>): DropAreaBond => ({
   onDragOver: (event) => {
     event.preventDefault();
   },
   onDragEnter: (event) => {
     event.preventDefault();
+    dragDepth.current += 1;
     setOver(true);
   },
   onDragLeave: () => {
-    setOver(false);
+    dragDepth.current = Math.max(0, dragDepth.current - 1);
+    if (dragDepth.current === 0) {
+      setOver(false);
+    }
   },
   onDrop: (event) => {
     event.preventDefault();
     event.persist();
+    dragDepth.current = 0;
     setOver(false);
     process(event.dataTransfer, event);
   },
@@ -76,8 +81,12 @@ const useDropArea = (options: DropAreaOptions = {}): [DropAreaBond, DropAreaStat
   const { onFiles, onText, onUri } = options;
   const isMounted = useMountedState();
   const [over, setOver] = useState<boolean>(false);
+  const dragDepth = useRef(0);
   const process = useMemo(() => createProcess(options, isMounted()), [onFiles, onText, onUri]);
-  const bond: DropAreaBond = useMemo(() => createBond(process, setOver), [process, setOver]);
+  const bond: DropAreaBond = useMemo(
+    () => createBond(process, setOver, dragDepth),
+    [process, setOver]
+  );
 
   return [bond, { over }];
 };
