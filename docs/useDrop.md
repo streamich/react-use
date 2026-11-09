@@ -5,6 +5,8 @@ Triggers on file, link drop and copy-paste.
 `useDrop` tracks events for the whole page, `useDropArea` tracks drop events
 for a specific element.
 
+`useDropArea` keeps `state.over` active while dragging over the element or its
+children, and resets it when the drag leaves the area or an item is dropped.
 
 ## Usage
 
