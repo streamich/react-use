@@ -1,5 +1,41 @@
-import { renderHook } from '@testing-library/react-hooks';
+import React from 'react';
+import { act, renderHook } from '@testing-library/react-hooks';
 import useThrottle from '../src/useThrottle';
+
+const renderWithEffectReplay = () => {
+  const originalEffect = React.useEffect;
+  const effects: React.EffectCallback[] = [];
+  let cleanups: ReturnType<React.EffectCallback>[] = [];
+  let effectIndex = 0;
+
+  jest.spyOn(React, 'useEffect').mockImplementation((effect, dependencies) => {
+    const index = effectIndex++;
+    effects[index] = effect;
+    originalEffect(() => {
+      const cleanup = effect();
+      cleanups[index] = cleanup;
+      return cleanup;
+    }, dependencies);
+  });
+
+  const hook = renderHook(
+    (value) => {
+      effectIndex = 0;
+      return useThrottle(value, 100);
+    },
+    { initialProps: 0 }
+  );
+
+  return {
+    ...hook,
+    replayEffects: () => {
+      act(() => {
+        cleanups.forEach((cleanup) => cleanup && cleanup());
+        cleanups = effects.map((effect) => effect());
+      });
+    },
+  };
+};
 
 describe('useThrottle', () => {
   beforeAll(() => {
@@ -8,6 +44,7 @@ describe('useThrottle', () => {
 
   afterEach(() => {
     jest.clearAllTimers();
+    jest.restoreAllMocks();
   });
 
   afterAll(() => {
@@ -71,5 +108,108 @@ describe('useThrottle', () => {
     expect(jest.getTimerCount()).toBe(0);
     jest.advanceTimersByTime(100);
     expect(hook.result.current).toBe(0);
+  });
+
+  it('should publish the latest pending value in each throttle interval', () => {
+    const { result, rerender } = renderHook((value) => useThrottle(value, 100), {
+      initialProps: 0,
+    });
+
+    rerender(1);
+    rerender(2);
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(result.current).toBe(2);
+
+    rerender(3);
+    rerender(4);
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(result.current).toBe(4);
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(jest.getTimerCount()).toBe(0);
+
+    rerender(5);
+    expect(result.current).toBe(5);
+  });
+
+  it('should restart the timeout after effect cleanup and setup are replayed', () => {
+    const { result, rerender, replayEffects } = renderWithEffectReplay();
+
+    replayEffects();
+    expect(jest.getTimerCount()).toBe(1);
+    rerender(1);
+    expect(result.current).toBe(0);
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(result.current).toBe(1);
+
+    rerender(2);
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(result.current).toBe(2);
+  });
+
+  it('should discard pending values when effects are replayed', () => {
+    const { result, rerender, replayEffects } = renderWithEffectReplay();
+
+    rerender(1);
+    replayEffects();
+    expect(result.current).toBe(1);
+    expect(jest.getTimerCount()).toBe(1);
+
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(result.current).toBe(1);
+    expect(jest.getTimerCount()).toBe(0);
+
+    rerender(2);
+    expect(result.current).toBe(2);
+  });
+
+  it('should keep a single timeout across repeated effect replays', () => {
+    const { result, rerender, replayEffects, unmount } = renderWithEffectReplay();
+
+    replayEffects();
+    replayEffects();
+    replayEffects();
+    expect(jest.getTimerCount()).toBe(1);
+
+    rerender(1);
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(result.current).toBe(1);
+
+    unmount();
+    expect(jest.getTimerCount()).toBe(0);
+  });
+
+  it('should replay idle effects and clean up without an active timeout', () => {
+    const { result, rerender, replayEffects, unmount } = renderWithEffectReplay();
+
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(jest.getTimerCount()).toBe(0);
+
+    replayEffects();
+    expect(jest.getTimerCount()).toBe(1);
+    rerender(1);
+    act(() => {
+      jest.advanceTimersByTime(200);
+    });
+    expect(result.current).toBe(1);
+    expect(jest.getTimerCount()).toBe(0);
+
+    unmount();
+    expect(jest.getTimerCount()).toBe(0);
   });
 });
