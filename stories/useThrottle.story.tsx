@@ -37,4 +37,9 @@ const Demo = () => {
 
 storiesOf('Side effects/useThrottle', module)
   .add('Docs', () => <ShowDocs md={require('../docs/useThrottle.md')} />)
-  .add('Demo', () => <Demo />);
+  .add('Demo', () => <Demo />)
+  .add('Strict Mode', () => (
+    <React.StrictMode>
+      <Demo />
+    </React.StrictMode>
+  ));

@@ -28,6 +28,8 @@ const useThrottle = <T>(value: T, ms: number = 200) => {
 
   useUnmount(() => {
     timeout.current && clearTimeout(timeout.current);
+    timeout.current = undefined;
+    hasNextValue.current = false;
   });
 
   return state;
